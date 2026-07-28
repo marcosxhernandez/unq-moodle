@@ -51,6 +51,8 @@ unq-moodle/
 
 `index.html` refleja esta misma tabla en formato de aula — abrilo para navegar todo con un click.
 
+**⚠️ `index.html` embebe una copia pegada de cada `bloques/Moodle - Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `bloques/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio — pasó con la Clase 00 en jul. 2026.
+
 ## Convenciones de construcción
 
 Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md`, en la raíz del proyecto de Drive (no se duplica acá para no perder sincronía). Ante cualquier duda de formato al construir una clase nueva, esa es la fuente de verdad.

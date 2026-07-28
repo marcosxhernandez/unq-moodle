@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 05 - Maquetación de alta precisión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Procesador de texto (Bloque 2, Clases 02-05 y 07) = celeste */
+  :root{
+    --acento:var(--celeste);
+    --acento-deep:var(--celeste-deep);
+    --acento-tint:var(--celeste-tint);
+    --acento-soft:var(--celeste-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 05 · Procesador de texto";
+      color:#2b569f;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="05">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 05 · Procesador de texto</span>
+    <h1 class="cover-title">Maquetación de alta precisión</h1>
+    <p class="cover-subtitle">Word de escritorio: saltos de sección, columnas y exportación a PDF</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Hasta ahora trabajaste todo en Google Docs. Hoy cambiás de herramienta: Word de escritorio, pensado para una lógica distinta — no el lienzo infinito de la nube, sino la página impresa con dimensiones fijas. Vas a tomar el Trabajo Integrador que armaste en la Clase 04, estructurarlo en secciones con columnas y encabezados diferenciados, y exportarlo como PDF con fidelidad garantizada.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#antes"><span class="toc-num">01</span><span class="toc-text">Antes de arrancar: cómo acceder a Word</span></a></li>
+    <li><a href="#sabes"><span class="toc-num">02</span><span class="toc-text">Lo que ya sabés hacer</span></a></li>
+    <li><a href="#artefacto"><span class="toc-num">03</span><span class="toc-text">Word de escritorio: la página como artefacto de impresión</span></a></li>
+    <li><a href="#config"><span class="toc-num">04</span><span class="toc-text">Configuración base del documento</span></a></li>
+    <li><a href="#saltos"><span class="toc-num">05</span><span class="toc-text">Saltos de sección</span></a></li>
+    <li><a href="#columnas"><span class="toc-num">06</span><span class="toc-text">Columnas y layouts mixtos</span></a></li>
+    <li><a href="#pdf"><span class="toc-num">07</span><span class="toc-text">Diseño de impresión y exportación a PDF</span></a></li>
+    <li><a href="#carta"><span class="toc-num">08</span><span class="toc-text">Carta personalizada: combinación de correspondencia</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">09</span><span class="toc-text">Cierre de la clase</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">10</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#glosario"><span class="toc-num">11</span><span class="toc-text">Glosario de la clase</span></a></li>
+    <li><a href="#fuentes"><span class="toc-num">12</span><span class="toc-text">Fuentes</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — ANTES DE ARRANCAR -->
+<section class="block" id="antes">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Antes de arrancar: cómo acceder a Word</h2>
+  </div>
+  <div class="prose">
+    <p>Esta clase necesita <strong>Word de escritorio</strong> — el programa instalado, no la versión web.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Importante</p>
+      <p>La versión web (<code>word.cloud.microsoft</code>) no tiene saltos de sección. Sin saltos de sección no hay columnas mixtas ni encabezados diferenciados — los dos temas centrales de hoy. Con la versión web no vas a poder completar las actividades.</p>
+    </div>
+
+    <p>Si ya tenés Word instalado, abrilo y listo — si te pide sesión, usá tu cuenta <code>@alu.unq.edu.ar</code> (la licencia institucional ya está activa). Si no lo tenés: usá una computadora de los laboratorios de la UNQ, o instalalo desde <code>microsoft.com/es-ar/education/products/office</code> iniciando sesión con esa misma cuenta.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: tu cuenta de la UNQ</p>
+      <p>Buscá en tu correo personal un mail de la UNQ con usuario y contraseña inicial (revisá Spam) y accedé en <code>correo.unq.edu.ar</code>. Si nunca recibiste las credenciales, escribí a <code>consultas.alumnos@unq.edu.ar</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — LO QUE YA SABÉS HACER -->
+<section class="block" id="sabes">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Lo que ya sabés hacer</h2>
+  </div>
+  <div class="prose">
+    <p>Todo lo que construiste hasta acá sigue siendo válido — hoy lo usás en un programa distinto.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Bloque</th><th>Ya sabés</th></tr></thead>
+        <tbody>
+          <tr><td>Búsqueda y validación</td><td>Operadores de Google, CRAAP, Perplexity para fuentes con DOI verificable</td></tr>
+          <tr><td>IA como herramienta</td><td>RTCFL, prompt chaining, NotebookLM anclado en tus fuentes</td></tr>
+          <tr><td>Procesador de texto</td><td>Estilos de título, Ctrl+Shift+V, tablas con celdas combinadas, imágenes flotantes ancladas, hipervínculos internos, notas al pie</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia: el síntoma más común</p>
+      <p>Abrís en Word un documento descargado de Google Docs y el índice ya no funciona — los títulos se ven igual que el cuerpo. Eso pasa porque los estilos de título no se transfirieron bien al convertir el archivo. Lo primero que hay que revisar es la galería de estilos de Word: reaplicá Título 1 / Título 2 donde falten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — WORD DE ESCRITORIO: LA PÁGINA COMO ARTEFACTO DE IMPRESIÓN -->
+<section class="block" id="artefacto">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Word de escritorio: la página como artefacto de impresión</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p class="callout-label">🤔 Pregunta disparadora</p>
+      <p>¿Cuándo fue la última vez que imprimiste algo que importaba — un CV, un contrato — y "se veía raro" en el papel? ¿Por qué pasa eso?</p>
+    </div>
+
+    <p>Google Docs y Word de escritorio no son la misma herramienta en distinto lugar: tienen filosofías de diseño opuestas.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>Google Docs / Word en la nube</th><th>Word de escritorio</th></tr></thead>
+        <tbody>
+          <tr><td>Metáfora central</td><td>Lienzo infinito colaborativo</td><td>Página de papel con dimensiones fijas</td></tr>
+          <tr><td>Colaboración</td><td>Tiempo real, múltiples usuarios</td><td>Revisiones y comentarios asincrónicos</td></tr>
+          <tr><td>Fidelidad de impresión</td><td>Aceptable para la mayoría de los casos</td><td>Exacta: lo que ves es lo que se imprime</td></tr>
+          <tr><td>Funciones avanzadas</td><td>Sin saltos de sección reales, sin combinar correspondencia</td><td>Secciones, columnas, campos, combinación de correspondencia</td></tr>
+          <tr><td>Ideal para</td><td>Borradores, trabajo en equipo, documentos en pantalla</td><td>Documentos para imprimir o distribuir en formato fijo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>No se trata de que uno sea mejor. Un borrador colaborativo va en Google Docs; un CV que pasa por un filtro automático de RRHH necesita un .docx bien formateado; un boletín para imprimir 500 ejemplares necesita Word de escritorio.</p>
+    </div>
+
+    <h3>Orientarse en la interfaz</h3>
+    <p>Word tiene elementos que no existen en Google Docs y van a aparecer todo el tiempo hoy.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Elemento</th><th>Dónde está</th><th>Para qué sirve</th></tr></thead>
+        <tbody>
+          <tr><td>Cinta de opciones</td><td>Parte superior</td><td>Agrupa los comandos por pestañas: Inicio, Insertar, Disposición, Referencias, Correspondencia</td></tr>
+          <tr><td>Regla horizontal</td><td>Debajo de la cinta</td><td>Muestra márgenes, sangrías y columnas de la sección actual</td></tr>
+          <tr><td>Barra de estado</td><td>Parte inferior</td><td>Muestra página, total de páginas y — si lo activás — la sección actual</td></tr>
+          <tr><td>Vista de diseño de impresión</td><td>Vista → Diseño de impresión</td><td>Muestra el documento tal como se va a imprimir</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Activá el número de sección en la barra de estado: clic derecho sobre la barra gris inferior → marcá "Sección". Y activá los caracteres no imprimibles con el ícono <strong>¶</strong> en Inicio — vas a trabajar con eso encendido toda la clase, para ver exactamente dónde está cada salto.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Lo que no ves con ¶ activo, no podés controlar. Trabajá con los caracteres no imprimibles encendidos mientras aprendés saltos de sección.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — CONFIGURACIÓN BASE -->
+<section class="block" id="config">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Configuración base del documento</h2>
+  </div>
+  <div class="prose">
+    <p>Antes de escribir una sola letra: configurá el papel.</p>
+
+    <p>Word abre con papel <strong>Letter</strong> (21,59 × 27,94 cm), el estándar norteamericano. En Argentina se imprime en <strong>A4</strong> (21 × 29,7 cm) — son parecidos, pero no iguales. Si trabajás en Letter y entregás en A4, el texto se corre y los márgenes quedan asimétricos. Es el error silencioso más común en documentos universitarios: nadie lo nota hasta que está impreso.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Qué</th><th>Dónde</th><th>Valor recomendado</th></tr></thead>
+        <tbody>
+          <tr><td>Tamaño de papel</td><td>Disposición → Tamaño</td><td>A4</td></tr>
+          <tr><td>Márgenes</td><td>Disposición → Márgenes</td><td>Normal (2,54 cm en los cuatro lados)</td></tr>
+          <tr><td>Orientación</td><td>Disposición → Orientación</td><td>Vertical</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención: papel primero, contenido después</p>
+      <p>Si cambiás tamaño de papel o márgenes después de tener secciones configuradas, Word puede redistribuir el texto y romper el diseño que ya armaste. Configurá el papel antes de escribir.</p>
+    </div>
+
+    <p>Cuando configurás el papel base, el campo "Aplicar a" del diálogo tiene que decir <strong>"Todo el documento"</strong> — estás definiendo el formato global. El campo "Esta sección" lo usás más adelante, cuando una sola parte del documento necesite márgenes distintos.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: A4 por defecto</p>
+      <p>Disposición → Márgenes → Márgenes personalizados → configurá A4 → "Establecer como predeterminado". Word pide confirmación — aceptá, y cada documento nuevo va a abrir directamente en A4.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>El documento de práctica</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Abrí un documento nuevo en Word (Archivo → Nuevo).</li>
+          <li>Disposición → Tamaño: si dice "Carta" o "Letter", cambialo a <strong>A4</strong>.</li>
+          <li>Disposición → Márgenes → <strong>Normal</strong>. Verificá con Márgenes personalizados que sea 2,54 cm en los cuatro lados y "Aplicar a: Todo el documento".</li>
+          <li>Disposición → Orientación → <strong>Vertical</strong>.</li>
+          <li>Guardá el documento como <code>Práctica Word - V01.docx</code>, en la subcarpeta "Clase 05". Es el archivo que vas a usar en todas las actividades de hoy.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El documento está en A4, márgenes normales y orientación vertical, guardado con el nombre correcto en la subcarpeta "Clase 05".</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — SALTOS DE SECCIÓN -->
+<section class="block" id="saltos">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Saltos de sección</h2>
+  </div>
+  <div class="prose">
+    <p>En Word el documento no es una sola corriente de texto: es una secuencia de <strong>secciones</strong>. Cada sección puede tener su propio diseño — márgenes, orientación, columnas, encabezado y pie independientes. Un salto de sección es la frontera entre dos secciones.</p>
+
+    <h3>Por qué el salto de página no alcanza</h3>
+    <p>Un salto de página (<code>Ctrl+Enter</code>) mueve el cursor a la página siguiente y nada más — no cambia márgenes, columnas ni encabezados. Un salto de sección divide el documento en partes independientes: es como tener varios documentos pegados en uno solo.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de salto de sección</th><th>Lo que hace</th><th>Cuándo usarlo</th></tr></thead>
+        <tbody>
+          <tr><td>Página siguiente</td><td>La nueva sección empieza en la página siguiente</td><td>Cambiar orientación, iniciar un capítulo, cambiar columnas entre páginas</td></tr>
+          <tr><td>Continuo</td><td>La nueva sección empieza en el mismo lugar</td><td>Cambiar columnas dentro de la misma página, layouts mixtos</td></tr>
+          <tr><td>Página par / impar</td><td>La nueva sección empieza en la próxima página par o impar</td><td>Documentos tipo libro, capítulos en página derecha o izquierda</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>La mayoría de los usuarios solo conoce el salto de página y nunca llega al de sección. El resultado: documentos que se rompen al imprimir. Saber cuándo usar cada tipo es lo que distingue a un usuario avanzado.</p>
+    </div>
+
+    <p>Se insertan desde Disposición → Saltos → elegís el tipo (no está en Insertar, aunque parezca lógico). Con ¶ activo, cada salto aparece como una línea doble con el texto "Salto de sección (Continuo)" o "(Página siguiente)".</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: eliminar un salto</p>
+      <p>Seleccioná la línea del salto (con ¶ activo) y apretá <code>Delete</code>. Cuidado: al eliminarlo, el texto de arriba pierde su configuración y adopta el formato de la sección de abajo — revisá que el diseño no se haya roto.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Tus primeros saltos de sección</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>Práctica Word - V01.docx</code>, pedile a una IA: "Escribime 4 párrafos cortos sobre cualquier tema, sin títulos, solo texto corrido." Pegalo con <code>Ctrl+Shift+V</code> (pegar sin formato).</li>
+          <li>Activá ¶ y verificá que ves los saltos de párrafo.</li>
+          <li>Insertá un salto de sección <strong>Continuo</strong> después del primer párrafo: Disposición → Saltos → Continuo.</li>
+          <li>Insertá un salto de sección <strong>Página siguiente</strong> después del segundo párrafo.</li>
+          <li>Verificá en la barra de estado que el número de sección cambia al mover el cursor entre secciones.</li>
+          <li>Eliminá uno de los saltos y observá qué pasa con el formato del texto restante. Deshacé con <code>Ctrl+Z</code>.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El documento tiene al menos dos saltos de sección de tipos distintos, y verificaste el cambio de sección en la barra de estado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — COLUMNAS Y LAYOUTS MIXTOS -->
+<section class="block" id="columnas">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Columnas y layouts mixtos</h2>
+  </div>
+  <div class="prose">
+    <p>Las columnas son una propiedad de sección — se aplican a la sección actual, no a todo el documento. Por eso podés tener una sección de una columna y otra de dos en el mismo documento.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si aplicás columnas sin un salto de sección antes, Word convierte todo el documento a ese número de columnas. Siempre creá primero el salto, después aplicá las columnas.</p>
+    </div>
+
+    <h3>El layout más frecuente</h3>
+    <ul>
+      <li><strong>Sección 1</strong> (una columna): título, introducción.</li>
+      <li><strong>Sección 2</strong> (dos columnas): desarrollo, cuerpo del texto.</li>
+      <li><strong>Sección 3</strong> (una columna): conclusión o cierre.</li>
+    </ul>
+
+    <p>Con el cursor en la sección que corresponde: Disposición → Columnas → elegís el número, o "Más columnas" para ancho desigual y separador visual.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: salto de columna</p>
+      <p>Dentro de una sección con columnas, Disposición → Saltos → Columna fuerza que el contenido salte a la columna siguiente desde cualquier punto — útil para no dejar una columna con muy poco texto.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Layout mixto</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Seguís en <code>Práctica Word - V01.docx</code>. Al final del texto que ya tenés, agregá una línea en blanco.</li>
+          <li>Sección nueva (una columna): título breve + dos oraciones de introducción.</li>
+          <li>Insertá un salto de sección <strong>Continuo</strong>.</li>
+          <li>Sección de dos columnas: Disposición → Columnas → Dos. Pedile a una IA 4 párrafos cortos y pegalos con <code>Ctrl+Shift+V</code>.</li>
+          <li>Insertá otro salto <strong>Continuo</strong> para volver a una columna. Si no volvió sola: Disposición → Columnas → Una.</li>
+          <li>Escribí una línea de cierre en la última sección.</li>
+          <li>Verificá en Vista → Diseño de impresión que el layout se ve correcto.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Tenés al menos tres secciones con al menos un tramo en dos columnas, verificado en Vista de diseño de impresión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — DISEÑO DE IMPRESIÓN Y EXPORTACIÓN A PDF -->
+<section class="block" id="pdf">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Diseño de impresión y exportación a PDF</h2>
+  </div>
+  <div class="prose">
+    <h3>Márgenes y encabezados por sección</h3>
+    <p>Los márgenes y la orientación también son propiedades de sección: Disposición → Márgenes → Márgenes personalizados, y en "Aplicar a" elegís <strong>"Esta sección"</strong> para no afectar el resto del documento.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si dejás "Aplicar a: Todo el documento", el cambio sobrescribe los márgenes de todas las secciones, incluso las que ya tenías configuradas. Revisá siempre ese campo antes de confirmar.</p>
+    </div>
+
+    <p>Por defecto, cada sección hereda el encabezado de la anterior ("Vincular al anterior"). Para tener un encabezado propio: doble clic sobre el encabezado de esa sección → en la cinta Encabezado y pie de página, desactivá <strong>"Vincular al anterior"</strong> → editá el texto → doble clic afuera para cerrar.</p>
+
+    <h3>Revisar antes de exportar</h3>
+    <p>Archivo → Imprimir abre la vista previa en el panel derecho. Úsala siempre antes de entregar, no solo cuando vas a imprimir en papel: recorré el documento página por página y revisá si hay páginas en blanco inesperadas, si los encabezados tienen el texto correcto en cada sección, si las columnas no se cortaron.</p>
+
+    <h3>Exportar a PDF</h3>
+    <p>Un .docx puede verse distinto en otra computadora — otra versión de Word, fuentes no instaladas. El PDF congela el layout exactamente como lo diseñaste.</p>
+
+    <p>Archivo → Exportar → Crear PDF/XPS. El campo que importa en el diálogo es <strong>"Optimizar para"</strong>:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Opción</th><th>Para qué sirve</th></tr></thead>
+        <tbody>
+          <tr><td>Estándar (publicar e imprimir)</td><td>Calidad completa — usala siempre para entregas y documentos que se van a imprimir</td></tr>
+          <tr><td>Tamaño mínimo (publicar en línea)</td><td>Comprime imágenes — el PDF pesa menos pero puede verse pixelado impreso</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu documento tiene imágenes, elegí siempre Estándar. Tamaño mínimo puede verse bien en pantalla pero borroso al imprimir.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: el nombre del archivo importa</p>
+      <p>Un archivo llamado <code>trabajo.pdf</code> o <code>documento final definitivo (3).pdf</code> dice más de tu organización que el contenido. Seguí la convención de la cursada.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>Encabezados, revisión y PDF</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>Práctica Word - V01.docx</code>, doble clic en el encabezado de la Sección 1. Escribí: "Documento de práctica — Sección 1".</li>
+          <li>En la Sección 2, desvinculá el encabezado del anterior y escribí: "Documento de práctica — Sección 2 (dos columnas)". Repetí en la Sección 3 si existe.</li>
+          <li>Abrí Archivo → Imprimir y recorré el documento: ¿el papel es A4 con márgenes simétricos? ¿hay páginas en blanco de más? ¿los encabezados son correctos en cada sección? ¿las columnas se ven bien?</li>
+          <li>Corregí lo que encuentres y volvé a revisar.</li>
+          <li>Cuando esté bien: Archivo → Exportar → Crear PDF/XPS → <strong>Estándar (publicar e imprimir)</strong>. Guardalo como <code>Práctica Word - V01.pdf</code>.</li>
+          <li>Abrí el PDF generado y confirmá que se ve igual a la vista previa.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Cada sección tiene un encabezado distinto y verificado, y generaste un PDF con calidad Estándar que coincide con la vista previa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — CARTA PERSONALIZADA -->
+<section class="block" id="carta">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Carta personalizada: combinación de correspondencia</h2>
+  </div>
+  <div class="prose">
+    <p>La combinación de correspondencia genera muchos documentos casi idénticos donde solo cambian algunos datos — el caso típico: certificados de asistencia con el nombre de cada participante, sin copiar y pegar uno por uno.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Componente</th><th>Qué es</th></tr></thead>
+        <tbody>
+          <tr><td>Documento principal</td><td>La plantilla con texto fijo y campos variables, como «Nombre»</td></tr>
+          <tr><td>Fuente de datos</td><td>La tabla con los registros: una fila por persona, una columna por dato</td></tr>
+          <tr><td>Documentos combinados</td><td>El resultado: un documento por cada registro</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Tiene sentido cuando tenés más de 5 destinatarios, los datos ya están en una tabla organizada, y el formato es fijo y solo cambian valores puntuales — certificados de eventos, notas de calificación, invitaciones formales.</p>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar — paso a paso</p>
+      <ol>
+        <li>Preparás la fuente de datos: una tabla en Word o Excel con columnas como Nombre, Carrera, Promedio.</li>
+        <li>Correspondencia → Iniciar combinación de correspondencia → Cartas.</li>
+        <li>Correspondencia → Seleccionar destinatarios → Usar una lista existente → el archivo con tu tabla.</li>
+        <li>Posicioná el cursor donde va cada dato variable → Correspondencia → Insertar campo combinado → elegís el campo. Aparece «Nombre» en el documento.</li>
+        <li>Correspondencia → Vista previa de resultados, para navegar entre registros con las flechas.</li>
+        <li>Correspondencia → Finalizar y combinar → Editar documentos individuales → Todos. Word genera un único archivo con todos los documentos combinados.</li>
+      </ol>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si movés el documento principal o la fuente de datos a otra carpeta, Word pierde el vínculo y no puede combinar. Guardá ambos archivos en la misma carpeta, y antes de entregar, finalizá la combinación y guardá el resultado sin campos variables.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05 · Extra</span>
+        <h3>Tu primera combinación</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Creá una tabla en Word con 3 columnas: Nombre, Carrera, Promedio. Cargá 4 filas de datos inventados.</li>
+          <li>En un documento nuevo, escribí: "El/la estudiante «Nombre», de la carrera «Carrera», obtuvo un promedio de «Promedio» en el presente período académico."</li>
+          <li>Vinculá el documento a tu tabla como fuente de datos (Correspondencia → Seleccionar destinatarios).</li>
+          <li>Insertá los tres campos combinados en el lugar correcto.</li>
+          <li>Navegá los 4 registros con Vista previa de resultados y verificá los datos.</li>
+          <li>Finalizá y combiná → Editar documentos individuales → Todos. El archivo resultante tiene que tener 4 páginas con datos distintos.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Generaste un documento combinado con 4 registros, cada uno con sus propios datos en el lugar correcto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — CIERRE -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">09</span>
+    <h2 class="block-title">Cierre de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Hoy tomaste una herramienta pensada para la pantalla y la llevaste al terreno de la página impresa: secciones, columnas mixtas, encabezados diferenciados y un PDF con fidelidad garantizada. Un documento bien estructurado en Word no es un archivo más — es un artefacto de comunicación, y esa distinción es la que separa algo que "se ve bien en pantalla" de algo que funciona en el mundo real. La próxima clase seguís con el mismo trabajo integrador, esta vez en Google Slides.</p>
+
+    <h3>Trabajo de entrega</h3>
+    <p>En vez de crear un documento desde cero, tomás el Trabajo Integrador que armaste en la Clase 04 y lo preparás para impresión y entrega formal.</p>
+    <ol>
+      <li>Abrí <code>Trabajo Integrador - V01</code> en Google Docs → Archivo → Descargar → Microsoft Word (.docx) → abrilo en Word de escritorio.</li>
+      <li>Estructuralo en secciones: <strong>Sección 1</strong> (una columna) con portada — título, tu nombre, fecha; salto de sección; <strong>Sección 2</strong> (el cuerpo, dos columnas si el contenido lo permite); salto de sección; <strong>Sección 3</strong> (una columna) con la bibliografía.</li>
+      <li>Configurá los encabezados: la portada sin encabezado (activá "Primera página diferente" y dejalo vacío); las secciones siguientes, desvinculadas del anterior, con el título del trabajo.</li>
+      <li>Agregá número de página en el pie, a partir de la Sección 2.</li>
+      <li>Revisá en Archivo → Imprimir que se ve correcto en todas las páginas.</li>
+      <li>Exportá: Archivo → Exportar → Crear PDF/XPS → Estándar (publicar e imprimir) → guardalo como <code>Trabajo Integrador - V01.pdf</code> en la subcarpeta "Clase 05".</li>
+      <li>Subí el PDF a la tarea de Moodle de la Clase 05.</li>
+    </ol>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Al abrir un .docx descargado de Google Docs, algunos estilos pueden haberse desalineado. Antes de aplicar secciones, revisá que los títulos tengan Título 1 / Título 2 correctos — son la base de la jerarquía del documento.</p>
+    </div>
+
+    <h3>Entrega de la clase</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento está en A4, márgenes normales, configurado antes de estructurarlo.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Tiene al menos 3 secciones: portada, cuerpo y bibliografía.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El cuerpo está en dos columnas donde el contenido lo permite.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Cada sección tiene un encabezado propio, desvinculado del anterior (portada sin encabezado).</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Tiene número de página en el pie a partir de la Sección 2.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Revisaste el documento completo en Archivo → Imprimir antes de exportar.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Exportaste con "Estándar (publicar e imprimir)" como <code>Trabajo Integrador - V01.pdf</code>.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El PDF fue subido a la tarea de Moodle de la Clase 05.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Nuevas aptitudes para LinkedIn</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Aptitud en español</th><th>Aptitud en inglés</th><th>Cómo la justificás</th></tr></thead>
+        <tbody>
+          <tr><td>Microsoft Word</td><td>Microsoft Word</td><td>Trabajo con saltos de sección, columnas y encabezados diferenciados en Word de escritorio.</td></tr>
+          <tr><td>Maquetación de documentos</td><td>Document Layout</td><td>Diseño documentos con secciones mixtas: columnas y encabezados distintos en el mismo archivo.</td></tr>
+          <tr><td>Combinación de correspondencia</td><td>Mail Merge</td><td>Genero documentos personalizados en serie a partir de una tabla de datos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">10</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Guardá esta página: es el machete de la clase, todo lo esencial de un vistazo.</p>
+
+    <div class="summary">
+      <div class="summary-group">
+        <p class="summary-group-title">📄 Configuración base</p>
+        <div class="summary-item">
+          <span class="summary-term">A4 vs. Letter</span>
+          <span class="summary-def">Word abre en Letter por defecto. En Argentina: Disposición → Tamaño → A4, siempre antes de escribir.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Márgenes</span>
+          <span class="summary-def">Normal = 2,54 cm en los cuatro lados. "Aplicar a: Todo el documento" para el papel base.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">✂️ Saltos de sección</p>
+        <div class="summary-item">
+          <span class="summary-term">Salto de página vs. de sección</span>
+          <span class="summary-def">El de página solo mueve el cursor. El de sección cambia márgenes, columnas y encabezados.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Tipos</span>
+          <span class="summary-def">Página siguiente (nueva página), Continuo (mismo lugar), Página par/impar (documentos tipo libro).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Dónde están</span>
+          <span class="summary-def">Disposición → Saltos, no en Insertar.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">▤ Columnas</p>
+        <div class="summary-item">
+          <span class="summary-term">Regla de oro</span>
+          <span class="summary-def">Primero el salto de sección, después las columnas — si no, Word cambia todo el documento.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Layout típico</span>
+          <span class="summary-def">Una columna (título) → dos columnas (cuerpo) → una columna (cierre).</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">📤 PDF</p>
+        <div class="summary-item">
+          <span class="summary-term">Por qué PDF</span>
+          <span class="summary-def">Congela el layout: se ve igual en cualquier dispositivo, a diferencia del .docx.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Optimizar para</span>
+          <span class="summary-def">Estándar (publicar e imprimir) siempre que haya imágenes o vaya a imprimirse.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Antes de exportar</span>
+          <span class="summary-def">Archivo → Imprimir, revisar página por página.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 — GLOSARIO -->
+<section class="block" id="glosario">
+  <div class="block-head">
+    <span class="block-num">11</span>
+    <h2 class="block-title">Glosario de la clase</h2>
+  </div>
+  <div class="glossary">
+    <div class="gloss-item"><span class="gloss-term">Papel A4</span><p class="gloss-def">Tamaño estándar en Argentina (21 × 29,7 cm), distinto al Letter norteamericano (21,59 × 27,94 cm). Word abre en Letter por defecto.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Sección</span><p class="gloss-def">Unidad de diseño dentro de un documento Word. Cada una puede tener márgenes, orientación, columnas y encabezados independientes.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Salto de sección</span><p class="gloss-def">Marcador que divide el documento en partes con propiedades de página independientes.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Salto continuo</span><p class="gloss-def">Salto de sección que empieza en el mismo punto del texto, sin cambiar de página. Ideal para layouts mixtos.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Columnas de texto</span><p class="gloss-def">Distribución del contenido de una sección en columnas verticales paralelas, tipo periódico.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Vincular al anterior</span><p class="gloss-def">Opción de encabezado/pie que, activa, hace que la sección herede el encabezado de la anterior.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Exportar a PDF</span><p class="gloss-def">Archivo → Exportar → Crear PDF/XPS. Genera un archivo con el layout congelado. Usar siempre "Estándar" para documentos que se van a imprimir.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Combinación de correspondencia</span><p class="gloss-def">Proceso que genera documentos personalizados combinando una plantilla fija con una fuente de datos variable.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Campo combinado</span><p class="gloss-def">Marcador dentro del documento principal («Nombre») que se reemplaza por el valor de cada registro.</p></div>
+  </div>
+</section>
+
+<!-- 12 — FUENTES -->
+<section class="block" id="fuentes">
+  <div class="block-head">
+    <span class="block-num">12</span>
+    <h2 class="block-title">Fuentes</h2>
+  </div>
+  <div class="prose">
+    <ul class="sources">
+      <li>Microsoft. <em>Insertar un salto de sección</em>. Soporte técnico de Microsoft. <code>support.microsoft.com/es-es/office/insertar-un-salto-de-sección-eef20fd8-e38c-4ba6-a027-e503bdf8375c</code></li>
+      <li>Microsoft. <em>Usar la combinación de correspondencia para personalizar cartas</em>. Soporte técnico de Microsoft. <code>support.microsoft.com/es-es/office/usar-la-combinación-de-correspondencia-para-personalizar-cartas-d7686bb1-3077-4af3-926b-8c825e9505a3</code></li>
+      <li>Microsoft. <em>Guardar o convertir a PDF o XPS en aplicaciones de escritorio de Office</em>. Soporte técnico de Microsoft. <code>support.microsoft.com/es-es/office/guardar-o-convertir-a-pdf-o-xps-en-aplicaciones-de-escritorio-de-office-d85416c5-7d77-4fd6-a216-6f4bf7c7c110</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+</body>
+</html>

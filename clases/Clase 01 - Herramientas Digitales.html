@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 01 - Herramientas Digitales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Herramientas digitales = violeta (ver Sistema de Identidad Visual) */
+  :root{
+    --acento:var(--violet);
+    --acento-deep:var(--violet-deep);
+    --acento-tint:var(--violet-tint);
+    --acento-soft:var(--violet-soft);
+  }
+  /* Encabezado corrido de esta clase (arriba a la derecha). Texto y
+     color literales a propósito: ni string() ni var() son confiables
+     dentro de una caja de margen (ver guia-estilo.css). El violeta es
+     el --acento-deep de "Herramientas digitales" según el Sistema de
+     Identidad Visual. */
+  @page{
+    @top-right{
+      content:"Clase 01 · Herramientas digitales";
+      color:#3b3167;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="01">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 01 · Herramientas digitales</span>
+    <h1 class="cover-title">Herramientas Digitales: Internet, Nube e IA</h1>
+    <p class="cover-subtitle">Cómo funciona lo que usás todos los días — fake news, Creative Commons y protección de datos</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Usamos herramientas digitales todos los días sin entender qué pasa por debajo, y eso tiene consecuencias concretas: perdemos archivos, caemos en phishing, citamos fuentes falsas, le creemos a una IA que inventa datos. En esta clase vas a dejar de ser usuario pasivo: vas a organizar tu espacio de trabajo digital, evaluar fuentes y usar IA con criterio propio (fake news, alucinaciones y sesgos incluidos) y construir tu primera identidad profesional en LinkedIn.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#campus"><span class="toc-num">01</span><span class="toc-text">Campus virtual UNQ y el mapa de internet</span></a></li>
+    <li><a href="#nube"><span class="toc-num">02</span><span class="toc-text">La nube y Google Drive</span></a></li>
+    <li><a href="#busqueda"><span class="toc-num">03</span><span class="toc-text">Búsqueda, validación y uso de IA</span></a></li>
+    <li><a href="#huella"><span class="toc-num">04</span><span class="toc-text">Huella digital, LinkedIn y seguridad</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">05</span><span class="toc-text">Cierre de la clase</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">06</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#glosario"><span class="toc-num">07</span><span class="toc-text">Glosario de la clase</span></a></li>
+    <li><a href="#fuentes"><span class="toc-num">08</span><span class="toc-text">Fuentes</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — CAMPUS -->
+<section class="block" id="campus">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Campus virtual UNQ y el mapa de internet</h2>
+  </div>
+  <div class="prose">
+    <p>Internet no es un lugar único: es un mapa con capas, y la mayoría de lo que usás todos los días vive en una que ni siquiera podés buscar en Google. Antes de entrar al campus virtual, vale la pena mirar ese mapa completo — así sabés, en cada momento, en qué parte de internet estás parado.</p>
+
+    <h3>Internet superficial, deep web y dark web</h3>
+    <p>Cuando alguien dice "lo busqué en internet", casi siempre se refiere a una sola cosa: lo que un buscador como Google puede mostrarte. Pero eso es apenas la superficie. La mayor parte de lo que existe en la red no es indexable — no aparece en ningún resultado de búsqueda — y sin embargo es perfectamente legal y de uso cotidiano.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Internet se suele representar como un iceberg: lo que ves en un buscador es apenas la punta. La mayor parte está debajo del agua.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Capa</th><th>Qué es</th><th>Ejemplos</th></tr></thead>
+        <tbody>
+          <tr><td>Internet superficial</td><td>Todo lo que un buscador como Google puede indexar y mostrarte.</td><td>Wikipedia, diarios, redes sociales públicas, YouTube.</td></tr>
+          <tr><td>Deep web</td><td>Contenido real que existe pero está detrás de un login, un paywall o una base de datos — Google no puede "verlo".</td><td>El campus de la UNQ, tu Gmail, tu homebanking, bases de datos académicas pagas.</td></tr>
+          <tr><td>Dark web</td><td>Una porción chica de la deep web, a la que solo se accede con software específico (como Tor), pensada para el anonimato.</td><td>Conviven usos legítimos (periodistas, activistas bajo censura) con mercados ilegales.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>La deep web es enorme y en su mayoría totalmente legal: es simplemente lo que no es público, como tu email o el campus. La dark web es mucho más chica y tiene mala fama por asociarse a actividad ilegal, aunque no todo lo que hay ahí lo sea. Nada de esta materia requiere entrar a la dark web.</p>
+    </div>
+
+    <p>Ya tenés el mapa. Vayamos a pisar uno de estos lugares: el campus virtual de la UNQ vive justo en la segunda capa, la deep web — necesitás usuario y contraseña para entrar, y Google jamás te lo va a mostrar en una búsqueda.</p>
+
+    <h3>Entrar al campus</h3>
+    <p>Todo lo que vas a leer, entregar y consultar en esta materia —y en toda la carrera— pasa por acá. No es opcional.</p>
+    <p>Ya tenés usuario: te lo generaron cuando te inscribiste en la universidad. Andá a <code>campus.uvq.edu.ar</code>, iniciá sesión con tu usuario y contraseña, y buscá el aula de Informática. Ahí vas a encontrar la clase de hoy, los avisos del docente y el lugar donde subís tus entregas.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>Escribí <code>campus.uvq.edu.ar</code> directo en la barra de direcciones del navegador — no hace falta googlearlo. Si lo buscás, podés terminar en un resultado patrocinado o en una página clon que imita al campus real para robarte tu usuario y contraseña (phishing). La dirección que tipeás vos misma/o es la única garantía de que estás en el sitio real.</p>
+    </div>
+
+    <img class="screenshot" src="../img/01-captura-campus-inicio.jpg" alt="Pantalla de inicio del campus virtual UVQ, mostrando las aulas activas y la agenda de pendientes">
+    <p class="screenshot-caption">Así se ve el campus una vez que iniciás sesión: tus aulas activas y, en la agenda, los pendientes de cada clase.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>Si no recordás tu contraseña, primero intentá restablecerla desde la pantalla de inicio de sesión ("¿Olvidaste tu contraseña?"). Si eso no funciona, o tenés otro problema para entrar, escribí a soporte@uvq.edu.ar o por WhatsApp al +54 9 11 6641 4809. No lo dejes para el día antes de una entrega.</p>
+    </div>
+
+    <p>Además de entrar por el navegador, la UNQ tiene una app oficial para el celular: <strong>Moodle</strong>. No es una opción más entre tantas — es la app real de la plataforma, y está disponible ahora mismo para instalar.</p>
+
+    <div class="app-install">
+      <div class="app-install-head">
+        <img class="app-install-icon" src="../img/apps/icono-moodle.png" alt="Ícono de Moodle">
+        <h3 class="app-install-title">Instalá la app</h3>
+      </div>
+      <div class="app-install-body">
+        <ol>
+          <li>Buscá <strong>Moodle</strong> en Play Store (Android) o App Store (iPhone) y descargala.</li>
+          <li>Abrila, elegí "Soy un estudiante" y buscá tu sitio: <code>qoodle.uvq.edu.ar</code></li>
+          <li>Iniciá sesión con tu usuario y contraseña del campus.</li>
+          <li>Activá las notificaciones de la app para no perderte avisos del docente.</li>
+        </ol>
+        <div class="app-install-qr">
+          <img src="../img/01-qr-moodle-app.png" alt="Código QR que carga el sitio qoodle.uvq.edu.ar dentro de la app Moodle">
+          <span>Escaneálo desde la app para cargar el sitio sin escribirlo</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Ya diste un paso concreto para dejar de ser usuario pasivo: sabés en qué capa de internet vive cada cosa que usás, y ya estás adentro del campus. El siguiente paso es entender qué pasa un escalón más allá — cuando esa información que generás y guardás vive en la nube — y qué das a cambio.</p>
+  </div>
+</section>
+
+<!-- 02 — LA NUBE -->
+<section class="block" id="nube">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">La nube y Google Drive</h2>
+  </div>
+  <div class="prose">
+    <img class="app-badge" src="../img/apps/icono-google-drive.png" alt="Ícono de Google Drive">
+    <p>"Subí el archivo a la nube." ¿Pero qué es exactamente la nube? No es algo etéreo flotando en el aire: es una <strong>red de servidores</strong> (computadoras muy potentes) distribuidos por el mundo, a los que accedés a través de internet. Solo se llama "nube" por marketing. Cuando guardás algo en <strong>Drive</strong> (<code>drive.google.com</code>), ese archivo viaja por un cable físico y queda en un servidor, en algún edificio de algún país.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
+        <tbody>
+          <tr><td>Acceso desde cualquier dispositivo.</td><td>Necesitás internet para acceder.</td></tr>
+          <tr><td>No perdés archivos si se rompe tu dispositivo.</td><td>El proveedor puede leer tus datos.</td></tr>
+          <tr><td>Trabajo colaborativo en tiempo real.</td><td>Dependés de otra empresa.</td></tr>
+          <tr><td>Actualizaciones automáticas.</td><td>Si la empresa cierra, podés perder el acceso.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Google Workspace (Docs, Sheets, Slides) es el ejemplo más claro de herramienta colaborativa: varias personas editan el mismo archivo en tiempo real, ven los cambios al instante y comentan sin perder versiones.</p>
+
+    <div class="tool-cards">
+      <div class="tool-card">
+        <img src="../img/apps/icono-google-docs.png" alt="Google Docs">
+        <span class="tool-card-name">Docs</span>
+        <code>docs.google.com</code>
+      </div>
+      <div class="tool-card">
+        <img src="../img/apps/icono-google-sheets.png" alt="Google Sheets">
+        <span class="tool-card-name">Sheets</span>
+        <code>sheets.google.com</code>
+      </div>
+      <div class="tool-card">
+        <img src="../img/apps/icono-google-slides.png" alt="Google Slides">
+        <span class="tool-card-name">Slides</span>
+        <code>slides.google.com</code>
+      </div>
+    </div>
+
+    <h3>El precio de lo gratis</h3>
+    <p>Gmail, Instagram, WhatsApp, TikTok. <strong>Todas gratuitas.</strong> ¿Por qué una empresa que vale cientos de miles de millones de dólares te da un servicio sin cobrarte nada? La respuesta es corta: porque vos no sos el cliente. <strong>Sos el producto.</strong></p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>"Si no estás pagando por el producto, vos sos el producto." No es maldad: es el contrato implícito que aceptás cuando creás una cuenta.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de dato</th><th>¿Qué recopilan?</th><th>¿Para qué sirve?</th></tr></thead>
+        <tbody>
+          <tr><td>Ubicación</td><td>Dónde estás, con qué frecuencia vas a ciertos lugares.</td><td>Publicidad geolocalizada.</td></tr>
+          <tr><td>Búsquedas</td><td>Qué te preocupa, qué enfermedad buscaste.</td><td>Publicidad por intención de compra.</td></tr>
+          <tr><td>Relaciones</td><td>Con quién hablás, con qué frecuencia.</td><td>Análisis de redes sociales.</td></tr>
+          <tr><td>Shadow profiles</td><td>Datos sobre vos aunque NO tengas cuenta.</td><td>Publicidad a personas que no son usuarias.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">💰 Cómo pagamos Google Drive</p>
+      <p>Los Términos de Servicio de Google, resumidos: le das licencia para alojar y procesar tu contenido, y puede analizarlo con sistemas automáticos para personalizar resultados y anuncios (desactivable en tu cuenta). Ese es el precio real de "gratis". Texto completo en <code>policies.google.com/terms</code>.</p>
+    </div>
+
+    <div class="callout" data-type="right">
+      <p class="callout-label">📋 Tu derecho a la protección de datos</p>
+      <p>En Argentina, la Ley 25.326 de Protección de Datos Personales te da derecho a saber qué datos tienen sobre vos y pedir que los corrijan o los borren (derechos de acceso, rectificación y supresión). Podés ejercerlo ante cualquier empresa que use tus datos.</p>
+    </div>
+
+    <p>Nada de esto es motivo para dejar de usar estas herramientas — son gratuitas porque cumplen una función real. La idea es usarlas con conciencia, sabiendo qué das a cambio — incluido lo que acabás de leer sobre el paquete de Google — no evitarlas por paranoia.</p>
+
+    <h3>Cómo organizar tu Drive</h3>
+    <p>Si es tu primera vez en Drive: andá a <code>drive.google.com</code>, iniciá sesión con tu cuenta de Google, y hacé clic en <strong>+ Nuevo</strong> (arriba a la izquierda) para crear una carpeta. Así se ve por dentro:</p>
+
+    <img class="screenshot" src="../img/02-captura-drive-inicio.png" alt="Pantalla de inicio de Google Drive, mostrando el botón + Nuevo y la ruta de carpetas Informática > Clase 01">
+    <p class="screenshot-caption">Arriba a la izquierda, el botón <strong>+ Nuevo</strong>. Arriba del todo, la ruta de carpetas te dice dónde estás parado — acá, dentro de "Informática &gt; Clase 01".</p>
+
+    <p>La primera habilidad profesional del entorno digital es nombrar archivos de forma que los encuentres en seis meses. No "Trabajo final v2 bueno este si.docx". El formato que usás en toda la cursada es:</p>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📋 Formato de nomenclatura</p>
+      <p>Nombre del archivo - Versión — Ejemplo: <code>Actividad 2 - V01</code></p>
+      <p>La carpeta "Informática - UNQ" y la subcarpeta "Clase 01" ya dicen qué materia es y qué clase. El nombre del archivo no necesita repetirlo — solo necesita decir qué es y qué versión, para que lo encuentres en seis meses sin pensar.</p>
+    </div>
+
+    <div class="callout" data-type="folder">
+      <p class="callout-label">📁 Convención de carpetas</p>
+      <p>Vas a acumular archivos de 17 clases en el cuatrimestre. Desde hoy, cada clase tiene su propia subcarpeta dentro de "Informática - UNQ": <code>Clase 01</code>, <code>Clase 02</code>, etc. Es un hábito, no una tarea extra — solo funciona si empieza desde el primer día.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Tu espacio de trabajo digital</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Creá la carpeta "Informática - UNQ" en Drive.</li>
+          <li>Adentro, creá la subcarpeta "Clase 01". A partir de hoy cada clase va a tener la suya — es la diferencia entre encontrar un archivo en 5 segundos o no encontrarlo nunca.</li>
+          <li>Compartí la carpeta "Informática - UNQ" (no la subcarpeta) con el docente: clic derecho sobre la carpeta → <strong>Compartir</strong> → escribí <code>unqarchivos@gmail.com</code> → elegí el rol <strong>Editor</strong> → <strong>Enviar</strong>. Fijate que también existe el modo <strong>Comentar</strong>: no modifica el documento, solo permite sugerir cambios — sirve para trabajo colaborativo sin alterar el original.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El docente puede ver la carpeta compartida con permiso de Editor y existe la subcarpeta "Clase 01".</p>
+    </div>
+
+    <div class="callout" data-type="question">
+      <p class="callout-label">🤔 Antes de seguir</p>
+      <p>¿Qué archivo tuyo, hoy mismo, te conviene reorganizar con lo que acabás de aprender?</p>
+    </div>
+
+    <p>Ya tenés tu espacio de trabajo organizado. El siguiente paso es saber qué hacer con la información que buscás y guardás ahí: cómo encontrarla, validarla y usar IA sin caer en sus errores más comunes.</p>
+  </div>
+</section>
+
+<!-- 03 — BUSQUEDA Y VALIDACION -->
+<section class="block" id="busqueda">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Búsqueda, validación y uso de IA</h2>
+  </div>
+  <div class="prose">
+    <p>Buscar no es lo mismo que encontrar información de calidad. Validar no es lo mismo que creerle al primer resultado. Y usar IA no es lo mismo que pensar con IA. Es la parte central de dejar de ser usuario pasivo: acá aprendés a decidir qué información merece tu confianza.</p>
+
+    <h3>Operadores de búsqueda en Google</h3>
+    <img class="app-badge" src="../img/apps/icono-google.png" alt="Ícono de Google">
+    <p>Los operadores son comandos especiales que refinan los resultados en <strong>Google</strong> (<code>google.com</code>). La búsqueda sin operadores te da millones de resultados; con operadores, te da los que realmente necesitás.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Operador</th><th>Para qué sirve</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>"comillas"</code></td><td>Busca la frase exacta.</td><td><code>"cambio climático en Argentina"</code></td></tr>
+          <tr><td><code>-menos</code></td><td>Excluye un término.</td><td><code>jaguar -auto</code></td></tr>
+          <tr><td><code>site:</code></td><td>Busca dentro de un dominio.</td><td><code>site:conicet.gov.ar IA</code></td></tr>
+          <tr><td><code>filetype:</code></td><td>Busca por tipo de archivo.</td><td><code>filetype:pdf informe 2025</code></td></tr>
+          <tr><td><code>2020..2026</code></td><td>Rango de años.</td><td><code>economía argentina 2020..2026</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar</p>
+      <p>Elegí un tema de tu carrera y probá un operador que no conocieras (<code>site:</code> o <code>filetype:</code>, por ejemplo). Compará los resultados con la misma búsqueda sin operadores: ¿cambia la calidad de lo que aparece?</p>
+    </div>
+
+    <h3>Criterios CRAAP</h3>
+    <p>CRAAP es un método para evaluar si una fuente merece tu confianza. Cinco criterios, cinco preguntas. Si una fuente no pasa el filtro, no la usás.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Letra</th><th>Criterio</th><th>Preguntas clave</th></tr></thead>
+        <tbody>
+          <tr><td>C</td><td>Actualidad (<em>Currency</em>)</td><td>¿Cuándo fue publicado? ¿Está actualizado?</td></tr>
+          <tr><td>R</td><td>Relevancia (<em>Relevance</em>)</td><td>¿Responde tu pregunta? ¿Es para tu nivel?</td></tr>
+          <tr><td>A</td><td>Autoridad (<em>Authority</em>)</td><td>¿Quién es el autor? ¿Tiene credenciales verificables?</td></tr>
+          <tr><td>A</td><td>Exactitud (<em>Accuracy</em>)</td><td>¿Las afirmaciones están respaldadas con fuentes?</td></tr>
+          <tr><td>P</td><td>Propósito (<em>Purpose</em>)</td><td>¿Para qué fue creado: informar, vender, persuadir?</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Fake news: cómo detectarlas antes de compartir</h3>
+    <p>Una fake news no es solo "una noticia falsa": es contenido diseñado para parecer información real y viajar rápido, muchas veces reforzando lo que el lector ya quiere creer.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>Compartir sin verificar te convierte en parte de la cadena de desinformación. El mismo filtro CRAAP que usás para fuentes académicas sirve para lo que ves en redes.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Señal de alerta</th><th>Qué revisar</th></tr></thead>
+        <tbody>
+          <tr><td>Titular exagerado o alarmista</td><td>¿El cuerpo de la noticia respalda lo que promete el título?</td></tr>
+          <tr><td>Sin autor ni medio identificable</td><td>¿Quién firma? ¿Ese medio existe fuera de esa nota?</td></tr>
+          <tr><td>Imagen fuera de contexto</td><td>Buscala en Google Imágenes (búsqueda inversa): ¿es de otro hecho o fecha?</td></tr>
+          <tr><td>Genera reacción emocional fuerte</td><td>El enojo o el miedo hacen que compartas sin pensar — es la intención.</td></tr>
+          <tr><td>No aparece en ningún otro medio</td><td>Si fuera cierto y relevante, otros medios también lo estarían cubriendo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora</p>
+      <p>Elegí una noticia que viste esta semana en redes. Aplicale CRAAP. ¿La compartirías igual?</p>
+    </div>
+
+    <h3>Creative Commons: usar contenido de otros sin problemas</h3>
+    <p>Cuando bajás una imagen de Google y la pegás en un trabajo, esa imagen tiene un dueño. Usarla sin permiso puede ser una infracción de derechos de autor. Creative Commons es un sistema de licencias que te dice, de forma simple, qué podés hacer con contenido ajeno.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Licencia</th><th>Qué permite</th></tr></thead>
+        <tbody>
+          <tr><td>CC BY</td><td>Usar y modificar, citando al autor.</td></tr>
+          <tr><td>CC BY-SA</td><td>Usar y modificar, citando al autor, con la misma licencia.</td></tr>
+          <tr><td>CC BY-NC</td><td>Usar sin fines comerciales, citando al autor.</td></tr>
+          <tr><td>CC0 / Dominio público</td><td>Usar sin restricciones ni obligación de citar.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>En Google Imágenes: Herramientas &gt; Derechos de uso &gt; "Con licencia Creative Commons". Así filtrás desde el buscador.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Tu primer trabajo de investigación</h3>
+      </div>
+      <div class="prose">
+        <p>Esta es tu primera investigación de la carrera — chica, pero real. El tema que elijas es solo la excusa para usar las herramientas de hoy; lo que importa es que al final puedas mostrar el recorrido completo: de dónde partiste, qué hiciste con eso, y a qué llegaste.</p>
+        <ol>
+          <li>Elegí un tema de tu carrera y buscalo en Google sin operadores.</li>
+          <li>Repetí la búsqueda con al menos 2 operadores (<code>site:</code>, <code>filetype:</code>, comillas, etc.) y compará los resultados.</li>
+          <li>Aplicá CRAAP a los primeros 3 resultados de tu mejor búsqueda.</li>
+          <li>Buscá una imagen relacionada al tema en Google Imágenes, filtrada por licencia Creative Commons. Anotá qué licencia tiene y qué te permite hacer con ella.</li>
+          <li>Guardá todo esto (tema, búsquedas, CRAAP e imagen) en un documento nuevo de tu subcarpeta "Clase 01": <code>Actividad 2 - V01</code></li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Partiste de una búsqueda sin filtrar, la refinaste con operadores, la pusiste a prueba con CRAAP, y llegaste a una fuente y una imagen que podés defender con criterio — ese recorrido (de qué partiste, qué hiciste, a qué llegaste) es lo que tiene que quedar visible en tu documento.</p>
+    </div>
+
+    <p>Ya sabés buscar y validar con criterio. Lo que sigue es la parte más nueva: aplicar ese mismo criterio cuando quien te responde es una IA.</p>
+
+    <h3>IA Generativa: cómo funciona, qué son los agentes y por qué alucina</h3>
+    <p>Cuando le escribís algo a ChatGPT, Gemini o Claude, no estás hablando con algo que "sabe": estás hablando con un <strong>modelo de lenguaje grande (LLM)</strong>, entrenado sobre enormes cantidades de texto, que aprendió a predecir qué palabra viene después de otra. No busca, no verifica, no razona como una persona: predice. Cuando un humano escribe algo, lo sabe. Cuando la IA lo escribe, lo predice, porque esa secuencia de palabras aparece con frecuencia en los datos con los que fue entrenada.</p>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora</p>
+      <p>Probalo vos mismo: preguntale a la IA que uses "Quiero lavar mi auto. El lavadero está a 50 metros de casa. ¿Voy caminando o en auto?" La respuesta lógica es en auto — no importa la distancia, es el auto el que hay que llevar, no vos. En un test de 2026 con 53 modelos de IA, 42 (entre ellos varias versiones de ChatGPT, Claude y DeepSeek) contestaron "caminando", prediciendo la respuesta típica para "50 metros" en vez de razonar qué hace falta en verdad (Opper AI, 2026). Los modelos de razonamiento más avanzados (Claude Opus 4.6, Gemini 3 Pro) ya lo resuelven bien de forma consistente: si a vos te contesta "en auto", no es que el ejercicio falló, es que esa IA aprendió a frenar el atajo automático. La IA predice patrones — algunas, ya aprendieron a corregirlos.</p>
+    </div>
+
+    <div class="compare-panel">
+      <div class="tool-group">
+        <p class="tool-group-title">🇺🇸 Grandes de EE.UU.</p>
+        <div class="tool-cards">
+          <div class="tool-card"><img src="../img/apps/icono-chatgpt.png" alt="ChatGPT"><span class="tool-card-name">ChatGPT</span><code>chatgpt.com</code></div>
+          <div class="tool-card"><img src="../img/apps/icono-gemini.png" alt="Gemini"><span class="tool-card-name">Gemini</span><code>gemini.google.com</code></div>
+          <div class="tool-card"><img src="../img/apps/icono-claude.png" alt="Claude"><span class="tool-card-name">Claude</span><code>claude.ai</code></div>
+          <div class="tool-card"><img src="../img/apps/icono-copilot.png" alt="Copilot"><span class="tool-card-name">Copilot</span><code>copilot.microsoft.com</code></div>
+        </div>
+      </div>
+      <div class="tool-group-divider"></div>
+      <div class="tool-group">
+        <p class="tool-group-title">🇨🇳 Grandes de China</p>
+        <div class="tool-cards">
+          <div class="tool-card"><img src="../img/apps/icono-deepseek.png" alt="DeepSeek"><span class="tool-card-name">DeepSeek</span><code>chat.deepseek.com</code></div>
+          <div class="tool-card"><img src="../img/apps/icono-qwen.png" alt="Qwen"><span class="tool-card-name">Qwen</span><code>chat.qwen.ai</code></div>
+          <div class="tool-card"><img src="../img/apps/icono-kimi.png" alt="Kimi"><span class="tool-card-name">Kimi</span><code>kimi.com</code></div>
+        </div>
+      </div>
+    </div>
+
+    <p>Detrás de esos nombres hay dos bloques que compiten en tiempo real: los laboratorios de EE.UU. (OpenAI, Google, Anthropic, Microsoft) contra los chinos (DeepSeek, Alibaba, Moonshot AI), que en 2025 sorprendieron con modelos igual de potentes y gratuitos. Esa rivalidad te beneficia a vos directamente: cada avance de un lado obliga al otro a responder más rápido — mejores modelos gratis, más límite de uso, menos costo. Ganás vos, elijas el que elijas.</p>
+    <p>Esa misma capacidad de predecir texto es la base de algo más ambicioso: los <strong>agentes de IA</strong>. Un agente toma ese modelo generativo y le suma herramientas (buscar en internet, ejecutar código, leer archivos) y memoria, para planificar y ejecutar tareas completas de forma autónoma. Si le pedís "Investigá los 3 principales competidores de la UNQ en educación virtual y escribí un informe", el agente busca, analiza, escribe y revisa — solo, encadenando una predicción detrás de otra.</p>
+    <p>Y ahí aparece el problema de fondo de toda esta tecnología: si el modelo predice en lugar de saber, también puede predecir con total confianza algo que es falso. Eso es la <strong>alucinación</strong>: información que suena real pero no lo es, generada sin ninguna señal de advertencia, porque el modelo <strong>prioriza la fluidez del texto por sobre la veracidad del contenido</strong>.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia · Tipos de alucinación más comunes</p>
+      <ul>
+        <li><strong>Citas inventadas:</strong> libros o artículos que suenan reales pero no existen.</li>
+        <li><strong>Leyes falsas:</strong> normativas con números y fechas plausibles pero que nunca se aprobaron.</li>
+        <li><strong>Estadísticas sin origen:</strong> porcentajes precisos sin ninguna fuente verificable.</li>
+        <li><strong>Autores ficticios:</strong> investigadores con nombre, institución y publicaciones que no existen.</li>
+      </ul>
+      <p><strong>Regla:</strong> verificá siempre en Scholar, Redalyc o la fuente original antes de citar cualquier dato que generó la IA.</p>
+    </div>
+
+    <h3>Sesgos en la IA</h3>
+    <p>Los sesgos algorítmicos son la <strong>inclinación sistemática de la IA a priorizar visiones o grupos específicos</strong> — no es una falla aislada, sino el reflejo de los datos con los que fue entrenada. Si esos datos tienen prejuicios, la herramienta los hereda y los amplifica, pudiendo perpetuar desigualdades reales bajo una apariencia de objetividad.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>La IA no inventa sesgos: los aprende de nosotros, y al escalarlos los vuelve más visibles y peligrosos.</p>
+    </div>
+
+    <h4>Tipos de sesgos en modelos de IA</h4>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de sesgo</th><th>Definición</th><th>Ejemplo concreto</th></tr></thead>
+        <tbody>
+          <tr><td>Sesgo de datos</td><td>El conjunto de entrenamiento no representa por igual a todos los grupos.</td><td>Sistemas de reconocimiento facial con hasta un 34,7% de error en mujeres de piel oscura, frente a un 0,8% en hombres de piel clara (Buolamwini y Gebru, MIT Media Lab, 2018).</td></tr>
+          <tr><td>Sesgo de representación</td><td>Ciertos colectivos están subrepresentados o ausentes en los datos.</td><td>IA de selección de personal de Amazon penalizaba los CVs que incluían términos como "women's" (por ejemplo, "club de ajedrez femenino") porque fue entrenada con currículums de los 10 años previos, mayoritariamente de candidatos hombres (Reuters, 2018).</td></tr>
+          <tr><td>Sesgo de confirmación</td><td>La IA refuerza las creencias mayoritarias presentes en sus fuentes.</td><td>Modelos de texto que asocian automáticamente profesiones de alto estatus (médico, ingeniero) con el género masculino y roles de cuidado con el femenino.</td></tr>
+          <tr><td>Sesgo geográfico y lingüístico</td><td>El conocimiento entrenado privilegia contextos occidentales o angloparlantes.</td><td>Consultas sobre historia latinoamericana, legislación local o culturas indígenas generan respuestas superficiales o erróneas en comparación con temas de EE.UU. o Europa.</td></tr>
+          <tr><td>Sesgo de automatización</td><td>Los usuarios tienden a confiar en la IA sin cuestionar sus respuestas.</td><td>Estudiantes que presentan informes con datos inventados por la IA porque "sonó bien" y no lo verificaron.</td></tr>
+          <tr><td>Sesgo de retroalimentación</td><td>Las respuestas de la IA influyen en los datos futuros, amplificando el sesgo original.</td><td>Algoritmos de recomendación que muestran ciertos perfiles laborales solo a hombres, lo que produce menos solicitudes femeninas, lo que el modelo interpreta como "prueba" de que las mujeres no están interesadas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Un límite distinto: alineación política según el bloque geográfico</h4>
+    <p>Los sesgos de la tabla anterior son involuntarios: nacen de los datos de entrenamiento. Hay un límite aparte, más deliberado: el contexto político de cada laboratorio también deja marca en el modelo — aunque el mecanismo es distinto en cada bloque.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Bloque</th><th>Qué se documentó</th><th>Mecanismo</th></tr></thead>
+        <tbody>
+          <tr><td>🇨🇳 China (DeepSeek y otros)</td><td>Rechazó o desvió el 85% de 1.360 preguntas políticamente sensibles sobre China, Taiwán incluido (Promptfoo, 2025); un estudio de 2026 (PNAS Nexus) confirmó el patrón en otros chatbots chinos.</td><td>Censura activa: el modelo rechaza responder o repite la postura oficial.</td></tr>
+          <tr><td>🇺🇸 EE.UU. (ChatGPT, Claude, Gemini y otros)</td><td>Al evaluar 24 modelos con tests de orientación política, la mayoría respondió de forma sistemáticamente más cercana al centro-izquierda (Rozado, PLOS ONE, 2024); un test de 2026 del Washington Post encontró que ChatGPT dio una respuesta de un solo signo político el 80% de las veces.</td><td>Sesgo heredado de los datos y el ajuste fino, no una política explícita de censura.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora</p>
+      <p>Preguntale a <strong>DeepSeek</strong> "¿Taiwán es un país independiente?" y a <strong>ChatGPT</strong> o <strong>Claude</strong> una pregunta política controvertida en Argentina. Compará: ¿uno se niega a responder? ¿el otro da una sola mirada sin avisarlo? Ninguno de los dos es neutral — cada uno falla distinto.</p>
+    </div>
+
+    <h4>¿Por qué importa en el ámbito académico?</h4>
+    <p>En la universidad, la IA puede ser una herramienta muy potente de aprendizaje. Pero sus sesgos tienen consecuencias concretas:</p>
+    <ol>
+      <li><strong>En investigación:</strong> resultados o fuentes que sobre-representan perspectivas occidentales, descuidando la producción académica regional.</li>
+      <li><strong>En la redacción de textos:</strong> lenguaje no inclusivo, estereotipos de género en ejemplos, o invisibilización de minorías.</li>
+      <li><strong>En análisis de casos:</strong> marcos de referencia que asumen contextos económicos o culturales ajenos a la realidad argentina o latinoamericana.</li>
+      <li><strong>En la evaluación de ideas:</strong> la IA puede calificar como "más válidas" posiciones hiperrepresentadas en sus datos de entrenamiento.</li>
+    </ol>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia · Para el trabajo académico</p>
+      <p>Nunca asumas que la IA es neutral o que "la respuesta correcta" es la más frecuente en su entrenamiento. Siempre triangulá con fuentes propias, revisá la perspectiva desde la que habla, y cuestioná lo que da por sentado.</p>
+    </div>
+
+    <h4>Cómo detectar y reducir sesgos al usar IA</h4>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Estrategia</th><th>Cómo aplicarla</th></tr></thead>
+        <tbody>
+          <tr><td>Preguntá por la perspectiva</td><td>"¿Desde qué perspectiva estás respondiendo esto? ¿Qué voces o contextos podrían estar ausentes en tu respuesta?"</td></tr>
+          <tr><td>Pedí múltiples miradas</td><td>"Dame 3 perspectivas distintas sobre este tema: una latinoamericana, una europea y una del sur global."</td></tr>
+          <tr><td>Cambiá el contexto del prompt</td><td>Reformulá la misma pregunta con otro contexto geográfico o cultural y comparalas.</td></tr>
+          <tr><td>Verificá con fuentes propias</td><td>Contrastá los datos que da la IA con fuentes regionales: CONICET, Redalyc, revistas de tu carrera.</td></tr>
+          <tr><td>Identificá supuestos implícitos</td><td>"¿Qué estás dando por sentado en esta respuesta? Exponé los supuestos sobre los que se basa."</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar</p>
+      <p>Probá este par de preguntas en la misma IA: "¿Cuáles fueron las causas de la Guerra de Malvinas?" y "¿Cuáles fueron las causas de la Guerra de Vietnam?". Compará el nivel de detalle, las fuentes que cita y la profundidad de cada respuesta — ¿le dedica el mismo cuidado a las dos?</p>
+    </div>
+
+    <h3>Síntesis: alucinación vs. sesgo</h3>
+    <p>Aunque parecidos, son problemas distintos que requieren respuestas distintas:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>Alucinación</th><th>Sesgo algorítmico</th></tr></thead>
+        <tbody>
+          <tr><td>¿Qué es?</td><td>Información inventada que suena verdadera.</td><td>Tendencia sistemática a favorecer ciertos grupos o visiones.</td></tr>
+          <tr><td>¿Por qué ocurre?</td><td>La IA predice sin verificar.</td><td>Los datos de entrenamiento no son representativos.</td></tr>
+          <tr><td>¿Es fácil de detectar?</td><td>A veces sí: una fuente que no existe.</td><td>Generalmente no: el texto parece correcto pero está sesgado.</td></tr>
+          <tr><td>¿Cómo mitigarlo?</td><td>Verificar fuentes en Scholar, Redalyc, fuentes primarias.</td><td>Pedir perspectivas múltiples, triangular con fuentes regionales.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="question">
+      <p class="callout-label">🤔 Antes de seguir</p>
+      <p>¿En qué decisión académica tuya podría afectarte no saber distinguir una alucinación de un sesgo?</p>
+    </div>
+
+    <h3>Fórmula RTCFL para prompts</h3>
+    <p>Un prompt bien construido transforma a la IA de generadora de ruido en herramienta de precisión. La fórmula <strong>RTCFL</strong> define los cinco elementos de una instrucción efectiva:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Componente</th><th>¿Qué hace?</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>R</strong> — Rol</td><td>Qué papel debe asumir la IA.</td><td>"Actuá como especialista en RRHH."</td></tr>
+          <tr><td><strong>T</strong> — Tarea</td><td>Qué querés que haga.</td><td>"Generá una estructura de informe académico."</td></tr>
+          <tr><td><strong>C</strong> — Contexto</td><td>Marco: materia, nivel, país, año.</td><td>"Para una diplomatura universitaria, Argentina 2026."</td></tr>
+          <tr><td><strong>F</strong> — Formato</td><td>Cómo querés la respuesta.</td><td>"Introducción, tres subtítulos y conclusión."</td></tr>
+          <tr><td><strong>L</strong> — Límites</td><td>Restricciones específicas.</td><td>"3 fuentes reales posteriores a 2020."</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Verificar lo que genera la IA</h3>
+      </div>
+      <div class="prose">
+        <p>Retomá el tema que investigaste en la Actividad 2.</p>
+        <ol>
+          <li>En el mismo documento (<code>Actividad 2 - V01</code>), construí un prompt RTCFL sobre ese tema.</li>
+          <li>Copiá el siguiente prompt (tu docente puede haberlo ajustado) y pegaselo a la IA en el mismo chat que usaste antes:
+            <div class="callout" data-type="format">
+              <p class="callout-label">📋 Prompt de ejemplo</p>
+              <p>Actuá como investigador académico especializado en [tu carrera]. Explicame [el tema que investigaste antes] para un estudiante de primer año de la UNQ, Argentina, 2026. Estructurá la respuesta en una introducción breve, tres subtítulos con los puntos clave y una conclusión. Máximo 300 palabras. Citá al menos 3 fuentes académicas reales posteriores a 2020.</p>
+            </div>
+          </li>
+          <li>Anotá las fuentes que da la IA. Verificá cada una en Scholar o Redalyc.</li>
+          <li>Elegí una afirmación del texto generado (que no sea una fuente) y verificá si es correcta.</li>
+          <li>Completá la tabla de verificación en tu documento.</li>
+          <li>Archivo → Historial de versiones → Nombrar versión → "Versión con IA". Así queda marcado el punto exacto en el que el documento pasó de tu investigación a incluir contenido generado por IA — podés volver a esa versión cuando quieras.</li>
+          <li>Creá un Google Doc nuevo dentro de tu subcarpeta "Clase 01": <code>Texto IA - V01</code></li>
+          <li>Pegá ahí la respuesta completa de la IA con <strong>pegado sin formato</strong> (<code>Ctrl+Shift+V</code>) — así el texto entra limpio, sin estilos escondidos.</li>
+          <li>Guardalo en tu carpeta de Drive.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Tu prompt RTCFL tiene los cinco componentes identificables por separado, verificaste al menos 3 fuentes generadas por la IA contra Scholar o Redalyc, y revisaste al menos una afirmación del texto además de las fuentes.</p>
+    </div>
+
+    <p>Ya sabés buscar, validar y usar IA con criterio. Ese mismo criterio es el que vas a mostrar puertas afuera: en tu huella digital y tu perfil profesional.</p>
+  </div>
+</section>
+
+<!-- 04 — HUELLA DIGITAL -->
+<section class="block" id="huella">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Huella digital, LinkedIn y seguridad</h2>
+  </div>
+  <div class="prose">
+    <p>Todo lo que hacés online deja rastros. Algunos los dejás a propósito; otros, sin saberlo. La suma de esos rastros es tu huella digital, y es lo primero que va a buscar cualquier empleador antes de llamarte a una entrevista. Este es el último tramo del recorrido de hoy: entender, decidir y protegerte — y tu huella digital es, literalmente, tu carta de presentación. Protegerla empieza por proteger el acceso a tus propias cuentas.</p>
+
+    <h3>Huella activa y pasiva</h3>
+    <p>La huella digital se refiere al rastro de datos que dejás en internet. Se divide en dos tipos principales:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo</th><th>Definición</th><th>Ejemplos</th></tr></thead>
+        <tbody>
+          <tr><td>Huella activa</td><td>Lo que publicás conscientemente.</td><td>Posts, fotos, comentarios, formularios.</td></tr>
+          <tr><td>Huella pasiva</td><td>Lo que se recopila sin que lo decidas.</td><td>Historial, ubicación, shadow profiles.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora</p>
+      <p>Googleate: buscá tu nombre entre comillas. ¿Qué aparece? ¿Eso es lo que querés que vea un empleador?</p>
+    </div>
+
+    <h3>Tu huella positiva: LinkedIn desde primer año</h3>
+    <img class="app-badge" src="../img/apps/icono-linkedin.png" alt="Ícono de LinkedIn">
+    <p>La primera acción concreta para construir una huella activa a tu favor: tu identidad profesional en <strong>LinkedIn</strong> (<code>linkedin.com</code>). Se construye, no aparece de golpe — y cada habilidad que aprendés en esta cursada puede estar en tu perfil desde hoy. Empezar en primer año te da una ventaja real frente a quienes esperan hasta el final.</p>
+
+    <img class="screenshot" src="../img/04-captura-linkedin-inicio.png" alt="Página de inicio de LinkedIn">
+    <p class="screenshot-caption">Tu punto de partida en LinkedIn: foto, titular y educación son lo primero que ve cualquiera que entre a tu perfil.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Sección</th><th>Qué poner</th><th>Por qué importa</th></tr></thead>
+        <tbody>
+          <tr><td>Foto</td><td>Clara, cara visible, fondo neutro.</td><td>Los perfiles con foto reciben 21 veces más visitas.</td></tr>
+          <tr><td>Titular</td><td>"Estudiante de RRHH | UNQ | Apasionada por la gestión de personas"</td><td>Lo primero que ve cualquiera.</td></tr>
+          <tr><td>Extracto</td><td>3-4 líneas: quién sos y qué te interesa.</td><td>Tu presentación en tus palabras.</td></tr>
+          <tr><td>Educación</td><td>UNQ + carrera + año de ingreso.</td><td>Conecta con otros graduados UNQ.</td></tr>
+          <tr><td>Habilidades</td><td>Drive, Docs, Sheets, IA generativa.</td><td>Se validan con endosos de compañeros.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>LinkedIn indexa por idioma: un reclutador argentino busca en español, uno internacional en inglés — agregá ambas versiones de cada aptitud para aparecer en las dos búsquedas. Cómo agregarlo: <strong>Mi perfil &gt; Añadir sección de perfil &gt; Aptitudes &gt;</strong> buscás el nombre exacto <strong>&gt; Guardar.</strong></p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Aptitud en español</th><th>Aptitud en inglés</th><th>Cómo la justificás</th></tr></thead>
+        <tbody>
+          <tr><td>Ingeniería de Prompts</td><td>Prompt Engineering</td><td>Construyo instrucciones con la fórmula RTCFL para obtener respuestas precisas de la IA.</td></tr>
+          <tr><td>Diseño de Prompts</td><td>Prompt Design</td><td>Diseño prompts con rol, tarea, contexto, formato y límites definidos.</td></tr>
+          <tr><td>Inteligencia Artificial</td><td>Artificial Intelligence</td><td>Entiendo cómo funcionan los LLM y los agentes de IA, y detecto alucinaciones y sesgos en sus respuestas.</td></tr>
+          <tr><td>Herramientas de IA</td><td>AI Tools</td><td>Uso IA generativa con criterio: verifico fuentes y cuestiono la neutralidad de sus respuestas.</td></tr>
+          <tr><td>Investigación y validación de fuentes</td><td>Information Literacy</td><td>Evalúo fuentes con el método CRAAP y aplico los mismos criterios para detectar fake news antes de compartir.</td></tr>
+          <tr><td>Gestión de archivos en la nube</td><td>Cloud File Management</td><td>Organizo carpetas y documentos en Google Drive con nomenclatura y control de versiones.</td></tr>
+          <tr><td>Alfabetización digital</td><td>Digital Literacy</td><td>Aplico buenas prácticas de seguridad digital: verificación en dos pasos, gestión de contraseñas y detección de phishing.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Cuando agregues una aptitud, LinkedIn te pide que la vincules a una experiencia o educación. Usá "UNQ" como institución educativa — le da contexto a cada habilidad y refuerza tu perfil académico.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>Tu perfil de LinkedIn</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Ingresá a linkedin.com. Si ya tenés cuenta, abrila. Si no, creá una.</li>
+          <li>Completá: foto, titular, educación (UNQ + carrera) y al menos 3 habilidades.</li>
+          <li>Conectá con al menos 2 compañeros de clase.</li>
+          <li>Seguí a la Universidad Nacional de Quilmes en LinkedIn.</li>
+          <li>Copiá la URL de tu perfil en el documento de Drive de la Actividad 3.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El perfil tiene foto, titular con UNQ y al menos 3 habilidades cargadas, conectaste con al menos 2 compañeros y seguís a la UNQ.</p>
+    </div>
+
+    <h3>Seguridad básica: verificación, contraseñas y phishing</h3>
+    <p>Tres hábitos que reducen la mayoría de los riesgos con tus cuentas.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>La contraseña sola ya no alcanza. Las filtraciones de datos son constantes: si reusás la misma contraseña en varios sitios, un solo hackeo compromete todas tus cuentas.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Hábito</th><th>Qué es</th><th>Por qué importa</th></tr></thead>
+        <tbody>
+          <tr><td>Verificación en dos pasos (2FA)</td><td>Un segundo código (SMS, app, llave física) además de la contraseña.</td><td>Aunque roben tu contraseña, no pueden entrar sin el segundo factor.</td></tr>
+          <tr><td>Gestor de contraseñas</td><td>Una app que genera y guarda una contraseña única por sitio.</td><td>Elimina la costumbre de reusar la misma contraseña en todos lados.</td></tr>
+          <tr><td>Reconocer phishing</td><td>Mensajes o emails que imitan a una entidad real para robarte datos.</td><td>Señales de alerta: urgencia, remitente extraño, links cuyo dominio no coincide con el oficial.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora</p>
+      <ol>
+        <li>Activá la verificación en dos pasos en tu cuenta de Google (Cuenta de Google → Seguridad → Verificación en 2 pasos).</li>
+        <li>Pasá el mouse (sin hacer clic) sobre un link de un email reciente y mirá qué URL real aparece.</li>
+        <li>Contale a un compañero una señal de phishing que hayas visto alguna vez.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — CIERRE -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Cierre de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Al principio de la clase planteamos el objetivo: pasar de usuario pasivo a usuario que entiende, decide y se protege. Ese es el recorrido que hiciste hoy: entendiste cómo funciona lo que usás, decidiste con criterio qué información confiar, y protegiste tus datos y tu imagen digital. Las herramientas van a cambiar — esa lógica no.</p>
+
+    <h3>Entrega de la clase</h3>
+    <p>Todo lo de abajo es obligatorio — es lo que demuestra que hiciste la clase de hoy. Pero no todo se "entrega" en el campus: de toda la lista, solo dos ítems se suben como link en una tarea del campus (el resto queda guardado en tu Drive o en LinkedIn, y se verifica ahí). Ninguna de las dos lleva nota — certifican tu presente de hoy. Marcá cada ítem a medida que lo termines.</p>
+
+    <h4>Unidad 1 · Campus y mapa de internet</h4>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Entrá a <code>campus.uvq.edu.ar</code> y encontrá el aula de Informática.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Instalá la app Moodle en tu celular (<code>qoodle.uvq.edu.ar</code>) y activá las notificaciones.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Unidad 2 · La nube y Google Drive</h4>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Creá la carpeta "Informática - UNQ" en Drive.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Adentro, creá la subcarpeta "Clase 01".</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Compartí la carpeta "Informática - UNQ" con el docente, con permiso de Editor.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entregable 1</p>
+      <p>Copiá el link de la carpeta "Informática - UNQ" (Compartir → Editor → Copiar enlace) y subilo en la tarea correspondiente del campus.</p>
+    </div>
+
+    <h4>Unidad 3 · Búsqueda, validación y uso de IA</h4>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>En <code>Actividad 2 - V01</code>, aplicá CRAAP a 3 fuentes y sumá una imagen con licencia Creative Commons.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Completá la tabla de verificación con al menos 3 fuentes de la IA evaluadas ("¿Existe?" y "Acción tomada").</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Pegá el texto de la IA sin formato en <code>Texto IA - V01</code>, dentro de la subcarpeta "Clase 01".</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);"><em>Nada nuevo para subir en esta unidad: los tres archivos quedan en la misma carpeta de Drive que ya compartiste en la Unidad 2.</em></p>
+
+    <h4>Unidad 4 · Huella digital, LinkedIn y seguridad</h4>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Completá tu perfil de LinkedIn: foto, titular, educación (UNQ) y al menos 3 habilidades.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Conectá con al menos 2 compañeros y seguí a la Universidad Nacional de Quilmes en LinkedIn.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Activá la verificación en dos pasos en tu cuenta de Google.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entregable 2</p>
+      <p>Copiá la URL de tu perfil (Más → Copiar enlace al perfil) y subila en la tarea correspondiente del campus.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — RESUMEN (machete de la clase, en hoja nueva) -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Guardá esta página: es el machete de la clase, todo lo esencial de un vistazo.</p>
+
+    <div class="summary">
+      <div class="summary-group">
+        <p class="summary-group-title">🌐 Internet y campus</p>
+        <div class="summary-item">
+          <span class="summary-term">3 capas de internet</span>
+          <span class="summary-def">Superficial (Google la indexa) · Deep web (login, es legal) · Dark web (Tor, anonimato).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Campus</span>
+          <span class="summary-def"><code>campus.uvq.edu.ar</code> (navegador, tipealo directo — no lo googlees) · app Moodle → <code>qoodle.uvq.edu.ar</code> (celular) · <code>soporte@uvq.edu.ar</code> · WhatsApp <code>+54 9 11 6641 4809</code></span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">☁️ La nube y Drive</p>
+        <div class="summary-item">
+          <span class="summary-term">La nube</span>
+          <span class="summary-def">Servidores de otra empresa. Gratis porque tus datos son parte del pago.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Organización</span>
+          <span class="summary-def">Carpeta "Informática - UNQ" → subcarpeta por clase → <code>Nombre del archivo - Versión</code>.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">🔎 Búsqueda, validación e IA</p>
+        <div class="summary-item">
+          <span class="summary-term">CRAAP</span>
+          <span class="summary-def">Actualidad · Relevancia · Autoridad · Exactitud · Propósito. 5 preguntas para confiar en una fuente.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">RTCFL</span>
+          <span class="summary-def">Rol · Tarea · Contexto · Formato · Límites. La fórmula para armar un prompt.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Creative Commons</span>
+          <span class="summary-def">BY (citar) · BY-SA (citar + misma licencia) · BY-NC (no comercial) · CC0 (sin restricciones).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Alucinación vs. sesgo</span>
+          <span class="summary-def">Alucinación: inventa datos. Sesgo: favorece ciertas visiones. Los dos se verifican con fuentes propias.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">🕵️ Huella digital, LinkedIn y seguridad</p>
+        <div class="summary-item">
+          <span class="summary-term">Huella digital</span>
+          <span class="summary-def">Activa (lo que publicás) y pasiva (lo que se recopila sin que lo decidas).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">LinkedIn</span>
+          <span class="summary-def">Foto, titular con UNQ, educación y al menos 3 habilidades (español + inglés).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Seguridad</span>
+          <span class="summary-def">Verificación en dos pasos, gestor de contraseñas, reconocer phishing.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — GLOSARIO -->
+<section class="block" id="glosario">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Glosario de la clase</h2>
+  </div>
+  <div class="glossary">
+    <div class="gloss-item"><span class="gloss-term">Agente de IA</span><p class="gloss-def">LLM al que se le suman herramientas (buscar, ejecutar código, leer archivos) y memoria para planificar y ejecutar tareas completas de forma autónoma.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Alucinación (IA)</span><p class="gloss-def">Información que la IA genera como si fuera real pero no lo es.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Campus virtual (Qoodle)</span><p class="gloss-def">Plataforma de la UNQ (basada en Moodle) donde están las aulas, la clase de cada semana y el lugar para subir entregas. Se accede en campus.uvq.edu.ar.</p></div>
+    <div class="gloss-item"><span class="gloss-term">CRAAP</span><p class="gloss-def">Método de evaluación de fuentes: Actualidad, Relevancia, Autoridad, Exactitud, Propósito.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Creative Commons</span><p class="gloss-def">Sistema de licencias que indica qué podés hacer con contenido ajeno (usar, modificar, citar).</p></div>
+    <div class="gloss-item"><span class="gloss-term">Dark web</span><p class="gloss-def">Porción chica de la deep web a la que se accede con software específico (como Tor), pensada para el anonimato. Tiene usos legítimos e ilegítimos.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Deep web</span><p class="gloss-def">Contenido de internet que no está indexado por buscadores: requiere login o contraseña. En su mayoría es legal (el campus virtual, tu email).</p></div>
+    <div class="gloss-item"><span class="gloss-term">Fake news</span><p class="gloss-def">Contenido diseñado para parecer información real y viajar rápido, aunque sea falso.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Huella digital</span><p class="gloss-def">Rastro de datos en internet: activa (lo que publicás) y pasiva (lo que se recopila).</p></div>
+    <div class="gloss-item"><span class="gloss-term">Internet superficial</span><p class="gloss-def">La parte de internet que un buscador como Google puede indexar y mostrarte en los resultados.</p></div>
+    <div class="gloss-item"><span class="gloss-term">LLM</span><p class="gloss-def">Modelo de lenguaje grande (<em>Large Language Model</em>). El tipo de IA detrás de ChatGPT, Gemini y Claude.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Nube</span><p class="gloss-def">Red de servidores a los que accedés por internet. Es la computadora de otra empresa.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Phishing</span><p class="gloss-def">Intento de engaño (email, mensaje) que imita a una entidad real para robar datos o contraseñas.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Prompt</span><p class="gloss-def">La instrucción que le escribís a la IA. La calidad del prompt determina la calidad de la respuesta.</p></div>
+    <div class="gloss-item"><span class="gloss-term">RTCFL</span><p class="gloss-def">Fórmula para prompts: Rol — Tarea — Contexto — Formato — Límites.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Sesgo algorítmico</span><p class="gloss-def">Inclinación sistemática de la IA a priorizar visiones o grupos específicos, heredada de sus datos de entrenamiento.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Shadow profile</span><p class="gloss-def">Datos que las plataformas tienen sobre vos aunque nunca hayas creado una cuenta.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Verificación en dos pasos (2FA)</span><p class="gloss-def">Segundo factor de autenticación, además de la contraseña, para proteger una cuenta.</p></div>
+  </div>
+</section>
+
+<!-- 08 — FUENTES -->
+<section class="block" id="fuentes">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Fuentes</h2>
+  </div>
+  <div class="prose">
+    <ul class="sources">
+      <li>Buolamwini, J. y Gebru, T. (2018). <em>Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification</em>. Proceedings of Machine Learning Research, 81. MIT Media Lab. <code>media.mit.edu/publications/gender-shades</code></li>
+      <li>Dastin, J. (2018). <em>Amazon scraps secret AI recruiting tool that showed bias against women</em>. Reuters, 10 de octubre (reproducido en MIT Technology Review). <code>technologyreview.com/2018/10/10/139858</code></li>
+      <li>Wunderlich, F. (2026). <em>Car Wash Test on 53 leading AI models</em>. Opper AI Blog, 19 de febrero. <code>opper.ai/blog/car-wash-test</code></li>
+      <li>Webster, I. (2025). <em>1,156 Questions Censored by DeepSeek</em>. Promptfoo Blog, 28 de enero. <code>promptfoo.dev/blog/deepseek-censorship</code></li>
+      <li>Estudio sobre censura política en chatbots chinos (BaiChuan, DeepSeek, ChatGLM), publicado en PNAS Nexus y difundido por Euronews, 20 de febrero de 2026. <code>euronews.com/next/2026/02/20</code></li>
+      <li>Rozado, D. (2024). <em>The political preferences of LLMs</em>. PLOS ONE, 19(7). <code>journals.plos.org/plosone/article?id=10.1371/journal.pone.0306621</code></li>
+      <li>Washington Post (2026, 24 de junio). <em>Are ChatGPT and other AI chatbots politically biased? We tested them.</em> Investigación con Dartmouth College y Stanford University. <code>washingtonpost.com/technology/interactive/2026/06/24</code></li>
+      <li>Google. <em>Términos del Servicio</em>. <code>policies.google.com/terms</code></li>
+      <li>Ley 25.326 de Protección de Datos Personales, Argentina (2000). <code>argentina.gob.ar/normativa/nacional/ley-25326-64790</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,685 @@
+<div id="c12root" class="c12">
+<style>
+#c12root.c12{--ink:#1c2b22;--muted:#5c6d63;--paper:#eef5f0;--card:#ffffff;--border:#d7e6dc;--green:#0f9d58;--green-dark:#0b7a43;--green-pale:#e6f4ea;--green-line:#bfe3cc;--excel:#175c37;--excel-pale:#e6efe9;--excel-line:#bcd6c4;--amber-ink:#7a4a06;--amber-pale:#fdf1dc;--amber-line:#f0c869;--purple-ink:#4b2e83;--purple-pale:#f2edfb;--purple-line:#cdbdf0;--mono:'Courier New',Courier,monospace;--serif:Georgia,'Times New Roman',serif;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);max-width:880px;margin:0 auto;padding:18px 14px 40px;}
+#c12root *{box-sizing:border-box;}
+#c12root .c12-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:16px;overflow:hidden;}
+#c12root .c12-body{padding:18px 22px 22px;}
+#c12root .c12-cellref{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--green-dark);background:var(--green-pale);border:1px solid var(--green-line);border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:8px;}
+#c12root .c12-h2{font-family:var(--serif);font-size:19px;color:#0b3d24;margin:0;line-height:1.3;}
+#c12root .c12-head{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:16px 22px;cursor:pointer;background:#fff;transition:background .15s ease;}
+#c12root .c12-head:hover{background:#f6faf7;}
+#c12root .c12-head[aria-expanded="true"]{background:var(--green-pale);}
+#c12root .c12-head-left{display:flex;align-items:center;gap:12px;}
+#c12root .c12-icon{font-size:18px;flex-shrink:0;}
+#c12root .c12-chevron{font-size:13px;color:var(--green-dark);transition:transform .25s ease;flex-shrink:0;}
+#c12root .c12-head[aria-expanded="true"] .c12-chevron{transform:rotate(180deg);}
+#c12root .c12-panel{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease;}
+#c12root .c12-panel.c12-open{opacity:1;}
+#c12root p{font-size:14px;line-height:1.7;margin:0 0 12px;}
+#c12root .c12-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:16px;}
+#c12root .c12-table th{background:var(--green);color:#fff;text-align:left;padding:8px 10px;border:1px solid var(--green-dark);}
+#c12root .c12-table td{padding:8px 10px;border:1px solid var(--border);}
+#c12root .c12-table tr:nth-child(even) td{background:var(--green-pale);}
+#c12root .c12-callout{border-radius:0 8px 8px 0;padding:11px 14px;margin-bottom:14px;display:flex;gap:10px;}
+#c12root .c12-callout.warn{background:var(--amber-pale);border:1px solid var(--amber-line);border-left:4px solid #c98a1f;color:var(--amber-ink);}
+#c12root .c12-callout.tip{background:var(--green-pale);border:1px solid var(--green-line);border-left:4px solid var(--green);color:#0b3d24;}
+#c12root .c12-callout.q{background:var(--purple-pale);border:1px solid var(--purple-line);border-radius:10px;color:var(--purple-ink);}
+#c12root .c12-callout div{font-size:13px;line-height:1.6;}
+#c12root .c12-steps > div{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.6;}
+#c12root .c12-steps > div:last-child{border-bottom:none;}
+#c12root .c12-num{width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#c12root .c12-activity{background:var(--excel-pale);border:1px solid var(--excel-line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+#c12root .c12-activity-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+#c12root .c12-activity-badge{width:28px;height:28px;border-radius:8px;background:var(--excel);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#c12root .c12-activity-label{font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--excel);}
+#c12root .c12-extra{border:1px dashed #b9cdc0;border-radius:12px;padding:14px 18px;margin-bottom:4px;}
+#c12root .c12-extra-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+#c12root .c12-imgph{border:2px dashed #b9cdc0;border-radius:10px;padding:18px;text-align:center;background:#f6faf7;margin-bottom:16px;}
+#c12root .c12-toc-link{text-decoration:none;font-size:11.5px;color:var(--green-dark);background:#fff;border:1px solid var(--green-line);border-bottom:2px solid var(--green);border-radius:7px 7px 0 0;padding:6px 10px;display:inline-block;cursor:pointer;transition:background .15s ease;}
+#c12root .c12-toc-link:hover{background:var(--green-pale);}
+#c12root .c12-ctrl-btn{all:unset;box-sizing:border-box;cursor:pointer;font-size:11px;font-weight:700;color:var(--green-dark);background:#fff;border:1px solid var(--green-line);border-radius:6px;padding:5px 10px;transition:background .15s ease;}
+#c12root .c12-ctrl-btn:hover{background:var(--green-pale);}
+#c12root .c12-tabbar{display:flex;gap:6px;margin-bottom:14px;}
+#c12root .c12-tab-btn{all:unset;box-sizing:border-box;cursor:pointer;font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--green-line);background:#fff;color:var(--green-dark);transition:background .15s ease,color .15s ease;}
+#c12root .c12-tab-btn.active{background:var(--green);color:#fff;}
+#c12root .c12-tab-panel{display:none;}
+#c12root .c12-tab-panel.active{display:block;}
+#c12root .c12-check{width:16px;height:16px;border:2px solid var(--green);border-radius:4px;flex-shrink:0;margin-top:2px;cursor:pointer;background:#fff;position:relative;transition:background .15s ease;}
+#c12root .c12-check-mark{display:none;position:absolute;inset:0;color:#fff;font-size:11px;line-height:12px;text-align:center;font-weight:700;}
+#c12root .c12-check-row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.6;transition:opacity .2s ease;cursor:pointer;}
+#c12root .c12-check-row:last-child{border-bottom:none;}
+#c12root .c12-progress-track{background:#dcece2;border-radius:99px;height:8px;overflow:hidden;margin:10px 0 6px;}
+#c12root .c12-progress-fill{background:linear-gradient(90deg,#0f9d58,#0b7a43);height:100%;width:0%;transition:width .3s ease;}
+#c12root .c12-glossary-input{width:100%;font-size:13px;padding:9px 12px;border:1px solid var(--green-line);border-radius:8px;margin-bottom:14px;font-family:Arial,Helvetica,sans-serif;}
+#c12root .c12-glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+#c12root .c12-glossary-card{background:var(--green-pale);border:1px solid var(--green-line);border-radius:8px;padding:10px 12px;}
+#c12root .c12-copy-btn{all:unset;box-sizing:border-box;cursor:pointer;font-size:11px;font-weight:700;color:#0b3d24;background:#fff;border:1px solid var(--green-line);border-radius:6px;padding:4px 9px;margin-left:8px;}
+#c12root .c12-copy-btn:hover{background:var(--green-pale);}
+#c12root code{background:#eef5f0;border-radius:4px;padding:1px 5px;font-family:var(--mono);font-size:0.92em;}
+@media (max-width:560px){#c12root .c12-glossary-grid{grid-template-columns:1fr;}}
+</style>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div style="background:linear-gradient(135deg,#0f9d58,#0b7a43);border-radius:16px;overflow:hidden;display:flex;flex-wrap:wrap;margin-bottom:14px;">
+  <div style="flex:0 0 128px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 10px;border-right:1px solid rgba(255,255,255,0.18);">
+    <div style="display:grid;grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);gap:3px;margin-bottom:10px;">
+      <span style="background:rgba(255,255,255,0.9);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.55);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.3);border-radius:3px;"></span>
+      <span style="background:rgba(255,255,255,0.55);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.9);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.55);border-radius:3px;"></span>
+      <span style="background:rgba(255,255,255,0.3);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.55);border-radius:3px;"></span><span style="background:rgba(255,255,255,0.9);border-radius:3px;"></span>
+    </div>
+    <div style="font-family:Georgia,serif;font-size:56px;color:#fff;line-height:1;">12</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:4px;">Clase</div>
+  </div>
+  <div style="flex:1 1 320px;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:8px;">Bloque 4 · Planilla de cálculo + IA · Unidad 4</div>
+    <div style="font-family:Georgia,serif;font-size:25px;color:#fff;line-height:1.25;margin-bottom:8px;">Análisis de datos con Excel e IA</div>
+    <div style="font-size:12.5px;color:rgba(255,255,255,0.92);line-height:1.6;">Google Sheets · Tablas dinámicas y segmentación · ChatGPT/Gemini para fórmulas · Gemini en Sheets</div>
+  </div>
+</div>
+
+<!-- ═══════════════ LOGRO ═══════════════ -->
+<div style="background:#fff;border:1px solid var(--border);border-left:5px solid var(--green);border-radius:12px;padding:16px 20px;margin-bottom:14px;display:flex;gap:14px;align-items:flex-start;">
+  <div style="font-size:22px;line-height:1;flex-shrink:0;">🎯</div>
+  <div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-dark);margin-bottom:5px;">Logro de la clase</div>
+    <p style="margin:0;">El estudiante construye <strong>tablas dinámicas</strong> para explorar datasets, <strong>segmenta información</strong> y usa <strong>IA como asistente</strong> para generar y corregir fórmulas complejas.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ TOC + CONTROLES ═══════════════ -->
+<div style="background:#e3efe6;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:22px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:9px;">
+    <div style="font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding-left:2px;">Contenido de la clase · clic para abrir</div>
+    <div style="display:flex;gap:6px;">
+      <button type="button" class="c12-ctrl-btn" id="c12-expand-all">Expandir todo</button>
+      <button type="button" class="c12-ctrl-btn" id="c12-collapse-all">Colapsar todo</button>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;">
+    <a href="#antes" class="c12-toc-link">Antes de arrancar</a>
+    <a href="#porque" class="c12-toc-link">Por qué tabla dinámica</a>
+    <a href="#armar" class="c12-toc-link">Armar una tabla dinámica</a>
+    <a href="#segmentacion" class="c12-toc-link">Segmentación de datos</a>
+    <a href="#ia-formulas" class="c12-toc-link">IA para fórmulas</a>
+    <a href="#gemini" class="c12-toc-link">Gemini en Sheets</a>
+    <a href="#integrador-repaso" class="c12-toc-link">Sheets → Excel</a>
+    <a href="#trabajo-integrador" class="c12-toc-link" style="color:#fff;background:var(--excel);border-color:var(--excel);border-bottom-color:#0b3d24;font-weight:700;">🏁 Trabajo integrador</a>
+    <a href="#cierre" class="c12-toc-link">Cierre</a>
+    <a href="#glosario" class="c12-toc-link">Glosario</a>
+    <a href="#referencia" class="c12-toc-link">Referencia rápida</a>
+  </div>
+</div>
+
+<!-- ═══════════════ ACORDEÓN ═══════════════ -->
+
+<!-- 1. ANTES DE ARRANCAR -->
+<div class="c12-card" id="antes">
+  <button type="button" class="c12-head" aria-expanded="true">
+    <span class="c12-head-left"><span class="c12-icon">🗂️</span><span class="c12-h2">A1 · Antes de arrancar · lo que traés del Bloque 4</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <p>Esta es la última clase del bloque, y la que junta todo. Repasemos rápido qué construiste:</p>
+      <table class="c12-table">
+        <tr><th style="width:60px;">Clase</th><th>Herramienta central</th></tr>
+        <tr><td style="font-family:var(--mono);color:var(--muted);">09</td><td>Referencias relativas/absolutas, <code>SUMA</code>/<code>PROMEDIO</code>/<code>CONTAR</code>, formato condicional</td></tr>
+        <tr><td style="font-family:var(--mono);color:var(--muted);">10</td><td><code>SI</code>, <code>SUMAR.SI</code>, <code>CONTAR.SI</code>, validación de datos</td></tr>
+        <tr><td style="font-family:var(--mono);color:var(--muted);">11</td><td><code>BUSCARV</code>, <code>BUSCARX</code>, múltiples hojas, gráficos con propósito</td></tr>
+        <tr style="background:var(--green) !important;"><td style="background:var(--green);border:1px solid var(--green-dark);font-family:var(--mono);color:#fff;font-weight:700;">12</td><td style="background:var(--green);border:1px solid var(--green-dark);color:#fff;font-weight:700;">Tablas dinámicas, segmentación, IA como asistente</td></tr>
+      </table>
+      <p>Hoy no aprendés estas herramientas para reemplazar lo anterior, sino para resolver lo que las fórmulas solas empiezan a hacer pesado: cuando el dataset es grande y las preguntas cambian todo el tiempo, escribir una fórmula nueva por cada pregunta deja de ser práctico.</p>
+      <div class="c12-callout warn"><span style="font-size:16px;">⚠️</span><div><strong>Atención.</strong> Si en algún punto de esta clase no te sale una fórmula compleja, no la abandones — es exactamente lo que vamos a resolver más adelante pidiéndole ayuda a una IA. Anotá dónde te trabaste.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. POR QUÉ TABLA DINÁMICA -->
+<div class="c12-card" id="porque">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">🧩</span><span class="c12-h2">B2 · Por qué una tabla dinámica y no más fórmulas</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div class="c12-callout q"><span style="font-size:16px;">🎲</span><div><div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px;">Pregunta disparadora</div>Tenés un registro de 2.000 ventas con fecha, vendedor, producto, categoría y monto. Te piden: "decime el total vendido por cada vendedor, en cada categoría, en cada mes". ¿Cuántas fórmulas <code>SUMAR.SI</code> (o combinaciones de varias condiciones) necesitarías para armar esa tabla a mano?</div></div>
+      <p>Con <code>SUMAR.SI</code> y <code>CONTAR.SI</code> (Clase 10) podés responder una pregunta condicional por vez. Pero cuando la pregunta tiene varias dimensiones — por vendedor, y por categoría, y por mes, todo cruzado — armar eso a mano con fórmulas se vuelve una tabla de fórmulas dentro de otra tabla.</p>
+      <p>Una <strong>tabla dinámica</strong> resuelve exactamente ese problema: agrupa y resume un dataset grande arrastrando campos a distintas áreas, sin escribir una sola fórmula. Cambiar la pregunta ("ahora quiero por trimestre, no por mes") es arrastrar un campo distinto, no reescribir fórmulas.</p>
+      <div class="c12-callout tip"><span style="font-size:16px;">💡</span><div><strong>Consejo.</strong> Una tabla dinámica necesita datos "prolijos": una fila por registro, una columna por variable, sin filas ni columnas vacías en el medio, y con encabezados claros en la primera fila. Si tu dataset no está así, ordenalo antes de intentar armar la tabla dinámica.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. CÓMO ARMAR UNA TABLA DINÁMICA -->
+<div class="c12-card" id="armar">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">📊</span><span class="c12-h2">C3 · Cómo armar una tabla dinámica</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div class="c12-imgph"><div style="font-size:26px;margin-bottom:6px;">📷</div><div style="font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Captura sugerida</div><div style="font-size:12.5px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5;">Panel del Editor de tablas dinámicas de Google Sheets, mostrando las áreas Filas, Columnas, Valores y Filtros.</div></div>
+
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Los cuatro bloques del editor</div>
+      <table class="c12-table">
+        <tr><th style="width:100px;">Área</th><th>Qué hace</th></tr>
+        <tr><td style="font-weight:700;">Filas</td><td>Los valores que se agrupan verticalmente — por ejemplo, un vendedor por fila.</td></tr>
+        <tr><td style="font-weight:700;">Columnas</td><td>Los valores que se agrupan horizontalmente — por ejemplo, un mes por columna.</td></tr>
+        <tr><td style="font-weight:700;">Valores</td><td>El número que se calcula en el cruce de fila y columna — por ejemplo, la suma de "Monto".</td></tr>
+        <tr><td style="font-weight:700;">Filtros</td><td>Un campo que restringe qué datos entran en la tabla dinámica, sin mostrarse en la tabla.</td></tr>
+      </table>
+
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Cómo crearla</div>
+      <div class="c12-steps" style="margin-bottom:14px;">
+        <div><span class="c12-num">1</span><span>Seleccioná el rango completo de datos (con encabezados).</span></div>
+        <div><span class="c12-num">2</span><span>Andá a <strong>Insertar &gt; Tabla dinámica</strong>. Elegí si la querés en una hoja nueva o en la misma.</span></div>
+        <div><span class="c12-num">3</span><span>En el panel derecho, arrastrá los campos a las áreas que correspondan.</span></div>
+        <div><span class="c12-num">4</span><span>Para el área "Valores", además de elegir el campo, elegís <strong>cómo</strong> resumirlo: <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>MAX</code>, <code>MIN</code> — las mismas funciones de Clase 09, aplicadas ahora sin escribir una sola fórmula.</span></div>
+      </div>
+
+      <div class="c12-callout warn"><span style="font-size:16px;">⚠️</span><div><strong>Atención.</strong> Por defecto, Sheets suele resumir un campo numérico con <code>SUMA</code>. Si lo que necesitás es un promedio o un conteo, tenés que cambiarlo manualmente en la configuración de ese campo dentro del área "Valores" — es un error común dejarlo en "Suma" sin revisar.</div></div>
+
+      <div class="c12-activity">
+        <div class="c12-activity-title"><span class="c12-activity-badge">1</span><span class="c12-activity-label">Actividad 1</span></div>
+        <p>En una hoja nueva, cargá este dataset desde <code>A1</code> (al menos estas filas, podés agregar más):</p>
+        <table class="c12-table" style="background:#fff;font-size:12px;">
+          <tr><th>Vendedor</th><th>Categoría</th><th>Mes</th><th style="text-align:right;">Monto</th></tr>
+          <tr><td>García</td><td>Papelería</td><td>Enero</td><td style="text-align:right;">45.000</td></tr>
+          <tr><td>López</td><td>Accesorios</td><td>Enero</td><td style="text-align:right;">32.000</td></tr>
+          <tr><td>García</td><td>Accesorios</td><td>Febrero</td><td style="text-align:right;">61.000</td></tr>
+          <tr><td>Pérez</td><td>Papelería</td><td>Enero</td><td style="text-align:right;">28.000</td></tr>
+          <tr><td>López</td><td>Papelería</td><td>Febrero</td><td style="text-align:right;">55.000</td></tr>
+          <tr><td>García</td><td>Papelería</td><td>Febrero</td><td style="text-align:right;">19.000</td></tr>
+          <tr><td>Pérez</td><td>Accesorios</td><td>Enero</td><td style="text-align:right;">47.000</td></tr>
+          <tr><td>López</td><td>Accesorios</td><td>Febrero</td><td style="text-align:right;">38.000</td></tr>
+        </table>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>2. Insertá una tabla dinámica sobre este rango.</div>
+          <div>3. Armá una tabla que muestre el <strong>total vendido</strong> (<code>SUMA</code>) por <strong>vendedor</strong> (filas) y por <strong>mes</strong> (columnas).</div>
+          <div>4. Cambiá el campo de valores para que muestre el <strong>promedio</strong> en lugar del total, y observá cómo cambian los números sin tocar ninguna fórmula.</div>
+        </div>
+      </div>
+
+      <div class="c12-extra">
+        <div class="c12-extra-label">✚ Actividad 1 · Extra</div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Agregá "Categoría" al área de <strong>Filtros</strong>.</div>
+          <div>2. Usá el filtro para mostrar la tabla dinámica solo con datos de "Papelería", y después solo con "Accesorios".</div>
+          <div>3. Agregá un segundo campo al área de Valores: además del total, mostrá también la <strong>cantidad</strong> de ventas (<code>CONTAR</code>) por vendedor y mes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. SEGMENTACIÓN -->
+<div class="c12-card" id="segmentacion">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">🎚️</span><span class="c12-h2">D4 · Segmentación de datos</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div class="c12-callout q"><span style="font-size:16px;">🎲</span><div><div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px;">Pregunta disparadora</div>Si le mostrás esta planilla a un compañero para que explore los datos por su cuenta, ¿le pedirías que edite el panel de la tabla dinámica cada vez que quiera filtrar algo distinto, o le darías un control más simple para hacerlo?</div></div>
+      <p>La <strong>segmentación de datos</strong> (slicer, en inglés) es un control visual — parecido a un botón — que permite filtrar una tabla dinámica (o un rango de datos) haciendo clic, sin tocar la configuración de la tabla.</p>
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Cómo aplicarla</div>
+      <div class="c12-steps" style="margin-bottom:14px;">
+        <div><span class="c12-num">1</span><span>Con la tabla dinámica o el rango seleccionado, andá a <strong>Insertar &gt; Segmentación de datos</strong>.</span></div>
+        <div><span class="c12-num">2</span><span>Elegí el campo por el que querés poder filtrar (por ejemplo, "Vendedor").</span></div>
+        <div><span class="c12-num">3</span><span>Aparece un cuadro flotante con botones — uno por cada valor único de ese campo. Hacer clic en uno filtra todo lo que depende de esos datos.</span></div>
+      </div>
+      <div class="c12-callout tip"><span style="font-size:16px;">💡</span><div><strong>Consejo.</strong> La segmentación de datos es la diferencia entre una planilla que solo vos entendés y una que cualquiera puede explorar sin ayuda. Es especialmente útil si vas a compartir el archivo con alguien que no sabe editar tablas dinámicas.</div></div>
+
+      <div class="c12-activity">
+        <div class="c12-activity-title"><span class="c12-activity-badge">2</span><span class="c12-activity-label">Actividad 2</span></div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Sobre la tabla dinámica de la Actividad 1, agregá una segmentación de datos por "Vendedor".</div>
+          <div>2. Usá el control para mostrar solo los datos de "García", después solo "López", y confirmá que la tabla dinámica se actualiza en cada clic.</div>
+          <div>3. Agregá una segunda segmentación de datos por "Mes" y combiná ambos filtros (por ejemplo, García + Enero).</div>
+        </div>
+      </div>
+      <div class="c12-extra">
+        <div class="c12-extra-label">✚ Actividad 2 · Extra</div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Insertá un gráfico dinámico a partir de tu tabla dinámica (<strong>Insertar &gt; Gráfico</strong>, con la tabla dinámica seleccionada).</div>
+          <div>2. Confirmá que al mover los controles de segmentación de datos, el gráfico también se actualiza automáticamente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. IA COMO ASISTENTE PARA FÓRMULAS -->
+<div class="c12-card" id="ia-formulas">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">🤖</span><span class="c12-h2">E5 · IA como asistente para fórmulas</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div class="c12-callout q"><span style="font-size:16px;">🎲</span><div><div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px;">Pregunta disparadora</div>¿Te acordás del RTCFL de Clase 01, para construir prompts precisos? Si tuvieras que pedirle a una IA que te arme una fórmula de <code>SUMAR.SI</code> con dos condiciones a la vez (que ni siquiera vimos en Clase 10), ¿qué contexto necesitaría saber esa IA para darte una respuesta útil?</div></div>
+      <p>Una IA de propósito general (ChatGPT, Gemini) puede escribir fórmulas de Sheets o de Excel con bastante precisión — pero solo si le das el contexto necesario. Esto es la misma lógica del prompting que ya trabajaste en Clase 01, aplicada ahora a fórmulas.</p>
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Qué contexto darle</div>
+      <table class="c12-table">
+        <tr><th style="width:170px;">Elemento del prompt</th><th>Ejemplo</th></tr>
+        <tr><td style="font-weight:700;">Qué programa usás</td><td>"Estoy en Google Sheets" (las funciones cambian de nombre en Excel en inglés, como viste en Clase 10 y 11)</td></tr>
+        <tr><td style="font-weight:700;">Cómo están organizados los datos</td><td>"En la columna A tengo el vendedor, en B la categoría, en C el monto"</td></tr>
+        <tr><td style="font-weight:700;">Qué resultado necesitás</td><td>"Quiero sumar el monto solo cuando el vendedor es García Y la categoría es Papelería"</td></tr>
+        <tr><td style="font-weight:700;">Restricciones</td><td>"No quiero usar tablas dinámicas, necesito que sea una fórmula en una celda"</td></tr>
+      </table>
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Errores comunes al usar IA para fórmulas</div>
+      <div style="font-size:13.5px;line-height:1.8;margin-bottom:14px;">
+        <div>• <strong>Alucina funciones que no existen</strong> en Sheets, o mezcla sintaxis de Excel (con <code>,</code>) con la de Sheets (con <code>;</code>), sobre todo si no le aclaraste qué programa usás.</div>
+        <div>• <strong>Da una fórmula sintácticamente correcta pero que no resuelve lo que pediste</strong>, si tu prompt fue ambiguo.</div>
+        <div>• <strong>No conoce la estructura real de tu planilla</strong> a menos que se la describas — no puede "ver" tus columnas.</div>
+      </div>
+      <div class="c12-callout warn"><span style="font-size:16px;">⚠️</span><div><strong>Atención — verificar antes de usar.</strong> La misma lógica de CRAAP que aplicás para evaluar una fuente (Clase 01) aplica acá: no pegues una fórmula que te dio una IA sin entender qué hace cada parte, y sin probarla en un caso donde ya sabés cuál debería ser el resultado. Si la IA te sugiere una función que Sheets no reconoce, lo más probable es que la haya confundido con Excel — pedile que la adapte.</div></div>
+
+      <div class="c12-activity">
+        <div class="c12-activity-title"><span class="c12-activity-badge">3</span><span class="c12-activity-label">Actividad 3</span></div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Sobre el dataset de la Actividad 1, pedile a una IA (ChatGPT, Gemini, o la que uses habitualmente) una fórmula de Google Sheets que sume el monto de "García" en "Papelería", combinando dos condiciones a la vez. Usá un prompt completo, con el contexto de la tabla anterior.</div>
+          <div>2. Pegá la fórmula que te dio en tu planilla y verificá el resultado calculándolo vos mismo con una tabla dinámica filtrada, para confirmar que coincide.</div>
+          <div>3. Si la fórmula no funcionó a la primera, volvé a la IA con el error exacto que te dio Sheets y pedile que lo corrija — esto se llama <strong>iterar sobre el error</strong>, y es más efectivo que empezar un prompt nuevo desde cero.</div>
+        </div>
+      </div>
+      <div class="c12-extra">
+        <div class="c12-extra-label">✚ Actividad 3 · Extra</div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Escribí a propósito una fórmula rota (por ejemplo, un <code>BUSCARV</code> de Clase 11 al que le falta un paréntesis, o un <code>SI</code> de Clase 10 sin comillas en el texto).</div>
+          <div>2. Pegale a la IA la fórmula rota junto con el mensaje de error que te muestra Sheets, y pedile que identifique el problema sin reescribir toda la fórmula de cero.</div>
+          <div>3. Confirmá si la corrección que te dio resuelve el error real, o si "parcheó" el síntoma sin entender la causa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. GEMINI EN SHEETS -->
+<div class="c12-card" id="gemini">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">✨</span><span class="c12-h2">F6 · Gemini en Sheets</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <p>A diferencia de pedirle ayuda a una IA externa (como en la actividad anterior), Google Sheets tiene un asistente de IA integrado — Gemini — que puede ver directamente los datos de tu hoja sin que se los tengas que describir.</p>
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Qué podés pedirle</div>
+      <div style="font-size:13.5px;line-height:1.8;margin-bottom:14px;">
+        <div>• Generar una fórmula describiendo en lenguaje natural lo que necesitás, sin escribir la sintaxis vos mismo.</div>
+        <div>• Resumir o clasificar el contenido de una columna.</div>
+        <div>• Sugerir qué tipo de gráfico usar para un rango de datos seleccionado.</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Cómo acceder</div>
+      <p>Buscá el ícono de Gemini (una estrella con destellos ✨) en la barra de herramientas o en el panel lateral. Al seleccionar un rango de datos y abrir el panel, podés escribirle una consigna directamente relacionada con esos datos.</p>
+      <div class="c12-imgph"><div style="font-size:26px;margin-bottom:6px;">📷</div><div style="font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Captura sugerida</div><div style="font-size:12.5px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5;">Panel de Gemini en Google Sheets abierto sobre un rango de datos seleccionado, con un cuadro de texto para escribir una consigna.</div></div>
+      <div class="c12-callout tip"><span style="font-size:16px;">💡</span><div><strong>Consejo.</strong> La ventaja de Gemini en Sheets sobre una IA externa es que no tenés que copiar y pegar tus datos ni describir la estructura de la hoja — ya la tiene delante. La desventaja es que, al no ser una conversación tan flexible como un chat completo, a veces conviene combinar las dos: usar Gemini en Sheets para algo rápido y puntual, y una IA externa cuando necesitás pensar el problema paso a paso.</div></div>
+      <div class="c12-callout warn"><span style="font-size:16px;">⚠️</span><div><strong>Atención.</strong> Esté donde esté la IA — integrada en Sheets o en una ventana aparte —, la responsabilidad de verificar el resultado sigue siendo tuya. Ninguna IA reemplaza entender qué hace la fórmula que terminás usando.</div></div>
+
+      <div class="c12-activity">
+        <div class="c12-activity-title"><span class="c12-activity-badge">4</span><span class="c12-activity-label">Actividad 4</span></div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Seleccioná el dataset de la Actividad 1 y abrí el panel de Gemini (o el asistente de IA disponible en tu Sheets).</div>
+          <div>2. Pedile que te sugiera una fórmula para calcular el vendedor con mayor monto total vendido en todo el dataset.</div>
+          <div>3. Comparalo con el resultado que obtendrías combinando <code>MAX</code> (Clase 09) sobre una tabla dinámica de totales por vendedor.</div>
+        </div>
+      </div>
+      <div class="c12-extra">
+        <div class="c12-extra-label">✚ Actividad 4 · Extra</div>
+        <div style="font-size:13.5px;line-height:1.75;">
+          <div>1. Pedile al asistente de IA que te sugiera qué tipo de gráfico usarías para comunicar la evolución de ventas por mes.</div>
+          <div>2. Contrastá su sugerencia con el criterio de "Gráficos con propósito" que armaste en Clase 11 (¿coincide con lo que vos hubieras elegido?).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. EJERCICIO INTEGRADOR — CON TABS -->
+<div class="c12-card" id="integrador-repaso">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">🔀</span><span class="c12-h2">G7 · Ejercicio integrador · de Google Sheets a Excel</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <p style="color:var(--muted);">Cierre técnico del bloque: tabla dinámica, segmentación e IA, primero en Sheets y después replicado en Excel.</p>
+      <div class="c12-tabbar">
+        <button type="button" class="c12-tab-btn active" data-group="repaso" data-tab="a">Parte A · Google Sheets</button>
+        <button type="button" class="c12-tab-btn" data-group="repaso" data-tab="b">Parte B · Excel</button>
+      </div>
+      <div class="c12-tab-panel active" data-group="repaso" data-tab="a">
+        <div class="c12-steps">
+          <div><span class="c12-num">1</span><span>Usá el dataset de ventas de la Actividad 1 (o ampliado con más filas).</span></div>
+          <div><span class="c12-num">2</span><span>Armá una tabla dinámica con <strong>vendedor</strong> en filas, <strong>categoría</strong> en columnas, y el <strong>total vendido</strong> (<code>SUMA</code>) en valores.</span></div>
+          <div><span class="c12-num">3</span><span>Agregá una segmentación de datos por "Mes".</span></div>
+          <div><span class="c12-num">4</span><span>Insertá un gráfico dinámico a partir de esa tabla.</span></div>
+          <div><span class="c12-num">5</span><span>Pedile a una IA (externa o Gemini en Sheets) una fórmula adicional que calcule, fuera de la tabla dinámica, el porcentaje que representa el vendedor con más ventas sobre el total general. Verificá el resultado.</span></div>
+        </div>
+      </div>
+      <div class="c12-tab-panel" data-group="repaso" data-tab="b">
+        <p>Reconstruí la tabla dinámica, la segmentación y el gráfico en Excel.</p>
+        <table class="c12-table">
+          <tr><th style="width:38%;">Qué revisar</th><th>Detalle</th></tr>
+          <tr><td style="font-weight:700;">Insertar tabla dinámica</td><td>Pestaña <strong>Insertar &gt; Tabla dinámica</strong></td></tr>
+          <tr><td style="font-weight:700;">Área de campos</td><td>"Campos de tabla dinámica", con las mismas cuatro áreas: Filtros, Columnas, Filas, Valores</td></tr>
+          <tr><td style="font-weight:700;">Segmentación de datos</td><td><strong>Insertar &gt; Segmentación de datos</strong> — nombre idéntico al de Sheets</td></tr>
+          <tr><td style="font-weight:700;">IA integrada</td><td>Copilot (según versión y licencia); misma lógica de verificar antes de confiar</td></tr>
+        </table>
+      </div>
+      <div class="c12-callout tip"><span style="font-size:16px;">💡</span><div><strong>Consejo.</strong> Las tablas dinámicas de Excel tienen más opciones de personalización que las de Sheets (formato de números más detallado, más tipos de cálculo). Para lo que vas a necesitar en esta materia, lo que aprendiste en Sheets te alcanza para moverte con soltura en Excel — la lógica de arrastrar campos a las cuatro áreas es idéntica.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. TRABAJO INTEGRADOR DEL BLOQUE 4 (destacado, abierto por defecto) -->
+<div class="c12-card" id="trabajo-integrador" style="border:2px solid var(--excel);">
+  <button type="button" class="c12-head" aria-expanded="true" style="background:linear-gradient(135deg,#123f27,#0b7a43);">
+    <span class="c12-head-left"><span class="c12-icon">🏁</span><span class="c12-h2" style="color:#fff;">Entrega que cierra el Bloque 4 · Trabajo integrador</span></span>
+    <span class="c12-chevron" style="color:#fff;">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <p style="color:var(--muted);">Suma lo más relevante de las cuatro clases: no hace falta repetir cada técnica de cada clase, pero sí demostrar que las podés combinar con criterio sobre un caso real.</p>
+
+      <div style="font-size:14px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Consigna</div>
+      <div class="c12-steps" style="margin-bottom:18px;">
+        <div><span class="c12-num" style="background:var(--excel);">1</span><span><strong>Elegí (o te asignamos) un dataset real</strong> de al menos 30 filas y al menos 4 columnas, con datos que se puedan agrupar de más de una forma (por categoría, por fecha, por responsable, etc.).</span></div>
+        <div><span class="c12-num" style="background:var(--excel);">2</span><span><strong>Organizá la información en al menos dos hojas conectadas</strong>, con una relación entre ellas (por ejemplo, un catálogo y un registro de operaciones, como en el ejercicio integrador de Clase 11).</span></div>
+        <div>
+          <span class="c12-num" style="background:var(--excel);">3</span>
+          <span>
+            <strong>Incluí, como mínimo, uno de cada uno de estos grupos:</strong>
+            <div style="margin-top:6px;display:grid;grid-template-columns:1fr;gap:5px;">
+              <div style="background:var(--green-pale);border-radius:6px;padding:6px 10px;font-size:12.5px;"><strong>De Clase 09:</strong> una referencia absoluta usada en una fórmula, y dos funciones matemáticas (<code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>CONTARA</code>, <code>MAX</code> o <code>MIN</code>)</div>
+              <div style="background:var(--green-pale);border-radius:6px;padding:6px 10px;font-size:12.5px;"><strong>De Clase 10:</strong> una columna calculada con <code>SI</code> (dos o más ramas), una celda o columna con <code>SUMAR.SI</code> o <code>CONTAR.SI</code>, más una columna con validación de datos por lista</div>
+              <div style="background:var(--green-pale);border-radius:6px;padding:6px 10px;font-size:12.5px;"><strong>De Clase 11:</strong> una columna que traiga datos de otra hoja con <code>BUSCARV</code> o <code>BUSCARX</code> (con manejo de error), y al menos un gráfico con un título que comunique una conclusión</div>
+              <div style="background:#0f9d58;color:#fff;border-radius:6px;padding:6px 10px;font-size:12.5px;"><strong>De Clase 12:</strong> una tabla dinámica que resuma el dataset con al menos dos dimensiones, con segmentación de datos aplicada</div>
+            </div>
+          </span>
+        </div>
+        <div><span class="c12-num" style="background:var(--excel);">4</span><span><strong>Documentá el uso de IA:</strong> agregá, en una celda o en una hoja aparte, el prompt que usaste para pedirle ayuda a una IA con al menos una fórmula, y una frase corta explicando cómo verificaste que el resultado era correcto.</span></div>
+        <div><span class="c12-num" style="background:var(--excel);">5</span><span><strong>Formato condicional</strong> aplicado sobre al menos una columna relevante.</span></div>
+        <div><span class="c12-num" style="background:var(--excel);">6</span><span><strong>Nombrá el archivo</strong> <span style="font-family:var(--mono);background:#0b3d24;color:#fff;border-radius:4px;padding:2px 7px;">2026-XX-XX_Informatica_Clase12_V01</span><button type="button" class="c12-copy-btn" id="c12-copy-filename">📋 Copiar</button> y compartilo con acceso de lectura por enlace.</span></div>
+        <div><span class="c12-num" style="background:var(--excel);">7</span><span><strong>Subí el enlace</strong> a la tarea de Moodle correspondiente al Trabajo Integrador del Bloque 4.</span></div>
+      </div>
+
+      <div style="font-size:14px;font-weight:700;color:#0b3d24;margin-bottom:10px;">Criterios de corrección</div>
+      <table class="c12-table">
+        <tr><th style="width:38%;">Criterio</th><th>Qué se evalúa</th></tr>
+        <tr><td style="font-weight:700;">Estructura de datos</td><td>Las hojas están organizadas con claridad, sin datos repetidos innecesariamente</td></tr>
+        <tr><td style="font-weight:700;">Referencias y fórmulas</td><td>Uso correcto de referencia relativa vs. absoluta en cada caso</td></tr>
+        <tr><td style="font-weight:700;">Funciones lógicas y condicionales</td><td><code>SI</code>, <code>SUMAR.SI</code>/<code>CONTAR.SI</code> resuelven el problema planteado, sin errores de sintaxis</td></tr>
+        <tr><td style="font-weight:700;">Búsqueda entre hojas</td><td><code>BUSCARV</code>/<code>BUSCARX</code> conecta correctamente las hojas, con manejo de error</td></tr>
+        <tr><td style="font-weight:700;">Tabla dinámica</td><td>Resume el dataset de forma útil, con segmentación funcional</td></tr>
+        <tr><td style="font-weight:700;">Visualización</td><td>El o los gráficos comunican algo específico, con título que lo explicita</td></tr>
+        <tr><td style="font-weight:700;">Uso de IA</td><td>El prompt documentado es específico (no genérico) y hay evidencia de verificación del resultado</td></tr>
+      </table>
+
+      <div class="c12-callout tip" style="margin-bottom:0;"><span style="font-size:16px;">💡</span><div><strong>Consejo.</strong> Este trabajo se corrige mejor de afuera hacia adentro: antes de entregar, pedile a alguien que no vio tu planilla que la abra y trate de entender qué hace, sin que vos le expliques nada. Si necesita tu ayuda para entenderla, probablemente falten títulos, nombres de columna claros, o un gráfico que resuma la conclusión principal.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. CIERRE — CHECKLIST INTERACTIVA -->
+<div class="c12-card" id="cierre">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">✅</span><span class="c12-h2">H8 · Cierre de la clase</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Tu progreso</div>
+        <div id="c12-progress-label" style="font-size:12px;font-weight:700;color:var(--green-dark);">0 / 7 completado</div>
+      </div>
+      <div class="c12-progress-track"><div class="c12-progress-fill" id="c12-progress-bar"></div></div>
+
+      <div style="margin:14px 0 16px;">
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Armo una tabla dinámica con filas, columnas y valores, eligiendo correctamente cómo resumir cada campo</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Agrego segmentación de datos para filtrar sin editar la configuración de la tabla dinámica</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Escribo un prompt específico (con contexto de programa, estructura de datos y resultado esperado) para pedirle una fórmula a una IA</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Verifico el resultado de una fórmula generada por IA antes de darlo por bueno</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Uso Gemini en Sheets (o el asistente disponible) sobre un rango de datos seleccionado</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Resolví el ejercicio integrador completo en Google Sheets y lo repliqué en Excel</span></div>
+        <div class="c12-check-row"><span class="c12-check" data-checked="false"><span class="c12-check-mark">✓</span></span><span>Entregué el trabajo integrador del Bloque 4, combinando lo más relevante de las cuatro clases</span></div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#0f9d58,#0b7a43);border-radius:12px;padding:16px 20px;margin-bottom:16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:8px;">Una sola idea para llevarte de esta clase</div>
+        <p style="color:#fff;margin:0;">Todo lo que aprendiste en este bloque — referencias, funciones, lógica, búsqueda, visualización — sigue siendo el conocimiento que te permite usar la IA con criterio. La IA te ahorra tipeo; el criterio para pedir bien y verificar lo que te devuelve es exactamente lo que construiste en las últimas cuatro clases.</p>
+      </div>
+
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px;"><strong style="color:var(--ink);">Próxima clase:</strong> cierra el <strong>Bloque 4 · Planilla de cálculo</strong>. La próxima clase abre un nuevo bloque de la materia — nos vemos ahí.</p>
+
+      <div style="font-size:15px;font-weight:700;color:#0a66c2;margin-bottom:10px;">🔗 Para explorar · LinkedIn</div>
+      <table class="c12-table" style="font-size:12px;">
+        <tr><th style="background:#0a66c2;border-color:#0a66c2;">Aptitud en español</th><th style="background:#0a66c2;border-color:#0a66c2;">Aptitud en inglés</th><th style="background:#0a66c2;border-color:#0a66c2;">Cómo la justificás</th></tr>
+        <tr><td style="font-weight:700;">Google Sheets</td><td style="font-style:italic;">Google Sheets</td><td>Construyo tablas dinámicas y las combino con segmentación para explorar datasets grandes.</td></tr>
+        <tr><td style="font-weight:700;">Análisis de datos</td><td style="font-style:italic;">Data Analysis</td><td>Resumo y cruzo datasets con tablas dinámicas, sin depender de fórmulas individuales por cada pregunta.</td></tr>
+        <tr><td style="font-weight:700;">Microsoft Excel</td><td style="font-style:italic;">Microsoft Excel</td><td>Replico en Excel tablas dinámicas y segmentación construidas primero en Sheets.</td></tr>
+        <tr><td style="font-weight:700;">Ingeniería de Prompts</td><td style="font-style:italic;">Prompt Engineering</td><td>Uso IA como asistente para generar y corregir fórmulas complejas, verificando cada resultado antes de aplicarlo.</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 10. GLOSARIO — CON BUSCADOR -->
+<div class="c12-card" id="glosario">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">📖</span><span class="c12-h2">I9 · Glosario de la clase</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <input type="text" id="c12-glossary-filter" class="c12-glossary-input" placeholder="🔍 Buscar un término del glosario...">
+      <div class="c12-glossary-grid">
+        <div class="c12-glossary-card" data-search="tabla dinámica herramienta que resume y agrupa un dataset grande arrastrando campos a las áreas de filas, columnas, valores y filtros, sin escribir fórmulas."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Tabla dinámica</div><div style="font-size:12px;line-height:1.55;">Herramienta que resume y agrupa un dataset grande arrastrando campos a las áreas de filas, columnas, valores y filtros, sin escribir fórmulas.</div></div>
+        <div class="c12-glossary-card" data-search="campo cada columna del dataset original, que se puede arrastrar a cualquiera de las áreas de una tabla dinámica."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Campo</div><div style="font-size:12px;line-height:1.55;">Cada columna del dataset original, que se puede arrastrar a cualquiera de las áreas de una tabla dinámica.</div></div>
+        <div class="c12-glossary-card" data-search="segmentación de datos control visual slicer que permite filtrar una tabla dinámica o un rango haciendo clic en botones, sin editar su configuración."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Segmentación de datos</div><div style="font-size:12px;line-height:1.55;">Control visual (slicer) que permite filtrar una tabla dinámica o un rango haciendo clic en botones, sin editar su configuración.</div></div>
+        <div class="c12-glossary-card" data-search="gráfico dinámico gráfico generado a partir de una tabla dinámica, que se actualiza junto con ella al cambiar filtros o segmentaciones."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Gráfico dinámico</div><div style="font-size:12px;line-height:1.55;">Gráfico generado a partir de una tabla dinámica, que se actualiza junto con ella al cambiar filtros o segmentaciones.</div></div>
+        <div class="c12-glossary-card" data-search="prompt instrucción que se le da a una ia, que debe incluir contexto suficiente programa, estructura de datos, resultado esperado para obtener una respuesta útil."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Prompt</div><div style="font-size:12px;line-height:1.55;">Instrucción que se le da a una IA, que debe incluir contexto suficiente (programa, estructura de datos, resultado esperado) para obtener una respuesta útil.</div></div>
+        <div class="c12-glossary-card" data-search="gemini en sheets asistente de ia integrado en google sheets, que puede ver los datos de la hoja seleccionada sin necesidad de describírselos."><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Gemini en Sheets</div><div style="font-size:12px;line-height:1.55;">Asistente de IA integrado en Google Sheets, que puede ver los datos de la hoja seleccionada sin necesidad de describírselos.</div></div>
+        <div class="c12-glossary-card" data-search="iterar sobre el error estrategia de volver a la ia con el mensaje de error exacto que devolvió el programa, en lugar de reformular el pedido desde cero." style="grid-column:1 / -1;"><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px;">Iterar sobre el error</div><div style="font-size:12px;line-height:1.55;">Estrategia de volver a la IA con el mensaje de error exacto que devolvió el programa, en lugar de reformular el pedido desde cero.</div></div>
+      </div>
+      <div id="c12-glossary-empty" style="display:none;text-align:center;font-size:13px;color:var(--muted);padding:14px 0;">No encontré ningún término que coincida. Probá con otra palabra.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. REFERENCIA RÁPIDA -->
+<div class="c12-card" id="referencia">
+  <button type="button" class="c12-head" aria-expanded="false">
+    <span class="c12-head-left"><span class="c12-icon">⚡</span><span class="c12-h2">J10 · Referencia rápida · Google Sheets</span></span>
+    <span class="c12-chevron">▾</span>
+  </button>
+  <div class="c12-panel">
+    <div class="c12-body">
+      <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;">Tablas dinámicas y segmentación</div>
+      <table class="c12-table">
+        <tr><th style="width:46%;">Acción</th><th>Ruta</th></tr>
+        <tr><td>Insertar tabla dinámica</td><td style="font-family:var(--mono);">Insertar &gt; Tabla dinámica</td></tr>
+        <tr><td>Cambiar cómo se resume un campo de Valores</td><td style="font-family:var(--mono);">Clic en el campo &gt; "Resumir por"</td></tr>
+        <tr><td>Insertar segmentación de datos</td><td style="font-family:var(--mono);">Insertar &gt; Segmentación de datos</td></tr>
+        <tr><td>Insertar gráfico dinámico</td><td style="font-family:var(--mono);">Insertar &gt; Gráfico (con la tabla dinámica seleccionada)</td></tr>
+      </table>
+
+      <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;">IA en Sheets</div>
+      <table class="c12-table">
+        <tr><th style="width:46%;">Acción</th><th>Ruta</th></tr>
+        <tr><td>Abrir Gemini en Sheets</td><td>Ícono de estrella/destellos ✨ en la barra de herramientas o panel lateral</td></tr>
+        <tr><td>Pedir ayuda con una fórmula</td><td>Seleccionar el rango relevante antes de escribir la consigna</td></tr>
+      </table>
+
+      <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;">Equivalencias con Excel en inglés</div>
+      <table class="c12-table" style="margin-bottom:0;">
+        <tr><th style="background:var(--excel);border-color:var(--excel);">Sheets (español)</th><th style="background:var(--excel);border-color:var(--excel);">Excel (inglés)</th></tr>
+        <tr><td>Tabla dinámica</td><td style="font-family:var(--mono);">PivotTable</td></tr>
+        <tr><td>Segmentación de datos</td><td style="font-family:var(--mono);">Slicer</td></tr>
+        <tr><td>Campos de tabla dinámica</td><td style="font-family:var(--mono);">PivotTable Fields</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:14px 0 4px;">
+  <div style="font-size:11px;color:var(--muted);font-style:italic;">Informática · UNQ · 2° Cuatrimestre 2026 · Clase 12 · Material de uso interno.</div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('c12root');
+  if(!root){return;}
+  function qsa(sel){ return Array.prototype.slice.call(root.querySelectorAll(sel)); }
+
+  function setPanel(btn, panel, open){
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open){
+      panel.classList.add('c12-open');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      requestAnimationFrame(function(){
+        panel.style.maxHeight = '0px';
+      });
+      panel.classList.remove('c12-open');
+    }
+  }
+
+  qsa('.c12-card').forEach(function(card){
+    var btn = card.querySelector('.c12-head');
+    var panel = card.querySelector('.c12-panel');
+    if(!btn || !panel){return;}
+    var startOpen = btn.getAttribute('aria-expanded') === 'true';
+    setPanel(btn, panel, startOpen);
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      setPanel(btn, panel, !open);
+    });
+  });
+
+  var expandAll = root.querySelector('#c12-expand-all');
+  var collapseAll = root.querySelector('#c12-collapse-all');
+  if(expandAll){
+    expandAll.addEventListener('click', function(){
+      qsa('.c12-card').forEach(function(card){
+        setPanel(card.querySelector('.c12-head'), card.querySelector('.c12-panel'), true);
+      });
+    });
+  }
+  if(collapseAll){
+    collapseAll.addEventListener('click', function(){
+      qsa('.c12-card').forEach(function(card){
+        setPanel(card.querySelector('.c12-head'), card.querySelector('.c12-panel'), false);
+      });
+    });
+  }
+
+  qsa('.c12-toc-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(!target){return;}
+      var card = target.classList.contains('c12-card') ? target : target.closest('.c12-card');
+      if(card){
+        setPanel(card.querySelector('.c12-head'), card.querySelector('.c12-panel'), true);
+      }
+      setTimeout(function(){ if(typeof target.scrollIntoView === 'function'){ target.scrollIntoView({behavior:'smooth', block:'start'}); } }, 60);
+    });
+  });
+
+  qsa('.c12-tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.getAttribute('data-group');
+      var tab = btn.getAttribute('data-tab');
+      qsa('.c12-tab-btn[data-group="'+group+'"]').forEach(function(b){
+        b.classList.toggle('active', b === btn);
+      });
+      qsa('.c12-tab-panel[data-group="'+group+'"]').forEach(function(p){
+        p.classList.toggle('active', p.getAttribute('data-tab') === tab);
+      });
+      var panel = btn.closest('.c12-panel');
+      if(panel){ panel.style.maxHeight = panel.scrollHeight + 'px'; }
+    });
+  });
+
+  var filterInput = root.querySelector('#c12-glossary-filter');
+  if(filterInput){
+    filterInput.addEventListener('input', function(){
+      var q = filterInput.value.trim().toLowerCase();
+      var visibleCount = 0;
+      qsa('.c12-glossary-card').forEach(function(card){
+        var match = (card.getAttribute('data-search') || '').indexOf(q) !== -1;
+        card.style.display = match ? '' : 'none';
+        if(match){visibleCount++;}
+      });
+      var empty = root.querySelector('#c12-glossary-empty');
+      if(empty){ empty.style.display = visibleCount === 0 ? 'block' : 'none'; }
+      var panel = filterInput.closest('.c12-panel');
+      if(panel){ panel.style.maxHeight = panel.scrollHeight + 'px'; }
+    });
+  }
+
+  var checks = qsa('.c12-check');
+  var progressLabel = root.querySelector('#c12-progress-label');
+  var progressBar = root.querySelector('#c12-progress-bar');
+  function updateProgress(){
+    var total = checks.length, done = 0;
+    checks.forEach(function(c){ if(c.getAttribute('data-checked') === 'true'){done++;} });
+    if(progressLabel){ progressLabel.textContent = done + ' / ' + total + ' completado'; }
+    if(progressBar){ progressBar.style.width = (total ? (done / total * 100) : 0) + '%'; }
+  }
+  function toggleCheck(box){
+    var checked = box.getAttribute('data-checked') === 'true';
+    box.setAttribute('data-checked', checked ? 'false' : 'true');
+    var mark = box.querySelector('.c12-check-mark');
+    var row = box.closest('.c12-check-row');
+    if(!checked){
+      box.style.background = 'var(--green)';
+      if(mark){ mark.style.display = 'block'; }
+      if(row){ row.style.opacity = '0.55'; }
+    } else {
+      box.style.background = '#fff';
+      if(mark){ mark.style.display = 'none'; }
+      if(row){ row.style.opacity = '1'; }
+    }
+    updateProgress();
+  }
+  checks.forEach(function(box){
+    box.addEventListener('click', function(){ toggleCheck(box); });
+  });
+  qsa('.c12-check-row').forEach(function(row){
+    row.addEventListener('click', function(e){
+      if(e.target.classList.contains('c12-check')){return;}
+      var box = row.querySelector('.c12-check');
+      if(box){ toggleCheck(box); }
+    });
+  });
+  updateProgress();
+
+  var copyBtn = root.querySelector('#c12-copy-filename');
+  if(copyBtn){
+    copyBtn.addEventListener('click', function(){
+      var text = '2026-XX-XX_Informatica_Clase12_V01';
+      var done = function(){
+        var original = copyBtn.textContent;
+        copyBtn.textContent = '✓ Copiado';
+        setTimeout(function(){ copyBtn.textContent = original; }, 1500);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); done(); }catch(e){}
+        document.body.removeChild(ta);
+      }
+    });
+  }
+})();
+</script>
+</div>

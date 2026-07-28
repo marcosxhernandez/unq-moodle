@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 03 - IA como asistente académico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Procesador de texto (Bloque 2, Clases 02-05 y 07) = celeste */
+  :root{
+    --acento:var(--celeste);
+    --acento-deep:var(--celeste-deep);
+    --acento-tint:var(--celeste-tint);
+    --acento-soft:var(--celeste-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 03 · Procesador de texto";
+      color:#2b569f;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="03">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 03 · Procesador de texto</span>
+    <h1 class="cover-title">IA como asistente académico</h1>
+    <p class="cover-subtitle">Perplexity con citas verificables, prompt chaining y normas APA</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Ya sabés generar contenido con IA y estructurar un documento con estilos. Hoy sumás dos habilidades que trabajan juntas: usar Perplexity para buscar fuentes con citas verificables (en vez de un LLM genérico que puede inventarlas), y citarlas correctamente con normas APA. Cerrás la clase con NotebookLM, una IA que solo responde con los documentos que vos le diste.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#perplexity"><span class="toc-num">01</span><span class="toc-text">Perplexity: buscar con citas verificables</span></a></li>
+    <li><a href="#apa"><span class="toc-num">02</span><span class="toc-text">Normas APA (7ma edición): citar lo que usás</span></a></li>
+    <li><a href="#notebooklm"><span class="toc-num">03</span><span class="toc-text">NotebookLM: trabajar con tus propias fuentes</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">04</span><span class="toc-text">Cierre de la clase</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#glosario"><span class="toc-num">06</span><span class="toc-text">Glosario de la clase</span></a></li>
+    <li><a href="#fuentes"><span class="toc-num">07</span><span class="toc-text">Fuentes</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — PERPLEXITY -->
+<section class="block" id="perplexity">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Perplexity: buscar con citas verificables</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p class="callout-label">🤔 Pregunta disparadora</p>
+      <p>Cuando le preguntás algo a un LLM como ChatGPT o Gemini, ¿de dónde viene la información? ¿Podés saber exactamente qué fuente la respalda?</p>
+    </div>
+
+    <h3>La diferencia que importa</h3>
+    <p>Un LLM genera texto a partir de su entrenamiento: predice qué palabra viene después, basándose en miles de millones de textos que procesó meses o años atrás. No busca, no verifica, no sabe si lo que dice es verdad. Perplexity (<code>perplexity.ai</code>) funciona distinto: busca en internet en tiempo real y cita cada afirmación con la fuente de donde la sacó. Podés hacer clic en el número y verificar.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>LLM genérico (ChatGPT, Gemini)</th><th>Perplexity</th></tr></thead>
+        <tbody>
+          <tr><td>¿De dónde viene la respuesta?</td><td>De su entrenamiento (datos de hace meses o años)</td><td>De una búsqueda en internet en tiempo real</td></tr>
+          <tr><td>¿Cita fuentes?</td><td>Raramente, y cuando lo hace puede inventarlas</td><td>Sí — número en el texto, link a la fuente real</td></tr>
+          <tr><td>¿Podés verificar?</td><td>No directamente</td><td>Sí — un clic lleva a la fuente original</td></tr>
+          <tr><td>Riesgo de alucinación</td><td>Alto: puede inventar datos, autores o títulos</td><td>Menor, pero no cero: siempre verificá</td></tr>
+          <tr><td>Mejor para</td><td>Redactar, resumir, explicar conceptos</td><td>Buscar información con respaldo verificable</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>La regla de oro de Perplexity: no cites a Perplexity. Usá Perplexity para encontrar fuentes, hacé clic en cada número y verificá que la fuente diga lo que la IA afirma. El número es el punto de partida, no la cita.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: Perplexity + Google Scholar</p>
+      <p>Google Scholar (<code>scholar.google.com</code>) es el índice de referencia universal para artículos académicos. Se usa en combinación con Perplexity: Scholar para explorar qué existe sobre tu tema y encontrar el DOI exacto de un artículo, Perplexity para obtener el resumen verificado y la cita lista para usar. Ninguno reemplaza al otro. El modo Académico de Perplexity (que restringe la búsqueda a revistas científicas) es una función de la versión Pro — con la versión gratuita también obtenés citas verificables, solo que sin ese filtro.</p>
+    </div>
+
+    <h3>Prompt chaining: encadenar instrucciones</h3>
+    <p>Un prompt bien construido con RTCFL ya mejora los resultados. El prompt chaining agrega un paso más: usás la respuesta de un prompt como punto de partida del siguiente. En lugar de pedirle todo a la vez, dividís la tarea en pasos.</p>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📙 Paso a paso — Prompt chaining para buscar fuentes académicas</p>
+      <ol>
+        <li>Construí un prompt RTCFL y pedile a Perplexity: "Buscá 3 fuentes sobre [tu tema]. Dame título, autor, año y un resumen de 2 líneas de cada una."</li>
+        <li>Evaluá las fuentes con CRAAP. Descartá las que no pasen.</li>
+        <li>Con las que quedan, pedile: "A partir de estas fuentes, escribí una introducción de 150 palabras sobre [tu tema] con lenguaje académico."</li>
+        <li>Copiá el resultado a tu documento con Ctrl+Shift+V.</li>
+        <li>Verificá cada cita: hacé clic en el número → abrís la fuente → confirmás que dice lo que Perplexity afirma.</li>
+      </ol>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Perplexity en acción</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Abrí <code>perplexity.ai</code> en una pestaña nueva.</li>
+          <li>Construí un prompt RTCFL sobre un tema de tu carrera. Pedile 3 fuentes con resumen.</li>
+          <li>Evaluá las 3 fuentes con CRAAP. Anotá qué criterio usaste para cada una.</li>
+          <li>Hacé clic en al menos 2 números de cita y verificá que la fuente exista y diga lo que Perplexity afirma.</li>
+          <li>Creá un Google Doc nuevo (<code>docs.new</code>), nombralo <code>Fuentes y Citas - V01</code> y movelo a la subcarpeta "Clase 03".</li>
+          <li>Copiá las 2 fuentes verificadas con Ctrl+Shift+V. Aplicá Título 1 a la sección.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Tenés 2 fuentes verificadas en tu documento, con el criterio CRAAP que aplicaste a cada una, y la sección tiene Título 1.</p>
+    </div>
+
+    <p>Ya tenés fuentes verificadas, no inventadas. El siguiente paso es citarlas de forma que cualquiera pueda rastrearlas hasta el original.</p>
+  </div>
+</section>
+
+<!-- 02 — NORMAS APA -->
+<section class="block" id="apa">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Normas APA (7ma edición): citar lo que usás</h2>
+  </div>
+  <div class="prose">
+    <p>Las normas APA tienen cientos de variantes. Acá van los cuatro casos que vas a usar el 90% de las veces como estudiante universitario, más dos conceptos que aparecen en cualquier trabajo académico: la cita en el cuerpo del texto y las notas al pie.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Citar tiene una sola función: darle crédito al autor y permitirle al lector verificar. Todo APA deriva de eso. Si entendés el principio, podés buscar el formato exacto cuando lo necesitás.</p>
+    </div>
+
+    <h3>Los 4 casos esenciales</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de fuente</th><th>Formato APA</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Libro</td><td>Apellido, I. (Año). <em>Título en cursiva</em>. Editorial.</td><td>Castells, M. (2009). <em>Comunicación y poder</em>. Alianza.</td></tr>
+          <tr><td>Artículo o página web</td><td>Apellido, I. (Año, día mes). <em>Título</em>. Nombre del sitio. URL</td><td>Ministerio de Educación. (2024, 15 mar.). <em>Informe anual</em>. educacion.gob.ar/...</td></tr>
+          <tr><td>Video (YouTube u otra plataforma)</td><td>Canal. (Año, día mes). <em>Título del video</em> [Video]. Plataforma. URL</td><td>UNQ. (2025, 10 jun.). <em>Inteligencia artificial en la universidad</em> [Video]. YouTube. https://...</td></tr>
+          <tr><td>Salida de IA</td><td>Empresa. (Año). <em>Nombre del modelo</em> (fecha) [LLM]. URL</td><td>OpenAI. (2025). <em>ChatGPT</em> (mayo 2025) [LLM]. https://chatgpt.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>La cita en el cuerpo del texto</h3>
+    <p>La bibliografía al final del documento lista las fuentes. Pero dentro de cada párrafo, cada vez que usás una idea de otra persona, tenés que indicarlo. Eso es la cita en el texto.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de cita en el texto</th><th>Cuándo usarla</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Cita indirecta (paráfrasis) — (Apellido, año)</td><td>Cuando tomás una idea pero la reescribís con tus palabras.</td><td>La IA predice texto en lugar de comprenderlo (Castells, 2009).</td></tr>
+          <tr><td>Cita directa (textual) — (Apellido, año, p. XX)</td><td>Cuando copiás las palabras exactas del autor. Usala poco.</td><td>La IA "no busca, no verifica, no razona: predice" (Hernández, 2026, p. 7).</td></tr>
+          <tr><td>Autor mencionado en el texto — Autor (año)</td><td>Cuando el nombre del autor forma parte de la oración.</td><td>Según Castells (2009), el poder se ejerce a través de redes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>La cita directa (textual) se usa poco. Si buena parte de tu texto son comillas, no estás analizando la fuente, la estás recortando. Preferí la paráfrasis con cita — (Apellido, año) — y reservá la cita textual para frases que realmente necesitan citarse palabra por palabra.</p>
+    </div>
+
+    <h3>DOI: dato adicional</h3>
+    <p>El DOI (<em>Digital Object Identifier</em>) es un identificador permanente para artículos de revistas científicas. Si buscás en bases académicas y el artículo tiene DOI, lo ponés al final de la cita en lugar de la URL: <code>https://doi.org/10.xxxx/xxxxxxx</code>. Si no ves un DOI, usás la URL normal — en humanidades, sociales y comunicación muchos artículos no tienen DOI.</p>
+
+    <h3>Notas al pie</h3>
+    <p>La nota al pie es información complementaria que no encaja en el cuerpo del texto sin interrumpir el argumento: una aclaración, una referencia secundaria, un dato de contexto. No reemplaza a la cita APA — si citás una fuente, va en el texto con (Apellido, año) y en la bibliografía al final. La nota al pie es para todo lo demás.</p>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📙 Paso a paso — Insertar una nota al pie en Google Docs</p>
+      <ol>
+        <li>Posicioná el cursor donde querés el número de referencia.</li>
+        <li>Insertar → Elemento de la página → Nota al pie de la página (atajo: <code>Ctrl+Alt+F</code>).</li>
+        <li>El cursor salta al pie de la página. Escribí el texto de la nota.</li>
+      </ol>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>APA en tu documento</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Tomá las 2 fuentes verificadas de la Actividad 1.</li>
+          <li>Identificá qué tipo de fuente es cada una (libro, web, video o IA).</li>
+          <li>Escribí la cita APA correcta en la bibliografía al final del documento.</li>
+          <li>En el párrafo donde usás cada fuente, agregá la cita en el texto con el formato correcto: (Apellido, año).</li>
+          <li>Agregá al menos 1 nota al pie en cualquier parte del documento (una aclaración o dato de contexto).</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El documento tiene al menos 2 citas en el cuerpo del texto, 2 entradas en la bibliografía con formato APA correcto y 1 nota al pie.</p>
+    </div>
+
+    <p>Ya sabés encontrar fuentes verificables y citarlas bien. Lo que sigue es una IA que no busca en internet — solo responde con lo que vos le diste.</p>
+  </div>
+</section>
+
+<!-- 03 — NOTEBOOKLM -->
+<section class="block" id="notebooklm">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">NotebookLM: trabajar con tus propias fuentes</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p class="callout-label">🤔 Pregunta disparadora</p>
+      <p>¿Qué pasaría si la IA solo pudiera responder con lo que vos le diste? ¿En qué cambiaría tu confianza en la respuesta?</p>
+    </div>
+
+    <h3>La diferencia con Perplexity</h3>
+    <p>Perplexity busca fuentes que todavía no tenés: sale a internet, trae resultados y los cita. NotebookLM (<code>notebooklm.google.com</code>) trabaja con las fuentes que vos ya elegiste: las cargás al cuaderno y la IA solo puede responder con eso. Son herramientas complementarias, no alternativas.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>Perplexity</th><th>NotebookLM</th></tr></thead>
+        <tbody>
+          <tr><td>¿De dónde viene la respuesta?</td><td>Internet en tiempo real</td><td>Solo los documentos que cargaste</td></tr>
+          <tr><td>¿Para qué se usa?</td><td>Encontrar fuentes nuevas</td><td>Trabajar con fuentes que ya tenés</td></tr>
+          <tr><td>¿Cita fuentes?</td><td>Sí — links a páginas web</td><td>Sí — párrafo exacto de tu documento</td></tr>
+          <tr><td>¿Podés verificar?</td><td>Sí — clic al número lleva a la web</td><td>Sí — clic al chip lleva al pasaje exacto</td></tr>
+          <tr><td>El resultado es...</td><td>Una respuesta</td><td>Una fuente que queda en tu cuaderno</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Por qué funciona así: RAG en dos líneas</h3>
+    <p>NotebookLM usa una arquitectura llamada RAG (<em>Retrieval-Augmented Generation</em>). La lógica es simple: cuando le hacés una pregunta, el sistema no improvisa desde su entrenamiento. Primero busca en tus documentos los fragmentos más relevantes, los junta con tu pregunta y recién entonces genera la respuesta, usando solo esa información.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>La analogía del examen: un LLM genérico trabaja a libro cerrado, depende de lo que "recuerda" del entrenamiento. NotebookLM trabaja a libro abierto: tiene tus documentos frente a los ojos y los consulta antes de responder.</p>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>NotebookLM reduce drásticamente las alucinaciones al anclar cada respuesta en tus documentos, pero no las elimina al 100%. Si el documento está mal escaneado, si la pregunta es ambigua o si la fuente tiene errores, la IA puede interpretar mal. Siempre hacé clic en el chip de cita y verificá el pasaje original.</p>
+    </div>
+
+    <h3>El cuaderno como espacio de trabajo</h3>
+    <p>NotebookLM no es un chat. Es un espacio de trabajo donde combinás múltiples fuentes en un solo cuaderno y las interrogás juntas. Podés cargar:</p>
+    <ul>
+      <li>PDFs (apuntes, artículos, libros)</li>
+      <li>Google Docs</li>
+      <li>URLs de páginas web</li>
+      <li>Videos de YouTube (transcribe el audio)</li>
+      <li>Texto copiado y pegado</li>
+    </ul>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar — Buscador web integrado</p>
+      <p>Desde el panel de Fuentes podés buscar páginas web directamente en NotebookLM. El resultado no es una lista de links: se importa como fuente estática al cuaderno y pasa a formar parte de tu corpus.</p>
+    </div>
+
+    <p>El flujo de trabajo es simple: cargás las fuentes, le hacés preguntas ancladas en ellas, y desde el panel <strong>Studio</strong> generás material de estudio a partir de ese mismo corpus — resúmenes, guías de estudio o un Resumen de Audio (un pódcast generado a partir de tus fuentes). Todo lo que genera Studio sigue anclado en las fuentes que cargaste, no en el entrenamiento general del modelo.</p>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar</p>
+      <p>Abrí <code>notebooklm.google.com</code>. Creá un cuaderno nuevo. Subí el PDF del programa analítico de la materia (o cualquier documento que tengas a mano). Preguntale: "¿Cuáles son los temas principales?". Hacé clic en el chip de cita de una respuesta y verificá el pasaje en el documento original. Después generá un Resumen de Audio en formato Resumen.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Tu cuaderno en NotebookLM</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Abrí <code>notebooklm.google.com</code> y creá un cuaderno nuevo.</li>
+          <li>Subí las 2 fuentes verificadas de la Actividad 1 (PDF, URL o Google Doc).</li>
+          <li>Hacé una pregunta al cuaderno sobre tu tema. Verificá la respuesta haciendo clic en el chip de cita.</li>
+          <li>Copiá 2 ideas clave al documento <code>Fuentes y Citas - V01</code> con Ctrl+Shift+V. Cada idea con su cita (Apellido, año) en el texto.</li>
+          <li>Generá un Resumen de Audio en formato Resumen, en español. Escuchá 2 minutos. Anotá una cosa correcta y una que te llame la atención.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">El documento tiene al menos 2 ideas nuevas extraídas de NotebookLM, con cita en el texto y Título 1 aplicado.</p>
+    </div>
+
+    <p>Ya usaste tres formas distintas de trabajar con IA en una sola clase: para buscar fuentes nuevas con Perplexity, para citarlas con precisión, y para interrogar tus propias fuentes sin riesgo de que la IA invente algo que no está ahí.</p>
+  </div>
+</section>
+
+<!-- 04 — CIERRE -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Cierre de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Al principio de la clase planteamos el objetivo: dejar de confiarle a un LLM genérico algo que necesita respaldo verificable. Ese es el recorrido que hiciste hoy: buscaste fuentes con Perplexity y las verificaste una por una, las citaste con normas APA, y trabajaste con NotebookLM, que solo responde con lo que vos le diste. Las tres herramientas resuelven el mismo problema — la confianza en lo que la IA te devuelve — desde ángulos distintos.</p>
+
+    <h3>Entrega de la clase</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El archivo se llama exactamente <code>Fuentes y Citas - V01</code> y está en la subcarpeta "Clase 03".</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento tiene al menos 2 fuentes verificadas con CRAAP (de la Actividad 1).</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Cada fuente tiene su cita en el cuerpo del texto con formato (Apellido, año).</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>La bibliografía al final tiene las 2 fuentes en formato APA correcto.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento tiene al menos 1 nota al pie.</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Las secciones tienen Título 1 aplicado (el panel de navegación no está vacío).</td></tr>
+          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El historial de versiones tiene "Entrega Clase 03" nombrada.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Nuevas aptitudes para LinkedIn</h3>
+    <p>Las habilidades de esta clase son aptitudes reales. Sumálas a tu perfil en Mi perfil → Añadir sección de perfil → Aptitudes, y vinculá cada una a "UNQ" como institución educativa.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Aptitud en español</th><th>Aptitud en inglés</th><th>Cómo la justificás</th></tr></thead>
+        <tbody>
+          <tr><td>Encadenamiento de Prompts</td><td>Prompt Chaining</td><td>Divido tareas complejas en pasos: la respuesta de un prompt se convierte en el contexto del siguiente para obtener resultados más precisos.</td></tr>
+          <tr><td>Escritura Académica</td><td>Academic Writing</td><td>Produzco textos con citas APA 7ma edición verificadas: cita en el texto, bibliografía y DOI como enlace.</td></tr>
+          <tr><td>Búsqueda Académica</td><td>Academic Research</td><td>Evalúo fuentes con criterios CRAAP y uso Perplexity y Google Scholar para encontrar artículos con DOI verificable.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Guardá esta página: es el machete de la clase, todo lo esencial de un vistazo.</p>
+
+    <div class="summary">
+      <div class="summary-group">
+        <p class="summary-group-title">🔎 Perplexity</p>
+        <div class="summary-item">
+          <span class="summary-term">Perplexity vs. LLM genérico</span>
+          <span class="summary-def">Perplexity busca en internet en tiempo real y cita cada afirmación. Un LLM genérico predice desde su entrenamiento y puede inventar.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Regla de oro</span>
+          <span class="summary-def">No cites a Perplexity — verificá cada número de cita y citá la fuente original.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Prompt chaining</span>
+          <span class="summary-def">Encadenar prompts: la respuesta de uno es el punto de partida del siguiente, en vez de pedir todo junto.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">📋 Normas APA</p>
+        <div class="summary-item">
+          <span class="summary-term">4 casos esenciales</span>
+          <span class="summary-def">Libro · Artículo o web · Video · Salida de IA. Cada uno con su formato de bibliografía específico.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Cita en el texto</span>
+          <span class="summary-def">Paráfrasis: (Apellido, año). Textual: (Apellido, año, p. XX), usarla poco. Autor en el texto: Autor (año).</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">DOI</span>
+          <span class="summary-def">Va al final de la cita en lugar de la URL cuando el artículo lo tiene: <code>https://doi.org/10.xxxx/...</code></span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Nota al pie</span>
+          <span class="summary-def">Insertar → Elemento de la página → Nota al pie (<code>Ctrl+Alt+F</code>). No reemplaza la cita APA.</span>
+        </div>
+      </div>
+
+      <div class="summary-group">
+        <p class="summary-group-title">📓 NotebookLM</p>
+        <div class="summary-item">
+          <span class="summary-term">NotebookLM vs. Perplexity</span>
+          <span class="summary-def">Perplexity busca fuentes nuevas en internet. NotebookLM solo responde con las fuentes que vos cargaste.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">RAG</span>
+          <span class="summary-def">Recupera los fragmentos relevantes de tus documentos y genera la respuesta solo con esa información — por eso puede citar el pasaje exacto.</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-term">Studio</span>
+          <span class="summary-def">Genera resúmenes, guías de estudio y Resumen de Audio a partir de las fuentes cargadas, no del entrenamiento general del modelo.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — GLOSARIO -->
+<section class="block" id="glosario">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Glosario de la clase</h2>
+  </div>
+  <div class="glossary">
+    <div class="gloss-item"><span class="gloss-term">Alucinación</span><p class="gloss-def">Respuesta de una IA que suena convincente pero es incorrecta o fabricada. Más frecuente en LLMs genéricos; reducida en NotebookLM gracias al anclaje en fuentes.</p></div>
+    <div class="gloss-item"><span class="gloss-term">APA</span><p class="gloss-def"><em>American Psychological Association</em>. Sistema de citación académica. Versión actual: APA 7 (2020), que incluye el formato para citar salidas de IA.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Cita en el texto</span><p class="gloss-def">Mención breve de la fuente dentro del párrafo: (Apellido, año) para paráfrasis, (Apellido, año, p. XX) para cita textual.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Cita textual</span><p class="gloss-def">Reproducción exacta de las palabras del autor, entre comillas, con número de página. Se usa poco: la paráfrasis con cita es lo que se espera.</p></div>
+    <div class="gloss-item"><span class="gloss-term">DOI</span><p class="gloss-def"><em>Digital Object Identifier</em>. Identificador permanente de artículos de revistas científicas. Va al final de la cita APA en lugar de la URL cuando está disponible.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Nota al pie</span><p class="gloss-def">Información complementaria al pie de la página: aclaraciones, referencias secundarias, datos de contexto. No reemplaza a la cita APA.</p></div>
+    <div class="gloss-item"><span class="gloss-term">NotebookLM</span><p class="gloss-def">Herramienta de Google basada en RAG. Solo responde con las fuentes que vos cargaste.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA que busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Prompt chaining</span><p class="gloss-def">Técnica de encadenar prompts: la respuesta de uno se usa como punto de partida del siguiente. Sirve para tareas complejas que no se resuelven bien con una sola instrucción.</p></div>
+    <div class="gloss-item"><span class="gloss-term">RAG</span><p class="gloss-def"><em>Retrieval-Augmented Generation</em>. La IA primero recupera fragmentos relevantes de tus documentos y luego genera la respuesta usando solo esa información.</p></div>
+  </div>
+</section>
+
+<!-- 07 — FUENTES -->
+<section class="block" id="fuentes">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Fuentes</h2>
+  </div>
+  <div class="prose">
+    <ul class="sources">
+      <li>APA Style, American Psychological Association. <em>How to cite ChatGPT</em>. <code>apastyle.apa.org/blog/how-to-cite-chatgpt</code></li>
+      <li>APA Style, American Psychological Association. <em>AI references — Reference examples</em>. <code>apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references</code></li>
+      <li>Google. <em>Add or discover new sources for your notebook</em>. NotebookLM Help. <code>support.google.com/notebooklm/answer/16215270</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+</body>
+</html>

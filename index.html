@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informática UNQ · Aula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,520;0,9..144,540;0,9..144,650;1,9..144,460&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#15141b;
+    --ink-soft:#4b4959;
+    --muted:#8d8b9c;
+    --line:#e6e4ec;
+    --line-strong:#d6d3e0;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --violet:#5b4b9e; --violet-deep:#3b3167; --violet-tint:#f3f1fb; --violet-soft:#ded4ef;
+    --celeste:#4285f4; --celeste-deep:#2b569f; --celeste-tint:#eef3fe; --celeste-soft:#d5e4fd;
+    --verde:#1e8e3e;   --verde-deep:#145c28;   --verde-tint:#e9f7ee;   --verde-soft:#cee6d5;
+    --wine:#8a1130;    --wine-deep:#5c0b20;    --wine-tint:#fdf1f2;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{ color:inherit; }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg, var(--violet) 0%, var(--celeste) 100%);
+    color:#fff;
+    padding:clamp(28px,6vw,52px) clamp(20px,6vw,64px) clamp(34px,7vw,60px);
+  }
+  .hero-kicker{
+    font-family:var(--sans); font-weight:700; font-size:.78rem;
+    letter-spacing:.08em; text-transform:uppercase; opacity:.85;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:520; font-style:normal;
+    font-size:clamp(1.9rem,4.4vw,2.8rem); line-height:1.15; margin:.4em 0 .3em;
+  }
+  .hero p{ max-width:44rem; font-size:1rem; opacity:.92; margin:0 0 1.1em; }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.85rem; opacity:.9;
+  }
+  .hero-meta a{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+
+  /* ===== Layout ===== */
+  main{
+    max-width:1080px; margin:0 auto;
+    padding:clamp(24px,5vw,44px) clamp(20px,6vw,64px) 60px;
+  }
+  .section-label{
+    font-weight:700; font-size:.78rem; letter-spacing:.07em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 14px;
+  }
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+    gap:16px; margin-bottom:40px;
+  }
+
+  /* ===== Card ===== */
+  .card{
+    border:1px solid var(--line-strong); border-radius:12px; overflow:hidden;
+    background:#fff; display:flex; flex-direction:column;
+  }
+  .card-head{
+    padding:16px 18px 14px; display:flex; align-items:flex-start; gap:12px;
+  }
+  .card-num{
+    font-family:var(--serif); font-weight:650; font-size:1.6rem; line-height:1;
+    flex-shrink:0; width:2.1em; text-align:center;
+  }
+  .card-title-wrap{ min-width:0; }
+  .card-unit{
+    font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    margin-bottom:4px; display:block;
+  }
+  .card-title{
+    font-family:var(--serif); font-weight:540; font-size:1.05rem; line-height:1.3; margin:0;
+  }
+  .card-status{
+    padding:0 18px 14px; display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .pill{
+    font-size:.68rem; font-weight:700; letter-spacing:.02em; padding:3px 9px;
+    border-radius:999px; white-space:nowrap;
+  }
+  .pill.ok{ background:var(--verde-tint); color:var(--verde-deep); }
+  .pill.warn{ background:#fdf5e4; color:#a1691c; }
+  .pill.off{ background:#f4f3f6; color:var(--muted); }
+  .card-actions{
+    margin-top:auto; border-top:1px solid var(--line); padding:12px 18px;
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .btn{
+    font-size:.76rem; font-weight:700; text-decoration:none;
+    padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:5px;
+  }
+  .btn.primary{ color:#fff; }
+  .btn.ghost{ background:#f4f3f6; color:var(--ink-soft); }
+  .btn.disabled{ background:#f4f3f6; color:var(--muted); cursor:not-allowed; opacity:.6; pointer-events:none; }
+
+  /* accents per class */
+  .c-violet .card-num, .c-violet .card-unit{ color:var(--violet); }
+  .c-violet .btn.primary{ background:var(--violet); }
+  .c-violet{ border-top:3px solid var(--violet); }
+
+  .c-celeste .card-num, .c-celeste .card-unit{ color:var(--celeste-deep); }
+  .c-celeste .btn.primary{ background:var(--celeste); }
+  .c-celeste{ border-top:3px solid var(--celeste); }
+
+  .c-verde .card-num, .c-verde .card-unit{ color:var(--verde-deep); }
+  .c-verde .btn.primary{ background:var(--verde); }
+  .c-verde{ border-top:3px solid var(--verde); }
+
+  .c-gris .card-num, .c-gris .card-unit{ color:var(--muted); }
+  .c-gris{ border-top:3px solid var(--line-strong); }
+
+  /* ===== Otros materiales ===== */
+  .misc-list{
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .misc-item{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px;
+  }
+  .misc-item .name{ font-weight:600; flex:1; min-width:180px; }
+  .misc-item .desc{ font-size:.85rem; color:var(--muted); flex-basis:100%; }
+
+  footer{
+    border-top:1px solid var(--line); padding:22px clamp(20px,6vw,64px) 40px;
+    font-size:.82rem; color:var(--muted);
+  }
+  footer a{ color:var(--celeste-deep); }
+
+  @media (max-width:520px){
+    .card-head{ padding:14px 16px 10px; }
+    .card-status, .card-actions{ padding-left:16px; padding-right:16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-kicker">Informática · UNQ · 2° cuatrimestre 2026</span>
+  <h1>Aula — Guía Visual &amp; Moodle</h1>
+  <p>Todo el material publicado hasta hoy: la Guía Visual completa de cada clase, el fragmento que se pega en Qoodle, y el PDF de respaldo. Se actualiza con cada <code>git push</code> — sin volver a subir nada a mano al campus.</p>
+  <div class="hero-meta">
+    <span>17 clases planificadas · 6 con material completo</span>
+    <a href="https://github.com/marcosxhernandez/unq-moodle" target="_blank" rel="noopener">Repo en GitHub ↗</a>
+    <a href="README.md" target="_blank" rel="noopener">Cómo se usa esto en Qoodle ↗</a>
+  </div>
+</div>
+
+<main>
+
+  <p class="section-label">Clases con material</p>
+  <div class="grid">
+
+    <!-- Clase 00 -->
+    <div class="card c-gris">
+      <div class="card-head">
+        <div class="card-num">00</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Bienvenida</span>
+          <h3 class="card-title">Arranque del cuatrimestre</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill off">Sin Guía Visual</span>
+        <span class="pill ok">Fragmento ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2000%20-%20Bienvenida.html" target="_blank" rel="noopener">Ver fragmento</a>
+      </div>
+    </div>
+
+    <!-- Clase 01 -->
+    <div class="card c-violet">
+      <div class="card-head">
+        <div class="card-num">01</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Fundamentos digitales</span>
+          <h3 class="card-title">Herramientas Digitales: Internet, Nube e IA</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill ok">Guía ✓</span>
+        <span class="pill ok">Fragmento ✓</span>
+        <span class="pill ok">PDF ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="clases/Clase%2001%20-%20Herramientas%20Digitales.html" target="_blank" rel="noopener">📖 Abrir guía</a>
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2001%20-%20Herramientas%20Digitales.html" target="_blank" rel="noopener">Fragmento</a>
+        <a class="btn ghost" href="pdf/Clase%2001%20-%20Herramientas%20Digitales.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <!-- Clase 02 -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">02</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Procesador de texto</span>
+          <h3 class="card-title">Arquitectura del documento profesional</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill ok">Guía ✓</span>
+        <span class="pill ok">Fragmento ✓</span>
+        <span class="pill ok">PDF ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="clases/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html" target="_blank" rel="noopener">📖 Abrir guía</a>
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html" target="_blank" rel="noopener">Fragmento</a>
+        <a class="btn ghost" href="pdf/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <!-- Clase 03 -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">03</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Procesador de texto</span>
+          <h3 class="card-title">IA como asistente académico</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill ok">Guía ✓</span>
+        <span class="pill ok">Fragmento ✓</span>
+        <span class="pill ok">PDF ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="clases/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html" target="_blank" rel="noopener">📖 Abrir guía</a>
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html" target="_blank" rel="noopener">Fragmento</a>
+        <a class="btn ghost" href="pdf/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <!-- Clase 04 -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">04</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Procesador de texto</span>
+          <h3 class="card-title">El documento como nodo de información</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill ok">Guía ✓</span>
+        <span class="pill ok">Fragmento ✓</span>
+        <span class="pill ok">PDF ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="clases/Clase%2004%20-%20El%20documento%20como%20nodo%20de%20informaci%C3%B3n.html" target="_blank" rel="noopener">📖 Abrir guía</a>
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2004%20-%20El%20documento%20como%20nodo%20de%20informaci%C3%B3n.html" target="_blank" rel="noopener">Fragmento</a>
+        <a class="btn ghost" href="pdf/Clase%2004%20-%20El%20documento%20como%20nodo%20de%20informaci%C3%B3n.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <!-- Clase 05 -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">05</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Procesador de texto</span>
+          <h3 class="card-title">Maquetación de alta precisión</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill ok">Guía ✓</span>
+        <span class="pill ok">Fragmento ✓</span>
+        <span class="pill ok">PDF ✓</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn primary" href="clases/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html" target="_blank" rel="noopener">📖 Abrir guía</a>
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html" target="_blank" rel="noopener">Fragmento</a>
+        <a class="btn ghost" href="pdf/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.pdf" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <!-- Clase 07 - a -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">07</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Taller integrador</span>
+          <h3 class="card-title">Integrador: Científico/a de Argentina</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill warn">Consigna sin Guía Visual/fragmento</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn ghost" href="clases/Clase%2007%20-%20Integrador%20Cient%C3%ADficoa%20de%20Argentina.html" target="_blank" rel="noopener">Ver consigna</a>
+      </div>
+    </div>
+
+    <!-- Clase 07 - b -->
+    <div class="card c-celeste">
+      <div class="card-head">
+        <div class="card-num">07</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Taller integrador</span>
+          <h3 class="card-title">Integrador: Síndrome Urémico Hemolítico</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill warn">Consigna sin Guía Visual/fragmento</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn ghost" href="clases/Clase%2007%20-%20Integrador%20S%C3%ADndrome%20Ur%C3%A9mico%20hemol%C3%ADtico.html" target="_blank" rel="noopener">Ver consigna</a>
+      </div>
+    </div>
+
+    <!-- Clase 12 -->
+    <div class="card c-verde">
+      <div class="card-head">
+        <div class="card-num">12</div>
+        <div class="card-title-wrap">
+          <span class="card-unit">Planilla de cálculo</span>
+          <h3 class="card-title">Análisis de datos con Excel e IA</h3>
+        </div>
+      </div>
+      <div class="card-status">
+        <span class="pill off">Sin Guía Visual</span>
+        <span class="pill warn">Fragmento borrador</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn ghost" href="bloques/Moodle%20-%20Clase%2012%20-%20An%C3%A1lisis%20de%20datos%20con%20Excel%20e%20IA.html" target="_blank" rel="noopener">Ver borrador</a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-label">Resto del programa</p>
+  <p style="color:var(--ink-soft); font-size:.92rem; margin:-6px 0 40px;">
+    Clases 06, 08–11 y 13–17: todavía sin construir. Se van a agregar acá a medida que estén listas — ver la tabla de acentos por clase en <code>CLAUDE.md</code>.
+  </p>
+
+  <p class="section-label">Otros materiales</p>
+  <div class="misc-list">
+    <div class="misc-item">
+      <span class="name">bloque derecho.html</span>
+      <a class="btn ghost" href="bloque%20derecho.html" target="_blank" rel="noopener">Ver</a>
+      <span class="desc">Bloque lateral de cronograma/countdown para el Block HTML del curso — se pega una sola vez, no es por clase.</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Informática · UNQ — Marcos Hernández. Estructura y convenciones de construcción en <code>CLAUDE.md</code> (proyecto de Drive) y en el <a href="README.md">README</a> de este repo.
+</footer>
+
+</body>
+</html>

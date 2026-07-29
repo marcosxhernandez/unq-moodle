@@ -53,23 +53,29 @@
     <div class="aula-clase">
 <div id="m00root" style="font-family:Arial,Helvetica,sans-serif;color:#15141b;background:#ffffff;max-width:820px;margin:0 auto;">
 
-<!-- ═══════ TARJETA: "Informática" + carreras (wine sólido, compacto y continuo) ═══════ -->
-<!-- ═══════ HEADER: "Informática" (Bloque wine/borgoña) ═══════ -->
-<div style="background:#8a1130;border-radius:18px;padding:20px 24px;margin:0 4px 12px;">
-  <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:32px;color:#fff;line-height:1;">Informática</div>
+<!-- ═══════ HEADER (patrón Clase 01, colores wine) ═══════ -->
+<div style="position:relative;display:flex;flex-wrap:wrap;border-radius:16px;overflow:hidden;margin:0 4px 14px;background:#fdf1f2;min-height:110px;">
+  <div style="background:#8a1130;width:clamp(72px,22vw,104px);flex-shrink:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <img src="data:image/png;base64,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" alt="Mano saludando" style="width:34px;height:auto;display:block;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:8px;">Bienvenida</div>
+  </div>
+  <div style="padding:18px 22px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
+    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Informática</div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">El punto de partida del cuatrimestre: cómo vamos a trabajar juntos, clase a clase</div>
+  </div>
 </div>
 
-<!-- ═══════ MENSAJE: burbuja de firma como en Clase 01 (foto + nombre + mail) ═══════ -->
-<div style="margin:0 4px 18px;padding:0 12px;overflow:hidden;">
+<!-- ═══════ MENSAJE: burbuja de firma (foto + nombre + mail), márgenes igual a INTRO de Clase 01 ═══════ -->
+<div style="margin:0 4px 22px;padding:0 18px 0 26px;overflow:hidden;">
   <div style="font-size:16px;font-weight:700;color:#15141b;margin-bottom:8px;">¡Hola! Bienvenido/a 👋</div>
   <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="float:right;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#fdf1f2;padding:6px 18px 6px 6px;border-radius:999px;margin:0 0 10px 14px;">
-    <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+    <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
     <span style="display:flex;flex-direction:column;line-height:1.3;">
       <span style="font-size:13px;font-weight:700;color:#5c0b20;white-space:nowrap;">Marcos Hernández</span>
       <span style="font-size:11px;font-weight:500;color:#8a1130;white-space:nowrap;">marcos.hernandez@unq.edu.ar</span>
     </span>
   </a>
-  <p style="margin:0;font-size:14px;line-height:1.75;color:#3a3844;">Soy Marcos, y voy a acompañarte en esta materia durante todo el cuatrimestre. Vamos a aprender documentos, planillas, presentaciones y bases de datos — siempre con la IA generativa como asistente, no como reemplazo. Es una materia práctica: se aprende haciendo, y para eso estoy, para ayudarte en cada clase. ¡Que la pasemos bien y arranquemos con todo! 🚀</p>
+  <p style="margin:0;font-size:14px;line-height:1.72;color:#4b4959;">Soy Marcos, y voy a acompañarte en esta materia durante todo el cuatrimestre. Vamos a aprender documentos, planillas, presentaciones y bases de datos — siempre con la IA generativa como asistente, no como reemplazo. Es una materia práctica: se aprende haciendo, y para eso estoy, para ayudarte en cada clase. ¡Que la pasemos bien y arranquemos con todo! 🚀</p>
 </div>
 
 <!-- ═══════ BLOQUES (patrón 01/02 de Clase 01) ═══════ -->
@@ -518,19 +524,19 @@
                 </div>
                 <div style="padding:18px 22px 14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Herramientas Digitales: Internet, Nube e IA</div>
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;margin-bottom:12px;">Cómo funciona lo que usás todos los días — fake news, Creative Commons y protección de datos</div>
-                    <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="display:inline-flex;align-self:flex-end;align-items:center;gap:9px;text-decoration:none;background:rgba(255,255,255,.7);padding:5px 14px 5px 5px;border-radius:999px;">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
-      <span style="display:flex;flex-direction:column;line-height:1.25;">
-        <span style="font-size:12px;font-weight:700;color:#3b3167;">Marcos Hernández</span>
-        <span style="font-size:10px;font-weight:500;color:#5b4b9e;">marcos.hernandez@unq.edu.ar</span>
-      </span>
-    </a>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Cómo funciona lo que usás todos los días — fake news, Creative Commons y protección de datos</div>
                 </div>
             </div>
         </summary>
         <!-- ═══════ INTRO ═══════ -->
-        <div style="margin:0 4px 22px;padding:0 18px;">
+        <div style="margin:0 4px 22px;padding:0 18px 0 26px;overflow:hidden;">
+            <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="float:right;display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:#f3f1fb;padding:6px 18px 6px 6px;border-radius:999px;margin:0 0 10px 14px;">
+                <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+                <span style="display:flex;flex-direction:column;line-height:1.3;">
+                  <span style="font-size:12px;font-weight:700;color:#3b3167;">Marcos Hernández</span>
+                  <span style="font-size:10px;font-weight:500;color:#5b4b9e;">marcos.hernandez@unq.edu.ar</span>
+                </span>
+            </a>
             <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! Usás Drive, un buscador y alguna IA todos los días, pero pocas veces te preguntás qué hay detrás de todo eso. Hoy te lo muestro: ordenamos tu espacio de trabajo en la nube y damos el primer paso de tu identidad profesional en LinkedIn. Al final
                 de la clase tenés <strong>dos entregas</strong> cortitas — el link de tu carpeta de Drive y la URL de tu perfil de LinkedIn — que no llevan nota, solo certifican que hiciste la clase. ¡Empecemos! 🚀</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2001%20-%20Herramientas%20Digitales.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#5b4b9e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
@@ -538,14 +544,14 @@
         <!-- ═══════ TEASERS DE SECCIÓN ═══════ -->
         <div style="margin:6px 4px 24px;">
             <details style="border-top:1px solid #ebe8f0;">
-                <summary style="cursor:pointer;padding:18px 8px;display:flex;align-items:center;gap:14px;">
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(20px,5vw,28px);line-height:1;color:#d7d3e2;">01</span>
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:16px;line-height:1.3;color:#15141b;flex:1;">Campus virtual UNQ y el mapa de internet</span>
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">01</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Campus virtual UNQ y el mapa de internet</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
                     <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start;">
                         <div style="flex:3 1 320px;min-width:0;">
-                            <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#4b4959;">Internet tiene capas, y el campus —como tu email— vive en una que Google no puede mostrarte en una búsqueda. Entendés la diferencia entre internet superficial, deep web y dark web antes de entrar al campus.</p>
+                            <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Internet tiene capas, y el campus —como tu email— vive en una que Google no puede mostrarte en una búsqueda. Entendés la diferencia entre internet superficial, deep web y dark web antes de entrar al campus.</p>
                             <div style="margin:12px 0 0;">
                                 <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Entraste a <code style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.9em;background:#f3f1fb;border:1px solid #ddd5f2;padding:1px 6px;border-radius:5px;color:#3b3167;">campus.uvq.edu.ar</code> y encontraste el aula de Informática.</span></label>
                                 <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Instalaste la app Moodle en tu celular y activaste las notificaciones.</span></label>
@@ -559,12 +565,12 @@
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
-                <summary style="cursor:pointer;padding:18px 8px;display:flex;align-items:center;gap:14px;">
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(20px,5vw,28px);line-height:1;color:#d7d3e2;">02</span>
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:16px;line-height:1.3;color:#15141b;flex:1;">La nube y Google Drive</span>
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">02</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">La nube y Google Drive</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#4b4959;">Qué es realmente "la nube", qué das a cambio cuando usás un servicio "gratis", y cómo armar un sistema de carpetas que vas a sostener las 17 clases del cuatrimestre.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Qué es realmente "la nube", qué das a cambio cuando usás un servicio "gratis", y cómo armar un sistema de carpetas que vas a sostener las 17 clases del cuatrimestre.</p>
                     <div style="margin:12px 0 0;">
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Creaste la carpeta "Informática - UNQ" en tu Drive.</span></label>
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Adentro, creaste la subcarpeta "Clase 01".</span></label>
@@ -577,12 +583,12 @@
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
-                <summary style="cursor:pointer;padding:18px 8px;display:flex;align-items:center;gap:14px;">
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(20px,5vw,28px);line-height:1;color:#d7d3e2;">03</span>
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:16px;line-height:1.3;color:#15141b;flex:1;">Búsqueda, validación y uso de IA</span>
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">03</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Búsqueda, validación y uso de IA</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#4b4959;">El bloque más largo: operadores de búsqueda, el método CRAAP, fake news, Creative Commons y cómo funciona (y alucina) una IA generativa, con la fórmula RTCFL para prompts.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">El bloque más largo: operadores de búsqueda, el método CRAAP, fake news, Creative Commons y cómo funciona (y alucina) una IA generativa, con la fórmula RTCFL para prompts.</p>
                     <div style="margin:12px 0 0;">
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Aplicaste CRAAP a 3 fuentes y sumaste una imagen con licencia Creative Commons.</span></label>
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completaste la tabla de verificación de las fuentes que te dio la IA.</span></label>
@@ -594,12 +600,12 @@
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
-                <summary style="cursor:pointer;padding:18px 8px;display:flex;align-items:center;gap:14px;">
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(20px,5vw,28px);line-height:1;color:#d7d3e2;">04</span>
-                    <span style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:16px;line-height:1.3;color:#15141b;flex:1;">Huella digital, LinkedIn y seguridad</span>
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">04</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Huella digital, LinkedIn y seguridad</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#4b4959;">Tu huella digital activa y pasiva, cómo armar tu perfil de LinkedIn desde primer año (con aptitudes en español e inglés) y tres hábitos de seguridad básicos.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Tu huella digital activa y pasiva, cómo armar tu perfil de LinkedIn desde primer año (con aptitudes en español e inglés) y tres hábitos de seguridad básicos.</p>
                     <div style="margin:12px 0 0;">
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completaste tu perfil: foto, titular, educación (UNQ) y al menos 3 habilidades.</span></label>
                         <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#5b4b9e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Conectaste con al menos 2 compañeros y seguiste a la UNQ.</span></label>
@@ -724,7 +730,7 @@
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Arquitectura del documento profesional</div>
                     <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;margin-bottom:12px;">Estilos, índice automático y colaboración en Google Docs</div>
                     <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="display:inline-flex;align-self:flex-end;align-items:center;gap:9px;text-decoration:none;background:rgba(255,255,255,.7);padding:5px 14px 5px 5px;border-radius:999px;">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+      <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
       <span style="display:flex;flex-direction:column;line-height:1.25;">
         <span style="font-size:12px;font-weight:700;color:#2b569f;">Marcos Hernández</span>
         <span style="font-size:10px;font-weight:500;color:#4285f4;">marcos.hernandez@unq.edu.ar</span>
@@ -734,7 +740,7 @@
             </div>
         </summary>
         <!-- ═══════ INTRO ═══════ -->
-        <div style="margin:0 4px 22px;padding:0 18px;">
+        <div style="margin:0 4px 22px;padding:0 18px 0 26px;">
             <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! La semana pasada entendiste qué hay detrás de internet, la nube y la IA — hoy eso se vuelve herramienta. Vas a crear un documento de verdad: generás contenido con una IA, lo limpiás, y le das una estructura real con estilos e índice automático. No hay entrega nueva para subir al campus: el documento queda en la misma carpeta de Drive que ya compartiste, así que lo que importa hoy es dejarlo bien armado. ¡Vamos! 🚀</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#4285f4;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
@@ -916,7 +922,7 @@
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">IA como asistente académico</div>
                     <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;margin-bottom:12px;">Perplexity con citas verificables, prompt chaining y normas APA</div>
                     <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="display:inline-flex;align-self:flex-end;align-items:center;gap:9px;text-decoration:none;background:rgba(255,255,255,.7);padding:5px 14px 5px 5px;border-radius:999px;">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+      <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
       <span style="display:flex;flex-direction:column;line-height:1.25;">
         <span style="font-size:12px;font-weight:700;color:#2b569f;">Marcos Hernández</span>
         <span style="font-size:10px;font-weight:500;color:#4285f4;">marcos.hernandez@unq.edu.ar</span>
@@ -926,7 +932,7 @@
             </div>
         </summary>
         <!-- ═══════ INTRO ═══════ -->
-        <div style="margin:0 4px 22px;padding:0 18px;">
+        <div style="margin:0 4px 22px;padding:0 18px 0 26px;">
             <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! Ya sabés generar contenido con IA y estructurar un documento. Hoy el foco es la confianza: usás Perplexity para buscar fuentes con citas que podés verificar de verdad (no como un LLM genérico, que a veces inventa), las citás con normas APA, y cerrás con NotebookLM, que solo responde con los documentos que vos le diste. ¡Vamos! 🚀</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#4285f4;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
@@ -1035,7 +1041,7 @@
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">El documento como nodo de información</div>
                     <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;margin-bottom:12px;">Tablas complejas, objetos flotantes e hipervínculos internos</div>
                     <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="display:inline-flex;align-self:flex-end;align-items:center;gap:9px;text-decoration:none;background:rgba(255,255,255,.7);padding:5px 14px 5px 5px;border-radius:999px;">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+      <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
       <span style="display:flex;flex-direction:column;line-height:1.25;">
         <span style="font-size:12px;font-weight:700;color:#2b569f;">Marcos Hernández</span>
         <span style="font-size:10px;font-weight:500;color:#4285f4;">marcos.hernandez@unq.edu.ar</span>
@@ -1045,7 +1051,7 @@
             </div>
         </summary>
         <!-- ═══════ INTRO ═══════ -->
-        <div style="margin:0 4px 22px;padding:0 18px;">
+        <div style="margin:0 4px 22px;padding:0 18px 0 26px;">
             <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! Ya generaste contenido con IA y armaste un documento con estilos y fuentes citadas. Hoy le sumamos navegación de verdad: tablas con encabezados combinados, imágenes ancladas que no se corren cuando editás, e hipervínculos que conectan las secciones entre sí. Y arranca algo nuevo — el documento de hoy no termina hoy: seguís trabajándolo en Word en la Clase 05 y lo llevás a una presentación en la Clase 06. ¡Vamos! 🚀</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2004%20-%20El%20documento%20como%20nodo%20de%20informaci%C3%B3n.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#4285f4;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
@@ -1156,7 +1162,7 @@
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Maquetación de alta precisión</div>
                     <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;margin-bottom:12px;">Word de escritorio: saltos de sección, columnas y exportación a PDF</div>
                     <a href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ" style="display:inline-flex;align-self:flex-end;align-items:center;gap:9px;text-decoration:none;background:rgba(255,255,255,.7);padding:5px 14px 5px 5px;border-radius:999px;">
-      <img src="https://lh3.googleusercontent.com/a/ACg8ocJaINznpVeqcSj47ep18oi4_T5EgswuUKEeZ9Qji_GaWt94ZFzMBg=s576-c-no" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
+      <img src="https://marcosxhernandez.github.io/unq-moodle/img/marcos-hernandez.jpg" alt="Marcos Hernández" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #fff;">
       <span style="display:flex;flex-direction:column;line-height:1.25;">
         <span style="font-size:12px;font-weight:700;color:#2b569f;">Marcos Hernández</span>
         <span style="font-size:10px;font-weight:500;color:#4285f4;">marcos.hernandez@unq.edu.ar</span>
@@ -1166,7 +1172,7 @@
             </div>
         </summary>
         <!-- ═══════ INTRO ═══════ -->
-        <div style="margin:0 4px 22px;padding:0 18px;">
+        <div style="margin:0 4px 22px;padding:0 18px 0 26px;">
             <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! Hasta ahora todo lo hicimos en Google Docs. Hoy cambiamos de herramienta: Word de escritorio, pensado para la página impresa y no para el lienzo infinito de la nube. Vas a necesitar el programa instalado (no la versión web) — revisá la Unidad 1 antes de arrancar si no lo tenés. Tomamos el Trabajo Integrador de la Clase 04, le damos estructura de impresión profesional y lo exportamos en PDF. ¡Vamos! 🚀</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#4285f4;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>

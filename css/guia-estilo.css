@@ -248,6 +248,10 @@
   --violet-tint:#f3f1fb;
   --violet-soft:#dbd7ea;
 
+  --linkedin:#0a66c2;
+  --linkedin-tint:#eaf2fb;
+  --linkedin-soft:#c9ddf2;
+
   /* ---------- Acentos de clase (familias no-fijas, ver manual 2.5-2.7) ----------
      --wine/--amber/--green/--blue/--violet de arriba son la paleta FIJA de
      callouts semánticos (2.1) — por coincidencia --wine sirve también de
@@ -258,6 +262,11 @@
   --celeste-deep:#2b569f;
   --celeste-tint:#eef3fe;
   --celeste-soft:#d5e4fd;
+
+  --amber-clase:#e8a317;
+  --amber-clase-deep:#976a0f;
+  --amber-clase-tint:#fdf3e0;
+  --amber-clase-soft:#faebcc;
 
   /* ---------- Acento de clase ----------
      Cada Guía Visual sobreescribe estos 4 valores en su propio <head>
@@ -566,31 +575,57 @@ section.block{
 
 section.block:first-of-type{ border-top:none; }
 
+/* Encabezado de sección — caja de dos tonos, calcada del header de
+   bloques/Moodle - Clase NN.html (caja sólida del acento con el numeral +
+   fondo -tint con el título), sin la bajada en itálica del original: acá
+   cada sección no lleva subtítulo. No agrega ningún peso de Fraunces
+   nuevo — el numeral reutiliza 560, ya declarado (ver manual 3.9). */
 .block-head{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  align-items:center;
-  gap:20px;
+  display:flex;
+  align-items:stretch;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--acento-tint);
   margin-bottom:36px;
+  /* Alto mínimo fijo: sin esto, un título de una sola línea da una caja
+     baja y uno de dos líneas la estira — el numeral queda centrado en
+     los dos casos, pero el numeral se ve "flotando" distinto según el
+     título. Con min-height, todas las secciones parten de la misma
+     proporción numeral/caja; si el título ocupa 2 líneas, la caja
+     crece un poco más allá del mínimo y el numeral se sigue centrando
+     igual, sin agrandarse — mantiene el mismo peso visual en toda la
+     guía en vez de un numeral que cambia de tamaño según cuán largo sea
+     el título de cada sección. */
+  min-height:92px;
 }
 
 .block-num{
+  background:var(--acento);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:clamp(60px, 13vw, 84px);
+  flex-shrink:0;
   font-family:var(--serif-display);
   font-weight:560;
-  font-size:clamp(2.6rem, 5vw, 3.6rem);
+  font-size:clamp(1.8rem, 4vw, 2.4rem);
   line-height:1;
-  color:var(--line-strong);
-  letter-spacing:-.02em;
 }
 
 h2.block-title{
   font-family:var(--serif-display);
   font-weight:520;
-  font-size:clamp(1.65rem, 3.2vw, 2.25rem);
+  font-size:clamp(1.4rem, 2.6vw, 1.85rem);
   line-height:1.16;
   letter-spacing:-.012em;
   color:var(--ink);
   margin:0;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  flex:1 1 auto;
+  min-width:0;
 }
 
 h3{
@@ -790,6 +825,15 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .callout[data-type="format"] code,
 .callout[data-type="folder"] code,
 .callout[data-type="right"] code{ color:var(--violet); background:#fff; }
+
+.callout[data-type="linkedin"]{ background:var(--linkedin-tint); }
+.callout[data-type="linkedin"] .callout-label{ color:var(--linkedin); }
+.callout[data-type="linkedin"] code{ color:var(--linkedin); background:#fff; }
+/* Ícono de LinkedIn en el label, decidido jul. 2026 (CLAUDE.md 2.8 #4) —
+   .callout-label ya es flex con gap:9px, el <img> se acomoda solo. */
+.callout[data-type="linkedin"] .callout-label img{
+  width:15px; height:15px; border-radius:3px; flex-shrink:0;
+}
 
 .callout[data-type="question"]{
   background:transparent;
@@ -1013,6 +1057,119 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
   .summary-group + .summary-group{ border-left:none; border-top:1px solid var(--line); }
 }
 
+/* ---------- Referencia rápida (reemplaza a .summary clase por clase) ----------
+   Calca la anatomía del machete de referencia (fila por tema, pestaña
+   vertical + celdas con ícono, ítems con punto e ítems en fórmula
+   letra+descripción), recoloreada al acento de la clase y tipografiada
+   en Inter — sin ícono aislado grande (ver manual raíz, sección 5). Cada
+   fila es su propia tarjeta (no un contenedor común); la pestaña dice el
+   TEMA, no el número de clase — el número ya está en el título de la
+   sección. Contenido: solo dato duro difícil de recordar de memoria
+   (URL exacta, orden de letras de una fórmula, sintaxis de operador,
+   código de licencia) — nada de convención de proceso ni distinción
+   conceptual ya cubierta en el glosario. .summary/.summary-group siguen
+   arriba para las clases que todavía no migraron a este componente. */
+.qr-row{
+  display:flex;
+  align-items:stretch;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin:0 0 12px;
+}
+
+.qr-row-label{
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  min-width:38px;
+  padding:16px 10px;
+  background:var(--acento-tint);
+  color:var(--acento);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:.69rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:center;
+  border-right:1px solid var(--acento-soft);
+}
+
+.qr-row-cols{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.qr-cell{ padding:14px 18px 16px; min-width:0; }
+.qr-cell + .qr-cell{ border-left:1px solid var(--line); }
+
+.qr-cell-head{
+  padding-bottom:8px;
+  margin-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+/* Sin badge de color detrás del emoji: un ícono nativo a color entero
+   (🏫, 🔎...) sobre un cuadrado sólido del acento queda sucio — sus
+   propios colores pelean con el violeta. Se resuelve igual que
+   .callout-label en el resto del archivo: emoji en línea, sin fondo,
+   seguido del texto. */
+.qr-cell-title{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:.78rem;
+  color:var(--ink);
+  line-height:1.3;
+}
+
+.qr-items{ display:flex; flex-direction:column; gap:5px; }
+.qr-item{ display:flex; align-items:flex-start; gap:7px; }
+.qr-dot{
+  width:5px; height:5px; border-radius:50%;
+  margin-top:6px; flex-shrink:0;
+  background:var(--acento);
+}
+.qr-item-text{ font-size:.82rem; line-height:1.48; color:var(--ink-soft); }
+.qr-item-text code{ font-size:.9em; }
+
+.qr-formula{ display:flex; flex-direction:column; gap:5px; }
+.qr-frow{ display:flex; align-items:baseline; gap:9px; }
+.qr-fletter{
+  font-family:var(--sans);
+  font-weight:800;
+  font-size:.82rem;
+  color:var(--acento);
+  width:1.4em;
+  flex-shrink:0;
+  line-height:1.6;
+}
+.qr-fdesc{ font-size:.82rem; line-height:1.5; color:var(--ink-soft); }
+.qr-fdesc strong{ color:var(--ink); font-weight:600; }
+
+@media (max-width:640px){
+  .qr-row{ flex-direction:column; }
+  .qr-row-label{
+    writing-mode:horizontal-tb;
+    transform:none;
+    width:auto;
+    text-align:left;
+    padding:8px 16px;
+    border-right:none;
+    border-bottom:1px solid var(--acento-soft);
+  }
+  .qr-row-cols{ grid-template-columns:1fr; }
+  .qr-cell + .qr-cell{ border-left:none; border-top:1px solid var(--line); }
+}
+
 /* ---------- Check table (entrega de la clase) ---------- */
 
 table.check-table{ font-size:.95rem; }
@@ -1033,13 +1190,58 @@ table.check-table td.check-cell{
   padding-right:0;
 }
 
+/* Checkbox real (no un <span> decorativo): funciona en pantalla — tildar
+   una fila la tacha, vía :has() (sin JS, sin estado persistente entre
+   visitas, mismo criterio ya usado en el checkbox del fragmento Moodle,
+   ver CLAUDE-bloques.md 4.2bis). appearance:none saca el checkbox nativo
+   del sistema operativo para poder dibujar el mismo cuadrado de siempre
+   + el tilde en :checked. En impresión no cambia nada: al exportar, las
+   filas llegan sin tildar, igual que el <span> original. */
 .checkbox{
+  appearance:none;
+  -webkit-appearance:none;
   display:inline-block;
   width:19px;
   height:19px;
+  margin:0;
   border:2px solid var(--ink-soft);
   border-radius:5px;
   vertical-align:middle;
+  cursor:pointer;
+  position:relative;
+  flex-shrink:0;
+}
+
+.checkbox:checked{
+  background:var(--acento);
+  border-color:var(--acento);
+}
+
+.checkbox:checked::after{
+  content:'';
+  position:absolute;
+  left:5px;
+  top:1px;
+  width:6px;
+  height:10px;
+  border:solid #fff;
+  border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+
+table.check-table tr:has(.checkbox:checked) td:not(.check-cell){
+  text-decoration:line-through;
+  color:var(--muted);
+}
+
+/* Fila accionable desde cualquier parte del texto, no solo la casilla
+   (decidido jul. 2026, ver CLAUDE.md 2.8 #5): el <input> lleva un id
+   único (chk-NN-#) y el texto de la celda de al lado va envuelto en
+   <label for="ese-id">. display:block para que el área clickeable sea
+   toda la celda, no solo la línea de base del texto. */
+table.check-table td:not(.check-cell) label{
+  display:block;
+  cursor:pointer;
 }
 
 /* ---------- Glossary (compacto, una sola carilla) ---------- */
@@ -1339,8 +1541,8 @@ footer.colophon p{
 
 @media (max-width: 640px){
   body{ font-size:16px; }
-  .block-head{ gap:12px; }
-  .block-num{ font-size:2.1rem; }
+  .block-num{ font-size:2.1rem; width:56px; }
+  h2.block-title{ padding:12px 18px; }
   .activity{ padding:26px 22px; }
   .callout{ padding:20px; }
   .glossary{ columns:1; }
@@ -1452,8 +1654,15 @@ footer.colophon p{
      rayas horizontales a centímetros de distancia. El salto de página
      ya es, de por sí, la separación entre secciones. */
   section.block{ break-before:page; padding:0 0 3mm; border-top:none; }
-  .block-head{ break-after:avoid-page; margin-bottom:5mm; gap:12px; }
-  .block-num{ font-size:24pt; }
+  /* La base pone min-height:92px (valor de pantalla) que, sin pisarlo acá,
+     se imprime como ~24mm físicos — la caja quedaba ocupando el
+     equivalente a 3 líneas en vez de 1-2. min-height:0 lo dejaba ir al
+     otro extremo: un título corto (1 línea) quedaba pegado al numeral,
+     sin aire. 14mm es el punto medio — un título de 1 línea gana algo
+     de aire arriba/abajo sin llegar a la caja gigante, y uno de 2
+     líneas ya la supera solo (el contenido manda). */
+  .block-head{ break-after:avoid-page; margin-bottom:5mm; border-radius:8px; min-height:14mm; }
+  .block-num{ font-size:18pt; width:14mm; }
   h2.block-title, h3, h4{ break-after:avoid-page; }
 
   /* ----- Control de flujo -----
@@ -1518,7 +1727,7 @@ footer.colophon p{
   body{ font-size:9.8pt; line-height:1.4; }
   .cover-title{ font-size:42pt; }
   .cover-subtitle{ font-size:13pt; }
-  h2.block-title{ font-size:17pt; }
+  h2.block-title{ font-size:14pt; padding:5pt 9pt; line-height:1.2; }
   h3{ font-size:11.6pt; margin:1.5em 0 .5em; }
   h4{ margin:1.3em 0 .6em; }
   section.block > .prose > p:first-of-type{ font-size:1em; }
@@ -1550,6 +1759,7 @@ footer.colophon p{
   tbody td{ padding:5.5pt 8pt; line-height:1.38; }
   table.check-table td{ padding:5pt 8pt; }
   .checkbox{ width:13px; height:13px; border-width:1.5px; border-radius:3px; }
+  .checkbox:checked::after{ left:3px; top:0; width:4px; height:7px; border-width:0 1.5px 1.5px 0; }
 
   .activity{ margin:1.3em 0 .8em; padding:13pt 15pt; }
   .activity-head{ margin-bottom:9pt; padding-bottom:7pt; gap:10px; }
@@ -1569,6 +1779,17 @@ footer.colophon p{
   .summary-group{ padding:11pt 13pt; }
   .summary-group-title{ margin-bottom:7pt; }
   .summary-item{ padding:6pt 0; }
+
+  .qr-row{ margin:0 0 5pt; break-inside:avoid-page; }
+  .qr-row-label{ min-width:15pt; padding:8pt 4pt; font-size:6.2pt; }
+  .qr-cell{ padding:7pt 9pt 8pt; }
+  .qr-cell-head{ padding-bottom:4pt; margin-bottom:4pt; }
+  .qr-cell-title{ font-size:7.4pt; gap:4pt; }
+  .qr-items{ gap:2.5pt; }
+  .qr-item-text{ font-size:7.4pt; line-height:1.35; }
+  .qr-formula{ gap:2.5pt; }
+  .qr-fletter{ font-size:7.4pt; }
+  .qr-fdesc{ font-size:7.4pt; }
 
   .compare-panel{ margin:.9em 0 1.1em; padding:11pt 13pt; }
   .compare-panel .tool-group-divider{ margin:10pt 0; }

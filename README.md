@@ -45,9 +45,10 @@ unq-moodle/
 | 03 · IA como asistente académico | ✅ | ✅ | ✅ | Completa. |
 | 04 · El documento como nodo de información | ✅ | ✅ | ✅ | Completa. |
 | 05 · Maquetación de alta precisión | ✅ | ✅ | ✅ | Completa. |
-| 07 · Taller integrador | ⚠️ parcial | — | — | Dos consignas de actividad ("Científico/a de Argentina" y "Síndrome Urémico Hemolítico"), sin Guía Visual ni fragmento propios todavía. |
+| 06 · Presentaciones con IA | ✅ | ✅ | — | Completa (jul. 2026) — reescrita desde cero, el material viejo de PowerPoint/Slides quedó absorbido acá. |
+| 07 · Exámenes (Parcial) | ✅ (formato distinto) | — | — | No es una clase única: son varios archivos `clases/Clase 07 - Parcial - ★☆☆☆☆ - <Tema>.html`, uno por examen, con el patrón de examen (consigna general + bloques temáticos) descripto en `CLAUDE.md`. Sin fragmento Moodle propio — cada examen se sube como recurso aparte en Qoodle. |
 | 12 · Análisis de datos con Excel e IA | — | ⚠️ borrador | — | Fragmento experimental con estilo propio (no sigue `guia-estilo.css`), a revisar antes de publicar. |
-| Resto (06, 08-11, 13-17) | — | — | — | Sin construir. |
+| Resto (08-11, 13-17) | — | — | — | Sin construir. |
 
 `index.html` refleja esta misma tabla en formato de aula — abrilo para navegar todo con un click.
 

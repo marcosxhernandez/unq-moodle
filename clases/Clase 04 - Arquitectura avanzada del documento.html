@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clase 04 - El documento como nodo de información</title>
+<title>Clase 04 - Arquitectura avanzada del documento</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
@@ -29,7 +29,7 @@
 <section class="cover-page" data-num="04">
   <div class="cover-inner">
     <span class="cover-kicker">Clase 04 · Procesador de texto</span>
-    <h1 class="cover-title">El documento como nodo de información</h1>
+    <h1 class="cover-title">Arquitectura avanzada del documento</h1>
     <p class="cover-subtitle">Tablas complejas, objetos flotantes e hipervínculos internos</p>
   </div>
   <div class="cover-footer">
@@ -47,91 +47,49 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Ya generaste contenido con IA, lo estructuraste con estilos y lo llenaste de fuentes verificadas y citadas. Hoy das el salto de "documento que se lee de arriba a abajo" a "documento que se navega": tablas que organizan información relacional, imágenes ancladas que no rompen el texto, hipervínculos que conectan secciones entre sí. Con esto arranca, además, un trabajo que te va a acompañar dos clases más.</p>
+  <p class="toc-intro">Ya generaste contenido con IA, lo estructuraste con estilos y lo llenaste de fuentes verificadas y citadas. Hoy das el salto de "documento que se lee de arriba a abajo" a "documento que se navega": tablas que organizan información relacional, imágenes ancladas que no rompen el texto, hipervínculos que conectan secciones entre sí.</p>
   <span class="toc-label">Contenido</span>
   <ol>
-    <li><a href="#sabes"><span class="toc-num">01</span><span class="toc-text">Lo que ya sabés hacer</span></a></li>
-    <li><a href="#nodo"><span class="toc-num">02</span><span class="toc-text">El documento como nodo de información</span></a></li>
-    <li><a href="#tablas"><span class="toc-num">03</span><span class="toc-text">Tablas complejas en Google Docs</span></a></li>
-    <li><a href="#imagenes"><span class="toc-num">04</span><span class="toc-text">Imágenes y objetos flotantes</span></a></li>
-    <li><a href="#hipervinculos"><span class="toc-num">05</span><span class="toc-text">Hipervínculos: el documento como espacio navegable</span></a></li>
-    <li><a href="#estructura"><span class="toc-num">06</span><span class="toc-text">Estructura de página</span></a></li>
-    <li><a href="#cierre"><span class="toc-num">07</span><span class="toc-text">Cierre de la clase</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
-    <li><a href="#glosario"><span class="toc-num">09</span><span class="toc-text">Glosario de la clase</span></a></li>
-    <li><a href="#fuentes"><span class="toc-num">10</span><span class="toc-text">Fuentes</span></a></li>
+    <li><a href="#espacio-navegable"><span class="toc-num">01</span><span class="toc-text">El documento como espacio navegable</span></a></li>
+    <li><a href="#tablas"><span class="toc-num">02</span><span class="toc-text">Tablas complejas en Google Docs</span></a></li>
+    <li><a href="#imagenes"><span class="toc-num">03</span><span class="toc-text">Imágenes y objetos flotantes</span></a></li>
+    <li><a href="#hipervinculos"><span class="toc-num">04</span><span class="toc-text">Hipervínculos: el documento como espacio navegable</span></a></li>
+    <li><a href="#estructura"><span class="toc-num">05</span><span class="toc-text">Estructura de página</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">06</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 01 — LO QUE YA SABÉS HACER -->
-<section class="block" id="sabes">
+<!-- 01 — EL DOCUMENTO COMO ESPACIO NAVEGABLE -->
+<section class="block" id="espacio-navegable">
   <div class="block-head">
     <span class="block-num">01</span>
-    <h2 class="block-title">Lo que ya sabés hacer</h2>
-  </div>
-  <div class="prose">
-    <p>Antes de sumar herramientas nuevas, un repaso rápido de lo que ya tenés incorporado de las clases 01 a 03. Si algo de esta tabla no te suena, es el momento de preguntar — a partir de hoy todo se integra en un mismo documento.</p>
-
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Bloque</th><th>Ya sabés</th></tr></thead>
-        <tbody>
-          <tr><td>Búsqueda</td><td>Operadores de Google (<code>"frase exacta"</code>, <code>site:</code>, <code>filetype:</code>) y Perplexity para fuentes con cita verificable</td></tr>
-          <tr><td>Validación</td><td>Evaluar fuentes con CRAAP (Currency · Relevance · Authority · Accuracy · Purpose)</td></tr>
-          <tr><td>IA</td><td>Prompts con RTCFL (Rol · Tarea · Contexto · Formato · Límites) y prompt chaining</td></tr>
-          <tr><td>Documento</td><td>Ctrl+Shift+V para pegar sin formato, estilos de título, índice automático</td></tr>
-          <tr><td>Citas</td><td>APA en el texto (Apellido, año) y en bibliografía, con DOI como hipervínculo</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- 02 — EL DOCUMENTO COMO NODO DE INFORMACIÓN -->
-<section class="block" id="nodo">
-  <div class="block-head">
-    <span class="block-num">02</span>
-    <h2 class="block-title">El documento como nodo de información</h2>
+    <h2 class="block-title">El documento como espacio navegable</h2>
   </div>
   <div class="prose">
     <div class="callout" data-type="question">
-      <p class="callout-label">🤔 Pregunta disparadora</p>
       <p>Un documento en papel es lineal por necesidad: no podés hacer clic en él. Uno en pantalla puede tener índice clicable, hipervínculos y marcadores — pero la mayoría de la gente igual lo escribe como si fuera papel. Eso cambia hoy.</p>
     </div>
 
-    <p>Un documento profesional no se lee como un chat, de arriba a abajo: se navega. Tiene puntos de entrada, secciones identificadas, referencias cruzadas. Un <strong>nodo</strong> es cualquier punto de información que se conecta con otros — un título con estilo, una tabla, una imagen anclada, un marcador. Cuando combinás estos elementos con intención, dejás de escribir un bloque de texto y empezás a diseñar una arquitectura de información.</p>
+    <p>Un documento profesional no se lee como un chat, de arriba a abajo: se navega. Tiene puntos de entrada, secciones identificadas, referencias cruzadas. Cuando combinás tablas, imágenes ancladas e hipervínculos con intención, dejás de escribir un bloque de texto y empezás a diseñar una arquitectura de información — cada elemento bien construido es un punto de la estructura que se conecta con otros, no una isla suelta en medio del texto.</p>
 
-    <h3>Las cuatro herramientas de hoy</h3>
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Herramienta</th><th>Qué permite</th></tr></thead>
-        <tbody>
-          <tr><td>Tablas complejas</td><td>Organizar información relacional que no cabe en texto corrido</td></tr>
-          <tr><td>Imágenes flotantes</td><td>Posicionar objetos visuales sin romper el flujo del texto</td></tr>
-          <tr><td>Hipervínculos internos</td><td>Navegar dentro del mismo documento sin scrollear</td></tr>
-          <tr><td>Hipervínculos externos</td><td>Conectar con fuentes y recursos fuera del documento</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>El trabajo que arranca hoy</h3>
-    <p>Las actividades de esta clase no son ejercicios sueltos: son los pasos de un mismo documento, el <strong>Trabajo Integrador</strong>. Vas a armar un trabajo de investigación breve sobre un tema de tu carrera — con estructura, fuentes verificadas, una imagen relevante e hipervínculos funcionales. Ese mismo documento sigue en las próximas clases: en la Clase 05 lo pasás a Word y le aplicás formato de impresión profesional, y en la Clase 06 extraés sus puntos clave para una presentación en Slides.</p>
+    <h3>El trabajo de hoy: el Trabajo Integrador</h3>
+    <p>Las actividades de esta clase no son ejercicios sueltos: son los pasos de un mismo documento, el <strong>Trabajo Integrador</strong>. Vas a armar un trabajo de investigación breve sobre un tema de tu carrera — con estructura, fuentes verificadas, una imagen relevante e hipervínculos funcionales.</p>
 
     <p>Elegí tu tema ahora: un concepto de tu carrera, un problema actual del sector o una tendencia. Necesitás al menos dos fuentes académicas verificables con Perplexity — ese es el único requisito de entrada.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>Nombrá el documento <code>Trabajo Integrador - V01</code> y movelo a la subcarpeta "Clase 04" apenas lo crees. Es el mismo archivo que vas a seguir usando dos clases más — arrancarlo bien organizado te ahorra tiempo después.</p>
+      <p>Nombrá el documento <code>Trabajo Integrador - V01</code> y movelo a la subcarpeta "Clase 04" apenas lo crees. Arrancarlo bien organizado desde el primer minuto te ahorra tiempo después.</p>
     </div>
   </div>
 </section>
 
-<!-- 03 — TABLAS COMPLEJAS -->
+<!-- 02 — TABLAS COMPLEJAS -->
 <section class="block" id="tablas">
   <div class="block-head">
-    <span class="block-num">03</span>
+    <span class="block-num">02</span>
     <h2 class="block-title">Tablas complejas en Google Docs</h2>
   </div>
   <div class="prose">
@@ -193,10 +151,10 @@
   </div>
 </section>
 
-<!-- 04 — IMÁGENES Y OBJETOS FLOTANTES -->
+<!-- 03 — IMÁGENES Y OBJETOS FLOTANTES -->
 <section class="block" id="imagenes">
   <div class="block-head">
-    <span class="block-num">04</span>
+    <span class="block-num">03</span>
     <h2 class="block-title">Imágenes y objetos flotantes</h2>
   </div>
   <div class="prose">
@@ -215,6 +173,7 @@
     </div>
 
     <h3>Cómo anclar una imagen flotante</h3>
+    <p style="font-style:italic;color:var(--muted);font-size:.85em;border:1px dashed var(--line-strong);padding:8px 12px;border-radius:6px;">🖼️ Falta imagen: "barra de ajuste de texto de Google Docs sobre una imagen seleccionada, con los íconos Ajustar texto y de ancla resaltados"</p>
     <ol>
       <li>Clic en la imagen: aparece la barra de ajuste de texto.</li>
       <li>Seleccioná <strong>Ajustar texto</strong> — la convierte en flotante y el texto fluye a sus costados.</li>
@@ -253,7 +212,7 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Buscá una imagen relacionada con tu tema en <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (uso libre) o en Google Imágenes con el filtro Herramientas → Derechos de uso → Creative Commons.</li>
+          <li>Buscá una imagen relacionada con tu tema en <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (uso libre, sin costo) o en Google Imágenes con el filtro Herramientas → Derechos de uso → Creative Commons.</li>
           <li>En el documento, posicioná el cursor en el párrafo de Desarrollo que más se relaciona con esa imagen. Insertar → Imagen → Subir desde la computadora.</li>
           <li>Clic en la imagen → <strong>Ajustar texto</strong> → ícono de ancla → <strong>Mover con el texto</strong>.</li>
           <li>Clic derecho → Opciones de imagen → Ajuste de texto → ajustá los márgenes para que el texto no quede pegado.</li>
@@ -265,10 +224,10 @@
   </div>
 </section>
 
-<!-- 05 — HIPERVÍNCULOS -->
+<!-- 04 — HIPERVÍNCULOS -->
 <section class="block" id="hipervinculos">
   <div class="block-head">
-    <span class="block-num">05</span>
+    <span class="block-num">04</span>
     <h2 class="block-title">Hipervínculos: el documento como espacio navegable</h2>
   </div>
   <div class="prose">
@@ -282,7 +241,7 @@
       <p>En el cuerpo del texto, el enlace tiene que describir el destino — nunca pegues una URL cruda como texto visible. En la bibliografía APA es al revés: el DOI aparece como URL completa (<code>https://doi.org/10.xxxx/...</code>) y esa URL es el texto visible del enlace.</p>
     </div>
 
-    <p>Un hipervínculo <strong>interno</strong> navega dentro del mismo documento, en dos pasos: creás el destino (Insertar → Marcador, donde querés que el lector llegue) y creás el enlace (seleccionás el texto → <code>Ctrl+K</code> → pestaña Encabezados y marcadores → elegís el destino).</p>
+    <p>Un hipervínculo <strong>interno</strong> navega dentro del mismo documento, en dos pasos: creás el destino (Insertar → Marcador, donde querés que el lector llegue) y creás el enlace (seleccionás el texto → <code>Ctrl+K</code>, Mac: <code>⌘+K</code> → pestaña Encabezados y marcadores → elegís el destino).</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -314,19 +273,21 @@
       <div class="prose">
         <ol>
           <li>En Bibliografía, verificá que el DOI de al menos una fuente sea una URL completa como hipervínculo (<code>https://doi.org/10.xxxx/...</code>).</li>
-          <li>En Desarrollo, buscá una frase que mencione un concepto que desarrollás en otra sección. Seleccionala → <code>Ctrl+K</code> → pestaña Encabezados y marcadores → elegí la sección de destino.</li>
-          <li>Verificá los dos enlaces con <code>Ctrl+clic</code>.</li>
+          <li>En Desarrollo, elegí un dato o afirmación puntual que te convenga poder encontrar rápido después — no una sección entera. Posicioná el cursor justo ahí → Insertar → Marcador. Es un punto invisible, no una sección.</li>
+          <li>En la Introducción, escribí una frase corta que apunte a ese dato (algo como "el dato completo se desarrolla más abajo"). Seleccioná el fragmento → <code>Ctrl+K</code> (Mac: <code>⌘+K</code>) → pestaña Encabezados y marcadores → elegí el marcador que acabás de crear.</li>
+          <li>En Desarrollo, buscá otra frase que mencione un concepto que se retoma en Conclusión. Seleccionala → <code>Ctrl+K</code> (Mac: <code>⌘+K</code>) → pestaña Encabezados y marcadores → esta vez elegí directamente la sección de destino (sin crear marcador: los títulos con estilo ya son destinos automáticos).</li>
+          <li>Verificá los tres enlaces con <code>Ctrl+clic</code> (Mac: <code>⌘+clic</code>): el DOI externo, el marcador manual y el enlace a la sección.</li>
         </ol>
       </div>
-      <p class="activity-criteria">Tenés al menos un hipervínculo externo funcional (el DOI en bibliografía) y uno interno que conecta dos secciones del documento.</p>
+      <p class="activity-criteria">Tenés un hipervínculo externo funcional (el DOI en bibliografía), un hipervínculo interno a un marcador manual dentro de una sección y otro interno a una sección completa — los tres casos que enseña la teoría, no solo uno.</p>
     </div>
   </div>
 </section>
 
-<!-- 06 — ESTRUCTURA DE PÁGINA -->
+<!-- 05 — ESTRUCTURA DE PÁGINA -->
 <section class="block" id="estructura">
   <div class="block-head">
-    <span class="block-num">06</span>
+    <span class="block-num">05</span>
     <h2 class="block-title">Estructura de página</h2>
   </div>
   <div class="prose">
@@ -363,157 +324,102 @@
       </div>
       <p class="activity-criteria">El documento tiene salto de página antes de Bibliografía, encabezado y pie con numeración, al menos una nota al pie, índice actualizado y una versión nombrada en el historial.</p>
     </div>
-  </div>
-</section>
 
-<!-- 07 — CIERRE -->
-<section class="block" id="cierre">
-  <div class="block-head">
-    <span class="block-num">07</span>
-    <h2 class="block-title">Cierre de la clase</h2>
-  </div>
-  <div class="prose">
-    <p>El trabajo integrador que armaste hoy no termina acá: es la base de la Clase 05 (formato de impresión en Word) y la Clase 06 (presentación en Slides). Lo que construiste — tablas con encabezado combinado, una imagen anclada correctamente, hipervínculos internos y externos, estructura de página con notas al pie — es lo que separa un documento de un borrador: la intención con la que cada elemento se conecta con los demás.</p>
-
-    <h3>Entrega de la clase</h3>
-    <div class="table-wrap">
-      <table class="check-table">
-        <tbody>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento se llama <code>Trabajo Integrador - V01</code> y está en la subcarpeta "Clase 04".</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Tiene Título + al menos 3 secciones con Título 1 (Introducción, Desarrollo, Conclusión, Bibliografía).</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>La tabla de fuentes tiene la primera fila combinada, formato aplicado y al menos 2 fuentes completas.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Hay al menos 1 imagen flotante anclada con "Ajustar texto" + "Mover con el texto".</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Hay 1 hipervínculo externo (DOI en bibliografía) y 1 interno (entre secciones).</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>La bibliografía empieza en página nueva, con salto de página.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento tiene encabezado con título y nombre, y pie con numeración.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>Hay al menos una nota al pie.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El índice automático está actualizado.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El historial tiene la versión "Entrega Clase 04" nombrada.</td></tr>
-          <tr><td class="check-cell"><span class="checkbox"></span></td><td>El documento fue compartido y el enlace subido a Moodle.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Nuevas aptitudes para LinkedIn</h3>
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Aptitud en español</th><th>Aptitud en inglés</th><th>Cómo la justificás</th></tr></thead>
-        <tbody>
-          <tr><td>Gestión de Documentos Digitales</td><td>Digital Document Management</td><td>Diseño documentos navegables con tablas, hipervínculos internos e imágenes ancladas correctamente.</td></tr>
-          <tr><td>Arquitectura de la Información</td><td>Information Architecture</td><td>Organizo contenido en nodos conectados — tablas, marcadores, hipervínculos — en vez de texto lineal.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>Cuando agregues una aptitud, LinkedIn te pide vincularla a una experiencia o educación. Usá "UNQ" como institución — le da contexto a cada habilidad y refuerza tu perfil académico.</p>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p>Dos aptitudes concretas quedan demostradas en este mismo documento: <strong>Gestión de Documentos Digitales</strong> (documentos navegables con tablas, hipervínculos internos e imágenes ancladas correctamente) y <strong>Arquitectura de la Información</strong> (organizar contenido con tablas, marcadores e hipervínculos en vez de texto lineal).</p>
     </div>
   </div>
 </section>
 
-<!-- 08 — RESUMEN -->
+<!-- 06 — RESUMEN DE LA CLASE -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">08</span>
+    <span class="block-num">06</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Guardá esta página: es el machete de la clase, todo lo esencial de un vistazo.</p>
+    <p>Lo que construiste hoy — tablas con encabezado combinado, una imagen anclada correctamente, hipervínculos internos y externos, estructura de página con notas al pie — es lo que separa un documento de un borrador: la intención con la que cada elemento se conecta con los demás.</p>
 
-    <div class="summary">
-      <div class="summary-group">
-        <p class="summary-group-title">📊 Tablas</p>
-        <div class="summary-item">
-          <span class="summary-term">Cuándo usar tabla</span>
-          <span class="summary-def">Cuando comparás atributos con filas y columnas significativas, no para listas simples.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Combinar celdas</span>
-          <span class="summary-def">Clic derecho → Combinar celdas. Solo para encabezados de grupo, nunca para datos que vas a ordenar.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Formato</span>
-          <span class="summary-def">Contraste suficiente, alineación consistente, bordes mínimos.</span>
-        </div>
-      </div>
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-1" aria-label="Marcar como hecho"></td><td><label for="chk-04-1">El documento se llama <code>Trabajo Integrador - V01</code> y está en la subcarpeta "Clase 04".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-2" aria-label="Marcar como hecho"></td><td><label for="chk-04-2">Tiene Título + al menos 3 secciones con Título 1 (Introducción, Desarrollo, Conclusión, Bibliografía).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-3" aria-label="Marcar como hecho"></td><td><label for="chk-04-3">La tabla de fuentes tiene la primera fila combinada, formato aplicado y al menos 2 fuentes completas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-4" aria-label="Marcar como hecho"></td><td><label for="chk-04-4">Hay al menos 1 imagen flotante anclada con "Ajustar texto" + "Mover con el texto".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-5" aria-label="Marcar como hecho"></td><td><label for="chk-04-5">Hay 1 hipervínculo externo (DOI en bibliografía), 1 interno a un marcador manual y 1 interno a una sección.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-6" aria-label="Marcar como hecho"></td><td><label for="chk-04-6">La bibliografía empieza en página nueva, con salto de página.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-7" aria-label="Marcar como hecho"></td><td><label for="chk-04-7">El documento tiene encabezado con título y nombre, y pie con numeración.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-8" aria-label="Marcar como hecho"></td><td><label for="chk-04-8">Hay al menos una nota al pie.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-9" aria-label="Marcar como hecho"></td><td><label for="chk-04-9">El índice automático está actualizado.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-10" aria-label="Marcar como hecho"></td><td><label for="chk-04-10">El historial tiene la versión "Entrega Clase 04" nombrada.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-04-11" aria-label="Marcar como hecho"></td><td><label for="chk-04-11">El documento fue compartido y el enlace subido a Moodle.</label></td></tr>
+        </tbody>
+      </table>
+    </div>
 
-      <div class="summary-group">
-        <p class="summary-group-title">🖼️ Imágenes y objetos flotantes</p>
-        <div class="summary-item">
-          <span class="summary-term">Anclar una imagen</span>
-          <span class="summary-def">Clic en la imagen → Ajustar texto → ícono de ancla → Mover con el texto.</span>
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+    <div class="qr-row">
+      <div class="qr-row-label">Tablas e imágenes</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📊 Combinar celdas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Solo para encabezados de grupo — nunca para datos que vas a ordenar</span></div>
+          </div>
         </div>
-        <div class="summary-item">
-          <span class="summary-term">Error más común</span>
-          <span class="summary-def">Dejarla en "Corregir en la página" en vez de "Mover con el texto".</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Redimensionar</span>
-          <span class="summary-def">Arrastrar desde los manejadores de esquina, nunca del centro.</span>
-        </div>
-      </div>
-
-      <div class="summary-group">
-        <p class="summary-group-title">🔗 Hipervínculos</p>
-        <div class="summary-item">
-          <span class="summary-term">Externo</span>
-          <span class="summary-def">Seleccionar texto → <code>Ctrl+K</code> → pegar URL.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Interno</span>
-          <span class="summary-def">Insertar → Marcador (destino) + <code>Ctrl+K</code> → Encabezados y marcadores (enlace). Los títulos ya son marcadores automáticos.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Vs. índice automático</span>
-          <span class="summary-def">El índice lista todas las secciones desde el inicio; el hipervínculo conecta dos puntos específicos.</span>
-        </div>
-      </div>
-
-      <div class="summary-group">
-        <p class="summary-group-title">📄 Estructura de página</p>
-        <div class="summary-item">
-          <span class="summary-term">Salto de página</span>
-          <span class="summary-def"><code>Ctrl+Intro</code> — nunca Enter repetido.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Encabezado/pie/numeración</span>
-          <span class="summary-def">Insertar → Elemento de la página.</span>
-        </div>
-        <div class="summary-item">
-          <span class="summary-term">Nota al pie</span>
-          <span class="summary-def">Insertar → Elemento de la página → Nota al pie (<code>Ctrl+Alt+F</code>). No reemplaza la cita APA.</span>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🖼️ Imagen flotante</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ajustar texto → ícono de ancla → Mover con el texto (no "Corregir en la página")</span></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="qr-row">
+      <div class="qr-row-label">Navegación y estructura</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔗 Hipervínculo externo</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+K</code> (Mac <code>⌘+K</code>) sobre texto seleccionado</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔗 Hipervínculo interno</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+K</code> (Mac <code>⌘+K</code>) → pestaña Encabezados y marcadores — los títulos ya son destinos automáticos</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📄 Salto de página</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Intro</code> (Mac <code>⌘+Intro</code>) — nunca Enter repetido</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📝 Nota al pie</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — no reemplaza la cita APA</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- 09 — GLOSARIO -->
-<section class="block" id="glosario">
-  <div class="block-head">
-    <span class="block-num">09</span>
-    <h2 class="block-title">Glosario de la clase</h2>
-  </div>
-  <div class="glossary">
-    <div class="gloss-item"><span class="gloss-term">Nodo</span><p class="gloss-def">Punto de información que se conecta con otros: una sección, una tabla, una imagen anclada o un marcador.</p></div>
-    <div class="gloss-item"><span class="gloss-term">Contenedor semántico</span><p class="gloss-def">Elemento que no solo agrupa datos visualmente, sino que le da significado a su relación — una tabla bien diseñada permite cruzar filas y columnas para sacar conclusiones.</p></div>
-    <div class="gloss-item"><span class="gloss-term">Encabezado de grupo</span><p class="gloss-def">Celda combinada que abarca varias columnas o filas y actúa como título de ese bloque de datos.</p></div>
-    <div class="gloss-item"><span class="gloss-term">Imagen flotante</span><p class="gloss-def">Imagen desvinculada del flujo de texto, anclada a un párrafo o a la página. El texto fluye a sus costados con "Ajustar texto".</p></div>
-    <div class="gloss-item"><span class="gloss-term">Mover con el texto</span><p class="gloss-def">Opción de anclaje que vincula la imagen al párrafo adyacente: si el párrafo se desplaza, la imagen lo sigue. Opuesto a "Corregir en la página".</p></div>
-    <div class="gloss-item"><span class="gloss-term">Marcador</span><p class="gloss-def">Punto de anclaje invisible que puede ser destino de un hipervínculo interno. Los títulos con estilo ya funcionan como marcadores automáticos.</p></div>
-    <div class="gloss-item"><span class="gloss-term">Hipervínculo interno</span><p class="gloss-def">Enlace que apunta a una sección o marcador dentro del mismo documento, sin necesitar conexión a internet.</p></div>
-    <div class="gloss-item"><span class="gloss-term">Tabla anidada</span><p class="gloss-def">Tabla insertada dentro de una celda de otra tabla. Casi siempre hay una alternativa más simple.</p></div>
-  </div>
-</section>
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Contenedor semántico</span><p class="gloss-def">Elemento que no solo agrupa datos visualmente, sino que le da significado a su relación — una tabla bien diseñada permite cruzar filas y columnas para sacar conclusiones.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Encabezado de grupo</span><p class="gloss-def">Celda combinada que abarca varias columnas o filas y actúa como título de ese bloque de datos.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Imagen flotante</span><p class="gloss-def">Imagen desvinculada del flujo de texto, anclada a un párrafo o a la página. El texto fluye a sus costados con "Ajustar texto".</p></div>
+      <div class="gloss-item"><span class="gloss-term">Mover con el texto</span><p class="gloss-def">Opción de anclaje que vincula la imagen al párrafo adyacente: si el párrafo se desplaza, la imagen lo sigue. Opuesto a "Corregir en la página".</p></div>
+      <div class="gloss-item"><span class="gloss-term">Marcador</span><p class="gloss-def">Punto de anclaje invisible que puede ser destino de un hipervínculo interno. Se crea a mano (Insertar → Marcador) para un punto puntual — distinto de los títulos con estilo, que ya funcionan como marcadores automáticos.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Hipervínculo interno</span><p class="gloss-def">Enlace que apunta a una sección o marcador dentro del mismo documento, sin necesitar conexión a internet.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Tabla anidada</span><p class="gloss-def">Tabla insertada dentro de una celda de otra tabla. Casi siempre hay una alternativa más simple.</p></div>
+    </div>
 
-<!-- 10 — FUENTES -->
-<section class="block" id="fuentes">
-  <div class="block-head">
-    <span class="block-num">10</span>
-    <h2 class="block-title">Fuentes</h2>
-  </div>
-  <div class="prose">
+    <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
       <li>Google. <em>Add and edit tables</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/1696711</code></li>
       <li>Google. <em>Work with links & bookmarks</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/45893</code></li>

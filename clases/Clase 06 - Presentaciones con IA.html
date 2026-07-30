@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 06 - Presentaciones con IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Presentaciones (Clase 06) = amber-clase */
+  :root{
+    --acento:var(--amber-clase);
+    --acento-deep:var(--amber-clase-deep);
+    --acento-tint:var(--amber-clase-tint);
+    --acento-soft:var(--amber-clase-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 06 · Presentaciones";
+      color:#976a0f;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="06">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 06 · Presentaciones</span>
+    <h1 class="cover-title">Presentaciones con IA: de borrador a entrega</h1>
+    <p class="cover-subtitle">Del Trabajo Integrador a una presentación lista para exponer, con o sin conexión</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Las Clases 04 y 05 armaron el Trabajo Integrador como documento — estructurado, citado, maquetado para imprimir. Hoy ese mismo contenido se convierte en presentación: generás un borrador de diapositivas con IA, le aplicás la mecánica de Google Slides (tema, transiciones, animaciones) y lo exportás dos veces para no depender de la conexión el día de exponer.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#buena-presentacion"><span class="toc-num">01</span><span class="toc-text">Antes de empezar a trabajar: cómo dar una buena presentación</span></a></li>
+    <li><a href="#traduccion"><span class="toc-num">02</span><span class="toc-text">De documento a presentación: qué se traduce y qué no</span></a></li>
+    <li><a href="#borrador"><span class="toc-num">03</span><span class="toc-text">Generar el borrador con IA</span></a></li>
+    <li><a href="#mecanica"><span class="toc-num">04</span><span class="toc-text">La mecánica de Google Slides</span></a></li>
+    <li><a href="#exportar"><span class="toc-num">05</span><span class="toc-text">Exportar para exponer sin depender de internet</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">06</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — ANTES DE EMPEZAR A TRABAJAR: CÓMO DAR UNA BUENA PRESENTACIÓN -->
+<section class="block" id="buena-presentacion">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Antes de empezar a trabajar: cómo dar una buena presentación</h2>
+  </div>
+  <div class="prose">
+    <p><em>Ideas adaptadas de un artículo de Sergio Uribe (2013) sobre malas presentaciones — acá reformuladas en positivo, agrupadas por el problema real que resuelven.</em></p>
+
+    <p>Antes de tocar una diapositiva, cinco prácticas que definen si una presentación funciona o no. Todas resuelven el mismo problema de fondo: mantener la atención del público.</p>
+
+    <h3>Legibilidad ante todo</h3>
+    <p>Elegí una tipografía clara — nunca decorativa ni "divertida" — y un contraste fuerte entre texto y fondo: negro sobre blanco, blanco sobre un color oscuro.</p>
+    <p><em>Qué NO hacer, y por qué:</em> texto rojo sobre fondo azul, o Comic Sans en una presentación formal. No es solo una cuestión de gusto — esa combinación de colores es difícil de resolver para el ojo a distancia, y una tipografía informal le resta seriedad al contenido antes de que digas una palabra. El público deja de leer a los pocos segundos.</p>
+
+    <h3>Una idea por diapositiva</h3>
+    <p>Cada diapositiva sostiene una sola idea, no un párrafo ni diez viñetas. Si necesitás leerla palabra por palabra para exponerla, ya perdiste: elegí 3 a 5 palabras clave y decí el resto con tu voz.</p>
+    <p><em>Qué NO hacer, y por qué:</em> llenar la diapositiva de viñetas y leerlas todas en voz alta. El público lee más rápido de lo que vos hablás — cuando terminás la primera línea, ya leyeron las diez, y ahí dejan de escucharte.</p>
+
+    <h3>Mirá al público, no la pantalla</h3>
+    <p>Tu cuerpo y tu mirada apuntan a las personas que te escuchan, no a la diapositiva. Si necesitás recordar el orden, usá las notas del orador. El puntero láser, si lo usás, se enciende solo para señalar algo puntual.</p>
+    <p><em>Qué NO hacer, y por qué:</em> leer la pantalla de principio a fin sin levantar la vista, con el láser prendido todo el tiempo sin señalar nada. El público nota enseguida cuándo el expositor perdió la conexión con la sala.</p>
+
+    <h3>Respetá el tiempo asignado</h3>
+    <p>Un tiempo de exposición es un límite, no una sugerencia — practicá antes con cronómetro y ajustá el contenido para entrar cómodo. El celular queda en silencio y fuera de la mano durante toda la exposición.</p>
+    <p><em>Qué NO hacer, y por qué:</em> extenderte todo lo que puedas "porque hay más para contar", o interrumpir tu propia exposición para atender el celular. Los dos casos le dicen al público que su tiempo importa menos que el tuyo.</p>
+
+    <h3>Citá lo que corresponda</h3>
+    <p>Toda afirmación que tomaste de una fuente lleva su crédito en pantalla, aunque sea abreviado — el mismo criterio de la cita APA que ya usás en un documento.</p>
+    <p><em>Qué NO hacer, y por qué:</em> presentar datos o ideas ajenas como propias, sin decir de dónde salen. Es el mismo problema de fondo que el plagio en un texto escrito — solo que en una presentación oral nadie te lo puede señalar en el momento.</p>
+
+    <div class="callout" data-type="closing">
+      <p>Las cinco resuelven, en el fondo, un solo problema: el aburrimiento. El público tolera el ridículo, hasta le cae simpático — lo que no perdona es aburrirse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — DE DOCUMENTO A PRESENTACIÓN -->
+<section class="block" id="traduccion">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">De documento a presentación: qué se traduce y qué no</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>¿Por qué copiar y pegar párrafos enteros del Word a Slides es el error más común en una primera presentación?</p>
+    </div>
+
+    <p>Un documento se lee: quien lo tiene enfrente controla el ritmo, puede releer una frase, volver atrás. Una presentación se ve y se escucha: el público tiene unos segundos por diapositiva, al ritmo que vos marcás con la voz. Si una diapositiva tiene un párrafo entero, nadie la lee — y mientras tanto, dejan de escucharte a vos.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Cada diapositiva necesita <strong>una</strong> idea, no un párrafo. Si no podés resumir la diapositiva en una frase corta, son dos diapositivas, no una.</p>
+    </div>
+
+    <h3>Del documento a la diapositiva</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>En el documento (Clase 04-05)</th><th>En la presentación</th></tr></thead>
+        <tbody>
+          <tr><td>Título 1 / Título 2</td><td>Título de diapositiva</td></tr>
+          <tr><td>Párrafo de desarrollo</td><td>3 a 5 palabras clave, o una frase corta</td></tr>
+          <tr><td>Tabla completa</td><td>Versión resumida, o un gráfico simple</td></tr>
+          <tr><td>Cita APA completa (Apellido, año)</td><td>Mención breve del autor en pantalla — la cita completa queda en el documento, no en la diapositiva</td></tr>
+          <tr><td>Imagen anclada dentro del texto</td><td>Imagen a pantalla completa o al costado, sin texto que compita con ella</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — GENERAR EL BORRADOR CON IA -->
+<section class="block" id="borrador">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Generar el borrador con IA</h2>
+  </div>
+  <div class="prose">
+    <p>Vas a usar una IA para pasar de documento a estructura de diapositivas — no para que la IA "haga la presentación entera", sino para no arrancar de la hoja en blanco. En esta clase trabajamos solo con herramientas gratuitas.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Herramienta</th><th>Costo</th><th>Cómo se usa acá</th></tr></thead>
+        <tbody>
+          <tr><td>Gamma (<code>gamma.app</code>)</td><td>Gratis, con créditos limitados por mes. Plan pago con más créditos y funciones — no hace falta para esta actividad.</td><td>Generá un mazo completo pegando el texto o un outline. Exporta directo a <code>.pptx</code>, PDF o <strong>Google Slides</strong> con un clic — elegí Google Slides si querés seguir editando ahí con la mecánica de la próxima sección.</td></tr>
+          <tr><td>NotebookLM Studio</td><td>Gratis con cuenta Google (ver Clase 03).</td><td>Si ya cargaste tu Trabajo Integrador como fuente, pedile una guía de estudio o un resumen por puntos — sirve como esquema de partida.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Sobre Gemini en Slides</p>
+      <p>El asistente de Gemini integrado en Presentaciones de Google (el panel lateral que arma diapositivas con <code>@</code> + tu documento) requiere un plan pago — Google One AI Premium o un Workspace con Gemini incluido. No es gratuito por defecto, así que no es la opción de esta clase. Si tu cuenta ya lo tiene activado, podés usarlo igual, pero no es necesario.</p>
+    </div>
+
+    <p style="font-style:italic;color:var(--muted);font-size:.85em;border:1px dashed var(--line-strong);padding:8px 12px;border-radius:6px;">🖼️ Falta imagen: "botón de exportar de Gamma con las opciones PDF, PowerPoint y Google Slides visibles"</p>
+
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar — otras herramientas</p>
+      <p>Gamma y NotebookLM no son las únicas. Buscá y probá al menos una más: Plus AI (complemento gratuito con límites para Google Slides), Beautiful.ai, Slidesgo AI o Canva Magic Studio son puntos de partida — seguro encontrás otras. Compará qué tan bien arma el esquema inicial y qué tan gratuita es en la práctica.</p>
+    </div>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📙 Paso a paso — Prompt para el esquema (RTCFL adaptado)</p>
+      <ol>
+        <li><strong>Rol:</strong> "Actuá como diseñador de presentaciones académicas."</li>
+        <li><strong>Tarea:</strong> "Convertí este documento en un esquema de 8 a 10 diapositivas."</li>
+        <li><strong>Contexto:</strong> pegá el texto de tu Trabajo Integrador (o el link, si la herramienta lo permite).</li>
+        <li><strong>Formato:</strong> "Un título + máximo 3 bullets de hasta 5 palabras por diapositiva."</li>
+        <li><strong>Límites:</strong> "No más de 10 diapositivas. No inventes datos o conclusiones que no estén en el texto."</li>
+      </ol>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave: prompt pobre vs. prompt con RTCFL</p>
+      <p>Prompt pobre: <em>"Haceme una presentación sobre mi tema."</em> — la IA no sabe el tono, el largo ni qué evitar, así que inventa todo eso por vos. Prompt con RTCFL: <em>"Actuá como diseñador de presentaciones académicas. Convertí este documento en un esquema de 8 a 10 diapositivas, un título + máximo 3 bullets de hasta 5 palabras cada una. No inventes datos que no estén en el texto: [pegás el documento]."</em> — mismo pedido, pero con rol, límites y formato explícitos. El resultado necesita mucha menos edición manual después.</p>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Advertencia</p>
+      <p>La IA no sabe qué es visualmente importante para vos — no sabe qué imagen tenés, ni cuánto tiempo vas a hablar de cada punto. Revisá diapositiva por diapositiva y editá: el esquema generado es un punto de partida, no el resultado final.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Generar el esquema</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Abrí tu Trabajo Integrador.</li>
+          <li>Elegí una herramienta gratuita: Gamma, NotebookLM, o alguna de las que investigaste en "Para explorar".</li>
+          <li>Armá el prompt con RTCFL adaptado, como en el paso a paso de arriba.</li>
+          <li>Generá un esquema de 8 a 10 diapositivas.</li>
+          <li>Revisá cada diapositiva contra tu documento: ¿la idea central está bien representada? ¿sobra texto?</li>
+          <li>Si tu herramienta no genera directo en Google Slides, exportala ahí (Gamma lo hace con un clic). Nombrá el resultado <code>Presentación Integradora - V01</code> y movelo a la subcarpeta "Clase 06".</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Tenés una presentación de 8 a 10 diapositivas basada en tu Trabajo Integrador, revisada y corregida a mano.</p>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p><strong>Generación de presentaciones asistida por IA</strong>: usar una herramienta generativa para pasar de documento a esquema de diapositivas, y después revisar y editar el resultado con criterio propio — no aceptarlo tal cual sale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — LA MECÁNICA DE GOOGLE SLIDES -->
+<section class="block" id="mecanica">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">La mecánica de Google Slides</h2>
+  </div>
+  <div class="prose">
+    <p>Con el esquema ya armado, ahora el diseño manual: tema, diapositivas, transiciones y animaciones.</p>
+
+    <h3>Tema y diseño</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Acción</th><th>Cómo</th></tr></thead>
+        <tbody>
+          <tr><td>Cambiar el tema</td><td>Diapositiva → Cambiar tema. Se puede cambiar en cualquier momento, no solo al principio.</td></tr>
+          <tr><td>Insertar diapositiva</td><td>Ícono <strong>+</strong>, eligiendo un diseño o diapositiva en blanco. El diseño se puede recambiar después con Diapositiva → Aplicar diseño.</td></tr>
+          <tr><td>Duplicar / eliminar</td><td>Clic derecho sobre la miniatura → Duplicar diapositiva / Eliminar diapositiva.</td></tr>
+          <tr><td>Insertar elementos</td><td>Insertar → cuadro de texto, imagen, formas, líneas — para cuando ningún diseño predefinido alcanza.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Transiciones y animaciones</h3>
+    <p>Una <strong>transición</strong> es el efecto de cambio entre dos diapositivas. Una <strong>animación</strong> es el efecto con el que aparece un objeto dentro de la misma diapositiva, con un disparador: al hacer clic, después de la anterior, o con la anterior.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Usar una transición distinta en cada diapositiva, o animar cada bullet con un efecto diferente, es la marca visual de una presentación poco profesional. Elegí una transición y aplicala a todas; elegí una lógica de animación y repetila.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Cuanto más formal la presentación, más sobria la transición. El orden de aparición de las animaciones dentro de una diapositiva se puede reordenar arrastrando en el panel lateral.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Aplicar diseño y movimiento</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En tu <code>Presentación Integradora - V01</code>, elegí un tema consistente con el contenido: Diapositiva → Cambiar tema.</li>
+          <li>Aplicá la misma transición a todas las diapositivas.</li>
+          <li>En al menos 2 diapositivas, agregále una animación de aparición a un elemento (texto o imagen), con disparador "Al hacer clic".</li>
+          <li>Insertá al menos 1 imagen relevante — podés reusar la del Trabajo Integrador.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">La presentación tiene un tema consistente, una transición uniforme en todas las diapositivas, al menos 2 animaciones con disparador definido, y al menos 1 imagen insertada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — EXPORTAR -->
+<section class="block" id="exportar">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Exportar para exponer sin depender de internet</h2>
+  </div>
+  <div class="prose">
+    <p>Presentaciones de Google necesita conexión para funcionar. Si el día de la exposición falla el wifi del aula o el proyector no tiene navegador, no podés exponer desde <code>slides.google.com</code>.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Formato</th><th>Para qué sirve</th></tr></thead>
+        <tbody>
+          <tr><td>PowerPoint (<code>.pptx</code>)</td><td>Formato recomendado para exponer sin conexión, desde PowerPoint o el visor que tenga la máquina del aula.</td></tr>
+          <tr><td>PDF</td><td>Respaldo si <code>.pptx</code> falla o no hay PowerPoint instalado — pierde animaciones y transiciones, pero el contenido queda intacto.</td></tr>
+          <tr><td>JPEG / PNG / SVG</td><td>Exporta una sola diapositiva como imagen — útil para compartir una diapositiva suelta, no para exponer el mazo completo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Se descargan desde Archivo → Descargar → elegís el formato.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Nunca llegues a exponer con un solo formato. <code>.pptx</code> + PDF es el mínimo — si uno falla, tenés el otro.</p>
+    </div>
+
+    <h3>.ppt, .pptx, .pps, .ppsx: qué significa cada extensión</h3>
+    <p>Las cuatro extensiones de PowerPoint no son intercambiables por capricho — cada una define el formato del archivo y, en dos casos, también cómo se abre.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Extensión</th><th>Qué es</th></tr></thead>
+        <tbody>
+          <tr><td><code>.ppt</code></td><td>Formato antiguo de PowerPoint (97-2003), binario. En desuso — si alguna vez heredás uno, convertilo a <code>.pptx</code>.</td></tr>
+          <tr><td><code>.pptx</code></td><td>Formato actual (desde PowerPoint 2007), basado en XML. Es el que descargás desde Slides y el que vas a usar siempre. Abre en <strong>modo edición</strong>.</td></tr>
+          <tr><td><code>.pps</code></td><td>Versión "show" del formato viejo: al hacer doble clic, arranca directo en pantalla completa, en modo presentación, no en modo edición.</td></tr>
+          <tr><td><code>.ppsx</code></td><td>Lo mismo que <code>.pps</code>, pero en formato XML actual.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Google Slides descarga siempre en <code>.pptx</code> (modo edición). Si preferís que el archivo arranque directo en modo presentación al abrirlo en la máquina del aula, abrí el <code>.pptx</code> en PowerPoint y guardalo también como <code>.ppsx</code> (Archivo → Guardar como → tipo "Presentación de PowerPoint").</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Exportar con respaldo</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Archivo → Descargar → Microsoft PowerPoint (<code>.pptx</code>). Guardalo en la subcarpeta "Clase 06".</li>
+          <li>Archivo → Descargar → Documento PDF (<code>.pdf</code>). Mismo lugar.</li>
+          <li>Abrí el <code>.pptx</code> descargado y confirmá que se ve razonablemente bien — las animaciones pueden no ser 100% idénticas a Slides, y es normal.</li>
+          <li>Subí a la tarea de Moodle de la Clase 06: el link de tu Google Slides compartido, el archivo <code>.pptx</code> y el PDF.</li>
+        </ol>
+      </div>
+      <p class="activity-criteria">Tenés los tres archivos (Slides compartido, <code>.pptx</code>, PDF) y verificaste que el <code>.pptx</code> abre correctamente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — RESUMEN DE LA CLASE -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>El Trabajo Integrador que armaste como documento hoy se convirtió en una presentación: generaste el borrador con IA, lo revisaste y corregiste a mano, le diste una estética consistente con tema y transiciones, y lo exportaste dos veces para no depender de la conexión del día de exponer.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-1" aria-label="Marcar como hecho"></td><td><label for="chk-06-1">La presentación se llama <code>Presentación Integradora - V01</code> y está en la subcarpeta "Clase 06".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-2" aria-label="Marcar como hecho"></td><td><label for="chk-06-2">Tiene entre 8 y 10 diapositivas, generadas con IA a partir del Trabajo Integrador y revisadas a mano.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-3" aria-label="Marcar como hecho"></td><td><label for="chk-06-3">El tema es consistente en todas las diapositivas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-4" aria-label="Marcar como hecho"></td><td><label for="chk-06-4">La transición es la misma en todas las diapositivas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-5" aria-label="Marcar como hecho"></td><td><label for="chk-06-5">Hay al menos 2 animaciones con disparador definido.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-6" aria-label="Marcar como hecho"></td><td><label for="chk-06-6">Hay al menos 1 imagen insertada.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-7" aria-label="Marcar como hecho"></td><td><label for="chk-06-7">Se descargó en <code>.pptx</code> y en PDF, ambos en la subcarpeta "Clase 06".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-8" aria-label="Marcar como hecho"></td><td><label for="chk-06-8">El link de Slides, el <code>.pptx</code> y el PDF fueron subidos a la tarea de Moodle de la Clase 06.</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+    <div class="qr-row">
+      <div class="qr-row-label">Borrador y mecánica</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🤖 IA para el borrador (gratis)</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<code>gamma.app</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">NotebookLM Studio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini en Slides — requiere plan pago</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">▶️ Mecánica</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Una transición para todas las diapositivas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Animación con disparador "Al hacer clic"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row">
+      <div class="qr-row-label">Exportar</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📤 Formatos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Archivo → Descargar → <code>.pptx</code> + PDF — siempre los dos</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📑 Extensiones</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code>/<code>.ppsx</code> = XML actual</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.ppt</code>/<code>.pps</code> = binario viejo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Las "pp<strong>s</strong>" abren directo en modo presentación</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Transición</span><p class="gloss-def">Efecto de cambio entre dos diapositivas. Se aplica a todas por igual para mantener consistencia.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Animación</span><p class="gloss-def">Efecto con el que aparece un objeto dentro de una diapositiva, con un disparador (al hacer clic, después de la anterior, con la anterior).</p></div>
+      <div class="gloss-item"><span class="gloss-term">Disparador</span><p class="gloss-def">Condición que activa una animación: un clic del expositor, o automáticamente en secuencia con la anterior.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Esquema (de diapositivas)</span><p class="gloss-def">Estructura de títulos y puntos clave generada como primer borrador, antes del diseño visual.</p></div>
+      <div class="gloss-item"><span class="gloss-term">.pptx</span><p class="gloss-def">Formato de PowerPoint moderno (desde Office 2007), XML. El que descarga Google Slides. Abre en modo edición.</p></div>
+      <div class="gloss-item"><span class="gloss-term">.pps / .ppsx</span><p class="gloss-def">Versión "show" de <code>.ppt</code>/<code>.pptx</code>: al abrirse arranca directo en modo presentación, no en modo edición.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. <em>Create, view, or download a file</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/49114</code></li>
+      <li>Google. <em>Add or change animations and transitions</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/1689475</code></li>
+      <li>Google. <em>Use a template or change the theme, background or layout in Google Slides</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/1705254</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -96,14 +96,15 @@
         <tbody>
           <tr><td>Nombre del documento</td><td>Esquina superior izquierda. Hacé clic para renombrarlo. Obligatorio antes de compartir.</td></tr>
           <tr><td>Menú de estilos</td><td>Desplegable "Texto normal" en la barra de herramientas. Es el centro de esta clase.</td></tr>
-          <tr><td>Panel de navegación</td><td>Ver → Expandir barra lateral. Muestra la jerarquía de títulos del documento.</td></tr>
+          <tr><td>Panel de navegación</td><td>Ver → Mostrar esquema del documento. Muestra la jerarquía de títulos del documento.</td></tr>
           <tr><td>Autoguardado</td><td>Docs guarda cada pocos segundos. Estado en la barra superior: "Guardado en Drive".</td></tr>
           <tr><td>Botón Compartir</td><td>Esquina superior derecha. Define quién puede ver, comentar o editar el documento.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="font-style:italic;color:var(--muted);font-size:.85em;border:1px dashed var(--line-strong);padding:8px 12px;border-radius:6px;">🖼️ Falta imagen: "barra de herramientas de Google Docs con el desplegable de estilos abierto, mostrando Título 1, Título 2 y Texto normal"</p>
+    <img class="screenshot" src="../img/02-01-captura-menu-estilos.png" alt="Desplegable de estilos de Google Docs abierto, mostrando Texto normal, Título, Subtítulo, Encabezado 1, Encabezado 2 y Encabezado 3">
+    <p class="screenshot-caption">El desplegable de estilos, en la barra de herramientas: acá elegís Encabezado 1, Encabezado 2 o Texto normal para cada parte del documento.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -116,21 +117,21 @@
         <h3>Crear el lienzo</h3>
       </div>
       <div class="prose">
+        <p>No arrancás de una hoja en blanco: el texto que generaste con IA en la Clase 01 es el punto de partida de hoy.</p>
         <ol>
-          <li>Escribí <code>docs.new</code> en la barra del navegador. Se abre un documento en blanco.</li>
-          <li>Hacé clic en "Documento sin título" (esquina superior izquierda) y poné el nombre: <code>Documento Vivo - V01</code></li>
-          <li>Archivo → Mover a → navegá hasta tu carpeta "Informática - UNQ" → subcarpeta "Clase 02" → Mover acá.</li>
-          <li>Activá el panel de navegación: Ver → Expandir barra lateral de pestañas y esquemas.</li>
-          <li>Observá que está vacío — todavía no hay estructura.</li>
-          <li>Escribí una sola línea de texto. Observá que Docs guarda automáticamente.</li>
-          <li>Aplicá el estilo Título 1 a esa línea: seleccionala → desplegable de estilos → Título 1.</li>
+          <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 01" → abrí <code>Texto IA - V01</code>.</li>
+          <li>Archivo → Crear una copia. Nombrá la copia: <code>Documento Vivo - V01</code></li>
+          <li>Archivo → Mover a → navegá hasta tu carpeta "Informática - UNQ" → subcarpeta "Clase 02" → Mover acá. (Si la subcarpeta "Clase 02" todavía no existe, creala primero.)</li>
+          <li>Activá el panel de navegación: Ver → Mostrar esquema del documento.</li>
+          <li>Observá que está vacío — el texto que pegaste en la Clase 01 todavía no tiene estructura, aunque ya tenga contenido.</li>
+          <li>Poné el cursor en la primera línea del texto y aplicále el estilo Encabezado 1: seleccionala → desplegable de estilos → Encabezado 1.</li>
           <li>Observá qué pasa en el panel de navegación.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El documento se llama <code>Documento Vivo - V01</code>, está en la subcarpeta "Clase 02" y el panel de navegación muestra al menos una entrada.</p>
+      <p class="activity-criteria">El documento se llama <code>Documento Vivo - V01</code>, está en la subcarpeta "Clase 02", tiene el texto de la Clase 01 adentro y el panel de navegación muestra al menos una entrada.</p>
     </div>
 
-    <p>Ya tenés el archivo creado, nombrado y en la carpeta correcta. El siguiente paso es generar el contenido — con una herramienta que ya usaste en la Clase 01.</p>
+    <p>Ya tenés el archivo creado a partir de tu trabajo previo, nombrado y en la carpeta correcta. El siguiente paso es ampliar ese contenido — con una herramienta que ya usaste en la Clase 01.</p>
   </div>
 </section>
 
@@ -141,17 +142,17 @@
     <h2 class="block-title">Generar contenido con IA</h2>
   </div>
   <div class="prose">
-    <p>Tenés el archivo listo. Ahora necesitás contenido. Lo vas a generar con un LLM — el que prefieras — usando la misma fórmula RTCFL que armaste la clase pasada. La diferencia entre las IA disponibles no es de calidad genérica: es de enfoque, origen y, en algunos casos, de qué temas pueden responder con libertad.</p>
+    <p>Tenés el archivo listo, pero el texto que trajiste de la Clase 01 es corto — una respuesta de prueba, no un documento. Hoy lo ampliás con un LLM — el que prefieras — usando la misma fórmula RTCFL que armaste la clase pasada, esta vez para pedir una versión más larga y estructurada sobre el mismo tema. La diferencia entre las IA disponibles no es de calidad genérica: es de enfoque, origen y, en algunos casos, de qué temas pueden responder con libertad.</p>
 
     <h3>LLMs occidentales</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
         <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Costo</th></tr></thead>
         <tbody>
-          <tr><td><strong>ChatGPT</strong><br><code>chatgpt.com</code></td><td>Redacción fluida, estructurar textos, explicaciones largas.</td><td>Gratis con cuenta, con límites de uso. Existe un plan pago (ChatGPT Plus) con más funciones y menos límites — sin descuento estudiantil estable confirmado, revisá promociones vigentes en <code>chatgpt.com</code>.</td></tr>
-          <tr><td><strong>Gemini</strong><br><code>gemini.google.com</code></td><td>Integración directa con Drive y Docs.</td><td>Gratis con cualquier cuenta Google. El plan pago (Google One AI Premium / Gemini Advanced) suma modelos más potentes y más cuota. Google ofrece de tanto en tanto un plan estudiantil con descuento verificando el mail de la universidad — confirmá en <code>one.google.com</code> si está vigente.</td></tr>
-          <tr><td><strong>Copilot</strong><br><code>copilot.microsoft.com</code></td><td>Integrado con Office (Word, Teams).</td><td>Gratis con cuenta Microsoft. Copilot Pro es el plan pago, con más funciones dentro de Office. Si tenés Microsoft 365 institucional de la UVQ, ya incluye acceso — no hace falta pagar nada aparte.</td></tr>
-          <tr><td><strong>Perplexity</strong><br><code>perplexity.ai</code></td><td>Cita fuentes junto a cada afirmación.</td><td>Gratis con límites diarios de búsqueda. Perplexity Pro es el plan pago, con más búsquedas y el modo Académico. Perplexity suele regalar Pro por un tiempo a estudiantes que verifican un mail <code>.edu</code> — confirmá en <code>perplexity.ai/es/pro</code> si la promoción sigue activa.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-chatgpt.png" alt=""><strong>ChatGPT</strong><br><code>chatgpt.com</code></td><td>Redacción fluida, estructurar textos, explicaciones largas.</td><td>Gratis con cuenta, con límites de uso. Existe un plan pago (ChatGPT Plus) con más funciones y menos límites — sin descuento estudiantil estable confirmado, revisá promociones vigentes en <code>chatgpt.com</code>.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-gemini.png" alt=""><strong>Gemini</strong><br><code>gemini.google.com</code></td><td>Integración directa con Drive y Docs.</td><td>Gratis con cualquier cuenta Google. El plan pago (Google One AI Premium / Gemini Advanced) suma modelos más potentes y más cuota. Google ofrece de tanto en tanto un plan estudiantil con descuento verificando el mail de la universidad — confirmá en <code>one.google.com</code> si está vigente.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-copilot.png" alt=""><strong>Copilot</strong><br><code>copilot.microsoft.com</code></td><td>Integrado con Office (Word, Teams).</td><td>Gratis con cuenta Microsoft, con límites. Copilot Pro (personal) y Copilot para Microsoft 365 (institucional) son add-ons pagos que suman más funciones dentro de Office — no vienen incluidos automáticamente por tener cuenta <code>@uvq.edu.ar</code>. Confirmá en tu cuenta si la universidad lo activó antes de asumir que lo tenés.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-perplexity.png" alt=""><strong>Perplexity</strong><br><code>perplexity.ai</code></td><td>Cita fuentes junto a cada afirmación.</td><td>Gratis con límites diarios de búsqueda. Perplexity Pro es el plan pago, con más búsquedas y el modo Académico. Perplexity suele regalar Pro por un tiempo a estudiantes que verifican un mail <code>.edu</code> — confirmá en <code>perplexity.ai/es/pro</code> si la promoción sigue activa.</td></tr>
         </tbody>
       </table>
     </div>
@@ -163,9 +164,9 @@
       <table class="tbl-wide">
         <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Costo</th></tr></thead>
         <tbody>
-          <tr><td><strong>DeepSeek</strong><br><code>chat.deepseek.com</code></td><td>Razonamiento técnico, matemática, código. Muy potente. Desarrollado en China, sujeto a restricciones del gobierno chino.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
-          <tr><td><strong>Qwen (Alibaba)</strong><br><code>chat.qwen.ai</code></td><td>Textos largos, análisis de documentos. De Alibaba Cloud, mismo marco legal que DeepSeek.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
-          <tr><td><strong>Kimi (Moonshot)</strong><br><code>kimi.com</code></td><td>Procesamiento de documentos y contextos largos. Desarrollado por Moonshot AI.</td><td>Gratis por chat web, con límites de uso diario.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-deepseek.png" alt=""><strong>DeepSeek</strong><br><code>chat.deepseek.com</code></td><td>Razonamiento técnico, matemática, código. Muy potente. Desarrollado en China, sujeto a restricciones del gobierno chino.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-qwen.png" alt=""><strong>Qwen (Alibaba)</strong><br><code>chat.qwen.ai</code></td><td>Textos largos, análisis de documentos. De Alibaba Cloud, mismo marco legal que DeepSeek.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/icono-kimi.png" alt=""><strong>Kimi (Moonshot)</strong><br><code>kimi.com</code></td><td>Procesamiento de documentos y contextos largos. Desarrollado por Moonshot AI.</td><td>Gratis por chat web, con límites de uso diario.</td></tr>
         </tbody>
       </table>
     </div>
@@ -197,14 +198,14 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Abrí el LLM que prefieras en otra pestaña del navegador.</li>
-          <li>Construí el prompt usando RTCFL: reemplazá [tu tema] por algo concreto de tu carrera.</li>
-          <li>Copiá todo el texto que te devolvió el LLM.</li>
+          <li>Abrí el LLM que usaste en la Clase 01 (o el que prefieras) en otra pestaña del navegador.</li>
+          <li>Construí el prompt usando RTCFL, sobre el mismo tema de la Clase 01: pedile una versión ampliada, con introducción y tres secciones con subtítulos.</li>
+          <li>Copiá todo el texto nuevo que te devolvió el LLM.</li>
           <li>Todavía no lo pegues en Docs — primero leé el próximo bloque.</li>
           <li>Verificá al menos una afirmación del texto con CRAAP o una búsqueda en Google Scholar.</li>
         </ol>
       </div>
-      <p class="activity-criteria">Tenés el texto generado copiado en el portapapeles y verificaste al menos una afirmación.</p>
+      <p class="activity-criteria">Tenés el texto nuevo copiado en el portapapeles y verificaste al menos una afirmación.</p>
     </div>
 
     <div class="callout" data-type="linkedin">
@@ -261,7 +262,7 @@
       <div class="prose">
         <ol>
           <li>Volvé a la pestaña de Docs. El documento se llama <code>Documento Vivo - V01</code> y está en la subcarpeta "Clase 02".</li>
-          <li>Borrá la línea de prueba que escribiste en la Actividad 1.</li>
+          <li>Borrá el texto corto de la Clase 01 que ya está en el documento.</li>
           <li>Posicioná el cursor al inicio del documento.</li>
           <li>Pegá con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>) — NO con Ctrl+V. El texto aparece sin formato extraño.</li>
           <li>Compará: probá deshacer (<code>Ctrl+Z</code>, Mac: <code>⌘+Z</code>), pegá con Ctrl+V, observá la diferencia. Luego deshacé y usá Ctrl+Shift+V.</li>
@@ -283,7 +284,7 @@
   <div class="prose">
     <p>Ya tenés el texto limpio en Docs. Ahora viene el núcleo de esta clase. Un estilo es una combinación de fuente, tamaño, color y espaciado que se aplica de una vez. No es decoración — es la diferencia entre un documento que parece estructurado y uno que está estructurado.</p>
     <p>Cuando formateás un título a mano — negrita, tamaño 18, centrado — el programa ve caracteres con ropa diferente. No sabe que eso es un título. No puede incluirlo en un índice, no puede resumir la sección, no puede ayudarte a navegar el documento.</p>
-    <p>Cuando aplicás el estilo "Título 1", el programa sabe que ese texto es el encabezado principal. Puede generar el índice automáticamente, puede actualizar el diseño de todos los títulos con un solo clic, puede darle estructura al documento.</p>
+    <p>Cuando aplicás el estilo "Encabezado 1", el programa sabe que ese texto es el encabezado principal. Puede generar el índice automáticamente, puede actualizar el diseño de todos los títulos con un solo clic, puede darle estructura al documento.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -296,9 +297,9 @@
         <thead><tr><th>Estilo</th><th>Para qué</th><th>Cómo aplicarlo</th><th>Atajo</th></tr></thead>
         <tbody>
           <tr><td>Título del documento</td><td>El nombre principal del trabajo.</td><td>Desplegable → Título</td><td>—</td></tr>
-          <tr><td>Título 1</td><td>Secciones principales.</td><td>Seleccioná → desplegable → Título 1</td><td><code>Ctrl+Alt+1</code> (Mac: <code>⌘+Opción+1</code>)</td></tr>
-          <tr><td>Título 2</td><td>Subsecciones.</td><td>Seleccioná → desplegable → Título 2</td><td><code>Ctrl+Alt+2</code> (Mac: <code>⌘+Opción+2</code>)</td></tr>
-          <tr><td>Título 3</td><td>Sub-subsecciones (si las necesitás).</td><td>Seleccioná → desplegable → Título 3</td><td><code>Ctrl+Alt+3</code> (Mac: <code>⌘+Opción+3</code>)</td></tr>
+          <tr><td>Encabezado 1</td><td>Secciones principales.</td><td>Seleccioná → desplegable → Encabezado 1</td><td><code>Ctrl+Alt+1</code> (Mac: <code>⌘+Opción+1</code>)</td></tr>
+          <tr><td>Encabezado 2</td><td>Subsecciones.</td><td>Seleccioná → desplegable → Encabezado 2</td><td><code>Ctrl+Alt+2</code> (Mac: <code>⌘+Opción+2</code>)</td></tr>
+          <tr><td>Encabezado 3</td><td>Sub-subsecciones (si las necesitás).</td><td>Seleccioná → desplegable → Encabezado 3</td><td><code>Ctrl+Alt+3</code> (Mac: <code>⌘+Opción+3</code>)</td></tr>
           <tr><td>Texto normal</td><td>Todo el cuerpo del documento.</td><td>Seleccioná → desplegable → Texto normal</td><td><code>Ctrl+Alt+0</code> (Mac: <code>⌘+Opción+0</code>)</td></tr>
         </tbody>
       </table>
@@ -323,8 +324,8 @@
         <ol>
           <li>Identificá en el texto: ¿cuál es el título del documento? ¿Cuáles son las secciones principales? ¿Cuáles las subsecciones?</li>
           <li>Aplicá Título del documento al nombre del trabajo.</li>
-          <li>Aplicá Título 1 a cada sección principal.</li>
-          <li>Aplicá Título 2 a cada subsección (si las hay).</li>
+          <li>Aplicá Encabezado 1 a cada sección principal.</li>
+          <li>Aplicá Encabezado 2 a cada subsección (si las hay).</li>
           <li>Aplicá Texto normal a todo el cuerpo del texto.</li>
           <li>Verificá en el panel de navegación que la estructura se vea correctamente. Si está vacío, volvé al paso anterior.</li>
         </ol>
@@ -349,15 +350,18 @@
       <p class="callout-label">📙 Paso a paso — Insertar el índice</p>
       <ol>
         <li>Posicioná el cursor al inicio del documento, antes del primer título. <code>Ctrl+Home</code> te lleva directo ahí.</li>
-        <li>Insertá un salto de página: Insertar → Salto → Salto de página. El índice va en una página aparte, antes del contenido.</li>
-        <li>Posicioná el cursor en la página nueva e insertá el índice: Insertar → Elementos de la página → Índice.</li>
+        <li>Insertá un salto de página: Insertar → Saltos → Salto de página. El índice va en una página aparte, antes del contenido.</li>
+        <li>Posicioná el cursor en la página nueva e insertá el índice: Insertar → Elementos de página → Índice.</li>
         <li>Actualizalo cada vez que el documento cambia: clic en el índice → ícono de actualizar. Siempre actualizá antes de entregar.</li>
       </ol>
     </div>
 
+    <img class="screenshot" src="../img/02-02-captura-menu-insertar-indice.png" alt="Menú Insertar de Google Docs con Elementos de página desplegado, mostrando Índice, Encabezado, Pie de página, Marca de agua, Números de página y Nota a pie de página">
+    <p class="screenshot-caption">Insertar → Elementos de página: ahí vive el Índice, junto con Encabezado, Pie de página y Nota a pie de página.</p>
+
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Error frecuente: el índice aparece vacío</p>
-      <p>El índice vacío significa una sola cosa: los estilos no se aplicaron. Volvé a la sección anterior, verificá que cada título tenga el estilo correcto ("Título 1", no negrita + grande), y actualizá.</p>
+      <p>El índice vacío significa una sola cosa: los estilos no se aplicaron. Volvé a la sección anterior, verificá que cada título tenga el estilo correcto ("Encabezado 1", no negrita + grande), y actualizá.</p>
     </div>
 
     <div class="activity">
@@ -368,8 +372,8 @@
       <div class="prose">
         <ol>
           <li>Posicioná el cursor al inicio del documento (<code>Ctrl+Home</code>).</li>
-          <li>Insertar → Salto → Salto de página.</li>
-          <li>Con el cursor en la página nueva: Insertar → Elementos de la página → Índice.</li>
+          <li>Insertar → Saltos → Salto de página.</li>
+          <li>Con el cursor en la página nueva: Insertar → Elementos de página → Índice.</li>
           <li>Verificá que el índice tenga al menos 3 entradas con números de página.</li>
           <li>Si está vacío: volvé a la Actividad 4 y revisá que los estilos estén aplicados correctamente.</li>
         </ol>
@@ -407,6 +411,9 @@
         </tbody>
       </table>
     </div>
+
+    <img class="screenshot" src="../img/02-03-captura-insertar-comentario.png" alt="Comentario nuevo en Google Docs, con el cuadro de texto abierto sobre un fragmento seleccionado y los botones Cancelar y Comentar">
+    <p class="screenshot-caption">Al seleccionar un fragmento y usar <code>Ctrl+Alt+M</code>, se abre este cuadro: escribís la nota y confirmás con "Comentar".</p>
 
     <div class="activity">
       <div class="activity-head">
@@ -480,7 +487,7 @@
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) pegado sin formato</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) comentario</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+1/2/3/0</code> (Mac <code>⌘+Opción+1/2/3/0</code>) Título 1/2/3/Normal</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+1/2/3/0</code> (Mac <code>⌘+Opción+1/2/3/0</code>) Encabezado 1/2/3/Normal</span></div>
           </div>
         </div>
       </div>
@@ -501,7 +508,7 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">📑 Índice</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Elementos de la página → Índice</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Elementos de página → Índice</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Requiere estilos aplicados — si sale vacío, revisá los títulos</span></div>
           </div>
         </div>
@@ -515,7 +522,7 @@
       <div class="gloss-item"><span class="gloss-term">Estilo (Docs)</span><p class="gloss-def">Combinación predefinida de formato que se aplica de una vez. Sin estilos no hay índice automático ni jerarquía navegable.</p></div>
       <div class="gloss-item"><span class="gloss-term">Historial de versiones</span><p class="gloss-def">Registro automático de todos los cambios. Funciona como red de seguridad y permite nombrar versiones clave.</p></div>
       <div class="gloss-item"><span class="gloss-term">Índice automático</span><p class="gloss-def">Lista de títulos y páginas generada por Docs a partir de los estilos. Se actualiza cada vez que cambia el documento.</p></div>
-      <div class="gloss-item"><span class="gloss-term">LLM</span><p class="gloss-def">Modelo de lenguaje grande (<em>Large Language Model</em>). ChatGPT, Gemini, Copilot, Perplexity, DeepSeek, Qwen y Kimi usan estos modelos. Predicen texto: no buscan, no verifican, no razonan.</p></div>
+      <div class="gloss-item"><span class="gloss-term">LLM</span><p class="gloss-def">Modelo de lenguaje grande (<em>Large Language Model</em>): el motor que predice texto detrás de ChatGPT, Gemini, Copilot, Perplexity, DeepSeek, Qwen y Kimi. El modelo en sí no busca ni verifica — pero algunas plataformas le agregan una capa de búsqueda o de fuentes propias por encima (Perplexity, NotebookLM: ver Clase 03), que sí lo hace.</p></div>
       <div class="gloss-item"><span class="gloss-term">Modo Sugerencias</span><p class="gloss-def">Los cambios quedan pendientes de aprobación. El dueño del documento decide qué acepta.</p></div>
       <div class="gloss-item"><span class="gloss-term">Panel de navegación</span><p class="gloss-def">Panel lateral que muestra la jerarquía de títulos. Si está vacío, los estilos no se aplicaron.</p></div>
       <div class="gloss-item"><span class="gloss-term">Pegado sin formato (Ctrl+Shift+V)</span><p class="gloss-def">Pega solo el texto, sin el formato de origen. Hábito obligatorio al copiar desde cualquier LLM o página web.</p></div>

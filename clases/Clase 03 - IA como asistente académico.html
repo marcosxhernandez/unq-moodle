@@ -77,16 +77,22 @@
       <table class="tbl-wide">
         <thead><tr><th></th><th>LLM genérico (ChatGPT, Gemini)</th><th>Perplexity</th></tr></thead>
         <tbody>
-          <tr><td>¿De dónde viene la respuesta?</td><td>De su entrenamiento (datos de hace meses o años)</td><td>De una búsqueda en internet en tiempo real</td></tr>
-          <tr><td>¿Cita fuentes?</td><td>Raramente, y cuando lo hace puede inventarlas</td><td>Sí — número en el texto, link a la fuente real</td></tr>
-          <tr><td>¿Podés verificar?</td><td>No directamente</td><td>Sí — un clic lleva a la fuente original</td></tr>
-          <tr><td>Riesgo de alucinación</td><td>Alto: puede inventar datos, autores o títulos</td><td>Menor, pero no cero: siempre verificá</td></tr>
+          <tr><td>¿De dónde viene la respuesta?</td><td>De su entrenamiento (datos de hace meses o años), salvo que la búsqueda web esté activa en esa conversación</td><td>De una búsqueda en internet en tiempo real, siempre</td></tr>
+          <tr><td>¿Cita fuentes?</td><td>Depende de si buscó en la web para esa respuesta puntual — y aun con búsqueda activa, no siempre te avisa que la usó</td><td>Sí, siempre — número en el texto, link a la fuente real</td></tr>
+          <tr><td>¿Podés verificar?</td><td>Solo cuando muestra de dónde sacó el dato</td><td>Sí — un clic lleva a la fuente original</td></tr>
+          <tr><td>Riesgo de alucinación</td><td>Alto sin búsqueda activa: puede inventar datos, autores o títulos</td><td>Menor, pero no cero: siempre verificá</td></tr>
           <tr><td>Mejor para</td><td>Redactar, resumir, explicar conceptos</td><td>Buscar información con respaldo verificable</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p style="font-style:italic;color:var(--muted);font-size:.85em;border:1px dashed var(--line-strong);padding:8px 12px;border-radius:6px;">🖼️ Falta imagen: "respuesta de Perplexity con números de cita en superíndice junto al texto, y el panel de fuentes al costado"</p>
+    <img class="screenshot" src="../img/03-01-captura-perplexity-fuentes.png" alt="Respuesta de Perplexity con el panel de Fuentes desplegado al costado, mostrando cada sitio citado">
+    <p class="screenshot-caption">El panel de Fuentes, a la derecha de la respuesta: cada afirmación tiene su sitio de origen, con un clic de distancia.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave: por qué esto no es blanco o negro</p>
+      <p>ChatGPT y Gemini pueden buscar en la web y citar por su cuenta cuando detectan que la pregunta lo necesita — no es que nunca lo hagan. La diferencia real con Perplexity no es "busca / no busca", es la transparencia: Perplexity siempre te muestra si buscó y de dónde salió cada dato; un LLM genérico puede hacerlo o no según la pregunta, y no siempre queda claro cuál de las dos cosas pasó.</p>
+    </div>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -97,6 +103,9 @@
       <p class="callout-label">💡 Consejo: Perplexity + Google Scholar</p>
       <p>Google Scholar (<code>scholar.google.com</code>) es el índice de referencia universal para artículos académicos. Se usa en combinación con Perplexity: Scholar para explorar qué existe sobre tu tema y encontrar el DOI exacto de un artículo, Perplexity para obtener el resumen verificado y la cita lista para usar. Ninguno reemplaza al otro. El modo Académico de Perplexity (que restringe la búsqueda a revistas científicas) es una función de la versión Pro — con la versión gratuita también obtenés citas verificables, solo que sin ese filtro.</p>
     </div>
+
+    <img class="screenshot" src="../img/03-02-captura-perplexity-modo-academico.png" alt="Menú de Perplexity con la opción Académico visible entre Descubrir, Finanzas, CFO Personal, Salud y Patentes">
+    <p class="screenshot-caption">El modo Académico vive en este menú — restringe la búsqueda a revistas científicas, pero es una función de Perplexity Pro.</p>
 
     <h3>Prompt chaining: encadenar instrucciones</h3>
     <p>Un prompt bien construido con RTCFL ya mejora los resultados. El prompt chaining agrega un paso más: usás la respuesta de un prompt como punto de partida del siguiente. En lugar de pedirle todo a la vez, dividís la tarea en pasos.</p>
@@ -124,10 +133,10 @@
           <li>Evaluá las 3 fuentes con CRAAP. Anotá qué criterio usaste para cada una.</li>
           <li>Hacé clic en al menos 2 números de cita y verificá que la fuente exista y diga lo que Perplexity afirma.</li>
           <li>Creá un Google Doc nuevo (<code>docs.new</code>), nombralo <code>Fuentes y Citas - V01</code> y movelo a la subcarpeta "Clase 03".</li>
-          <li>Copiá las 2 fuentes verificadas con Ctrl+Shift+V. Aplicá Título 1 a la sección.</li>
+          <li>Copiá las 2 fuentes verificadas con Ctrl+Shift+V. Aplicá Encabezado 1 a la sección.</li>
         </ol>
       </div>
-      <p class="activity-criteria">Tenés 2 fuentes verificadas en tu documento, con el criterio CRAAP que aplicaste a cada una, y la sección tiene Título 1.</p>
+      <p class="activity-criteria">Tenés 2 fuentes verificadas en tu documento, con el criterio CRAAP que aplicaste a cada una, y la sección tiene Encabezado 1.</p>
     </div>
 
     <div class="callout" data-type="linkedin">
@@ -176,7 +185,7 @@
           <tr><td>Libro</td><td>Apellido, I. (Año). <em>Título en cursiva</em>. Editorial.</td><td>Castells, M. (2009). <em>Comunicación y poder</em>. Alianza.</td></tr>
           <tr><td>Artículo o página web</td><td>Apellido, I. (Año, día mes). <em>Título</em>. Nombre del sitio. URL</td><td>Ministerio de Educación. (2024, 15 mar.). <em>Informe anual</em>. educacion.gob.ar/...</td></tr>
           <tr><td>Video (YouTube u otra plataforma)</td><td>Canal. (Año, día mes). <em>Título del video</em> [Video]. Plataforma. URL</td><td>UNQ. (2025, 10 jun.). <em>Inteligencia artificial en la universidad</em> [Video]. YouTube. https://...</td></tr>
-          <tr><td>Salida de IA</td><td>Empresa. (Año). <em>Nombre del modelo</em> (fecha) [LLM]. URL</td><td>OpenAI. (2025). <em>ChatGPT</em> (mayo 2025) [LLM]. https://chatgpt.com</td></tr>
+          <tr><td>Salida de IA</td><td>Empresa. (Año). <em>Nombre del modelo</em> (fecha) [Large language model]. URL</td><td>OpenAI. (2025). <em>ChatGPT</em> (mayo 2025) [Large language model]. https://chatgpt.com</td></tr>
         </tbody>
       </table>
     </div>
@@ -210,7 +219,7 @@
       <p class="callout-label">📙 Paso a paso — Insertar una nota al pie en Google Docs</p>
       <ol>
         <li>Posicioná el cursor donde querés el número de referencia.</li>
-        <li>Insertar → Elemento de la página → Nota al pie de la página (atajo: <code>Ctrl+Alt+F</code>, Mac: <code>⌘+Opción+F</code>).</li>
+        <li>Insertar → Elementos de página → Nota a pie de página (atajo: <code>Ctrl+Alt+F</code>, Mac: <code>⌘+Opción+F</code>).</li>
         <li>El cursor salta al pie de la página. Escribí el texto de la nota.</li>
       </ol>
     </div>
@@ -323,7 +332,7 @@
           <li>Generá un Resumen de Audio en formato Resumen, en español. Escuchá 2 minutos. Anotá una cosa correcta y una que te llame la atención.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El documento tiene al menos 2 ideas nuevas extraídas de NotebookLM, con cita en el texto y Título 1 aplicado.</p>
+      <p class="activity-criteria">El documento tiene al menos 2 ideas nuevas extraídas de NotebookLM, con cita en el texto y Encabezado 1 aplicado.</p>
     </div>
 
     <p>Ya usaste tres formas distintas de trabajar con IA en una sola clase: para buscar fuentes nuevas con Perplexity, para citarlas con precisión, y para interrogar tus propias fuentes sin riesgo de que la IA invente algo que no está ahí.</p>
@@ -348,7 +357,7 @@
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-3" aria-label="Marcar como hecho"></td><td><label for="chk-03-3">Cada fuente tiene su cita en el cuerpo del texto con formato (Apellido, año).</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-4" aria-label="Marcar como hecho"></td><td><label for="chk-03-4">La bibliografía al final tiene las 2 fuentes en formato APA correcto.</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-5" aria-label="Marcar como hecho"></td><td><label for="chk-03-5">El documento tiene al menos 1 nota al pie.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-6" aria-label="Marcar como hecho"></td><td><label for="chk-03-6">Las secciones tienen Título 1 aplicado (el panel de navegación no está vacío).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-6" aria-label="Marcar como hecho"></td><td><label for="chk-03-6">Las secciones tienen Encabezado 1 aplicado (el panel de navegación no está vacío).</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-7" aria-label="Marcar como hecho"></td><td><label for="chk-03-7">El historial de versiones tiene "Entrega Clase 03" nombrada.</label></td></tr>
         </tbody>
       </table>

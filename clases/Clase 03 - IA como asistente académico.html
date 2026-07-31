@@ -47,12 +47,12 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Ya sabés generar contenido con IA y estructurar un documento con estilos. Hoy sumás dos habilidades que trabajan juntas: usar Perplexity para buscar fuentes con citas verificables (en vez de un LLM genérico que puede inventarlas), y citarlas correctamente con normas APA. Cerrás la clase con NotebookLM, una IA que solo responde con los documentos que vos le diste.</p>
+  <p class="toc-intro">Ya sabés generar contenido con IA y estructurar un documento con estilos. Hoy sumás dos habilidades que trabajan juntas: usar Perplexity para buscar fuentes con citas verificables (en vez de un LLM genérico que puede inventarlas), y citarlas correctamente con normas APA. Cerrás la clase con Gemini Notebook, una IA que solo responde con los documentos que vos le diste.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#perplexity"><span class="toc-num">01</span><span class="toc-text">Perplexity: buscar con citas verificables</span></a></li>
     <li><a href="#apa"><span class="toc-num">02</span><span class="toc-text">Normas APA (7ma edición): citar lo que usás</span></a></li>
-    <li><a href="#notebooklm"><span class="toc-num">03</span><span class="toc-text">NotebookLM: trabajar con tus propias fuentes</span></a></li>
+    <li><a href="#gemini-notebook"><span class="toc-num">03</span><span class="toc-text">Gemini Notebook: trabajar con tus propias fuentes</span></a></li>
     <li><a href="#resumen"><span class="toc-num">04</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
@@ -250,11 +250,11 @@
   </div>
 </section>
 
-<!-- 03 — NOTEBOOKLM -->
-<section class="block" id="notebooklm">
+<!-- 03 — GEMINI NOTEBOOK -->
+<section class="block" id="gemini-notebook">
   <div class="block-head">
     <span class="block-num">03</span>
-    <h2 class="block-title">NotebookLM: trabajar con tus propias fuentes</h2>
+    <h2 class="block-title">Gemini Notebook: trabajar con tus propias fuentes</h2>
   </div>
   <div class="prose">
     <div class="callout" data-type="question">
@@ -262,37 +262,37 @@
     </div>
 
     <h3>La diferencia con Perplexity</h3>
-    <p>Perplexity y NotebookLM (<code>notebooklm.google.com</code>) se parecieron más desde que NotebookLM sumó <strong>Discover Sources</strong>: un botón en el panel de Fuentes que, a partir de un tema que describís, rastrea la web y te sugiere documentos para sumar al cuaderno. La diferencia que importa no desapareció, solo se corrió: Perplexity te devuelve una respuesta ya redactada, con números de cita que llevan a la web abierta, en el momento; NotebookLM nunca responde "a partir de la web" directamente — todo lo que Discover Sources encuentra entra primero como fuente al cuaderno, y recién ahí la IA puede usarlo, siempre citando el pasaje exacto de esa fuente. Uno te da una respuesta; el otro te ayuda a construir un corpus propio y después responde solo con eso. Son herramientas complementarias, no alternativas.</p>
+    <p>Perplexity y Gemini Notebook (<code>notebook.google.com</code>) se parecieron más desde que Gemini Notebook sumó <strong>Discover Sources</strong>: un botón en el panel de Fuentes que, a partir de un tema que describís, rastrea la web y te sugiere documentos para sumar al cuaderno. La diferencia que importa no desapareció, solo se corrió: Perplexity te devuelve una respuesta ya redactada, con números de cita que llevan a la web abierta, en el momento; Gemini Notebook nunca responde "a partir de la web" directamente — todo lo que Discover Sources encuentra entra primero como fuente al cuaderno, y recién ahí la IA puede usarlo, siempre citando el pasaje exacto de esa fuente. Uno te da una respuesta; el otro te ayuda a construir un corpus propio y después responde solo con eso. Son herramientas complementarias, no alternativas.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th></th><th>Perplexity</th><th>NotebookLM</th></tr></thead>
+        <thead><tr><th></th><th>Perplexity</th><th>Gemini Notebook</th></tr></thead>
         <tbody>
           <tr><td>¿De dónde viene la respuesta?</td><td>Internet en tiempo real</td><td>Solo de las fuentes del cuaderno (Discover Sources puede sumar fuentes nuevas, pero primero las importa, no responde "al vuelo")</td></tr>
           <tr><td>¿Para qué se usa?</td><td>Obtener una respuesta ya redactada, con la web como respaldo</td><td>Construir un corpus propio (tuyo o sugerido) y trabajarlo en profundidad</td></tr>
           <tr><td>¿Cita fuentes?</td><td>Sí — links a páginas web</td><td>Sí — párrafo exacto de tu documento</td></tr>
           <tr><td>¿Podés verificar?</td><td>Sí — clic al número lleva a la web</td><td>Sí — clic al chip lleva al pasaje exacto</td></tr>
           <tr><td>El resultado es...</td><td>Una respuesta</td><td>Una fuente que queda en tu cuaderno, más una respuesta anclada en ella</td></tr>
-          <tr><td>Costo</td><td>Gratis con límites diarios · Perplexity Pro (pago) suma más búsquedas y el modo Académico</td><td>Gratis con cuenta Google, con límites generosos de cuadernos y fuentes · NotebookLM Plus (dentro de Google One AI Premium o Workspace) suma más cupo, no funciones nuevas para este uso</td></tr>
+          <tr><td>Costo</td><td>Gratis con límites diarios · Perplexity Pro (pago) suma más búsquedas y el modo Académico</td><td>Gratis con cuenta Google, con límites generosos de cuadernos y fuentes · Gemini Notebook Plus (dentro de Google One AI Premium o Workspace) suma más cupo, no funciones nuevas para este uso</td></tr>
         </tbody>
       </table>
     </div>
 
     <h3>Por qué funciona así: RAG en dos líneas</h3>
-    <p>NotebookLM usa una arquitectura llamada RAG (<em>Retrieval-Augmented Generation</em>). La lógica es simple: cuando le hacés una pregunta, el sistema no improvisa desde su entrenamiento. Primero busca en tus documentos los fragmentos más relevantes, los junta con tu pregunta y recién entonces genera la respuesta, usando solo esa información.</p>
+    <p>Gemini Notebook usa una arquitectura llamada RAG (<em>Retrieval-Augmented Generation</em>). La lógica es simple: cuando le hacés una pregunta, el sistema no improvisa desde su entrenamiento. Primero busca en tus documentos los fragmentos más relevantes, los junta con tu pregunta y recién entonces genera la respuesta, usando solo esa información.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>La analogía del examen: un LLM genérico trabaja a libro cerrado, depende de lo que "recuerda" del entrenamiento. NotebookLM trabaja a libro abierto: tiene tus documentos frente a los ojos y los consulta antes de responder.</p>
+      <p>La analogía del examen: un LLM genérico trabaja a libro cerrado, depende de lo que "recuerda" del entrenamiento. Gemini Notebook trabaja a libro abierto: tiene tus documentos frente a los ojos y los consulta antes de responder.</p>
     </div>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Advertencia</p>
-      <p>NotebookLM reduce drásticamente las alucinaciones al anclar cada respuesta en tus documentos, pero no las elimina al 100%. Si el documento está mal escaneado, si la pregunta es ambigua o si la fuente tiene errores, la IA puede interpretar mal. Siempre hacé clic en el chip de cita y verificá el pasaje original.</p>
+      <p>Gemini Notebook reduce drásticamente las alucinaciones al anclar cada respuesta en tus documentos, pero no las elimina al 100%. Si el documento está mal escaneado, si la pregunta es ambigua o si la fuente tiene errores, la IA puede interpretar mal. Siempre hacé clic en el chip de cita y verificá el pasaje original.</p>
     </div>
 
     <h3>El cuaderno como espacio de trabajo</h3>
-    <p>NotebookLM no es un chat. Es un espacio de trabajo donde combinás múltiples fuentes en un solo cuaderno y las interrogás juntas. Podés cargar:</p>
+    <p>Gemini Notebook no es un chat. Es un espacio de trabajo donde combinás múltiples fuentes en un solo cuaderno y las interrogás juntas. Podés cargar:</p>
     <ul>
       <li>PDFs (apuntes, artículos, libros)</li>
       <li>Google Docs</li>
@@ -303,36 +303,36 @@
 
     <div class="callout" data-type="explore">
       <p class="callout-label">🔎 Para explorar — Discover Sources</p>
-      <p>En el panel de Fuentes, botón "Discover" (o "Descubrir"): describí tu tema en una frase y NotebookLM te devuelve hasta 10 documentos recomendados, cada uno con un resumen de por qué es relevante. Sumá el que te sirva con un clic — pasa a ser una fuente más de tu cuaderno, con el mismo tratamiento que un PDF que subís vos.</p>
+      <p>En el panel de Fuentes, botón "Discover" (o "Descubrir"): describí tu tema en una frase y Gemini Notebook te devuelve hasta 10 documentos recomendados, cada uno con un resumen de por qué es relevante. Sumá el que te sirva con un clic — pasa a ser una fuente más de tu cuaderno, con el mismo tratamiento que un PDF que subís vos.</p>
     </div>
 
     <p>El flujo de trabajo es simple: cargás las fuentes, le hacés preguntas ancladas en ellas, y desde el panel <strong>Studio</strong> generás material de estudio a partir de ese mismo corpus — resúmenes, guías de estudio o un Resumen de Audio (un pódcast generado a partir de tus fuentes). Todo lo que genera Studio sigue anclado en las fuentes que cargaste, no en el entrenamiento general del modelo.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave: por qué conviene para estudiar, no solo para citar</p>
-      <p>NotebookLM sirve más allá de este trabajo puntual. Cargá ahí el programa de la materia, los apuntes de clase o la bibliografía obligatoria de cualquier cursada, y usalo para repasar: preguntale por un tema puntual y te contesta solo con lo que realmente dieron en esa materia (no con una versión genérica de internet que puede no coincidir con el enfoque de tu profesor), pedile una guía de estudio con los conceptos clave, o generá un Resumen de Audio para escuchar en el viaje al lugar de estudio. La ventaja frente a preguntarle lo mismo a un LLM genérico es siempre la misma: la respuesta está anclada en tus fuentes, no en un promedio de internet.</p>
+      <p>Gemini Notebook sirve más allá de este trabajo puntual. Cargá ahí el programa de la materia, los apuntes de clase o la bibliografía obligatoria de cualquier cursada, y usalo para repasar: preguntale por un tema puntual y te contesta solo con lo que realmente dieron en esa materia (no con una versión genérica de internet que puede no coincidir con el enfoque de tu profesor), pedile una guía de estudio con los conceptos clave, o generá un Resumen de Audio para escuchar en el viaje al lugar de estudio. La ventaja frente a preguntarle lo mismo a un LLM genérico es siempre la misma: la respuesta está anclada en tus fuentes, no en un promedio de internet.</p>
     </div>
 
     <div class="callout" data-type="explore">
       <p class="callout-label">🔎 Para explorar</p>
-      <p>Abrí <code>notebooklm.google.com</code>. Creá un cuaderno nuevo. Subí el PDF del programa analítico de la materia (o cualquier documento que tengas a mano). Preguntale: "¿Cuáles son los temas principales?". Hacé clic en el chip de cita de una respuesta y verificá el pasaje en el documento original. Después generá un Resumen de Audio en formato Resumen.</p>
+      <p>Abrí <code>notebook.google.com</code>. Creá un cuaderno nuevo. Subí el PDF del programa analítico de la materia (o cualquier documento que tengas a mano). Preguntale: "¿Cuáles son los temas principales?". Hacé clic en el chip de cita de una respuesta y verificá el pasaje en el documento original. Después generá un Resumen de Audio en formato Resumen.</p>
     </div>
 
     <div class="activity">
       <div class="activity-head">
         <span class="activity-eyebrow">Actividad 03</span>
-        <h3>Tu cuaderno en NotebookLM</h3>
+        <h3>Tu cuaderno en Gemini Notebook</h3>
       </div>
       <div class="prose">
         <ol>
-          <li>Abrí <code>notebooklm.google.com</code> y creá un cuaderno nuevo.</li>
+          <li>Abrí <code>notebook.google.com</code> y creá un cuaderno nuevo.</li>
           <li>Subí las 2 fuentes verificadas de la Actividad 1 (PDF, URL o Google Doc).</li>
           <li>Hacé una pregunta al cuaderno sobre tu tema. Verificá la respuesta haciendo clic en el chip de cita.</li>
           <li>Copiá 2 ideas clave al documento <code>Fuentes y Citas - V01</code> con Ctrl+Shift+V. Cada idea con su cita (Apellido, año) en el texto.</li>
           <li>Generá un Resumen de Audio en formato Resumen, en español. Escuchá 2 minutos. Anotá una cosa correcta y una que te llame la atención.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El documento tiene al menos 2 ideas nuevas extraídas de NotebookLM, con cita en el texto y Encabezado 1 aplicado.</p>
+      <p class="activity-criteria">El documento tiene al menos 2 ideas nuevas extraídas de Gemini Notebook, con cita en el texto y Encabezado 1 aplicado.</p>
     </div>
 
     <p>Ya usaste tres formas distintas de trabajar con IA en una sola clase: para buscar fuentes nuevas con Perplexity, para citarlas con precisión, y para interrogar tus propias fuentes sin riesgo de que la IA invente algo que no está ahí.</p>
@@ -346,7 +346,7 @@
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Al principio de la clase planteamos el objetivo: dejar de confiarle a un LLM genérico algo que necesita respaldo verificable. Ese es el recorrido que hiciste hoy: buscaste fuentes con Perplexity y las verificaste una por una, las citaste con normas APA, y trabajaste con NotebookLM, que solo responde con lo que vos le diste. Las tres herramientas resuelven el mismo problema — la confianza en lo que la IA te devuelve — desde ángulos distintos.</p>
+    <p>Al principio de la clase planteamos el objetivo: dejar de confiarle a un LLM genérico algo que necesita respaldo verificable. Ese es el recorrido que hiciste hoy: buscaste fuentes con Perplexity y las verificaste una por una, las citaste con normas APA, y trabajaste con Gemini Notebook, que solo responde con lo que vos le diste. Las tres herramientas resuelven el mismo problema — la confianza en lo que la IA te devuelve — desde ángulos distintos.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
@@ -409,9 +409,9 @@
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">📓 NotebookLM vs. Perplexity</span></div>
+          <div class="qr-cell-head"><span class="qr-cell-title">📓 Gemini Notebook vs. Perplexity</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Perplexity da una respuesta ya redactada desde la web en tiempo real. NotebookLM solo responde con las fuentes de tu cuaderno — Discover Sources sugiere cuáles sumar, pero primero las importa.</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Perplexity da una respuesta ya redactada desde la web en tiempo real. Gemini Notebook solo responde con las fuentes de tu cuaderno — Discover Sources sugiere cuáles sumar, pero primero las importa.</span></div>
           </div>
         </div>
       </div>
@@ -419,14 +419,14 @@
 
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">
-      <div class="gloss-item"><span class="gloss-term">Alucinación</span><p class="gloss-def">Respuesta de una IA que suena convincente pero es incorrecta o fabricada. Más frecuente en LLMs genéricos; reducida en NotebookLM gracias al anclaje en fuentes.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Alucinación</span><p class="gloss-def">Respuesta de una IA que suena convincente pero es incorrecta o fabricada. Más frecuente en LLMs genéricos; reducida en Gemini Notebook gracias al anclaje en fuentes.</p></div>
       <div class="gloss-item"><span class="gloss-term">APA</span><p class="gloss-def"><em>American Psychological Association</em>. Sistema de citación académica. Versión actual: APA 7 (2020), que incluye el formato para citar salidas de IA.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita en el texto</span><p class="gloss-def">Mención breve de la fuente dentro del párrafo: (Apellido, año) para paráfrasis, (Apellido, año, p. XX) para cita textual.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita textual</span><p class="gloss-def">Reproducción exacta de las palabras del autor, entre comillas, con número de página. Se usa poco: la paráfrasis con cita es lo que se espera.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de NotebookLM que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse — no genera una respuesta directa desde la web.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse — no genera una respuesta directa desde la web.</p></div>
       <div class="gloss-item"><span class="gloss-term">DOI</span><p class="gloss-def"><em>Digital Object Identifier</em>. Identificador permanente de artículos de revistas científicas. Va al final de la cita APA en lugar de la URL cuando está disponible.</p></div>
       <div class="gloss-item"><span class="gloss-term">Nota al pie</span><p class="gloss-def">Información complementaria al pie de la página: aclaraciones, referencias secundarias, datos de contexto. No reemplaza a la cita APA.</p></div>
-      <div class="gloss-item"><span class="gloss-term">NotebookLM</span><p class="gloss-def">Herramienta de Google basada en RAG. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
       <div class="gloss-item"><span class="gloss-term">Plagio</span><p class="gloss-def">Usar ideas o palabras de otra persona sin citar la fuente. Tiene derechos de autor automáticos desde su creación, sin necesidad de registro.</p></div>
       <div class="gloss-item"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA que busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
       <div class="gloss-item"><span class="gloss-term">Prompt chaining</span><p class="gloss-def">Técnica de encadenar prompts: la respuesta de uno se usa como punto de partida del siguiente. Sirve para tareas complejas que no se resuelven bien con una sola instrucción.</p></div>
@@ -437,7 +437,7 @@
     <ul class="sources">
       <li>APA Style, American Psychological Association. <em>How to cite ChatGPT</em>. <code>apastyle.apa.org/blog/how-to-cite-chatgpt</code></li>
       <li>APA Style, American Psychological Association. <em>AI references — Reference examples</em>. <code>apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references</code></li>
-      <li>Google. <em>Add or discover new sources for your notebook</em>. NotebookLM Help. <code>support.google.com/notebooklm/answer/16215270</code></li>
+      <li>Google. <em>Add or discover new sources for your notebook</em>. Gemini Notebook Help. <code>support.google.com/notebooklm/answer/16215270</code></li>
     </ul>
   </div>
 </section>

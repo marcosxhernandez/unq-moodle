@@ -2,3 +2,7 @@
 .claude/
 CLAUDE-*.md
 .fuse_hidden*
+
+# Carpetas con material de exámenes, no se publican
+clases/Clase 07 - Examen Parcial de Procesador de Texto/
+clases/Clase 12 - Examen Parcial de Planilla de Calculo/

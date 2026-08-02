@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 08 - Lógica de celdas y funciones esenciales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Planilla de cálculo (Clase 08) = verde */
+  :root{
+    --acento:#1E8E3E;
+    --acento-deep:#145c28;
+    --acento-tint:#e9f7ee;
+    --acento-soft:#cee6d5;
+  }
+  @page{
+    @top-right{
+      content:"Clase 08 · Lógica de celdas y funciones esenciales";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="08">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 08 · Planilla de cálculo</span>
+    <h1 class="cover-title">Lógica de celdas y funciones esenciales</h1>
+    <p class="cover-subtitle">Google Sheets · referencias relativas y absolutas · SUMA, PROMEDIO, CONTAR · formato condicional</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Esta clase construye esa lógica desde cero — cómo se nombra una celda, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, qué funciones resuelven las cuentas que nadie quiere hacer a mano — y la pone a trabajar sobre un encargo que efectivamente llega a un escritorio profesional.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#crear"><span class="toc-num">01</span><span class="toc-text">La planilla: crear el archivo y conocer Google Sheets</span></a></li>
+    <li><a href="#pensar"><span class="toc-num">02</span><span class="toc-text">La planilla de cálculo como herramienta para pensar con datos</span></a></li>
+    <li><a href="#referencias"><span class="toc-num">03</span><span class="toc-text">Referencias relativas y absolutas</span></a></li>
+    <li><a href="#funciones"><span class="toc-num">04</span><span class="toc-text">Funciones matemáticas esenciales</span></a></li>
+    <li><a href="#formato"><span class="toc-num">05</span><span class="toc-text">Formato condicional</span></a></li>
+    <li><a href="#integrador"><span class="toc-num">06</span><span class="toc-text">Ejercicio integrador: de Google Sheets a Excel</span></a></li>
+    <li><a href="#adelanto"><span class="toc-num">07</span><span class="toc-text">Adelanto: trabajo evaluable del bloque</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">08</span><span class="toc-text">Cierre de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="crear">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">La planilla: crear el archivo y conocer Google Sheets</h2>
+  </div>
+  <div class="prose">
+    <p>Antes de trabajar con datos, necesitás el espacio donde van a vivir. El primer paso de esta clase no es escribir una fórmula: es crear el archivo correctamente y entender la herramienta.</p>
+
+    <div class="callout" data-type="question">
+      <p>Si tuvieras que calcular a mano cuánto le corresponde pagar a cada persona en un grupo de ocho amigos que gastaron montos distintos en un viaje, ¿cuántas veces tendrías que rehacer la cuenta si alguien agrega un gasto nuevo a mitad de camino?</p>
+    </div>
+
+    <h3>Google Sheets: la interfaz</h3>
+    <p>Google Sheets es la planilla de cálculo de Google Workspace — la misma familia de herramientas que ya usaste con Google Docs en el Bloque 2. Es gratuita, funciona en el navegador y no requiere instalar nada. Para crear un archivo nuevo tenés tres caminos:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Opción</th><th>Cómo</th><th>Cuándo usarla</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Más rápida</strong></td><td>Escribí <code>sheets.new</code> en la barra del navegador y presioná Enter.</td><td>Cuando querés arrancar sin abrir Drive.</td></tr>
+          <tr><td><strong>Desde Drive</strong></td><td><code>drive.google.com</code> → botón <strong>+ Nuevo</strong> → Hoja de cálculo de Google.</td><td>Cuando ya estás en Drive y querés guardar directamente en una carpeta.</td></tr>
+          <tr><td><strong>Desde Sheets</strong></td><td><code>sheets.google.com</code> → clic en el signo "+".</td><td>Cuando tenés varios archivos abiertos y querés crear uno más.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Elementos clave de la interfaz</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Elemento</th><th>Dónde está</th><th>Para qué sirve</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Barra de fórmulas</strong></td><td>Debajo de la barra de menús</td><td>Muestra el contenido real de la celda activa — si hay una fórmula, la ves ahí, no el resultado</td></tr>
+          <tr><td><strong>Celda activa</strong></td><td>Recuadro con borde grueso</td><td>La celda donde vas a escribir o pegar algo ahora mismo</td></tr>
+          <tr><td><strong>Encabezados de fila y columna</strong></td><td>Números a la izquierda, letras arriba</td><td>Identifican cada celda por su intersección — por ejemplo, <code>B4</code></td></tr>
+          <tr><td><strong>Pestañas de hojas</strong></td><td>Parte inferior</td><td>Un archivo (libro) puede tener varias hojas; cada una es un espacio de trabajo independiente</td></tr>
+          <tr><td><strong>Controlador de relleno</strong></td><td>Cuadradito en la esquina inferior derecha de la celda seleccionada</td><td>Arrastrándolo, copiás una fórmula o continuás una serie hacia las celdas contiguas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="photo-note">📷 Imagen pendiente — barra de herramientas de Google Sheets señalando: barra de fórmulas, celda activa, encabezados de fila/columna, pestañas de hojas, controlador de relleno</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>El autoguardado de Sheets no reemplaza la buena nomenclatura. "Hoja de cálculo sin título" guardada en la raíz de Drive es tan difícil de encontrar como un archivo suelto en cualquier escritorio. Nombrá la planilla en cuanto la creás — con el mismo formato que ya usás desde la Clase 01: <code>AAAA-MM-DD_Informatica_ClaseNN_VN</code>.</p>
+    </div>
+
+    <h3>Google Sheets vs. Excel de escritorio</h3>
+    <p>Vas a escuchar hablar de "Excel" y de "Sheets" como si fueran lo mismo. Comparten la lógica (celdas, filas, columnas, fórmulas) pero no son la misma herramienta.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>Google Sheets</th><th>Excel de escritorio</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Costo</strong></td><td>Gratuito con cuenta de Google</td><td>Requiere licencia de Microsoft Office</td></tr>
+          <tr><td><strong>Dónde vive el archivo</strong></td><td>En la nube (Drive), se guarda solo</td><td>En tu computadora (o OneDrive), hay que guardar manualmente</td></tr>
+          <tr><td><strong>Colaboración</strong></td><td>Tiempo real, múltiples personas a la vez</td><td>Requiere compartir el archivo o usar Excel Online</td></tr>
+          <tr><td><strong>Funciones avanzadas</strong></td><td>Cubre la gran mayoría de casos de uso</td><td>Tablas dinámicas más potentes, macros, Power Query</td></tr>
+          <tr><td><strong>Ideal para</strong></td><td>Trabajo colaborativo, planillas livianas, uso cotidiano</td><td>Análisis pesado, archivos grandes, entornos corporativos con Office</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>En esta materia vamos a trabajar en Google Sheets porque es gratuito y accesible para todos desde el primer día. Todo lo que aprendas acá — referencias, funciones, formato condicional — se traslada directamente a Excel: las fórmulas son casi idénticas.</p>
+    </div>
+
+    <h3>Actividad 1 · Crear la planilla</h3>
+    <div class="activity">
+      <ol>
+        <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 08" (creala si no existe).</li>
+        <li>Dentro de esa carpeta, creá una hoja de cálculo nueva. Nombrala exactamente: <code>2026-XX-XX_Informatica_Clase08_V01</code> (reemplazá XX por la fecha de hoy).</li>
+        <li>En la celda <code>A1</code> escribí "Producto" y en <code>B1</code> escribí "Precio".</li>
+        <li>Cargá 5 productos con precios en las filas siguientes (podés inventarlos).</li>
+        <li>Probá el controlador de relleno: en una celda vacía escribí "lunes" y usá el cuadradito de la esquina para completar los días de la semana.</li>
+        <li>En otra celda escribí el número <code>1</code> y debajo <code>2</code>. Seleccioná ambas y arrastrá el controlador hacia abajo — Sheets va a detectar el patrón y continuar la serie (3, 4, 5...).</li>
+      </ol>
+      <p><strong>Ya tenés la planilla creada, nombrada correctamente y en la carpeta que compartiste con el docente.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="pensar">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">La planilla de cálculo como herramienta para pensar con datos</h2>
+  </div>
+  <div class="prose">
+    <p>Un documento de texto organiza ideas. Una planilla de cálculo organiza <strong>datos que se relacionan entre sí mediante operaciones</strong>. La diferencia no es cosmética: en una planilla, cuando cambiás un dato de origen, todo lo que depende de él se recalcula solo.</p>
+    <p>Esa es la ventaja central de la herramienta: separar el <strong>dato</strong> (lo que cargás) de la <strong>fórmula</strong> (lo que calculás a partir de ese dato). Si en algún momento aprendiste a usar una calculadora para resolver un problema y después tuviste que "empezar de nuevo" porque cambió un número, ya sabés por qué esto importa.</p>
+    <p>Antes de escribir una sola fórmula, preguntate: ¿qué dato de esta planilla es fijo (no cambia fila a fila) y cuál cambia? Esa pregunta es la que vas a responder hoy con referencias relativas y absolutas.</p>
+
+    <h3>Celdas, rangos y referenciación</h3>
+    <p>Cada celda se nombra por la intersección de su columna (letra) y su fila (número): <code>A1</code>, <code>C12</code>, <code>AB3</code>. Un <strong>rango</strong> es un conjunto de celdas contiguas y se escribe con dos puntos: <code>A2:A10</code> incluye A2, A3, A4... hasta A10.</p>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Antes de aplicar cualquier función o formato, seleccioná primero el rango correcto. La mayoría de los errores en planillas nuevas vienen de aplicar algo sobre el rango equivocado — una fila de más, una columna de menos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="referencias">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Referencias relativas y absolutas</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Tenés una fórmula que convierte un precio en pesos a dólares dividiendo por la cotización, que está escrita en una única celda. Si arrastrás esa fórmula hacia las diez filas de abajo, ¿qué creés que pasa con la celda de la cotización?</p>
+    </div>
+
+    <p>Esta es la distinción más importante de la clase — y la que más confunde a quien recién empieza.</p>
+
+    <h3>Referencia relativa: el comportamiento por defecto</h3>
+    <p>Cuando escribís una fórmula como <code>=A1+A2</code> y la copiás hacia abajo con el controlador de relleno, Sheets no repite literalmente "A1+A2" en cada fila. <strong>Ajusta la referencia según la posición relativa</strong>: en la fila siguiente pasa a ser <code>=A2+A3</code>, después <code>=A3+A4</code>, y así sucesivamente.</p>
+    <p>Esto es exactamente lo que querés la mayoría de las veces: si tenés una columna de precios y otra de cantidades, y calculás el total fila por fila, cada fila debe multiplicar <strong>sus propios</strong> datos, no siempre los mismos.</p>
+
+    <h3>Referencia absoluta: cuando un dato no debe moverse</h3>
+    <p>El problema aparece cuando una fórmula necesita referirse <strong>siempre a la misma celda</strong>, sin importar hacia dónde la arrastres. El caso clásico: convertir una lista de precios en pesos a dólares, usando una única celda con la cotización del dólar.</p>
+    <p>Si escribís <code>=B2/D2</code> (precio en pesos dividido cotización) y arrastrás hacia abajo, Sheets también va a mover <code>D2</code> a <code>D3</code>, <code>D4</code>... y esas celdas están vacías. El resultado se rompe.</p>
+    <p>La solución es <strong>fijar</strong> esa referencia con el signo <code>$</code> antes de la fila, la columna, o ambas:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Notación</th><th>Qué queda fijo</th><th>Cuándo usarla</th></tr></thead>
+        <tbody>
+          <tr><td><code>B2</code></td><td>Nada — referencia relativa</td><td>Cuando cada fila debe operar con sus propios datos</td></tr>
+          <tr><td><code>$B2</code></td><td>Columna fija, fila libre</td><td>Al arrastrar hacia los costados, siempre apunta a la columna B</td></tr>
+          <tr><td><code>B$2</code></td><td>Fila fija, columna libre</td><td>Al arrastrar hacia abajo, siempre apunta a la fila 2</td></tr>
+          <tr><td><code>$B$2</code></td><td>Columna y fila fijas — referencia absoluta</td><td>El dato es un valor único de referencia para toda la planilla (cotización, IVA, un total)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: la tecla F4</p>
+      <p>No hace falta escribir los símbolos <code>$</code> a mano. Mientras editás una fórmula, hacé clic sobre la referencia de celda y presioná <strong>F4</strong> (en Mac: <code>⌘+T</code> o <code>Fn+F4</code> según el teclado). Cada vez que la apretás, alterna entre los cuatro tipos de referencia: <code>B2</code> → <code>$B$2</code> → <code>B$2</code> → <code>$B2</code> → <code>B2</code>.</p>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu planilla arroja errores <code>#N/A</code> o valores en blanco al arrastrar una fórmula, la primera sospecha debería ser una referencia que necesitabas fija y quedó relativa.</p>
+    </div>
+
+    <h3>Actividad 2</h3>
+    <div class="activity">
+      <ol>
+        <li>En una hoja nueva, armá esta tabla a partir de la fila 1:
+          <table class="tbl-activity" style="margin-top:0.5rem">
+            <tr><th>Producto</th><th>Precio USD</th></tr>
+            <tr><td>Auriculares</td><td>25</td></tr>
+            <tr><td>Mochila</td><td>40</td></tr>
+            <tr><td>Termo</td><td>18</td></tr>
+          </table>
+        </li>
+        <li>En una celda separada (por ejemplo <code>D1</code>), escribí "Cotización dólar" y en <code>D2</code> cargá un valor, por ejemplo <code>1050</code>.</li>
+        <li>Agregá una columna "Precio ARS" y calculá, para el primer producto, <code>=B2*$D$2</code>.</li>
+        <li>Usá el controlador de relleno para copiar la fórmula hacia abajo. Verificá que los tres productos muestren un resultado correcto — si alguno da error o queda en blanco, revisá que hayas fijado <code>D2</code> con <code>$</code>.</li>
+        <li>Cambiá el valor de la cotización en <code>D2</code>. Confirmá que los tres precios en pesos se recalculan solos.</li>
+      </ol>
+    </div>
+
+    <h3>Actividad 2 · Extra</h3>
+    <div class="activity">
+      <p><strong>Referencias mixtas: fijar solo la fila o solo la columna.</strong></p>
+      <ol>
+        <li>En una hoja nueva, armá una tabla de multiplicar: en la fila 1 (celdas B1:F1) cargá los números 1 a 5; en la columna A (A2:A6) cargá también los números 1 a 5.</li>
+        <li>En la celda <code>B2</code>, escribí una fórmula que multiplique el valor de la fila 1 por el valor de la columna A, usando referencias mixtas: <code>=B$1*$A2</code>.</li>
+        <li>Copiá esa fórmula hacia toda la tabla (arrastrando primero hacia la derecha, después seleccionando toda la fila 2 y arrastrando hacia abajo). Si las referencias mixtas están bien puestas, obtenés una tabla de multiplicar completa con una sola fórmula.</li>
+        <li>Explicá con tus palabras por qué <code>B$1</code> necesita la fila fija y <code>$A2</code> necesita la columna fija, y no al revés.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="funciones">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Funciones matemáticas esenciales</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>¿Cómo escribirías, sin usar ninguna función, la fórmula para sumar 300 celdas? ¿Y para calcular el promedio de esas mismas 300 celdas a mano, una por una?</p>
+    </div>
+
+    <h3>Qué es una función</h3>
+    <p>Una fórmula como <code>=A1+A2+A3+A4+A5</code> funciona, pero se vuelve inmanejable si en vez de 5 celdas tenés 500. Una <strong>función</strong> es una fórmula predefinida por Sheets que resuelve una operación común con una sintaxis breve.</p>
+    <p>Toda función tiene la misma estructura:</p>
+    <pre><code>=NOMBRE_FUNCIÓN(argumento1; argumento2; ...)</code></pre>
+    <ul>
+      <li>Empieza siempre con <code>=</code>.</li>
+      <li>El nombre de la función va seguido de un paréntesis de apertura.</li>
+      <li>Los <strong>argumentos</strong> — los datos sobre los que opera — van dentro del paréntesis, separados por punto y coma o especificados como rango con dos puntos.</li>
+      <li>Cierra con paréntesis.</li>
+    </ul>
+    <p><code>=SUMA(A1:A5)</code> es equivalente a <code>=A1+A2+A3+A4+A5</code>, pero se sigue funcionando igual de bien si el rango tiene 5 celdas o 5.000.</p>
+
+    <h3>Las cinco funciones que tenés que dominar hoy</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Función</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>SUMA</code></td><td>Suma todos los valores numéricos del rango</td><td><code>=SUMA(B2:B10)</code></td></tr>
+          <tr><td><code>PROMEDIO</code></td><td>Calcula el promedio (media aritmética) del rango</td><td><code>=PROMEDIO(B2:B10)</code></td></tr>
+          <tr><td><code>CONTAR</code></td><td>Cuenta cuántas celdas del rango contienen <strong>números</strong></td><td><code>=CONTAR(B2:B10)</code></td></tr>
+          <tr><td><code>CONTARA</code></td><td>Cuenta cuántas celdas del rango <strong>no están vacías</strong> (números, texto, lo que sea)</td><td><code>=CONTARA(A2:A10)</code></td></tr>
+          <tr><td><code>MAX</code> / <code>MIN</code></td><td>Devuelven el valor más alto / más bajo del rango</td><td><code>=MAX(B2:B10)</code> / <code>=MIN(B2:B10)</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención: CONTAR vs. CONTARA</p>
+      <p><code>CONTAR</code> solo cuenta celdas numéricas. Si tu rango tiene nombres de personas y querés saber cuántas filas cargadas hay, <code>CONTAR</code> te va a devolver 0 — necesitás <code>CONTARA</code>. Es uno de los errores más comunes al empezar.</p>
+    </div>
+
+    <h3>El ícono de autosuma</h3>
+    <p>Sheets tiene un ícono de suma automática (Σ) en la barra de herramientas que detecta el rango de números más probable y arma la función <code>SUMA</code> por vos. Es útil como punto de partida, pero siempre conviene verificar que el rango detectado sea el correcto antes de confirmar.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Podés escribir la función completa a mano o dejar que Sheets te sugiera el autocompletado apenas empezás a tipear <code>=SUM</code> — aparece una ayuda con la sintaxis exacta y una breve descripción. Usala para no memorizar el orden de los argumentos de memoria.</p>
+    </div>
+
+    <h3>Actividad 3</h3>
+    <div class="activity">
+      <p><strong>Vas a armar una planilla de gastos para un viaje de egresados.</strong></p>
+      <ol>
+        <li>En una hoja nueva, cargá esta tabla desde <code>A1</code>:
+          <table class="tbl-activity" style="margin-top:0.5rem">
+            <tr><th>Categoría</th><th>Enero</th><th>Febrero</th><th>Marzo</th></tr>
+            <tr><td>Alojamiento</td><td>45000</td><td>38000</td><td>52000</td></tr>
+            <tr><td>Comida</td><td>22000</td><td>25000</td><td>19000</td></tr>
+            <tr><td>Transporte</td><td>15000</td><td>12000</td><td>18000</td></tr>
+            <tr><td>Excursiones</td><td>30000</td><td>0</td><td>41000</td></tr>
+          </table>
+        </li>
+        <li>Agregá una columna "Total categoría" y calculá, para cada fila, la suma de los tres meses con <code>SUMA</code>.</li>
+        <li>Agregá una fila "Total mes" debajo de la tabla y calculá, para cada mes, la suma de las cuatro categorías.</li>
+        <li>En una celda aparte, calculá el <strong>promedio</strong> mensual de la categoría "Comida" con <code>PROMEDIO</code>.</li>
+        <li>Calculá el gasto <strong>máximo</strong> y <strong>mínimo</strong> registrado en toda la tabla con <code>MAX</code> y <code>MIN</code>.</li>
+        <li>En otra celda, usá <code>CONTAR</code> sobre el rango de meses de "Excursiones" para verificar que reconoce el 0 de Febrero como un valor numérico válido (el resultado debe ser 3, no 2).</li>
+      </ol>
+    </div>
+
+    <h3>Actividad 3 · Extra</h3>
+    <div class="activity">
+      <ol>
+        <li>Agregá una columna "Responsable" a la izquierda de "Categoría" y cargá un nombre en cada fila (podés repetir nombres).</li>
+        <li>Calculá con <code>CONTARA</code> cuántas filas de responsables hay cargadas.</li>
+        <li>Borrá el contenido de una celda de la columna "Responsable" (dejala vacía) y verificá que el resultado de <code>CONTARA</code> baja en uno.</li>
+        <li>Reflexioná: si hubieras usado <code>CONTAR</code> en lugar de <code>CONTARA</code> sobre esa misma columna, ¿qué resultado te habría dado? Probalo.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="formato">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Formato condicional</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Tenés una planilla con 200 filas de gastos. ¿Cómo harías para detectar, sin leer fila por fila, cuáles superan tu presupuesto?</p>
+    </div>
+
+    <h3>Qué resuelve</h3>
+    <p>Una tabla con cien filas de números es difícil de leer a simple vista. El <strong>formato condicional</strong> aplica automáticamente un estilo visual (color de fondo, color de fuente) a las celdas que cumplen una condición que vos definís. No cambia el dato — cambia cómo se ve.</p>
+
+    <h3>Cómo aplicarlo</h3>
+    <ol>
+      <li>Seleccioná el rango sobre el que querés aplicar la regla.</li>
+      <li>Andá a <strong>Formato > Formato condicional</strong>. Se abre un panel a la derecha.</li>
+      <li>Elegí entre dos tipos de regla:
+        <ul>
+          <li><strong>Escala de color:</strong> asigna un gradiente (por ejemplo, de rojo a verde) según el valor relativo de cada celda dentro del rango. Ideal para ver de un vistazo dónde están los valores altos y bajos.</li>
+          <li><strong>Regla de un solo color:</strong> aplica un formato fijo (por ejemplo, fondo rojo) a las celdas que cumplen una condición específica — "es mayor que", "es menor que", "el texto contiene", etc.</li>
+        </ul>
+      </li>
+      <li>Definí la condición y el formato a aplicar, y hacé clic en <strong>Listo</strong>.</li>
+    </ol>
+
+    <p class="photo-note">📷 Imagen pendiente — panel de Formato condicional en Google Sheets mostrando una regla "Es mayor que 40000" con formato de fondo rojo y texto blanco</p>
+
+    <h3>Casos de uso frecuentes</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Tipo de regla</th></tr></thead>
+        <tbody>
+          <tr><td>Ver de un vistazo qué meses gastaron más y cuáles menos</td><td>Escala de color</td></tr>
+          <tr><td>Marcar en rojo los valores que superan un presupuesto</td><td>Regla de un solo color · "Es mayor que"</td></tr>
+          <tr><td>Resaltar en verde los valores por debajo de un mínimo</td><td>Regla de un solo color · "Es menor que"</td></tr>
+          <tr><td>Marcar filas que contienen una palabra específica (ej. "pendiente")</td><td>Regla de un solo color · "El texto contiene"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>El formato condicional se actualiza solo cuando cambian los datos — no hace falta reaplicarlo. Es la razón por la que conviene usarlo en vez de pintar celdas a mano: si el dato cambia, el color se ajusta automáticamente.</p>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El formato condicional se aplica al rango que tenías seleccionado en el momento de crear la regla. Si después agregás filas nuevas por fuera de ese rango, no van a heredar el formato — hay que editar la regla y extender el rango, o aplicarla sobre una columna completa desde el principio.</p>
+    </div>
+
+    <h3>Actividad 4</h3>
+    <div class="activity">
+      <ol>
+        <li>Sobre la tabla de gastos de la Actividad 3, seleccioná el rango de valores (sin encabezados) y aplicá una <strong>escala de color</strong> para visualizar en qué categoría y mes se concentraron los gastos más altos.</li>
+        <li>En una copia de la fila "Total mes", aplicá una regla de un solo color: fondo rojo y fuente blanca para los meses cuyo total supere los $110.000.</li>
+        <li>Agregá una columna "Estado" con el texto "revisar" en al menos dos filas y el resto vacío. Aplicá una regla que resalte en amarillo las celdas de esa columna que contengan la palabra "revisar".</li>
+        <li>Cambiá un valor de la tabla de forma que un mes que antes no superaba $110.000 ahora sí lo supere. Confirmá que el formato condicional se actualiza sin que tengas que tocar nada más.</li>
+      </ol>
+    </div>
+
+    <h3>Actividad 4 · Extra</h3>
+    <div class="activity">
+      <ol>
+        <li>Sobre la columna "Total categoría", aplicá una regla que resalte en verde la fila con el valor máximo y en rojo la fila con el valor mínimo. Pista: podés usar una fórmula personalizada dentro de Formato condicional (opción "La fórmula personalizada es") comparando cada celda contra <code>MAX</code> o <code>MIN</code> del rango completo — para esto vas a necesitar fijar el rango con <code>$</code>.</li>
+        <li>Si te trabás, pedile ayuda a una IA con un prompt específico: contale qué rango tenés, qué querés resaltar, y pedile la fórmula exacta para pegar en "fórmula personalizada". Verificá el resultado antes de darlo por bueno — no copies una fórmula que no entendés.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="integrador">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Ejercicio integrador: de Google Sheets a Excel</h2>
+  </div>
+  <div class="prose">
+    <p>Cerramos la clase con un ejercicio único que obliga a usar <strong>todo</strong> lo visto hoy: referencias relativas y absolutas, las cinco funciones matemáticas y formato condicional. Lo armás primero en Google Sheets y después lo replicás en Excel, para practicar los dos entornos que vas a necesitar a lo largo del cuatrimestre.</p>
+
+    <h3>Parte A · Google Sheets</h3>
+    <p><strong>Vas a armar el control de ventas semanal de un emprendimiento.</strong></p>
+    <ol>
+      <li>En una hoja nueva, cargá esta tabla desde <code>A1</code>:
+        <table class="tbl-activity" style="margin-top:0.5rem">
+          <tr><th>Producto</th><th>Precio unitario</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th></tr>
+          <tr><td>Velas aromáticas</td><td>3500</td><td>4</td><td>2</td><td>0</td><td>6</td><td>3</td></tr>
+          <tr><td>Jabones artesanales</td><td>1800</td><td>8</td><td>10</td><td>5</td><td>0</td><td>12</td></tr>
+          <tr><td>Sales de baño</td><td>2200</td><td>3</td><td>3</td><td>4</td><td>2</td><td>5</td></tr>
+          <tr><td>Difusores</td><td>5600</td><td>1</td><td>0</td><td>2</td><td>1</td><td>3</td></tr>
+        </table>
+      </li>
+      <li>En una celda aparte, cargá "Comisión de la plataforma" con un valor de <code>8%</code>. Esta celda es tu <strong>referencia absoluta</strong> para todo el ejercicio.</li>
+      <li>Agregá una columna <strong>"Unidades vendidas"</strong> con la suma de lunes a viernes (<code>SUMA</code>, referencia relativa).</li>
+      <li>Agregá una columna <strong>"Total vendido"</strong> que multiplique "Unidades vendidas" por "Precio unitario" (referencia relativa).</li>
+      <li>Agregá una columna <strong>"Total neto"</strong> que le reste a "Total vendido" la comisión de la plataforma, usando la celda de comisión con referencia absoluta (<code>$</code>).</li>
+      <li>Calculá, debajo de la tabla:
+        <ul>
+          <li>El <strong>total</strong> vendido en la semana (<code>SUMA</code>)</li>
+          <li>El <strong>promedio</strong> de unidades vendidas por día del producto "Jabones artesanales" (<code>PROMEDIO</code> sobre el rango de días de esa fila)</li>
+          <li>El producto con <strong>más</strong> y con <strong>menos</strong> unidades vendidas en la semana (<code>MAX</code>, <code>MIN</code>)</li>
+          <li>La cantidad de días de la semana en los que "Velas aromáticas" <strong>no tuvo ventas</strong> — pista: contás con <code>CONTAR</code> sobre el rango de días y comparás contra la cantidad total de días</li>
+        </ul>
+      </li>
+      <li>Aplicá <strong>formato condicional</strong>:
+        <ul>
+          <li>Escala de color sobre las celdas de ventas diarias (lunes a viernes), para ver de un vistazo los días fuertes y flojos</li>
+          <li>Una regla de un solo color que resalte en rojo los productos cuyo "Total neto" sea menor a $10.000</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Parte B · La misma planilla, en Excel</h3>
+    <p>Abrí Excel (de escritorio si tenés licencia, o Excel Online si no) y reconstruí exactamente la misma tabla, las mismas fórmulas y el mismo formato condicional.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Qué buscás</th><th>En Google Sheets</th><th>En Excel</th></tr></thead>
+        <tbody>
+          <tr><td>Fijar una referencia</td><td><code>F4</code></td><td><code>F4</code> (Windows) / <code>⌘+T</code> (Mac)</td></tr>
+          <tr><td>Formato condicional</td><td>Formato > Formato condicional</td><td>Pestaña <strong>Inicio</strong> > Estilos > Formato condicional</td></tr>
+          <tr><td>Separador de argumentos en funciones</td><td>Coma <code>,</code> o punto y coma <code>;</code> según configuración regional</td><td>Punto y coma <code>;</code> en configuración regional Argentina</td></tr>
+          <tr><td>Guardar el trabajo</td><td>Automático, en la nube</td><td>Manual, con <code>Ctrl+G</code> — elegí formato <code>.xlsx</code></td></tr>
+          <tr><td>Autosuma</td><td>Ícono Σ en la barra de herramientas</td><td>Ícono Σ en la pestaña <strong>Inicio</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Es normal que algo no ande igual a la primera. Si una fórmula tira error en Excel, revisá primero el separador de argumentos — es la diferencia que más problemas genera al pasar de un programa al otro.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>No se trata de memorizar en qué menú está cada botón. Se trata de confirmar que la lógica — relativa vs. absoluta, cómo se arma una función, qué hace el formato condicional — es la misma sin importar el programa. Esa lógica es lo que te llevás de esta clase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="adelanto">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Adelanto: trabajo evaluable del bloque</h2>
+  </div>
+  <div class="prose">
+    <p>Sobre el final del Bloque 4 vas a integrar lo trabajado en estas cuatro clases (referencias y funciones, funciones lógicas, búsqueda entre hojas, tablas dinámicas) en una entrega evaluable que se sube a Moodle. Todavía no es momento de resolverla — es solo un adelanto de hacia dónde va esto:</p>
+    <ul>
+      <li>Vas a partir de un dataset real (no inventado por vos) y construir una planilla que combine referencias, funciones y formato condicional como las de hoy.</li>
+      <li>La consigna completa y los criterios de corrección se comparten más adelante, cuando ya tengas también las funciones lógicas y de búsqueda de las próximas clases.</li>
+    </ul>
+    <p>Por ahora, el ejercicio integrador de arriba ya te deja practicando exactamente ese tipo de trabajo.</p>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Cierre de la clase</h2>
+  </div>
+  <div class="prose">
+    <h3>Checklist de entrega</h3>
+    <div class="activity">
+      <ul>
+        <li><label><input type="checkbox"> El archivo se llama exactamente <code>2026-XX-XX_Informatica_Clase08_V01</code>.</label></li>
+        <li><label><input type="checkbox"> Está en la subcarpeta "Clase 08", dentro de "Informática - UNQ".</label></li>
+        <li><label><input type="checkbox"> Completé la ACTIVIDAD 1 (crear la planilla y probar el controlador de relleno).</label></li>
+        <li><label><input type="checkbox"> Completé la ACTIVIDAD 2 (referencias relativas y absolutas con conversión de moneda).</label></li>
+        <li><label><input type="checkbox"> Completé la ACTIVIDAD 3 (funciones matemáticas: SUMA, PROMEDIO, CONTAR, MAX, MIN).</label></li>
+        <li><label><input type="checkbox"> Completé la ACTIVIDAD 4 (formato condicional por escala de color y regla de un solo color).</label></li>
+        <li><label><input type="checkbox"> Resolví el ejercicio integrador completo en Google Sheets.</label></li>
+        <li><label><input type="checkbox"> Repliqué el mismo ejercicio en Excel y noté al menos una diferencia entre los dos programas.</label></li>
+        <li><label><input type="checkbox"> (Extra) Usé una fórmula personalizada en formato condicional.</label></li>
+      </ul>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Pasos de entrega</p>
+      <p><strong>1.</strong> Verificá el nombre del archivo: debe ser exactamente <code>2026-XX-XX_Informatica_Clase08_V01</code> (con la fecha de hoy).<br>
+      <strong>2.</strong> Verificá que esté en la carpeta correcta: "Informática - UNQ" ya está compartida con el docente desde la Clase 01.</p>
+    </div>
+
+    <div class="callout" data-type="closing">
+      <p><strong>Una sola idea para llevarte de esta clase</strong></p>
+      <p>Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Referencias relativas y absolutas son la gramática de esa dependencia — dominarlas es lo que separa "cargar datos" de "construir una herramienta que se actualiza sola".</p>
+    </div>
+
+    <h3>Próxima clase</h3>
+    <p><strong>Clase 09 · Funciones lógicas y validación de datos</strong> — la función <code>SI</code>, <code>SUMAR.SI</code> y <code>CONTAR.SI</code> para automatizar decisiones, y validación de datos con listas desplegables para controlar la calidad de lo que se carga en una planilla.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- Glosario y Referencia rápida: usar formato de columnas al final -->
+
+<section class="reference-section">
+  <h2>Glosario de la clase</h2>
+  <div class="glossary">
+    <div class="glossary-item">
+      <dt>Celda</dt>
+      <dd>Unidad básica de una planilla, identificada por la intersección de una columna (letra) y una fila (número), por ejemplo <code>B4</code>.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Rango</dt>
+      <dd>Conjunto de celdas contiguas, definido por la celda de inicio y la de fin separadas por dos puntos, por ejemplo <code>A2:A10</code>.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Referencia relativa</dt>
+      <dd>Referencia a una celda que se ajusta automáticamente según la posición al copiar una fórmula. Es el comportamiento por defecto.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Referencia absoluta</dt>
+      <dd>Referencia a una celda que se mantiene fija al copiar una fórmula, indicada con el símbolo <code>$</code> antes de la columna y/o la fila.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Referencia mixta</dt>
+      <dd>Referencia que fija solo la fila (<code>B$2</code>) o solo la columna (<code>$B2</code>), dejando libre la otra dimensión.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Controlador de relleno</dt>
+      <dd>Cuadrado en la esquina inferior derecha de una celda seleccionada que permite copiar contenido, fórmulas o continuar series arrastrando.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Función</dt>
+      <dd>Fórmula predefinida que ejecuta una operación específica sobre uno o más argumentos, con la sintaxis <code>=NOMBRE(argumentos)</code>.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Argumento</dt>
+      <dd>Cada uno de los valores, celdas o rangos que recibe una función entre paréntesis.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>SUMA</dt>
+      <dd>Función que devuelve la suma total de los valores numéricos de un rango.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>PROMEDIO</dt>
+      <dd>Función que devuelve la media aritmética de los valores numéricos de un rango.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>CONTAR</dt>
+      <dd>Función que cuenta la cantidad de celdas con valores numéricos dentro de un rango.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>CONTARA</dt>
+      <dd>Función que cuenta la cantidad de celdas no vacías (numéricas o de texto) dentro de un rango.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>MAX / MIN</dt>
+      <dd>Funciones que devuelven el valor más alto / más bajo dentro de un rango.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Formato condicional</dt>
+      <dd>Conjunto de reglas que aplican un formato visual automático a las celdas que cumplen una condición definida, sin alterar el dato.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Escala de color</dt>
+      <dd>Tipo de formato condicional que aplica un gradiente de color según el valor relativo de cada celda dentro de un rango.</dd>
+    </div>
+  </div>
+</section>
+
+<section class="reference-section">
+  <h2>Referencia rápida · Google Sheets</h2>
+
+  <h3>Referencias y fórmulas</h3>
+  <div class="table-wrap">
+    <table class="tbl-wide">
+      <thead><tr><th>Acción</th><th>PC</th><th>Mac</th></tr></thead>
+      <tbody>
+        <tr><td>Iniciar una fórmula</td><td><code>=</code></td><td><code>=</code></td></tr>
+        <tr><td>Alternar tipo de referencia (relativa/absoluta/mixta)</td><td><code>F4</code></td><td><code>⌘+T</code> (o <code>Fn+F4</code>)</td></tr>
+        <tr><td>Confirmar celda/fórmula</td><td><code>Enter</code></td><td><code>Return</code></td></tr>
+        <tr><td>Editar celda seleccionada</td><td><code>F2</code></td><td><code>Return</code> (con celda seleccionada, doble clic)</td></tr>
+        <tr><td>Autocompletar hacia abajo desde la celda superior</td><td><code>Ctrl+D</code></td><td><code>⌘+D</code></td></tr>
+        <tr><td>Autocompletar hacia la derecha</td><td><code>Ctrl+R</code></td><td><code>⌘+R</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Selección y navegación</h3>
+  <div class="table-wrap">
+    <table class="tbl-wide">
+      <thead><tr><th>Acción</th><th>PC</th><th>Mac</th></tr></thead>
+      <tbody>
+        <tr><td>Seleccionar toda la columna</td><td><code>Ctrl+Espacio</code></td><td><code>⌘+Espacio</code></td></tr>
+        <tr><td>Seleccionar toda la fila</td><td><code>Shift+Espacio</code></td><td><code>Shift+Espacio</code></td></tr>
+        <tr><td>Ir a la última celda con datos</td><td><code>Ctrl+Fin</code></td><td><code>⌘+Fin</code></td></tr>
+        <tr><td>Ir a la primera celda (A1)</td><td><code>Ctrl+Inicio</code></td><td><code>⌘+Inicio</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Funciones básicas</h3>
+  <div class="table-wrap">
+    <table class="tbl-wide">
+      <thead><tr><th>Función</th><th>Sintaxis</th></tr></thead>
+      <tbody>
+        <tr><td>Suma</td><td><code>=SUMA(rango)</code></td></tr>
+        <tr><td>Promedio</td><td><code>=PROMEDIO(rango)</code></td></tr>
+        <tr><td>Contar valores numéricos</td><td><code>=CONTAR(rango)</code></td></tr>
+        <tr><td>Contar celdas no vacías</td><td><code>=CONTARA(rango)</code></td></tr>
+        <tr><td>Valor máximo</td><td><code>=MAX(rango)</code></td></tr>
+        <tr><td>Valor mínimo</td><td><code>=MIN(rango)</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Formato</h3>
+  <div class="table-wrap">
+    <table class="tbl-wide">
+      <thead><tr><th>Acción</th><th>PC</th><th>Mac</th></tr></thead>
+      <tbody>
+        <tr><td>Abrir Formato condicional</td><td>Formato > Formato condicional</td><td>Formato > Formato condicional</td></tr>
+        <tr><td>Formato de moneda</td><td><code>Ctrl+Shift+4</code></td><td><code>⌘+Shift+4</code></td></tr>
+        <tr><td>Formato de porcentaje</td><td><code>Ctrl+Shift+5</code></td><td><code>⌘+Shift+5</code></td></tr>
+        <tr><td>Negrita</td><td><code>Ctrl+B</code></td><td><code>⌘+B</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<script src="../js/guia-print.js"></script>
+</body>
+</html>

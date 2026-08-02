@@ -268,6 +268,26 @@
   --amber-clase-tint:#fdf3e0;
   --amber-clase-soft:#faebcc;
 
+  /* Planilla de cálculo (Clases 08-11). OJO: no confundir con --green,
+     que es el verde FIJO del callout "action"/entrega (#0f7a5c) y nunca
+     se usa como acento de clase. Ver manual 2.6. */
+  --verde:#1e8e3e;
+  --verde-deep:#145c28;
+  --verde-tint:#e9f7ee;
+  --verde-soft:#cee6d5;
+
+  /* Bases de datos + gestión de datos (Clases 13-17) */
+  --purpura:#673ab7;
+  --purpura-deep:#432677;
+  --purpura-tint:#f2eefa;
+  --purpura-soft:#ded4ef;
+
+  /* Recuperatorio (Clase 20) */
+  --gris:#8d8b9c;
+  --gris-deep:#5c5a65;
+  --gris-tint:#f4f3f6;
+  --gris-soft:#e6e5e9;
+
   /* ---------- Acento de clase ----------
      Cada Guía Visual sobreescribe estos 4 valores en su propio <head>
      según su color de identidad (ver Manual de Identidad Visual).
@@ -1311,6 +1331,113 @@ footer.colophon p{
   margin:0;
 }
 
+/* ---------- Bloque de código / sintaxis (.code-block) ----------
+   Introducido jul. 2026 con las Guías Visuales de planilla de cálculo:
+   sintaxis de función en varias líneas, donde el <code> inline no
+   alcanza. Fondo neutro y no del acento, a propósito — una fórmula no
+   es un callout y no debe competir con ellos. */
+
+.code-block{
+  margin:1.2em 0 1.5em;
+  padding:.9em 1.15em;
+  background:#fafafc;
+  border:1px solid var(--line);
+  border-left:3px solid var(--acento-soft);
+  border-radius:var(--radius);
+  font-family:'SF Mono', Menlo, Consolas, monospace;
+  font-size:.86em;
+  line-height:1.55;
+  color:var(--ink);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  break-inside:avoid-page;
+}
+
+/* ---------- Documento del cliente (.brief) ----------
+   Introducido jul. 2026 para las Guías Visuales con proyecto narrativo
+   (08.1-11.1, Proyecto Andes Sur): reproduce el pedido tal como llega
+   —correo, mensaje de chat, ticket, minuta— con aspecto de documento
+   recibido, no de cita literaria. Deliberadamente sobrio: papel blanco,
+   filete de acento a la izquierda, metadatos en sans chico. No compite
+   con los callouts semánticos, que siguen siendo la paleta fija de 2.1.
+   Ninguna clase anterior a 08.1 lo usa. */
+
+.brief{
+  margin:1.5em 0 1.6em;
+  border:1px solid var(--line);
+  border-left:3px solid var(--acento);
+  border-radius:var(--radius);
+  background:#fff;
+  padding:1.15em 1.35em 1.25em;
+}
+.brief-kind{
+  display:block;
+  font-family:var(--sans);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--acento);
+  margin:0 0 .75em;
+}
+.brief-meta{
+  margin:0 0 1em;
+  padding:0 0 .85em;
+  border-bottom:1px solid var(--line);
+  font-family:var(--sans);
+  font-size:.86rem;
+  line-height:1.55;
+  color:var(--ink-soft);
+}
+.brief-meta div{ display:flex; gap:.5em; }
+.brief-meta dt,
+.brief-meta .brief-meta-k{
+  flex:0 0 auto;
+  min-width:6.5em;
+  font-weight:700;
+  color:var(--muted);
+}
+.brief-meta dd,
+.brief-meta .brief-meta-v{ margin:0; }
+/* .prose > p usa selector de hijo directo, así que los párrafos de
+   adentro del documento no lo heredan: se fijan acá. */
+.brief-body{ font-size:.97em; line-height:1.6; }
+.brief-body p{ margin:0 0 .75em; color:var(--ink-soft); }
+.brief-body p:last-child{ margin-bottom:0; }
+.brief-body ol, .brief-body ul{ margin:0 0 .9em; }
+.brief-sign{ font-style:italic; color:var(--ink-soft); }
+
+/* Mensajería (Teams/WhatsApp): cada burbuja con autor y hora arriba. */
+.brief-msg{
+  margin:0 0 .8em;
+  padding:.6em .85em;
+  background:var(--acento-tint);
+  border-radius:var(--radius);
+}
+.brief-msg:last-child{ margin-bottom:0; }
+.brief-msg-head{
+  display:block;
+  font-family:var(--sans);
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--acento-deep);
+  margin-bottom:.2em;
+}
+.brief-msg p{ margin:0; }
+
+.brief-attach{
+  margin:1em 0 0;
+  padding-top:.8em;
+  border-top:1px solid var(--line);
+  font-family:var(--sans);
+  font-size:.82rem;
+  color:var(--muted);
+}
+
+/* Indivisible solo si es corto — un correo largo tiene que poder cortarse
+   entre hojas (ver 3.6: nunca marcar bloques largos como avoid-page). */
+.brief-meta, .brief-msg, .brief-attach{ break-inside:avoid-page; }
+
 /* ---------- Utility ---------- */
 
 .photo-note{
@@ -1767,6 +1894,15 @@ footer.colophon p{
   .activity-eyebrow{ padding:4px 9px; font-size:8pt; }
   .activity-criteria{ margin-top:.9em; padding:8pt 10pt; }
 
+  .code-block{ margin:.9em 0 1.1em; padding:7pt 9pt; font-size:8.4pt; line-height:1.4; border-radius:5px; }
+
+  .brief{ margin:1.1em 0 1.2em; padding:10pt 12pt 11pt; border-radius:5px; }
+  .brief-kind{ font-size:7.4pt; margin-bottom:6pt; }
+  .brief-meta{ margin-bottom:7pt; padding-bottom:6pt; font-size:8pt; line-height:1.4; }
+  .brief-msg{ margin-bottom:5pt; padding:5pt 7pt; }
+  .brief-msg-head{ font-size:7.4pt; }
+  .brief-attach{ margin-top:7pt; padding-top:6pt; font-size:7.8pt; }
+
   .app-install{ margin:.95em 0; padding:11pt 13pt 13pt; }
   .app-install-head{ gap:9px; }
   .app-install-icon{ width:30px; height:30px; }
@@ -1814,4 +1950,239 @@ footer.colophon p{
   .diagram{ max-width:62mm; margin:.7em auto 0; }
 
   footer.colophon{ padding:16pt 0 0; }
+}
+
+/* ==========================================================================
+   Botón flotante "Guardar PDF" (.pdf-fab) + panel de recordatorio
+   Solo pantalla. El DOM lo inyecta js/guia-print.js (ver manual 3.10); acá
+   vive todo el estilo. Va al final del archivo, después de @media print,
+   porque es interfaz de pantalla y no participa del papel: se apaga entero
+   con display:none dentro de su propio @media print, al final del bloque.
+
+   Diseño: la misma burbuja de la portada (.cover-teacher) — pill de radio
+   999px, disco circular a la izquierda donde va la foto del docente, dos
+   líneas de texto a la derecha (acción arriba, detalle abajo). Diferencia:
+   la de portada flota sobre la banda de color y es blanca translúcida; ésta
+   flota sobre papel blanco, así que invierte el esquema (fondo blanco
+   sólido, disco en --acento, texto en --ink/--muted).
+   ========================================================================== */
+
+.pdf-fab{
+  position:fixed;
+  right:clamp(16px, 3.5vw, 40px);
+  bottom:clamp(16px, 3.5vw, 32px);
+  z-index:60;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 20px 6px 6px;
+  border-radius:999px;
+  border:1px solid var(--line-strong);
+  background:var(--paper);
+  /* Doble sombra: una corta y opaca que despega la pastilla del papel, y
+     una larga y difusa que le da el peso de objeto flotante. Una sola no
+     alcanza sobre fondo blanco pleno — o se ve pegada o se ve sucia. */
+  box-shadow:0 1px 2px rgba(21,20,27,.08), 0 8px 24px rgba(21,20,27,.12);
+  cursor:pointer;
+  font-family:var(--sans);
+  text-align:left;
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.pdf-fab:hover{
+  transform:translateY(-2px);
+  border-color:var(--acento-soft);
+  box-shadow:0 2px 4px rgba(21,20,27,.10), 0 14px 32px rgba(21,20,27,.16);
+}
+
+.pdf-fab:active{ transform:translateY(0); }
+
+.pdf-fab:focus-visible{
+  outline:2px solid var(--acento);
+  outline-offset:3px;
+}
+
+/* El disco ocupa el lugar exacto de .cover-teacher-photo: 32px, círculo,
+   sin encogerse. El borde blanco de la foto acá no va (el fondo ya es
+   blanco), lo reemplaza el color sólido del acento. */
+.pdf-fab-disc{
+  width:32px;
+  height:32px;
+  flex-shrink:0;
+  border-radius:50%;
+  background:var(--acento);
+  color:#fff;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.pdf-fab-disc svg{ width:17px; height:17px; }
+
+.pdf-fab-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.25;
+}
+
+.pdf-fab-title{
+  font-size:12px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+.pdf-fab-sub{
+  font-size:10px;
+  font-weight:500;
+  color:var(--muted);
+}
+
+/* Bajo ~420px la segunda línea rompe el ancho de la pantalla: queda solo
+   el disco y el título, sin cambiar de componente. */
+@media (max-width:420px){
+  .pdf-fab{ padding:6px 16px 6px 6px; }
+  .pdf-fab-sub{ display:none; }
+}
+
+/* ---------- Panel de recordatorio ---------- */
+
+.pdf-sheet-overlay{
+  position:fixed;
+  inset:0;
+  z-index:70;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(21,20,27,.42);
+}
+
+.pdf-sheet-overlay[hidden]{ display:none; }
+
+.pdf-sheet{
+  width:100%;
+  max-width:24rem;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 26px 20px;
+  box-shadow:0 18px 50px rgba(21,20,27,.28);
+}
+
+.pdf-sheet-title{
+  font-family:var(--serif-display);
+  font-weight:540;
+  font-size:1.34rem;
+  line-height:1.2;
+  color:var(--ink);
+  margin:0 0 8px;
+}
+
+.pdf-sheet-intro{
+  font-family:var(--sans);
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin:0 0 16px;
+}
+
+.pdf-sheet-list{
+  list-style:none;
+  margin:0 0 16px;
+  padding:0;
+  border-top:1px solid var(--line);
+}
+
+.pdf-sheet-list li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:4px 12px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.pdf-sheet-key{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  align-self:center;
+}
+
+.pdf-sheet-val{
+  font-family:var(--sans);
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--ink);
+  text-align:right;
+}
+
+/* "Gráficos de fondo" es el único ajuste que rompe el PDF si queda mal:
+   se marca en el acento y se le agrega la nota al pie de la fila. */
+.pdf-sheet-list li.is-critical .pdf-sheet-val{ color:var(--acento); }
+
+.pdf-sheet-note{
+  grid-column:1 / -1;
+  font-family:var(--sans);
+  font-size:11.5px;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+.pdf-sheet-note em{ font-style:normal; font-weight:600; }
+
+.pdf-sheet-skip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 18px;
+  font-family:var(--sans);
+  font-size:12px;
+  color:var(--muted);
+  cursor:pointer;
+}
+
+.pdf-sheet-skip input{ accent-color:var(--acento); cursor:pointer; }
+
+.pdf-sheet-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+
+.pdf-sheet-btn{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:600;
+  padding:9px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+
+.pdf-sheet-btn.is-ghost{
+  background:transparent;
+  border-color:var(--line-strong);
+  color:var(--ink-soft);
+}
+
+.pdf-sheet-btn.is-ghost:hover{ background:var(--acento-tint); }
+
+.pdf-sheet-btn.is-primary{
+  background:var(--acento);
+  color:#fff;
+}
+
+.pdf-sheet-btn.is-primary:hover{ background:var(--acento-deep); }
+
+.pdf-sheet-btn:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+
+/* En papel no existe ninguno de los dos: el botón se apaga antes de que
+   Chrome tome el snapshot (js/guia-print.js también difiere print() un
+   frame, pero esta regla es la que garantiza que no salga impreso). */
+@media print{
+  .pdf-fab,
+  .pdf-sheet-overlay{ display:none !important; }
 }

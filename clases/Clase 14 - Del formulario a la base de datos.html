@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 14 - Del formulario a la base de datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 14 · Gestión de datos e IA";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="14">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 14 · Gestión de datos e IA</span>
+    <h1 class="cover-title">Del Formulario a la Base de Datos</h1>
+    <p class="cover-subtitle">Google Forms · Validación de respuestas · Importación/exportación CSV · Calidad de datos</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">El modelo que diseñaste en Clase 13 dejar de ser solo un diseño: hoy construís el mecanismo que hace que otras personas carguen sus propios registros sin que vos tipees nada a mano. Entendés cómo Google Forms alimenta una tabla, aplicás validación de datos en el origen, importas y exportas CSV, y auditás la calidad de lo que entra.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#forms"><span class="toc-num">01</span><span class="toc-text">Google Forms como interfaz de carga</span></a></li>
+    <li><a href="#validacion"><span class="toc-num">02</span><span class="toc-text">Validación de respuestas en el formulario</span></a></li>
+    <li><a href="#registro"><span class="toc-num">03</span><span class="toc-text">De Forms a Sheets: cómo se generan los registros</span></a></li>
+    <li><a href="#csv"><span class="toc-num">04</span><span class="toc-text">Importar y exportar CSV</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — FORMS -->
+<section class="block" id="forms">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Google Forms como interfaz de carga</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Si tuvieras que juntar los datos de 40 compañeros para un trabajo grupal —nombre, comisión, tema elegido— ¿les pedirías que editen todos la misma planilla a la vez, o les darías un formulario para que cada uno cargue su propio registro?</p>
+    </div>
+
+    <p><strong>Google Forms</strong> es la interfaz de carga de registros: cada persona que responde el formulario genera automáticamente una fila nueva en una hoja de Sheets vinculada, sin tocar la planilla directamente ni pisar los datos de otra persona.</p>
+
+    <h3>Cómo vincularlo</h3>
+    <ol>
+      <li>Creá un formulario en Google Forms, con una pregunta por campo que necesites (según el modelo que diseñaste en Clase 13).</li>
+      <li>En la pestaña <strong>Respuestas</strong>, hacé clic en el ícono de Sheets para crear (o vincular) una hoja de cálculo de destino.</li>
+      <li>Cada respuesta enviada aparece como una fila nueva en esa hoja, con una columna extra de <strong>marca temporal</strong> (fecha y hora exacta de envío) — un buen candidato a clave primaria natural.</li>
+    </ol>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El orden de las preguntas en el formulario define el orden de las columnas en la hoja. Si cambiás el formulario después de tener respuestas cargadas, revisá que las columnas sigan alineadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — VALIDACIÓN -->
+<section class="block" id="validacion">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Validación de respuestas en el formulario</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Si una pregunta de tu formulario pide "Edad" como respuesta corta de texto libre, ¿qué te impide que alguien escriba "veinte años" en lugar de `20`?</p>
+    </div>
+
+    <p>Google Forms tiene su propio sistema de validación de respuestas, distinto del de Sheets pero con la misma idea: restringir lo que se puede cargar, para no tener que corregirlo después.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de pregunta</th><th>Validación disponible</th></tr></thead>
+        <tbody>
+          <tr><td>Respuesta corta (numérica)</td><td>Rango numérico, número entero, número mayor/menor que un valor</td></tr>
+          <tr><td>Respuesta corta (texto)</td><td>Expresión regular (patrón de texto), longitud máxima</td></tr>
+          <tr><td>Opción múltiple / Lista desplegable</td><td>La propia lista actúa como restricción</td></tr>
+          <tr><td>Casilla obligatoria</td><td>Marca la pregunta como requerida</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Toda pregunta que en tu modelo de Clase 13 sea un campo categórico debería ser, en Forms, una pregunta de "Opción múltiple" o "Lista desplegable" — nunca de respuesta libre. Es la validación desde el origen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — REGISTRO -->
+<section class="block" id="registro">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">De Forms a Sheets: cómo se generan los registros</h2>
+  </div>
+  <div class="prose">
+    <p>Con la tabla de respuestas ya armada, podés aplicar las mismas herramientas de exploración que usaste con cualquier dataset: filtros, ordenamiento, formato condicional, funciones lógicas.</p>
+
+    <h3>Filtro rápido vs. vista de filtro</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Herramienta</th><th>Cuándo usarla</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Filtro</strong> (Datos > Crear un filtro)</td><td>Trabajás solo, explorando la tabla</td></tr>
+          <tr><td><strong>Vista de filtro</strong> (Datos > Vistas de filtro)</td><td>Varios usuarios comparten la hoja al mismo tiempo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Si tu hoja de respuestas va a ser revisada o compartida, usá siempre "Vista de filtro" en lugar del filtro común, para no alterar lo que ven los demás.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — CSV -->
+<section class="block" id="csv">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Importar y exportar CSV</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Un compañero te pasa un archivo `.csv` con 200 filas de datos. ¿Qué esperás que pase al abrirlo en Sheets? ¿Y si necesitás mandar tu propia tabla a alguien que usa otro sistema?</p>
+    </div>
+
+    <p><strong>CSV</strong> (*Comma-Separated Values*) es el formato más universal para intercambiar tablas entre programas: es texto plano, sin formato, donde cada línea es un registro y cada valor va separado por una coma.</p>
+
+    <h3>Por qué importa</h3>
+    <p>Ninguna base de datos vive aislada: en algún momento vas a necesitar sacar datos de Sheets para llevarlos a otro sistema, o traer datos de otro sistema hacia tu planilla. El CSV es el "idioma común".</p>
+
+    <h3>Cómo exportar desde Sheets</h3>
+    <ol>
+      <li><strong>Archivo > Descargar > Valores separados por comas (.csv)</strong></li>
+      <li>Si tu hoja tiene varias pestañas, el CSV solo exporta la hoja activa.</li>
+    </ol>
+
+    <h3>Cómo importar un CSV a Sheets</h3>
+    <ol>
+      <li><strong>Archivo > Importar > Subir</strong>, seleccioná el archivo `.csv`</li>
+      <li>Elegí si lo importás como hoja nueva, reemplazo, o insertado en una posición</li>
+      <li>Confirmá el separador (coma o punto y coma)</li>
+    </ol>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Al importar un CSV, revisá siempre los tipos de dato después: es habitual que una columna de fechas o números llegue interpretada como texto, sobre todo con configuraciones regionales distintas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+
+  <div class="section section-activities">
+    <div class="section-title">Checklist de cierre</div>
+    <div class="activity-table">
+      <table>
+        <tbody>
+          <tr><td><label><input type="checkbox"><span>Armé un Google Forms con al menos 5 campos, vinculado a una hoja de Sheets</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Respondí el formulario varias veces y verifiqué que aparecen nuevas filas</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Apliqué validación de respuesta a al menos dos preguntas</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Exporté la tabla como CSV y la abrí con un editor de texto</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Importé el CSV de vuelta a Sheets y verifiqué que los tipos se reconstruyeron</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Auditéé la tabla: revisé duplicados, campos vacíos e inconsistencias de formato</span></label></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section section-sources">
+    <div class="section-title">Una sola idea para llevarte de esta clase</div>
+    <p>Un flujo de recolección de datos bien pensado desde el formulario (validación, campos obligatorios, opciones cerradas) evita que tengas que limpiar datos después. La calidad se construye desde el origen, no de adentro hacia afuera.</p>
+  </div>
+
+</section>
+
+</main>
+
+</div>
+
+<footer class="colophon"><p>Marcos Hernández</p></footer>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

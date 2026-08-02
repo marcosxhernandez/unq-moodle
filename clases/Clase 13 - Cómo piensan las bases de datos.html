@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 13 - Cómo piensan las bases de datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Gestión de datos e IA = purpura */
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 13 · Gestión de datos e IA";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="13">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 13 · Gestión de datos e IA</span>
+    <h1 class="cover-title">Cómo Piensan las Bases de Datos</h1>
+    <p class="cover-subtitle">Dato vs. información · Campo, registro y tabla · Tipos de datos · Clave primaria</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Arranca una unidad nueva de cinco clases sin una clase de Taller integrador aparte. Hoy es conceptual: entendés cómo se modela la información antes de construir nada con herramientas. Reconocés un dato suelto de la información que se arma al darle contexto, distinguís campo, registro y tabla, verificás tipos de datos y diseñás una clave primaria única, no vacía y estable.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#dato"><span class="toc-num">01</span><span class="toc-text">Dato vs. información</span></a></li>
+    <li><a href="#estructura"><span class="toc-num">02</span><span class="toc-text">Campo, registro y tabla</span></a></li>
+    <li><a href="#tipos"><span class="toc-num">03</span><span class="toc-text">Tipos de datos</span></a></li>
+    <li><a href="#clave"><span class="toc-num">04</span><span class="toc-text">La clave primaria</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — DATO VS INFORMACIÓN -->
+<section class="block" id="dato">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Dato vs. información</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>`8`. Solo eso: el número 8. ¿Qué significa? Ahora agregale contexto: "la nota de Bruno en el segundo parcial fue 8". ¿Cambió el número, o cambió lo que podés hacer con él?</p>
+    </div>
+
+    <p>Un <strong>dato</strong> es un valor suelto, sin contexto: un número, una palabra, una fecha. Por sí solo no te permite decidir nada. La <strong>información</strong> es ese mismo dato interpretado dentro de un contexto que le da sentido — quién, cuándo, en relación con qué.</p>
+
+    <p>Una base de datos no junta información directamente: junta <strong>datos</strong>, organizados de una forma tan consistente que después se puede reconstruir la información a partir de ellos, cruzando lo que haga falta. Ese "organizados de forma consistente" es exactamente lo que esta clase define.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Cuando diseñes cualquier tabla de acá en adelante, preguntate: "si alguien mira esta fila sin ningún contexto más, ¿puede reconstruir la información completa?" Si la respuesta es no, probablemente falta un campo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — ESTRUCTURA -->
+<section class="block" id="estructura">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Campo, registro y tabla</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Tu agenda de contactos del celular: ¿tiene una fila por contacto, y una columna por dato (nombre, teléfono, email)? Sin saberlo, ya usás una base de datos todos los días.</p>
+    </div>
+
+    <p>Una <strong>base de datos</strong> es un conjunto organizado de información, estructurado de forma que se pueda cargar, buscar y relacionar de manera consistente. Los tres conceptos básicos son siempre los mismos, cambie el programa que uses:</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Concepto</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Campo</strong></td><td>Cada tipo de dato que se registra (una columna)</td><td>Nombre, Email, Carrera</td></tr>
+          <tr><td><strong>Registro</strong></td><td>Un conjunto completo de datos de un mismo elemento (una fila)</td><td>Los datos de un estudiante en particular</td></tr>
+          <tr><td><strong>Tabla</strong></td><td>El conjunto completo de registros con los mismos campos</td><td>La lista completa de estudiantes inscriptos</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Una planilla de Sheets bien armada (una fila por registro, una columna por campo, sin celdas combinadas ni filas vacías) ya cumple los requisitos mínimos para funcionar como una base de datos simple. La diferencia con un sistema de bases de datos más estricto es que ese sistema impone reglas duras sobre qué se puede cargar en cada campo — Sheets confía en que vos las respetes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — TIPOS -->
+<section class="block" id="tipos">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Tipos de datos</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Si en la columna "Fecha de inscripción" alguien carga `15 de marzo` y otra persona carga `15/03/2026`, ¿Sheets los va a tratar como el mismo tipo de dato? ¿Y si en la columna "Edad" alguien escribe `veinte` en lugar de `20`?</p>
+    </div>
+
+    <p>Cada campo de una tabla tiene un <strong>tipo de dato</strong>: la clase de valor que ese campo puede contener. No es un detalle menor — el tipo de dato define qué operaciones podés hacer después (sumar, ordenar cronológicamente, filtrar por rango).</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tipo de dato</th><th>Ejemplo</th><th>Qué falla si se mezcla</th></tr></thead>
+        <tbody>
+          <tr><td>Texto</td><td>Nombre, Carrera</td><td>No se puede sumar ni ordenar numéricamente</td></tr>
+          <tr><td>Numérico</td><td>Edad, Monto, Stock</td><td>Un número cargado como texto (`"20"`) no suma ni promedia</td></tr>
+          <tr><td>Fecha/hora</td><td>Fecha de inscripción, Marca temporal</td><td>Formatos distintos rompen el orden cronológico</td></tr>
+          <tr><td>Lógico (booleano)</td><td>¿Activo? (Sí/No, Verdadero/Falso)</td><td>Mezclar "Sí"/"Activo"/"1" impide contar de forma consistente</td></tr>
+          <tr><td>Categórico</td><td>Categoría, Estado</td><td>Sin lista cerrada, aparecen variantes que `CONTAR.SI` no agrupa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Sheets muchas veces "adivina" el tipo de dato según cómo lo escribís, y no siempre acierta. Un número alineado a la izquierda en la celda es una señal de que Sheets lo está tratando como texto, no como número — y eso rompe `SUMA`, `PROMEDIO` y cualquier función matemática.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — CLAVE -->
+<section class="block" id="clave">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">La clave primaria</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>En una tabla de estudiantes, dos personas pueden llamarse "Juan Pérez". ¿Qué campo usarías para no confundirlos nunca, ni siquiera si comparten nombre, edad y carrera?</p>
+    </div>
+
+    <p>La <strong>clave primaria</strong> es el campo (o la combinación de campos) que identifica de forma <strong>única</strong> a cada registro de una tabla. Ningún otro registro puede tener el mismo valor de clave primaria, y ese valor no puede quedar vacío.</p>
+
+    <h3>Qué hace buena a una clave primaria</h3>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Requisito</th><th>Por qué importa</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Única</strong></td><td>Si dos registros comparten clave, ya no podés distinguirlos con certeza</td></tr>
+          <tr><td><strong>No vacía</strong></td><td>Un registro sin clave no se puede referenciar desde ningún otro lado</td></tr>
+          <tr><td><strong>Estable</strong></td><td>No debería cambiar con el tiempo — un nombre puede cambiar, un DNI o un legajo no</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Ejemplos habituales de clave primaria:</strong> el DNI o legajo de una persona, el código interno de un producto, la marca temporal única de una respuesta de formulario.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El nombre y apellido casi nunca es buena clave primaria — no es único (hay personas con el mismo nombre) y en teoría podría cambiar. Si tu tabla no tiene todavía un campo que sirva como clave, agregá uno artificial (un número de orden, un código correlativo) antes de seguir.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>La clave primaria de hoy es la misma pieza que en Clase 16 vas a ver del otro lado del espejo: cuando una tabla usa la clave primaria de otra tabla para referenciarla, a esa copia se la llama <strong>clave foránea</strong>. Todavía no necesitás ese término — alcanza con reconocer bien la clave primaria dentro de tu propia tabla.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+
+  <div class="section section-activities">
+    <div class="section-title">Checklist de cierre</div>
+    <div class="activity-table">
+      <table>
+        <tbody>
+          <tr><td><label><input type="checkbox"><span>Distingo un dato suelto de la información que se arma al darle contexto</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Identifico campo, registro y tabla en cualquier conjunto de datos</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Reconozco el tipo de dato correcto de un campo y por qué mezclarlo rompe cálculos</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Defino una clave primaria que sea única, no vacía y estable</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Verifico con `CONTAR.SI` que una clave primaria no tiene duplicados</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Diseñé un modelo de una tabla real de mi disciplina</span></label></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section section-glossary">
+    <div class="section-title">Glosario de la clase</div>
+    <table class="tbl-refs">
+      <tbody>
+        <tr><td><strong>Dato</strong></td><td>Valor suelto, sin contexto.</td></tr>
+        <tr><td><strong>Información</strong></td><td>El dato interpretado dentro de un contexto.</td></tr>
+        <tr><td><strong>Base de datos</strong></td><td>Conjunto organizado de información, estructurado en campos y registros.</td></tr>
+        <tr><td><strong>Campo</strong></td><td>Cada tipo de dato que se registra, equivalente a una columna.</td></tr>
+        <tr><td><strong>Registro</strong></td><td>Conjunto completo de datos de un mismo elemento, equivalente a una fila.</td></tr>
+        <tr><td><strong>Tipo de dato</strong></td><td>La clase de valor que un campo puede contener (texto, numérico, fecha, lógico o categórico).</td></tr>
+        <tr><td><strong>Clave primaria</strong></td><td>Campo que identifica de forma única, no vacía y estable a cada registro.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section section-sources">
+    <div class="section-title">Una sola idea para llevarte de esta clase</div>
+    <p>Antes de tocar cualquier herramienta, una base de datos ya existe en tu cabeza como modelo: qué campos importan, qué identifica sin ambigüedad a cada registro. Diseñar bien ese modelo es lo que evita rehacer todo después.</p>
+  </div>
+
+</section>
+
+</main>
+
+</div>
+
+<footer class="colophon"><p>Marcos Hernández</p></footer>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

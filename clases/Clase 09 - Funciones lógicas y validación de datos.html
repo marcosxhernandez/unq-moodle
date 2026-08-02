@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 09 - Funciones lógicas y validación de datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Planilla de cálculo (Clase 09) = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 09 · Planilla de cálculo";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="09">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 09 · Planilla de cálculo</span>
+    <h1 class="cover-title">Funciones lógicas y validación de datos</h1>
+    <p class="cover-subtitle">Google Sheets · SI y SI anidados · SUMAR.SI y CONTAR.SI · validación de datos y listas desplegables</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">La clase anterior dejó un archivo que calcula números: total, promedio, máximo, mínimo. Pero muchas veces lo que una organización necesita no es un número sino una <strong>decisión</strong>: ¿este registro entra en revisión o no?, ¿en qué categoría cae? Hoy se traslada ese "si pasa esto, entonces…" del razonamiento cotidiano a una fórmula que la planilla evalúa sobre miles de filas — y se cierra el circuito por el otro extremo, controlando desde el origen qué se puede escribir en cada celda cuando el archivo pasa a otras manos.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#automatizar"><span class="toc-num">01</span><span class="toc-text">Por qué automatizar decisiones</span></a></li>
+    <li><a href="#encargo"><span class="toc-num">02</span><span class="toc-text">El encargo de esta semana</span></a></li>
+    <li><a href="#si"><span class="toc-num">03</span><span class="toc-text">La función SI</span></a></li>
+    <li><a href="#anidados"><span class="toc-num">04</span><span class="toc-text">SI anidados</span></a></li>
+    <li><a href="#condicionales"><span class="toc-num">05</span><span class="toc-text">SUMAR.SI y CONTAR.SI</span></a></li>
+    <li><a href="#validacion"><span class="toc-num">06</span><span class="toc-text">Validación de datos y listas desplegables</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">07</span><span class="toc-text">Cerrar el encargo y replicarlo en Excel</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="automatizar">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Por qué automatizar decisiones</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Tenés una planilla con 300 registros y necesitás escribir "Revisar" o "En orden" al lado de cada uno, según un umbral. ¿Cuánto tardarías en hacerlo a mano, uno por uno? ¿Y si mañana la organización cambia el umbral?</p>
+    </div>
+
+    <h3>De dónde venimos</h3>
+    <p>En la Clase 08 armaste, para una de cuatro organizaciones, un archivo con la hoja <code>DATOS</code> (ocho registros de junio, con <code>importe_bruto</code> e <code>importe_neto</code> calculados), un panel <code>RESUMEN</code> y un parámetro del negocio alojado en una sola celda y referenciado con <code>$</code>. Ese archivo es el punto de partida de hoy.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Si no tenés el archivo a mano</p>
+      <p>Podés rehacerlo en diez minutos: el dataset completo de las cuatro organizaciones y sus parámetros están en el material de la Clase 08. Y si preferís, trabajá con una tabla propia de al menos ocho filas que tenga la misma estructura —identificador, fecha, un campo de agrupación, una categoría, una cantidad y un valor unitario—; todo lo de hoy funciona igual.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Todo lo de hoy asume que ya podés fijar una referencia con <code>$</code> sin pensarlo, y que la sintaxis <code>=FUNCIÓN(rango)</code> te sale de memoria. Si todavía dudás, repasá eso antes de seguir: las funciones de esta clase se construyen literalmente arriba de esos conceptos.</p>
+    </div>
+
+    <h3>De calcular a decidir</h3>
+    <p>Hasta ahora tus planillas calculaban números. Una <strong>función lógica</strong> hace otra cosa: evalúa una condición y devuelve un resultado distinto según si esa condición se cumple o no. Traslada el "si pasa esto, entonces aquello" a una fórmula que la planilla evalúa fila por fila, sobre miles de filas, en el mismo tiempo que tarda en evaluar una sola.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de escribir la fórmula, escribí la regla en español, en una oración con "si": <em>"si el importe supera el umbral, es de alto valor; si no, es estándar"</em>. Traducir esa oración a la planilla es después un trámite casi mecánico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="encargo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">El encargo de esta semana</h2>
+  </div>
+  <div class="prose">
+    <p>El panel de la semana pasada funcionó. Ahora llega el pedido siguiente, y es de otro orden: no más números, sino <strong>criterios</strong> que la planilla aplique sola y una carga que el resto del equipo no pueda romper.</p>
+
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Junio — necesito saber dónde mirar, no solo cuánto</span></div>
+      </div>
+      <div class="brief-body">
+        <p>Gracias por el resumen, sirvió. Ahora te pido tres cosas más:</p>
+        <ol>
+          <li>Que cada registro <strong>quede clasificado solo</strong>. Con el total no me alcanza: necesito saber cuáles son los importantes, cuáles son normales y cuáles hay que revisar. Y que si cambio el corte, se reclasifique todo sin que nadie toque una fórmula.</li>
+          <li>Los <strong>subtotales por área</strong>: cuánto aporta cada canal / sede / turno / responsable, y cuántos registros tiene cada uno.</li>
+          <li>A partir de julio la carga la van a hacer <strong>tres personas distintas</strong>. Necesito que el archivo no acepte cualquier cosa: que las categorías salgan de una lista y no de lo que a cada uno se le ocurra escribir.</li>
+        </ol>
+        <p>Gracias.</p>
+      </div>
+    </div>
+
+    <h3>Qué te está pidiendo realmente</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que dice el pedido</th><th>Lo que hay que hacer</th><th>Herramienta de esta clase</th></tr></thead>
+        <tbody>
+          <tr><td>"Que quede clasificado solo, en tres grupos"</td><td>Una regla de decisión con más de dos salidas, evaluada fila por fila</td><td><code>SI</code> anidado</td></tr>
+          <tr><td>"Que si cambio el corte se reclasifique todo"</td><td>El umbral fuera de la fórmula, en su propia celda</td><td>Referencia absoluta (<code>$</code>)</td></tr>
+          <tr><td>"Cuánto aporta cada área y cuántos registros tiene"</td><td>Sumar y contar solo el subconjunto que cumple un criterio</td><td><code>SUMAR.SI</code>, <code>CONTAR.SI</code></td></tr>
+          <tr><td>"Que el archivo no acepte cualquier cosa"</td><td>Restringir la carga desde el origen, no corregir después</td><td>Validación de datos por lista</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>El umbral de tu organización</h3>
+    <p>Es el mismo que usaste para la regla amarilla de formato condicional en la clase anterior. Ahora, en vez de pintar, va a <strong>escribir una categoría</strong>.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Organización</th><th>Campo que agrupa</th><th>Umbral "alto valor"</th><th>Regla completa</th></tr></thead>
+        <tbody>
+          <tr><td>💼 Hotel Bahía Norte</td><td><code>canal</code></td><td>$250.000</td><td rowspan="4"><strong>Revisar</strong> si la cantidad es 0 · <strong>Alto valor</strong> si el importe bruto llega al umbral · <strong>Estándar</strong> en cualquier otro caso</td></tr>
+          <tr><td>📚 Territorio Abierto</td><td><code>sede</code></td><td>$40.000</td></tr>
+          <tr><td>🔬 Planta piloto Sur</td><td><code>turno</code></td><td>$300.000</td></tr>
+          <tr><td>🎨 Estudio Delta</td><td><code>responsable</code></td><td>$150.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Control de resultado</p>
+      <p>Con el dataset de junio, cualquiera sea tu organización, la clasificación tiene que dar <strong>un solo registro en "Revisar"</strong> (el que tiene la cantidad en cero) y <strong>tres o cuatro en "Alto valor"</strong>. Si te da otra cosa, el error está en el orden de las condiciones o en el umbral, no en la sintaxis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="si">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">La función SI</h2>
+  </div>
+  <div class="prose">
+    <h3>Sintaxis</h3>
+<div class="code-block">=SI(condición; valor_si_verdadero; valor_si_falso)</div>
+    <ul>
+      <li><strong>Condición:</strong> una comparación que la planilla puede evaluar como verdadera o falsa. Usa los operadores <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code> (distinto de).</li>
+      <li><strong>Valor si verdadero:</strong> lo que aparece en la celda cuando la condición se cumple.</li>
+      <li><strong>Valor si falso:</strong> lo que aparece cuando no se cumple.</li>
+    </ul>
+    <p>Un ejemplo completo:</p>
+<div class="code-block">=SI(B2&gt;=6; "Aprobado"; "Desaprobado")</div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención — El texto va entre comillas</p>
+      <p>Si el resultado que querés mostrar es texto (no un número ni el resultado de otra fórmula), tiene que ir entre comillas dobles: <code>"Aprobado"</code>, no <code>Aprobado</code>. Es el error más común al escribir un <code>SI</code> por primera vez — la planilla tira <code>#¿NOMBRE?</code> porque intenta interpretar "Aprobado" como el nombre de una función o de un rango.</p>
+    </div>
+
+    <h3>Los operadores de comparación</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Operador</th><th>Significa</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>=</code></td><td>Igual a</td><td><code>B2=100</code></td></tr>
+          <tr><td><code>&gt;</code></td><td>Mayor que</td><td><code>B2&gt;6</code></td></tr>
+          <tr><td><code>&lt;</code></td><td>Menor que</td><td><code>B2&lt;6</code></td></tr>
+          <tr><td><code>&gt;=</code></td><td>Mayor o igual que</td><td><code>B2&gt;=6</code></td></tr>
+          <tr><td><code>&lt;=</code></td><td>Menor o igual que</td><td><code>B2&lt;=6</code></td></tr>
+          <tr><td><code>&lt;&gt;</code></td><td>Distinto de</td><td><code>B2&lt;&gt;0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 1 · Ejemplo mínimo</span>
+        <h3>Un SI de dos ramas</h3>
+      </div>
+      <div class="prose">
+        <p>Cinco filas sin contexto, para aislar la mecánica.</p>
+        <ol>
+          <li>En una hoja aparte, cargá cinco notas: <code>8</code>, <code>4</code>, <code>6</code>, <code>3</code>, <code>9</code>.</li>
+          <li>Al lado, con <code>SI</code>, mostrá "Aprobado" si la nota es mayor o igual a 6, y "Desaprobado" si no. Copiá hacia abajo.</li>
+          <li>Deberías obtener tres "Aprobado" y dos "Desaprobado". Si te sale <code>#¿NOMBRE?</code>, faltan las comillas.</li>
+          <li>Ahora cargá el 6 en una celda aparte y reescribí la fórmula para que compare contra <strong>esa celda</strong> con referencia absoluta. Cambiala a 7 y confirmá que la columna entera se recalcula sin tocar ninguna fórmula.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 2 · Sobre el encargo</span>
+        <h3>El umbral fuera de la fórmula</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Abrí tu archivo y, debajo de la celda del parámetro que ya tenías, agregá una celda nueva: <strong>"Umbral alto valor"</strong>, con el valor de tu organización.</li>
+          <li>En la hoja <code>DATOS</code>, agregá una columna <strong><code>alto_valor</code></strong> con un <code>SI</code> de dos ramas: <code>"Sí"</code> si el importe bruto llega o supera ese umbral, <code>"No"</code> si no. El umbral, con referencia absoluta.</li>
+          <li>Contá a ojo cuántos "Sí" te quedaron y comparalo con las celdas que se pintaron de amarillo en la clase anterior: tienen que ser exactamente las mismas.</li>
+          <li>Bajá el umbral a la mitad y confirmá que la columna se recalcula sola. Después devolvelo al valor original.</li>
+        </ol>
+        <p class="activity-criteria">La columna <code>alto_valor</code> coincide fila por fila con la regla de formato condicional de la semana pasada, y el umbral no aparece escrito dentro de ninguna fórmula.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo decisiones sobre datos con funciones lógicas, parametrizando los umbrales en celdas propias de modo que un cambio de criterio del negocio se aplique a todo el conjunto sin editar fórmulas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="anidados">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">SI anidados</h2>
+  </div>
+  <div class="prose">
+    <p>Una condición con dos salidas no alcanza: el pedido habla de <strong>tres</strong> grupos. Para clasificar en tres o más categorías se anida un <code>SI</code> dentro de otro, en el lugar del "valor si falso".</p>
+    <p>Clasificar una nota en "Excelente" (9 o más), "Aprobado" (entre 6 y 8) o "Desaprobado" (menos de 6):</p>
+<div class="code-block">=SI(B2&gt;=9; "Excelente"; SI(B2&gt;=6; "Aprobado"; "Desaprobado"))</div>
+    <p>La lógica se lee así: <em>"si la nota es 9 o más, Excelente. Si no, evaluá esta otra condición: si es 6 o más, Aprobado. Si tampoco se cumple, Desaprobado."</em></p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — El orden decide el resultado</p>
+      <p>Escribí primero la condición que corta el grupo más chico o más excepcional, y dejá la última rama sin condición: es el "de lo contrario" que agarra todo lo que no entró antes. Si ponés primero la condición más amplia, se traga los casos que debían caer en las otras ramas — y la fórmula no da error, simplemente clasifica mal.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Cada <code>SI</code> que abrís necesita su paréntesis de cierre. Con dos o tres anidados es fácil perder la cuenta — la planilla te marca el error, pero conviene ir cerrando cada uno apenas lo abrís, antes de seguir escribiendo.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 3 · Ejemplo mínimo</span>
+        <h3>Tres categorías, una fórmula</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Sobre las cinco notas de la Actividad 1, agregá una columna "Categoría" con tres salidas: "Excelente" (9 o más), "Aprobado" (6 a 8), "Desaprobado" (menos de 6).</li>
+          <li>Agregá dos notas más, 10 y 5, y confirmá que caen donde corresponde.</li>
+          <li>Ahora invertí el orden: poné primero la condición de "Aprobado". Mirá qué pasa con el 9 y el 10. Ese es el error de lógica que la fórmula no te va a avisar.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 4 · Sobre el encargo</span>
+        <h3>Clasificar los ocho registros</h3>
+      </div>
+      <div class="prose">
+        <p>Este es el punto 1 del pedido. La regla tiene tres salidas y una de ellas es una excepción, así que el orden importa.</p>
+        <ol>
+          <li>Agregá una columna <strong><code>estado</code></strong> en <code>DATOS</code> con un <code>SI</code> anidado que devuelva:
+            <ul>
+              <li><strong>"Revisar"</strong> si la <strong>cantidad</strong> (noches / participantes / unidades / horas) es <code>0</code></li>
+              <li><strong>"Alto valor"</strong> si el importe bruto llega o supera el umbral</li>
+              <li><strong>"Estándar"</strong> en cualquier otro caso</li>
+            </ul>
+            La forma de la fórmula es la misma para las cuatro organizaciones:
+<div class="code-block">=SI(E2=0; "Revisar"; SI(G2&gt;=$B$13; "Alto valor"; "Estándar"))</div>
+            <em>(ajustá las letras a dónde te quedaron efectivamente la cantidad, el importe bruto y la celda del umbral).</em>
+          </li>
+          <li><strong>Control:</strong> tiene que haber exactamente <strong>un</strong> "Revisar". Si te salen dos, o si el registro en cero quedó clasificado como "Estándar", revisá el orden de las condiciones.</li>
+          <li>Preguntate por qué la condición de "Revisar" tiene que ir <strong>primera</strong> y no última. Escribí la respuesta en una celda al costado: es exactamente el tipo de decisión que después hay que poder defender.</li>
+          <li>Aplicá formato condicional sobre la columna <code>estado</code>: rojo para "Revisar", verde para "Alto valor". Ahora el archivo se lee de un vistazo.</li>
+        </ol>
+        <p class="activity-criteria">Un solo registro en "Revisar", tres o cuatro en "Alto valor" según la organización, y la justificación del orden de las condiciones está escrita en el archivo.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 4 · Extra</span>
+        <h3>Una cuarta rama</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Agregá una categoría más: <strong>"Excepcional"</strong> para los registros que superen el <strong>doble</strong> del umbral. Vas a necesitar un tercer <code>SI</code> anidado — y decidir en qué posición del orden va.</li>
+          <li>Verificá que ningún registro quedó sin categoría y que ninguno cambió de grupo salvo los que debían.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="condicionales">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">SUMAR.SI y CONTAR.SI</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>El pedido quiere saber cuánto aporta cada canal, sede, turno o responsable. Podrías filtrar, sumar a mano y anotar el resultado. ¿Qué pasa con ese número anotado cuando llegue el archivo de julio?</p>
+    </div>
+    <p><code>SUMA</code> y <code>CONTAR</code> operan sobre <strong>todo</strong> un rango. <code>SUMAR.SI</code> y <code>CONTAR.SI</code> agregan una condición: solo suman o cuentan las celdas que la cumplen.</p>
+
+    <h3>Sintaxis</h3>
+<div class="code-block">=SUMAR.SI(rango_criterio; criterio; rango_suma)
+=CONTAR.SI(rango; criterio)</div>
+    <ul>
+      <li><code>SUMAR.SI</code> revisa <code>rango_criterio</code> y, para cada celda que cumple <code>criterio</code>, suma el valor de la celda correspondiente en <code>rango_suma</code>.</li>
+      <li><code>CONTAR.SI</code> cuenta cuántas celdas de <code>rango</code> cumplen <code>criterio</code>: no necesita un rango de suma porque no suma nada, solo cuenta.</li>
+    </ul>
+    <p>Sobre una tabla con un nombre en la columna A y un monto en la columna B:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Fórmula</th></tr></thead>
+        <tbody>
+          <tr><td>Total de "García"</td><td><code>=SUMAR.SI(A2:A500; "García"; B2:B500)</code></td></tr>
+          <tr><td>Cantidad de registros de "García"</td><td><code>=CONTAR.SI(A2:A500; "García")</code></td></tr>
+          <tr><td>Total de los montos mayores a $50.000</td><td><code>=SUMAR.SI(B2:B500; "&gt;50000")</code></td></tr>
+          <tr><td>Cantidad de montos mayores a $50.000</td><td><code>=CONTAR.SI(B2:B500; "&gt;50000")</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>El criterio de texto va entre comillas (<code>"García"</code>). El criterio con operador de comparación <strong>también</strong> va entre comillas, porque es una cadena que la planilla interpreta: <code>"&gt;50000"</code>, no <code>&gt;50000</code> suelto. Y mejor todavía: en lugar de escribir el nombre entre comillas, apuntá a la celda donde está escrito — así el subtotal se puede arrastrar.</p>
+    </div>
+
+    <h3>Sin condición y con condición: la misma familia</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Función</th><th>Qué hace</th><th>Cuándo la usás</th></tr></thead>
+        <tbody>
+          <tr><td><code>SUMA</code></td><td>Suma todo el rango, sin condición</td><td>Querés el total general</td></tr>
+          <tr><td><code>CONTAR</code></td><td>Cuenta celdas numéricas, sin condición</td><td>Querés saber cuántos registros hay</td></tr>
+          <tr><td><code>SUMAR.SI</code></td><td>Suma solo lo que cumple una condición</td><td>Querés el total de un subconjunto</td></tr>
+          <tr><td><code>CONTAR.SI</code></td><td>Cuenta solo lo que cumple una condición</td><td>Querés cuántos registros cumplen algo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 5 · Ejemplo mínimo</span>
+        <h3>Sumar solo una parte</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una hoja aparte cargá siete filas con dos columnas: nombre y monto. Usá <code>García</code> (45000, 61000, 19000), <code>López</code> (32000, 55000) y <code>Pérez</code> (28000, 47000), en cualquier orden.</li>
+          <li>Con <code>SUMAR.SI</code>, calculá el total de cada uno. Deberías obtener 125.000, 87.000 y 75.000.</li>
+          <li>Con <code>CONTAR.SI</code>, contá cuántos registros tiene cada uno: 3, 2 y 2.</li>
+          <li><strong>Control:</strong> la suma de los tres subtotales tiene que dar exactamente el <code>SUMA</code> de la columna completa (287.000), y la suma de los tres conteos, la cantidad de filas (7). Si no cierra, hay un registro que ningún criterio está agarrando — típicamente por una diferencia de escritura.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Sobre el encargo</span>
+        <h3>Los subtotales por área</h3>
+      </div>
+      <div class="prose">
+        <p>Este es el punto 2 del pedido. Va en la hoja <code>RESUMEN</code>, debajo del panel de la semana pasada.</p>
+        <ol>
+          <li>Escribí en una columna los valores distintos del campo que agrupa tu organización: los tres canales, las cuatro sedes, los tres turnos o los tres responsables. <strong>Escribilos una sola vez, en celdas</strong> — no dentro de las fórmulas.</li>
+          <li>Al lado, con <code>SUMAR.SI</code>, calculá el <strong>importe bruto total</strong> de cada uno, apuntando el criterio a la celda con el nombre. Arrastrá la fórmula hacia abajo.</li>
+          <li>En la columna siguiente, con <code>CONTAR.SI</code>, la <strong>cantidad de registros</strong> de cada uno.</li>
+          <li><strong>Control obligatorio:</strong> sumá los subtotales y comparalo con el total bruto del panel. Sumá los conteos y comparalo con "registros cargados". Las dos comparaciones tienen que cerrar exactamente. Si no cierran, hay un valor mal escrito en la columna que agrupa.</li>
+          <li>Agregá dos indicadores más al panel, con <code>CONTAR.SI</code> sobre la columna <code>estado</code>: <strong>cuántos registros están en "Revisar"</strong> y <strong>cuántos en "Alto valor"</strong>.</li>
+        </ol>
+        <p class="activity-criteria">Los subtotales cierran contra el total general y los conteos contra la cantidad de registros, ningún nombre de área está escrito dentro de una fórmula, y el panel informa cuántos registros hay en cada estado.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Análisis de datos (Data Analysis).</strong> Cómo la justificás: produzco agregaciones por categoría con funciones de suma y conteo condicional, y verifico su integridad comprobando que los subtotales reconcilien contra el total general antes de informar cualquier cifra.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Extra</span>
+        <h3>La misma pregunta por dos caminos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Calculá con <code>CONTAR.SI</code> sobre la columna <code>estado</code> cuántos registros son "Alto valor".</li>
+          <li>Calculá lo mismo con <code>CONTAR.SI</code> sobre <code>importe_bruto</code>, usando directamente el criterio de comparación contra el umbral.</li>
+          <li>Los dos números deberían coincidir. Si no coinciden, el culpable es el registro en cero: pensá en cuál de los dos caminos lo está contando distinto y por qué.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="validacion">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Validación de datos y listas desplegables</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>A partir de julio cargan tres personas distintas. Si una escribe "Directo", otra "directo" y la tercera "Directo " con un espacio al final, ¿qué le pasa al <code>SUMAR.SI</code> que armaste recién?</p>
+    </div>
+    <p>Se rompe en silencio: devuelve un número más bajo que el real y no avisa nada. Los subtotales dejan de cerrar contra el total, y alguien va a tardar una hora en descubrir por qué. La <strong>validación de datos</strong> previene ese problema desde el origen: restringe lo que se puede escribir en una celda.</p>
+
+    <h3>Cómo aplicarla</h3>
+    <ol>
+      <li>Seleccioná el rango donde querés restringir la carga.</li>
+      <li>Andá a <strong>Datos &gt; Validación de datos</strong>.</li>
+      <li>En "Criterios", elegí el tipo de restricción:
+        <ul>
+          <li><strong>Lista de elementos:</strong> escribís a mano las opciones válidas, separadas por coma.</li>
+          <li><strong>Lista de un rango:</strong> las opciones válidas son los valores de un rango de celdas — ideal si esa lista puede cambiar con el tiempo.</li>
+          <li><strong>Número:</strong> solo permite valores dentro de un rango numérico.</li>
+          <li><strong>Casilla de verificación:</strong> convierte la celda en un checkbox.</li>
+        </ul>
+      </li>
+      <li>Elegí qué pasa si alguien ingresa un dato inválido: <strong>Rechazar la entrada</strong> (no lo deja escribir) o <strong>Mostrar una advertencia</strong> (lo deja, pero avisa).</li>
+      <li>Guardá la regla.</li>
+    </ol>
+    <p class="photo-note">📷 Imagen pendiente — panel de Validación de datos en Google Sheets con la opción "Lista de un rango" configurada y una celda mostrando el desplegable resultante</p>
+
+    <h3>Por qué "Lista de un rango" y no "Lista de elementos"</h3>
+    <p>Si escribís las opciones a mano dentro de la regla, para agregar una opción nueva tenés que volver a editar la regla. Si en cambio las opciones viven en un rango de celdas, agregar una opción es tan simple como escribir una fila más: la lista desplegable se actualiza sola. En un archivo que va a pasar por varias manos, esa diferencia es la que decide si el control sobrevive tres meses o no.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Guardá las listas de opciones en una hoja aparte llamada <code>LISTAS</code>. Mantiene la hoja principal limpia y hace que todas las validaciones del archivo apunten a un mismo lugar: si cambiás una opción ahí, cambia en todos lados a la vez.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>"Mostrar una advertencia" no impide que se cargue un dato incorrecto, solo lo señala con un triángulo en la esquina de la celda. Si necesitás garantizar que nadie pueda romper la validación —que es exactamente lo que pide el correo—, usá "Rechazar la entrada".</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 7 · Ejemplo mínimo</span>
+        <h3>Un desplegable en dos minutos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una hoja aparte, armá una columna "Prioridad" y aplicale validación con <strong>lista de elementos</strong>: <code>Alta</code>, <code>Media</code>, <code>Baja</code>.</li>
+          <li>Cargá tres filas usando el desplegable.</li>
+          <li>Intentá escribir "urgente" a mano y observá qué pasa según hayas elegido rechazar o advertir. Probá las dos opciones para ver la diferencia.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 8 · Sobre el encargo</span>
+        <h3>Blindar la carga</h3>
+      </div>
+      <div class="prose">
+        <p>Punto 3 del pedido: que el archivo aguante a tres personas cargando datos.</p>
+        <ol>
+          <li>Creá una hoja <strong><code>LISTAS</code></strong> y cargá ahí, en columnas separadas, los valores válidos de <strong>los dos campos de texto</strong> de tu tabla: el campo que agrupa (canal / sede / turno / responsable) y la categoría (tipo de habitación / tipo de actividad / línea / formato).</li>
+          <li>En <code>DATOS</code>, aplicá validación con <strong>lista de un rango</strong> a esas dos columnas completas, apuntando a <code>LISTAS</code>, con <strong>"Rechazar la entrada"</strong>.</li>
+          <li><strong>Probá que funciona:</strong> intentá escribir en una celda del campo que agrupa el mismo valor pero en minúsculas, o con un espacio al final. Tiene que rechazarlo. Ese es, literalmente, el error que iba a romper tus subtotales.</li>
+          <li>Agregá una fila nueva al final de <code>DATOS</code>, cargándola <strong>solo con los desplegables</strong> y una cantidad y un valor unitario a tu criterio. Confirmá que las columnas calculadas (<code>importe_bruto</code>, <code>importe_neto</code>, <code>alto_valor</code>, <code>estado</code>) se completan solas al arrastrar las fórmulas, y que los subtotales del panel se actualizan.</li>
+          <li>Agregá un valor nuevo en <code>LISTAS</code> (una sede más, un formato más) y confirmá que aparece en el desplegable sin editar la regla de validación.</li>
+        </ol>
+        <p class="activity-criteria">Las dos columnas de texto solo aceptan valores de <code>LISTAS</code>, un valor mal escrito es rechazado, y la fila nueva cargada por desplegable se integra al panel sin romper la reconciliación de subtotales.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Control de calidad de datos (Data Quality Control).</strong> Cómo la justificás: prevengo errores de carga en archivos compartidos por varios usuarios mediante reglas de validación con listas alimentadas desde un rango único, de modo que las categorías se mantengan consistentes y las agregaciones no se rompan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Cerrar el encargo y replicarlo en Excel</h2>
+  </div>
+  <div class="prose">
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 9 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Actualizá la hoja <code>LEEME</code>: agregá qué significa cada valor de la columna <code>estado</code>, cuál es el umbral vigente y en qué celda se cambia, y qué campos están validados por lista.</li>
+          <li>Verificá el archivo completo: ninguna celda con error, ningún umbral ni nombre de área escrito dentro de una fórmula, y los subtotales cerrando contra el total.</li>
+          <li>Escribí, en dos o tres renglones, la respuesta al correo: cuántos registros hay en cada estado, qué área aporta más, y qué pasa con el registro en "Revisar".</li>
+        </ol>
+        <p class="activity-criteria">El archivo tiene cuatro hojas (<code>DATOS</code>, <code>RESUMEN</code>, <code>LISTAS</code>, <code>LEEME</code>), y alguien que no participó puede cambiar el umbral y entender el efecto leyendo solo el <code>LEEME</code>.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 9 · Parte B</span>
+        <h3>La misma planilla, en Excel</h3>
+      </div>
+      <div class="prose">
+        <p>Reconstruí en Excel la columna <code>estado</code>, los subtotales por área y la validación de las dos columnas de texto.</p>
+        <div class="table-wrap">
+          <table class="tbl-wide">
+            <thead><tr><th>Qué revisar</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Separador de argumentos</td><td>En Excel con configuración regional Argentina, los argumentos de <code>SI</code>, <code>SUMAR.SI</code> y <code>CONTAR.SI</code> van separados por <code>;</code>, igual que en Sheets</td></tr>
+              <tr><td>Validación de datos</td><td>Pestaña <strong>Datos &gt; Validación de datos</strong>, con la opción "Lista" en el desplegable de Criterios</td></tr>
+              <tr><td>Nombres de función</td><td><code>SUMAR.SI</code> y <code>CONTAR.SI</code> se llaman igual en Excel en español; si tu Excel está en inglés, son <code>SUMIF</code> y <code>COUNTIF</code></td></tr>
+              <tr><td>Fijar una referencia</td><td><code>F4</code> (Mac: <code>⌘+T</code>), igual que en Sheets</td></tr>
+              <tr><td>Lista desde otra hoja</td><td>Excel puede pedirte un rango con nombre para validar contra otra hoja: Fórmulas &gt; Asignar nombre</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="activity-criteria">La clasificación y los subtotales dan idénticos en los dos programas, y la validación funciona como desplegable en ambos.</p>
+      </div>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu Excel está configurado en inglés, todas las funciones de hoy cambian de nombre: <code>SI</code> es <code>IF</code>, <code>SUMAR.SI</code> es <code>SUMIF</code>, <code>CONTAR.SI</code> es <code>COUNTIF</code>. La lógica y los argumentos son exactamente los mismos — solo cambia el nombre.</p>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entrega de la clase</p>
+      <p>Subí a Moodle el <strong>enlace</strong> de tu planilla con acceso de lectura habilitado, nombrada <code>2026-XX-XX_Informatica_Clase09_V01</code>. Antes de entregar, probá cargar a propósito un valor inválido en una columna validada: si entra, la regla quedó mal configurada.</p>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel la misma lógica de clasificación condicional, agregación por criterio y validación de datos que construyo en Google Sheets, adaptando nombres de función y separadores según el idioma y la configuración regional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Pasaste de calcular a decidir: escribiste una regla de negocio que la planilla aplica sola sobre cada registro, produjiste subtotales que reconcilian contra el total, y blindaste la carga para que el archivo sobreviva a tres personas escribiendo en él.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-1" aria-label="Marcar como hecho"></td><td><label for="chk-09-1">Escribo una función <code>SI</code> con condición, valor verdadero y valor falso, con el texto entre comillas</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-2" aria-label="Marcar como hecho"></td><td><label for="chk-09-2">Uso los seis operadores de comparación y sé cuál corresponde a cada regla escrita en español</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-3" aria-label="Marcar como hecho"></td><td><label for="chk-09-3">El umbral vive en una celda propia: cambiarlo reclasifica todos los registros</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-4" aria-label="Marcar como hecho"></td><td><label for="chk-09-4">Anido dos o más <code>SI</code> para clasificar en tres grupos, y sé por qué la excepción va primera</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-5" aria-label="Marcar como hecho"></td><td><label for="chk-09-5">Mi columna <code>estado</code> devuelve un solo "Revisar" y coincide con el control de la consigna</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-6" aria-label="Marcar como hecho"></td><td><label for="chk-09-6">Uso <code>SUMAR.SI</code> y <code>CONTAR.SI</code> apuntando el criterio a una celda, no escrito dentro de la fórmula</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-7" aria-label="Marcar como hecho"></td><td><label for="chk-09-7">Verifiqué que los subtotales por área reconcilian contra el total general</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-8" aria-label="Marcar como hecho"></td><td><label for="chk-09-8">Armé la hoja <code>LISTAS</code> y validé las dos columnas de texto con "Rechazar la entrada"</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-9" aria-label="Marcar como hecho"></td><td><label for="chk-09-9">Probé cargar un valor mal escrito y el archivo lo rechazó</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-10" aria-label="Marcar como hecho"></td><td><label for="chk-09-10">Repliqué clasificación, subtotales y validación en Excel</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-11" aria-label="Marcar como hecho"></td><td><label for="chk-09-11">Entregué en Moodle el enlace con el <code>LEEME</code> actualizado</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="closing">
+      <p>Una función matemática responde "cuánto". Una función lógica responde "cuál" — cuál categoría, cuál decisión, cuál registro hay que mirar. Y una validación responde algo todavía más difícil: qué es lo que el archivo <em>no</em> va a aceptar, aunque quien lo escriba esté apurado.</p>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+
+    <div class="qr-row">
+      <div class="qr-row-label">El encargo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🏢 Organización · Campo que agrupa · Umbral</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">💼 Hotel Bahía Norte — <code>canal</code> — $250.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">📚 Territorio Abierto — <code>sede</code> — $40.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🔬 Planta piloto Sur — <code>turno</code> — $300.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🎨 Estudio Delta — <code>responsable</code> — $150.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Control — 1 "Revisar", 3 o 4 "Alto valor"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Funciones lógicas</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🧠 Necesidad · Fórmula</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple — <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado — <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional — <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional — <code>=CONTAR.SI(rango; criterio)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador — siempre entre comillas: <code>"&gt;50000"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda — <code>=SUMAR.SI($C$2:$C$9; F2; $G$2:$G$9)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">⚖️ Operadores de comparación</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">=</span><span class="qr-fdesc">Igual a</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;</span><span class="qr-fdesc">Mayor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;</span><span class="qr-fdesc">Menor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;=</span><span class="qr-fdesc">Mayor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;=</span><span class="qr-fdesc">Menor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;&gt;</span><span class="qr-fdesc">Distinto de</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Validación de datos</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">✅ Acción · Ruta</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir validación — Datos &gt; Validación de datos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano — Criterios &gt; Lista de elementos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas — Criterios &gt; Lista de un rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido — "Rechazar la entrada"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Solo avisar — "Mostrar una advertencia"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel — Datos &gt; Validación de datos &gt; Lista</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Equivalencias con Excel en inglés</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Español · Inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code> — <code>IF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code> — <code>SUMIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code> — <code>COUNTIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Validación de datos — <code>Data Validation</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Función lógica</span><p class="gloss-def">Función que evalúa una condición y devuelve un resultado distinto según si esa condición se cumple o no.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Condición</span><p class="gloss-def">Comparación (con <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> o <code>&lt;&gt;</code>) que la planilla evalúa como verdadera o falsa.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SI</code></span><p class="gloss-def">Devuelve un valor si una condición es verdadera y otro si es falsa: <code>=SI(condición; valor_si_verdadero; valor_si_falso)</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">SI anidado</span><p class="gloss-def">Un <code>SI</code> colocado dentro de otro, en el lugar del "valor si falso", para evaluar más de dos resultados posibles.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Regla de negocio</span><p class="gloss-def">Criterio de la organización —un umbral, una excepción, una prioridad— que la planilla aplica de forma automática y uniforme sobre cada registro.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SUMAR.SI</code></span><p class="gloss-def">Suma los valores de un rango que cumplen una condición definida sobre otro rango (o el mismo).</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>CONTAR.SI</code></span><p class="gloss-def">Cuenta las celdas de un rango que cumplen una condición definida.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Criterio</span><p class="gloss-def">Segundo argumento de <code>SUMAR.SI</code> y <code>CONTAR.SI</code>: el valor o la comparación que debe cumplirse. Va entre comillas, o se apunta a una celda.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Reconciliación</span><p class="gloss-def">Comprobación de que la suma de los subtotales por categoría es igual al total general. Si no cierra, hay registros que ningún criterio está capturando.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Validación de datos</span><p class="gloss-def">Conjunto de reglas que restringen qué se puede escribir en una celda, para prevenir errores de carga.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Lista desplegable</span><p class="gloss-def">Menú de opciones predefinidas que aparece al hacer clic en una celda con validación por lista.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Lista de un rango</span><p class="gloss-def">Validación en la que las opciones válidas provienen de un rango de celdas, no de una lista escrita a mano dentro de la regla.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Rechazar la entrada</span><p class="gloss-def">Modo de validación que impide directamente cargar un valor fuera de las opciones permitidas.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. <em>Función SI</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093364</code></li>
+      <li>Google. <em>Funciones SUMAR.SI y CONTAR.SI</em>. <code>support.google.com/docs/answer/3093583</code></li>
+      <li>Google. <em>Crear listas desplegables y validar datos</em>. <code>support.google.com/docs/answer/186103</code></li>
+      <li>Microsoft. <em>Función SI</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Microsoft. <em>Aplicar validación de datos a celdas</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+
+<script defer src="../js/guia-print.js"></script>
+
+</body>
+</html>

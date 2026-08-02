@@ -1,32 +1,91 @@
-# unq-moodle
+# Guía de Informática - UNQ 2026
+
+Guía Visual imprimible + fragmentos Moodle para todas las clases del cuatrimestre.
 
 Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodle UVQ). Este repo es el que se sube a GitHub y se sirve con **GitHub Pages** — así las Guías Visuales quedan hosteadas en una URL estable y actualizable con un simple `git push`, en vez de tener que volver a subir un archivo a mano cada vez que se corrige algo.
 
 🔗 Sitio publicado: **https://marcosxhernandez.github.io/unq-moodle/**
 
+## Estado de avance (2026-08-01)
+
+| Clase | Título | Guía Visual | Fragment Moodle | Estado |
+|-------|--------|-------------|-----------------|--------|
+| 00 | Bienvenida | — | ✅ | Completo |
+| 01 | Herramientas Digitales | ✅ | ✅ | Completo |
+| 02 | Arquitectura del documento profesional | ✅ | ✅ | Completo |
+| 03 | IA como asistente académico | ✅ | ✅ | Completo |
+| 04 | Arquitectura avanzada del documento | ✅ | ✅ | Completo |
+| 05 | Maquetación de alta precisión | ✅ | ✅ | Completo |
+| 06 | Presentaciones con IA | ✅ | ✅ | Completo |
+| 07 | 1° Parcial | — | ⏳ | No tiene fuente .md |
+| 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
+| 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
+| 10 | Búsqueda y conexión entre hojas | ✅ | ✅ | Completo |
+| 11 | Análisis de datos con Excel e IA | ✅ | ✅ | Completo |
+| 12 | 2° Parcial | ✅ | ✅ | Completo |
+| 13 | Cómo piensan las bases de datos | ✅ | ✅ | Completo |
+| 14 | Del formulario a la base de datos | ✅ | ✅ | Completo |
+| 15 | Consultar para descubrir | ✅ | ✅ | Completo |
+| 16 | Cuando una tabla no alcanza | ✅ | ✅ | Completo |
+| 17 | Del dato a la decisión | ✅ | ✅ | Completo |
+| 18 | Feriado — Inmaculada Concepción | — | — | N/A (feriado) |
+| 19 | 3.° Parcial Integrador | ✅ | ✅ | Completo |
+| 20 | Recuperatorio | ✅ | ✅ | Completo |
+
+**Total: 19 clases completadas (18 con Guía Visual + 1 Bienvenida sin guía). Clase 07 pendiente de fuente .md.**
+
 ## Estructura
 
 ```
 unq-moodle/
-  index.html              ← portada tipo "aula", con el estado de cada clase (ver abajo)
-  clases/                 ← Guía Visual completa de cada clase (para leer/imprimir)
-  bloques/                ← fragmento Moodle de cada clase (para pegar en Qoodle vía Atto)
-  bloque derecho.html     ← bloque lateral de cronograma/countdown (para el Block HTML del curso)
-  css/guia-estilo.css     ← estilo único compartido por todas las Guías Visuales
-  img/                    ← imágenes usadas por las Guías Visuales (íconos, capturas)
-  pdf/                    ← Guía Visual ya exportada a PDF, por si hace falta adjuntarla directo
+├── css/
+│   └── guia-estilo.css          ← Estilos únicos, compartido por todas las guías
+├── js/
+│   └── guia-print.js            ← Botón "Guardar PDF" (solo en clases/)
+├── img/
+│   ├── marcos-hernandez.jpg     ← Foto del docente
+│   ├── apps/                    ← Íconos de herramientas
+│   └── ...                      ← Imágenes de clase
+├── archivos/                    ← Datasets para descargar
+├── pdf/                         ← Guías exportadas (opcional)
+├── clases/
+│   ├── Clase 01 - Herramientas Digitales.html
+│   ├── Clase 02 - Arquitectura del documento...
+│   └── ... (19 archivos: 01-06, 08-17, 19-20)
+├── bloques/
+│   ├── Moodle - Clase 00 - Bienvenida.html
+│   ├── Moodle - Clase 01 - Herramientas Digitales.html
+│   └── ... (20 archivos: 00-06, 08-17, 19-20)
+├── index.html                   ← Vista previa con todos los bloques Moodle
+├── README.md                    ← Este archivo
+├── CLAUDE.md                    ← Manual técnico integral
+├── CLAUDE-clases.md             ← Especificación de Guía Visual
+└── CLAUDE-bloques.md            ← Especificación de fragmento Moodle
 ```
 
 ## Cómo se usa cada pieza en Qoodle
 
 | Archivo | Recurso en Qoodle | Cómo |
 |---|---|---|
-| `clases/Clase NN - Título.html` | **URL** (o el botón "Abrir la guía" ya embebido en el bloque) | Apunta directo a `https://marcosxhernandez.github.io/unq-moodle/clases/Clase%20NN%20-%20...html`. Se abre en pestaña nueva, imprime igual que abrir el archivo local (ver CLAUDE.md, sección 4.7). |
+| `clases/Clase NN - Título.html` | **URL** (o el botón "Abrir la guía" ya embebido en el bloque) | Apunta directo a `https://marcosxhernandez.github.io/unq-moodle/clases/Clase%20NN%20-%20...html`. Se abre en pestaña nueva, imprime igual que abrir el archivo local. |
 | `bloques/Moodle - Clase NN - Título.html` | **Página** o **Etiqueta** | Se pega el contenido en el editor Atto usando la vista de código fuente `<>`. Ya trae el botón "Abrir la guía" apuntando a GitHub Pages. |
-| `bloque derecho.html` | **Bloque HTML** (sidebar del curso) | Se pega una sola vez, no es por clase — el countdown funciona con `Date` de JS, no depende de imágenes ni de este repo. |
 | `pdf/Clase NN - Título.pdf` | **Archivo** (opcional) | Backup para quien prefiera bajar el PDF en vez de abrir el link. |
 
-**Importante:** los links "Abrir la guía de la clase" dentro de cada `bloques/*.html` ya apuntan a GitHub Pages (no a un recurso viejo de Qoodle). Si se activa Pages con otra URL (usuario u organización distintos, o un dominio propio), hay que actualizar esos 5 links a mano — están en `bloques/Moodle - Clase 01...05...html`, buscando `github.io`.
+**Importante:** los links "Abrir la guía de la clase" dentro de cada `bloques/*.html` ya apuntan a GitHub Pages. Si se activa Pages con otra URL, hay que actualizar esos links a mano — están en los archivos `bloques/`, buscando `github.io`.
+
+## Cómo usar esto
+
+### Estudiantes
+1. Ingresá a Qoodle (campus.uvq.edu.ar) y buscá el aula de Informática
+2. En cada clase, hay dos enlaces:
+   - **Guía Visual imprimible**: Link a GitHub Pages (se abre en ventana nueva)
+   - **Caja de herramientas**: Acceso a apps e íconos directamente en Moodle
+3. Descargá el PDF con Ctrl+P y el botón "Guardar PDF" de cada guía
+
+### Docentes / Mantenedores
+1. Editar contenido de clase: modificá el .md fuente en `Guia/Clase NN - <Título>.md` (en el Drive, no acá)
+2. Generar HTML: seguí los pasos en CLAUDE.md y CLAUDE-clases.md
+3. Publicar cambios: `git push` sube automáticamente a GitHub Pages
 
 ## Activar GitHub Pages (una sola vez)
 
@@ -35,25 +94,21 @@ unq-moodle/
 3. **Branch**: `main`, carpeta `/ (root)`.
 4. Guardar. Tarda ~1 minuto en publicarse la primera vez; los pushes siguientes se reflejan solos.
 
-## Estado del contenido (jul. 2026)
+## Importante: index.html y sincronización
 
-| Clase | Guía Visual (`clases/`) | Fragmento (`bloques/`) | PDF | Notas |
-|---|---|---|---|---|
-| 00 · Bienvenida | — | ✅ | — | No lleva Guía Visual propia. |
-| 01 · Herramientas Digitales | ✅ | ✅ | ✅ | Completa. |
-| 02 · Arquitectura del documento profesional | ✅ | ✅ | ✅ | Completa. |
-| 03 · IA como asistente académico | ✅ | ✅ | ✅ | Completa. |
-| 04 · El documento como nodo de información | ✅ | ✅ | ✅ | Completa. |
-| 05 · Maquetación de alta precisión | ✅ | ✅ | ✅ | Completa. |
-| 06 · Presentaciones con IA | ✅ | ✅ | — | Completa (jul. 2026) — reescrita desde cero, el material viejo de PowerPoint/Slides quedó absorbido acá. |
-| 07 · Exámenes (Parcial) | ✅ (formato distinto) | — | — | No es una clase única: son varios archivos `clases/Clase 07 - Parcial - ★☆☆☆☆ - <Tema>.html`, uno por examen, con el patrón de examen (consigna general + bloques temáticos) descripto en `CLAUDE.md`. Sin fragmento Moodle propio — cada examen se sube como recurso aparte en Qoodle. |
-| 12 · Análisis de datos con Excel e IA | — | ⚠️ borrador | — | Fragmento experimental con estilo propio (no sigue `guia-estilo.css`), a revisar antes de publicar. |
-| Resto (08-11, 13-17) | — | — | — | Sin construir. |
-
-`index.html` refleja esta misma tabla en formato de aula — abrilo para navegar todo con un click.
-
-**⚠️ `index.html` embebe una copia pegada de cada `bloques/Moodle - Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `bloques/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio — pasó con la Clase 00 en jul. 2026.
+**⚠️ `index.html` embebe una copia pegada de cada `bloques/Moodle - Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `bloques/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio.
 
 ## Convenciones de construcción
 
-Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md`, en la raíz del proyecto de Drive (no se duplica acá para no perder sincronía). Ante cualquier duda de formato al construir una clase nueva, esa es la fuente de verdad.
+Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-bloques.md`.
+
+## Historial de cambios
+
+**2026-08-01:**
+- Agregadas 12 nuevas clases a index.html (Clases 08-17, 19-20)
+- Actualizado aula-pendiente con nota sobre Clase 07
+- Documentación completa en README.md
+- Estado: 19/20 clases completas (Clase 07 pendiente de .md)
+
+**Pendiente:**
+- Crear fuente .md para Clase 07 (1° Parcial)

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 10 - Búsqueda y conexión entre hojas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Planilla de cálculo (Clase 10) = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 10 · Planilla de cálculo";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="10">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 10 · Planilla de cálculo</span>
+    <h1 class="cover-title">Búsqueda y conexión entre hojas</h1>
+    <p class="cover-subtitle">Google Sheets · referencias entre hojas · BUSCARV y BUSCARX · SIERROR · gráficos elegidos con propósito</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Hasta acá el archivo vivía en una hoja y cada fila cargaba su propio precio, su propia tarifa, su propio costo. Funciona con ocho registros; con ochocientos, cada cambio de tarifa es un incendio. Hoy la información de referencia se muda a su propia hoja —donde vive una sola vez— y se trae con una fórmula en el momento en que hace falta. Es exactamente lo que hacen las bases de datos reales. Y una vez que el cruce está hecho, hay que poder mostrarlo: elegir el gráfico que responde la pregunta, no el que la planilla sugiere por defecto.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#varias-hojas"><span class="toc-num">01</span><span class="toc-text">Por qué separar datos en varias hojas</span></a></li>
+    <li><a href="#encargo"><span class="toc-num">02</span><span class="toc-text">El encargo de esta semana</span></a></li>
+    <li><a href="#buscarv"><span class="toc-num">03</span><span class="toc-text">BUSCARV</span></a></li>
+    <li><a href="#buscarx"><span class="toc-num">04</span><span class="toc-text">BUSCARX</span></a></li>
+    <li><a href="#graficos"><span class="toc-num">05</span><span class="toc-text">Gráficos con propósito</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">06</span><span class="toc-text">Cerrar el encargo y replicarlo en Excel</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="varias-hojas">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Por qué separar datos en varias hojas</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>En tu archivo, la tarifa o el costo unitario está escrito en cada fila. Si en agosto sube un 20%, ¿cuántas celdas tenés que tocar? ¿Y cómo sabés que no te olvidaste ninguna?</p>
+    </div>
+
+    <h3>De dónde venimos</h3>
+    <p>En las clases anteriores armaste, para una de cuatro organizaciones, un archivo con la hoja <code>DATOS</code> (registros de junio, con importe bruto, importe neto y una columna <code>estado</code> que clasifica sola), un panel <code>RESUMEN</code> con subtotales por área, una hoja <code>LISTAS</code> que alimenta las validaciones y un <code>LEEME</code>. Hoy ese archivo suma una hoja más — y deja de repetir información.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Si no tenés el archivo a mano</p>
+      <p>El dataset de las cuatro organizaciones está en el material de la Clase 08 y la regla de clasificación en el de la Clase 09. También podés trabajar con una tabla propia de al menos ocho filas que tenga una columna de categoría repetida: todo lo de hoy funciona igual.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Todo lo de hoy asume que podés fijar una referencia con <code>$</code> sin pensarlo. <code>BUSCARV</code> y <code>BUSCARX</code> casi siempre necesitan una referencia absoluta para funcionar bien, y el error que produce olvidarla es silencioso: la fórmula devuelve resultados, solo que equivocados.</p>
+    </div>
+
+    <h3>El dato vive una sola vez</h3>
+    <p>Amontonar todo en una hoja hace que la información se repita y sea difícil de mantener: si cambia una tarifa, tendrías que corregirla en todas las filas donde aparece. Peor: si corregís nueve de diez, el archivo sigue calculando y nadie se entera.</p>
+    <p>La alternativa es separar la información en tablas más chicas, cada una en su propia hoja, y <strong>conectarlas con una fórmula</strong> en el momento en que se necesitan juntas. La información vive una sola vez, en un solo lugar, y se busca cuando hace falta — no se copia.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de armar cualquier planilla con varias hojas, preguntate: <em>"¿este dato puede cambiar en el tiempo y se repite en muchas filas (una tarifa, el nombre de un responsable, una especificación)?"</em> Si la respuesta es sí, ese dato tiene que vivir en una hoja de referencia, no copiado y pegado en todos lados.</p>
+    </div>
+
+    <h3>Trabajar con varias hojas</h3>
+    <ul>
+      <li>Para crear una hoja nueva, hacé clic en el signo <strong>+</strong> en la parte inferior izquierda.</li>
+      <li>Para renombrarla, doble clic sobre su pestaña.</li>
+      <li>Para <strong>referenciar una celda de otra hoja</strong>, la sintaxis es <code>NombreDeHoja!Celda</code>. Por ejemplo, <code>=REFERENCIA!B2</code> trae el contenido de la celda B2 de la hoja "REFERENCIA".</li>
+    </ul>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si el nombre de la hoja tiene espacios o tildes, hay que encerrarlo entre comillas simples: <code>='Lista de Productos'!B2</code>. La planilla suele agregarlas automáticamente cuando hacés clic en la celda de otra hoja en lugar de escribir la fórmula a mano — por eso, siempre que se pueda, es más seguro clickear que tipear. Y mejor todavía: nombrá las hojas sin espacios ni tildes desde el principio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="encargo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">El encargo de esta semana</h2>
+  </div>
+  <div class="prose">
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Actualización de valores — y algo para mostrar en la reunión</span></div>
+      </div>
+      <div class="brief-body">
+        <p>Dos cosas.</p>
+        <p>La primera: la semana pasada actualizamos valores y alguien los cambió a mano fila por fila. Quedaron mal. <strong>Necesito que los valores oficiales estén en un solo lugar</strong> y que la planilla los vaya a buscar sola. Te paso la tabla vigente, que además tiene datos que hoy no están en tu archivo y me sirven — quién es responsable de cada cosa, y cuánto <em>debería</em> dar cada registro.</p>
+        <p>La segunda: el jueves tengo reunión y no voy a llevar una planilla. <strong>Necesito un gráfico</strong>. Uno solo, que se entienda sin que yo lo explique.</p>
+        <p>Gracias.</p>
+      </div>
+    </div>
+
+    <h3>Qué te está pidiendo realmente</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que dice el pedido</th><th>Lo que hay que hacer</th><th>Herramienta de esta clase</th></tr></thead>
+        <tbody>
+          <tr><td>"Los valores oficiales en un solo lugar"</td><td>Mudar el dato de referencia a su propia hoja, con una fila por categoría</td><td>Hoja aparte + referencia <code>Hoja!Celda</code></td></tr>
+          <tr><td>"Que la planilla los vaya a buscar sola"</td><td>Traer el valor a cada fila según su categoría, sin copiar y pegar</td><td><code>BUSCARV</code> / <code>BUSCARX</code></td></tr>
+          <tr><td>"Datos que hoy no están en tu archivo"</td><td>Enriquecer cada registro con atributos que solo existen en la tabla de referencia</td><td>Varias búsquedas sobre la misma tabla</td></tr>
+          <tr><td>"Que no se rompa si algo no coincide"</td><td>Prever el caso "no encontrado" en vez de dejar un error a la vista</td><td><code>SIERROR</code> / argumento propio de <code>BUSCARX</code></td></tr>
+          <tr><td>"Un gráfico que se entienda sin que yo lo explique"</td><td>Elegir el tipo según la pregunta y titular con la conclusión</td><td>Editor de gráficos</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>La tabla de referencia de tu organización</h3>
+    <p>Las cuatro tienen la misma estructura: un <strong>código</strong>, la <strong>categoría</strong> tal como aparece en tus datos, un <strong>valor esperado</strong> (un número contra el cual comparar), el <strong>valor unitario vigente</strong> y un <strong>responsable</strong>. Fijate que en las cuatro hay <strong>una fila de más</strong>: una categoría que existe en la organización pero no tuvo movimiento en junio. Eso también es información.</p>
+
+    <p><strong>💼 DEyA · Hotel Bahía Norte — tarifario vigente</strong></p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>cod</th><th>tipo_habitacion</th><th>estadia_esperada</th><th>tarifa_vigente</th><th>area_responsable</th></tr></thead>
+        <tbody>
+          <tr><td>HAB-S</td><td>Single</td><td>2</td><td>52000</td><td>Recepción</td></tr>
+          <tr><td>HAB-D</td><td>Doble</td><td>3</td><td>78000</td><td>Recepción</td></tr>
+          <tr><td>HAB-U</td><td>Suite</td><td>4</td><td>145000</td><td>Gerencia</td></tr>
+          <tr><td>HAB-T</td><td>Triple</td><td>3</td><td>96000</td><td>Recepción</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>📚 CS · Territorio Abierto — catálogo de actividades</strong></p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>cod</th><th>tipo_actividad</th><th>cupo_estandar</th><th>costo_vigente</th><th>coordinador</th></tr></thead>
+        <tbody>
+          <tr><td>ACT-AD</td><td>Alfabetización digital</td><td>30</td><td>1850</td><td>Ferreyra</td></tr>
+          <tr><td>ACT-HO</td><td>Historia oral del barrio</td><td>20</td><td>2400</td><td>Bianchi</td></tr>
+          <tr><td>ACT-RC</td><td>Radio comunitaria</td><td>15</td><td>3100</td><td>Ojeda</td></tr>
+          <tr><td>ACT-EN</td><td>Encuesta territorial</td><td>25</td><td>2750</td><td>Bianchi</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>🔬 CyT · Planta piloto Sur — especificaciones por línea</strong></p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>cod</th><th>linea</th><th>lote_nominal</th><th>costo_vigente</th><th>responsable_tecnico</th></tr></thead>
+        <tbody>
+          <tr><td>LIN-EN</td><td>Envasado</td><td>500</td><td>620</td><td>Quiroga</td></tr>
+          <tr><td>LIN-FE</td><td>Fermentación</td><td>130</td><td>2450</td><td>Alderete</td></tr>
+          <tr><td>LIN-ES</td><td>Esterilizado</td><td>300</td><td>1180</td><td>Quiroga</td></tr>
+          <tr><td>LIN-ET</td><td>Etiquetado</td><td>480</td><td>340</td><td>Alderete</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>🎨 EUdA · Estudio Delta — catálogo de formatos</strong></p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>cod</th><th>formato</th><th>horas_estimadas</th><th>tarifa_vigente</th><th>entregable</th></tr></thead>
+        <tbody>
+          <tr><td>FMT-SP</td><td>Spot 30"</td><td>18</td><td>9500</td><td>MP4 1080p</td></tr>
+          <tr><td>FMT-PA</td><td>Placa animada</td><td>6</td><td>7200</td><td>MOV con alfa</td></tr>
+          <tr><td>FMT-3D</td><td>Modelado 3D</td><td>30</td><td>12800</td><td>FBX + render</td></tr>
+          <tr><td>FMT-KV</td><td>Key visual</td><td>12</td><td>8600</td><td>PNG + PSD</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — El "valor esperado" es la clave del análisis</p>
+      <p>La tercera columna de cada tabla —estadía esperada, cupo estándar, lote nominal, horas estimadas— es la que convierte un registro en una pregunta. Deja de ser "el lote 3301 produjo 480 unidades" y pasa a ser "el lote 3301 produjo 480 de las 500 nominales". Ese contraste es lo que la coordinación no puede calcular hoy, y es lo que vas a habilitar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="buscarv">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">BUSCARV</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Si tenés en cada fila el nombre de una categoría y, en otra hoja, una tabla con todas las categorías y sus datos, ¿cómo le pedirías a la planilla que "busque esta categoría y me traiga el valor que está tres columnas más a la derecha"?</p>
+    </div>
+    <p><code>BUSCARV</code> (búsqueda vertical) resuelve exactamente ese problema: busca un valor en la primera columna de un rango y devuelve el valor de otra columna de esa misma fila.</p>
+
+    <h3>Sintaxis</h3>
+<div class="code-block">=BUSCARV(valor_buscado; rango; índice; [ordenado])</div>
+    <ul>
+      <li><code>valor_buscado</code>: el dato que querés encontrar (por ejemplo, un código o una categoría).</li>
+      <li><code>rango</code>: el rango donde buscar. La columna con el valor a buscar tiene que ser la <strong>primera</strong> columna de ese rango.</li>
+      <li><code>índice</code>: el número de columna —contando desde 1, dentro del rango— de donde se trae el resultado.</li>
+      <li><code>ordenado</code>: <code>FALSO</code> para una coincidencia exacta (lo que vas a usar casi siempre); <code>VERDADERO</code> para una coincidencia aproximada, que requiere que la tabla esté ordenada.</li>
+    </ul>
+    <p>Si en la hoja <code>REFERENCIA</code> el código está en la columna A y la tarifa vigente en la columna D:</p>
+<div class="code-block">=BUSCARV(A2; REFERENCIA!$A$2:$E$5; 4; FALSO)</div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención — La referencia al rango debe ser absoluta</p>
+      <p>Si copiás esta fórmula hacia abajo sin fijar el rango con <code>$</code>, la planilla va a desplazar el rango de búsqueda fila por fila y en algún momento te vas a "salir" de la tabla de referencia. El <code>valor_buscado</code> (<code>A2</code>) sí debe quedar relativo: cada fila busca lo suyo. Es el error número uno con esta función, y no siempre avisa — a veces devuelve un número, del registro equivocado.</p>
+    </div>
+
+    <h3>Las dos limitaciones de BUSCARV</h3>
+    <ol>
+      <li>Solo busca hacia la <strong>derecha</strong>: la columna de resultado tiene que estar a la derecha de la columna de búsqueda dentro del rango.</li>
+      <li>La columna de búsqueda tiene que ser la <strong>primera</strong> del rango seleccionado — no se puede buscar por una columna que está en el medio o al final.</li>
+    </ol>
+    <p>Estas dos limitaciones son la razón por la que existe <code>BUSCARX</code>.</p>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 1 · Ejemplo mínimo</span>
+        <h3>Dos tablas chiquitas</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una hoja nueva llamada <code>Productos</code>, cargá cuatro filas: <code>P001</code> Cuaderno Papelería 850 · <code>P002</code> Mochila Accesorios 15000 · <code>P003</code> Resma A4 Papelería 4200 · <code>P004</code> Cartuchera Accesorios 6500.</li>
+          <li>En otra hoja llamada <code>Pedidos</code>, cargá tres filas con código y cantidad: <code>P002</code> 2 · <code>P001</code> 10 · <code>P004</code> 1.</li>
+          <li>En <code>Pedidos</code>, traé el nombre y el precio con <code>BUSCARV</code>, y agregá una columna "Total" (cantidad × precio). Deberías obtener 30.000, 8.500 y 6.500.</li>
+          <li>Cambiá el precio del Cuaderno en <code>Productos</code> y confirmá que el total de <code>Pedidos</code> se actualiza solo. Eso es lo que no pasaba cuando el precio estaba copiado en cada fila.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 2 · Sobre el encargo</span>
+        <h3>Mudar el valor oficial a su hoja</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Creá una hoja <strong><code>REFERENCIA</code></strong> y cargá la tabla de tu organización, con los encabezados en la fila 1.</li>
+          <li>En <code>DATOS</code>, agregá una columna <strong><code>valor_vigente</code></strong> que traiga con <code>BUSCARV</code> el valor unitario desde <code>REFERENCIA</code>, buscando por la <strong>categoría</strong> de cada fila (tipo de habitación / tipo de actividad / línea / formato). Rango absoluto, valor buscado relativo, coincidencia exacta.
+            <div class="callout" data-type="warning">
+              <p class="callout-label">⚠️ Atención</p>
+              <p>Para que <code>BUSCARV</code> encuentre la categoría, esta tiene que ser la <strong>primera columna del rango</strong> que le pasás. En las tablas de arriba la primera columna es el código, así que el rango tiene que empezar en la columna de la categoría — no en la del código.</p>
+            </div>
+          </li>
+          <li><strong>Control:</strong> la columna <code>valor_vigente</code> tiene que dar exactamente lo mismo que la columna de valor unitario que ya tenías. Si alguna fila difiere, encontraste un valor que alguien había cambiado a mano — que es justamente lo que denuncia el correo.</li>
+          <li>Agregá una columna más con el <strong>valor de contexto</strong> (capacidad / área temática / lote nominal / horas estimadas) y otra con el <strong>responsable</strong>, ambas con <code>BUSCARV</code> sobre la misma tabla, cambiando solo el índice.</li>
+          <li>Ahora reemplazá la columna vieja de valor unitario por <code>valor_vigente</code> en el cálculo de <code>importe_bruto</code>. Verificá que el total del panel <code>RESUMEN</code> no cambió.</li>
+          <li><strong>Probá el efecto:</strong> subí un 20% un valor en <code>REFERENCIA</code> y mirá cómo se recalculan las filas afectadas, el importe neto, la columna <code>estado</code> y los subtotales, todo de una vez. Después devolvelo.</li>
+        </ol>
+        <p class="activity-criteria">Ningún valor unitario queda escrito en <code>DATOS</code>, las tres columnas traídas coinciden con la tabla de referencia, y cambiar un solo valor en <code>REFERENCIA</code> propaga el cambio hasta los subtotales del panel.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Google Sheets.</strong> Cómo la justificás: conecto tablas alojadas en hojas distintas con funciones de búsqueda, manteniendo cada dato de referencia en una única fuente de verdad en lugar de duplicarlo fila por fila.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 2 · Extra</span>
+        <h3>Cuando no encuentra</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una celda de prueba <strong>fuera</strong> de la tabla, escribí una búsqueda con una categoría que no exista en <code>REFERENCIA</code> — por ejemplo, la misma pero en minúsculas. Observá el <code>#N/A</code>.</li>
+          <li>Envolvé esa fórmula con <code>SIERROR</code> para que muestre <code>"Revisar categoría"</code> en lugar del error: <code>=SIERROR(BUSCARV(...); "Revisar categoría")</code>.</li>
+          <li>Aplicá <code>SIERROR</code> a las tres columnas que trajiste en la Actividad 2. Un <code>#N/A</code> en pantalla le dice a quien abre el archivo que está roto; un "Revisar categoría" le dice qué hacer.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="buscarx">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">BUSCARX</h2>
+  </div>
+  <div class="prose">
+    <p><code>BUSCARX</code> es la evolución de <code>BUSCARV</code> —y también reemplaza a <code>BUSCARH</code>, su equivalente horizontal—. Resuelve las dos limitaciones que viste recién.</p>
+
+    <h3>Sintaxis</h3>
+<div class="code-block">=BUSCARX(valor_buscado; matriz_buscada; matriz_devuelta; [si_no_hay_valor])</div>
+    <ul>
+      <li><code>valor_buscado</code>: igual que en <code>BUSCARV</code>.</li>
+      <li><code>matriz_buscada</code>: el rango (una sola columna o fila) donde está el valor a buscar. No tiene que ser la primera columna de nada.</li>
+      <li><code>matriz_devuelta</code>: el rango de donde se trae el resultado — puede estar a la izquierda o a la derecha de la matriz buscada.</li>
+      <li><code>si_no_hay_valor</code>: qué mostrar si no encuentra el valor. Reemplaza la necesidad de envolver la fórmula con <code>SIERROR</code>.</li>
+    </ul>
+    <p>El mismo caso de antes, resuelto con <code>BUSCARX</code>:</p>
+<div class="code-block">=BUSCARX(D2; REFERENCIA!$B$2:$B$5; REFERENCIA!$E$2:$E$5; "Revisar categoría")</div>
+
+    <h3>BUSCARV frente a BUSCARX</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th><code>BUSCARV</code></th><th><code>BUSCARX</code></th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dirección de búsqueda</strong></td><td>Solo hacia la derecha</td><td>Cualquier dirección</td></tr>
+          <tr><td><strong>Posición de la columna de búsqueda</strong></td><td>Debe ser la primera del rango</td><td>Puede estar en cualquier posición</td></tr>
+          <tr><td><strong>Si se insertan columnas</strong></td><td>El índice numérico queda desfasado y devuelve otra columna, sin avisar</td><td>Apunta a rangos, no a números de posición: no se desfasa</td></tr>
+          <tr><td><strong>Manejo de errores</strong></td><td>Requiere <code>SIERROR</code> aparte</td><td>Tiene un argumento propio para el valor de error</td></tr>
+          <tr><td><strong>Disponibilidad</strong></td><td>Función clásica, en todas las versiones</td><td>Más moderna; en Excel requiere una versión reciente (Microsoft 365)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p><code>BUSCARX</code> es más flexible y más prolija, pero <code>BUSCARV</code> sigue siendo la que más vas a encontrar en planillas hechas por otras personas, sobre todo en Excel de escritorio. Conviene manejar las dos: una para escribir, la otra para poder leer y arreglar lo que ya existe.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 3 · Ejemplo mínimo</span>
+        <h3>La misma búsqueda, más corta</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Sobre las hojas <code>Productos</code> y <code>Pedidos</code> de la Actividad 1, traé la categoría del producto con <code>BUSCARX</code> en lugar de <code>BUSCARV</code>, usando <code>si_no_hay_valor</code> con el texto "Revisar código".</li>
+          <li>Agregá una fila en <code>Pedidos</code> con el código <code>P999</code>. Confirmá que <code>BUSCARX</code> muestra el texto de reemplazo mientras que el <code>BUSCARV</code> de al lado muestra <code>#N/A</code>.</li>
+          <li>En <code>Productos</code>, insertá una columna nueva entre "Nombre" y "Categoría". Mirá qué le pasa al <code>BUSCARV</code> y qué le pasa al <code>BUSCARX</code>. Esa diferencia es la razón práctica más fuerte para preferir <code>BUSCARX</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 4 · Sobre el encargo</span>
+        <h3>El indicador que la coordinación no podía calcular</h3>
+      </div>
+      <div class="prose">
+        <p>Ahora que tenés el valor de contexto en cada fila, aparece una pregunta nueva. Es distinta según la organización, pero la fórmula es la misma: un cociente entre lo real y lo de referencia.</p>
+        <div class="table-wrap">
+          <table class="tbl-wide">
+            <thead><tr><th>Organización</th><th>Columna nueva</th><th>Qué compara</th><th>Qué significa un valor bajo</th></tr></thead>
+            <tbody>
+              <tr><td>💼 Hotel Bahía Norte</td><td><code>estadia_pct</code></td><td>Noches ÷ estadía esperada del tipo de habitación</td><td>Reserva más corta de lo típico para esa habitación</td></tr>
+              <tr><td>📚 Territorio Abierto</td><td><code>convocatoria_pct</code></td><td>Participantes ÷ cupo estándar de la actividad</td><td>Taller con baja convocatoria frente a su cupo</td></tr>
+              <tr><td>🔬 Planta piloto Sur</td><td><code>rendimiento_pct</code></td><td>Unidades ÷ lote nominal de la línea</td><td>Lote por debajo de lo esperado</td></tr>
+              <tr><td>🎨 Estudio Delta</td><td><code>desvio_horas_pct</code></td><td>Horas reales ÷ horas estimadas del formato</td><td>Pieza resuelta más rápido de lo previsto</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ol>
+          <li>Agregá esa columna en <code>DATOS</code>, con <code>BUSCARX</code> trayendo el valor de contexto desde <code>REFERENCIA</code> dentro de la misma fórmula del cociente. Dale formato de porcentaje.</li>
+          <li>Aplicá formato condicional: rojo por debajo del 70%, verde por encima del 100%.</li>
+          <li>Agregá al panel <code>RESUMEN</code> el <strong>promedio</strong> de ese indicador y, con <code>CONTAR.SI</code>, <strong>cuántos registros están por debajo del 70%</strong>.</li>
+          <li>Mirá el registro que venías arrastrando en estado "Revisar": ¿qué le pasa a este indicador ahí? Anotá al lado por qué, en una línea.</li>
+        </ol>
+        <p class="activity-criteria">El indicador está calculado con una búsqueda anidada (no con el valor de contexto copiado a mano), tiene formato de porcentaje, y el panel informa su promedio y la cantidad de casos por debajo del umbral.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Microsoft Excel.</strong> Cómo la justificás: cruzo información entre tablas con <code>BUSCARV</code> y <code>BUSCARX</code>, con manejo explícito del caso "no encontrado", y construyo indicadores de desempeño comparando el valor real de cada registro contra su valor de referencia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 4 · Extra</span>
+        <h3>Buscar hacia la izquierda</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>REFERENCIA</code>, movés la columna del valor unitario para que quede <strong>a la izquierda</strong> de la columna de categoría.</li>
+          <li>Intentá traer el valor con <code>BUSCARV</code>. Confirmá que no hay forma sin reorganizar la tabla.</li>
+          <li>Resolvé el mismo caso con <code>BUSCARX</code>, que no depende de cuál es "la primera" columna.</li>
+          <li>Devolvé la tabla a su orden original y verificá que ninguna otra fórmula del archivo quedó rota.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="graficos">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Gráficos con propósito</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>La coordinación pidió "un gráfico que se entienda sin que yo lo explique". Con los datos que ya tenés podrías hacer cinco gráficos distintos. ¿Cuál de todos responde la pregunta que esa persona va a tener que contestar en la reunión?</p>
+    </div>
+    <p>Un gráfico no es una decoración: es una herramienta de comunicación. El tipo que elegís tiene que responder al tipo de pregunta que el dato está contestando.</p>
+
+    <h3>Cómo elegir el tipo de gráfico</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tu pregunta es…</th><th>Usá…</th></tr></thead>
+        <tbody>
+          <tr><td>"¿Cómo se compara este valor contra otros de la misma categoría?"</td><td>Gráfico de barras o columnas</td></tr>
+          <tr><td>"¿Cómo cambió este valor a lo largo del tiempo?"</td><td>Gráfico de líneas</td></tr>
+          <tr><td>"¿Qué porcentaje representa cada parte de un total?"</td><td>Gráfico circular (torta) o de anillo</td></tr>
+          <tr><td>"¿Hay relación entre dos variables numéricas?"</td><td>Gráfico de dispersión</td></tr>
+          <tr><td>"¿Cómo se comparan dos magnitudes distintas sobre el mismo eje?"</td><td>Gráfico combinado (columnas + líneas)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El gráfico circular pierde sentido con más de cinco o seis categorías: se vuelve un mosaico de porciones diminutas e ilegibles. Si tenés muchas categorías, un gráfico de barras casi siempre comunica mejor. Y si las porciones son parecidas entre sí, el circular es directamente la peor opción — el ojo humano compara mal ángulos, y bien longitudes.</p>
+    </div>
+
+    <h3>Cómo insertarlo</h3>
+    <ol>
+      <li>Seleccioná los datos que querés graficar, incluidos los encabezados.</li>
+      <li>Andá a <strong>Insertar &gt; Gráfico</strong>. La planilla sugiere un tipo automáticamente — no siempre es el más adecuado para lo que querés comunicar.</li>
+      <li>En el <strong>Editor de gráficos</strong>, pestaña "Configuración", cambiá el tipo si hace falta.</li>
+      <li>En la pestaña "Personalizar", ajustá el título del gráfico, los títulos de los ejes y la leyenda.</li>
+    </ol>
+    <p class="photo-note">📷 Imagen pendiente — Editor de gráficos de Google Sheets con un gráfico de columnas configurado, mostrando las pestañas Configuración y Personalizar</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — El título hace la mitad del trabajo</p>
+      <p>Un buen título responde a la pregunta que el gráfico contesta, no describe los ejes. "Importe por canal" describe los ejes. "Tres de cada cuatro pesos entran por agencias online" cuenta lo que el gráfico muestra — y es lo que la coordinación va a repetir en la reunión.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 5 · Ejemplo mínimo</span>
+        <h3>El mismo dato, dos gráficos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Con los totales por producto de la Actividad 1, insertá un gráfico <strong>circular</strong> y después uno de <strong>barras</strong> con los mismos datos.</li>
+          <li>Miralos uno al lado del otro treinta segundos. ¿En cuál te resulta más fácil decir cuál es el segundo más grande?</li>
+          <li>Escribí un título para el que hayas elegido, con forma de afirmación y no de rótulo.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Sobre el encargo</span>
+        <h3>El gráfico de la reunión</h3>
+      </div>
+      <div class="prose">
+        <p>Uno solo. El pedido fue explícito.</p>
+        <ol>
+          <li>Sobre la tabla de subtotales por área que armaste con <code>SUMAR.SI</code>, insertá un gráfico de <strong>barras o columnas</strong> comparando el importe bruto de cada canal / sede / turno / responsable.</li>
+          <li><strong>Ordená las barras de mayor a menor.</strong> Un gráfico de comparación sin ordenar obliga a quien lo mira a hacer el trabajo de ordenar mentalmente.</li>
+          <li>Escribí un título que sea una <strong>afirmación sobre tus datos</strong>. Mirá los subtotales antes de escribirlo: en las cuatro organizaciones hay un área que concentra bastante más que las demás, y ese es el titular.</li>
+          <li>Sacá la leyenda si el gráfico tiene una sola serie: no aporta nada y ocupa lugar. Etiquetá los valores directamente sobre las barras.</li>
+          <li>Verificá que los números del gráfico coincidan con los del panel. Un gráfico que no reconcilia con la tabla de al lado destruye la confianza en las dos cosas.</li>
+        </ol>
+        <p class="activity-criteria">Un solo gráfico, de barras, ordenado de mayor a menor, con título en forma de afirmación y sin leyenda redundante, cuyos valores coinciden con los subtotales del panel.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Visualización de datos (Data Visualization).</strong> Cómo la justificás: elijo el tipo de gráfico según la pregunta que necesito responder —comparación, evolución, composición o correlación—, ordeno las series para facilitar la lectura y titulo cada visualización con la conclusión que comunica, no con el nombre de los ejes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Extra</span>
+        <h3>Gráfico combinado, dos ejes</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Armá una tabla con cada área en filas y dos columnas: el <strong>importe bruto</strong> y el <strong>promedio del indicador porcentual</strong> de la Actividad 4.</li>
+          <li>Insertá un gráfico combinado: el importe en <strong>columnas</strong> sobre el eje izquierdo, el porcentaje en <strong>líneas</strong> sobre el eje derecho. Las magnitudes son incomparables y mezclarlas en un solo eje haría el gráfico ilegible.</li>
+          <li>Escribí un título que comunique la relación entre las dos series: ¿el área que más factura es también la que mejor rinde, o no?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Cerrar el encargo y replicarlo en Excel</h2>
+  </div>
+  <div class="prose">
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 7 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Actualizá el <code>LEEME</code>: agregá que los valores unitarios ahora viven en <code>REFERENCIA</code> y que <strong>no deben modificarse en <code>DATOS</code></strong>, qué significa el indicador porcentual nuevo y cómo se lee.</li>
+          <li>Verificá que ninguna celda muestre <code>#N/A</code> ni <code>#¡REF!</code>, y que el gráfico reconcilia con el panel.</li>
+          <li>Contestá el correo en tres renglones: qué valores estaban desactualizados (si encontraste alguno), qué dice el gráfico, y cuál es la categoría del tarifario que no tuvo movimiento en junio — ese dato salió de la tabla de referencia y nadie lo había pedido, pero es exactamente lo que hace útil un informe.</li>
+        </ol>
+        <p class="activity-criteria">El archivo tiene cinco hojas (<code>DATOS</code>, <code>REFERENCIA</code>, <code>RESUMEN</code>, <code>LISTAS</code>, <code>LEEME</code>), sin errores a la vista, y la respuesta incluye al menos una observación que el pedido no había solicitado.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 7 · Parte B</span>
+        <h3>La misma planilla, en Excel</h3>
+      </div>
+      <div class="prose">
+        <p>Reconstruí en Excel la hoja <code>REFERENCIA</code>, las búsquedas y el gráfico.</p>
+        <div class="table-wrap">
+          <table class="tbl-wide">
+            <thead><tr><th>Qué revisar</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Referencia entre hojas</td><td>En Excel es igual: <code>NombreHoja!Celda</code>, con comillas simples si el nombre tiene espacios</td></tr>
+              <tr><td><code>BUSCARX</code> en Excel</td><td>Disponible en Microsoft 365 y versiones recientes; en versiones más viejas solo existe <code>BUSCARV</code></td></tr>
+              <tr><td>Insertar gráfico</td><td>Pestaña <strong>Insertar &gt; Gráficos recomendados</strong>, o elegir el tipo directamente</td></tr>
+              <tr><td>Editar título y ejes</td><td>Clic sobre el gráfico &gt; <strong>Diseño de gráfico</strong>, o el botón <code>+</code> al lado del gráfico seleccionado</td></tr>
+              <tr><td>Eje secundario</td><td>Clic derecho sobre la serie &gt; Dar formato a serie de datos &gt; Eje secundario</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="activity-criteria">Los indicadores dan idénticos en los dos programas y el gráfico conserva el título con conclusión.</p>
+      </div>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu Excel es una versión más vieja y no tiene <code>BUSCARX</code>, resolvé ese paso con <code>BUSCARV</code> + <code>SIERROR</code>. Es la razón por la que conviene dominar las dos funciones, no solo la más nueva: no siempre elegís vos con qué versión trabajás.</p>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entrega de la clase</p>
+      <p>Subí a Moodle el <strong>enlace</strong> de tu planilla con acceso de lectura habilitado, nombrada <code>2026-XX-XX_Informatica_Clase10_V01</code>. Antes de entregar, cambiá un valor en <code>REFERENCIA</code> y confirmá que el efecto llega hasta el gráfico: si algún número quedó quieto, hay un dato copiado a mano en el camino.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Mirá tu gráfico con ojos de alguien que nunca vio tus datos. Si no podés explicar en una frase qué te está diciendo, probablemente el tipo elegido no es el correcto para esa pregunta — o todavía no sabés cuál es la pregunta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Dejaste de repetir información: los valores oficiales se mudaron a su propia hoja y ahora se buscan en lugar de copiarse, cada registro se enriqueció con datos que antes no estaban, apareció un indicador que nadie podía calcular, y todo eso terminó en un gráfico que se explica solo.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-1" aria-label="Marcar como hecho"></td><td><label for="chk-10-1">Referencio una celda de otra hoja con la sintaxis <code>Hoja!Celda</code>, y sé cuándo hacen falta comillas simples</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-2" aria-label="Marcar como hecho"></td><td><label for="chk-10-2">Explico por qué un dato que se repite y puede cambiar tiene que vivir en una sola hoja de referencia</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-3" aria-label="Marcar como hecho"></td><td><label for="chk-10-3">Escribo <code>BUSCARV</code> con rango absoluto y <code>valor_buscado</code> relativo, con coincidencia exacta</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-4" aria-label="Marcar como hecho"></td><td><label for="chk-10-4">Los valores unitarios ya no están escritos en <code>DATOS</code>: se traen desde <code>REFERENCIA</code></label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-5" aria-label="Marcar como hecho"></td><td><label for="chk-10-5">Manejo el error <code>#N/A</code> con <code>SIERROR</code>, o lo evito con el argumento propio de <code>BUSCARX</code></label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-6" aria-label="Marcar como hecho"></td><td><label for="chk-10-6">Distingo cuándo usar <code>BUSCARV</code> y cuándo <code>BUSCARX</code>, y sé qué pasa si se inserta una columna</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-7" aria-label="Marcar como hecho"></td><td><label for="chk-10-7">Construí el indicador porcentual comparando el valor real contra el de referencia</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-8" aria-label="Marcar como hecho"></td><td><label for="chk-10-8">Elijo el tipo de gráfico según la pregunta que quiero contestar, no por defecto</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-9" aria-label="Marcar como hecho"></td><td><label for="chk-10-9">Mi gráfico está ordenado, sin leyenda redundante, y su título es una afirmación</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-10" aria-label="Marcar como hecho"></td><td><label for="chk-10-10">Verifiqué que cambiar un valor en <code>REFERENCIA</code> propaga hasta el gráfico</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-11" aria-label="Marcar como hecho"></td><td><label for="chk-10-11">Repliqué búsquedas y gráfico en Excel, y entregué el enlace en Moodle</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="closing">
+      <p>Los datos no tienen por qué vivir todos juntos para poder usarse juntos. Las funciones de búsqueda son el puente entre información organizada por separado — y ese puente es lo que hace que actualizar una tarifa sea tocar una celda, no revisar ochocientas filas rezando por no olvidarse ninguna.</p>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+
+    <div class="qr-row">
+      <div class="qr-row-label">El encargo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🏢 Organización · Indicador de la semana</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">💼 Hotel Bahía Norte — estadía = noches ÷ estadía esperada</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">📚 Territorio Abierto — convocatoria = participantes ÷ cupo estándar</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🔬 Planta piloto Sur — rendimiento = unidades ÷ lote nominal</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🎨 Estudio Delta — desvío = horas reales ÷ horas estimadas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Formato condicional — rojo &lt;70%, verde &gt;100%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Conexión entre hojas</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔗 Necesidad · Sintaxis</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Celda de otra hoja — <code>=NombreHoja!Celda</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nombre con espacios o tildes — <code>='Lista de Productos'!B2</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Hoja nueva — signo <code>+</code>, abajo a la izquierda</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Renombrar hoja — doble clic sobre la pestaña</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Funciones de búsqueda</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔍 Necesidad · Fórmula</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda vertical — <code>=BUSCARV(valor; rango; índice; FALSO)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda flexible — <code>=BUSCARX(valor; matriz_buscada; matriz_devuelta; [si_no_hay_valor])</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Manejo de errores — <code>=SIERROR(fórmula; valor_alternativo)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rango de búsqueda — siempre absoluto: <code>$A$2:$E$5</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📐 Argumentos de BUSCARV</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">1º</span><span class="qr-fdesc">Valor buscado — relativo, cada fila el suyo</span></div>
+            <div class="qr-frow"><span class="qr-fletter">2º</span><span class="qr-fdesc">Rango — absoluto, con la clave en la 1ª columna</span></div>
+            <div class="qr-frow"><span class="qr-fletter">3º</span><span class="qr-fdesc">Índice — número de columna dentro del rango</span></div>
+            <div class="qr-frow"><span class="qr-fletter">4º</span><span class="qr-fdesc">Ordenado — <code>FALSO</code> para coincidencia exacta</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Gráficos</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📊 Pregunta · Tipo de gráfico</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Comparar categorías — barras o columnas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Evolución en el tiempo — líneas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Composición de un total — circular (hasta 5 o 6 categorías)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Relación entre dos variables — dispersión</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Dos magnitudes distintas — combinado, con eje secundario</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🛠️ Acción · Ruta</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar gráfico — Insertar &gt; Gráfico</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cambiar tipo — Editor de gráficos &gt; Configuración</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar título y ejes — Editor de gráficos &gt; Personalizar</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel — Insertar &gt; Gráficos recomendados</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Equivalencias con Excel en inglés</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Español · Inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARV</code> — <code>VLOOKUP</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARX</code> — <code>XLOOKUP</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARH</code> — <code>HLOOKUP</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SIERROR</code> — <code>IFERROR</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Referencia entre hojas</span><p class="gloss-def">Fórmula que apunta a una celda de otra hoja del mismo archivo, con la sintaxis <code>NombreHoja!Celda</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Tabla de referencia</span><p class="gloss-def">Tabla donde un dato repetible —una tarifa, un responsable, una especificación— vive una sola vez y desde la que se lo busca cuando hace falta.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Fuente de verdad</span><p class="gloss-def">Único lugar del archivo donde un dato puede modificarse. Todos los demás lugares lo consultan, no lo guardan.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>BUSCARV</code></span><p class="gloss-def">Busca un valor en la primera columna de un rango y devuelve un valor de otra columna de esa fila, siempre hacia la derecha.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>BUSCARX</code></span><p class="gloss-def">Función de búsqueda más flexible: busca en cualquier dirección, no depende de la posición de la columna de búsqueda y no se desfasa si se insertan columnas.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Valor buscado</span><p class="gloss-def">El dato que se quiere encontrar dentro de un rango; primer argumento de <code>BUSCARV</code> y <code>BUSCARX</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Índice de columna</span><p class="gloss-def">Número que indica de qué columna del rango se trae el resultado en <code>BUSCARV</code>, contando desde 1.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Coincidencia exacta</span><p class="gloss-def">Modo de búsqueda (<code>FALSO</code>) en el que solo se acepta el valor idéntico. Es el que se usa casi siempre.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>#N/A</code></span><p class="gloss-def">Error que devuelve una función de búsqueda cuando no encuentra el valor buscado.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SIERROR</code></span><p class="gloss-def">Reemplaza un resultado de error por un valor alternativo definido por quien escribe la fórmula.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Valor de referencia</span><p class="gloss-def">Valor esperado o nominal contra el que se compara el valor real de un registro para construir un indicador de desempeño.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico combinado</span><p class="gloss-def">Gráfico que muestra dos o más series con distintos tipos de visualización sobre el mismo eje horizontal.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Eje secundario</span><p class="gloss-def">Segundo eje vertical que permite mostrar en un mismo gráfico dos series de magnitudes muy distintas.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Editor de gráficos</span><p class="gloss-def">Panel de Google Sheets donde se configura el tipo de gráfico, los datos que incluye y su formato visual.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. <em>Función BUSCARV</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093318</code></li>
+      <li>Google. <em>Función BUSCARX</em>. <code>support.google.com/docs/answer/12013562</code></li>
+      <li>Google. <em>Añadir y editar un gráfico</em>. <code>support.google.com/docs/answer/63824</code></li>
+      <li>Microsoft. <em>Función BUSCARX</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Cairo, A. <em>The Functional Art: An Introduction to Information Graphics and Visualization</em>. New Riders, 2013. Criterio de selección de tipo de gráfico según la pregunta.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+
+<script defer src="../js/guia-print.js"></script>
+
+</body>
+</html>

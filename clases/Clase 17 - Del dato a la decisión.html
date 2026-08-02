@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 17 - Del dato a la decisión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 17 · Gestión de datos e IA";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="17">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 17 · Gestión de datos e IA</span>
+    <h1 class="cover-title">Del Dato a la Decisión</h1>
+    <p class="cover-subtitle">Dashboards simples · IA para redactar informes · Verificación crítica de resultados</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Esta es la última clase de la unidad Gestión de datos e IA. No aprendés una herramienta más para acumular — aprendés el paso final que le da sentido a todo lo anterior: pasar de tener datos bien modelados, cargados y relacionados, a decidir algo con ellos y comunicarlo. Transformás datos en información útil mediante visualizaciones y reportes apoyados por IA, verificando cada conclusión antes de comunicarla.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#tabla"><span class="toc-num">01</span><span class="toc-text">De la tabla al texto: el paso de un analista</span></a></li>
+    <li><a href="#ia"><span class="toc-num">02</span><span class="toc-text">Cómo pedirle a la IA que interprete datos, no que los calcule</span></a></li>
+    <li><a href="#verificacion"><span class="toc-num">03</span><span class="toc-text">Verificar una conclusión antes de firmarla</span></a></li>
+    <li><a href="#dashboard"><span class="toc-num">04</span><span class="toc-text">Armar un dashboard simple en Sheets</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — TABLA -->
+<section class="block" id="tabla">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">De la tabla al texto: el paso de un analista</h2>
+  </div>
+  <div class="prose">
+    <p>Un analista de datos no es quien construye la tabla — es quien la lee y responde preguntas de negocio sobre ella. Recibís una tabla con números, sacás conclusiones del patrón que ves, las escribís en un párrafo claro y lo enviás a quien toma las decisiones.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de escribir la conclusión, hacete tres preguntas: (1) ¿Qué patrón veo en los datos? (2) ¿Eso responde la pregunta que me hicieron? (3) ¿Hay algún dato que contradice lo que estoy a punto de escribir?</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — IA -->
+<section class="block" id="ia">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Cómo pedirle a la IA que interprete datos, no que los calcule</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>¿Cuál es mejor prompt: "resumé esta tabla de datos" o "mi tabla muestra X, Y, Z — escribí una conclusión sobre qué significa eso para quien gestiona la organización"?</p>
+    </div>
+
+    <p>Una IA puede generar un párrafo que interprete datos, pero necesita contexto: qué pregunta estás intentando responder, a quién le escribís, qué datos son los más importantes. Sin contexto, la IA puede inventar correlaciones que no existen.</p>
+
+    <h3>Ejemplo de prompt efectivo</h3>
+    <p style="font-style: italic; background:#f3f1fb; padding:12px; border-radius:6px; border-left:4px solid #673ab7;">
+      "Tengo una tabla de respuestas de un formulario de satisfacción. 120 personas respondieron, y el 75% expresó que prefiere trabajar en equipo. El 20% prefiere trabajar solo. El 5% se abstuvo de responder. Escribí un párrafo para la dirección explicando qué conclusión sacás de eso para la organización del próximo semestre."
+    </p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Una IA puede escribir algo que se ve profesional pero está mal. "Casi todos prefieren trabajar en equipo" es distinto a "El 75% prefiere" — uno omite el 25%, el otro no. Verificar siempre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — VERIFICACIÓN -->
+<section class="block" id="verificacion">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Verificar una conclusión antes de firmarla</h2>
+  </div>
+  <div class="prose">
+    <p>El paso más importante: antes de enviar un informe con conclusiones generadas por IA, hacelo pasar por un chequeo triple.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Paso</th><th>Qué verificás</th><th>Pregunta</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Hechos</strong></td><td>¿Los números que cita son los mismos de mi tabla?</td><td>"¿El 75% es realmente lo que aparece en mis datos?"</td></tr>
+          <tr><td><strong>2. Lógica</strong></td><td>¿La conclusión se sigue de esos números?</td><td>"¿Es verdad que eso implica lo que la IA escribió?"</td></tr>
+          <tr><td><strong>3. Contexto</strong></td><td>¿La conclusión tiene sentido para quien la va a leer?</td><td>"¿Esto responde la pregunta que me hicieron?"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Si falla alguno de estos tres pasos, editá la conclusión vos mismo o pidele a la IA una nueva versión. Tu nombre va a estar abajo — vos sos responsable de lo que dice, aunque una IA la haya escrito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — DASHBOARD -->
+<section class="block" id="dashboard">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Armar un dashboard simple en Sheets</h2>
+  </div>
+  <div class="prose">
+    <p>Un dashboard es una hoja visual que muestra, de un vistazo, los números más importantes. Combina gráficos, tablas dinámicas y números clave para que no haga falta leer las filas de datos originales.</p>
+
+    <h3>Estructura mínima de un dashboard</h3>
+    <ol>
+      <li><strong>Título claro</strong> que diga qué muestra el dashboard</li>
+      <li><strong>Números clave</strong> (3–5) que resumen lo más importante — por ejemplo, "Total de registros: 456", "Promedio de satisfacción: 8.3/10"</li>
+      <li><strong>2–3 visualizaciones</strong> que muestren patrones — un gráfico de barras, un gráfico de línea, una tabla con los top 5</li>
+      <li><strong>Una conclusión escrita</strong> que responda la pregunta original</li>
+    </ol>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Un dashboard se ve mejor en una sola página o pantalla. Si necesitás scroll para ver todo, probablemente tiene demasiada información — priorizá lo que responde la pregunta principal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+
+  <div class="section section-activities">
+    <div class="section-title">Checklist de cierre</div>
+    <div class="activity-table">
+      <table>
+        <tbody>
+          <tr><td><label><input type="checkbox"><span>Armé un dashboard simple con título, números clave y visualizaciones</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Pedile a una IA que redacte una conclusión a partir de mis datos</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Verifiqué los hechos de esa conclusión contra mi tabla (paso 1)</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Chequeé que la lógica sea correcta — los números implican la conclusión (paso 2)</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Confirmé que responde la pregunta original de la organización (paso 3)</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Completé el trabajo integrador de la unidad Gestión de datos e IA</span></label></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section section-sources">
+    <div class="section-title">Una sola idea para llevarte de esta clase</div>
+    <p>Datos bien organizados, bien consultados y bien interpretados son inútiles si no los comunicás de forma que alguien pueda tomar una decisión sobre ellos. El paso de "tabla" a "conclusión" es donde sucede la magia de un analista de datos.</p>
+  </div>
+
+</section>
+
+</main>
+
+</div>
+
+<footer class="colophon"><p>Marcos Hernández</p></footer>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

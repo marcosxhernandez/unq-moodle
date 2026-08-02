@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 15 - Consultar para descubrir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 15 · Gestión de datos e IA";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="15">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 15 · Gestión de datos e IA</span>
+    <h1 class="cover-title">Consultar Para Descubrir</h1>
+    <p class="cover-subtitle">Filtros y ordenamientos · QUERY · IA para generar y explicar consultas</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Ya tenés un formulario que alimenta una tabla de registros validada. Hoy el foco pasa de "cómo entran los datos" a "cómo les hago preguntas": recuperás información puntual de esa tabla sin modificarla, con herramientas simples primero y después con una función que multiplica lo que podés preguntar. Usás IA para generar y explicar consultas, verificando siempre el resultado contra la tabla original.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#filtrar"><span class="toc-num">01</span><span class="toc-text">Filtrar y ordenar una tabla de registros</span></a></li>
+    <li><a href="#query"><span class="toc-num">02</span><span class="toc-text">QUERY: consultar datos sin tocar la tabla original</span></a></li>
+    <li><a href="#ia"><span class="toc-num">03</span><span class="toc-text">IA para generar y explicar consultas</span></a></li>
+    <li><a href="#casos"><span class="toc-num">04</span><span class="toc-text">Casos prácticos contextualizados</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 — FILTRAR -->
+<section class="block" id="filtrar">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Filtrar y ordenar una tabla de registros</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Tu tabla de respuestas ya tiene 40 filas. Necesitás ver solamente las que corresponden a una carrera puntual, ordenadas de la más reciente a la más antigua. ¿Alguna función que ya conocés te resuelve esto, o hace falta otra herramienta?</p>
+    </div>
+
+    <p><strong>Filtrar</strong> oculta temporalmente las filas que no cumplen una condición, sin borrar ni mover ningún dato. <strong>Ordenar</strong> reorganiza las filas visibles según el valor de una columna. Ninguna de las dos altera la tabla original — son formas de "mirarla" distinto.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Herramienta</th><th>Cuándo usarla</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Filtro</strong> (Datos > Crear un filtro)</td><td>Trabajás solo, explorando la tabla</td></tr>
+          <tr><td><strong>Vista de filtro</strong> (Datos > Vistas de filtro)</td><td>Varios usuarios comparten la hoja</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu hoja va a ser compartida, usá siempre "Vista de filtro" en lugar del filtro común.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — QUERY -->
+<section class="block" id="query">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">QUERY: consultar datos sin tocar la tabla original</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Los filtros te muestran solo las filas que querés, pero ¿y si necesitás que la respuesta sea solo una columna? ¿O una suma de una columna filtrada? ¿Hay una fórmula que haga todo eso en una sola cella?</p>
+    </div>
+
+    <p>La función <strong>QUERY</strong> en Google Sheets hace exactamente eso: recupera información de una tabla aplicando condiciones de filtro, seleccionando columnas específicas, y ordenando el resultado — todo sin tocar la tabla original, en una sola fórmula.</p>
+
+    <h3>Sintaxis básica</h3>
+    <p style="font-family: 'Courier New', monospace; background:#f3f1fb; padding:12px; border-radius:6px; border-left:4px solid #673ab7;">
+      =QUERY(rango; "select A, B, C where D &gt; 10 order by A")
+    </p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>QUERY funciona con un lenguaje parecido al SQL (el lenguaje de bases de datos reales), pero simplificado. No necesitás aprender SQL completo — alcanza con reconocer qué hace `select`, `where` y `order by`.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — IA -->
+<section class="block" id="ia">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">IA para generar y explicar consultas</h2>
+  </div>
+  <div class="prose">
+    <p>Una IA puede generar una fórmula QUERY en base a lo que le pedís, ahorrándote escribir la sintaxis desde cero. Pero eso no significa que le tengas que creer cada consulta que te devuelve — la responsabilidad de verificar sigue siendo tuya.</p>
+
+    <h3>Workflow de verificación</h3>
+    <ol>
+      <li>Pedile a la IA la consulta QUERY que necesitás</li>
+      <li>Copiá la fórmula en tu hoja</li>
+      <li>Verificá el resultado manualmente: ¿los datos que te devuelve tienen sentido según lo que pediste?</li>
+      <li>Si algo no coincide, editá la fórmula o pidele a la IA una versión corregida</li>
+    </ol>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Una IA puede generar una fórmula QUERY que se ve bien pero está mal — devuelve datos que parecen correctos a primera vista. Comparar con un filtro manual es la mejor forma de estar seguro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — CASOS -->
+<section class="block" id="casos">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Casos prácticos contextualizados</h2>
+  </div>
+  <div class="prose">
+    <p>QUERY es una herramienta versátil — lo que cambia es la pregunta que le haces a tu tabla. Desde "todos los registros de una categoría puntual" hasta "los 10 mayores valores con un rótulo," todo entra en QUERY.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de escribir (o de pedirle a la IA) una consulta QUERY, escribí con tus palabras qué es exactamente lo que necesitás saber. "Quiero ver todos los registros de julio ordenados por fecha, mostrando solo nombre y monto" es mucho más claro que "hacé una QUERY."</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+
+  <div class="section section-activities">
+    <div class="section-title">Checklist de cierre</div>
+    <div class="activity-table">
+      <table>
+        <tbody>
+          <tr><td><label><input type="checkbox"><span>Apliqué un filtro a mi tabla de respuestas</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Utilicé una vista de filtro para no alterar lo que ven otros</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Escribí una fórmula QUERY que responde una pregunta concreta</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Pedile a una IA una consulta más compleja y la verifiqué</span></label></td></tr>
+          <tr><td><label><input type="checkbox"><span>Comparé el resultado de mi QUERY con un filtro manual</span></label></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section section-sources">
+    <div class="section-title">Una sola idea para llevarte de esta clase</div>
+    <p>Las preguntas que le hagas a tus datos determinan las respuestas que obtenés. Una consulta bien formulada (en tu cabeza, en voz alta, o con ayuda de una IA) es el primer paso para verificar que la respuesta tiene sentido.</p>
+  </div>
+
+</section>
+
+</main>
+
+</div>
+
+<footer class="colophon"><p>Marcos Hernández</p></footer>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

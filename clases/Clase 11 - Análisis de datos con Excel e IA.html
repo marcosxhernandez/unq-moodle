@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 11 - Análisis de datos con Excel e IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento de clase — Planilla de cálculo (Clase 11) = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 11 · Planilla de cálculo";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="11">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 11 · Planilla de cálculo</span>
+    <h1 class="cover-title">Análisis de datos con Excel e IA</h1>
+    <p class="cover-subtitle">Google Sheets · tablas dinámicas y segmentación de datos · IA como asistente para escribir y corregir fórmulas</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.jpg" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Una fórmula condicional responde una pregunta por vez. Cuando la pregunta tiene varias dimensiones —por área, y por categoría, y por semana, todo cruzado— escribir una fórmula nueva por cada combinación deja de ser práctico. Esta clase cierra el bloque con la herramienta que resuelve eso sin escribir una sola fórmula, con el control que deja explorar los datos a alguien que no sabe editar planillas, y con la IA que redacta y corrige las fórmulas que sí hacen falta — siempre que sepas darle contexto y verificar lo que devuelve.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#por-que"><span class="toc-num">01</span><span class="toc-text">Por qué una tabla dinámica y no más fórmulas</span></a></li>
+    <li><a href="#encargo"><span class="toc-num">02</span><span class="toc-text">El encargo de esta semana</span></a></li>
+    <li><a href="#armar"><span class="toc-num">03</span><span class="toc-text">Cómo armar una tabla dinámica</span></a></li>
+    <li><a href="#segmentacion"><span class="toc-num">04</span><span class="toc-text">Segmentación de datos</span></a></li>
+    <li><a href="#ia-formulas"><span class="toc-num">05</span><span class="toc-text">IA como asistente para fórmulas</span></a></li>
+    <li><a href="#ia-integrada"><span class="toc-num">06</span><span class="toc-text">IA integrada en la planilla</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">07</span><span class="toc-text">Cerrar el encargo y replicarlo en Excel</span></a></li>
+    <li><a href="#entrega"><span class="toc-num">08</span><span class="toc-text">Trabajo integrador del bloque</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">09</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="por-que">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Por qué una tabla dinámica y no más fórmulas</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Te piden el importe por área <em>y</em> por categoría <em>y</em> por semana, todo cruzado. Con <code>SUMAR.SI</code> necesitarías una fórmula por cada combinación. Con tres áreas, tres categorías y dos semanas ya son dieciocho. ¿Y si mañana quieren verlo por quincena?</p>
+    </div>
+
+    <h3>De dónde venimos</h3>
+    <p>Durante tres clases construiste, para una de cuatro organizaciones, un archivo que ya hace bastante:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Semana</th><th>Qué sumó al archivo</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Hoja <code>DATOS</code> con importes calculados, parámetro del negocio en su propia celda, panel <code>RESUMEN</code> y formato condicional que señala anomalías</td></tr>
+          <tr><td>2</td><td>Columna <code>estado</code> que clasifica sola, subtotales por área con <code>SUMAR.SI</code> y <code>CONTAR.SI</code>, hoja <code>LISTAS</code> y validación de la carga</td></tr>
+          <tr><td>3</td><td>Hoja <code>REFERENCIA</code> como fuente única de valores, columnas traídas con <code>BUSCARV</code>/<code>BUSCARX</code>, indicador porcentual y el gráfico de la reunión</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Si no tenés el archivo a mano</p>
+      <p>Los datasets, las tablas de referencia y las reglas están en el material de las Clases 08, 09 y 10. También podés trabajar con cualquier tabla propia de al menos ocho filas que tenga dos campos de texto para agrupar (un área y una categoría), una fecha y un importe: todo lo de hoy funciona igual.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si en algún punto de esta clase no te sale una fórmula compleja, no la abandones: es exactamente lo que se resuelve más abajo pidiéndole ayuda a una IA. Anotá dónde te trabaste — ese apunte es la materia prima de la Actividad 5.</p>
+    </div>
+
+    <h3>Qué resuelve una tabla dinámica</h3>
+    <p>Con <code>SUMAR.SI</code> y <code>CONTAR.SI</code> podés responder una pregunta condicional por vez. Cuando la pregunta tiene varias dimensiones cruzadas, armar eso a mano se vuelve una tabla de fórmulas dentro de otra tabla — y cada vez que alguien quiere verlo de otra forma hay que rehacerla.</p>
+    <p>Una <strong>tabla dinámica</strong> resuelve exactamente ese problema: agrupa y resume un conjunto de datos arrastrando campos a distintas áreas, sin escribir una sola fórmula. Cambiar la pregunta —"ahora quiero por semana, no por categoría"— es arrastrar un campo distinto.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Una tabla dinámica necesita datos prolijos: una fila por registro, una columna por variable, sin filas ni columnas vacías en el medio, y con encabezados claros en la primera fila. Tu hoja <code>DATOS</code> ya cumple con eso — no por casualidad, sino porque se construyó así desde el primer día. Esa es una de las razones por las que se insistió tanto con la estructura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="encargo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">El encargo de esta semana</h2>
+  </div>
+  <div class="prose">
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Última semana — quiero poder mirarlo yo sola</span></div>
+      </div>
+      <div class="brief-body">
+        <p>El gráfico funcionó muy bien en la reunión. Salieron tres preguntas que no supe contestar y que necesito poder responder sin llamarte:</p>
+        <ol>
+          <li>Cuánto aporta <strong>cada área en cada categoría</strong>, cruzado. Y poder cambiar el corte —a veces quiero por semana, a veces por estado— sin que nadie edite nada.</li>
+          <li>Un <strong>control</strong> que me deje filtrar con un clic. Cuando entro al archivo no sé dónde tocar y tengo miedo de romper algo.</li>
+          <li>Y una cuenta que te pido específica: <strong>qué porcentaje del total aporta el área más grande</strong>. Ahí quiero un número, no un gráfico.</li>
+        </ol>
+        <p>Con esto cerramos. Gracias por estas cuatro semanas.</p>
+      </div>
+    </div>
+
+    <h3>Qué te está pidiendo realmente</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que dice el pedido</th><th>Lo que hay que hacer</th><th>Herramienta de esta clase</th></tr></thead>
+        <tbody>
+          <tr><td>"Cada área en cada categoría, cruzado"</td><td>Resumir dos dimensiones a la vez, sin una fórmula por celda</td><td>Tabla dinámica</td></tr>
+          <tr><td>"Cambiar el corte sin que nadie edite nada"</td><td>Que reconfigurar el análisis sea arrastrar, no reescribir</td><td>Áreas de Filas / Columnas / Valores</td></tr>
+          <tr><td>"Un control para filtrar con un clic"</td><td>Dar acceso a la exploración sin dar acceso a la configuración</td><td>Segmentación de datos</td></tr>
+          <tr><td>"Tengo miedo de romper algo"</td><td>Separar la vista de consulta de la hoja donde se calcula</td><td>Tabla dinámica en hoja propia</td></tr>
+          <tr><td>"Qué porcentaje aporta el área más grande"</td><td>Una fórmula que combina un máximo con un total</td><td>IA como asistente + verificación</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cómo se lee tu tablero</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Organización</th><th>Filas</th><th>Columnas</th><th>Valores</th><th>Segmentación</th></tr></thead>
+        <tbody>
+          <tr><td>💼 Hotel Bahía Norte</td><td><code>canal</code></td><td><code>tipo_habitacion</code></td><td rowspan="4">Suma de <code>importe_bruto</code></td><td rowspan="4"><code>estado</code> y <code>fecha</code></td></tr>
+          <tr><td>📚 Territorio Abierto</td><td><code>sede</code></td><td><code>tipo_actividad</code></td></tr>
+          <tr><td>🔬 Planta piloto Sur</td><td><code>turno</code></td><td><code>linea</code></td></tr>
+          <tr><td>🎨 Estudio Delta</td><td><code>responsable</code></td><td><code>formato</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Ya tenés la respuesta para verificar</p>
+      <p>El total general de la tabla dinámica <strong>tiene que dar exactamente</strong> el total bruto de tu panel <code>RESUMEN</code>, y los totales de fila tienen que coincidir con los subtotales por área que calculaste con <code>SUMAR.SI</code>. Esa doble verificación es lo que te dice si la tabla dinámica está tomando todo el rango o se comió filas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="armar">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Cómo armar una tabla dinámica</h2>
+  </div>
+  <div class="prose">
+    <p class="photo-note">📷 Imagen pendiente — panel del Editor de tablas dinámicas de Google Sheets mostrando las áreas Filas, Columnas, Valores y Filtros</p>
+
+    <h3>Los cuatro bloques del editor</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Área</th><th>Qué hace</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Filas</strong></td><td>Los valores que se agrupan verticalmente — una fila por área</td></tr>
+          <tr><td><strong>Columnas</strong></td><td>Los valores que se agrupan horizontalmente — una columna por categoría</td></tr>
+          <tr><td><strong>Valores</strong></td><td>El número que se calcula en el cruce de fila y columna</td></tr>
+          <tr><td><strong>Filtros</strong></td><td>Un campo que restringe qué datos entran en la tabla, sin mostrarse en ella</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cómo crearla</h3>
+    <ol>
+      <li>Seleccioná el rango completo de datos, con encabezados.</li>
+      <li>Andá a <strong>Insertar &gt; Tabla dinámica</strong>. Elegí <strong>hoja nueva</strong>: es lo que separa la vista de consulta de la hoja donde se calcula, y lo que le saca el miedo a quien la abre.</li>
+      <li>En el panel derecho, arrastrá los campos a las áreas que correspondan.</li>
+      <li>Para el área "Valores", además de elegir el campo, elegís <strong>cómo</strong> resumirlo: <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>MAX</code>, <code>MIN</code> — las mismas funciones de siempre, aplicadas ahora sin escribir una sola fórmula.</li>
+    </ol>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Por defecto, la planilla suele resumir un campo numérico con <code>SUMA</code>. Si lo que necesitás es un promedio o un conteo, tenés que cambiarlo en la configuración de ese campo dentro del área "Valores". Es un error común dejarlo en "Suma" sin revisar — y una suma de porcentajes no significa absolutamente nada.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 1 · Ejemplo mínimo</span>
+        <h3>Ocho filas, una tabla dinámica</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una hoja aparte, cargá cuatro columnas —Vendedor, Categoría, Mes, Monto— con estas ocho filas: García/Papelería/Enero/45000 · López/Accesorios/Enero/32000 · García/Accesorios/Febrero/61000 · Pérez/Papelería/Enero/28000 · López/Papelería/Febrero/55000 · García/Papelería/Febrero/19000 · Pérez/Accesorios/Enero/47000 · López/Accesorios/Febrero/38000.</li>
+          <li>Insertá una tabla dinámica: vendedor en filas, mes en columnas, suma del monto en valores. El total general tiene que dar <strong>325.000</strong>.</li>
+          <li>Cambiá el campo de valores de suma a <strong>promedio</strong> y observá cómo cambian los números sin tocar ninguna fórmula.</li>
+          <li>Arrastrá "Categoría" al área de <strong>Filtros</strong> y mirá la tabla solo con "Papelería" (total 147.000) y solo con "Accesorios" (178.000). Los dos suman el total general.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 2 · Sobre el encargo</span>
+        <h3>El cruce que pidió la coordinación</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Sobre tu hoja <code>DATOS</code>, insertá una tabla dinámica <strong>en una hoja nueva</strong>. Nombrala <code>TABLERO</code>.</li>
+          <li>Armá el cruce según la tabla de la sección anterior: el campo de área en <strong>Filas</strong>, la categoría en <strong>Columnas</strong>, la suma del importe bruto en <strong>Valores</strong>.</li>
+          <li><strong>Verificación obligatoria:</strong> el total general tiene que coincidir con el total bruto de tu panel <code>RESUMEN</code>, y cada total de fila con su subtotal de <code>SUMAR.SI</code>. Si no cierra, el rango de origen no está tomando todas las filas — revisalo antes de seguir.</li>
+          <li>Agregá un segundo campo al área de Valores: la <strong>cantidad de registros</strong> (<code>CONTAR</code> sobre el identificador). Ahora cada cruce te dice cuánto y cuántos.</li>
+          <li>Cambiá el campo de Columnas por <code>estado</code>. Esa vista responde una pregunta distinta: cuánto del importe de cada área está en "Alto valor" y cuánto en "Revisar". Anotá qué ves.</li>
+          <li>Volvé a la vista original y agregá la <strong>fecha</strong> al área de Filtros.</li>
+        </ol>
+        <p class="activity-criteria">La tabla dinámica vive en su propia hoja, su total general reconcilia con el panel <code>RESUMEN</code>, cada cruce informa importe y cantidad, y probaste al menos dos configuraciones distintas sin reescribir nada.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Tablas dinámicas (PivotTables).</strong> Cómo la justificás: resumo conjuntos de datos de varias dimensiones con tablas dinámicas, eligiendo la función de agregación adecuada a cada pregunta y verificando la reconciliación contra los totales de control antes de informar cifras.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="segmentacion">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Segmentación de datos</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>La coordinación dijo "tengo miedo de romper algo". Si para filtrar tiene que abrir el panel de configuración de la tabla dinámica, ¿ese miedo está mal fundado?</p>
+    </div>
+    <p>No: está perfectamente fundado. El panel de configuración es donde se rompe la tabla. La <strong>segmentación de datos</strong> (<em>slicer</em>, en inglés) es un control visual —parecido a un botón— que permite filtrar haciendo clic, sin tocar esa configuración. Es la diferencia entre dar acceso a la <em>consulta</em> y dar acceso a la <em>estructura</em>.</p>
+
+    <h3>Cómo aplicarla</h3>
+    <ol>
+      <li>Con la tabla dinámica o el rango seleccionado, andá a <strong>Insertar &gt; Segmentación de datos</strong>.</li>
+      <li>Elegí el campo por el que querés poder filtrar.</li>
+      <li>Aparece un cuadro flotante con botones, uno por cada valor único de ese campo. Hacer clic en uno filtra todo lo que depende de esos datos.</li>
+    </ol>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>La segmentación es la diferencia entre una planilla que solo vos entendés y una que cualquiera puede explorar sin ayuda. Ese es, además, el criterio con el que se evalúa una entrega profesional: no si vos podés usarla, sino si puede usarla la persona que la pidió.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 3 · Ejemplo mínimo</span>
+        <h3>Un control, tres clics</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Sobre la tabla dinámica de la Actividad 1, insertá una segmentación por "Vendedor".</li>
+          <li>Filtrá solo García (125.000), después solo López (125.000), después los dos juntos (250.000).</li>
+          <li>Limpiá el filtro y confirmá que vuelve al total general de 325.000.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 4 · Sobre el encargo</span>
+        <h3>El tablero que se usa sin ayuda</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Sobre tu tabla dinámica, insertá una segmentación por <strong><code>estado</code></strong> y otra por <strong><code>fecha</code></strong>.</li>
+          <li>Combiná los dos controles: mostrá solo los registros en "Alto valor" de la primera semana de junio. Confirmá que la tabla responde a los dos filtros a la vez.</li>
+          <li>Insertá un <strong>gráfico</strong> a partir de la tabla dinámica y confirmá que también se actualiza al mover los controles. Un gráfico que no acompaña al filtro es peor que no tener gráfico: muestra un número y sugiere otro.</li>
+          <li>Acomodá los elementos en la hoja <code>TABLERO</code>: los controles arriba, la tabla a la izquierda, el gráfico a la derecha. Agregá un título de texto arriba de todo que diga qué es y a qué período corresponde.</li>
+          <li><strong>La prueba real:</strong> pedile a alguien que no vio tu archivo que lo abra y responda una pregunta concreta —por ejemplo, cuánto aportó un área determinada en la segunda semana—. Si necesita que le expliques dónde tocar, el tablero todavía no está terminado.</li>
+        </ol>
+        <p class="activity-criteria">Los dos controles filtran tabla y gráfico simultáneamente, la hoja <code>TABLERO</code> tiene título y disposición legible, y una persona ajena al archivo pudo responder una pregunta sin instrucciones.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Análisis de datos (Data Analysis).</strong> Cómo la justificás: construyo tableros de consulta con segmentación de datos y gráficos vinculados, de modo que una persona sin conocimiento técnico pueda explorar la información y responder sus propias preguntas sin editar la configuración del archivo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="ia-formulas">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">IA como asistente para fórmulas</h2>
+  </div>
+  <div class="prose">
+    <div class="callout" data-type="question">
+      <p>Queda pendiente el punto 3 del pedido: qué porcentaje del total aporta el área más grande. No es una fórmula que hayas visto. ¿Qué necesitaría saber una IA sobre tu archivo para dártela y que funcione a la primera?</p>
+    </div>
+    <p>Una IA de propósito general (ChatGPT, Gemini, Claude) puede escribir fórmulas de planilla con bastante precisión, pero solo si le das el contexto necesario. Es la misma lógica de prompting que trabajaste en la Clase 01, aplicada ahora a fórmulas.</p>
+
+    <h3>Qué contexto darle</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Elemento del prompt</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Qué programa usás</td><td>"Estoy en Google Sheets, configuración regional Argentina, separador punto y coma"</td></tr>
+          <tr><td>Cómo están organizados los datos</td><td>"En la hoja RESUMEN tengo los nombres de área en <code>A2:A5</code> y sus subtotales en <code>B2:B5</code>"</td></tr>
+          <tr><td>Qué resultado necesitás</td><td>"Quiero el porcentaje que representa el subtotal más alto sobre la suma de todos"</td></tr>
+          <tr><td>Restricciones</td><td>"Una sola celda, sin tabla dinámica, y que se actualice si cambian los datos"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Errores comunes al usar IA para fórmulas</h3>
+    <ul>
+      <li><strong>Alucina funciones que no existen</strong> en tu programa, o mezcla la sintaxis de Excel (con <code>,</code>) con la de Sheets (con <code>;</code>), sobre todo si no aclaraste cuál usás.</li>
+      <li><strong>Da una fórmula sintácticamente correcta pero que no resuelve lo que pediste</strong>, si tu prompt fue ambiguo. Es el caso más peligroso: devuelve un número, y los números convencen.</li>
+      <li><strong>No conoce la estructura real de tu archivo</strong> a menos que se la describas: no puede "ver" tus columnas ni saber en qué fila empiezan tus datos.</li>
+    </ul>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención — Verificar antes de usar</p>
+      <p>El mismo criterio de evaluación de fuentes que trabajaste en la Clase 01 aplica acá: no pegues una fórmula que te dio una IA sin entender qué hace cada parte y sin probarla en un caso donde ya sabés cuál debería ser el resultado. En este encargo tenés esa ventaja: los subtotales por área ya están calculados, así que podés verificar el porcentaje a mano en diez segundos.</p>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Costo de estas herramientas</p>
+      <p>ChatGPT, Gemini y Claude tienen versión gratuita suficiente para todo lo de esta clase, con límites de uso diarios. Las tres ofrecen además planes pagos con modelos más potentes y límites más altos; el precio cambia seguido, así que conviene mirarlo en el sitio de cada una antes de decidir. Varias ofrecen descuentos o períodos sin cargo para estudiantes con correo institucional verificado: se consulta en la propia página de planes de cada herramienta.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 5 · Ejemplo mínimo</span>
+        <h3>Dos prompts, dos resultados</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Pedile a una IA, con un prompt <strong>vago</strong>: <em>"dame una fórmula para sacar el porcentaje del mayor"</em>. Guardá lo que te devuelva.</li>
+          <li>Pedile lo mismo con los cuatro elementos de la tabla de arriba: programa, estructura, resultado esperado, restricciones.</li>
+          <li>Compará las dos respuestas. La diferencia entre ambas es, literalmente, la habilidad que se te está pidiendo desarrollar.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Sobre el encargo</span>
+        <h3>La cuenta que faltaba</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Escribí un prompt completo para pedir la fórmula del punto 3: <strong>qué porcentaje del total aporta el área más grande</strong>, sobre tu tabla de subtotales. Incluí los cuatro elementos de contexto.</li>
+          <li><strong>Guardá el prompt</strong> en una celda o en una hoja aparte. Forma parte de la entrega: en un trabajo real, el prompt es documentación del método.</li>
+          <li>Pegá la fórmula en tu archivo y <strong>verificala a mano</strong>: dividí el subtotal más grande por el total general con una calculadora y comprobá que coincide.</li>
+          <li>Pedile además una segunda fórmula que devuelva el <strong>nombre</strong> del área más grande, no solo su porcentaje. Verificá contra tu tabla de subtotales.</li>
+          <li>Si alguna no funcionó a la primera, volvé a la IA con el <strong>mensaje de error exacto</strong> que devolvió la planilla y pedile que lo corrija. Esto se llama <em>iterar sobre el error</em>, y es más efectivo que empezar un prompt nuevo desde cero.</li>
+          <li>Escribí en una línea, al lado de cada fórmula, <strong>qué hace</strong>. Si no podés explicarla, no la entregues: pedile a la IA que te la explique parte por parte hasta que puedas.</li>
+        </ol>
+        <p class="activity-criteria">Las dos fórmulas devuelven resultados que coinciden con la verificación manual, el prompt está documentado en el archivo, y podés explicar en una frase qué hace cada una.</p>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p><strong>Ingeniería de prompts (Prompt Engineering).</strong> Cómo la justificás: uso IA como asistente para generar y depurar fórmulas, redactando prompts que especifican programa, estructura de datos, resultado esperado y restricciones, y verifico cada resultado contra un cálculo de control antes de incorporarlo a un entregable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 6 · Extra</span>
+        <h3>Depurar una fórmula rota</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Duplicá una de tus fórmulas de <code>BUSCARV</code> y rompela a propósito: sacale un paréntesis, o cambiale el índice de columna por uno que no existe.</li>
+          <li>Pegale a la IA la fórmula rota junto con el mensaje de error, y pedile que identifique el problema <strong>sin reescribir toda la fórmula de cero</strong>.</li>
+          <li>Confirmá si la corrección resuelve la causa real o si "parcheó" el síntoma. Un índice cambiado, por ejemplo, puede dejar de dar error y empezar a devolver la columna equivocada — que es mucho peor.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="ia-integrada">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">IA integrada en la planilla</h2>
+  </div>
+  <div class="prose">
+    <p>A diferencia de pedirle ayuda a una IA externa —donde tenés que describirle la estructura de la hoja—, Google Sheets incorpora un asistente que puede ver directamente los datos del rango seleccionado.</p>
+
+    <h3>Qué podés pedirle</h3>
+    <ul>
+      <li>Generar una fórmula describiendo en lenguaje natural lo que necesitás.</li>
+      <li>Resumir o clasificar el contenido de una columna.</li>
+      <li>Sugerir qué tipo de gráfico usar para un rango de datos seleccionado.</li>
+    </ul>
+
+    <h3>Cómo acceder</h3>
+    <p>Buscá el ícono del asistente —una estrella con destellos— en la barra de herramientas o en el panel lateral. Al seleccionar un rango y abrir el panel, podés escribirle una consigna directamente relacionada con esos datos.</p>
+    <p class="photo-note">📷 Imagen pendiente — panel del asistente de IA de Google Sheets abierto sobre un rango de datos seleccionado, con el cuadro de texto para escribir la consigna</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención — Disponibilidad</p>
+      <p>La IA integrada no está disponible por igual en todas las cuentas: depende del tipo de cuenta, del país y del plan. Si no ves el ícono en tu barra de herramientas, no es un error tuyo — resolvé la actividad con una IA externa, que es equivalente para lo que se pide acá.</p>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>La ventaja de la IA integrada es que no tenés que copiar y pegar tus datos ni describir la estructura: ya la tiene delante. La desventaja es que, al no ser una conversación tan flexible, cuesta más ir y volver sobre un problema difícil. Combinarlas suele ser lo mejor: la integrada para algo rápido y puntual, la externa cuando necesitás pensar el problema paso a paso.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Esté donde esté la IA —integrada en la planilla o en una ventana aparte—, la responsabilidad de verificar el resultado sigue siendo tuya. Ninguna IA reemplaza entender qué hace la fórmula que terminás entregando con tu nombre.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 7 · Sobre el encargo</span>
+        <h3>Preguntarle a la planilla</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Seleccioná tu hoja <code>DATOS</code> y abrí el panel del asistente. Si no está disponible en tu cuenta, usá una IA externa describiendo la tabla.</li>
+          <li>Pedile que te diga <strong>cuál es el área con mayor importe total</strong>, sin darle la respuesta. Compará con lo que ya sabés por tus subtotales: ¿acertó?</li>
+          <li>Pedile que sugiera qué tipo de gráfico usaría para mostrar la evolución del importe a lo largo de junio. Contrastá su sugerencia con tu propio criterio de selección: si no coinciden, decidí cuál responde mejor la pregunta y por qué.</li>
+          <li>Anotá en el archivo una línea sobre esta prueba: qué le preguntaste, qué respondió, y si estuvo bien. Esa nota vale tanto como la fórmula.</li>
+        </ol>
+        <p class="activity-criteria">La respuesta de la IA fue contrastada contra un cálculo que ya tenías, y la conclusión —haya acertado o no— quedó escrita en el archivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Cerrar el encargo y replicarlo en Excel</h2>
+  </div>
+  <div class="prose">
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 8 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Actualizá el <code>LEEME</code> por última vez: qué hay en cada una de las seis hojas, cómo se usa el tablero, dónde se cambian los parámetros y qué no hay que tocar.</li>
+          <li>Verificá el archivo completo: sin celdas de error, tabla dinámica reconciliando con el panel, y el prompt documentado.</li>
+          <li>Contestá el correo en cuatro renglones: el cruce principal que muestra el tablero, cómo se filtra, el porcentaje del área más grande, y una observación tuya que no estaba en el pedido.</li>
+        </ol>
+        <p class="activity-criteria">Seis hojas (<code>DATOS</code>, <code>REFERENCIA</code>, <code>RESUMEN</code>, <code>TABLERO</code>, <code>LISTAS</code>, <code>LEEME</code>), sin errores, y una respuesta que aporta algo que no se pidió.</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 8 · Parte B</span>
+        <h3>El mismo tablero, en Excel</h3>
+      </div>
+      <div class="prose">
+        <div class="table-wrap">
+          <table class="tbl-wide">
+            <thead><tr><th>Qué revisar</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Insertar tabla dinámica</td><td>Pestaña <strong>Insertar &gt; Tabla dinámica</strong></td></tr>
+              <tr><td>Área de campos</td><td>En Excel se llama "Campos de tabla dinámica", con las mismas cuatro áreas: Filtros, Columnas, Filas, Valores</td></tr>
+              <tr><td>Cambiar la agregación</td><td>Clic derecho sobre un valor &gt; Resumir valores por</td></tr>
+              <tr><td>Segmentación de datos</td><td>Con la tabla dinámica seleccionada: <strong>Insertar &gt; Segmentación de datos</strong> — el nombre es idéntico</td></tr>
+              <tr><td>Actualizar tras cambiar datos</td><td>Excel <strong>no</strong> refresca sola: clic derecho &gt; Actualizar. Sheets sí lo hace</td></tr>
+              <tr><td>IA integrada</td><td>Excel tiene su propio asistente (Copilot), sujeto a versión y licencia; la lógica de verificar antes de confiar es la misma</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="activity-criteria">La tabla dinámica de Excel devuelve los mismos totales que la de Sheets, y la segmentación filtra igual en ambos entornos.</p>
+      </div>
+    </div>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención — La trampa de la actualización</p>
+      <p>Una tabla dinámica de Excel <strong>no se actualiza sola</strong> cuando cambian los datos de origen: hay que refrescarla a mano. Es una de las causas más frecuentes de informes con números viejos presentados como actuales. Si trabajás en Excel, refrescá siempre antes de exportar o de mostrar.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Las tablas dinámicas de Excel tienen más opciones de personalización que las de Sheets. Para lo que necesitás en esta materia, lo que aprendiste en Sheets te alcanza para moverte con soltura: la lógica de arrastrar campos a las cuatro áreas es idéntica.</p>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel tablas dinámicas y segmentación de datos construidas primero en Google Sheets, verificando que ambos entornos produzcan resultados idénticos y controlando el refresco manual de la tabla antes de informar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="entrega">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Trabajo integrador del bloque</h2>
+  </div>
+  <div class="prose">
+    <p>Esta es la entrega que cierra el bloque de planilla de cálculo. Podés presentar <strong>el archivo del encargo</strong> que venís construyendo, o llevar la misma lógica a <strong>un dataset propio</strong> de tu carrera. La segunda opción es más trabajo y vale mucho más como pieza de portfolio.</p>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Entrega integradora</span>
+        <h3>Consigna</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li><strong>Elegí la base:</strong> el archivo del encargo tal como quedó, o un dataset propio de al menos 30 filas y 4 columnas, con datos que se puedan agrupar de más de una forma. Si elegís uno propio, que sea de algo que efectivamente te interese de tu carrera — un relevamiento, un registro de producción, un catálogo, una programación.</li>
+          <li><strong>Organizá la información en al menos dos hojas conectadas</strong>, con una relación entre ellas: una tabla de referencia y un registro de operaciones que la consulta.</li>
+          <li><strong>Incluí, como mínimo, uno de cada grupo:</strong>
+            <ul>
+              <li>Un parámetro del negocio en su propia celda, referenciado con <code>$</code> desde al menos dos fórmulas, y dos funciones matemáticas</li>
+              <li>Una columna calculada con <code>SI</code> anidado (tres o más ramas), agregaciones con <code>SUMAR.SI</code>/<code>CONTAR.SI</code> que reconcilien contra el total, y una columna con validación por lista</li>
+              <li>Una columna traída de la otra hoja con <code>BUSCARV</code> o <code>BUSCARX</code> con manejo de error, y un gráfico con título en forma de afirmación</li>
+              <li>Una tabla dinámica de dos dimensiones en hoja propia, con segmentación aplicada</li>
+            </ul>
+          </li>
+          <li><strong>Documentá el uso de IA:</strong> el prompt que usaste, la fórmula que obtuviste, y una frase explicando <strong>cómo verificaste</strong> que el resultado era correcto.</li>
+          <li><strong>Formato condicional</strong> sobre al menos una columna relevante.</li>
+          <li><strong>Hoja <code>LEEME</code></strong> que permita a otra persona entender y usar el archivo sin tu ayuda.</li>
+          <li><strong>Nombrá el archivo</strong> <code>2026-XX-XX_Informatica_Clase11_V01</code> y compartilo con acceso de lectura por enlace.</li>
+          <li><strong>Subí el enlace a la tarea de Moodle</strong> correspondiente al trabajo integrador del bloque.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3>Criterios de corrección</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Criterio</th><th>Qué se evalúa</th></tr></thead>
+        <tbody>
+          <tr><td>Estructura de datos</td><td>Las hojas están organizadas con claridad, sin datos repetidos innecesariamente, con una única fuente de verdad por dato</td></tr>
+          <tr><td>Referencias y parámetros</td><td>Uso correcto de referencia relativa frente a absoluta; ningún número mágico dentro de una fórmula</td></tr>
+          <tr><td>Funciones lógicas y condicionales</td><td>La clasificación resuelve el problema planteado y el orden de las condiciones es el correcto</td></tr>
+          <tr><td>Integridad</td><td>Los subtotales reconcilian contra el total general y contra la tabla dinámica</td></tr>
+          <tr><td>Búsqueda entre hojas</td><td>Las búsquedas conectan correctamente, con rango absoluto y manejo del caso "no encontrado"</td></tr>
+          <tr><td>Tabla dinámica y tablero</td><td>Resume de forma útil, con segmentación funcional y disposición legible</td></tr>
+          <tr><td>Visualización</td><td>El gráfico comunica algo específico, con título que lo explicita y sin elementos redundantes</td></tr>
+          <tr><td>Uso de IA</td><td>El prompt documentado es específico y hay evidencia de verificación del resultado</td></tr>
+          <tr><td>Usabilidad por terceros</td><td>Otra persona puede abrir el archivo, entender qué hace y usar el tablero sin ayuda</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entrega de la clase</p>
+      <p>Subí a Moodle el <strong>enlace</strong> del archivo con acceso de lectura habilitado. Guardá bien esta entrega: es la mejor simulación disponible de lo que se evalúa en la instancia parcial de este bloque, y es una pieza que podés mostrar fuera de la cursada.</p>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo — Esto no es una ficción decorativa</p>
+      <p>El puesto que acabás de simular existe, y en todas las carreras. Buscá en LinkedIn "asistente de análisis", "analista junior" o "administrativo con Excel" combinado con tu campo —turismo, extensión, producción, gestión cultural— y vas a encontrar avisos que piden exactamente esto: limpiar registros, armar reportes recurrentes y dejar tableros que otros puedan usar. Las cuatro semanas de este encargo son cuatro piezas de portfolio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">09</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Dejaste de escribir una fórmula por cada pregunta: armaste una tabla que se reconfigura arrastrando campos, la volviste explorable para alguien que no sabe editar planillas, y usaste IA para escribir la fórmula que faltaba — verificándola contra un cálculo que ya tenías. El archivo que entregás hoy no lo hizo la IA: lo hiciste vos, y por eso podés explicarlo.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-1" aria-label="Marcar como hecho"></td><td><label for="chk-11-1">Explico cuándo una tabla dinámica resuelve mejor el problema que una fórmula condicional</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-2" aria-label="Marcar como hecho"></td><td><label for="chk-11-2">Armo una tabla dinámica en hoja propia, con filas, columnas y valores, eligiendo bien la agregación</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-3" aria-label="Marcar como hecho"></td><td><label for="chk-11-3">Verifiqué que el total de la tabla dinámica reconcilia con el panel <code>RESUMEN</code></label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-4" aria-label="Marcar como hecho"></td><td><label for="chk-11-4">Reconfiguré el cruce cambiando un campo, sin reescribir ninguna fórmula</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-5" aria-label="Marcar como hecho"></td><td><label for="chk-11-5">Agregué segmentación por dos campos y confirmé que filtran tabla y gráfico a la vez</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-6" aria-label="Marcar como hecho"></td><td><label for="chk-11-6">Alguien ajeno al archivo pudo responder una pregunta usando mi tablero, sin instrucciones</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-7" aria-label="Marcar como hecho"></td><td><label for="chk-11-7">Escribo un prompt con programa, estructura de datos, resultado esperado y restricciones</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-8" aria-label="Marcar como hecho"></td><td><label for="chk-11-8">Verifiqué contra un cálculo de control la fórmula que me dio la IA, y puedo explicar qué hace</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-9" aria-label="Marcar como hecho"></td><td><label for="chk-11-9">Iteré sobre el error devolviéndole a la IA el mensaje exacto, en lugar de empezar de cero</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-10" aria-label="Marcar como hecho"></td><td><label for="chk-11-10">Repliqué el tablero en Excel y sé que ahí la tabla dinámica no se refresca sola</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-11-11" aria-label="Marcar como hecho"></td><td><label for="chk-11-11">Entregué el trabajo integrador con el uso de IA documentado y verificado</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="closing">
+      <p>Todo lo que aprendiste en este bloque —referencias, funciones, lógica, búsqueda, visualización— sigue siendo el conocimiento que te permite usar la IA con criterio. La IA te ahorra tipeo; saber qué pedir, y sobre todo saber contra qué verificar lo que devuelve, es exactamente lo que construiste en estas cuatro semanas.</p>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+
+    <div class="qr-row">
+      <div class="qr-row-label">El encargo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🏢 Organización · Filas × Columnas del tablero</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">💼 Hotel Bahía Norte — <code>canal</code> × <code>tipo_habitacion</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">📚 Territorio Abierto — <code>sede</code> × <code>tipo_actividad</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🔬 Planta piloto Sur — <code>turno</code> × <code>linea</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🎨 Estudio Delta — <code>responsable</code> × <code>formato</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Segmentación en las cuatro — <code>estado</code> y <code>fecha</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Tablas dinámicas</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">📐 Acción · Ruta</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar tabla dinámica — Insertar &gt; Tabla dinámica &gt; hoja nueva</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cambiar la agregación — clic en el campo del panel &gt; "Resumir por"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gráfico dinámico — Insertar &gt; Gráfico, con la tabla seleccionada</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel — Insertar &gt; Tabla dinámica; refrescar a mano tras cambiar datos</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🧩 Las cuatro áreas</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">Filas</span><span class="qr-fdesc">Qué se agrupa verticalmente</span></div>
+            <div class="qr-frow"><span class="qr-fletter">Col.</span><span class="qr-fdesc">Qué se agrupa horizontalmente</span></div>
+            <div class="qr-frow"><span class="qr-fletter">Val.</span><span class="qr-fdesc">Qué número se calcula en el cruce</span></div>
+            <div class="qr-frow"><span class="qr-fletter">Filtr.</span><span class="qr-fdesc">Qué restringe sin mostrarse en la tabla</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Segmentación de datos</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🎚️ Acción · Ruta</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar segmentación — Insertar &gt; Segmentación de datos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Elegir el campo — panel lateral, "Columna"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinar filtros — una segmentación por cada campo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel — igual nombre: Insertar &gt; Segmentación de datos</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Prompt para pedir una fórmula</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🤖 Los cuatro datos que no pueden faltar</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc">Programa y configuración regional</span></div>
+            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc">Qué hay en cada columna y desde qué fila</span></div>
+            <div class="qr-frow"><span class="qr-fletter">3</span><span class="qr-fdesc">Resultado esperado, en una oración</span></div>
+            <div class="qr-frow"><span class="qr-fletter">4</span><span class="qr-fdesc">Restricciones (una celda, sin tabla dinámica…)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">⚠️ Fallas típicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Función inexistente en Sheets — pedir que la adapte</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Separador de Excel (<code>,</code>) en Sheets (<code>;</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fórmula correcta que no resuelve lo pedido</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ante un error: devolver el mensaje exacto, no reformular</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-row">
+      <div class="qr-row-label">Equivalencias con Excel en inglés</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Español · Inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Tabla dinámica — <code>PivotTable</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Segmentación de datos — <code>Slicer</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Campos de tabla dinámica — <code>PivotTable Fields</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Resumir por — <code>Summarize by</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Tabla dinámica</span><p class="gloss-def">Herramienta que resume y agrupa un conjunto de datos arrastrando campos a las áreas de filas, columnas, valores y filtros, sin escribir fórmulas.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Campo</span><p class="gloss-def">Cada columna del conjunto de datos original, que se puede arrastrar a cualquiera de las áreas de una tabla dinámica.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Función de agregación</span><p class="gloss-def">Cómo se resume un campo dentro del área de Valores: suma, promedio, conteo, máximo o mínimo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Datos prolijos</span><p class="gloss-def">Estructura con una fila por registro, una columna por variable, encabezados en la primera fila y sin huecos intermedios. Requisito para que una tabla dinámica funcione.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Segmentación de datos</span><p class="gloss-def">Control visual (<em>slicer</em>) que permite filtrar una tabla dinámica o un rango haciendo clic en botones, sin editar su configuración.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico dinámico</span><p class="gloss-def">Gráfico generado a partir de una tabla dinámica, que se actualiza junto con ella al cambiar filtros o segmentaciones.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Tablero</span><p class="gloss-def">Hoja de consulta que reúne tabla, gráfico y controles de filtro, pensada para ser usada por alguien que no va a editar el archivo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Prompt</span><p class="gloss-def">Instrucción que se le da a una IA, que debe incluir contexto suficiente —programa, estructura de datos, resultado esperado, restricciones— para obtener una respuesta útil.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Alucinación</span><p class="gloss-def">Respuesta de una IA que suena verosímil pero es incorrecta — por ejemplo, una función de planilla que no existe.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Iterar sobre el error</span><p class="gloss-def">Volver a la IA con el mensaje de error exacto que devolvió el programa, en lugar de reformular el pedido desde cero.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Cálculo de control</span><p class="gloss-def">Resultado obtenido por un camino independiente, usado para verificar que una fórmula generada por IA devuelve lo correcto.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. <em>Crear y usar tablas dinámicas</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/1272900</code></li>
+      <li>Google. <em>Filtrar datos con segmentaciones</em>. <code>support.google.com/docs/answer/9245556</code></li>
+      <li>Microsoft. <em>Crear una tabla dinámica para analizar datos de una hoja de cálculo</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Microsoft. <em>Usar segmentaciones de datos para filtrar datos</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Wickham, H. <em>Tidy Data</em>. Journal of Statistical Software, 59(10), 2014. Origen del criterio de "datos prolijos" que requiere una tabla dinámica.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+</footer>
+
+</div>
+
+
+<script defer src="../js/guia-print.js"></script>
+
+</body>
+</html>

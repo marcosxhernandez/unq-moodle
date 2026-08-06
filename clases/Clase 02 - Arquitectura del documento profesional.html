@@ -26,6 +26,50 @@
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-bold" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="800" font-size="17" fill="currentColor">B</text></symbol>
+<symbol id="ti-italic" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" font-size="17" fill="currentColor">I</text></symbol>
+<symbol id="ti-underline" viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="16" fill="currentColor">U</text><rect x="5" y="19" width="14" height="1.6" rx="0.8" fill="currentColor"/></symbol>
+<symbol id="ti-font" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="16" fill="currentColor">A</text></symbol>
+<symbol id="ti-font-size" viewBox="0 0 24 24"><text x="6" y="19" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="18" fill="currentColor">A</text><text x="17" y="14" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="10" fill="currentColor">A</text></symbol>
+<symbol id="ti-text-color" viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">A</text><rect x="5" y="19" width="14" height="2.6" rx="0.5" fill="currentColor"/></symbol>
+<symbol id="ti-align-left" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="10" width="10" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="15" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="20" width="10" height="1.8" rx="0.9" fill="currentColor"/></symbol>
+<symbol id="ti-align-center" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="7" y="10" width="10" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="15" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="7" y="20" width="10" height="1.8" rx="0.9" fill="currentColor"/></symbol>
+<symbol id="ti-align-right" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="10" y="10" width="10" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="15" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="10" y="20" width="10" height="1.8" rx="0.9" fill="currentColor"/></symbol>
+<symbol id="ti-justify" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="10" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="15" width="16" height="1.8" rx="0.9" fill="currentColor"/><rect x="4" y="20" width="16" height="1.8" rx="0.9" fill="currentColor"/></symbol>
+<symbol id="ti-indent" viewBox="0 0 24 24"><rect x="12" y="5" width="8" height="1.8" rx="0.9" fill="currentColor"/><rect x="12" y="10" width="8" height="1.8" rx="0.9" fill="currentColor"/><rect x="12" y="15" width="8" height="1.8" rx="0.9" fill="currentColor"/><path d="M4 9 L8 12.5 L4 16" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-line-spacing" viewBox="0 0 24 24"><rect x="9" y="4" width="11" height="1.6" rx="0.8" fill="currentColor"/><rect x="9" y="11" width="11" height="1.6" rx="0.8" fill="currentColor"/><rect x="9" y="18" width="11" height="1.6" rx="0.8" fill="currentColor"/><path d="M4 4 L4 20 M4 4 L6.2 7 M4 4 L1.8 7 M4 20 L6.2 17 M4 20 L1.8 17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-cut" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="18" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 7.6 L20 20 M8.2 16.4 L20 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="ti-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15 H4.5 A1.5 1.5 0 0 1 3 13.5 V4.5 A1.5 1.5 0 0 1 4.5 3 H13.5 A1.5 1.5 0 0 1 15 4.5 V5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-paste" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="9" y="2.5" width="6" height="3.5" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="8" y1="19" x2="13" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-link" viewBox="0 0 24 24"><path d="M9.5 14.5 L14.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 7 L13.5 4.5 A4 4 0 0 1 19.5 10.5 L17 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17 L10.5 19.5 A4 4 0 0 1 4.5 13.5 L7 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-comment" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 15.5 L8 19.5 L12.5 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-suggest" viewBox="0 0 24 24"><path d="M4 17.5 L5 20 L7.5 19 L18 8.5 A1.8 1.8 0 0 0 15.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><line x1="14" y1="7.5" x2="16.5" y2="10" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-page-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M9.5 9.7 L12 12.2 L9.5 14.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-toc" viewBox="0 0 24 24"><line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="6" r="1" fill="currentColor"/><line x1="4" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="12" r="1" fill="currentColor"/><line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="18" r="1" fill="currentColor"/></symbol>
+<symbol id="ti-columns" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footnote" viewBox="0 0 24 24"><text x="7" y="18" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">a</text><text x="16" y="10" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="9" fill="currentColor">1</text><line x1="4" y1="21" x2="12" y2="21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-table" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="9.7" x2="20.5" y2="9.7" stroke="currentColor" stroke-width="1.4"/><line x1="3.5" y1="14.9" x2="20.5" y2="14.9" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="4.5" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="12" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-fill-color" viewBox="0 0 24 24"><path d="M4 10 L13 4 L20 12 A5 5 0 0 1 13 18 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><circle cx="17.5" cy="8.5" r="1.1" fill="currentColor"/><rect x="5" y="20" width="14" height="2.4" rx="0.5" fill="currentColor"/></symbol>
+<symbol id="ti-wrap-text" viewBox="0 0 24 24"><rect x="9" y="9" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="12.5" x2="8" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-text-box" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2.6 2.2"/><line x1="7" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-bookmark" viewBox="0 0 24 24"><path d="M6 3.5 H18 V21 L12 16.5 L6 21 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-share" viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="8.2" y1="10.8" x2="15.8" y2="6.8" stroke="currentColor" stroke-width="1.6"/><line x1="8.2" y1="13.2" x2="15.8" y2="17.2" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M5 6.5 A9 9 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 3.5 L19.5 9 L14 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17.5 A9 9 0 0 1 4.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 21 L4.5 15 L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-pilcrow" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="18" fill="currentColor">¶</text></symbol>
+<symbol id="ti-mail-merge" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7 L12 13.5 L20.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-preview" viewBox="0 0 24 24"><path d="M2.5 12 C5 7 9 5 12 5 C15 5 19 7 21.5 12 C19 17 15 19 12 19 C9 19 5 17 2.5 12 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+</defs></svg>
+
 <section class="cover-page" data-num="02">
   <div class="cover-inner">
     <span class="cover-kicker">Clase 02 · Procesador de texto</span>
@@ -47,16 +91,17 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">La clase pasada organizaste tu espacio de trabajo y aprendiste a evaluar fuentes y usar IA con criterio. Hoy usás eso para producir un documento real: generás contenido con una IA, lo pegás sin arrastrar su formato, y lo estructurás con estilos para que Google Docs pueda generar un índice automático. También dejás comentarios y revisás el historial de versiones, para trabajar el documento como un espacio compartido, no un archivo cerrado.</p>
+  <p class="toc-intro">La clase pasada organizaste tu espacio de trabajo y aprendiste a evaluar fuentes y usar IA con criterio. Hoy usás eso para producir un documento real: generás contenido con una IA, lo pegás sin arrastrar su formato, le das un primer formato con la barra de herramientas y lo estructurás con estilos para que Google Docs pueda generar un índice automático. También dejás comentarios y revisás el historial de versiones, para trabajar el documento como un espacio compartido, no un archivo cerrado.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#documento"><span class="toc-num">01</span><span class="toc-text">El documento: crear el archivo y conocer Google Docs</span></a></li>
     <li><a href="#contenido-ia"><span class="toc-num">02</span><span class="toc-text">Generar contenido con IA</span></a></li>
     <li><a href="#pegar-sin-formato"><span class="toc-num">03</span><span class="toc-text">Pegar sin formato: Ctrl+Shift+V</span></a></li>
-    <li><a href="#estilos"><span class="toc-num">04</span><span class="toc-text">La arquitectura del documento: estilos</span></a></li>
-    <li><a href="#indice"><span class="toc-num">05</span><span class="toc-text">El índice automático</span></a></li>
-    <li><a href="#colaboracion"><span class="toc-num">06</span><span class="toc-text">Comentarios y colaboración</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#formato-basico"><span class="toc-num">04</span><span class="toc-text">Formato de texto: la barra de herramientas</span></a></li>
+    <li><a href="#estilos"><span class="toc-num">05</span><span class="toc-text">La arquitectura del documento: estilos</span></a></li>
+    <li><a href="#indice"><span class="toc-num">06</span><span class="toc-text">El índice automático</span></a></li>
+    <li><a href="#colaboracion"><span class="toc-num">07</span><span class="toc-text">Comentarios y colaboración</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
@@ -95,10 +140,10 @@
         <thead><tr><th>Elemento</th><th>Qué hace</th></tr></thead>
         <tbody>
           <tr><td>Nombre del documento</td><td>Esquina superior izquierda. Hacé clic para renombrarlo. Obligatorio antes de compartir.</td></tr>
-          <tr><td>Menú de estilos</td><td>Desplegable "Texto normal" en la barra de herramientas. Es el centro de esta clase.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-styles"></use></svg>Menú de estilos</td><td>Desplegable "Texto normal" en la barra de herramientas. Es el centro de esta clase.</td></tr>
           <tr><td>Panel de navegación</td><td>Ver → Mostrar esquema del documento. Muestra la jerarquía de títulos del documento.</td></tr>
           <tr><td>Autoguardado</td><td>Docs guarda cada pocos segundos. Estado en la barra superior: "Guardado en Drive".</td></tr>
-          <tr><td>Botón Compartir</td><td>Esquina superior derecha. Define quién puede ver, comentar o editar el documento.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-share"></use></svg>Botón Compartir</td><td>Esquina superior derecha. Define quién puede ver, comentar o editar el documento.</td></tr>
         </tbody>
       </table>
     </div>
@@ -120,7 +165,7 @@
         <p>No arrancás de una hoja en blanco: el texto que generaste con IA en la Clase 01 es el punto de partida de hoy.</p>
         <ol>
           <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 01" → abrí <code>Texto IA - V01</code>.</li>
-          <li>Archivo → Crear una copia. Nombrá la copia: <code>Documento Vivo - V01</code></li>
+          <li>Archivo → Crear una copia. Nombrá la copia: <code>Documento Base - V01</code></li>
           <li>Archivo → Mover a → navegá hasta tu carpeta "Informática - UNQ" → subcarpeta "Clase 02" → Mover acá. (Si la subcarpeta "Clase 02" todavía no existe, creala primero.)</li>
           <li>Activá el panel de navegación: Ver → Mostrar esquema del documento.</li>
           <li>Observá que está vacío — el texto que pegaste en la Clase 01 todavía no tiene estructura, aunque ya tenga contenido.</li>
@@ -128,10 +173,9 @@
           <li>Observá qué pasa en el panel de navegación.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El documento se llama <code>Documento Vivo - V01</code>, está en la subcarpeta "Clase 02", tiene el texto de la Clase 01 adentro y el panel de navegación muestra al menos una entrada.</p>
     </div>
 
-    <p>Ya tenés el archivo creado a partir de tu trabajo previo, nombrado y en la carpeta correcta. El siguiente paso es ampliar ese contenido — con una herramienta que ya usaste en la Clase 01.</p>
+    <p>Ya tenés el archivo creado a partir de tu trabajo previo, nombrado y en la carpeta correcta. El siguiente paso es ampliar ese contenido.</p>
   </div>
 </section>
 
@@ -147,26 +191,62 @@
     <h3>LLMs occidentales</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Costo</th></tr></thead>
+        <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Gratis</th><th>Plan pago</th></tr></thead>
         <tbody>
-          <tr><td><img class="app-icon" src="../img/apps/icono-chatgpt.png" alt=""><strong>ChatGPT</strong><br><code>chatgpt.com</code></td><td>Redacción fluida, estructurar textos, explicaciones largas.</td><td>Gratis con cuenta, con límites de uso. Existe un plan pago (ChatGPT Plus) con más funciones y menos límites — sin descuento estudiantil estable confirmado, revisá promociones vigentes en <code>chatgpt.com</code>.</td></tr>
-          <tr><td><img class="app-icon" src="../img/apps/icono-gemini.png" alt=""><strong>Gemini</strong><br><code>gemini.google.com</code></td><td>Integración directa con Drive y Docs.</td><td>Gratis con cualquier cuenta Google. El plan pago (Google One AI Premium / Gemini Advanced) suma modelos más potentes y más cuota. Google ofrece de tanto en tanto un plan estudiantil con descuento verificando el mail de la universidad — confirmá en <code>one.google.com</code> si está vigente.</td></tr>
-          <tr><td><img class="app-icon" src="../img/apps/icono-copilot.png" alt=""><strong>Copilot</strong><br><code>copilot.microsoft.com</code></td><td>Integrado con Office (Word, Teams).</td><td>Gratis con cuenta Microsoft, con límites. Copilot Pro (personal) y Copilot para Microsoft 365 (institucional) son add-ons pagos que suman más funciones dentro de Office — no vienen incluidos automáticamente por tener cuenta <code>@uvq.edu.ar</code>. Confirmá en tu cuenta si la universidad lo activó antes de asumir que lo tenés.</td></tr>
-          <tr><td><img class="app-icon" src="../img/apps/icono-perplexity.png" alt=""><strong>Perplexity</strong><br><code>perplexity.ai</code></td><td>Cita fuentes junto a cada afirmación.</td><td>Gratis con límites diarios de búsqueda. Perplexity Pro es el plan pago, con más búsquedas y el modo Académico. Perplexity suele regalar Pro por un tiempo a estudiantes que verifican un mail <code>.edu</code> — confirmá en <code>perplexity.ai/es/pro</code> si la promoción sigue activa.</td></tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-chatgpt.png" alt=""><span class="llm-tool-name">ChatGPT</span><a href="https://chatgpt.com" target="_blank" rel="noopener"><code>chatgpt.com</code></a></div></td>
+            <td>Redacción fluida, estructurar textos, explicaciones largas.</td>
+            <td>~10 mensajes cada 5 horas.</td>
+            <td>ChatGPT Plus, USD 20/mes: ~160 mensajes cada 3 horas + 3.000 mensajes de razonamiento por semana.</td>
+          </tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-gemini.png" alt=""><span class="llm-tool-name">Gemini</span><a href="https://gemini.google.com" target="_blank" rel="noopener"><code>gemini.google.com</code></a></div></td>
+            <td>Integración directa con Drive y Docs.</td>
+            <td>Cuota diaria limitada, con cualquier cuenta Google.</td>
+            <td>Google AI Pro (ex Gemini Advanced), USD 19,99/mes: modelo más potente, ~100 consultas/día, 2 TB en Google One.</td>
+          </tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-copilot.png" alt=""><span class="llm-tool-name">Copilot</span><a href="https://copilot.microsoft.com" target="_blank" rel="noopener"><code>copilot.microsoft.com</code></a></div></td>
+            <td>Integrado con Office (Word, Teams).</td>
+            <td>Con cuenta Microsoft, con límites diarios.</td>
+            <td>Microsoft 365 Premium, USD 19,99/mes aprox. (reemplazó al viejo Copilot Pro standalone en 2026). No viene incluido solo por tener cuenta <code>@uvq.edu.ar</code> — confirmá en tu cuenta si la universidad lo activó.</td>
+          </tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-perplexity.png" alt=""><span class="llm-tool-name">Perplexity</span><a href="https://perplexity.ai" target="_blank" rel="noopener"><code>perplexity.ai</code></a></div></td>
+            <td>Cita fuentes junto a cada afirmación.</td>
+            <td>~3-5 búsquedas Pro por día, búsquedas básicas sin límite fijo.</td>
+            <td>Perplexity Pro, USD 20/mes: búsquedas Pro sin límite práctico + modo Académico. Con mail <code>.edu</code> verificado, Education Pro a USD 10/mes — confirmá vigencia en <a href="https://www.perplexity.ai/es/pro" target="_blank" rel="noopener"><code>perplexity.ai/es/pro</code></a>.</td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p><em>Precios y límites vigentes a agosto de 2026 — estas plataformas los cambian seguido. Antes de recomendar un plan pago, confirmá el valor actual en el sitio de cada herramienta.</em></p>
 
     <h3>LLMs chinos</h3>
     <p>Los modelos desarrollados en China operan bajo las leyes de información de ese país, lo que puede afectar qué temas abordan y cómo. Esto no los hace inútiles — son herramientas potentes. Pero es importante entender de dónde vienen sus límites.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Costo</th></tr></thead>
+        <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Gratis</th><th>Plan pago</th></tr></thead>
         <tbody>
-          <tr><td><img class="app-icon" src="../img/apps/icono-deepseek.png" alt=""><strong>DeepSeek</strong><br><code>chat.deepseek.com</code></td><td>Razonamiento técnico, matemática, código. Muy potente. Desarrollado en China, sujeto a restricciones del gobierno chino.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
-          <tr><td><img class="app-icon" src="../img/apps/icono-qwen.png" alt=""><strong>Qwen (Alibaba)</strong><br><code>chat.qwen.ai</code></td><td>Textos largos, análisis de documentos. De Alibaba Cloud, mismo marco legal que DeepSeek.</td><td>Gratis por chat web, sin plan pago necesario para este uso.</td></tr>
-          <tr><td><img class="app-icon" src="../img/apps/icono-kimi.png" alt=""><strong>Kimi (Moonshot)</strong><br><code>kimi.com</code></td><td>Procesamiento de documentos y contextos largos. Desarrollado por Moonshot AI.</td><td>Gratis por chat web, con límites de uso diario.</td></tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-deepseek.png" alt=""><span class="llm-tool-name">DeepSeek</span><a href="https://chat.deepseek.com" target="_blank" rel="noopener"><code>chat.deepseek.com</code></a></div></td>
+            <td>Razonamiento técnico, matemática, código. Desarrollado en China, sujeto a restricciones del gobierno chino.</td>
+            <td>Sin límite fijo publicado, por chat web.</td>
+            <td>No hace falta para este uso — los planes pagos son de API para desarrolladores, no del chat web.</td>
+          </tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-qwen.png" alt=""><span class="llm-tool-name">Qwen (Alibaba)</span><a href="https://chat.qwen.ai" target="_blank" rel="noopener"><code>chat.qwen.ai</code></a></div></td>
+            <td>Textos largos, análisis de documentos. De Alibaba Cloud, mismo marco legal que DeepSeek.</td>
+            <td>Sin límite fijo publicado, por chat web.</td>
+            <td>No hace falta para este uso — los planes pagos son de API para desarrolladores, no del chat web.</td>
+          </tr>
+          <tr>
+            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/icono-kimi.png" alt=""><span class="llm-tool-name">Kimi (Moonshot)</span><a href="https://kimi.com" target="_blank" rel="noopener"><code>kimi.com</code></a></div></td>
+            <td>Procesamiento de documentos y contextos largos. Desarrollado por Moonshot AI.</td>
+            <td>Con límites de uso diario, por chat web.</td>
+            <td>Existen planes pagos de mayor consumo — no hacen falta para esta materia.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -205,11 +285,10 @@
           <li>Verificá al menos una afirmación del texto con CRAAP o una búsqueda en Google Scholar.</li>
         </ol>
       </div>
-      <p class="activity-criteria">Tenés el texto nuevo copiado en el portapapeles y verificaste al menos una afirmación.</p>
     </div>
 
     <div class="callout" data-type="linkedin">
-      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
       <p>Generar contenido con un LLM usando un framework de prompting (RTCFL) en vez de tirar una frase suelta es una skill puntual y demostrable: "Prompt engineering aplicado" o "Generación de contenido con IA" en la sección de aptitudes de tu perfil.</p>
     </div>
 
@@ -261,28 +340,105 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Volvé a la pestaña de Docs. El documento se llama <code>Documento Vivo - V01</code> y está en la subcarpeta "Clase 02".</li>
+          <li>Volvé a la pestaña de Docs. El documento se llama <code>Documento Base - V01</code> y está en la subcarpeta "Clase 02".</li>
           <li>Borrá el texto corto de la Clase 01 que ya está en el documento.</li>
           <li>Posicioná el cursor al inicio del documento.</li>
           <li>Pegá con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>) — NO con Ctrl+V. El texto aparece sin formato extraño.</li>
           <li>Compará: probá deshacer (<code>Ctrl+Z</code>, Mac: <code>⌘+Z</code>), pegá con Ctrl+V, observá la diferencia. Luego deshacé y usá Ctrl+Shift+V.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El texto del LLM está en tu documento sin formatos extraños de colores o tipografías raras.</p>
     </div>
 
-    <p>Ya tenés el texto limpio en tu documento. Lo que sigue es el núcleo de la clase: darle estructura real con estilos.</p>
+    <p>Ya tenés el texto limpio en tu documento. Antes de pasar al núcleo de la clase, un primer formato con la barra de herramientas.</p>
   </div>
 </section>
 
-<!-- 04 — ESTILOS -->
-<section class="block" id="estilos">
+<!-- 04 — FORMATO BÁSICO -->
+<section class="block" id="formato-basico">
   <div class="block-head">
     <span class="block-num">04</span>
+    <h2 class="block-title">Formato de texto: la barra de herramientas</h2>
+  </div>
+  <div class="prose">
+    <p>Tu texto ya está pegado, limpio y sin formato ajeno. Antes de estructurarlo con estilos, en la próxima sección, un repaso rápido de la barra de herramientas — los comandos de formato manual que vas a usar todo el año, en cualquier documento.</p>
+
+    <h3>Negrita, cursiva y color</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Formato</th><th>Atajo</th><th>Para qué</th></tr></thead>
+        <tbody>
+          <tr><td><svg class="tool-icon"><use href="#ti-bold"></use></svg><strong>Negrita</strong></td><td><code>Ctrl+B</code> (Mac: <code>⌘+B</code>)</td><td>Destacar una palabra o frase puntual dentro de un párrafo.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-italic"></use></svg><em>Cursiva</em></td><td><code>Ctrl+I</code> (Mac: <code>⌘+I</code>)</td><td>Títulos de obras, palabras en otro idioma, un énfasis suave.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-underline"></use></svg>Subrayado</td><td><code>Ctrl+U</code> (Mac: <code>⌘+U</code>)</td><td>Poco usado en texto académico — Docs lo reserva casi siempre para los links.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-font"></use></svg><svg class="tool-icon"><use href="#ti-font-size"></use></svg>Fuente y tamaño</td><td>—</td><td>Desplegables a la izquierda del menú de estilos, en la barra de herramientas.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-text-color"></use></svg>Color de texto</td><td>—</td><td>Ícono "A" con una barra de color debajo, en la barra de herramientas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>El formato de carácter (negrita, color, fuente) cambia cómo se ve el texto. Los estilos, que ves en la próxima sección, cambian qué es el texto para el programa. Un título en negrita y tamaño 20 sigue siendo, para Docs, un párrafo cualquiera — no aparece en un índice ni se puede navegar desde el panel lateral. Usá formato de carácter para destacar algo puntual dentro de un párrafo; guardá los estilos para la estructura del documento.</p>
+    </div>
+
+    <h3>Alineación y espaciado</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Opción</th><th>Atajo</th><th>Cuándo usarla</th></tr></thead>
+        <tbody>
+          <tr><td><svg class="tool-icon"><use href="#ti-align-left"></use></svg>Alinear a la izquierda</td><td><code>Ctrl+Shift+L</code></td><td>Default de casi todo el cuerpo del texto.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-align-center"></use></svg>Centrar</td><td><code>Ctrl+Shift+E</code></td><td>Títulos cortos, portadas.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-align-right"></use></svg>Alinear a la derecha</td><td><code>Ctrl+Shift+R</code></td><td>Firmas, fechas, datos al margen.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-justify"></use></svg>Justificar</td><td><code>Ctrl+Shift+J</code></td><td>Cuerpo de texto académico — pareja los dos márgenes, izquierdo y derecho.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-indent"></use></svg>Sangría de primera línea</td><td>—</td><td>Formato → Alinear y sangría → Opciones de sangría → Sangría especial → Primera línea.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-line-spacing"></use></svg>Interlineado y espaciado</td><td>—</td><td>Ícono de líneas con flechas, en la barra de herramientas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cortar, copiar y pegar</h3>
+    <p>Distinto del pegado sin formato de la sección anterior — ese es para traer texto <strong>de otro lado</strong> (un LLM, una web). Cortar, copiar y pegar son para reorganizar texto <strong>dentro</strong> de tu propio documento.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Comando</th><th>Atajo</th><th>Qué hace</th></tr></thead>
+        <tbody>
+          <tr><td><svg class="tool-icon"><use href="#ti-cut"></use></svg>Cortar</td><td><code>Ctrl+X</code> (Mac: <code>⌘+X</code>)</td><td>Saca el texto seleccionado del lugar y lo deja listo para pegar en otro.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-copy"></use></svg>Copiar</td><td><code>Ctrl+C</code> (Mac: <code>⌘+C</code>)</td><td>Duplica el texto seleccionado sin sacarlo de donde está.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-paste"></use></svg>Pegar</td><td><code>Ctrl+V</code> (Mac: <code>⌘+V</code>)</td><td>Inserta lo cortado o copiado donde esté el cursor — acá sí trae el formato con él, a diferencia de <code>Ctrl+Shift+V</code>, porque es texto de tu propio documento, no de afuera.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3><svg class="tool-icon"><use href="#ti-image"></use></svg>Insertar una imagen</h3>
+    <p>Insertar → Imagen → Subir desde la computadora (o Buscar en la Web, sin salir de Docs). Por ahora alcanza con insertarla simple, en línea con el texto.</p>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>Formato manual en tu documento</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>Documento Base - V01</code>, elegí un párrafo del cuerpo del texto y justificalo (<code>Ctrl+Shift+J</code>).</li>
+          <li>Ponéle negrita a un término clave del texto, y cursiva a una palabra en otro idioma o un título de obra, si hay alguno.</li>
+          <li>Seleccioná una oración completa, cortala con <code>Ctrl+X</code> y pegala en otro lugar del mismo párrafo donde tenga más sentido — comprobá que el formato viajó con ella.</li>
+          <li>Insertá una imagen relacionada con tu tema (Insertar → Imagen → Subir o Buscar en la Web), en cualquier lugar del cuerpo del texto.</li>
+        </ol>
+      </div>
+    </div>
+
+    <p>Ya tenés el formato manual bajo control. Ahora sí, el núcleo de la clase: por qué, para títulos y jerarquía, conviene dejar de lado este formato "a mano" y usar estilos.</p>
+  </div>
+</section>
+
+<!-- 05 — ESTILOS -->
+<section class="block" id="estilos">
+  <div class="block-head">
+    <span class="block-num">05</span>
     <h2 class="block-title">La arquitectura del documento: estilos</h2>
   </div>
   <div class="prose">
-    <p>Ya tenés el texto limpio en Docs. Ahora viene el núcleo de esta clase. Un estilo es una combinación de fuente, tamaño, color y espaciado que se aplica de una vez. No es decoración — es la diferencia entre un documento que parece estructurado y uno que está estructurado.</p>
+    <p>Ya tenés el texto limpio, y sabés aplicar formato manual con la barra de herramientas. Ahora viene el núcleo de esta clase. Un estilo es una combinación de fuente, tamaño, color y espaciado que se aplica de una vez. No es decoración — es la diferencia entre un documento que parece estructurado y uno que está estructurado.</p>
     <p>Cuando formateás un título a mano — negrita, tamaño 18, centrado — el programa ve caracteres con ropa diferente. No sabe que eso es un título. No puede incluirlo en un índice, no puede resumir la sección, no puede ayudarte a navegar el documento.</p>
     <p>Cuando aplicás el estilo "Encabezado 1", el programa sabe que ese texto es el encabezado principal. Puede generar el índice automáticamente, puede actualizar el diseño de todos los títulos con un solo clic, puede darle estructura al documento.</p>
 
@@ -317,7 +473,7 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 04</span>
+        <span class="activity-eyebrow">Actividad 05</span>
         <h3>Aplicar estilos a tu contenido</h3>
       </div>
       <div class="prose">
@@ -330,17 +486,16 @@
           <li>Verificá en el panel de navegación que la estructura se vea correctamente. Si está vacío, volvé al paso anterior.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El panel de navegación muestra al menos 3 entradas con jerarquía correcta.</p>
     </div>
 
     <p>Con los estilos aplicados, el documento ya tiene su jerarquía de títulos definida. Eso te permite generar el índice en menos de un minuto.</p>
   </div>
 </section>
 
-<!-- 05 — INDICE AUTOMATICO -->
+<!-- 06 — INDICE AUTOMATICO -->
 <section class="block" id="indice">
   <div class="block-head">
-    <span class="block-num">05</span>
+    <span class="block-num">06</span>
     <h2 class="block-title">El índice automático</h2>
   </div>
   <div class="prose">
@@ -349,10 +504,10 @@
     <div class="callout" data-type="format">
       <p class="callout-label">📙 Paso a paso — Insertar el índice</p>
       <ol>
-        <li>Posicioná el cursor al inicio del documento, antes del primer título. <code>Ctrl+Home</code> te lleva directo ahí.</li>
-        <li>Insertá un salto de página: Insertar → Saltos → Salto de página. El índice va en una página aparte, antes del contenido.</li>
-        <li>Posicioná el cursor en la página nueva e insertá el índice: Insertar → Elementos de página → Índice.</li>
-        <li>Actualizalo cada vez que el documento cambia: clic en el índice → ícono de actualizar. Siempre actualizá antes de entregar.</li>
+        <li>Posicioná el cursor al inicio del documento, antes del primer título. <code>Ctrl+Home</code> (Mac: <code>⌘+Flecha arriba</code>) te lleva directo ahí.</li>
+        <li>Insertá un <svg class="tool-icon"><use href="#ti-page-break"></use></svg>salto de página: Insertar → Saltos → Salto de página. El índice va en una página aparte, antes del contenido.</li>
+        <li>Posicioná el cursor en la página nueva e insertá el <svg class="tool-icon"><use href="#ti-toc"></use></svg>índice: Insertar → Elementos de página → Índice.</li>
+        <li>Actualizalo cada vez que el documento cambia: clic en el índice → <svg class="tool-icon"><use href="#ti-refresh"></use></svg>ícono de actualizar. Siempre actualizá antes de entregar.</li>
       </ol>
     </div>
 
@@ -366,23 +521,22 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 05</span>
+        <span class="activity-eyebrow">Actividad 06</span>
         <h3>Insertar el índice</h3>
       </div>
       <div class="prose">
         <ol>
-          <li>Posicioná el cursor al inicio del documento (<code>Ctrl+Home</code>).</li>
+          <li>Posicioná el cursor al inicio del documento (<code>Ctrl+Home</code>, Mac: <code>⌘+Flecha arriba</code>).</li>
           <li>Insertar → Saltos → Salto de página.</li>
           <li>Con el cursor en la página nueva: Insertar → Elementos de página → Índice.</li>
           <li>Verificá que el índice tenga al menos 3 entradas con números de página.</li>
-          <li>Si está vacío: volvé a la Actividad 4 y revisá que los estilos estén aplicados correctamente.</li>
+          <li>Si está vacío: volvé a la Actividad 5 y revisá que los estilos estén aplicados correctamente.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El índice tiene al menos 3 entradas con número de página correcto.</p>
     </div>
 
     <div class="callout" data-type="linkedin">
-      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
       <p>Estructurar un documento con estilos semánticos y generar su índice automático — sin escribirlo a mano — es "Estructuración de documentos profesionales" o "Google Workspace avanzado" en tu perfil. El índice generado es la prueba concreta de la skill.</p>
     </div>
 
@@ -390,10 +544,10 @@
   </div>
 </section>
 
-<!-- 06 — COLABORACION -->
+<!-- 07 — COLABORACION -->
 <section class="block" id="colaboracion">
   <div class="block-head">
-    <span class="block-num">06</span>
+    <span class="block-num">07</span>
     <h2 class="block-title">Comentarios y colaboración</h2>
   </div>
   <div class="prose">
@@ -403,10 +557,10 @@
       <table class="tbl-wide">
         <thead><tr><th>Acción</th><th>Cómo</th><th>Cuándo usarlo</th></tr></thead>
         <tbody>
-          <tr><td>Insertar comentario</td><td>Seleccioná texto → <code>Ctrl+Alt+M</code> (Mac: <code>⌘+Opción+M</code>)</td><td>Para marcar una duda o señalar algo a revisar sin alterar el texto.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-comment"></use></svg>Insertar comentario</td><td>Seleccioná texto → <code>Ctrl+Alt+M</code> (Mac: <code>⌘+Opción+M</code>)</td><td>Para marcar una duda o señalar algo a revisar sin alterar el texto.</td></tr>
           <tr><td>Responder comentario</td><td>Clic en el comentario → "Responder"</td><td>Para dialogar con el docente o un compañero dentro del documento.</td></tr>
           <tr><td>Resolver comentario</td><td>Clic en el comentario → "Resolver"</td><td>Cuando la corrección fue hecha. Queda en el historial pero desaparece del margen.</td></tr>
-          <tr><td>Modo Sugerencias</td><td>Ícono de lápiz → "Sugerencias" (arriba a la derecha)</td><td>Para proponer cambios sin sobreescribir. El dueño decide si acepta.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-suggest"></use></svg>Modo Sugerencias</td><td>Ícono de lápiz → "Sugerencias" (arriba a la derecha)</td><td>Para proponer cambios sin sobreescribir. El dueño decide si acepta.</td></tr>
           <tr><td>Historial de versiones</td><td>Archivo → Historial de versiones → Ver historial</td><td>Para ver quién cambió qué, o restaurar una versión anterior.</td></tr>
         </tbody>
       </table>
@@ -417,7 +571,7 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 06</span>
+        <span class="activity-eyebrow">Actividad 07</span>
         <h3>Comentarios en tu propio documento</h3>
       </div>
       <div class="prose">
@@ -431,11 +585,10 @@
           <li>Archivo → Historial de versiones → Ver historial. Observá que cada cambio quedó registrado.</li>
         </ol>
       </div>
-      <p class="activity-criteria">El documento tiene al menos 2 comentarios: uno respondido y uno resuelto. El historial de versiones muestra actividad reciente.</p>
     </div>
 
     <div class="callout" data-type="linkedin">
-      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
       <p>Manejar comentarios, modo Sugerencias e historial de versiones en un documento compartido es "Colaboración en Google Workspace" — una skill que cualquier equipo remoto o híbrido da por sentada, y que acá quedó registrada en el historial del propio documento.</p>
     </div>
 
@@ -443,39 +596,31 @@
   </div>
 </section>
 
-<!-- 07 — RESUMEN DE LA CLASE -->
+<!-- 08 — RESUMEN DE LA CLASE -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">07</span>
+    <span class="block-num">08</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Al principio de la clase planteamos el objetivo: dejar de armar documentos a mano y construir uno con estructura real. Ese es el recorrido que hiciste hoy: generaste contenido con una IA, lo pegaste sin arrastrar formato ajeno, le aplicaste estilos, generaste el índice automático y lo revisaste con comentarios. Un documento con estilos no es más lindo, es más inteligente.</p>
+    <p>Al principio de la clase planteamos el objetivo: dejar de armar documentos a mano y construir uno con estructura real.</p>
 
     <h3 id="actividades">Actividades</h3>
-    <p>A diferencia de la Clase 01, hoy no hay un link nuevo para subir al campus: el documento vive en la misma carpeta "Informática - UNQ" que ya compartiste con el docente, así que no hace falta volver a compartir nada. Lo que sí es obligatorio es dejar el documento en el estado que marca este checklist — el docente lo revisa directamente ahí. Marcá cada ítem a medida que lo termines.</p>
+    <p>No hay un link nuevo para subir: el documento ya vive en la carpeta compartida desde la Clase 01, y el docente lo revisa ahí directamente.</p>
 
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-1" aria-label="Marcar como hecho"></td><td><label for="chk-02-1">El archivo se llama exactamente <code>Documento Vivo - V01</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-1" aria-label="Marcar como hecho"></td><td><label for="chk-02-1">El archivo se llama exactamente <code>Documento Base - V01</code>.</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-2" aria-label="Marcar como hecho"></td><td><label for="chk-02-2">Está en la subcarpeta "Clase 02", dentro de "Informática - UNQ".</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-3" aria-label="Marcar como hecho"></td><td><label for="chk-02-3">El texto fue pegado con <code>Ctrl+Shift+V</code> / <code>⌘+Shift+V</code> (sin formato externo).</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-4" aria-label="Marcar como hecho"></td><td><label for="chk-02-4">Los estilos están aplicados: el panel de navegación muestra la estructura.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-5" aria-label="Marcar como hecho"></td><td><label for="chk-02-5">El índice automático tiene al menos 3 entradas con páginas correctas.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-6" aria-label="Marcar como hecho"></td><td><label for="chk-02-6">El documento tiene al menos 2 comentarios propios (uno respondido, uno resuelto).</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-7" aria-label="Marcar como hecho"></td><td><label for="chk-02-7">El historial de versiones tiene "Entrega Clase 02" nombrada.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-4" aria-label="Marcar como hecho"></td><td><label for="chk-02-4">Hay al menos una palabra en negrita, una en cursiva y una imagen insertada en el cuerpo del texto.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-5" aria-label="Marcar como hecho"></td><td><label for="chk-02-5">Los estilos están aplicados: el panel de navegación muestra la estructura.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-6" aria-label="Marcar como hecho"></td><td><label for="chk-02-6">El índice automático tiene al menos 3 entradas con páginas correctas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-7" aria-label="Marcar como hecho"></td><td><label for="chk-02-7">El documento tiene al menos 2 comentarios propios (uno respondido, uno resuelto).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-02-8" aria-label="Marcar como hecho"></td><td><label for="chk-02-8">El historial de versiones tiene "Entrega Clase 02" nombrada.</label></td></tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="callout" data-type="format">
-      <p class="callout-label">📙 Paso a paso — Pasos de entrega</p>
-      <ol>
-        <li>Nombrá la versión en el historial: Archivo → Historial de versiones → Asignar nombre a la versión actual → escribí "Entrega Clase 02".</li>
-        <li>Verificá el nombre del archivo: debe ser exactamente <code>Documento Vivo - V01</code>. Si no, renombralo ahora.</li>
-        <li>Verificá que esté en la carpeta correcta: "Informática - UNQ" ya está compartida con el docente desde la Clase 01.</li>
-      </ol>
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>
@@ -520,9 +665,10 @@
       <div class="gloss-item"><span class="gloss-term">Autoguardado</span><p class="gloss-def">Docs guarda automáticamente cada pocos segundos. El estado se muestra en la barra superior: "Guardado en Drive".</p></div>
       <div class="gloss-item"><span class="gloss-term">Comentario</span><p class="gloss-def">Nota adjunta a un fragmento de texto que no modifica el contenido. Herramienta central de revisión y colaboración.</p></div>
       <div class="gloss-item"><span class="gloss-term">Estilo (Docs)</span><p class="gloss-def">Combinación predefinida de formato que se aplica de una vez. Sin estilos no hay índice automático ni jerarquía navegable.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Formato de carácter</span><p class="gloss-def">Cambios visuales aplicados a mano (negrita, color, fuente) que no le dicen nada al programa sobre qué es ese texto. Distinto de un estilo, que sí es semántico.</p></div>
       <div class="gloss-item"><span class="gloss-term">Historial de versiones</span><p class="gloss-def">Registro automático de todos los cambios. Funciona como red de seguridad y permite nombrar versiones clave.</p></div>
       <div class="gloss-item"><span class="gloss-term">Índice automático</span><p class="gloss-def">Lista de títulos y páginas generada por Docs a partir de los estilos. Se actualiza cada vez que cambia el documento.</p></div>
-      <div class="gloss-item"><span class="gloss-term">LLM</span><p class="gloss-def">Modelo de lenguaje grande (<em>Large Language Model</em>): el motor que predice texto detrás de ChatGPT, Gemini, Copilot, Perplexity, DeepSeek, Qwen y Kimi. El modelo en sí no busca ni verifica — pero algunas plataformas le agregan una capa de búsqueda o de fuentes propias por encima (Perplexity, Gemini Notebook: ver Clase 03), que sí lo hace.</p></div>
+      <div class="gloss-item"><span class="gloss-term">LLM</span><p class="gloss-def">Modelo de lenguaje grande (<em>Large Language Model</em>): el motor que predice texto detrás de ChatGPT, Gemini, Copilot, Perplexity, DeepSeek, Qwen y Kimi. El modelo en sí no busca ni verifica — pero algunas plataformas le agregan una capa de búsqueda o de fuentes propias por encima, que sí lo hace.</p></div>
       <div class="gloss-item"><span class="gloss-term">Modo Sugerencias</span><p class="gloss-def">Los cambios quedan pendientes de aprobación. El dueño del documento decide qué acepta.</p></div>
       <div class="gloss-item"><span class="gloss-term">Panel de navegación</span><p class="gloss-def">Panel lateral que muestra la jerarquía de títulos. Si está vacío, los estilos no se aplicaron.</p></div>
       <div class="gloss-item"><span class="gloss-term">Pegado sin formato (Ctrl+Shift+V)</span><p class="gloss-def">Pega solo el texto, sin el formato de origen. Hábito obligatorio al copiar desde cualquier LLM o página web.</p></div>
@@ -531,10 +677,10 @@
 
     <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
-      <li>Google. <em>Cómo agregar un título, un encabezado o un índice en un documento</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/116338</code></li>
-      <li>Google. <em>Cómo usar comentarios, elementos de acción y reacciones con emojis</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/65129</code></li>
-      <li>Google. <em>Cómo sugerir cambios en Documentos de Google</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/6033474</code></li>
-      <li>Google. <em>Ver los cambios de un archivo (Historial de versiones)</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/190843</code></li>
+      <li>Google. <em>Cómo agregar un título, un encabezado o un índice en un documento</em>. Ayuda de Editores de Documentos de Google. <a href="https://support.google.com/docs/answer/116338" target="_blank" rel="noopener"><code>support.google.com/docs/answer/116338</code></a></li>
+      <li>Google. <em>Cómo usar comentarios, elementos de acción y reacciones con emojis</em>. Ayuda de Editores de Documentos de Google. <a href="https://support.google.com/docs/answer/65129" target="_blank" rel="noopener"><code>support.google.com/docs/answer/65129</code></a></li>
+      <li>Google. <em>Cómo sugerir cambios en Documentos de Google</em>. Ayuda de Editores de Documentos de Google. <a href="https://support.google.com/docs/answer/6033474" target="_blank" rel="noopener"><code>support.google.com/docs/answer/6033474</code></a></li>
+      <li>Google. <em>Ver los cambios de un archivo (Historial de versiones)</em>. Ayuda de Editores de Documentos de Google. <a href="https://support.google.com/docs/answer/190843" target="_blank" rel="noopener"><code>support.google.com/docs/answer/190843</code></a></li>
     </ul>
   </div>
 </section>
@@ -543,6 +689,7 @@
 
 <footer class="colophon">
   <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes) — licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
 </footer>
 
 </div>

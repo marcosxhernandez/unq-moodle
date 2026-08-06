@@ -218,9 +218,8 @@
           <li>Contá a ojo cuántos "Sí" te quedaron y comparalo con las celdas que se pintaron de amarillo en la clase anterior: tienen que ser exactamente las mismas.</li>
           <li>Bajá el umbral a la mitad y confirmá que la columna se recalcula sola. Después devolvelo al valor original.</li>
         </ol>
-        <p class="activity-criteria">La columna <code>alto_valor</code> coincide fila por fila con la regla de formato condicional de la semana pasada, y el umbral no aparece escrito dentro de ninguna fórmula.</p>
         <div class="callout" data-type="linkedin">
-          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
           <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo decisiones sobre datos con funciones lógicas, parametrizando los umbrales en celdas propias de modo que un cambio de criterio del negocio se aplique a todo el conjunto sin editar fórmulas.</p>
         </div>
       </div>
@@ -284,7 +283,6 @@
           <li>Preguntate por qué la condición de "Revisar" tiene que ir <strong>primera</strong> y no última. Escribí la respuesta en una celda al costado: es exactamente el tipo de decisión que después hay que poder defender.</li>
           <li>Aplicá formato condicional sobre la columna <code>estado</code>: rojo para "Revisar", verde para "Alto valor". Ahora el archivo se lee de un vistazo.</li>
         </ol>
-        <p class="activity-criteria">Un solo registro en "Revisar", tres o cuatro en "Alto valor" según la organización, y la justificación del orden de las condiciones está escrita en el archivo.</p>
       </div>
     </div>
 
@@ -381,9 +379,8 @@
           <li><strong>Control obligatorio:</strong> sumá los subtotales y comparalo con el total bruto del panel. Sumá los conteos y comparalo con "registros cargados". Las dos comparaciones tienen que cerrar exactamente. Si no cierran, hay un valor mal escrito en la columna que agrupa.</li>
           <li>Agregá dos indicadores más al panel, con <code>CONTAR.SI</code> sobre la columna <code>estado</code>: <strong>cuántos registros están en "Revisar"</strong> y <strong>cuántos en "Alto valor"</strong>.</li>
         </ol>
-        <p class="activity-criteria">Los subtotales cierran contra el total general y los conteos contra la cantidad de registros, ningún nombre de área está escrito dentro de una fórmula, y el panel informa cuántos registros hay en cada estado.</p>
         <div class="callout" data-type="linkedin">
-          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
           <p><strong>Análisis de datos (Data Analysis).</strong> Cómo la justificás: produzco agregaciones por categoría con funciones de suma y conteo condicional, y verifico su integridad comprobando que los subtotales reconcilien contra el total general antes de informar cualquier cifra.</p>
         </div>
       </div>
@@ -432,7 +429,8 @@
       <li>Elegí qué pasa si alguien ingresa un dato inválido: <strong>Rechazar la entrada</strong> (no lo deja escribir) o <strong>Mostrar una advertencia</strong> (lo deja, pero avisa).</li>
       <li>Guardá la regla.</li>
     </ol>
-    <p class="photo-note">📷 Imagen pendiente — panel de Validación de datos en Google Sheets con la opción "Lista de un rango" configurada y una celda mostrando el desplegable resultante</p>
+    <img class="screenshot" src="../img/09-01-captura-validacion-datos.png" alt="Panel de Reglas de validación de datos en Google Sheets, con Menú desplegable (de un intervalo) apuntando a Datos!$A$9:$A$15 y los días de la semana como opciones">
+    <p class="screenshot-caption">"Menú desplegable (de un intervalo)" es la opción "Lista de un rango": las opciones válidas —acá, los días de la semana— vienen de celdas, no de texto escrito a mano.</p>
 
     <h3>Por qué "Lista de un rango" y no "Lista de elementos"</h3>
     <p>Si escribís las opciones a mano dentro de la regla, para agregar una opción nueva tenés que volver a editar la regla. Si en cambio las opciones viven en un rango de celdas, agregar una opción es tan simple como escribir una fila más: la lista desplegable se actualiza sola. En un archivo que va a pasar por varias manos, esa diferencia es la que decide si el control sobrevive tres meses o no.</p>
@@ -473,9 +471,8 @@
           <li>Agregá una fila nueva al final de <code>DATOS</code>, cargándola <strong>solo con los desplegables</strong> y una cantidad y un valor unitario a tu criterio. Confirmá que las columnas calculadas (<code>importe_bruto</code>, <code>importe_neto</code>, <code>alto_valor</code>, <code>estado</code>) se completan solas al arrastrar las fórmulas, y que los subtotales del panel se actualizan.</li>
           <li>Agregá un valor nuevo en <code>LISTAS</code> (una sede más, un formato más) y confirmá que aparece en el desplegable sin editar la regla de validación.</li>
         </ol>
-        <p class="activity-criteria">Las dos columnas de texto solo aceptan valores de <code>LISTAS</code>, un valor mal escrito es rechazado, y la fila nueva cargada por desplegable se integra al panel sin romper la reconciliación de subtotales.</p>
         <div class="callout" data-type="linkedin">
-          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+          <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
           <p><strong>Control de calidad de datos (Data Quality Control).</strong> Cómo la justificás: prevengo errores de carga en archivos compartidos por varios usuarios mediante reglas de validación con listas alimentadas desde un rango único, de modo que las categorías se mantengan consistentes y las agregaciones no se rompan.</p>
         </div>
       </div>
@@ -501,7 +498,6 @@
           <li>Verificá el archivo completo: ninguna celda con error, ningún umbral ni nombre de área escrito dentro de una fórmula, y los subtotales cerrando contra el total.</li>
           <li>Escribí, en dos o tres renglones, la respuesta al correo: cuántos registros hay en cada estado, qué área aporta más, y qué pasa con el registro en "Revisar".</li>
         </ol>
-        <p class="activity-criteria">El archivo tiene cuatro hojas (<code>DATOS</code>, <code>RESUMEN</code>, <code>LISTAS</code>, <code>LEEME</code>), y alguien que no participó puede cambiar el umbral y entender el efecto leyendo solo el <code>LEEME</code>.</p>
       </div>
     </div>
 
@@ -524,7 +520,6 @@
             </tbody>
           </table>
         </div>
-        <p class="activity-criteria">La clasificación y los subtotales dan idénticos en los dos programas, y la validación funciona como desplegable en ambos.</p>
       </div>
     </div>
 
@@ -539,7 +534,7 @@
     </div>
 
     <div class="callout" data-type="linkedin">
-      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">🔗 Nueva habilidad para LinkedIn</p>
+      <p class="callout-label"><img src="../img/apps/icono-linkedin.png" alt="">Actualizá tu LinkedIn</p>
       <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel la misma lógica de clasificación condicional, agregación por criterio y validación de datos que construyo en Google Sheets, adaptando nombres de función y separadores según el idioma y la configuración regional.</p>
     </div>
   </div>

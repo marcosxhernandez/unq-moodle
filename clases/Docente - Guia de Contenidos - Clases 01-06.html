@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuadernillo docente — Clases 01-06</title>
+<style>
+  @page { size: A4; margin: 14mm 12mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    font-size: 10.5px;
+    line-height: 1.42;
+    margin: 0;
+    padding: 20px 28px;
+  }
+  h1 { font-size: 18px; margin: 0 0 2px 0; }
+  .subtitle { font-size: 11px; color: #555; margin: 0 0 4px 0; }
+  .note {
+    font-size: 9.5px; color: #666; margin: 0 0 14px 0;
+    border-left: 3px solid #999; padding-left: 8px;
+  }
+  .hoja-ruta {
+    margin-bottom: 22px;
+    background: #f6f6f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 14px;
+    break-inside: avoid-page;
+  }
+  .hoja-ruta h2 { font-size: 13px; margin: 0 0 4px 0; }
+  .hoja-ruta .tema { font-size: 10px; margin: 0 0 8px 0; }
+  .hoja-ruta .tema b { color: #000; }
+  .clase {
+    margin-top: 20px;
+    break-inside: avoid-page;
+  }
+  .clase-header {
+    display: flex; align-items: baseline; gap: 8px;
+    border-bottom: 2px solid #222;
+    padding-bottom: 3px; margin-bottom: 8px;
+  }
+  .clase-num {
+    font-size: 15px; font-weight: 700; color: #fff;
+    background: #333; padding: 1px 8px; border-radius: 3px;
+  }
+  .clase-title { font-size: 13.5px; font-weight: 700; }
+  .intro { font-size: 10px; margin: 0 0 10px 0; color: #333; }
+  h3 { font-size: 11.5px; margin: 12px 0 4px 0; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+  p { margin: 4px 0; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 6px 0 10px 0;
+  }
+  th, td {
+    border: 1px solid #ccc; padding: 3px 6px; text-align: left; vertical-align: top;
+  }
+  th { background: #eee; font-size: 9.3px; text-transform: uppercase; letter-spacing: 0.02em; }
+  ul { margin: 4px 0; padding-left: 16px; }
+  li { margin-bottom: 2px; }
+  code { background: #f0f0f0; padding: 0 3px; border-radius: 2px; font-size: 9.5px; }
+  .glosario-title { font-size: 10.5px; font-weight: 700; margin-top: 10px; }
+  .fuentes {
+    margin-top: 24px; border-top: 2px solid #222; padding-top: 8px;
+  }
+  .fuentes h2 { font-size: 12px; margin: 0 0 6px 0; }
+  .fuentes ul { font-size: 9.3px; }
+  @media print {
+    body { padding: 0; font-size: 9.5px; }
+    .clase { break-inside: avoid-page; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Cuadernillo docente</h1>
+<p class="subtitle">Clases 01 a 06 · Informática, UNQ 2026</p>
+<p class="note">Versión docente del contenido teórico de cada clase, sin la sección de Actividades (esa vive en "Guía de actividades docente", documento aparte). Incluye un ejercicio guiado único, pensado para proyectar en la pantalla del aula.</p>
+
+<div class="hoja-ruta">
+  <h2>El ejercicio guiado — hoja de ruta</h2>
+  <p class="tema"><b>Tema elegido:</b> ¿Cómo cambia la educación universitaria con la IA generativa? — sirve para cualquier carrera, con fuentes reales fáciles de encontrar en el momento. Mismo documento creciendo clase a clase, proyectado en paralelo a que cada alumno construye lo mismo con su propio tema: <code>[DEMO] IA en la educación universitaria</code>.</p>
+  <table>
+    <tr><th>Clase</th><th>Qué se hace en vivo, proyectado</th><th>Resultado visible al final</th></tr>
+    <tr><td>01</td><td>Buscar el tema sin operadores, repetir con operadores, aplicar CRAAP a 2-3 resultados en voz alta, buscar imagen CC, armar un prompt RTCFL y pedírselo a un LLM, verificar una fuente que da la IA.</td><td>Texto generado por IA, con al menos una fuente verificada en vivo.</td></tr>
+    <tr><td>02</td><td>Pegar ese texto con <code>Ctrl+Shift+V</code> (mostrando antes qué pasa con <code>Ctrl+V</code> normal), aplicar estilos, generar el índice, dejar 1-2 comentarios de ejemplo.</td><td>El mismo texto, estructurado, con índice funcionando.</td></tr>
+    <tr><td>03</td><td>Buscar el tema en Perplexity, mostrar las citas numeradas, clic en una y confirmar la fuente real, armar una cita APA completa.</td><td>Una fuente con cita verificable y referencia APA correcta.</td></tr>
+    <tr><td>04</td><td>Insertar una tabla comparando dos posturas sobre el tema, anclar la imagen CC de la Clase 01 como flotante, crear un hipervínculo interno y uno externo.</td><td>Documento con tabla, imagen anclada e hipervínculos funcionando.</td></tr>
+    <tr><td>05</td><td>Exportar a <code>.docx</code>, abrir en Word, configurar A4, salto de sección, cuerpo a dos columnas, exportar a PDF.</td><td>PDF con layout de dos columnas.</td></tr>
+    <tr><td>06</td><td>Pegar el contenido en Gamma, generar esquema de diapositivas, aplicar tema y transición, exportar a <code>.pptx</code> + PDF.</td><td>Presentación de 8-10 diapositivas lista para exponer.</td></tr>
+  </table>
+  <p class="tema"><b>Nota:</b> en Clase 05 y 06, si el tiempo aprieta, alcanza con mostrar el resultado ya preparado y explicar los 2-3 pasos clave — lo importante es que se vea la continuidad del contenido cambiando de formato.</p>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">01</span><span class="clase-title">Herramientas digitales: internet, nube e IA</span></div>
+  <p class="intro">Objetivo: que el alumno deje de ser usuario pasivo — organice su espacio digital, evalúe fuentes y use IA con criterio (fake news, alucinaciones, sesgos), y construya su primera identidad profesional en LinkedIn.</p>
+
+  <h3>Campus y mapa de internet</h3>
+  <table>
+    <tr><th>Capa</th><th>Qué es</th><th>Ejemplos</th></tr>
+    <tr><td>Internet superficial</td><td>Indexable por buscadores.</td><td>Wikipedia, diarios, YouTube.</td></tr>
+    <tr><td>Deep web</td><td>Detrás de login/paywall — Google no la indexa.</td><td>Campus UNQ, Gmail, homebanking.</td></tr>
+    <tr><td>Dark web</td><td>Requiere software específico (Tor), anonimato.</td><td>Usos legítimos e ilegítimos conviven.</td></tr>
+  </table>
+  <p><code>campus.uvq.edu.ar</code> tipeado directo (nunca googleado, riesgo de phishing). App Moodle: <code>qoodle.uvq.edu.ar</code>. Soporte: soporte@uvq.edu.ar / WhatsApp +54 9 11 6641 4809.</p>
+
+  <h3>La nube y Google Drive</h3>
+  <p>La nube es una red de servidores accedida por internet. El precio de lo gratis (Gmail, Instagram, WhatsApp): el usuario es el producto — sus datos alimentan publicidad. Ley 25.326 (Argentina): derecho a saber, corregir y borrar datos personales. Nomenclatura: <code>Nombre del archivo - Versión</code>. Una subcarpeta por clase, desde el primer día.</p>
+
+  <h3>Búsqueda, validación y uso de IA</h3>
+  <table>
+    <tr><th>Operador</th><th>Para qué</th><th>Ejemplo</th></tr>
+    <tr><td><code>"comillas"</code></td><td>Frase exacta.</td><td><code>"cambio climático en Argentina"</code></td></tr>
+    <tr><td><code>-menos</code></td><td>Excluye un término.</td><td><code>jaguar -auto</code></td></tr>
+    <tr><td><code>site:</code></td><td>Dentro de un dominio.</td><td><code>site:conicet.gov.ar IA</code></td></tr>
+    <tr><td><code>filetype:</code></td><td>Por tipo de archivo.</td><td><code>filetype:pdf informe 2025</code></td></tr>
+    <tr><td><code>2020..2026</code></td><td>Rango de años.</td><td><code>economía argentina 2020..2026</code></td></tr>
+  </table>
+  <p><b>CRAAP:</b> Actualidad · Relevancia · Autoridad · Exactitud · Propósito. Lectura lateral: verificar en otra pestaña qué dicen fuentes independientes. <b>Fake news:</b> titular exagerado, sin autor, imagen fuera de contexto, reacción emocional fuerte, sin cobertura en otros medios.</p>
+  <table>
+    <tr><th>Licencia CC</th><th>Qué permite</th></tr>
+    <tr><td>CC BY</td><td>Usar y modificar, citando al autor.</td></tr>
+    <tr><td>CC BY-SA</td><td>Ídem + misma licencia.</td></tr>
+    <tr><td>CC BY-NC</td><td>Sin fines comerciales, citando.</td></tr>
+    <tr><td>CC0</td><td>Sin restricciones.</td></tr>
+  </table>
+  <p><b>IA generativa:</b> un LLM predice texto, no razona ni verifica. <b>Alucinación:</b> información falsa generada con total confianza (citas inventadas, leyes falsas, estadísticas sin origen, autores ficticios) — verificar siempre en Scholar o Redalyc. <b>Sesgos:</b> de datos, de representación, de confirmación, geográfico/lingüístico, de automatización, de retroalimentación — heredados del entrenamiento. La alineación política varía por bloque geográfico del laboratorio (censura activa en modelos chinos vs. sesgo heredado en modelos de EE.UU.).</p>
+  <table>
+    <tr><th>RTCFL</th><th>Qué hace</th></tr>
+    <tr><td>R — Rol</td><td>Qué papel asume la IA.</td></tr>
+    <tr><td>T — Tarea</td><td>Qué se le pide.</td></tr>
+    <tr><td>C — Contexto</td><td>Materia, nivel, país, año.</td></tr>
+    <tr><td>F — Formato</td><td>Cómo se quiere la respuesta.</td></tr>
+    <tr><td>L — Límites</td><td>Restricciones específicas.</td></tr>
+  </table>
+
+  <h3>Huella digital, LinkedIn y seguridad</h3>
+  <p>Huella activa (lo publicado) vs. pasiva (lo recopilado). LinkedIn desde primer año: foto, titular con carrera + UNQ, extracto, educación, habilidades en español e inglés. Seguridad: 2FA, gestor de contraseñas, reconocer phishing.</p>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>Agente de IA</b></td><td>LLM + herramientas + memoria para tareas autónomas.</td></tr>
+    <tr><td><b>Alucinación</b></td><td>Información falsa que la IA genera como si fuera real.</td></tr>
+    <tr><td><b>CRAAP</b></td><td>Actualidad, Relevancia, Autoridad, Exactitud, Propósito.</td></tr>
+    <tr><td><b>LLM</b></td><td>Modelo de lenguaje grande.</td></tr>
+    <tr><td><b>Phishing</b></td><td>Engaño que imita a una entidad real para robar datos.</td></tr>
+    <tr><td><b>RTCFL</b></td><td>Rol, Tarea, Contexto, Formato, Límites.</td></tr>
+    <tr><td><b>Sesgo algorítmico</b></td><td>Inclinación heredada de los datos de entrenamiento.</td></tr>
+  </table>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">02</span><span class="clase-title">Arquitectura del documento profesional</span></div>
+  <p class="intro">Generar contenido con IA, pegarlo sin arrastrar formato, estructurarlo con estilos para el índice automático. Comentarios e historial como espacio compartido.</p>
+
+  <h3>Crear el archivo</h3>
+  <p><code>docs.new</code> (rápido) · Drive → + Nuevo → Documentos · Docs → "+". Elementos clave: nombre del doc, menú de estilos, panel de navegación (Ver → Mostrar esquema), autoguardado, botón Compartir.</p>
+
+  <h3>Pegar sin formato</h3>
+  <p><code>Ctrl+V</code> trae todo el formato externo. <code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) pega solo texto plano — regla de oro siempre que se pega de un LLM o la web.</p>
+
+  <h3>Estilos</h3>
+  <table>
+    <tr><th>Estilo</th><th>Para qué</th><th>Atajo</th></tr>
+    <tr><td>Título del documento</td><td>Nombre principal.</td><td>—</td></tr>
+    <tr><td>Encabezado 1</td><td>Secciones principales.</td><td><code>Ctrl+Alt+1</code></td></tr>
+    <tr><td>Encabezado 2</td><td>Subsecciones.</td><td><code>Ctrl+Alt+2</code></td></tr>
+    <tr><td>Texto normal</td><td>Cuerpo.</td><td><code>Ctrl+Alt+0</code></td></tr>
+  </table>
+  <p>Sin estilos aplicados no hay índice automático ni navegación — es semántica, no decoración.</p>
+
+  <h3>Índice automático</h3>
+  <p>Insertar → Elementos de página → Índice. Vacío = estilos mal aplicados, no un bug del índice. Actualizar siempre antes de entregar.</p>
+
+  <h3>Comentarios y colaboración</h3>
+  <table>
+    <tr><th>Acción</th><th>Cómo</th></tr>
+    <tr><td>Insertar comentario</td><td><code>Ctrl+Alt+M</code></td></tr>
+    <tr><td>Resolver comentario</td><td>Clic → "Resolver"</td></tr>
+    <tr><td>Modo Sugerencias</td><td>Ícono de lápiz → "Sugerencias"</td></tr>
+    <tr><td>Historial de versiones</td><td>Archivo → Historial de versiones</td></tr>
+  </table>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>Estilo (Docs)</b></td><td>Formato predefinido semántico.</td></tr>
+    <tr><td><b>Índice automático</b></td><td>Generado a partir de los estilos.</td></tr>
+    <tr><td><b>Panel de navegación</b></td><td>Jerarquía de títulos; vacío si faltan estilos.</td></tr>
+    <tr><td><b>Pegado sin formato</b></td><td><code>Ctrl+Shift+V</code>.</td></tr>
+  </table>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">03</span><span class="clase-title">IA como asistente académico</span></div>
+  <p class="intro">Perplexity para fuentes con citas verificables + normas APA. Cierre con Gemini Notebook, que solo responde con las fuentes cargadas.</p>
+
+  <h3>Perplexity</h3>
+  <p>Un LLM genérico predice desde su entrenamiento; Perplexity (<code>perplexity.ai</code>) busca en tiempo real y cita cada afirmación. Regla de oro: no citar a Perplexity, verificar la fuente original. Complementa a Google Scholar (<code>scholar.google.com</code>). Prompt chaining: usar la respuesta de un prompt como base del siguiente.</p>
+
+  <h3>Normas APA (7ma edición)</h3>
+  <table>
+    <tr><th>Tipo de fuente</th><th>Formato APA</th></tr>
+    <tr><td>Libro</td><td>Apellido, I. (Año). <i>Título</i>. Editorial.</td></tr>
+    <tr><td>Artículo/web</td><td>Apellido, I. (Año, día mes). <i>Título</i>. Sitio. URL</td></tr>
+    <tr><td>Video</td><td>Canal. (Año, día mes). <i>Título</i> [Video]. Plataforma. URL</td></tr>
+    <tr><td>Salida de IA</td><td>Empresa. (Año). <i>Modelo</i> (fecha) [LLM]. URL</td></tr>
+  </table>
+  <p>Cita en el texto: paráfrasis (Apellido, año) — preferida —, textual (Apellido, año, p. XX), o autor en el texto: Autor (año). DOI al final si existe; si no, URL. Nota al pie no reemplaza la cita APA (<code>Ctrl+Alt+F</code>).</p>
+
+  <h3>Gemini Notebook</h3>
+  <p>RAG: busca en los documentos cargados los fragmentos relevantes antes de generar la respuesta — reduce alucinaciones sin eliminarlas. Discover Sources suma documentos nuevos como fuente antes de responder con ellos.</p>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>APA</b></td><td>Sistema de citación académica, versión 7 (2020).</td></tr>
+    <tr><td><b>DOI</b></td><td>Identificador permanente de artículos científicos.</td></tr>
+    <tr><td><b>Plagio</b></td><td>Usar ideas/palabras ajenas sin citar.</td></tr>
+    <tr><td><b>RAG</b></td><td>Recupera fragmentos relevantes antes de generar respuesta.</td></tr>
+  </table>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">04</span><span class="clase-title">Arquitectura avanzada del documento</span></div>
+  <p class="intro">De "documento que se lee" a "documento que se navega": tablas, imágenes ancladas, hipervínculos internos y externos.</p>
+
+  <h3>Tablas complejas</h3>
+  <p>Contenedor semántico: agrupa información y establece jerarquías. Combinar celdas solo para encabezados de grupo (rompe ordenar/filtrar en datos). Tablas anidadas: casi nunca — más de dos niveles es un problema de diseño de la información.</p>
+
+  <h3>Imágenes flotantes</h3>
+  <p>Clic en la imagen → <b>Ajustar texto</b> → Opciones de imagen → <b>Mover con el texto</b> (no "Corregir en la página" — el error más común, deja la imagen fija sin relación con el párrafo). Redimensionar desde las esquinas, nunca desde el centro de los lados.</p>
+
+  <h3>Hipervínculos</h3>
+  <p>Externo: <code>Ctrl+K</code> sobre texto seleccionado — el texto visible describe el destino (excepción: DOI en bibliografía, se muestra como URL). Interno: marcador manual o título con estilo (ya es destino automático) + <code>Ctrl+K</code> → Encabezados y marcadores. El índice automático no se actualiza solo.</p>
+
+  <h3>Estructura de página</h3>
+  <p>Salto de página: <code>Ctrl+Intro</code> — nunca Enter repetido. Encabezado/pie/numeración: Insertar → Elementos de página. Nota al pie: <code>Ctrl+Alt+F</code>, no reemplaza la cita APA.</p>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>Imagen flotante</b></td><td>Anclada a un párrafo o página, texto a los costados.</td></tr>
+    <tr><td><b>Mover con el texto</b></td><td>La imagen sigue al párrafo si este se desplaza.</td></tr>
+    <tr><td><b>Marcador</b></td><td>Punto de anclaje invisible para hipervínculo interno.</td></tr>
+  </table>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">05</span><span class="clase-title">Maquetación de alta precisión (Word de escritorio)</span></div>
+  <p class="intro">Cambio de herramienta: Word de escritorio, página con dimensiones fijas — requiere el programa instalado (la versión web no tiene saltos de sección).</p>
+
+  <h3>Configuración base</h3>
+  <p>Word abre en Letter por defecto — en Argentina se imprime en A4. Configurar antes de escribir: Disposición → Tamaño → A4, Márgenes Normal (2,54 cm), Vertical, "Aplicar a: Todo el documento".</p>
+
+  <h3>Saltos de sección</h3>
+  <table>
+    <tr><th>Tipo</th><th>Lo que hace</th></tr>
+    <tr><td>Página siguiente</td><td>Nueva sección en página siguiente.</td></tr>
+    <tr><td>Continuo</td><td>Empieza en el mismo lugar — layouts mixtos.</td></tr>
+    <tr><td>Página par/impar</td><td>Documentos tipo libro.</td></tr>
+  </table>
+  <p>Disposición → Saltos (no Insertar). Las columnas son propiedad de sección: primero el salto, después Disposición → Columnas.</p>
+
+  <h3>Exportación</h3>
+  <p>Archivo → Imprimir para revisar antes de exportar. Archivo → Exportar → Crear PDF/XPS → <b>Estándar (publicar e imprimir)</b> — siempre, si hay imágenes.</p>
+
+  <h3>Combinación de correspondencia</h3>
+  <p>Documento principal (plantilla + campos <code>«Nombre»</code>) + fuente de datos (tabla). Tiene sentido con más de 5 destinatarios y datos ya tabulados.</p>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>Sección</b></td><td>Unidad de diseño con márgenes/columnas/encabezado propios.</td></tr>
+    <tr><td><b>Vincular al anterior</b></td><td>La sección hereda el encabezado de la previa.</td></tr>
+  </table>
+</div>
+
+<div class="clase">
+  <div class="clase-header"><span class="clase-num">06</span><span class="clase-title">Presentaciones con IA: de borrador a entrega</span></div>
+  <p class="intro">El documento de las Clases 04-05 se convierte en presentación: borrador con IA, diseño visual (CRAP), exportación doble.</p>
+
+  <h3>Buena presentación</h3>
+  <p>Legibilidad · una idea por diapositiva (3-5 palabras clave) · mirar al público, no la pantalla · respetar el tiempo · citar lo que corresponda.</p>
+
+  <h3>Documento → presentación</h3>
+  <table>
+    <tr><th>En el documento</th><th>En la presentación</th></tr>
+    <tr><td>Título de sección</td><td>Título de diapositiva</td></tr>
+    <tr><td>Párrafo de desarrollo</td><td>3-5 palabras clave</td></tr>
+    <tr><td>Cita APA completa</td><td>Mención breve del autor</td></tr>
+  </table>
+
+  <h3>Diseño visual — CRAP</h3>
+  <p>Contraste · Repetición · Alineación · Proximidad. Jerarquía visual = tamaño + contraste. Prueba del fondo del aula: ¿se lee de lejos? ¿una sola idea? ¿el color compite con el texto?</p>
+
+  <h3>Generar el borrador con IA</h3>
+  <p>Gamma (<code>gamma.app</code>, gratis con créditos limitados) y Gemini Notebook Studio (gratis) — comparar el mismo pedido en dos herramientas. Gemini en Slides requiere plan pago, no es la opción de esta clase.</p>
+
+  <h3>Exportar</h3>
+  <p><code>.pptx</code> (exponer sin conexión) + PDF (respaldo) — nunca un solo formato.</p>
+
+  <p class="glosario-title">Glosario</p>
+  <table>
+    <tr><td><b>CRAP</b></td><td>Contraste, Repetición, Alineación, Proximidad.</td></tr>
+    <tr><td><b>Disparador</b></td><td>Condición que activa una animación.</td></tr>
+  </table>
+</div>
+
+<div class="fuentes">
+  <h2>Fuentes citadas en el material (referencia rápida)</h2>
+  <ul>
+    <li>Buolamwini, J. y Gebru, T. (2018). <i>Gender Shades</i>. MIT Media Lab.</li>
+    <li>Dastin, J. (2018). <i>Amazon scraps secret AI recruiting tool</i>. Reuters/MIT Technology Review.</li>
+    <li>Wunderlich, F. (2026). <i>Car Wash Test on 53 leading AI models</i>. Opper AI Blog.</li>
+    <li>Webster, I. (2025). <i>Questions Censored by DeepSeek</i>. Promptfoo Blog.</li>
+    <li>Rozado, D. (2024). <i>The political preferences of LLMs</i>. PLOS ONE.</li>
+    <li>Washington Post (2026). <i>Are ChatGPT and other AI chatbots politically biased?</i></li>
+    <li>Ley 25.326 de Protección de Datos Personales, Argentina.</li>
+    <li>APA Style. <i>How to cite ChatGPT</i> / <i>AI references</i>.</li>
+    <li>Google, Microsoft — páginas de soporte técnico citadas en cada clase original (detalle completo en <code>Guia/Clase NN - *.md</code>).</li>
+  </ul>
+</div>
+
+</body>
+</html>

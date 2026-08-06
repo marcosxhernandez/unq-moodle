@@ -104,7 +104,8 @@
       </table>
     </div>
 
-    <p class="photo-note">📷 Imagen pendiente — barra de herramientas de Google Sheets señalando: barra de fórmulas, celda activa, encabezados de fila/columna, pestañas de hojas, controlador de relleno</p>
+    <img class="screenshot" src="../img/08-01-captura-sheets-interfaz.png" alt="Hoja de cálculo de Google Sheets sin título, con la celda A1 activa, la barra de fórmulas y las pestañas de hoja visibles">
+    <p class="screenshot-caption">La interfaz de Sheets recién abierta: barra de fórmulas arriba, celda activa marcada, encabezados de fila y columna, pestañas de hoja abajo.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -180,6 +181,9 @@
     </div>
 
     <p>Esta es la distinción más importante de la clase — y la que más confunde a quien recién empieza.</p>
+
+    <img class="screenshot" src="../img/08-02-captura-referencia-formula.png" alt="Barra de fórmulas de Google Sheets con la celda B5 activa mostrando la fórmula =D4+G9">
+    <p class="screenshot-caption">La barra de fórmulas muestra la fórmula real, no el resultado: acá, <code>B5</code> vale lo que sea que dé <code>D4+G9</code>.</p>
 
     <h3>Referencia relativa: el comportamiento por defecto</h3>
     <p>Cuando escribís una fórmula como <code>=A1+A2</code> y la copiás hacia abajo con el controlador de relleno, Sheets no repite literalmente "A1+A2" en cada fila. <strong>Ajusta la referencia según la posición relativa</strong>: en la fila siguiente pasa a ser <code>=A2+A3</code>, después <code>=A3+A4</code>, y así sucesivamente.</p>
@@ -353,7 +357,8 @@
       <li>Definí la condición y el formato a aplicar, y hacé clic en <strong>Listo</strong>.</li>
     </ol>
 
-    <p class="photo-note">📷 Imagen pendiente — panel de Formato condicional en Google Sheets mostrando una regla "Es mayor que 40000" con formato de fondo rojo y texto blanco</p>
+    <img class="screenshot" src="../img/08-03-captura-formato-condicional.png" alt="Panel de Formato condicional en Google Sheets, con la regla Es igual a 0 aplicada al rango A1:A1000 y estilo de formato personalizado en rojo">
+    <p class="screenshot-caption">El panel de Formato condicional: elegís el rango, la condición ("Es igual a", "Es mayor que"...) y el estilo — acá, fondo rojo para marcar un caso puntual.</p>
 
     <h3>Casos de uso frecuentes</h3>
     <div class="table-wrap">
@@ -441,6 +446,9 @@
 
     <h3>Parte B · La misma planilla, en Excel</h3>
     <p>Abrí Excel (de escritorio si tenés licencia, o Excel Online si no) y reconstruí exactamente la misma tabla, las mismas fórmulas y el mismo formato condicional.</p>
+
+    <img class="screenshot" src="../img/08-04-captura-excel-inicio.png" alt="Libro1 en blanco abierto en Excel de escritorio, con la cinta en la pestaña Inicio y la celda A1 activa">
+    <p class="screenshot-caption">Excel de escritorio: misma lógica de celdas y filas que Sheets, pero con la cinta de pestañas (Inicio, Insertar, Disposición de página...) en vez del menú de Google.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">

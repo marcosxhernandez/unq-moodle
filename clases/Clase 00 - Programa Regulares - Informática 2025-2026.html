@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa Analítico — Regular y Libre — Informática UNQ</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    padding: 32px 24px 48px;
+    color: #2c2c2a;
+  }
+
+  .wrapper { max-width: 1080px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .header {
+    background: #fff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 14px;
+    padding: 26px 28px;
+    text-align: center;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(44,44,42,0.05);
+  }
+  .header h1 { font-size: 22px; font-weight: 700; color: #2c2c2a; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .header p  { font-size: 13px; color: #5f5e5a; }
+  .header .tag {
+    display: inline-block; margin-top: 10px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #185fa5; background: #e6f1fb; border: 0.5px solid #b5d4f4;
+    border-radius: 999px; padding: 3px 12px;
+  }
+
+  /* ── Section title (also used as <summary>) ── */
+  .section-title {
+    display: flex; align-items: center; gap: 8px;
+    margin: 28px 4px 10px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .section-title::-webkit-details-marker { display: none; }
+  .section-title::marker { content: ""; }
+  .section-title .num { font-family: 'DM Mono', monospace; font-size: 12px; color: #888780; }
+  .section-title h2 { font-size: 15px; font-weight: 700; color: #2c2c2a; letter-spacing: -0.01em; }
+  .section-title .chevron {
+    margin-left: auto;
+    font-size: 11px;
+    color: #b4b2a9;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+  }
+  details.section[open] > .section-title .chevron { transform: rotate(90deg); }
+  details.section { margin-bottom: 4px; }
+
+  /* ── Generic plain card ── */
+  .card {
+    background: #fff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(44,44,42,0.04);
+  }
+  .card p { font-size: 12.5px; color: #45443f; line-height: 1.65; }
+  .card p + p { margin-top: 8px; }
+  .card ul { margin-left: 18px; margin-top: 4px; }
+  .card li { font-size: 12.5px; color: #45443f; line-height: 1.65; margin-bottom: 3px; }
+  .card h4 { font-size: 12px; font-weight: 700; color: #2c2c2a; margin: 12px 0 4px; }
+  .card h4:first-child { margin-top: 0; }
+
+  /* ── Row (una unidad/tema = una fila) ── */
+  .row {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(44,44,42,0.04);
+  }
+
+  .row-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 10px;
+    min-width: 40px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-right: 0.5px solid #d3d1c7;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .row-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    flex: 1;
+  }
+
+  .cell {
+    padding: 12px 16px 14px;
+    border-right: 0.5px solid #d3d1c7;
+    border-bottom: 0.5px solid #d3d1c7;
+  }
+  .cell:nth-last-child(-n+2) { border-bottom: none; }
+  .cell:last-child { border-right: none; }
+
+  .cell-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 0.5px solid #d3d1c7;
+  }
+  .cell-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .cell-title { font-size: 12px; font-weight: 700; line-height: 1.3; }
+
+  .items { display: flex; flex-direction: column; gap: 4px; }
+  .item  { display: flex; align-items: flex-start; gap: 7px; }
+  .dot   { width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .item-text { font-size: 11.5px; color: #5f5e5a; line-height: 1.55; }
+  .item-text strong { color: #2c2c2a; font-weight: 500; }
+
+  /* ── Themes ── */
+  .th-blue   .cell-icon { background: #185fa5; color:#fff; } .th-blue   .cell-title { color:#0c447c; } .th-blue   .row-label { background:#e6f1fb; color:#185fa5; border-right-color:#b5d4f4; } .th-blue   .row { border-color:#b5d4f4; } .th-blue .dot { background:#185fa5; }
+  .th-purple .cell-icon { background: #534ab7; color:#fff; } .th-purple .cell-title { color:#3c3489; } .th-purple .row-label { background:#eeedfe; color:#534ab7; border-right-color:#cecbf6; } .th-purple .row { border-color:#cecbf6; } .th-purple .dot { background:#534ab7; }
+  .th-gdocs  .cell-icon { background: #1a73e8; color:#fff; } .th-gdocs  .cell-title { color:#0d47a1; } .th-gdocs  .row-label { background:#e3f2fd; color:#1a73e8; border-right-color:#90caf9; } .th-gdocs  .row { border-color:#90caf9; } .th-gdocs .dot { background:#1a73e8; }
+  .th-teal   .cell-icon { background: #0f6e56; color:#fff; } .th-teal   .cell-title { color:#085041; } .th-teal   .row-label { background:#e1f5ee; color:#0f6e56; border-right-color:#9fe1cb; } .th-teal   .row { border-color:#9fe1cb; } .th-teal .dot { background:#0f6e56; }
+  .th-amber  .cell-icon { background: #ba7517; color:#fff; } .th-amber  .cell-title { color:#633806; } .th-amber  .row-label { background:#faeeda; color:#ba7517; border-right-color:#fac775; } .th-amber  .row { border-color:#fac775; } .th-amber .dot { background:#ba7517; }
+  .th-rose   .cell-icon { background: #b5384f; color:#fff; } .th-rose   .cell-title { color:#7a2135; } .th-rose   .row-label { background:#fbe7ea; color:#b5384f; border-right-color:#f0b8c2; } .th-rose   .row { border-color:#f0b8c2; } .th-rose .dot { background:#b5384f; }
+
+  .tip {
+    font-size: 11px; color: #5f5e5a;
+    background: #f8f7f4;
+    border-left: 2.5px solid #b4b2a9;
+    padding: 5px 9px;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.55; margin-top: 6px;
+  }
+  .tip strong { color: #2c2c2a; font-weight: 600; }
+
+  /* ── Tabla comparativa datos generales ── */
+  .table-wrap {
+    overflow-x: auto;
+  }
+  table.data { width:100%; border-collapse: collapse; font-size: 11.5px; }
+  table.data th, table.data td { padding: 9px 12px; border: 0.5px solid #d3d1c7; text-align: left; vertical-align: top; line-height:1.5; }
+  table.data th { font-weight: 700; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+  table.data td.label-cell { font-weight: 600; color:#2c2c2a; background:#f8f7f4; width: 150px; }
+  table.data th.th-cyt { background:#e6f1fb; color:#0c447c; }
+  table.data th.th-dcs { background:#e3f2fd; color:#0d47a1; }
+  table.data th.th-sub { font-size: 9.5px; font-weight:600; padding: 5px 12px; }
+  table.data th.th-cyt-sub { background:#f4f9fd; color:#185fa5; }
+  table.data th.th-dcs-sub { background:#f2f8fe; color:#1a73e8; }
+
+  table.cronograma { width:100%; border-collapse: collapse; font-size: 11.5px; }
+  table.cronograma th, table.cronograma td { padding: 8px 12px; border: 0.5px solid #d3d1c7; text-align:left; line-height:1.5; }
+  table.cronograma th { background:#f8f7f4; font-weight:700; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; color:#2c2c2a; }
+  table.cronograma td.num { font-family:'DM Mono', monospace; color:#888780; width:60px; }
+  table.cronograma tr.exam td { background:#fbe7ea; font-weight:600; color:#7a2135; }
+
+  .footer { text-align: center; margin-top: 20px; font-size: 11px; color: #888780; }
+
+  @media print {
+    body { background: #fff; padding: 10mm; }
+    .row, .card { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <h1>Programa Analítico — Informática</h1>
+    <p>Modalidades Regular y Libre · Departamento de Ciencia y Tecnología (CyT) y Departamento de Ciencias Sociales (DCS)</p>
+    <p>Universidad Nacional de Quilmes · Año lectivo 2025 – 2026</p>
+    <span class="tag">Versión unificada — CyT y DCS, Regular y Libre</span>
+  </div>
+
+  <!-- 1. Datos generales -->
+  <details class="section" open>
+  <summary class="section-title"><span class="num">01</span><h2>Datos generales</h2><span class="chevron">▸</span></summary>
+  <div class="card table-wrap" style="padding:0; overflow:hidden;">
+    <table class="data">
+      <tr>
+        <th class="label-cell" rowspan="2" style="background:#f8f7f4;">&nbsp;</th>
+        <th class="th-cyt" colspan="2">CyT</th>
+        <th class="th-dcs" colspan="2">DCS</th>
+      </tr>
+      <tr>
+        <th class="th-sub th-cyt-sub">Regular</th>
+        <th class="th-sub th-cyt-sub">Libre</th>
+        <th class="th-sub th-dcs-sub">Regular</th>
+        <th class="th-sub th-dcs-sub">Libre</th>
+      </tr>
+      <tr>
+        <td class="label-cell">Carrera</td>
+        <td colspan="2">Ing. en Automatización y Control Industrial, Lic. en Biotecnología, Ing. en Alimentos, Arq. Naval</td>
+        <td colspan="2">Diploma en Ciencias Sociales; Licenciaturas y Profesorados en Ciencias Sociales, Comunicación Social, Educación e Historia</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Modalidad</td>
+        <td>Regular</td>
+        <td>Libre</td>
+        <td>Regular – Cursos Presenciales</td>
+        <td>Libre</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Núcleo</td>
+        <td colspan="4">Requisito curricular</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Correlativas</td>
+        <td colspan="4">No tiene</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Carga horaria total</td>
+        <td colspan="4">54 hs</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Horas semanales</td>
+        <td colspan="4">3 hs</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Créditos</td>
+        <td colspan="2">6</td>
+        <td colspan="2">5 (según plan de estudio)</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Tipo de asignatura</td>
+        <td colspan="4">Teórica-Práctica</td>
+      </tr>
+      <tr>
+        <td class="label-cell">Docentes</td>
+        <td colspan="4">Aisama Mariel, Balderrama Alejandra, Carpi Ileana, Ceballos Marcela, Fraga Marcelo, Hernández Marcos, Henríquez Melo Patricia, Núñez Silvia, Pérez Pablo, Rodríguez Darío, Sánchez Christian, Sosa Mirta</td>
+      </tr>
+    </table>
+  </div>
+  </details>
+
+  <!-- 2. Objetivos -->
+  <details class="section">
+  <summary class="section-title"><span class="num">02</span><h2>Objetivos</h2><span class="chevron">▸</span></summary>
+  <div class="card">
+    <ul>
+      <li>Se espera que el/la estudiante adquiera conocimientos sobre el funcionamiento de los medios informáticos para mejorar la eficiencia y la eficacia de sus actividades académicas y profesionales.</li>
+      <li>Se propone lograr un uso adecuado de las herramientas tales como: internet, procesador de textos, planilla de cálculo, presentaciones electrónicas, bases de datos y aplicaciones relacionadas al orden académico.</li>
+    </ul>
+  </div>
+  </details>
+
+  <!-- 3. Contenidos mínimos -->
+  <details class="section">
+  <summary class="section-title"><span class="num">03</span><h2>Contenidos mínimos</h2><span class="chevron">▸</span></summary>
+  <div class="card">
+    <h4>Sistemas y entorno de trabajo</h4>
+    <ul>
+      <li>Hardware y Software: generalidades y actualización</li>
+      <li>Sistemas operativos: introducción y manejo; aplicaciones para sistemas operativos</li>
+      <li>Trabajo en entornos gráficos; administración, compresión y descompresión de archivos y carpetas</li>
+    </ul>
+    <h4>Procesador de texto</h4>
+    <ul>
+      <li>Herramientas de procesamiento de textos para la producción de textos académicos</li>
+      <li>Edición y formateo de texto; inserción de objetos gráficos</li>
+      <li>Diseño y configuración de página; elementos paratextuales (tablas de contenidos, notas al pie, comentarios)</li>
+    </ul>
+    <h4>Planilla de cálculo</h4>
+    <ul>
+      <li>Herramientas para el procesamiento de datos cuantitativos</li>
+      <li>Formato, fórmulas y funciones</li>
+    </ul>
+    <h4>Presentaciones electrónicas</h4>
+    <ul>
+      <li>Herramientas de presentación y publicación de la información</li>
+      <li>Presentaciones eficientes</li>
+    </ul>
+    <h4>Bases de datos y gestión de la información</h4>
+    <ul>
+      <li>Herramientas para la gestión de la información</li>
+      <li>Introducción al trabajo con bases de datos: elementos constitutivos, relaciones, recuperación de la información</li>
+    </ul>
+    <h4>Internet, búsqueda y validación</h4>
+    <ul>
+      <li>Internet; búsqueda y selección de información en línea; buscadores y metabuscadores</li>
+      <li>Curaduría de contenidos; criterios de validación y credibilidad sobre los recursos electrónicos</li>
+      <li>IA generativa en búsquedas académicas</li>
+    </ul>
+    <h4>Colaboración y comunicación en la Web</h4>
+    <ul>
+      <li>Servicios en la Nube</li>
+      <li>Comunicación e interacción en la Web (Web 2.0)</li>
+      <li>Recursos electrónicos para el trabajo colaborativo</li>
+    </ul>
+  </div>
+  </details>
+
+  <!-- 4. Programa analítico -->
+  <details class="section">
+  <summary class="section-title"><span class="num">04</span><h2>Programa analítico</h2><span class="chevron">▸</span></summary>
+
+  <!-- Unidad 1 -->
+  <div class="row th-blue">
+    <div class="row-label">Unidad 1<br>Entorno gráfico</div>
+    <div class="row-cols">
+      <div class="cell th-blue">
+        <div class="cell-head"><div class="cell-icon">🖥️</div><div class="cell-title">Hardware y periféricos</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Periféricos, unidades de almacenamiento, atajos de teclado</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Tipos de software</span></div>
+        </div>
+      </div>
+      <div class="cell th-blue">
+        <div class="cell-head"><div class="cell-icon">🪟</div><div class="cell-title">Entorno gráfico</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Escritorio, íconos, menú Inicio; partes y estructura de ventanas</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Barras de desplazamiento y de menús; organización de ventanas (cascada, mosaico)</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Ejecución de programas, cuadros de diálogo, menús contextuales</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Accesorios: bloc de notas, calculadora, etc.</span></div>
+        </div>
+      </div>
+      <div class="cell th-blue">
+        <div class="cell-head"><div class="cell-icon">🗂️</div><div class="cell-title">Archivos y seguridad</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Operación con archivos: guardar, copiar, mover, tamaño, nombre y extensión, vistas</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Enviar y recibir archivos; comprimir y descomprimir</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Virus: concepto y antivirus</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unidad 2 -->
+  <div class="row th-purple">
+    <div class="row-label">Unidad 2<br>Procesador de texto</div>
+    <div class="row-cols">
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">📄</div><div class="cell-title">Área de trabajo y edición</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Cinta de fichas, vistas de documentos; crear, guardar y abrir</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Escritura, selección de texto, corrector ortográfico y diccionario de sinónimos</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Copiar, cortar, pegar, pegado especial, copiar formato; buscar y reemplazar</span></div>
+        </div>
+      </div>
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">🎨</div><div class="cell-title">Formato</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Fuentes: tamaño, tipo, color, subrayado, efectos</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Párrafo: interlineado, alineación, sangrías, numeración y viñetas, estilos, bordes y sombreados</span></div>
+        </div>
+      </div>
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">📚</div><div class="cell-title">Referencias académicas</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Encabezado y pie de página, numeración, notas al pie, comentarios, hipervínculos</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">La cita como forma de evitar el plagio; normas APA; insertar bibliografía</span></div>
+        </div>
+      </div>
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">🖼️</div><div class="cell-title">Imágenes y tablas</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Insertar imágenes; herramientas de dibujo (líneas, flechas, relleno, sombra, 3D, autoformas, SmartArt); agrupar y ordenar</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Tablas: filas, celdas y columnas; combinar/dividir; autoformato; convertir texto en tabla</span></div>
+        </div>
+      </div>
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">🖨️</div><div class="cell-title">Estilos, portada e impresión</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Crear y modificar estilos; tablas de contenidos y de ilustraciones; diseño de portadas</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Configurar página (márgenes, papel, orientación, columnas); vista preliminar e imprimir</span></div>
+        </div>
+      </div>
+      <div class="cell th-purple">
+        <div class="cell-head"><div class="cell-icon">✉️</div><div class="cell-title">Combinar correspondencia</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Combinar correspondencia; plantillas y asistentes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unidad 3 -->
+  <div class="row th-gdocs">
+    <div class="row-label">Unidad 3<br>Presentaciones electrónicas</div>
+    <div class="row-cols">
+      <div class="cell th-gdocs">
+        <div class="cell-head"><div class="cell-icon">🎯</div><div class="cell-title">Criterios de diseño</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Uso, público/audiencia, objetivo, tiempos asignados, guión de la presentación</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Barras de menús y herramientas; abrir/guardar con distintas extensiones; plantillas y vistas</span></div>
+        </div>
+      </div>
+      <div class="cell th-gdocs">
+        <div class="cell-head"><div class="cell-icon">✏️</div><div class="cell-title">Edición de diapositivas</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Insertar y duplicar diapositivas; copiar y pegar</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Insertar imágenes, texto, gráficos, objetos; alineación; diseño, fondo y combinación de colores</span></div>
+        </div>
+      </div>
+      <div class="cell th-gdocs">
+        <div class="cell-head"><div class="cell-icon">▶️</div><div class="cell-title">Presentación</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Animación de objetos, transiciones, sonidos, intervalos</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Botones de acción; presentaciones portátiles</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unidad 4 -->
+  <div class="row th-teal">
+    <div class="row-label">Unidad 4<br>Planilla de cálculo</div>
+    <div class="row-cols">
+      <div class="cell th-teal">
+        <div class="cell-head"><div class="cell-icon">📊</div><div class="cell-title">Área de trabajo y formato</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Libros, hojas, columnas, filas, celdas, rango; guardar, abrir, salir</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Formato de celdas: alineación, fuentes, bordes, tramas, números, formato condicional</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Formato de filas y columnas; insertar filas/columnas/hojas; cambiar nombre a hojas</span></div>
+        </div>
+      </div>
+      <div class="cell th-teal">
+        <div class="cell-head"><div class="cell-icon">✂️</div><div class="cell-title">Edición</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Copiar, cortar, pegar y pegado especial; rellenar; series</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Mover/copiar hoja; buscar y reemplazar; insertar imágenes y objetos; ordenar</span></div>
+        </div>
+      </div>
+      <div class="cell th-teal">
+        <div class="cell-head"><div class="cell-icon">ƒx</div><div class="cell-title">Fórmulas y funciones</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Sintaxis, operaciones matemáticas, porcentajes, operaciones con fechas, referencias absolutas</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Autosuma, asistente de funciones: Si, Sumar si, Contar, Contara, Contar Si, Promedio, Máximo, Mínimo, Potencia, Raíz, conectores; funciones con fechas; anidar funciones</span></div>
+        </div>
+      </div>
+      <div class="cell th-teal">
+        <div class="cell-head"><div class="cell-icon">📈</div><div class="cell-title">Gráficos e impresión</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Tipos de gráficos; asistente; personalización; filtros</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Configuración de página, área de impresión, salto de página, vista preliminar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unidad 5 -->
+  <div class="row th-amber">
+    <div class="row-label">Unidad 5<br>Internet</div>
+    <div class="row-cols">
+      <div class="cell th-amber">
+        <div class="cell-head"><div class="cell-icon">🌐</div><div class="cell-title">Estructura y navegación</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Historia y estructura de Internet; concepto de red; conexión y servicios; dirección IP</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Estructura de sitio y página Web (marcos, hipervínculos), URL</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Navegadores: barra de herramientas, historial, favoritos, buscar, imprimir; navegación segura</span></div>
+        </div>
+      </div>
+      <div class="cell th-amber">
+        <div class="cell-head"><div class="cell-icon">🔍</div><div class="cell-title">Búsqueda y validación</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Buscadores, metabuscadores y temáticos; búsquedas avanzadas; traductores</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Criterios para validar y legitimar información; análisis de sitios; FakeNews</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Fases de la curaduría de contenido; estrategias de generación de prompts para IA Generativa</span></div>
+        </div>
+      </div>
+      <div class="cell th-amber">
+        <div class="cell-head"><div class="cell-icon">⚖️</div><div class="cell-title">Derechos y datos</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Derechos de autor en Internet; licencias Creative Commons; Copyright y Copyleft</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Normativa legal sobre contenidos publicados; protección de datos personales</span></div>
+        </div>
+      </div>
+      <div class="cell th-amber">
+        <div class="cell-head"><div class="cell-icon">☁️</div><div class="cell-title">Colaboración y nube</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Extracción de información de la Web: copiar, guardar imagen/página/texto, descargar</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Trabajo colaborativo; interfaz de servicios en la nube; integración con procesador de texto, hoja de cálculo, formularios y presentaciones</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unidad 6 -->
+  <div class="row th-rose">
+    <div class="row-label">Unidad 6<br>Base de datos</div>
+    <div class="row-cols">
+      <div class="cell th-rose">
+        <div class="cell-head"><div class="cell-icon">🗄️</div><div class="cell-title">Concepto y elementos</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Concepto y tipos de gestores: ficheros, relacionales, documentales; campo y registro</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Área de trabajo, vistas, abrir y guardar; concepto de tabla, consulta, formulario e informe</span></div>
+        </div>
+      </div>
+      <div class="cell th-rose">
+        <div class="cell-head"><div class="cell-icon">⚙️</div><div class="cell-title">Operación</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Carga de datos a través de formularios y tablas; filtros; relaciones</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Recupero de información a través de consultas: diseño y ejecución; diseño e impresión de informes</span></div>
+        </div>
+      </div>
+      <div class="cell th-rose">
+        <div class="cell-head"><div class="cell-icon">🧱</div><div class="cell-title">Diseño de tablas y formularios</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Tipos de campos y propiedades (tamaño, formato, requerido, indexado, máscara, reglas y texto de validación, clave principal)</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Creación y organización de formularios; manejo de imágenes; colores de fondo, formato de fuentes; controles y botones de comando</span></div>
+        </div>
+      </div>
+      <div class="cell th-rose">
+        <div class="cell-head"><div class="cell-icon">🔁</div><div class="cell-title">Mantenimiento</div></div>
+        <div class="items">
+          <div class="item"><span class="dot"></span><span class="item-text">Exportación e importación de elementos de la base</span></div>
+          <div class="item"><span class="dot"></span><span class="item-text">Compactar; convertir a versión anterior</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </details>
+
+  <!-- 5. Bibliografía -->
+  <details class="section">
+  <summary class="section-title"><span class="num">05</span><h2>Bibliografía</h2><span class="chevron">▸</span></summary>
+  <div class="card">
+    <h4>Obligatoria</h4>
+    <ul>
+      <li>Módulos de Trabajo elaborados por los/as docentes.</li>
+      <li>Burbules, Nicholas y Callister, Thomas. (2001) "Cap. 4: Lectura crítica en Internet" en <em>Riesgos y promesas de las nuevas tecnologías de la información</em>. Granica. Barcelona, pp. 75-156.</li>
+    </ul>
+    <h4>De consulta</h4>
+    <ul>
+      <li>Tutoriales en línea seleccionados por los/as docentes.</li>
+      <li>Blattner, Patrick. "Edición especial Microsoft Excel 2002", Pearson Educación S.A., Madrid 2002.</li>
+      <li>Díaz Martín, José Manuel. "Microsoft Word 2002", Pearson Educación, Ed. Prentice Hall, Madrid 2002.</li>
+      <li>Simpson, Alan y Robinson, Celeste. "La Biblia de Access 2002", Anaya Multimedia – Anaya Interactiva, Madrid 2001.</li>
+    </ul>
+  </div>
+  </details>
+
+  <!-- 6. Evaluación -->
+  <details class="section">
+  <summary class="section-title"><span class="num">06</span><h2>Evaluación</h2><span class="chevron">▸</span></summary>
+  <div class="card">
+    <p><em>Todas las versiones se rigen por el Régimen de Estudios de la Universidad Nacional de Quilmes — Res. CS-201/18 y modificatorias.</em></p>
+  </div>
+
+  <div class="section-title" style="margin-top:16px;"><h2 style="font-size:13px; color:#5f5e5a;">6.1 · Modalidad Regular (CyT y DCS)</h2></div>
+  <div class="card">
+    <p>Se deberá cumplimentar el requisito de regularidad asistiendo al 75% de la cursada y participar en tiempo y forma de las actividades que se indiquen. El no cumplimiento de esta condición supondrá la pérdida de la regularidad y por consiguiente se deberá recursar la asignatura o presentarse a examen de suficiencia. Para la aprobación de la materia se deberán rendir tres exámenes parciales de carácter presencial. A los efectos de su acreditación, la asignatura llevará una nota final numérica.</p>
+    <div class="tip"><strong>a) Promoción sin Trabajo Final:</strong> aprobar los exámenes parciales superando el 70% de los contenidos evaluados y haber resuelto la ejercitación de cada una de las clases, solicitadas por el profesor, en tiempo y forma.</div>
+    <div class="tip"><strong>b) Promoción con Trabajo Final:</strong> el/la estudiante que alcance en cada uno de los parciales un nivel de entre el 50 y 70% de los contenidos evaluados deberá cumplimentar la entrega de un Trabajo Final cuyo objetivo constituye la integración de los contenidos de la materia.</div>
+    <div class="tip"><strong>c) Pendiente de Aprobación:</strong> de acuerdo al Régimen de estudio vigente, los/las estudiantes que no logren acreditar en instancias de Recuperatorio entre el 50 y el 70% de los contenidos mínimos contarán con una instancia especial de evaluación durante el siguiente cuatrimestre, determinada por el Calendario Académico vigente a través del llamado a Mesas de Examen Integrador.</div>
+    <p style="margin-top:8px;">En caso de que uno y hasta dos parciales no sean aprobados, se dispondrá de un examen de carácter recuperatorio al término del cuatrimestre.</p>
+  </div>
+
+  <div class="section-title" style="margin-top:16px;"><h2 style="font-size:13px; color:#5f5e5a;">6.2 · Modalidad Libre (CyT y DCS)</h2></div>
+  <div class="card">
+    <p>En la mesa de examen libre se evaluarán los temas de la asignatura con las siguientes instancias de evaluación: un examen que se divide en 4 partes.</p>
+    <div class="tip"><strong>Base de datos:</strong> creación de base de datos, tablas, campos y registros, clave principal. Importar tablas. Relaciones, integridad referencial. Consultas de selección y de acción, formularios e informes.</div>
+    <div class="tip"><strong>Planilla de cálculo:</strong> tabla, operaciones matemáticas, formato, funciones, gráficos, ordenar, filtrar, referencia absoluta, etc.</div>
+    <div class="tip"><strong>Internet — búsqueda y validación / procesador de texto / servicio en la nube:</strong> se deberán realizar búsquedas académicas de información, imagen y video consignando el paso a paso de la búsqueda y la validación de la información de forma escrita digital, respetando las citas de autor correspondientes. Se le dará, a través de un procesador de texto, el formato correspondiente al ámbito académico. Se compartirá lo realizado a través de un documento compartido alojado en un servicio en la nube.</div>
+    <div class="tip"><strong>Presentación electrónica:</strong> del documento antes mencionado se desprenderá una presentación de al menos 10 diapositivas, respetando los aspectos comunicativos y de formato correspondientes al ámbito académico.</div>
+    <p style="margin-top:8px;">El examen de mesa libre será presencial, de carácter teórico-práctico, debiendo demostrar un conocimiento mínimo del 70%, no promediable, de cada una de las aplicaciones comprendidas en el presente programa. El llamado a mesa libre estará determinado por el Calendario Académico vigente. La duración del examen es de máximo 3 horas. Los/as docentes podrán realizar algunas preguntas que se deberán responder oralmente.</p>
+  </div>
+  </details>
+
+  <!-- 7. Organización de las clases -->
+  <details class="section">
+  <summary class="section-title"><span class="num">07</span><h2>Organización de las clases (modalidad Regular)</h2><span class="chevron">▸</span></summary>
+  <div class="card">
+    <p>Las clases constan de una exposición oral presentando el tema y los contenidos a tratar. Se expone el tema haciendo partícipe a los/as estudiantes a través de una ejemplificación práctica. Simultáneamente los/as estudiantes seguirán las explicaciones y realizarán la actividad propuesta de manera individual en su computadora.</p>
+    <p>Se hace entrega de ejercicios prácticos que incluyan la aplicación de los conocimientos de las herramientas aprendidas en la clase.</p>
+    <p>En el cierre de la clase se incluye: un repaso de los temas tratados, las actividades de ejercitación a resolver para la próxima clase y el anuncio del tema de la clase siguiente.</p>
+  </div>
+  </details>
+
+  <!-- 8. Cronograma -->
+  <details class="section">
+  <summary class="section-title"><span class="num">08</span><h2>Cronograma tentativo (modalidad Regular)</h2><span class="chevron">▸</span></summary>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table class="cronograma">
+      <tr><th style="width:60px;">Clase</th><th>Contenido</th><th>Bibliografía</th></tr>
+      <tr><td class="num">1</td><td>Unidad 1: Entorno gráfico</td><td>Módulo Windows Explorador de Windows</td></tr>
+      <tr><td class="num">2–4</td><td>Unidad 2: Procesador de texto</td><td>Módulo Microsoft Word</td></tr>
+      <tr><td class="num">5–6</td><td>Unidad 3: Presentaciones electrónicas</td><td>Módulo Microsoft Power Point</td></tr>
+      <tr class="exam"><td class="num">7</td><td>1º Examen Parcial</td><td>—</td></tr>
+      <tr><td class="num">8–11</td><td>Unidad 4: Planilla de Cálculos</td><td>Módulo Microsoft Excel</td></tr>
+      <tr class="exam"><td class="num">12</td><td>2º Examen Parcial</td><td>—</td></tr>
+      <tr><td class="num">13–15</td><td>Unidad 5: Internet</td><td>Módulo Internet</td></tr>
+      <tr><td class="num">16–17</td><td>Unidad 6: Base de Datos</td><td>Módulo Microsoft Access</td></tr>
+      <tr class="exam"><td class="num">18</td><td>3º Examen Parcial</td><td>—</td></tr>
+      <tr><td class="num">—</td><td>Examen Recuperatorio por parciales desaprobados</td><td>—</td></tr>
+    </table>
+  </div>
+  </details>
+
+  <div class="footer">Programa unificado a partir de las versiones vigentes 2025 · Informática · Universidad Nacional de Quilmes</div>
+
+</div>
+</body>
+</html>

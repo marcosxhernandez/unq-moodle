@@ -52,15 +52,15 @@ unq-moodle/
 │   ├── Clase 01 - Herramientas Digitales.html
 │   ├── Clase 02 - Arquitectura del documento...
 │   └── ... (19 archivos: 01-06, 08-17, 19-20)
-├── bloques/
-│   ├── Moodle - Clase 00 - Bienvenida.html
-│   ├── Moodle - Clase 01 - Herramientas Digitales.html
+├── moodle/
+│   ├── Clase 00 - Bienvenida.html
+│   ├── Clase 01 - Herramientas Digitales.html
 │   └── ... (20 archivos: 00-06, 08-17, 19-20)
 ├── index.html                   ← Vista previa con todos los bloques Moodle
 ├── README.md                    ← Este archivo
 ├── CLAUDE.md                    ← Manual técnico integral
 ├── CLAUDE-clases.md             ← Especificación de Guía Visual
-└── CLAUDE-bloques.md            ← Especificación de fragmento Moodle
+└── CLAUDE-moodle.md             ← Especificación de fragmento Moodle
 ```
 
 ## Cómo se usa cada pieza en Qoodle
@@ -68,10 +68,10 @@ unq-moodle/
 | Archivo | Recurso en Qoodle | Cómo |
 |---|---|---|
 | `clases/Clase NN - Título.html` | **URL** (o el botón "Abrir la guía" ya embebido en el bloque) | Apunta directo a `https://marcosxhernandez.github.io/unq-moodle/clases/Clase%20NN%20-%20...html`. Se abre en pestaña nueva, imprime igual que abrir el archivo local. |
-| `bloques/Moodle - Clase NN - Título.html` | **Página** o **Etiqueta** | Se pega el contenido en el editor Atto usando la vista de código fuente `<>`. Ya trae el botón "Abrir la guía" apuntando a GitHub Pages. |
+| `moodle/Clase NN - Título.html` | **Página** o **Etiqueta** | Se pega el contenido en el editor Atto usando la vista de código fuente `<>`. Ya trae el botón "Abrir la guía" apuntando a GitHub Pages. |
 | `pdf/Clase NN - Título.pdf` | **Archivo** (opcional) | Backup para quien prefiera bajar el PDF en vez de abrir el link. |
 
-**Importante:** los links "Abrir la guía de la clase" dentro de cada `bloques/*.html` ya apuntan a GitHub Pages. Si se activa Pages con otra URL, hay que actualizar esos links a mano — están en los archivos `bloques/`, buscando `github.io`.
+**Importante:** los links "Abrir la guía de la clase" dentro de cada `moodle/*.html` ya apuntan a GitHub Pages. Si se activa Pages con otra URL, hay que actualizar esos links a mano — están en los archivos `moodle/`, buscando `github.io`.
 
 ## Cómo usar esto
 
@@ -96,11 +96,11 @@ unq-moodle/
 
 ## Importante: index.html y sincronización
 
-**⚠️ `index.html` embebe una copia pegada de cada `bloques/Moodle - Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `bloques/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio.
+**⚠️ `index.html` embebe una copia pegada de cada `moodle/Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `moodle/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio.
 
 ## Convenciones de construcción
 
-Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-bloques.md`.
+Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-moodle.md`.
 
 ## Historial de cambios
 

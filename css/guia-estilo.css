@@ -343,6 +343,13 @@ a{ color:var(--acento); text-decoration-thickness:1px; text-underline-offset:3px
 a:hover{ color:var(--acento-deep); }
 a:focus-visible, button:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:4px; }
 
+/* Link real que envuelve un <code> (dominio, URL de fuente): el color
+   propio del <code> ya lo distingue, así que en vez del subrayado de
+   <a> se resalta el chip entero al pasar el mouse o enfocar. */
+a:has(> code){ text-decoration:none; }
+a:has(> code):hover code,
+a:has(> code):focus-visible code{ background:var(--acento-soft); border-color:var(--acento); }
+
 ::selection{ background:var(--acento-tint); color:var(--acento-deep); }
 
 /* ---------- Layout shell ---------- */
@@ -810,31 +817,50 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 
 .callout p{ margin:0 0 .8em; color:var(--ink-soft); font-size:.98rem; }
 .callout p:last-child{ margin-bottom:0; }
+/* Mismo criterio de justificado que el cuerpo (.prose > p, más arriba) —
+   acá aplica por selector de descendiente porque el <p> de un callout no
+   es hijo directo de .prose (el .callout se interpone). Se excluye
+   .callout-label: es una sola línea de eyebrow, no un párrafo narrativo. */
+.callout p:not(.callout-label){
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
 .callout ul, .callout ol{ margin:.4em 0 1em; padding-left:1.3em; color:var(--ink-soft); font-size:.98rem; }
 .callout li{ margin-bottom:.4em; }
 .callout code{ background:#fff; }
 
-/* categorías de callout — paleta editorial suave */
+/* categorías de callout — paleta editorial suave.
+   Cada categoría fija también el color de sus numerales/viñetas de lista
+   (ol > li::before, ul > li::before) — si no se pisan acá, esas reglas
+   heredan .prose ol/ul > li::before, que sigue el acento de la CLASE
+   (--acento), no el de la categoría del callout. Eso choca quedaba mal
+   visualmente: p.ej. un callout violeta (format) con numerales celestes
+   de la Clase 02 adentro. Ago. 2026: cada categoría ahora pisa ambos. */
 .callout[data-type="idea"]{ background:var(--amber-tint); }
 .callout[data-type="idea"] .callout-label{ color:var(--amber); }
 .callout[data-type="idea"] code{ color:var(--amber); }
+.callout[data-type="idea"] ol > li::before{ color:var(--amber); background:#fff; }
+.callout[data-type="idea"] ul > li::before{ background:var(--amber); }
 
-.callout[data-type="action"],
-.callout[data-type="explore"]{ background:var(--green-tint); }
-.callout[data-type="action"] .callout-label,
-.callout[data-type="explore"] .callout-label{ color:var(--green); }
-.callout[data-type="action"] .prose ol > li::before,
-.callout[data-type="action"] ol > li::before,
-.callout[data-type="explore"] ol > li::before{ color:var(--green); background:#fff; }
+.callout[data-type="action"]{ background:var(--green-tint); }
+.callout[data-type="action"] .callout-label{ color:var(--green); }
 .callout[data-type="action"] code{ color:var(--green); }
+.callout[data-type="action"] ol > li::before{ color:var(--green); background:#fff; }
+.callout[data-type="action"] ul > li::before{ background:var(--green); }
 
 .callout[data-type="explore"]{ background:var(--blue-tint); }
 .callout[data-type="explore"] .callout-label{ color:var(--blue); }
 .callout[data-type="explore"] code{ color:var(--blue); }
+.callout[data-type="explore"] ol > li::before{ color:var(--blue); background:#fff; }
+.callout[data-type="explore"] ul > li::before{ background:var(--blue); }
 
 .callout[data-type="warning"]{ background:var(--wine-tint); }
 .callout[data-type="warning"] .callout-label{ color:var(--wine); }
 .callout[data-type="warning"] code{ color:var(--wine-deep); background:#fff; }
+.callout[data-type="warning"] ol > li::before{ color:var(--wine); background:#fff; }
+.callout[data-type="warning"] ul > li::before{ background:var(--wine); }
 
 .callout[data-type="format"],
 .callout[data-type="folder"],
@@ -845,14 +871,25 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .callout[data-type="format"] code,
 .callout[data-type="folder"] code,
 .callout[data-type="right"] code{ color:var(--violet); background:#fff; }
+.callout[data-type="format"] ol > li::before,
+.callout[data-type="folder"] ol > li::before,
+.callout[data-type="right"] ol > li::before{ color:var(--violet); background:#fff; }
+.callout[data-type="format"] ul > li::before,
+.callout[data-type="folder"] ul > li::before,
+.callout[data-type="right"] ul > li::before{ background:var(--violet); }
 
 .callout[data-type="linkedin"]{ background:var(--linkedin-tint); }
 .callout[data-type="linkedin"] .callout-label{ color:var(--linkedin); }
 .callout[data-type="linkedin"] code{ color:var(--linkedin); background:#fff; }
-/* Ícono de LinkedIn en el label, decidido jul. 2026 (CLAUDE.md 2.8 #4) —
-   .callout-label ya es flex con gap:9px, el <img> se acomoda solo. */
+.callout[data-type="linkedin"] ol > li::before{ color:var(--linkedin); background:#fff; }
+.callout[data-type="linkedin"] ul > li::before{ background:var(--linkedin); }
+/* Ícono de LinkedIn en el label — ago. 2026: subido a 32x32 (mínimo pedido),
+   sin emoji 🔗 redundante (ya está la imagen) y label "Actualizá tu LinkedIn"
+   en vez de "Nueva habilidad para LinkedIn" (decisión anterior, jul. 2026).
+   .callout-label ya es flex con align-items:center, el <img> más grande
+   se centra solo respecto del texto sin tocar el resto de la regla. */
 .callout[data-type="linkedin"] .callout-label img{
-  width:15px; height:15px; border-radius:3px; flex-shrink:0;
+  width:32px; height:32px; border-radius:7px; flex-shrink:0;
 }
 
 .callout[data-type="question"]{
@@ -1004,18 +1041,6 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 }
 
 .activity .prose ol > li::before{ color:var(--acento); background:#fff; }
-
-.activity-criteria{
-  margin-top:1.5em;
-  padding:16px 18px;
-  background:#fff;
-  border-radius:var(--radius-sm);
-  border:1px dashed var(--line-strong);
-  font-size:.94rem;
-  color:var(--ink-soft);
-}
-
-.activity-criteria strong{ color:var(--acento); }
 
 /* ---------- Summary (resumen de la clase) ---------- */
 
@@ -1249,6 +1274,10 @@ table.check-table td.check-cell{
   transform:rotate(45deg);
 }
 
+table.check-table tr:has(.checkbox:checked){
+  background:var(--wine-tint);
+}
+
 table.check-table tr:has(.checkbox:checked) td:not(.check-cell){
   text-decoration:line-through;
   color:var(--muted);
@@ -1330,6 +1359,20 @@ footer.colophon p{
   color:var(--muted);
   margin:0;
 }
+
+footer.colophon .colophon-license{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:normal;
+  text-transform:none;
+  color:var(--muted);
+  line-height:1.6;
+  max-width:34rem;
+  margin:12px auto 0;
+}
+
+footer.colophon .colophon-license a{ color:var(--muted); text-decoration:underline; text-underline-offset:2px; }
+footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 
 /* ---------- Bloque de código / sintaxis (.code-block) ----------
    Introducido jul. 2026 con las Guías Visuales de planilla de cálculo:
@@ -1458,6 +1501,27 @@ footer.colophon p{
   margin-right:.3em;
 }
 
+/* Ícono de app tipo "ícono de celular" dentro de una celda de tabla
+   (ver tablas comparativas de LLM, Clase 02) — más grande que .app-icon,
+   pensado para ir solo (sin texto al lado) con el nombre debajo. */
+.llm-tool{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+}
+.llm-icon{
+  display:block;
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  border-radius:7px;
+}
+.llm-tool-name{
+  font-weight:700;
+  color:var(--ink);
+}
+
 .app-badge{
   float:right;
   width:56px;
@@ -1471,6 +1535,27 @@ footer.colophon p{
   width:100%;
   max-width:560px;
   margin:.6em auto 0;
+}
+
+/* ---------- Ícono de herramienta de barra (negrita, alinear, cortar...) ----------
+   SVG inline vía <svg class="tool-icon"><use href="#ti-NOMBRE"></use></svg> — los
+   símbolos reales viven en un <svg style="display:none"> al principio del <body>
+   de cada Guía Visual (sprite compartido por archivo, no una imagen aparte por
+   ícono: nítido a cualquier tamaño y no infla el PDF, mismo criterio que evitar
+   imágenes nativas pesadas, ver 3.9). currentColor hereda el color del texto que
+   lo rodea, así funciona igual en la primera celda de una tabla (--ink), en un
+   párrafo (--ink-soft) o dentro de un callout de otro color, sin reglas aparte.
+   Pictogramas genéricos de formato (B, I, U, alinear, cortar, pegar...),
+   reconocibles en cualquier procesador de texto — no una copia pixel a pixel
+   del ícono de Google o Microsoft. Lista completa de símbolos y criterio de
+   cuándo usarlo: CLAUDE-clases.md 3.4octies. Ago. 2026. */
+.tool-icon{
+  display:inline-block;
+  width:1.05em;
+  height:1.05em;
+  vertical-align:-.18em;
+  margin-right:.32em;
+  flex-shrink:0;
 }
 
 .screenshot-caption{
@@ -1811,14 +1896,12 @@ footer.colophon p{
   .screenshot,
   .diagram,
   .screenshot-caption,
-  .activity-head,
-  .activity-criteria{ break-inside:avoid-page; }
+  .activity-head{ break-inside:avoid-page; }
 
   /* Bloques largos: se permiten cortar, pero nunca justo después de
      su encabezado ni dejando el cierre solo. */
   .table-wrap, .activity, .summary, .glossary{ break-inside:auto; }
   .activity-head{ break-after:avoid-page; }
-  .activity-criteria{ break-before:avoid-page; }
 
   /* Imagen y leyenda son una sola unidad visual: nunca se separan. */
   .screenshot, .diagram{ break-after:avoid-page; }
@@ -1833,10 +1916,11 @@ footer.colophon p{
   .callout[data-type="closing"] p{ font-size:15pt; }
 
   /* URLs visibles junto a cualquier link externo real (no aplica a
-     los anclajes internos del índice ni a las tarjetas de herramienta,
-     que ya muestran su URL en <code>). En el papel no se puede hacer
-     clic — así el dato no se pierde. */
-  .prose a[href^="http"]::after{
+     los anclajes internos del índice ni a los que envuelven un <code>
+     — tarjetas de herramienta, dominios en el cuerpo, fuentes — porque
+     esos ya muestran su URL como texto visible). En el papel no se
+     puede hacer clic — así el dato no se pierde. */
+  .prose a[href^="http"]:not(:has(code))::after{
     content:" (" attr(href) ")";
     font-size:.82em;
     color:var(--muted);
@@ -1892,7 +1976,6 @@ footer.colophon p{
   .activity-head{ margin-bottom:9pt; padding-bottom:7pt; gap:10px; }
   .activity-head h3{ font-size:12pt; }
   .activity-eyebrow{ padding:4px 9px; font-size:8pt; }
-  .activity-criteria{ margin-top:.9em; padding:8pt 10pt; }
 
   .code-block{ margin:.9em 0 1.1em; padding:7pt 9pt; font-size:8.4pt; line-height:1.4; border-radius:5px; }
 
@@ -1950,6 +2033,7 @@ footer.colophon p{
   .diagram{ max-width:62mm; margin:.7em auto 0; }
 
   footer.colophon{ padding:16pt 0 0; }
+  footer.colophon .colophon-license{ font-size:7.6pt; max-width:120mm; margin-top:6pt; }
 }
 
 /* ==========================================================================

@@ -26,6 +26,13 @@
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-transition" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.2 2"/><path d="M11 12 H13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 9.8 L14.6 12 L12.4 14.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-animation" viewBox="0 0 24 24"><path d="M13.5 3.5 L15.3 8.6 L20.5 8.8 L16.4 12.2 L17.8 17.3 L13.5 14.3 L9.2 17.3 L10.6 12.2 L6.5 8.8 L11.7 8.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10.5 H5.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.6 14 L5.4 13.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
 <section class="cover-page" data-num="06">
   <div class="cover-inner">
     <span class="cover-kicker">Clase 06 · Presentaciones</span>
@@ -283,9 +290,9 @@
     <h3>Tema y diseño</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Acción</th><th>Google Slides</th><th>PowerPoint</th></tr></thead>
+        <thead><tr><th>Acción</th><th><img class="app-icon" src="../img/apps/icono-google-slides.png" alt="">Google Slides</th><th><img class="app-icon" src="../img/apps/microsoft-powerpoint.png" alt="">PowerPoint</th></tr></thead>
         <tbody>
-          <tr><td>Cambiar el tema</td><td>Diapositiva → Cambiar tema. Se puede cambiar en cualquier momento, no solo al principio.</td><td>Diseño → elegís un tema de la galería.</td></tr>
+          <tr><td><svg class="tool-icon"><use href="#ti-styles"></use></svg>Cambiar el tema</td><td>Diapositiva → Cambiar tema. Se puede cambiar en cualquier momento, no solo al principio.</td><td>Diseño → elegís un tema de la galería.</td></tr>
           <tr><td>Insertar diapositiva</td><td>Ícono <strong>+</strong>, eligiendo un diseño o diapositiva en blanco.</td><td>Inicio → Nueva diapositiva, o Ctrl+M (Mac: ⌘+M).</td></tr>
           <tr><td>Duplicar / eliminar</td><td>Clic derecho sobre la miniatura → Duplicar diapositiva / Eliminar diapositiva.</td><td>Igual: clic derecho sobre la miniatura.</td></tr>
           <tr><td>Insertar elementos</td><td>Insertar → cuadro de texto, imagen, formas, líneas — para cuando ningún diseño predefinido alcanza.</td><td>Insertar → mismo menú, mismos elementos.</td></tr>
@@ -294,7 +301,7 @@
     </div>
 
     <h3>Transiciones y animaciones</h3>
-    <p>Una <strong>transición</strong> es el efecto de cambio entre dos diapositivas. Una <strong>animación</strong> es el efecto con el que aparece un objeto dentro de la misma diapositiva, con un disparador: al hacer clic, después de la anterior, o con la anterior. En Google Slides, ambas están en el menú Insertar → Transición / Animación; en PowerPoint, en las pestañas "Transiciones" y "Animaciones" de la cinta de opciones.</p>
+    <p>Una <strong>transición</strong> es el efecto de cambio entre dos diapositivas. Una <strong>animación</strong> es el efecto con el que aparece un objeto dentro de la misma diapositiva, con un disparador: al hacer clic, después de la anterior, o con la anterior. En Google Slides, ambas están en el menú Insertar → <svg class="tool-icon"><use href="#ti-transition"></use></svg>Transición / <svg class="tool-icon"><use href="#ti-animation"></use></svg>Animación; en PowerPoint, en las pestañas "Transiciones" y "Animaciones" de la cinta de opciones.</p>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
@@ -313,9 +320,9 @@
       </div>
       <div class="prose">
         <ol>
-          <li>En tu <code>Presentación Integradora - V01</code>, elegí un tema consistente con el contenido (tabla de arriba, según tu editor).</li>
-          <li>Aplicá la misma transición a todas las diapositivas.</li>
-          <li>En al menos 2 diapositivas, agregále una animación de aparición a un elemento (texto o imagen), con disparador "Al hacer clic".</li>
+          <li>En tu <code>Presentación Integradora - V01</code>, elegí un <svg class="tool-icon"><use href="#ti-styles"></use></svg>tema consistente con el contenido (tabla de arriba, según tu editor).</li>
+          <li>Aplicá la misma <svg class="tool-icon"><use href="#ti-transition"></use></svg>transición a todas las diapositivas.</li>
+          <li>En al menos 2 diapositivas, agregále una <svg class="tool-icon"><use href="#ti-animation"></use></svg>animación de aparición a un elemento (texto o imagen), con disparador "Al hacer clic".</li>
           <li>Insertá al menos 1 imagen relevante — podés reusar la del Trabajo Integrador.</li>
           <li>Repasá tu mazo completo contra la prueba del fondo del aula de la sección anterior.</li>
         </ol>
@@ -344,7 +351,7 @@
       </table>
     </div>
 
-    <p>En Google Slides: Archivo → Descargar → elegís el formato. En PowerPoint: Archivo → Exportar → Crear documento PDF/XPS (el <code>.pptx</code> ya es el archivo nativo, no hace falta descargarlo aparte).</p>
+    <p>En Google Slides: Archivo → <svg class="tool-icon"><use href="#ti-export"></use></svg>Descargar → elegís el formato. En PowerPoint: Archivo → Exportar → Crear documento PDF/XPS (el <code>.pptx</code> ya es el archivo nativo, no hace falta descargarlo aparte).</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -378,8 +385,8 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Si estás en Google Slides: Archivo → Descargar → Microsoft PowerPoint (<code>.pptx</code>). Guardalo en la subcarpeta "Clase 06". Si ya estás en PowerPoint, este paso ya está resuelto — guardá el archivo directamente ahí.</li>
-          <li>Generá el PDF: Archivo → Descargar → Documento PDF (<code>.pdf</code>) en Slides, o Archivo → Exportar → Crear documento PDF/XPS en PowerPoint. Mismo lugar.</li>
+          <li>Si estás en Google Slides: Archivo → <svg class="tool-icon"><use href="#ti-export"></use></svg>Descargar → Microsoft PowerPoint (<code>.pptx</code>). Guardalo en la subcarpeta "Clase 06". Si ya estás en PowerPoint, este paso ya está resuelto — guardá el archivo directamente ahí.</li>
+          <li>Generá el PDF: Archivo → <svg class="tool-icon"><use href="#ti-export"></use></svg>Descargar → Documento PDF (<code>.pdf</code>) en Slides, o Archivo → Exportar → Crear documento PDF/XPS en PowerPoint. Mismo lugar.</li>
           <li>Abrí el <code>.pptx</code> y confirmá que se ve razonablemente bien — las animaciones pueden no ser 100% idénticas entre Slides y PowerPoint, y es normal.</li>
           <li>Subí a la tarea de Moodle de la Clase 06: el <code>.pptx</code>, el PDF, y el link de tu Google Slides compartido si trabajaste ahí.</li>
         </ol>
@@ -445,7 +452,7 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">🤖 IA para el borrador (gratis)</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<code>gamma.app</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<a href="https://gamma.app" target="_blank" rel="noopener"><code>gamma.app</code></a>)</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini Notebook Studio</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini en Slides — requiere plan pago</span></div>
           </div>

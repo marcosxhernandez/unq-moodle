@@ -68,6 +68,12 @@
 <symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
 <symbol id="ti-preview" viewBox="0 0 24 24"><path d="M2.5 12 C5 7 9 5 12 5 C15 5 19 7 21.5 12 C19 17 15 19 12 19 C9 19 5 17 2.5 12 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
 <symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-new-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="9" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
 </defs></svg>
 
 <section class="cover-page" data-num="02">
@@ -549,99 +555,91 @@
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>
-    <div class="qr-row">
-      <div class="qr-row-label">Crear y editar</div>
+    
+    <div class="qr-row qr-t-blue">
+      <div class="qr-row-label">Búsqueda y validación</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🆕 Crear documento</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">Operadores de Google</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a> en la barra del navegador</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code> — frase exacta</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code> — excluye un término</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code> — dentro de un dominio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code> — por tipo de archivo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code> — rango de años</span></div>
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">✂️ Edición</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato, siempre que el texto venga de afuera</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>) — deshacer</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+X</code> / <code>Ctrl+C</code> / <code>Ctrl+V</code> — cortar/copiar/pegar dentro de tu propio documento</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="qr-row">
-      <div class="qr-row-label">Formato de texto</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Carácter</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+B</code> (Mac <code>⌘+B</code>) negrita</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+I</code> (Mac <code>⌘+I</code>) cursiva</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+U</code> (Mac <code>⌘+U</code>) subrayado</span></div>
-          </div>
-        </div>
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">↔️ Alineación</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+L</code> izquierda</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+E</code> centro</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+R</code> derecha</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+J</code> justificar</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="qr-row">
-      <div class="qr-row-label">IA y estructura</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🧩 RTCFL</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Método CRAAP</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc">Rol</span></div>
-            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc">Tarea</span></div>
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Contexto</span></div>
-            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc">Formato</span></div>
-            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc">Límites</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong> — ¿cuándo se publicó?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong> — ¿responde tu pregunta?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong> — ¿quién es el autor?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong> — ¿tiene fuentes?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong> — ¿informa, vende o persuade?</span></div>
+          </div>
+          <div class="qr-tip">Lectura lateral: abrí otra pestaña y verificá qué dicen otras fuentes independientes.</div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-violet">
+      <div class="qr-row-label">IA generativa</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">Fórmula RTCFL</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong> — "actuá como…"</span></div>
+            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong> — qué tiene que hacer</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — nivel, país, año</span></div>
+            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong> — cómo querés la respuesta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong> — ej. 300 palabras</span></div>
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🏗️ Estilos</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-chip"></use></svg></div><span class="qr-cell-title">Tipos de LLMs</span></div>
+          <div class="qr-mini-grid">
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">Occidentales</div>
+              <div class="qr-mini-items">ChatGPT · Gemini<br>Claude · Copilot</div>
+            </div>
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">Chinos</div>
+              <div class="qr-mini-items">DeepSeek · Qwen<br>Kimi</div>
+            </div>
+          </div>
+          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los occidentales; censura activa en temas políticos sensibles en los chinos — ninguno es neutral.</div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-celeste">
+      <div class="qr-row-label">Google Docs</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-new-doc"></use></svg></div><span class="qr-cell-title">Reglas de oro</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a> — lienzo en blanco al instante</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato, nunca directo de afuera</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) — comentario</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>) — deshacer</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-styles"></use></svg></div><span class="qr-cell-title">Estilos y estructura</span></div>
           <div class="qr-formula">
             <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code> — Encabezado 1</span></div>
             <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code> — Encabezado 2</span></div>
-            <div class="qr-frow"><span class="qr-fletter">3</span><span class="qr-fdesc"><code>Ctrl+Alt+3</code> — Encabezado 3</span></div>
             <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code> — Texto normal</span></div>
           </div>
-        </div>
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">📑 Índice</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Saltos → Salto de página (antes del índice)</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Elementos de página → Índice</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Índice: Insertar → Elementos de página → Índice</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Actualizar: clic en el índice → ícono actualizar</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Vacío = revisá que los títulos tengan estilo, no negrita + grande</span></div>
           </div>
+          <div class="qr-tip">Los estilos son lo único que genera el índice automático — nunca agrandes la letra a mano.</div>
         </div>
       </div>
     </div>
-    <div class="qr-row">
-      <div class="qr-row-label">Colaboración</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">💬 Comentarios</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) — insertar</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clic en el comentario → Responder / Resolver</span></div>
-          </div>
-        </div>
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">📜 Versiones y sugerencias</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Archivo → Historial de versiones → Ver historial</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Modo Sugerencias: ícono lápiz (arriba a la derecha) → Sugerencias</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    
 
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">

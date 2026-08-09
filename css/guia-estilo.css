@@ -1102,27 +1102,48 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
   .summary-group + .summary-group{ border-left:none; border-top:1px solid var(--line); }
 }
 
-/* ---------- Referencia rápida (reemplaza a .summary clase por clase) ----------
-   Calca la anatomía del machete de referencia (fila por tema, pestaña
-   vertical + celdas con ícono, ítems con punto e ítems en fórmula
-   letra+descripción), recoloreada al acento de la clase y tipografiada
-   en Inter — sin ícono aislado grande (ver manual raíz, sección 5). Cada
-   fila es su propia tarjeta (no un contenedor común); la pestaña dice el
-   TEMA, no el número de clase — el número ya está en el título de la
-   sección. Contenido: solo dato duro difícil de recordar de memoria
-   (URL exacta, orden de letras de una fórmula, sintaxis de operador,
-   código de licencia) — nada de convención de proceso ni distinción
-   conceptual ya cubierta en el glosario. .summary/.summary-group siguen
-   arriba para las clases que todavía no migraron a este componente. */
+/* ---------- Referencia rápida — machete acumulativo por programa (ago. 2026) ----------
+   Reemplaza al criterio anterior (una fila por tema de ESA clase, coloreada
+   al acento de la clase). Ahora la sección es un machete que se repite
+   completo en cada clase y va sumando filas/celdas a medida que avanza el
+   curso: en la última clase construida tienen que estar todos los
+   programas vistos hasta la fecha (Búsqueda, IA generativa, Google Docs,
+   Word, Presentaciones...). Cada fila es un PROGRAMA, no un tema puntual
+   de la clase actual — por eso el color de fila es fijo por programa
+   (.qr-t-*, custom properties --qr-c/--qr-tint/--qr-soft), nunca sigue
+   --acento: si siguiera al acento de la clase, la fila "Búsqueda" cambiaría
+   de color en cada clase y el estudiante no la reconocería de un vistazo
+   al hojear el machete completo. Sin tema (.qr-row sola) cae al acento de
+   la clase, por si hace falta una fila puntual sin programa fijo.
+   Ícono de celda: SVG de trazo simple (stroke=currentColor) dentro de un
+   badge de color sólido (.qr-cell-icon) — nunca un emoji nativo ahí: el
+   emoji a color entero sobre un badge sólido choca con el color de fondo
+   (ver CLAUDE.md raíz, sección 5); el SVG de un solo color no tiene ese
+   problema, por eso acá sí se usa badge (a diferencia del resto del
+   archivo, que sigue con emoji en línea sin fondo en .callout-label).
+   Contenido: solo dato duro difícil de recordar de memoria (URL exacta,
+   orden de letras de una fórmula, sintaxis de operador, ruta de menú,
+   atajo) — nada de convención de proceso ni distinción conceptual ya
+   cubierta en el glosario. */
 .qr-row{
+  --qr-c: var(--acento);
+  --qr-tint: var(--acento-tint);
+  --qr-soft: var(--acento-soft);
   display:flex;
   align-items:stretch;
   background:#fff;
-  border:1px solid var(--line);
+  border:1px solid var(--qr-soft);
   border-radius:var(--radius-lg);
   overflow:hidden;
   margin:0 0 12px;
 }
+
+/* Temas fijos por programa — independientes del acento de la clase actual */
+.qr-row.qr-t-blue{ --qr-c:var(--blue); --qr-tint:var(--blue-tint); --qr-soft:var(--blue-soft); }
+.qr-row.qr-t-violet{ --qr-c:var(--violet); --qr-tint:var(--violet-tint); --qr-soft:var(--violet-soft); }
+.qr-row.qr-t-celeste{ --qr-c:var(--celeste); --qr-tint:var(--celeste-tint); --qr-soft:var(--celeste-soft); }
+.qr-row.qr-t-celeste-deep{ --qr-c:var(--celeste-deep); --qr-tint:var(--celeste-tint); --qr-soft:var(--celeste-soft); }
+.qr-row.qr-t-amber{ --qr-c:var(--amber-clase); --qr-tint:var(--amber-clase-tint); --qr-soft:var(--amber-clase-soft); }
 
 .qr-row-label{
   writing-mode:vertical-rl;
@@ -1134,15 +1155,15 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
   flex-shrink:0;
   min-width:38px;
   padding:16px 10px;
-  background:var(--acento-tint);
-  color:var(--acento);
+  background:var(--qr-tint);
+  color:var(--qr-c);
   font-family:var(--sans);
   font-weight:600;
   font-size:.69rem;
   letter-spacing:.08em;
   text-transform:uppercase;
   text-align:center;
-  border-right:1px solid var(--acento-soft);
+  border-right:1px solid var(--qr-soft);
 }
 
 .qr-row-cols{
@@ -1156,19 +1177,28 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .qr-cell + .qr-cell{ border-left:1px solid var(--line); }
 
 .qr-cell-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
   padding-bottom:8px;
   margin-bottom:8px;
   border-bottom:1px solid var(--line);
 }
-/* Sin badge de color detrás del emoji: un ícono nativo a color entero
-   (🏫, 🔎...) sobre un cuadrado sólido del acento queda sucio — sus
-   propios colores pelean con el violeta. Se resuelve igual que
-   .callout-label en el resto del archivo: emoji en línea, sin fondo,
-   seguido del texto. */
-.qr-cell-title{
+
+.qr-cell-icon{
   display:flex;
   align-items:center;
-  gap:7px;
+  justify-content:center;
+  width:26px;
+  height:26px;
+  flex-shrink:0;
+  border-radius:7px;
+  background:var(--qr-c);
+  color:#fff;
+}
+.qr-cell-icon svg{ width:15px; height:15px; }
+
+.qr-cell-title{
   font-family:var(--sans);
   font-weight:700;
   font-size:.78rem;
@@ -1181,24 +1211,58 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .qr-dot{
   width:5px; height:5px; border-radius:50%;
   margin-top:6px; flex-shrink:0;
-  background:var(--acento);
+  background:var(--qr-c);
 }
 .qr-item-text{ font-size:.82rem; line-height:1.48; color:var(--ink-soft); }
 .qr-item-text code{ font-size:.9em; }
 
-.qr-formula{ display:flex; flex-direction:column; gap:5px; }
+.qr-formula{ display:flex; flex-direction:column; gap:5px; margin-bottom:6px; }
 .qr-frow{ display:flex; align-items:baseline; gap:9px; }
 .qr-fletter{
   font-family:var(--sans);
   font-weight:800;
   font-size:.82rem;
-  color:var(--acento);
+  color:var(--qr-c);
   width:1.4em;
   flex-shrink:0;
   line-height:1.6;
 }
 .qr-fdesc{ font-size:.82rem; line-height:1.5; color:var(--ink-soft); }
 .qr-fdesc strong{ color:var(--ink); font-weight:600; }
+
+/* Tip corto dentro de una celda: una línea de contexto para un dato duro,
+   no una explicación conceptual (esa va en el cuerpo o el glosario). */
+.qr-tip{
+  font-size:.78rem;
+  color:var(--ink-soft);
+  background:#f8f7f4;
+  border-left:3px solid var(--muted);
+  padding:5px 9px;
+  border-radius:0 6px 6px 0;
+  line-height:1.5;
+  margin-top:6px;
+}
+.qr-tip strong{ color:var(--ink); font-weight:600; }
+
+.qr-tip-amber{
+  font-size:.78rem;
+  color:var(--amber);
+  background:var(--amber-tint);
+  border-left:3px solid var(--amber);
+  padding:5px 9px;
+  border-radius:0 6px 6px 0;
+  line-height:1.5;
+  margin-top:6px;
+}
+.qr-tip-amber strong{ font-weight:600; }
+
+/* Mini-grilla de dos columnas dentro de una celda, para pares/categorías
+   corta (ej. LLMs occidentales vs. chinos) — solo cuando el contenido
+   tiene 2 grupos paralelos, no reemplaza a .qr-items de uso general. */
+.qr-mini-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px; }
+.qr-mini-card{ border-radius:7px; padding:7px 10px; background:var(--qr-tint); }
+.qr-mini-name{ font-size:.72rem; font-weight:700; color:var(--qr-c); margin-bottom:3px; }
+.qr-mini-items{ font-size:.72rem; color:var(--ink-soft); line-height:1.45; }
 
 @media (max-width:640px){
   .qr-row{ flex-direction:column; }
@@ -1209,10 +1273,11 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
     text-align:left;
     padding:8px 16px;
     border-right:none;
-    border-bottom:1px solid var(--acento-soft);
+    border-bottom:1px solid var(--qr-soft);
   }
   .qr-row-cols{ grid-template-columns:1fr; }
   .qr-cell + .qr-cell{ border-left:none; border-top:1px solid var(--line); }
+  .qr-mini-grid{ grid-template-columns:1fr; }
 }
 
 /* ---------- Check table (entrega de la clase) ---------- */
@@ -1499,6 +1564,19 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   object-fit:contain;
   vertical-align:-.22em;
   margin-right:.3em;
+}
+
+/* Ícono de app en tamaño "badge" (32px), para encabezados de tabla que
+   comparan aplicaciones — más grande que .app-icon (pensado para ir
+   suelto en prosa), a la escala de .llm-icon (Clase 01/02). */
+.app-icon-lg{
+  display:inline-block;
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  vertical-align:middle;
+  margin-right:8px;
+  border-radius:6px;
 }
 
 /* Ícono de app tipo "ícono de celular" dentro de una celda de tabla
@@ -2002,13 +2080,20 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   .qr-row{ margin:0 0 5pt; break-inside:avoid-page; }
   .qr-row-label{ min-width:15pt; padding:8pt 4pt; font-size:6.2pt; }
   .qr-cell{ padding:7pt 9pt 8pt; }
-  .qr-cell-head{ padding-bottom:4pt; margin-bottom:4pt; }
+  .qr-cell-head{ padding-bottom:4pt; margin-bottom:4pt; gap:5pt; }
+  .qr-cell-icon{ width:15pt; height:15pt; border-radius:4pt; }
+  .qr-cell-icon svg{ width:9pt; height:9pt; }
   .qr-cell-title{ font-size:7.4pt; gap:4pt; }
   .qr-items{ gap:2.5pt; }
   .qr-item-text{ font-size:7.4pt; line-height:1.35; }
-  .qr-formula{ gap:2.5pt; }
+  .qr-formula{ gap:2.5pt; margin-bottom:4pt; }
   .qr-fletter{ font-size:7.4pt; }
   .qr-fdesc{ font-size:7.4pt; }
+  .qr-tip, .qr-tip-amber{ font-size:6.8pt; padding:3pt 6pt; margin-top:4pt; }
+  .qr-mini-grid{ gap:4pt; margin-top:4pt; }
+  .qr-mini-card{ padding:4pt 6pt; }
+  .qr-mini-name{ font-size:6.6pt; margin-bottom:2pt; }
+  .qr-mini-items{ font-size:6.6pt; }
 
   .compare-panel{ margin:.9em 0 1.1em; padding:11pt 13pt; }
   .compare-panel .tool-group-divider{ margin:10pt 0; }

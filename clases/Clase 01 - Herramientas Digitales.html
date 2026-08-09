@@ -30,6 +30,13 @@
 </style>
 </head>
 <body>
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+</defs></svg>
+
 
 <section class="cover-page" data-num="01">
   <div class="cover-inner">
@@ -132,6 +139,7 @@
     <p>Ya sabés protegerte. Ahora sí, entremos al campus.</p>
 
     <h3>Entrar al campus</h3>
+    <img class="app-badge" src="../img/apps/campusuvq.png" alt="Ícono del campus virtual UVQ">
     <p>Todo lo que vas a leer, entregar y consultar en esta materia —y en toda la carrera— pasa por acá. No es opcional.</p>
     <p>Ya tenés usuario: te lo generaron cuando te inscribiste en la universidad. Andá a <a href="https://campus.uvq.edu.ar" target="_blank" rel="noopener"><code>campus.uvq.edu.ar</code></a>, iniciá sesión con tu usuario y contraseña, y buscá el aula de Informática. Ahí vas a encontrar la clase de hoy, los avisos del docente y el lugar donde subís tus entregas.</p>
 
@@ -822,29 +830,12 @@
 
     <h3 id="referencia-rapida">Referencia rápida</h3>
 
-    <div class="qr-row">
-      <div class="qr-row-label">Campus y Drive</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">🏫 Accesos</span>
-          </div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://campus.uvq.edu.ar" target="_blank" rel="noopener"><code>campus.uvq.edu.ar</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://qoodle.uvq.edu.ar" target="_blank" rel="noopener"><code>qoodle.uvq.edu.ar</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://drive.google.com" target="_blank" rel="noopener"><code>drive.google.com</code></a></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="qr-row">
+    
+    <div class="qr-row qr-t-blue">
       <div class="qr-row-label">Búsqueda y validación</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">🔎 Operadores de Google</span>
-          </div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">Operadores de Google</span></div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code> — frase exacta</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code> — excluye un término</span></div>
@@ -854,9 +845,7 @@
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">✅ CRAAP</span>
-          </div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Método CRAAP</span></div>
           <div class="qr-formula">
             <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong> — ¿cuándo se publicó?</span></div>
             <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong> — ¿responde tu pregunta?</span></div>
@@ -864,14 +853,15 @@
             <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong> — ¿tiene fuentes?</span></div>
             <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong> — ¿informa, vende o persuade?</span></div>
           </div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Lectura lateral — abrí otra pestaña y verificá qué dicen otras fuentes independientes sobre esta</span></div>
-          </div>
+          <div class="qr-tip">Lectura lateral: abrí otra pestaña y verificá qué dicen otras fuentes independientes.</div>
         </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-violet">
+      <div class="qr-row-label">IA generativa</div>
+      <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">🤖 RTCFL</span>
-          </div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">Fórmula RTCFL</span></div>
           <div class="qr-formula">
             <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong> — "actuá como…"</span></div>
             <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong> — qué tiene que hacer</span></div>
@@ -880,39 +870,24 @@
             <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong> — ej. 300 palabras</span></div>
           </div>
         </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-chip"></use></svg></div><span class="qr-cell-title">Tipos de LLMs</span></div>
+          <div class="qr-mini-grid">
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">Occidentales</div>
+              <div class="qr-mini-items">ChatGPT · Gemini<br>Claude · Copilot</div>
+            </div>
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">Chinos</div>
+              <div class="qr-mini-items">DeepSeek · Qwen<br>Kimi</div>
+            </div>
+          </div>
+          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los occidentales; censura activa en temas políticos sensibles en los chinos — ninguno es neutral.</div>
+        </div>
       </div>
     </div>
 
-    <div class="qr-row">
-      <div class="qr-row-label">IA y licencias</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">🧠 Modelos</span>
-          </div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://chatgpt.com" target="_blank" rel="noopener"><code>chatgpt.com</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://gemini.google.com" target="_blank" rel="noopener"><code>gemini.google.com</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://claude.ai" target="_blank" rel="noopener"><code>claude.ai</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://copilot.microsoft.com" target="_blank" rel="noopener"><code>copilot.microsoft.com</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://chat.deepseek.com" target="_blank" rel="noopener"><code>chat.deepseek.com</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://chat.qwen.ai" target="_blank" rel="noopener"><code>chat.qwen.ai</code></a></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://kimi.com" target="_blank" rel="noopener"><code>kimi.com</code></a></span></div>
-          </div>
-        </div>
-        <div class="qr-cell">
-          <div class="qr-cell-head">
-            <span class="qr-cell-title">©️ Creative Commons</span>
-          </div>
-          <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter"><code>BY</code></span><span class="qr-fdesc"><strong>Reconocimiento</strong> — citar autor (obligatoria en las 6)</span></div>
-            <div class="qr-frow"><span class="qr-fletter"><code>NC</code></span><span class="qr-fdesc"><strong>No Comercial</strong> — sin fines de lucro</span></div>
-            <div class="qr-frow"><span class="qr-fletter"><code>ND</code></span><span class="qr-fdesc"><strong>Sin Obra Derivada</strong> — no modificar</span></div>
-            <div class="qr-frow"><span class="qr-fletter"><code>SA</code></span><span class="qr-fdesc"><strong>Compartir Igual</strong> — misma licencia (no combina con ND)</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <h3 id="glosario">Glosario</h3>
 

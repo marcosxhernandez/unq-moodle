@@ -43,7 +43,7 @@ unq-moodle/
 ├── js/
 │   └── guia-print.js            ← Botón "Guardar PDF" (solo en clases/)
 ├── img/
-│   ├── marcos-hernandez.jpg     ← Foto del docente
+│   ├── marcos-hernandez.png     ← Foto del docente
 │   ├── apps/                    ← Íconos de herramientas
 │   └── ...                      ← Imágenes de clase
 ├── archivos/                    ← Datasets para descargar

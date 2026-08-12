@@ -1461,6 +1461,20 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   break-inside:avoid-page;
 }
 
+/* Eyebrow opcional arriba de un .code-block (ej. "Prompt de ejemplo") —
+   mismo criterio de .doc-mock-label: kicker chico y neutro, no compite
+   con el color de acento ni con la paleta fija de los callouts. */
+.code-block-label{
+  display:block;
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 .7em;
+}
+
 /* ---------- Documento del cliente (.brief) ----------
    Introducido jul. 2026 para las Guías Visuales con proyecto narrativo
    (08.1-11.1, Proyecto Andes Sur): reproduce el pedido tal como llega
@@ -2110,6 +2124,7 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   .activity-eyebrow{ padding:4px 9px; font-size:8pt; }
 
   .code-block{ margin:.9em 0 1.1em; padding:7pt 9pt; font-size:8.4pt; line-height:1.4; border-radius:5px; }
+  .code-block-label{ font-size:6.8pt; margin-bottom:5pt; }
 
   .brief{ margin:1.1em 0 1.2em; padding:10pt 12pt 11pt; border-radius:5px; }
   .brief-kind{ font-size:7.4pt; margin-bottom:6pt; }

@@ -1655,6 +1655,55 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   border-radius:var(--radius-sm);
 }
 
+/* Mockup de "hoja de documento" — para mostrar cómo se ve un entregable ya
+   resuelto (ej. un Google Doc), sin ser una captura de pantalla real. Fondo
+   blanco + sombra sutil imitan una hoja apoyada sobre la página; el borde
+   fino queda como respaldo si la sombra no llega a imprimirse. La nota al
+   pie (.doc-mock-note) va FUERA de .doc-mock-page a propósito: adentro solo
+   va lo que estaría en el documento real, la aclaración es para quien lee
+   la Guía, no para quien copia el formato. */
+.doc-mock{ margin:1.5em 0 1.6em; }
+
+.doc-mock-label{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 .7em;
+}
+
+.doc-mock-page{
+  background:var(--paper);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius-sm);
+  box-shadow:0 2px 3px rgba(21,20,27,.06), 0 10px 24px rgba(21,20,27,.10);
+  padding:1.9em 2.1em;
+}
+
+.doc-mock-title{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--ink);
+  margin:0 0 1em;
+  padding-bottom:.6em;
+  border-bottom:1px solid var(--line);
+}
+
+.doc-mock-page p{ margin:0 0 .85em; }
+.doc-mock-page p:last-child{ margin-bottom:0; }
+.doc-mock-page ul{ margin:0 0 1.05em; padding-left:1.25em; }
+.doc-mock-page ul:last-child{ margin-bottom:0; }
+.doc-mock-page li{ margin:0 0 .32em; }
+
+.doc-mock-note{
+  font-size:.86em;
+  color:var(--ink-soft);
+  margin:1em 0 0;
+}
+
 .tool-groups{
   display:flex;
   flex-wrap:wrap;
@@ -2116,6 +2165,15 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   .screenshot{ max-width:118mm; margin:.4em auto 0; }
   .screenshot-caption{ max-width:118mm; margin:5pt auto .9em; font-size:8.2pt; }
   .diagram{ max-width:62mm; margin:.7em auto 0; }
+
+  .doc-mock{ margin:12pt 0 13pt; }
+  .doc-mock-label{ font-size:6.8pt; margin-bottom:5pt; }
+  .doc-mock-page{ padding:12pt 14pt; box-shadow:0 1pt 2pt rgba(21,20,27,.06), 0 6pt 14pt rgba(21,20,27,.10); }
+  .doc-mock-title{ font-size:9.4pt; margin-bottom:8pt; padding-bottom:5pt; }
+  .doc-mock-page p{ margin-bottom:6.5pt; }
+  .doc-mock-page ul{ margin-bottom:8pt; padding-left:11pt; }
+  .doc-mock-page li{ margin-bottom:2.5pt; }
+  .doc-mock-note{ font-size:8pt; margin-top:7pt; }
 
   footer.colophon{ padding:16pt 0 0; }
   footer.colophon .colophon-license{ font-size:7.6pt; max-width:120mm; margin-top:6pt; }

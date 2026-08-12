@@ -1461,18 +1461,65 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   break-inside:avoid-page;
 }
 
-/* Eyebrow opcional arriba de un .code-block (ej. "Prompt de ejemplo") —
-   mismo criterio de .doc-mock-label: kicker chico y neutro, no compite
-   con el color de acento ni con la paleta fija de los callouts. */
-.code-block-label{
-  display:block;
+/* ---------- Prompt de ejemplo (.prompt-block) ----------
+   Distinto de .code-block a propósito: un prompt para pegar en un chat de
+   IA no es sintaxis de función. Cabecera integrada en la misma caja (no
+   un label suelto arriba — eso es lo que se pegaba al texto del <li> que
+   lo precede) y borde del --acento de la clase en vez de gris neutro, así
+   no se confunde con un callout de la paleta fija (2.1) ni con un bloque
+   de código genérico. .prompt-var resalta los placeholders entre
+   corchetes que el estudiante tiene que reemplazar. Ago. 2026. */
+.prompt-block{
+  margin:1.3em 0 1.6em;
+  border:1.5px solid var(--acento-soft);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  break-inside:avoid-page;
+}
+
+.prompt-block-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:.55em 1em;
+  background:var(--acento-tint);
+  border-bottom:1.5px solid var(--acento-soft);
+}
+
+.prompt-block-bar .tool-icon{
+  width:15px;
+  height:15px;
+  margin-right:0;
+  color:var(--acento-deep);
+}
+
+.prompt-block-bar span{
   font-family:var(--sans);
   font-weight:700;
-  font-size:.8rem;
-  letter-spacing:.06em;
+  font-size:.74rem;
+  letter-spacing:.08em;
   text-transform:uppercase;
-  color:var(--muted);
-  margin:0 0 .7em;
+  color:var(--acento-deep);
+}
+
+.prompt-block-body{
+  margin:0;
+  padding:1.05em 1.25em;
+  background:var(--paper);
+  font-family:'SF Mono', Menlo, Consolas, monospace;
+  font-size:.86em;
+  line-height:1.65;
+  color:var(--ink);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.prompt-var{
+  color:var(--acento-deep);
+  font-weight:700;
+  background:var(--acento-tint);
+  padding:.05em .3em;
+  border-radius:3px;
 }
 
 /* ---------- Documento del cliente (.brief) ----------
@@ -2124,7 +2171,12 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   .activity-eyebrow{ padding:4px 9px; font-size:8pt; }
 
   .code-block{ margin:.9em 0 1.1em; padding:7pt 9pt; font-size:8.4pt; line-height:1.4; border-radius:5px; }
-  .code-block-label{ font-size:6.8pt; margin-bottom:5pt; }
+  .prompt-block{ margin:.9em 0 1.1em; border-radius:5px; }
+  .prompt-block-bar{ padding:5pt 8pt; gap:5pt; }
+  .prompt-block-bar .tool-icon{ width:9pt; height:9pt; }
+  .prompt-block-bar span{ font-size:6.6pt; }
+  .prompt-block-body{ padding:8pt 10pt; font-size:8.2pt; line-height:1.42; }
+  .prompt-var{ padding:.03em .22em; }
 
   .brief{ margin:1.1em 0 1.2em; padding:10pt 12pt 11pt; border-radius:5px; }
   .brief-kind{ font-size:7.4pt; margin-bottom:6pt; }

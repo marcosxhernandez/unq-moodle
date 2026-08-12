@@ -1679,24 +1679,29 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   border:1px solid var(--line-strong);
   border-radius:var(--radius-sm);
   box-shadow:0 2px 3px rgba(21,20,27,.06), 0 10px 24px rgba(21,20,27,.10);
-  padding:1.9em 2.1em;
+  padding:1.7em 1.9em;
+  /* Más chica y con interlineado normal a propósito — la separa del cuerpo
+     del texto (17.5px/1.68), que es ancho porque está pensado para leer
+     párrafos largos. Acá adentro es una hoja simulada, no lectura corrida. */
+  font-size:.82em;
+  line-height:1.48;
 }
 
 .doc-mock-title{
   font-family:var(--sans);
   font-weight:700;
-  font-size:1.05rem;
+  font-size:1.18em;
   color:var(--ink);
-  margin:0 0 1em;
-  padding-bottom:.6em;
+  margin:0 0 .9em;
+  padding-bottom:.55em;
   border-bottom:1px solid var(--line);
 }
 
-.doc-mock-page p{ margin:0 0 .85em; }
+.doc-mock-page p{ margin:0 0 .7em; }
 .doc-mock-page p:last-child{ margin-bottom:0; }
-.doc-mock-page ul{ margin:0 0 1.05em; padding-left:1.25em; }
+.doc-mock-page ul{ margin:0 0 .85em; padding-left:1.25em; }
 .doc-mock-page ul:last-child{ margin-bottom:0; }
-.doc-mock-page li{ margin:0 0 .32em; }
+.doc-mock-page li{ margin:0 0 .3em; }
 
 .doc-mock-note{
   font-size:.86em;
@@ -2168,11 +2173,16 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 
   .doc-mock{ margin:12pt 0 13pt; }
   .doc-mock-label{ font-size:6.8pt; margin-bottom:5pt; }
-  .doc-mock-page{ padding:12pt 14pt; box-shadow:0 1pt 2pt rgba(21,20,27,.06), 0 6pt 14pt rgba(21,20,27,.10); }
-  .doc-mock-title{ font-size:9.4pt; margin-bottom:8pt; padding-bottom:5pt; }
-  .doc-mock-page p{ margin-bottom:6.5pt; }
-  .doc-mock-page ul{ margin-bottom:8pt; padding-left:11pt; }
-  .doc-mock-page li{ margin-bottom:2.5pt; }
+  .doc-mock-page{
+    padding:11pt 13pt;
+    box-shadow:0 1pt 2pt rgba(21,20,27,.06), 0 6pt 14pt rgba(21,20,27,.10);
+    font-size:8.2pt;
+    line-height:1.32;
+  }
+  .doc-mock-title{ font-size:9.4pt; margin-bottom:7pt; padding-bottom:4.5pt; }
+  .doc-mock-page p{ margin-bottom:5.5pt; }
+  .doc-mock-page ul{ margin-bottom:7pt; padding-left:10pt; }
+  .doc-mock-page li{ margin-bottom:2.2pt; }
   .doc-mock-note{ font-size:8pt; margin-top:7pt; }
 
   footer.colophon{ padding:16pt 0 0; }

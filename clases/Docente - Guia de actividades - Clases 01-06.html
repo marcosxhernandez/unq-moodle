@@ -33,7 +33,6 @@
   }
   .clase {
     margin-top: 18px;
-    break-inside: avoid-page;
   }
   .clase-header {
     display: flex;
@@ -41,7 +40,7 @@
     gap: 8px;
     border-bottom: 2px solid #222;
     padding-bottom: 3px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .clase-num {
     font-size: 15px;
@@ -60,52 +59,139 @@
     background: #fdf1f2;
     border-left: 3px solid #8a1130;
     padding: 4px 8px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 4px;
-  }
-  th, td {
+  .act-card {
     border: 1px solid #ccc;
-    padding: 4px 6px;
-    text-align: left;
-    vertical-align: top;
+    border-radius: 5px;
+    padding: 7px 10px 6px;
+    margin-bottom: 8px;
+    break-inside: avoid-page;
   }
-  th {
-    background: #eee;
-    font-size: 9.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+  .act-card-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 3px;
   }
-  td.num {
-    width: 3%;
+  .act-num {
+    font-size: 10.5px;
     font-weight: 700;
+    color: #fff;
+    background: #555;
+    padding: 0px 6px;
+    border-radius: 3px;
+    min-width: 8px;
     text-align: center;
   }
-  td.act {
-    width: 20%;
-    font-weight: 600;
+  .act-name {
+    font-size: 11px;
+    font-weight: 700;
+    flex: 1;
   }
-  td.entregable {
-    width: 37%;
+  .act-badge-extra {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #8a5a00;
+    background: #fdf0d5;
+    border: 1px solid #e0b869;
+    padding: 1px 5px;
+    border-radius: 3px;
   }
-  td.insumos {
-    width: 30%;
+  .act-icons {
+    display: flex;
+    align-items: center;
+    gap: 3px;
   }
-  td.tiempo {
-    width: 10%;
-    text-align: center;
+  .act-icons img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    border-radius: 4px;
+    vertical-align: middle;
+    border: 1px solid #e2e2e6;
+    background: #fff;
+  }
+  .act-tiempo {
+    font-size: 9.5px;
+    font-weight: 700;
+    background: #eee;
+    padding: 1px 7px;
+    border-radius: 3px;
     white-space: nowrap;
-    font-weight: 600;
+  }
+  .act-steps {
+    font-size: 9.7px;
+  }
+  .act-steps p {
+    margin: 0 0 4px 0;
+  }
+  .act-steps ol {
+    margin: 0 0 4px 0;
+    padding-left: 17px;
+  }
+  .act-steps li {
+    margin-bottom: 2.5px;
+  }
+  .act-steps code {
+    background: #f0f0f0;
+    padding: 0 3px;
+    border-radius: 2px;
+    font-family: "Consolas", "SF Mono", monospace;
+    font-size: 9.2px;
+  }
+  .act-steps a { color: #1a1a1a; }
+  .prompt-block {
+    margin: 3px 0 3px 0;
+    border: 1px solid #c9bce8;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f7f5fc;
+  }
+  .prompt-block-bar {
+    background: #6b4fa0;
+    color: #fff;
+    font-size: 8.3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 6px;
+  }
+  .prompt-block-body {
+    padding: 4px 7px;
+    font-size: 9.2px;
+    font-style: italic;
+  }
+  .prompt-var {
+    color: #6b4fa0;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .act-campus {
+    font-size: 9px;
+    font-weight: 700;
+    color: #1a5c2e;
+    background: #eef7ef;
+    border-left: 3px solid #2f8a4c;
+    padding: 2px 6px;
+    margin: 3px 0;
+  }
+  .act-meta {
+    font-size: 8.8px;
+    color: #555;
+    border-top: 1px dashed #ccc;
+    padding-top: 3px;
+    margin: 3px 0 0 0;
   }
   .extra {
     font-size: 9.5px;
     color: #333;
     background: #f4f3f6;
     padding: 4px 8px;
-    margin-top: 2px;
+    margin-top: 4px;
   }
   .extra b { color: #000; }
   .notas-finales {
@@ -125,7 +211,7 @@
   .notas-finales li { margin-bottom: 3px; }
   @media print {
     body { padding: 0; font-size: 9.5px; }
-    .clase { break-inside: avoid-page; }
+    .act-card { break-inside: avoid-page; }
   }
 </style>
 </head>
@@ -133,20 +219,103 @@
 
 <h1>Guía de actividades — versión docente</h1>
 <p class="subtitle">Clases 01 a 06 · Informática, UNQ 2026</p>
-<p class="note">Referencia visual resumida, sin explicación conceptual: qué actividad es, qué entrega el alumno, qué necesita tener listo el docente antes de la clase, y una duración aproximada (estimada — no figura en la fuente, ajustar con la experiencia real de dictado).</p>
+<p class="note">Cada actividad incluye la consigna completa, paso a paso, tal como la recibe el alumno en la Guía Visual — así, cuando alguien dice "me trabé en el punto 3 de la Actividad 2", queda claro a qué instrucción exacta se refiere. Al lado del tiempo estimado, los íconos de las apps que se usan en esa actividad. Debajo de cada una: qué tiene que tener listo el docente antes de la clase (insumos) y qué se sube al campus (si corresponde). Los tiempos son estimados — no figuran en la fuente, ajustar con la experiencia real de dictado.</p>
 
 <div class="clase">
   <div class="clase-header">
     <span class="clase-num">01</span>
     <span class="clase-title">Herramientas digitales: internet, nube e IA</span>
   </div>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">1</td><td class="act">Tu espacio de trabajo digital</td><td class="entregable">Carpeta "Informática - UNQ" compartida como Editor + subcarpeta "Clase 01". <b>Entregable 1 (campus): link de la carpeta.</b></td><td class="insumos">Mail para compartir: <code>unqarchivos@gmail.com</code>. Tarea creada en el campus para el link.</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">2</td><td class="act">Tu primer trabajo de investigación</td><td class="entregable"><code>Actividad 2 - V01</code> (Clase 01): tema, búsquedas con operadores, CRAAP a 3 fuentes, imagen con licencia CC.</td><td class="insumos">Ninguno adicional — usan Google y Google Imágenes.</td><td class="tiempo">25 min</td></tr>
-    <tr><td class="num">3</td><td class="act">Verificar lo que genera la IA</td><td class="entregable">Prompt RTCFL + tabla de verificación en <code>Actividad 2 - V01</code>; <code>Texto IA - V01</code> pegado sin formato.</td><td class="insumos">Acceso a un LLM (ChatGPT / Gemini / Claude / DeepSeek, etc.).</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">4</td><td class="act">Tu perfil de LinkedIn</td><td class="entregable">Perfil completo (foto, titular, educación UNQ, 3+ habilidades), 2+ conexiones, sigue a la UNQ. URL en el doc de la Actividad 3. <b>Entregable 2 (campus): URL del perfil.</b></td><td class="insumos">—</td><td class="tiempo">20 min</td></tr>
-  </table>
+  
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">Tu espacio de trabajo digital</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Drive.png" alt="Google Drive" title="Google Drive"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Creá la carpeta "Informática - UNQ" en Drive.</li>
+<li>Adentro, creá la subcarpeta "Clase 01". A partir de hoy cada clase va a tener la suya — es la diferencia entre encontrar un archivo en 5 segundos o no encontrarlo nunca.</li>
+<li>Compartí la carpeta "Informática - UNQ" (no la subcarpeta) con el docente: clic derecho sobre la carpeta → <strong>Compartir</strong> → escribí <code>unqarchivos@gmail.com</code> → elegí el rol <strong>Editor</strong> → <strong>Enviar</strong>. Fijate que también existe el modo <strong>Comentar</strong>: no modifica el documento, solo permite sugerir cambios — sirve para trabajo colaborativo sin alterar el original.</li>
+</ol>
+    </div>
+    <div class="act-campus">📤 Entregable 1 (campus): link de la carpeta.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Mail para compartir: <code>unqarchivos@gmail.com</code>. Tarea creada en el campus para el link.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">Tu primer trabajo de investigación</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Google.png" alt="Google" title="Google"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">25 min</span>
+    </div>
+    <div class="act-steps">
+      <p>Esta es tu primera investigación de la carrera — chica, pero real. El tema que elijas es solo la excusa para usar las herramientas de hoy; lo que importa es que al final puedas mostrar el recorrido completo: de dónde partiste, qué hiciste con eso, y a qué llegaste.</p>
+<ol>
+<li>Elegí un tema de tu carrera y buscalo en Google sin operadores.</li>
+<li>Repetí la búsqueda con al menos 2 operadores (<code>site:</code>, <code>filetype:</code>, comillas, etc.) y compará los resultados.</li>
+<li>Aplicá CRAAP a los primeros 3 resultados de tu mejor búsqueda.</li>
+<li>Documentá el proceso en un Documento de Google nuevo, dentro de tu subcarpeta "Clase 01": <code>Actividad 2 - V01</code>.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional — usan Google y Google Imágenes.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Verificar lo que genera la IA</span>
+      
+      <span class="act-icons"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"><img src="../img/apps/Anthropic%20-%20Claude.png" alt="Claude" title="Claude"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <p>Retomá el tema que investigaste en la Actividad 2.</p>
+<ol>
+<li>En el mismo documento (<code>Actividad 2 - V01</code>), construí un prompt RTCFL sobre ese tema.</li>
+<li>Copiá el siguiente prompt (tu docente puede haberlo ajustado) y pegaselo a la IA en el mismo chat que usaste antes:
+            <div class="prompt-block">
+<div class="prompt-block-bar"><span>Prompt de ejemplo</span></div>
+<div class="prompt-block-body">Actuá como investigador académico especializado en <span class="prompt-var">[tu carrera]</span>. Explicame <span class="prompt-var">[el tema que investigaste antes]</span> para un estudiante de primer año de la UNQ, Argentina, 2026. Estructurá la respuesta en una introducción breve, tres subtítulos con los puntos clave y una conclusión. Máximo 300 palabras. Citá al menos 3 fuentes académicas reales posteriores a 2020.</div>
+</div>
+</li>
+<li>Anotá las fuentes que da la IA. Verificá cada una en Scholar o Redalyc.</li>
+<li>Elegí una afirmación del texto generado (que no sea una fuente) y verificá si es correcta.</li>
+<li>Completá la tabla de verificación en tu documento.</li>
+<li>Archivo → Historial de versiones → Nombrar versión → "Versión con IA". Así queda marcado el punto exacto en el que el documento pasó de tu investigación a incluir contenido generado por IA — podés volver a esa versión cuando quieras.</li>
+<li>Creá un Google Doc nuevo dentro de tu subcarpeta "Clase 01": <code>Texto IA - V01</code></li>
+<li>Pegá ahí la respuesta completa de la IA con <strong>pegado sin formato</strong> (<code>Ctrl+Shift+V</code>, Mac: <code>⌘+Shift+V</code>) — así el texto entra limpio, sin estilos escondidos.</li>
+<li>Guardalo en tu carpeta de Drive.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a un LLM (ChatGPT / Gemini / Claude / DeepSeek, etc.).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">4</span>
+      <span class="act-name">Tu perfil de LinkedIn</span>
+      
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="LinkedIn" title="LinkedIn"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Ingresá a linkedin.com. Si ya tenés cuenta, abrila. Si no, creá una.</li>
+<li>Completá: foto, titular, educación (UNQ + carrera) y al menos 3 habilidades.</li>
+<li>Conectá con al menos 2 compañeros de clase.</li>
+<li>Seguí a la Universidad Nacional de Quilmes en LinkedIn.</li>
+<li>Copiá la URL de tu perfil al final de <code>Actividad 2 - V01</code> (tu documento de investigación de la Actividad 2).</li>
+</ol>
+    </div>
+    <div class="act-campus">📤 Entregable 2 (campus): URL del perfil.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
   <p class="extra"><b>Checklist adicional (no numerado, igual obligatorio):</b> entrar a <code>campus.uvq.edu.ar</code>, instalar la app Moodle y activar notificaciones, activar verificación en dos pasos en Google.</p>
 </div>
 
@@ -155,15 +324,140 @@
     <span class="clase-num">02</span>
     <span class="clase-title">Arquitectura del documento profesional</span>
   </div>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">1</td><td class="act">Preparar el archivo y generar el contenido</td><td class="entregable"><code>Documento Base - V01</code> (nuevo, creado directo en subcarpeta "Clase 02", sobre el mismo tema de <code>Texto IA - V01</code> de la Clase 01); panel de navegación activado (vacío todavía); texto ampliado generado con LLM (prompt RTCFL, mismo tema) con una afirmación verificada — copiado pero sin pegar aún.</td><td class="insumos">Acceso a un LLM.</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">2</td><td class="act">Pegar el contenido en tu documento</td><td class="entregable">Texto pegado con <code>Ctrl+Shift+V</code> (sin formato) en <code>Documento Base - V01</code>.</td><td class="insumos">—</td><td class="tiempo">10 min</td></tr>
-    <tr><td class="num">3</td><td class="act">Formato manual en tu documento</td><td class="entregable">Mismo doc: un párrafo justificado, un término en negrita, una palabra/título en cursiva, una oración cortada con <code>Ctrl+X</code> y repegada en otro lugar, una imagen insertada en el cuerpo.</td><td class="insumos">—</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">4</td><td class="act">Aplicar estilos y generar el índice</td><td class="entregable">Título + Encabezado 1/2 + Texto normal aplicados (panel de navegación con la estructura visible); salto de página + índice automático insertados, con 3+ entradas y páginas correctas.</td><td class="insumos">—</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">5</td><td class="act">Comentarios en tu propio documento</td><td class="entregable">2+ comentarios propios con <code>Ctrl+Alt+M</code> (uno respondido, uno resuelto); historial de versiones revisado, con "Entrega Clase 02" nombrada.</td><td class="insumos">—</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">6</td><td class="act">Extra, para hacer en tu casa — Formato a mano, con medidas exactas</td><td class="entregable">Documento nuevo <code>Práctica de formato - Clase 02</code> (no se entrega): título centrado, Arial 18, negrita; negrita + cursiva + subrayado en el cuerpo; párrafos justificados; sangría de primera línea 1,25 cm exacta (por diálogo, no a ojo); nombre en cursiva alineado a la derecha.</td><td class="insumos">— (actividad marcada "Extra")</td><td class="tiempo">15 min</td></tr>
-  </table>
+  
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">Preparar el archivo y generar el contenido</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí Drive → carpeta "Informática - UNQ" → creá la subcarpeta "Clase 02" (si todavía no existe) → adentro, creá un Google Doc nuevo: <code>Documento Base - V01</code>.</li>
+<li>Activá el panel de navegación: Ver → Mostrar esquema del documento. Está vacío — el documento recién empieza, todavía sin contenido ni estructura. Se los vas a dar más adelante en esta clase.</li>
+<li>Abrí el LLM que usaste en la Clase 01 (o el que prefieras) en otra pestaña del navegador.</li>
+<li>Construí el prompt usando RTCFL, sobre el mismo tema de <code>Texto IA - V01</code> (tu documento de la Clase 01): pedile una versión ampliada, con introducción y tres secciones con subtítulos.</li>
+<li>Copiá todo el texto nuevo que te devolvió el LLM.</li>
+<li>Todavía no lo pegues en Docs — primero leé el próximo bloque.</li>
+<li>Verificá al menos una afirmación del texto con CRAAP o una búsqueda en Google Scholar.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a un LLM.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">Pegar el contenido en tu documento</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">10 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Volvé a la pestaña de Docs. El documento se llama <code>Documento Base - V01</code> y está en la subcarpeta "Clase 02".</li>
+<li>Posicioná el cursor al inicio del documento.</li>
+<li>Pegá con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>) — NO con Ctrl+V. El texto aparece sin formato extraño.</li>
+<li>Compará: probá deshacer (<code>Ctrl+Z</code>, Mac: <code>⌘+Z</code>), pegá con Ctrl+V, observá la diferencia. Luego deshacé y usá Ctrl+Shift+V.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Formato manual en tu documento</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>En <code>Documento Base - V01</code>, elegí un párrafo del cuerpo del texto y justificalo (<code>Ctrl+Shift+J</code>).</li>
+<li>Ponéle negrita a un término clave del texto, y cursiva a una palabra en otro idioma o un título de obra, si hay alguno.</li>
+<li>Seleccioná una oración completa, cortala con <code>Ctrl+X</code> y pegala en otro lugar del mismo párrafo donde tenga más sentido — comprobá que el formato viajó con ella.</li>
+<li>Buscá una imagen relacionada con tu tema, filtrada por licencia Creative Commons (Google Imágenes: Herramientas → Derechos de uso → Con licencia Creative Commons, o en <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a>). Anotá qué licencia tiene. Insertala en el cuerpo del texto (Insertar → Imagen → Subir o Buscar en la Web).</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">4</span>
+      <span class="act-name">Aplicar estilos y generar el índice</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Identificá en el texto: ¿cuál es el título del documento? ¿Cuáles son las secciones principales? ¿Cuáles las subsecciones?</li>
+<li>Aplicá Título del documento al nombre del trabajo.</li>
+<li>Aplicá Encabezado 1 a cada sección principal.</li>
+<li>Aplicá Encabezado 2 a cada subsección (si las hay).</li>
+<li>Aplicá Texto normal a todo el cuerpo del texto.</li>
+<li>Elegí un título con Encabezado 1, cambiale la fuente o el color a mano y actualizá el estilo ("Actualizar 'Encabezado 1' para que coincida") para que el cambio se aplique a todos los títulos de ese nivel.</li>
+<li>Verificá en el panel de navegación que la estructura se vea correctamente. Si está vacío, volvé al paso anterior.</li>
+<li>Posicioná el cursor al inicio del documento (<code>Ctrl+Home</code>, Mac: <code>⌘+Flecha arriba</code>).</li>
+<li>Insertar → Saltos → Salto de página.</li>
+<li>Con el cursor en la página nueva: Insertar → Elementos de página → Índice.</li>
+<li>Verificá que el índice tenga al menos 3 entradas con números de página.</li>
+<li>Si está vacío: revisá los pasos anteriores y confirmá que los estilos quedaron bien aplicados.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">5</span>
+      <span class="act-name">Comentarios en tu propio documento</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Leé el texto que generaste.</li>
+<li>Buscá al menos 2 lugares que podrías mejorar o que te generan dudas.</li>
+<li>Seleccioná el primer fragmento → <code>Ctrl+Alt+M</code> (Mac: <code>⌘+Opción+M</code>) → escribí una nota de revisión para vos mismo.</li>
+<li>Hacé lo mismo con el segundo fragmento.</li>
+<li>Respondé uno de tus propios comentarios con lo que encontraste o decidiste.</li>
+<li>Resolvé ese comentario haciendo clic en "Resolver".</li>
+<li>Archivo → Historial de versiones → Ver historial. Observá que cada cambio quedó registrado.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">6</span>
+      <span class="act-name">Formato a mano, con medidas exactas</span>
+      <span class="act-badge-extra">EXTRA</span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <p>No se entrega — es para fijar la mecánica de formato manual de "Formato de texto: la barra de herramientas", con medidas exactas en vez de "a ojo". Es el tipo de ejercicio que te puede tocar en un examen sin IA al lado.</p>
+<ol>
+<li>Abrí un documento nuevo de Google Docs (no el <code>Documento Base - V01</code>) y escribí, de tu puño y letra, dos párrafos cortos sobre cualquier tema que te guste.</li>
+<li>Escribí un título arriba de todo. Centralo (<code>Ctrl+Shift+E</code>) y aplicale fuente Arial, tamaño 18 y negrita.</li>
+<li>En el cuerpo, marcá una palabra clave en negrita (<code>Ctrl+B</code>), otra en cursiva (<code>Ctrl+I</code>) y una frase corta en subrayado (<code>Ctrl+U</code>).</li>
+<li>Justificá los dos párrafos (<code>Ctrl+Shift+J</code>).</li>
+<li>Desde <strong>Formato → Alinear y sangría → Opciones de sangría → Sangría especial → Primera línea</strong>, aplicale exactamente 1,25 cm a cada párrafo — no lo hagas a ojo con la tecla Tab.</li>
+<li>Al final, escribí tu nombre, aplicale cursiva y alinealo a la derecha (<code>Ctrl+Shift+R</code>).</li>
+<li>Guardalo como <code>Práctica de formato - Clase 02</code>. No hace falta compartirlo ni subirlo a ningún lado.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> — (actividad marcada "Extra")</p>
+  </div>
   <p class="extra"><b>Sin link nuevo al campus:</b> se revisa directo en la carpeta ya compartida. La Actividad 6 es extra y no se entrega.</p>
 </div>
 
@@ -172,13 +466,89 @@
     <span class="clase-num">03</span>
     <span class="clase-title">IA como asistente académico</span>
   </div>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">1</td><td class="act">Perplexity en acción</td><td class="entregable">Sección nueva "Fuentes y Citas" (Encabezado 1) en <code>Documento Base - V01</code> (Clase 02): 2 fuentes verificadas con CRAAP vía Perplexity. Índice de la Clase 02 actualizado.</td><td class="insumos">Acceso a <code>perplexity.ai</code> (gratis).</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">2</td><td class="act">APA en tu documento</td><td class="entregable">Subtítulo "Bibliografía" (Encabezado 2): 2 citas en el texto (Apellido, año), bibliografía APA, 1 nota al pie.</td><td class="insumos">—</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">3</td><td class="act">Tu cuaderno en Gemini Notebook</td><td class="entregable">2 ideas nuevas extraídas de Gemini Notebook con cita en el texto; Resumen de Audio escuchado (2 min).</td><td class="insumos">Acceso a <code>notebook.google.com</code> (cuenta Google).</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">4</td><td class="act">Justificar tu elección de herramienta</td><td class="entregable">Párrafo breve en <code>Documento Base - V01</code> justificando qué IA usarían para investigar, con un dato del Arena Leaderboard.</td><td class="insumos">Acceso a <code>arena.ai/leaderboard</code> (gratis, sin cuenta).</td><td class="tiempo">20 min</td></tr>
-  </table>
+  
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">Perplexity en acción</span>
+      
+      <span class="act-icons"><img src="../img/apps/Perplexity%20-%20Perplexity.png" alt="Perplexity" title="Perplexity"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>perplexity.ai</code> en una pestaña nueva.</li>
+<li>Construí un prompt RTCFL sobre tu tema (el mismo de tu Documento Base). Pedile 3 fuentes con resumen.</li>
+<li>Evaluá las 3 fuentes con CRAAP. Anotá qué criterio usaste para cada una.</li>
+<li>Hacé clic en al menos 2 números de cita y verificá que la fuente exista y diga lo que Perplexity afirma.</li>
+<li>Abrí <code>Documento Base - V01</code> (subcarpeta "Clase 02") y posicioná el cursor al final del documento, después de todo el contenido que ya tenías.</li>
+<li>Escribí "Fuentes y Citas" y aplicá Encabezado 1. Debajo, copiá las 2 fuentes verificadas con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>).</li>
+<li>Volvé al índice que insertaste en la Clase 02 (primera página) → clic en el ícono de actualizar. "Fuentes y Citas" tiene que aparecer como entrada nueva, sin escribirla a mano.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a <code>perplexity.ai</code> (gratis).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">APA en tu documento</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Tomá las 2 fuentes verificadas de la Actividad 1.</li>
+<li>Identificá qué tipo de fuente es cada una (libro, web, video o IA).</li>
+<li>Debajo de "Fuentes y Citas", agregá un subtítulo "Bibliografía" con Encabezado 2 (<code>Ctrl+Alt+2</code>, Mac: <code>⌘+Opción+2</code>). Ahí escribí la cita APA correcta de cada fuente.</li>
+<li>En el párrafo donde usás cada fuente, agregá la cita en el texto con el formato correcto: (Apellido, año).</li>
+<li>Agregá al menos 1 nota al pie en cualquier parte del documento (una aclaración o dato de contexto).</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Tu cuaderno en Gemini Notebook</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Gemini%20Notebook.png" alt="Gemini Notebook" title="Gemini Notebook"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>notebook.google.com</code> y creá un cuaderno nuevo.</li>
+<li>Subí las 2 fuentes verificadas de la Actividad 1 (PDF, URL o Google Doc).</li>
+<li>Hacé una pregunta al cuaderno sobre tu tema. Verificá la respuesta haciendo clic en el chip de cita.</li>
+<li>Copiá 2 ideas clave a la sección "Fuentes y Citas" de tu <code>Documento Base - V01</code>, con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>). Cada idea con su cita (Apellido, año) en el texto.</li>
+<li>Generá un Resumen de Audio en formato Resumen, en español. Escuchá 2 minutos. Anotá una cosa correcta y una que te llame la atención.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a <code>notebook.google.com</code> (cuenta Google).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">4</span>
+      <span class="act-name">Justificar tu elección de herramienta</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>arena.ai/leaderboard</code>.</li>
+<li>Elegí la categoría que corresponde a la investigación de hoy (Search o Text) y anotá qué modelo lidera esa categoría en este momento.</li>
+<li>Compará ese resultado con la categoría Document.</li>
+<li>En tu <code>Documento Base - V01</code>, al final de la sección "Fuentes y Citas", escribí un párrafo breve (3-4 líneas): qué herramienta usarías para investigar un tema nuevo de tu carrera, y por qué — con al menos un dato concreto del leaderboard (nombre del modelo o categoría) como respaldo.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a <code>arena.ai/leaderboard</code> (gratis, sin cuenta).</p>
+  </div>
   <p class="extra"><b>Checklist final:</b> <code>Documento Base - V01</code> con la sección "Fuentes y Citas" y su "Bibliografía" completas, historial con "Entrega Clase 03" nombrada.</p>
 </div>
 
@@ -187,14 +557,112 @@
     <span class="clase-num">04</span>
     <span class="clase-title">Arquitectura avanzada del documento</span>
   </div>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">1</td><td class="act">La tabla de fuentes</td><td class="entregable"><code>Trabajo Integrador - V01</code> (copia de <code>Documento Base - V01</code>, Clase 04): Título + Encabezado 1 completos; tabla de 3×4 con fila 1 combinada ("Fuentes verificadas — Trabajo Integrador"), encabezados en fila 2, 2 fuentes de la Clase 03 completas, formato aplicado (fila 1 oscura/texto blanco, fila 2 gris/negrita, bordes exteriores).</td><td class="insumos">Ninguno — parte del doc de Clases 02-03.</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">2</td><td class="act">Una imagen anclada</td><td class="entregable">Imagen (reusada de <code>Actividad 2 - V01</code> o nueva, con licencia CC) insertada en Desarrollo, con "Ajustar texto" + "Mover con el texto" y márgenes ajustados; verificada que sigue al párrafo al agregar contenido arriba.</td><td class="insumos">Acceso a Unsplash o Google Imágenes (filtro CC).</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">3</td><td class="act">Un documento navegable</td><td class="entregable">DOI de una fuente como hipervínculo externo en Bibliografía; 1 marcador manual sobre un dato puntual con enlace desde la Introducción; 1 hipervínculo directo a una sección (sin marcador, usando el título como destino automático). Los 3 enlaces verificados con <code>Ctrl+clic</code>.</td><td class="insumos">—</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">4</td><td class="act">Estructura final</td><td class="entregable">Salto de página antes de Bibliografía; encabezado con título + nombre; numeración en el pie; 1+ nota al pie; índice actualizado o insertado; "Entrega Clase 04" nombrada en el historial. Documento compartido y link subido a Moodle.</td><td class="insumos">Tarea creada en el campus para el link.</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">5</td><td class="act">Extra, para hacer en tu casa — Una tabla que sí se puede ordenar</td><td class="entregable">Documento nuevo <code>Práctica de tablas - Clase 04</code> (no se entrega): tabla de 5×4 con datos de 4 personas inventadas (nombre, apellido, teléfono, dirección), ordenada alfabéticamente (clic derecho → Ordenar tabla), encabezados en mayúsculas con sombreado, bordes prolijos.</td><td class="insumos">— (actividad marcada "Extra")</td><td class="tiempo">15 min</td></tr>
-  </table>
+  
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">La tabla de fuentes</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>Documento Base - V01</code> (subcarpeta "Clase 02") → Archivo → Crear una copia → nombrá la copia <code>Trabajo Integrador - V01</code> → movela a la subcarpeta "Clase 04".</li>
+<li>Completá la estructura con estilos donde todavía falte: <strong>Título</strong> (nombre del trabajo) al inicio si no lo tenías, y <strong>Encabezado 1</strong> en Introducción, Desarrollo y Conclusión. "Fuentes y Citas" y su subtítulo "Bibliografía" ya tienen el estilo aplicado desde la Clase 03 — no hace falta tocarlos. Aplicá los estilos desde la barra, no a mano.</li>
+<li>En Introducción, escribí 2 o 3 oraciones que presenten tu tema.</li>
+<li>Antes de Bibliografía, insertá una tabla de 3 filas × 4 columnas. Combiná la fila 1 en una sola celda: "Fuentes verificadas — Trabajo Integrador". En la fila 2 escribí los encabezados de columna (Fuente · Autor/Año · Dato clave · CRAAP: criterio más débil) y completá las dos filas siguientes con las fuentes que ya verificaste en la Clase 03 — no hace falta buscar de nuevo.</li>
+<li>Formato: fila 1 combinada con fondo oscuro y texto blanco centrado; fila 2 con fondo gris claro y negrita; columna 1 alineada a la izquierda, el resto centrado; bordes exteriores visibles.</li>
+<li>Opcional: en Desarrollo, agregá una segunda tabla de 4 filas × 3 columnas que compare dos enfoques, períodos o posturas sobre tu tema, con el mismo esquema de formato.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Ninguno — parte del doc de Clases 02-03.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">Una imagen anclada</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>Documento Base - V01</code> (subcarpeta "Clase 02") y recuperá la imagen con licencia Creative Commons que ya buscaste y evaluaste ahí. Si encaja en algún párrafo de Desarrollo, usá esa — ya hiciste el trabajo de buscarla y confirmar la licencia. Si no encaja con el tema tal como evolucionó, buscá una nueva en <a href="https://unsplash.com" rel="noopener" target="_blank">Unsplash</a> (uso libre, sin costo) o en Google Imágenes con el filtro Herramientas → Derechos de uso → Creative Commons.</li>
+<li>En el documento, posicioná el cursor en el párrafo de Desarrollo que más se relaciona con esa imagen. Insertar → Imagen → Subir desde la computadora.</li>
+<li>Clic en la imagen → <strong>Ajustar texto</strong>. Clic derecho → Opciones de imagen → Ajuste de texto → <strong>Mover con el texto</strong>.</li>
+<li>En el mismo panel Opciones de imagen → Ajuste de texto, ajustá los márgenes para que el texto no quede pegado.</li>
+<li>Verificá: agregá una línea en blanco en el párrafo de arriba. La imagen tiene que seguir al párrafo, no quedarse fija.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a Unsplash o Google Imágenes (filtro CC).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Un documento navegable</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>En Bibliografía, verificá que el DOI de al menos una fuente sea una URL completa como hipervínculo (<code>https://doi.org/10.xxxx/...</code>).</li>
+<li>En Desarrollo, elegí un dato o afirmación puntual que te convenga poder encontrar rápido después — no una sección entera. Posicioná el cursor justo ahí → Insertar → Marcador. Es un punto invisible, no una sección.</li>
+<li>En la Introducción, escribí una frase corta que apunte a ese dato (algo como "el dato completo se desarrolla más abajo"). Seleccioná el fragmento → <code>Ctrl+K</code> (Mac: <code>⌘+K</code>) → pestaña Encabezados y marcadores → elegí el marcador que acabás de crear.</li>
+<li>En Desarrollo, buscá otra frase que mencione un concepto que se retoma en Conclusión. Seleccionala → <code>Ctrl+K</code> (Mac: <code>⌘+K</code>) → pestaña Encabezados y marcadores → esta vez elegí directamente la sección de destino (sin crear marcador: los títulos con estilo ya son destinos automáticos).</li>
+<li>Verificá los tres enlaces con <code>Ctrl+clic</code> (Mac: <code>⌘+clic</code>): el DOI externo, el marcador manual y el enlace a la sección.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">4</span>
+      <span class="act-name">Estructura final</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Cursor antes del título "Bibliografía" → <code>Ctrl+Intro</code>. La bibliografía ahora empieza en página nueva.</li>
+<li>Insertar → Elementos de página → Encabezado. Escribí el título del trabajo y tu nombre, separados por un guión.</li>
+<li>Insertar → Elementos de página → Números de página, en el pie, centrado.</li>
+<li>En el cuerpo del texto, agregá al menos una nota al pie con una aclaración breve.</li>
+<li>Actualizá el índice (clic sobre él → ícono de actualizar) o insertalo si todavía no lo tenés: Insertar → Elementos de página → Índice.</li>
+<li>Archivo → Historial de versiones → Asignar nombre a la versión actual. Nombrala <code>Entrega Clase 04</code>.</li>
+</ol>
+    </div>
+    <div class="act-campus">📤 Documento compartido y link subido a Moodle.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Tarea creada en el campus para el link.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">5</span>
+      <span class="act-name">Una tabla que sí se puede ordenar</span>
+      <span class="act-badge-extra">EXTRA</span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <p>No se entrega — es para practicar una mecánica de tabla que la tabla de fuentes de hoy no te pidió: ordenar filas. Al principio de la clase viste que combinar celdas rompe esa función; acá armás una tabla sin celdas combinadas, así que sí se puede.</p>
+<ol>
+<li>Abrí un documento nuevo de Google Docs (no el <code>Trabajo Integrador - V01</code>) e insertá una tabla de 5 filas × 4 columnas.</li>
+<li>Completala con nombre, apellido, teléfono y dirección de 4 personas inventadas — una fila por persona, más la fila de encabezados.</li>
+<li>Seleccioná la tabla → clic derecho → <strong>Ordenar tabla</strong> → ordená alfabéticamente, primero por nombre y después por apellido.</li>
+<li>Pasá el texto de la fila de encabezados a mayúsculas (Formato → Texto → Mayúsculas).</li>
+<li>Aplicale sombreado a la fila de encabezados y bordes prolijos a toda la tabla.</li>
+<li>Guardalo como <code>Práctica de tablas - Clase 04</code>. No hace falta compartirlo ni subirlo a ningún lado.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> — (actividad marcada "Extra")</p>
+  </div>
   <p class="extra"><b>La Actividad 5 es extra y no se entrega:</b> practica ordenar una tabla sin celdas combinadas — la de fuentes de la Actividad 1 no se puede ordenar porque su fila 1 está combinada.</p>
 </div>
 
@@ -204,15 +672,136 @@
     <span class="clase-title">Maquetación de alta precisión (Word de escritorio)</span>
   </div>
   <p class="warning">⚠️ Requiere Word de escritorio instalado (no la versión web) — confirmar antes que todos los alumnos tengan acceso, ya sea con cuenta institucional <code>@uvq.edu.ar</code> o en los laboratorios de la UNQ.</p>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">01</td><td class="act">El documento de práctica</td><td class="entregable"><code>Práctica Word - V01.docx</code> en A4, márgenes normales, vertical, en subcarpeta "Clase 05".</td><td class="insumos">Word de escritorio disponible.</td><td class="tiempo">10 min</td></tr>
-    <tr><td class="num">02</td><td class="act">Tus primeros saltos de sección</td><td class="entregable">Mismo doc: 2+ saltos de sección de tipos distintos, verificados en la barra de estado.</td><td class="insumos">Acceso a un LLM para generar los párrafos de prueba.</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">03</td><td class="act">Layout mixto</td><td class="entregable">Mismo doc: 3+ secciones, al menos un tramo en dos columnas, verificado en Vista de diseño de impresión.</td><td class="insumos">—</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">04</td><td class="act">Encabezados, revisión y PDF</td><td class="entregable">Encabezado distinto por sección; PDF exportado en "Estándar" (<code>Práctica Word - V01.pdf</code>) que coincide con la vista previa.</td><td class="insumos">—</td><td class="tiempo">15 min</td></tr>
-    <tr><td class="num">05</td><td class="act">Aplicar todo al Trabajo Integrador</td><td class="entregable"><code>Trabajo Integrador - V01.pdf</code> (Clase 05): portada + cuerpo (secciones/columnas) + bibliografía, encabezados diferenciados, numeración desde Sección 2, subido a Moodle.</td><td class="insumos">Tarea creada en el campus para el PDF.</td><td class="tiempo">25 min</td></tr>
-    <tr><td class="num">06</td><td class="act">Extra — Tu primera combinación</td><td class="entregable">Documento combinado (mail merge) con 4 registros de una tabla de 3 columnas.</td><td class="insumos">— (actividad marcada "Extra")</td><td class="tiempo">20 min</td></tr>
-  </table>
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">El documento de práctica</span>
+      
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"></span>
+      <span class="act-tiempo">10 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí un documento nuevo en Word (Archivo → Nuevo).</li>
+<li>Disposición → Tamaño: si dice "Carta" o "Letter", cambialo a <strong>A4</strong>.</li>
+<li>Disposición → Márgenes → <strong>Normal</strong>. Verificá con Márgenes personalizados que sea 2,54 cm en los cuatro lados y "Aplicar a: Todo el documento".</li>
+<li>Disposición → Orientación → <strong>Vertical</strong>.</li>
+<li>Guardá el documento como <code>Práctica Word - V01.docx</code>, en la subcarpeta "Clase 05". Es el archivo que vas a usar en todas las actividades de hoy.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Word de escritorio disponible.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">Tus primeros saltos de sección</span>
+      
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>En <code>Práctica Word - V01.docx</code>, pedile a una IA: "Escribime 4 párrafos cortos sobre cualquier tema, sin títulos, solo texto corrido." Pegalo con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>) — pegar sin formato.</li>
+<li>Activá ¶ y verificá que ves los saltos de párrafo.</li>
+<li>Insertá un salto de sección <strong>Continuo</strong> después del primer párrafo: Disposición → Saltos → Continuo.</li>
+<li>Insertá un salto de sección <strong>Página siguiente</strong> después del segundo párrafo.</li>
+<li>Verificá en la barra de estado que el número de sección cambia al mover el cursor entre secciones.</li>
+<li>Eliminá uno de los saltos y observá qué pasa con el formato del texto restante. Deshacé con <code>Ctrl+Z</code>.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a un LLM para generar los párrafos de prueba.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Layout mixto</span>
+      
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Seguís en <code>Práctica Word - V01.docx</code>. Al final del texto que ya tenés, agregá una línea en blanco.</li>
+<li>Sección nueva (una columna): título breve + dos oraciones de introducción.</li>
+<li>Insertá un salto de sección <strong>Continuo</strong>.</li>
+<li>Sección de dos columnas: Disposición → Columnas → Dos. Pedile a una IA 4 párrafos cortos y pegalos con <code>Ctrl+Shift+V</code>.</li>
+<li>Insertá otro salto <strong>Continuo</strong> para volver a una columna. Si no volvió sola: Disposición → Columnas → Una.</li>
+<li>Escribí una línea de cierre en la última sección.</li>
+<li>Verificá en Vista → Diseño de impresión que el layout se ve correcto.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">4</span>
+      <span class="act-name">Encabezados, revisión y PDF</span>
+      
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"><img src="../img/apps/filetype-pdf.png" alt="Archivo PDF" title="Archivo PDF"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>En <code>Práctica Word - V01.docx</code>, doble clic en el encabezado de la Sección 1. Escribí: "Documento de práctica — Sección 1".</li>
+<li>En la Sección 2, desvinculá el encabezado del anterior y escribí: "Documento de práctica — Sección 2 (dos columnas)". Repetí en la Sección 3 si existe.</li>
+<li>Abrí Archivo → Imprimir y recorré el documento: ¿el papel es A4 con márgenes simétricos? ¿hay páginas en blanco de más? ¿los encabezados son correctos en cada sección? ¿las columnas se ven bien?</li>
+<li>Corregí lo que encuentres y volvé a revisar.</li>
+<li>Cuando esté bien: Archivo → Exportar → Crear PDF/XPS → <strong>Estándar (publicar e imprimir)</strong>. Guardalo como <code>Práctica Word - V01.pdf</code>.</li>
+<li>Abrí el PDF generado y confirmá que se ve igual a la vista previa.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">5</span>
+      <span class="act-name">Aplicar todo al Trabajo Integrador</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs" title="Google Docs"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"><img src="../img/apps/filetype-pdf.png" alt="Archivo PDF" title="Archivo PDF"></span>
+      <span class="act-tiempo">25 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí <code>Trabajo Integrador - V01</code> en Google Docs → Archivo → Descargar → Microsoft Word (.docx) → abrilo en Word de escritorio.</li>
+<li>Estructuralo en secciones: <strong>Sección 1</strong> (una columna) con portada — título, tu nombre, fecha; salto de sección; <strong>Sección 2</strong> (el cuerpo, dos columnas si el contenido lo permite); salto de sección; <strong>Sección 3</strong> (una columna) con la bibliografía.</li>
+<li>Configurá los encabezados: la portada sin encabezado (activá "Primera página diferente" y dejalo vacío); las secciones siguientes, desvinculadas del anterior, con el título del trabajo.</li>
+<li>Agregá número de página en el pie, a partir de la Sección 2.</li>
+<li>Revisá en Archivo → Imprimir que se ve correcto en todas las páginas.</li>
+<li>Exportá: Archivo → Exportar → Crear PDF/XPS → Estándar (publicar e imprimir) → guardalo como <code>Trabajo Integrador - V01.pdf</code> en la subcarpeta "Clase 05".</li>
+<li>Subí el PDF a la tarea de Moodle de la Clase 05.</li>
+</ol>
+    </div>
+    <div class="act-campus">📤 Trabajo Integrador - V01.pdf subido a Moodle.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Tarea creada en el campus para el PDF.</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">6</span>
+      <span class="act-name">Tu primera combinación</span>
+      <span class="act-badge-extra">EXTRA</span>
+      <span class="act-icons"><img src="../img/apps/Microsoft%20-%20Word.png" alt="Word" title="Word"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <p>Imaginá que trabajás en el área comercial de una empresa y tenés que escribirle a una cartera de clientes potenciales, cada uno con su rubro y su necesidad puntual.</p>
+<ol>
+<li>Creá una tabla en Word con 3 columnas: Nombre, Rubro, Necesidad detectada. Cargá 4 filas de datos inventados (por ejemplo: "Panadería López" · "Gastronomía" · "gestionar turnos de reparto").</li>
+<li>En un documento nuevo, escribí un mensaje comercial breve: "Hola «Nombre», vimos que en «Rubro» la necesidad de «Necesidad detectada» es cada vez más frecuente — te contamos cómo podemos ayudarte con eso esta semana."</li>
+<li>Vinculá el documento a tu tabla como fuente de datos (Correspondencia → Seleccionar destinatarios).</li>
+<li>Insertá los tres campos combinados en el lugar correcto.</li>
+<li>Navegá los 4 registros con Vista previa de resultados y verificá los datos.</li>
+<li>Finalizá y combiná → Editar documentos individuales → Todos. El archivo resultante tiene que tener 4 páginas con datos distintos.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> — (actividad marcada "Extra")</p>
+  </div>
+  
 </div>
 
 <div class="clase">
@@ -220,12 +809,69 @@
     <span class="clase-num">06</span>
     <span class="clase-title">Presentaciones con IA: de borrador a entrega</span>
   </div>
-  <table>
-    <tr><th class="num">#</th><th class="act">Actividad</th><th class="entregable">Entregable del alumno</th><th class="insumos">Insumos del docente</th><th class="tiempo">Tiempo</th></tr>
-    <tr><td class="num">1</td><td class="act">Generar y comparar el esquema</td><td class="entregable"><code>Presentación Integradora - V01</code> (Clase 06): esquema de 8-10 diapositivas generado con IA en 2 herramientas, comparado y revisado a mano.</td><td class="insumos">Acceso a Gamma (<code>gamma.app</code>) y Gemini Notebook Studio (o alternativas gratuitas: Plus AI, Beautiful.ai, Slidesgo AI, Canva Magic Studio).</td><td class="tiempo">30 min</td></tr>
-    <tr><td class="num">2</td><td class="act">Aplicar diseño y movimiento</td><td class="entregable">Mismo mazo: tema consistente, transición uniforme, 2+ animaciones con disparador, 1+ imagen, verificado contra CRAP.</td><td class="insumos">—</td><td class="tiempo">20 min</td></tr>
-    <tr><td class="num">3</td><td class="act">Exportar con respaldo</td><td class="entregable"><code>.pptx</code> + PDF (Clase 06) subidos a Moodle, más link de Slides si corresponde.</td><td class="insumos">Tarea creada en el campus para los archivos/links.</td><td class="tiempo">15 min</td></tr>
-  </table>
+  
+  
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">1</span>
+      <span class="act-name">Generar y comparar el esquema</span>
+      
+      <span class="act-icons"><img src="../img/apps/Gamma%20-%20Gamma.png" alt="Gamma" title="Gamma"><img src="../img/apps/Google%20-%20Gemini%20Notebook.png" alt="Gemini Notebook" title="Gemini Notebook"></span>
+      <span class="act-tiempo">30 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Abrí tu Trabajo Integrador.</li>
+<li>Armá el prompt con RTCFL adaptado, como en el paso a paso de arriba.</li>
+<li>Probá ese mismo prompt en <strong>dos</strong> herramientas gratuitas: Gamma y Gemini Notebook, o reemplazá una de las dos por alguna de "Para explorar".</li>
+<li>Compará los dos resultados contra los principios de diseño visual de la sección anterior: ¿cuál respeta mejor el contraste? ¿cuál te deja menos texto para borrar? ¿cuál pasa mejor la prueba del fondo del aula?</li>
+<li>Elegí el mejor de los dos como punto de partida y revisalo diapositiva por diapositiva contra tu documento: ¿la idea central está bien representada? ¿sobra texto?</li>
+<li>Elegí tu editor final — Google Slides o PowerPoint, según a dónde exportó mejor tu herramienta (Gamma exporta directo a los dos). Nombrá el resultado <code>Presentación Integradora - V01</code> y guardalo en la subcarpeta "Clase 06".</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a Gamma (<code>gamma.app</code>) y Gemini Notebook Studio (o alternativas gratuitas: Plus AI, Beautiful.ai, Slidesgo AI, Canva Magic Studio).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">2</span>
+      <span class="act-name">Aplicar diseño y movimiento</span>
+      
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Slides.png" alt="Google Slides" title="Google Slides"><img src="../img/apps/Microsoft%20-%20PowerPoint.png" alt="PowerPoint" title="PowerPoint"></span>
+      <span class="act-tiempo">20 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>En tu <code>Presentación Integradora - V01</code>, elegí un tema consistente con el contenido (tabla de arriba, según tu editor).</li>
+<li>Aplicá la misma transición a todas las diapositivas.</li>
+<li>En al menos 2 diapositivas, agregále una animación de aparición a un elemento (texto o imagen), con disparador "Al hacer clic".</li>
+<li>Insertá al menos 1 imagen relevante — podés reusar la del Trabajo Integrador.</li>
+<li>Repasá tu mazo completo contra la prueba del fondo del aula de la sección anterior.</li>
+</ol>
+    </div>
+    
+    <p class="act-meta"><b>Insumos del docente:</b> —</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
+      <span class="act-name">Exportar con respaldo</span>
+      
+      <span class="act-icons"><img src="../img/apps/filetype-pptx.png" alt="Archivo .pptx" title="Archivo .pptx"><img src="../img/apps/filetype-pdf.png" alt="Archivo PDF" title="Archivo PDF"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+      <ol>
+<li>Si estás en Google Slides: Archivo → Descargar → Microsoft PowerPoint (<code>.pptx</code>). Guardalo en la subcarpeta "Clase 06". Si ya estás en PowerPoint, este paso ya está resuelto — guardá el archivo directamente ahí.</li>
+<li>Generá el PDF: Archivo → Descargar → Documento PDF (<code>.pdf</code>) en Slides, o Archivo → Exportar → Crear documento PDF/XPS en PowerPoint. Mismo lugar.</li>
+<li>Abrí el <code>.pptx</code> y confirmá que se ve razonablemente bien — las animaciones pueden no ser 100% idénticas entre Slides y PowerPoint, y es normal.</li>
+<li>Subí a la tarea de Moodle de la Clase 06: el <code>.pptx</code>, el PDF, y el link de tu Google Slides compartido si trabajaste ahí.</li>
+</ol>
+    </div>
+    <div class="act-campus">📤 .pptx + PDF subidos a Moodle, más link de Slides si corresponde.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Tarea creada en el campus para los archivos/links.</p>
+  </div>
+  
 </div>
 
 <div class="notas-finales">
@@ -236,6 +882,9 @@
     <li>Las Clases 02 a 04 y parte de la 05 son un <b>mismo documento que se arrastra y crece</b> clase a clase (<code>Documento Base</code>, creado en la Clase 02 sobre el mismo tema de <code>Texto IA</code> de la Clase 01 — no es una copia de ese archivo, es nuevo —, que crece en las Clases 02 y 03 → se renombra <code>Trabajo Integrador</code> en la Clase 04). Un alumno ausente en una clase intermedia arrastra el archivo incompleto a las siguientes.</li>
     <li>La Clase 06 retoma el mismo Trabajo Integrador (ya como PDF) y lo convierte en presentación — no es un tema nuevo, es el mismo contenido en otro formato.</li>
     <li>Las Clases 02, 04 y 05 tienen una actividad marcada "Extra, para hacer en tu casa": no se entrega ni se sube a Moodle, es práctica adicional sobre un archivo aparte (no toca el Trabajo Integrador).</li>
+    <li>El texto de cada actividad es una transcripción literal de la Guía Visual del alumno (<code>Clase NN - &lt;Título&gt;.html</code>) — si se edita una consigna ahí, replicar el cambio acá para que ambas versiones no queden desincronizadas.</li>
+    <li>Los íconos de apps representan la app protagonista de cada actividad — cuando el paso a paso dice "un LLM" en general (sin nombrar uno puntual), se muestran ChatGPT/Gemini/Claude a modo de referencia, no como una app obligatoria específica. Viven en <code>unq-moodle/img/apps/</code>, los mismos archivos que usa el resto del proyecto (sin copia recortada aparte) — un ícono con mucho margen interno (ej. los de Google) puede verse levemente más chico que uno sin margen (ej. PowerPoint) al lado en la misma fila.</li>
+    <li>Cuando el punto central de una actividad es el archivo exportado (no la app en sí — ej. "Exportar con respaldo" en Clase 06), el ícono de app se reemplaza por el de <b>tipo de archivo</b> (<code>filetype-docx.png</code>, <code>-pdf</code>, <code>-pptx</code>, <code>-xlsx</code>, <code>-csv</code>, en <code>img/apps/</code>) — para no duplicar información con el sello verde de entrega que ya indica qué se sube a Moodle.</li>
   </ul>
 </div>
 

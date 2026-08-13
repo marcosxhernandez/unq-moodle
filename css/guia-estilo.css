@@ -307,13 +307,23 @@
   --radius-lg:6px;
 
   --serif-display:'Fraunces', Georgia, 'Times New Roman', serif;
-  /* 'Noto Emoji' al final de la pila: solo entra como último recurso
-     cuando el motor de render no tiene glifos de emoji propios (caso
-     de los conversores de impresión como WeasyPrint) — evita que
-     💡⚠️📋 etc. salgan como recuadros vacíos en el PDF. En pantalla
-     y en Chrome nunca se llega a usar: el sistema operativo resuelve
-     el emoji antes. */
-  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Emoji', sans-serif;
+  /* Orden real de emoji, corregido ago. 2026 — la versión anterior asumía que
+     el navegador siempre resuelve el emoji con la fuente de color del sistema
+     antes de llegar a 'Noto Emoji', pero eso no es así: si el navegador
+     encuentra CUALQUIER glifo en 'Noto Emoji' (fuente monocroma, de un solo
+     trazo, cargada como webfont) lo usa ahí mismo, sin comparar calidad —
+     pasó con 💡📙🇺🇸🇨🇳 y salieron como íconos chatos y feos en vez del
+     emoji a color, incluso en pantalla. Por eso ahora se nombran explícito
+     las fuentes de emoji A COLOR del sistema (Apple Color Emoji en Mac,
+     Segoe UI Emoji en Windows, Noto Color Emoji en Linux/Android/ChromeOS)
+     ANTES que 'Noto Emoji' en la pila: como el navegador usa la primera
+     fuente de la lista que tenga el glifo, cualquier SO con una fuente de
+     emoji a color instalada la usa primero. 'Noto Emoji' queda como red de
+     seguridad real, solo para cuando NINGUNA fuente de color está disponible
+     (el caso original: conversores de impresión como WeasyPrint, que no
+     traen fuente de emoji propia) — ahí sigue evitando que 💡⚠️📋 salgan
+     como recuadros vacíos en el PDF. */
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Noto Emoji', sans-serif;
 
   --measure: 44rem;
   --page-pad: clamp(20px, 6vw, 96px);
@@ -889,7 +899,8 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
    .callout-label ya es flex con align-items:center, el <img> más grande
    se centra solo respecto del texto sin tocar el resto de la regla. */
 .callout[data-type="linkedin"] .callout-label img{
-  width:32px; height:32px; border-radius:7px; flex-shrink:0;
+  width:32px; height:32px; border-radius:22%; flex-shrink:0;
+  background:#fff; box-shadow:0 0 0 1px rgba(17,17,17,.08);
 }
 
 .callout[data-type="question"]{
@@ -1618,6 +1629,26 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   font-style:italic;
 }
 
+/* ---------- Ícono de app estilo "botón de app de celular" ----------
+   Todo ícono de app (.app-icon, .app-icon-lg, .llm-icon, .app-badge,
+   .tool-card img) comparte esta terminación: cuadrado, esquinas
+   redondeadas al ~22% (aprox. al "squircle" de iOS/Android), fondo
+   blanco y un filete de 1px — mismo tratamiento que un ícono en la
+   ficha de Play Store/App Store, aunque el PNG de origen sea un
+   isotipo suelto sobre fondo transparente. object-fit:contain evita
+   que se recorte; el fondo blanco lo hace ver "de un solo tamaño"
+   aunque los PNG de origen no vengan todos con el mismo margen
+   interno. Decidido ago. 2026. */
+.app-icon,
+.app-icon-lg,
+.llm-icon,
+.app-badge,
+.tool-card img{
+  border-radius:22%;
+  background:#fff;
+  box-shadow:0 0 0 1px rgba(17,17,17,.08);
+}
+
 .app-icon{
   display:inline-block;
   width:1.15em;
@@ -1637,7 +1668,6 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   object-fit:contain;
   vertical-align:middle;
   margin-right:8px;
-  border-radius:6px;
 }
 
 /* Ícono de app tipo "ícono de celular" dentro de una celda de tabla
@@ -1654,7 +1684,6 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   width:32px;
   height:32px;
   object-fit:contain;
-  border-radius:7px;
 }
 .llm-tool-name{
   font-weight:700;

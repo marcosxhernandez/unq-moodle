@@ -84,7 +84,7 @@
   <div class="cover-inner">
     <span class="cover-kicker">Clase 03 · Procesador de texto</span>
     <h1 class="cover-title">IA como asistente académico</h1>
-    <p class="cover-subtitle">Perplexity con citas verificables, prompt chaining y normas APA</p>
+    <p class="cover-subtitle">Búsqueda con RAG: citas verificables, prompt chaining y normas APA</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
@@ -101,26 +101,31 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Ya sabés generar contenido con IA y estructurar un documento con estilos. Hoy sumás dos habilidades que trabajan juntas: usar Perplexity para buscar fuentes con citas verificables (en vez de un LLM genérico que puede inventarlas), y citarlas correctamente con normas APA. Seguís con Gemini Notebook, una IA que solo responde con los documentos que vos le diste, y cerrás la clase eligiendo con criterio — no por costumbre — qué herramienta de IA conviene para cada tarea. Todo lo de hoy se agrega a <code>Documento Base - V01</code>, el documento que ya estructuraste en la Clase 02: no arrancás una hoja en blanco, sumás una sección nueva a algo que ya existe.</p>
+  <p class="toc-intro">Pedile a un chat de IA genérico tres fuentes académicas sobre cualquier tema: es probable que al menos una sea inventada. Esa es la trampa de hoy, y hay dos formas de resolverla: <strong>RAG abierto</strong> busca con respaldo en toda la web y cita cada afirmación (Perplexity); <strong>RAG cerrado</strong> solo responde con los documentos que vos le diste (Gemini Notebook). Mismo problema — que la IA no invente la fuente —, dos arquitecturas distintas.</p>
   <span class="toc-label">Contenido</span>
   <ol>
-    <li><a href="#perplexity"><span class="toc-num">01</span><span class="toc-text">Perplexity: buscar con citas verificables</span></a></li>
-    <li><a href="#apa"><span class="toc-num">02</span><span class="toc-text">Normas APA (7ma edición): citar lo que usás</span></a></li>
-    <li><a href="#gemini-notebook"><span class="toc-num">03</span><span class="toc-text">Gemini Notebook: trabajar con tus propias fuentes</span></a></li>
-    <li><a href="#arena"><span class="toc-num">04</span><span class="toc-text">Elegir el modelo adecuado: Arena Leaderboard</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#rag-abierto"><span class="toc-num">01</span><span class="toc-text">RAG abierto: buscar con respaldo en toda la web (Perplexity)</span></a></li>
+    <li><a href="#rag-cerrado"><span class="toc-num">02</span><span class="toc-text">RAG cerrado: trabajar con tus propias fuentes (Gemini Notebook)</span></a></li>
+    <li><a href="#arena"><span class="toc-num">03</span><span class="toc-text">Elegir el modelo adecuado: Arena Leaderboard</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">04</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 01 — PERPLEXITY -->
-<section class="block" id="perplexity">
+<!-- 01 — RAG ABIERTO (Perplexity + APA) -->
+<section class="block" id="rag-abierto">
   <div class="block-head">
     <span class="block-num">01</span>
-    <h2 class="block-title">Perplexity: buscar con citas verificables</h2>
+    <h2 class="block-title">RAG abierto: buscar con respaldo en toda la web (Perplexity)</h2>
   </div>
   <div class="prose">
+    <div class="callout" data-type="question">
+      <p>¿Cómo sabés si una fuente que te dio una IA es real, o si el modelo la inventó?</p>
+    </div>
+
+    <p>Recién viste una demo en vivo: un chat de IA genérico armó tres fuentes académicas sobre un tema cualquiera, y al menos una cita no existía o no decía lo que el modelo afirmaba. No fue un accidente — es cómo funciona un LLM genérico. Todo lo que sigue responde a la misma pregunta: cómo buscar con IA sin ese riesgo, y cómo dejar el rastro para que cualquiera pueda verificarlo.</p>
+
     <h3>La diferencia que importa</h3>
     <p>Un LLM genera texto a partir de su entrenamiento: predice qué palabra viene después, basándose en miles de millones de textos que procesó meses o años atrás. No busca, no verifica, no sabe si lo que dice es verdad. Perplexity (<code>perplexity.ai</code>) funciona distinto: busca en internet en tiempo real y cita cada afirmación con la fuente de donde la sacó. Podés hacer clic en el número y verificar.</p>
 
@@ -179,10 +184,10 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Abrí <code>perplexity.ai</code> en una pestaña nueva.</li>
+          <li>Abrí <code>perplexity.ai</code> en una pestaña nueva. Si ya llegaste al límite diario gratuito, usá <code>scholar.google.com</code> + verificación manual con CRAAP en su lugar — ninguna herramienta es la única vía para buscar con respaldo.</li>
           <li>Construí un prompt RTCFL sobre tu tema (el mismo de tu Documento Base). Pedile 3 fuentes con resumen.</li>
           <li>Evaluá las 3 fuentes con CRAAP. Anotá qué criterio usaste para cada una.</li>
-          <li>Hacé clic en al menos 2 números de cita y verificá que la fuente exista y diga lo que Perplexity afirma.</li>
+          <li>Hacé clic en al menos 2 números de cita (o, si usaste Google Scholar, abrí al menos 2 artículos) y verificá que la fuente exista y diga lo que se afirma.</li>
           <li>Abrí <code>Documento Base - V01</code> (subcarpeta "Clase 02") y posicioná el cursor al final del documento, después de todo el contenido que ya tenías.</li>
           <li>Escribí "Fuentes y Citas" y aplicá Encabezado 1. Debajo, copiá las 2 fuentes verificadas con <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>).</li>
           <li>Volvé al índice que insertaste en la Clase 02 (primera página) → clic en el ícono de actualizar. "Fuentes y Citas" tiene que aparecer como entrada nueva, sin escribirla a mano.</li>
@@ -195,18 +200,7 @@
       <p>Dos aptitudes concretas en una sola actividad: <strong>Encadenamiento de Prompts</strong> (dividir una tarea compleja en pasos, usando la respuesta de un prompt como contexto del siguiente) y <strong>Búsqueda Académica</strong> (evaluar fuentes con CRAAP y usar Perplexity/Google Scholar para encontrar artículos con DOI verificable).</p>
     </div>
 
-    <p>Ya tenés fuentes verificadas, no inventadas. El siguiente paso es citarlas de forma que cualquiera pueda rastrearlas hasta el original.</p>
-  </div>
-</section>
-
-<!-- 02 — NORMAS APA -->
-<section class="block" id="apa">
-  <div class="block-head">
-    <span class="block-num">02</span>
-    <h2 class="block-title">Normas APA (7ma edición): citar lo que usás</h2>
-  </div>
-  <div class="prose">
-    <p>Las normas APA tienen cientos de variantes. Acá van los cuatro casos que vas a usar el 90% de las veces como estudiante universitario, más dos conceptos que aparecen en cualquier trabajo académico: la cita en el cuerpo del texto y las notas al pie.</p>
+    <p>Ya tenés fuentes verificadas, no inventadas. El siguiente paso es citarlas de forma que cualquiera pueda rastrearlas hasta el original — verificar no alcanza si no dejás el rastro para que otra persona también pueda hacerlo. Las normas APA tienen cientos de variantes. Acá van los cuatro casos que vas a usar el 90% de las veces como estudiante universitario, más dos conceptos que aparecen en cualquier trabajo académico: la cita en el cuerpo del texto y las notas al pie.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -296,17 +290,18 @@
       <p><strong>Escritura Académica</strong>: producir textos con citas APA 7ma edición verificadas — cita en el texto, bibliografía y DOI como enlace — es una aptitud puntual y demostrable con el documento que acabás de armar.</p>
     </div>
 
-    <p>Ya sabés encontrar fuentes verificables y citarlas bien. Lo que sigue es una IA que no busca en internet — solo responde con lo que vos le diste.</p>
   </div>
 </section>
 
-<!-- 03 — GEMINI NOTEBOOK -->
-<section class="block" id="gemini-notebook">
+<!-- 02 — RAG CERRADO (Gemini Notebook) -->
+<section class="block" id="rag-cerrado">
   <div class="block-head">
-    <span class="block-num">03</span>
-    <h2 class="block-title">Gemini Notebook: trabajar con tus propias fuentes</h2>
+    <span class="block-num">02</span>
+    <h2 class="block-title">RAG cerrado: trabajar con tus propias fuentes (Gemini Notebook)</h2>
   </div>
   <div class="prose">
+    <p>Ya resolviste la trampa buscando con respaldo en toda la web. Acá el problema es el mismo — que la IA no invente la fuente —, pero el corpus es distinto: en vez de salir a buscar, trabajás solo con documentos que vos elegiste.</p>
+
     <h3>La diferencia con Perplexity</h3>
     <p>Perplexity y Gemini Notebook (<code>notebook.google.com</code>) se parecieron más desde que Gemini Notebook sumó <strong>Discover Sources</strong>: un botón en el panel de Fuentes que, a partir de un tema que describís, rastrea la web y te sugiere documentos para sumar al cuaderno. La diferencia que importa no desapareció, solo se corrió: Perplexity te devuelve una respuesta ya redactada, con números de cita que llevan a la web abierta, en el momento; Gemini Notebook nunca responde "a partir de la web" directamente — todo lo que Discover Sources encuentra entra primero como fuente al cuaderno, y recién ahí la IA puede usarlo, siempre citando el pasaje exacto de esa fuente. Uno te da una respuesta; el otro te ayuda a construir un corpus propio y después responde solo con eso. Son herramientas complementarias, no alternativas.</p>
 
@@ -380,33 +375,21 @@
       </div>
     </div>
 
-    <p>Ya usaste tres formas distintas de trabajar con IA en una sola clase: para buscar fuentes nuevas con Perplexity, para citarlas con precisión, y para interrogar tus propias fuentes sin riesgo de que la IA invente algo que no está ahí.</p>
+    <p>Ya viste dos arquitecturas distintas para el mismo problema — que la IA no invente la fuente —, según de dónde sale la información: toda la web (RAG abierto, Perplexity) o solo tus documentos (RAG cerrado, Gemini Notebook). Para cerrar, un dato rápido: ninguna de las dos herramientas es "la mejor IA" en términos absolutos — eso también se puede medir.</p>
   </div>
 </section>
 
-<!-- 04 — ARENA LEADERBOARD -->
+<!-- 03 — ARENA LEADERBOARD (cierre corto) -->
 <section class="block" id="arena">
   <div class="block-head">
-    <span class="block-num">04</span>
+    <span class="block-num">03</span>
     <h2 class="block-title">Elegir el modelo adecuado: Arena Leaderboard</h2>
   </div>
   <div class="prose">
-    <h3>No existe "el mejor modelo de IA"</h3>
-    <p>Google, OpenAI, Anthropic y otras empresas lanzan modelos nuevos cada pocos meses, y cada uno es mejor en algunas tareas y peor en otras. No hay un modelo que gane siempre — depende de si necesitás escribir, buscar información, programar o generar una imagen. Elegir con criterio, no por costumbre, es parte de usar IA de forma crítica: la misma lógica que ya aplicaste hoy al elegir Perplexity en vez de un LLM genérico para buscar fuentes verificables.</p>
-
-    <h3>Arena Leaderboard: un ranking hecho por votos humanos</h3>
-    <p>Arena (<code>arena.ai/leaderboard</code>, antes conocido como LMArena o Chatbot Arena) es un sitio independiente donde cualquiera puede comparar dos respuestas de IA sin saber qué modelo las generó, y votar cuál es mejor. Con millones de votos acumulados, arma un ranking tipo Elo (el mismo sistema de puntaje que se usa en ajedrez) para cada categoría de tarea. No hace falta crear una cuenta para consultarlo.</p>
+    <p>Google, OpenAI, Anthropic y otras empresas lanzan modelos nuevos cada pocos meses, y cada uno es mejor en algunas tareas y peor en otras — no hay un modelo que gane siempre. Arena (<code>arena.ai/leaderboard</code>, antes LMArena o Chatbot Arena) es un sitio independiente donde cualquiera compara dos respuestas de IA a ciegas y vota cuál es mejor; con millones de votos arma un ranking tipo Elo, separado por categoría de tarea. No hace falta cuenta para consultarlo.</p>
 
     <img class="screenshot" src="../img/03-03-captura-arena-leaderboard.png" alt="Tabla del ranking Arena Leaderboard en la pestaña Text → Overall, con columnas de empresa, modelo y puntaje Elo en las primeras filas">
     <p class="screenshot-caption">La pestaña Text → Overall es el ranking general — más abajo están las categorías específicas (Document, Search, WebDev) que importan más a la hora de elegir herramienta según la tarea.</p>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Advertencia: esto cambia todo el tiempo</p>
-      <p>El ranking que veas hoy no es el que vas a ver en un mes: entran modelos nuevos cada pocas semanas, y los primeros puestos suelen estar a pocos puntos de diferencia entre sí, lo que hace que el orden exacto importe menos que la categoría. No memorices "el modelo número 1" como un dato fijo — lo que tenés que aprender es a volver al leaderboard y mirar la categoría que te sirve, no un nombre puntual.</p>
-    </div>
-
-    <h3>Las categorías importan más que el primer puesto</h3>
-    <p>Arena no tiene un solo ranking — tiene uno por tipo de tarea: <strong>Text</strong> (conversación y redacción general), <strong>Document</strong> (analizar o resumir un documento), <strong>Search</strong> (buscar información con respaldo, como hiciste hoy con Perplexity), <strong>WebDev</strong> (generar código de una página o app), y varios más para imagen y video. Un modelo puede liderar en Text y no estar entre los primeros en Document. Mirar la categoría correcta es el paso que la mayoría se salta.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -414,7 +397,7 @@
         <tbody>
           <tr><td>Redactar, resumir, explicar un tema</td><td>Text</td></tr>
           <tr><td>Analizar un PDF, un apunte o un paper largo</td><td>Document</td></tr>
-          <tr><td>Buscar información actual con fuentes verificables</td><td>Search</td></tr>
+          <tr><td>Buscar información actual con fuentes verificables (como hoy)</td><td>Search</td></tr>
           <tr><td>Generar o corregir código</td><td>WebDev</td></tr>
         </tbody>
       </table>
@@ -422,41 +405,26 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>Elegir el modelo adecuado no reemplaza verificar lo que dice. Un modelo mejor rankeado igual puede alucinar. El leaderboard te ayuda a arrancar con la herramienta más indicada para la tarea — el trabajo de verificar (CRAAP, clic en la fuente, chequear la cita) sigue siendo tuyo, como en toda la clase de hoy.</p>
+      <p>El ranking cambia cada pocas semanas — no memorices "el modelo número 1", aprendé a volver acá y mirar la categoría que te sirve. Y elegir el modelo adecuado no reemplaza verificar lo que dice: un modelo mejor rankeado igual puede alucinar. El trabajo de verificar (CRAAP, clic en la fuente, chequear la cita) sigue siendo tuyo, como en todo lo de hoy.</p>
     </div>
 
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 04</span>
-        <h3>Justificar tu elección de herramienta</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>Abrí <code>arena.ai/leaderboard</code>.</li>
-          <li>Elegí la categoría que corresponde a la investigación de hoy (Search o Text) y anotá qué modelo lidera esa categoría en este momento.</li>
-          <li>Compará ese resultado con la categoría Document.</li>
-          <li>En tu <code>Documento Base - V01</code>, al final de la sección "Fuentes y Citas", escribí un párrafo breve (3-4 líneas): qué herramienta usarías para investigar un tema nuevo de tu carrera, y por qué — con al menos un dato concreto del leaderboard (nombre del modelo o categoría) como respaldo.</li>
-        </ol>
-      </div>
+    <div class="callout" data-type="explore">
+      <p class="callout-label">🔎 Para explorar</p>
+      <p>Abrí <code>arena.ai/leaderboard</code>, entrá a la categoría Search y anotá qué modelo lidera en este momento. Compará ese resultado con la categoría Document: ¿es el mismo modelo?</p>
     </div>
 
-    <div class="callout" data-type="linkedin">
-      <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-      <p><strong>Evaluación crítica de herramientas de IA</strong>: elegir un modelo según benchmarks públicos y el tipo de tarea, en vez de usar siempre la misma herramienta por costumbre, es una aptitud que se nombra así en la mayoría de los perfiles profesionales que usan IA a diario.</p>
-    </div>
-
-    <p>Usaste tres herramientas distintas hoy para una misma investigación, y ahora tenés un criterio para elegir la próxima vez: no "cuál es la mejor IA", sino "cuál es la mejor para esta tarea puntual".</p>
+    <p>Usaste dos arquitecturas distintas hoy para una misma investigación, y ahora tenés un criterio para elegir la próxima vez: no "cuál es la mejor IA", sino "cuál es la mejor para esta tarea puntual".</p>
   </div>
 </section>
 
-<!-- 05 — RESUMEN DE LA CLASE -->
+<!-- 04 — RESUMEN DE LA CLASE -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">05</span>
+    <span class="block-num">04</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Al principio de la clase planteamos el objetivo: dejar de confiarle a un LLM genérico algo que necesita respaldo verificable.</p>
+    <p>Al principio de la clase planteamos el objetivo: distinguir cuándo una IA busca con respaldo verificable y cuándo solo predice texto, para aplicar ese criterio al citar con rigor académico.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
@@ -468,8 +436,7 @@
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-4" aria-label="Marcar como hecho"></td><td><label for="chk-03-4">Hay un subtítulo "Bibliografía" (Encabezado 2) con las 2 fuentes en formato APA correcto.</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-5" aria-label="Marcar como hecho"></td><td><label for="chk-03-5">El documento tiene al menos 1 nota al pie nueva.</label></td></tr>
           <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-6" aria-label="Marcar como hecho"></td><td><label for="chk-03-6">Actualizaste el índice de la Clase 02 y "Fuentes y Citas" aparece como entrada nueva.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-7" aria-label="Marcar como hecho"></td><td><label for="chk-03-7">Escribiste el párrafo de justificación de herramienta (Actividad 4), con un dato concreto del Arena Leaderboard.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-8" aria-label="Marcar como hecho"></td><td><label for="chk-03-8">El historial de versiones tiene "Entrega Clase 03" nombrada.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-03-7" aria-label="Marcar como hecho"></td><td><label for="chk-03-7">El historial de versiones tiene "Entrega Clase 03" nombrada.</label></td></tr>
         </tbody>
       </table>
     </div>
@@ -602,11 +569,11 @@
       <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse — no genera una respuesta directa desde la web.</p></div>
       <div class="gloss-item"><span class="gloss-term">DOI</span><p class="gloss-def"><em>Digital Object Identifier</em>. Identificador permanente de artículos de revistas científicas. Va al final de la cita APA en lugar de la URL cuando está disponible.</p></div>
       <div class="gloss-item"><span class="gloss-term">Nota al pie</span><p class="gloss-def">Información complementaria al pie de la página: aclaraciones, referencias secundarias, datos de contexto. No reemplaza a la cita APA.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG cerrado. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
       <div class="gloss-item"><span class="gloss-term">Plagio</span><p class="gloss-def">Usar ideas o palabras de otra persona sin citar la fuente. Tiene derechos de autor automáticos desde su creación, sin necesidad de registro.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA que busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA basado en RAG abierto: busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
       <div class="gloss-item"><span class="gloss-term">Prompt chaining</span><p class="gloss-def">Técnica de encadenar prompts: la respuesta de uno se usa como punto de partida del siguiente. Sirve para tareas complejas que no se resuelven bien con una sola instrucción.</p></div>
-      <div class="gloss-item"><span class="gloss-term">RAG</span><p class="gloss-def"><em>Retrieval-Augmented Generation</em>. La IA primero recupera fragmentos relevantes de tus documentos y luego genera la respuesta usando solo esa información.</p></div>
+      <div class="gloss-item"><span class="gloss-term">RAG</span><p class="gloss-def"><em>Retrieval-Augmented Generation</em>. La IA primero recupera fragmentos relevantes antes de generar la respuesta, en vez de improvisar desde su entrenamiento. RAG abierto recupera de toda la web (Perplexity); RAG cerrado recupera solo de los documentos que vos cargaste (Gemini Notebook).</p></div>
     </div>
 
     <h3 id="fuentes">Fuentes</h3>

@@ -10,64 +10,66 @@
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
     color: #1a1a1a;
     background: #fff;
-    font-size: 10.5px;
-    line-height: 1.42;
+    font-size: 9.8pt;
+    line-height: 1.5;
     margin: 0;
     padding: 20px 28px;
   }
-  h1 { font-size: 18px; margin: 0 0 2px 0; }
-  .subtitle { font-size: 11px; color: #555; margin: 0 0 4px 0; }
+  h1 { font-size: 22pt; margin: 0 0 4px 0; }
+  .subtitle { font-size: 13.5pt; color: #555; margin: 0 0 6px 0; }
   .note {
-    font-size: 9.5px; color: #666; margin: 0 0 14px 0;
-    border-left: 3px solid #999; padding-left: 8px;
+    font-size: 11.5pt; color: #666; margin: 0 0 18px 0;
+    border-left: 3px solid #999; padding-left: 10px;
   }
   .hoja-ruta {
-    margin-bottom: 22px;
+    margin-bottom: 26px;
     background: #f6f6f8;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 10px 14px;
+    padding: 12px 16px;
     break-inside: avoid-page;
   }
-  .hoja-ruta h2 { font-size: 13px; margin: 0 0 4px 0; }
-  .hoja-ruta .tema { font-size: 10px; margin: 0 0 8px 0; }
+  .hoja-ruta h2 { font-size: 16pt; margin: 0 0 6px 0; }
+  .hoja-ruta .tema { font-size: 9.8pt; margin: 0 0 10px 0; }
   .hoja-ruta .tema b { color: #000; }
   .clase {
-    margin-top: 20px;
-    break-inside: avoid-page;
+    margin-top: 24px;
+    break-before: page;
+    page-break-before: always;
   }
   .clase-header {
     display: flex; align-items: baseline; gap: 8px;
     border-bottom: 2px solid #222;
-    padding-bottom: 3px; margin-bottom: 8px;
+    padding-bottom: 4px; margin-bottom: 10px;
   }
   .clase-num {
-    font-size: 15px; font-weight: 700; color: #fff;
-    background: #333; padding: 1px 8px; border-radius: 3px;
+    font-size: 18.5pt; font-weight: 700; color: #fff;
+    background: #333; padding: 2px 10px; border-radius: 3px;
   }
-  .clase-title { font-size: 13.5px; font-weight: 700; }
-  .intro { font-size: 10px; margin: 0 0 10px 0; color: #333; }
-  h3 { font-size: 11.5px; margin: 12px 0 4px 0; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
-  p { margin: 4px 0; }
+  .clase-title { font-size: 17pt; font-weight: 700; }
+  .intro { font-size: 9.8pt; margin: 0 0 12px 0; color: #333; }
+  h3 { font-size: 11.6pt; margin: 14px 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+  p { margin: 5px 0; }
   table {
-    width: 100%; border-collapse: collapse; margin: 6px 0 10px 0;
+    width: 100%; border-collapse: collapse; margin: 8px 0 12px 0;
   }
   th, td {
-    border: 1px solid #ccc; padding: 3px 6px; text-align: left; vertical-align: top;
+    border: 1px solid #ccc; padding: 4px 7px; text-align: left; vertical-align: top;
   }
-  th { background: #eee; font-size: 9.3px; text-transform: uppercase; letter-spacing: 0.02em; }
-  ul { margin: 4px 0; padding-left: 16px; }
-  li { margin-bottom: 2px; }
-  code { background: #f0f0f0; padding: 0 3px; border-radius: 2px; font-size: 9.5px; }
-  .glosario-title { font-size: 10.5px; font-weight: 700; margin-top: 10px; }
+  th { background: #eee; font-size: 9.2pt; text-transform: uppercase; letter-spacing: 0.02em; }
+  ul { margin: 5px 0; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+  code { background: #f0f0f0; padding: 0 4px; border-radius: 2px; font-size: 9.2pt; }
+  .glosario-title { font-size: 9.8pt; font-weight: 700; margin-top: 12px; }
   .fuentes {
-    margin-top: 24px; border-top: 2px solid #222; padding-top: 8px;
+    margin-top: 28px; border-top: 2px solid #222; padding-top: 10px;
+    break-before: page;
+    page-break-before: always;
   }
-  .fuentes h2 { font-size: 12px; margin: 0 0 6px 0; }
-  .fuentes ul { font-size: 9.3px; }
+  .fuentes h2 { font-size: 15pt; margin: 0 0 8px 0; }
+  .fuentes ul { font-size: 9.2pt; }
   @media print {
-    body { padding: 0; font-size: 9.5px; }
-    .clase { break-inside: avoid-page; }
+    body { padding: 0; }
   }
 </style>
 </head>
@@ -211,9 +213,20 @@
   <h3>Gemini Notebook</h3>
   <p>RAG: busca en los documentos cargados los fragmentos relevantes antes de generar la respuesta — reduce alucinaciones sin eliminarlas. Discover Sources suma documentos nuevos como fuente antes de responder con ellos.</p>
 
+  <h3>Arena Leaderboard</h3>
+  <p>Arena (<code>arena.ai/leaderboard</code>, antes LMArena/Chatbot Arena) es un sitio independiente donde cualquiera compara dos respuestas de IA a ciegas y vota cuál es mejor — ranking tipo Elo por categoría de tarea, sin necesidad de cuenta. Cambia cada pocas semanas: no hay "el mejor modelo", hay uno mejor por categoría. Elegir bien no reemplaza verificar lo que dice — un modelo mejor rankeado igual puede alucinar.</p>
+  <table>
+    <tr><th>Si la tarea es...</th><th>Categoría</th></tr>
+    <tr><td>Redactar, resumir, explicar un tema</td><td>Text</td></tr>
+    <tr><td>Analizar un PDF, apunte o paper largo</td><td>Document</td></tr>
+    <tr><td>Buscar información con fuentes verificables</td><td>Search</td></tr>
+    <tr><td>Generar o corregir código</td><td>WebDev</td></tr>
+  </table>
+
   <p class="glosario-title">Glosario</p>
   <table>
     <tr><td><b>APA</b></td><td>Sistema de citación académica, versión 7 (2020).</td></tr>
+    <tr><td><b>Arena Leaderboard</b></td><td>Ranking de modelos de IA por votos humanos a ciegas (Elo), separado por categoría de tarea.</td></tr>
     <tr><td><b>DOI</b></td><td>Identificador permanente de artículos científicos.</td></tr>
     <tr><td><b>Plagio</b></td><td>Usar ideas/palabras ajenas sin citar.</td></tr>
     <tr><td><b>RAG</b></td><td>Recupera fragmentos relevantes antes de generar respuesta.</td></tr>

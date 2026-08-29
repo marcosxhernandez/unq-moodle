@@ -6,7 +6,7 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 
 🔗 Sitio publicado: **https://marcosxhernandez.github.io/unq-moodle/**
 
-## Estado de avance (2026-08-01)
+## Estado de avance (2026-08-27)
 
 | Clase | Título | Guía Visual | Fragment Moodle | Estado |
 |-------|--------|-------------|-----------------|--------|
@@ -14,9 +14,9 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 01 | Herramientas Digitales | ✅ | ✅ | Completo |
 | 02 | Arquitectura del documento profesional | ✅ | ✅ | Completo |
 | 03 | IA como asistente académico | ✅ | ✅ | Completo |
-| 04 | Arquitectura avanzada del documento | ✅ | ✅ | Completo |
-| 05 | Maquetación de alta precisión | ✅ | ✅ | Completo |
-| 06 | Presentaciones con IA | ✅ | ✅ | Completo |
+| 04 | Arquitectura avanzada del documento | ✅ | ✅ | 🔄 En progreso |
+| 05 | Maquetación de alta precisión | ✅ | ✅ | 🔄 En progreso |
+| 06 | Presentaciones con IA | ✅ | ✅ | 🔄 En progreso |
 | 07 | 1° Parcial | — | ⏳ | No tiene fuente .md |
 | 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
 | 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
@@ -32,7 +32,7 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 19 | 3.° Parcial Integrador | ✅ | ✅ | Completo |
 | 20 | Recuperatorio | ✅ | ✅ | Completo |
 
-**Total: 19 clases completadas (18 con Guía Visual + 1 Bienvenida sin guía). Clase 07 pendiente de fuente .md.**
+**Total: 16 clases completadas + 3 en progreso (04-06, ajustes finales) — 18 con Guía Visual + 1 Bienvenida sin guía. Clase 07 pendiente de fuente .md.**
 
 ## Estructura
 

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caja de herramientas · Todas las apps · Informática UNQ 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --paper:#ffffff; --ink:#1d1d1f; --ink-soft:#6e6e73; --muted:#a1a1a6;
+    --line:#e8e8ed;
+    --blue:#0071e3;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+    --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0; background:#f5f5f7; color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{ max-width:1040px; margin:0 auto; padding:56px 28px 80px; }
+
+  .doc-head{ margin-bottom:10px; }
+  .doc-eyebrow{
+    font-weight:600; font-size:.82rem; color:var(--ink-soft); margin:0 0 4px;
+  }
+  .doc-title{
+    font-family:var(--sans); font-weight:800; font-size:2.5rem; letter-spacing:-.02em;
+    line-height:1.08; color:var(--ink); margin:0;
+  }
+
+  .groups{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+    gap:22px 20px;
+    align-items:start;
+    margin-top:34px;
+  }
+
+  .cat-section{ break-inside:avoid; }
+  .cat-heading{
+    font-family:var(--sans); font-weight:700; font-size:1.05rem;
+    letter-spacing:-.01em; color:var(--ink);
+    margin:0 0 10px 4px;
+  }
+
+  .cat-card{
+    background:#ffffff; border-radius:18px; overflow:hidden;
+    box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12);
+  }
+
+  .app-row{
+    display:flex; align-items:center; gap:14px;
+    padding:12px 16px; text-decoration:none; color:inherit;
+    border-bottom:1px solid var(--line);
+  }
+  .app-row:last-child{ border-bottom:none; }
+
+  .row-icon{
+    width:56px; height:56px; object-fit:contain; border-radius:14px;
+    box-shadow:0 1px 2px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06);
+    flex-shrink:0;
+  }
+  .row-text{ flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:1px; }
+  .row-name{
+    font-size:.92rem; font-weight:600; color:var(--ink); line-height:1.3;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .row-domain{
+    font-size:.74rem; color:var(--muted); font-family:var(--mono);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+
+  .pill{
+    flex-shrink:0; font-size:.72rem; font-weight:700; letter-spacing:-.005em;
+    padding:6px 13px; border-radius:999px; white-space:nowrap;
+  }
+  .pill-free{ background:rgba(0,113,227,.1); color:var(--blue); }
+  .pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
+  .pill-paid{ background:var(--ink); color:#fff; }
+
+  @media (max-width:640px){
+    .page{ padding:32px 18px 60px; }
+    .groups{ grid-template-columns:1fr; }
+  }
+
+  @page{ size:A4; margin:16mm 14mm; }
+  @media print{
+    body{ font-size:10.5pt; background:#fff; }
+    .page{ max-width:none; padding:0; }
+    .groups{ grid-template-columns:repeat(2, 1fr); }
+    .cat-card{ box-shadow:none; border:1px solid var(--line); }
+    .row-icon{ box-shadow:none; border:1px solid var(--line); }
+    .cat-section{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc-head">
+    <p class="doc-eyebrow">Informática · UNQ · 2026</p>
+    <h1 class="doc-title">Caja de herramientas</h1>
+  </header>
+
+  <div class="groups">
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Campus y organización</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://campus.uvq.edu.ar" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/UVQ%20-%20Campus%20Virtual.png" alt="Campus UNQ">
+          <div class="row-text">
+            <span class="row-name">Campus UNQ</span>
+            <span class="row-domain">campus.uvq.edu.ar</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://download.moodle.org/mobile" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Moodle%20-%20Moodle.png" alt="App Moodle">
+          <div class="row-text">
+            <span class="row-name">App Moodle</span>
+            <span class="row-domain">download.moodle.org/mobile</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://drive.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Drive.png" alt="Google Drive">
+          <div class="row-text">
+            <span class="row-name">Google Drive</span>
+            <span class="row-domain">drive.google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://www.linkedin.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20LinkedIn.png" alt="LinkedIn">
+          <div class="row-text">
+            <span class="row-name">LinkedIn</span>
+            <span class="row-domain">linkedin.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Buscadores y chats de IA generativa</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Google.png" alt="Google">
+          <div class="row-text">
+            <span class="row-name">Google</span>
+            <span class="row-domain">google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://chatgpt.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT">
+          <div class="row-text">
+            <span class="row-name">ChatGPT</span>
+            <span class="row-domain">chatgpt.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://gemini.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Gemini.png" alt="Gemini">
+          <div class="row-text">
+            <span class="row-name">Gemini</span>
+            <span class="row-domain">gemini.google.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://claude.ai" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Anthropic%20-%20Claude.png" alt="Claude">
+          <div class="row-text">
+            <span class="row-name">Claude</span>
+            <span class="row-domain">claude.ai</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://chat.deepseek.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/DeepSeek%20-%20DeepSeek.png" alt="DeepSeek">
+          <div class="row-text">
+            <span class="row-name">DeepSeek</span>
+            <span class="row-domain">chat.deepseek.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://chat.qwen.ai" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Alibaba%20-%20Qwen.png" alt="Qwen">
+          <div class="row-text">
+            <span class="row-name">Qwen</span>
+            <span class="row-domain">chat.qwen.ai</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://kimi.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Moonshot%20AI%20-%20Kimi.png" alt="Kimi">
+          <div class="row-text">
+            <span class="row-name">Kimi</span>
+            <span class="row-domain">kimi.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">RAG</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://notebook.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Gemini%20Notebook.png" alt="Gemini Notebook">
+          <div class="row-text">
+            <span class="row-name">Gemini Notebook</span>
+            <span class="row-domain">notebook.google.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://perplexity.ai" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Perplexity%20-%20Perplexity.png" alt="Perplexity">
+          <div class="row-text">
+            <span class="row-name">Perplexity</span>
+            <span class="row-domain">perplexity.ai</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Copilot.png" alt="Copilot">
+          <div class="row-text">
+            <span class="row-name">Copilot</span>
+            <span class="row-domain">copilot.microsoft.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Procesador de texto</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://docs.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Docs.png" alt="Google Docs">
+          <div class="row-text">
+            <span class="row-name">Google Docs</span>
+            <span class="row-domain">docs.google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://microsoft.com/es-ar/education/products/office" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Word.png" alt="Microsoft Word">
+          <div class="row-text">
+            <span class="row-name">Word</span>
+            <span class="row-domain">microsoft.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Presentaciones</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://gamma.app" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Gamma%20-%20Gamma.png" alt="Gamma">
+          <div class="row-text">
+            <span class="row-name">Gamma</span>
+            <span class="row-domain">gamma.app</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+        <a class="app-row" href="https://slides.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Slides.png" alt="Google Slides">
+          <div class="row-text">
+            <span class="row-name">Slides</span>
+            <span class="row-domain">slides.google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://www.office.com/launch/powerpoint" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20PowerPoint.png" alt="PowerPoint">
+          <div class="row-text">
+            <span class="row-name">PowerPoint</span>
+            <span class="row-domain">office.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Planilla de cálculo</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://sheets.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+          <div class="row-text">
+            <span class="row-name">Google Sheets</span>
+            <span class="row-domain">sheets.google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+          <div class="row-text">
+            <span class="row-name">Excel</span>
+            <span class="row-domain">office.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="cat-section">
+      <h2 class="cat-heading">Formularios y bases de datos</h2>
+      <div class="cat-card">
+        <a class="app-row" href="https://forms.google.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Forms.png" alt="Google Forms">
+          <div class="row-text">
+            <span class="row-name">Google Forms</span>
+            <span class="row-domain">forms.google.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://airtable.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Airtable%20-%20Airtable.png" alt="Airtable">
+          <div class="row-text">
+            <span class="row-name">Airtable</span>
+            <span class="row-domain">airtable.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+</body>
+</html>

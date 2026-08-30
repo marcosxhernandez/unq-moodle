@@ -62,6 +62,7 @@
 <symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
 <symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
 <symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-arc" viewBox="0 0 24 24"><path d="M3 17 C7 17 8 6 12 6 C16 6 15 12 21 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="3" cy="17" r="1.4" fill="currentColor"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="21" cy="10" r="1.4" fill="currentColor"/></symbol>
 </defs></svg>
 
 <section class="cover-page" data-num="06">
@@ -85,39 +86,89 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Las Clases 04 y 05 armaron el Trabajo Integrador como documento — estructurado, citado, maquetado para imprimir. Hoy ese mismo contenido se convierte en presentación: generás un borrador de diapositivas con IA, aplicás los principios de diseño visual y la mecánica de edición (Google Slides o PowerPoint — el resultado es equivalente), y lo exportás dos veces para no depender de la conexión el día de exponer.</p>
+  <p class="toc-intro">Buscar, documentar y presentar: ese es el recorrido de este bloque. Las Clases 01 a 05 resolvieron las dos primeras etapas — buscaste y evaluaste fuentes con criterio, y armaste el Trabajo Integrador como documento: estructurado, citado, maquetado para imprimir. Hoy cerrás el círculo con la tercera etapa. Ese mismo contenido se convierte en presentación: le encontrás un hilo narrativo, generás un borrador de diapositivas con IA, aplicás los principios de diseño visual y la mecánica de edición (Google Slides o PowerPoint — el resultado es equivalente), y lo exportás dos veces para no depender de la conexión el día de exponer.</p>
   <span class="toc-label">Contenido</span>
   <ol>
-    <li><a href="#buena-presentacion"><span class="toc-num">01</span><span class="toc-text">Antes de empezar a trabajar: cómo dar una buena presentación</span></a></li>
-    <li><a href="#traduccion"><span class="toc-num">02</span><span class="toc-text">De documento a presentación: qué se traduce y qué no</span></a></li>
-    <li><a href="#diseno-visual"><span class="toc-num">03</span><span class="toc-text">Principios de diseño visual: por qué una diapositiva funciona o no</span></a></li>
-    <li><a href="#borrador"><span class="toc-num">04</span><span class="toc-text">Generar el borrador con IA</span></a></li>
-    <li><a href="#mecanica"><span class="toc-num">05</span><span class="toc-text">La mecánica: de esquema a diapositiva terminada</span></a></li>
-    <li><a href="#exportar"><span class="toc-num">06</span><span class="toc-text">Exportar para exponer sin depender de internet</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#historia"><span class="toc-num">01</span><span class="toc-text">Storytelling: contá una historia</span></a></li>
+    <li><a href="#diseno-visual"><span class="toc-num">02</span><span class="toc-text">Diseño visual: cómo se compone una diapositiva</span></a></li>
+    <li><a href="#borrador"><span class="toc-num">03</span><span class="toc-text">Generar el borrador con IA</span></a></li>
+    <li><a href="#mecanica"><span class="toc-num">04</span><span class="toc-text">Tema, transición y animación</span></a></li>
+    <li><a href="#exportar"><span class="toc-num">05</span><span class="toc-text">Exportar la presentación</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">06</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 01 — ANTES DE EMPEZAR A TRABAJAR: CÓMO DAR UNA BUENA PRESENTACIÓN -->
-<section class="block" id="buena-presentacion">
+<!-- 01 — STORYTELLING: CONTÁ UNA HISTORIA -->
+<section class="block" id="historia">
   <div class="block-head">
     <span class="block-num">01</span>
-    <h2 class="block-title">Antes de empezar a trabajar: cómo dar una buena presentación</h2>
+    <h2 class="block-title">Storytelling: contá una historia</h2>
   </div>
   <div class="prose">
-    <p><em>Ideas adaptadas de un artículo de Sergio Uribe (2013) sobre malas presentaciones — acá reformuladas en positivo, agrupadas por el problema real que resuelven.</em></p>
+    <p>Tu Trabajo Integrador está ordenado para argumentar — introducción, desarrollo, conclusión —, la estructura que sostiene un texto académico. Pasado a diapositivas en ese mismo orden, no alcanza para sostener la atención de la sala: una presentación no se lee, se ve y se escucha, al ritmo que marcás con la voz. Eso es un problema distinto, y tiene una solución con nombre propio: <strong>storytelling</strong>, la técnica de organizar contenido real (no ficción) como una historia para sostener la atención de quien escucha, con un <strong>arco narrativo</strong>. No hace falta inventar una historia que no está en tu Trabajo Integrador — hace falta elegir, entre los datos que ya tenés, cuál abre la exposición, cuáles la sostienen, y cuál la cierra.</p>
 
-    <p>Antes de tocar una diapositiva, cinco prácticas que definen si una presentación funciona o no. Todas resuelven el mismo problema de fondo: mantener la atención del público.</p>
+    <svg class="diagram" role="img" aria-label="Curva del arco narrativo: sube desde un gancho inicial, pasa por el desarrollo con la evidencia, y desciende hacia un cierre que resuelve la tensión" viewBox="0 0 320 170">
+      <line x1="20" y1="122" x2="300" y2="122" stroke="#ebe8f0" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M30,112 C75,35 125,22 160,24 C205,27 250,45 290,78" fill="none" stroke="#e8a317" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="30" cy="112" r="5.5" fill="#976a0f"/>
+      <circle cx="160" cy="24" r="5.5" fill="#976a0f"/>
+      <circle cx="290" cy="78" r="5.5" fill="#976a0f"/>
+      <text x="30" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#15141b">Gancho</text>
+      <text x="160" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#15141b">Desarrollo</text>
+      <text x="290" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#15141b">Cierre</text>
+      <text x="4" y="153" text-anchor="start" font-family="Inter, sans-serif" font-size="8.5" fill="#8d8b9c">pregunta o tensión</text>
+      <text x="160" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#8d8b9c">evidencia, hallazgo</text>
+      <text x="316" y="153" text-anchor="end" font-family="Inter, sans-serif" font-size="8.5" fill="#8d8b9c">resuelve el gancho</text>
+    </svg>
+    <p class="screenshot-caption">Tres tramos, no diez: una presentación con arco narrativo abre con tensión, la sostiene con evidencia y cierra resolviéndola — el mismo orden sirve para un Trabajo Integrador de cualquier carrera.</p>
 
-    <h3>Legibilidad ante todo</h3>
-    <p>Elegí una tipografía clara — nunca decorativa ni "divertida" — y un contraste fuerte entre texto y fondo: negro sobre blanco, blanco sobre un color oscuro.</p>
-    <p><em>Qué NO hacer, y por qué:</em> texto rojo sobre fondo azul, o Comic Sans en una presentación formal. No es solo una cuestión de gusto — esa combinación de colores es difícil de resolver para el ojo a distancia, y una tipografía informal le resta seriedad al contenido antes de que digas una palabra. El público deja de leer a los pocos segundos.</p>
+    <h3>Gancho</h3>
+    <p>La primera diapositiva de contenido (después de la portada) no es un índice ni un resumen del tema — es una pregunta sin responder, un dato incómodo o una tensión que el público quiere ver resuelta. Le da una razón para seguir mirando.</p>
+    <p><em>Qué NO hacer, y por qué:</em> abrir con "Índice" o "Introducción" como primera diapositiva de contenido. El público todavía no tiene motivo para prestar atención — se lo diste recién en la diapositiva 4, cuando ya se dispersó.</p>
 
-    <h3>Una idea por diapositiva</h3>
-    <p>Cada diapositiva sostiene una sola idea, no un párrafo ni diez viñetas. Si necesitás leerla palabra por palabra para exponerla, ya perdiste: elegí 3 a 5 palabras clave y decí el resto con tu voz.</p>
-    <p><em>Qué NO hacer, y por qué:</em> llenar la diapositiva de viñetas y leerlas todas en voz alta. El público lee más rápido de lo que vos hablás — cuando terminás la primera línea, ya leyeron las diez, y ahí dejan de escucharte.</p>
+    <h3>Desarrollo</h3>
+    <p>No repite el orden de las secciones del documento — sigue el orden que mejor construye hacia el cierre: de lo conocido a lo sorprendente, de la evidencia más simple a la más contundente, o de un antes a un después. El documento se ordena para argumentar en el papel; la presentación se reordena para sostener el oído.</p>
+    <p><em>Qué NO hacer, y por qué:</em> pegar las secciones del Trabajo Integrador en el mismo orden en que quedaron escritas, porque "así ya está organizado". Lo que ordena un texto para argumentar no es lo mismo que sostiene la atención de una sala.</p>
+
+    <h3>Cierre</h3>
+    <p>La última diapositiva de contenido vuelve a la pregunta o tensión del gancho y la resuelve con una sola idea — la que querés que el público recuerde mañana. No es un resumen de todo lo dicho ni una diapositiva de "Gracias".</p>
+    <p><em>Qué NO hacer, y por qué:</em> terminar con "Gracias" o "Preguntas" como última diapositiva de contenido. Es el momento de mayor atención de toda la exposición — dejarlo vacío desaprovecha justo lo que más se recuerda.</p>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>El arco narrativo funciona igual en toda la presentación que en una sola diapositiva bien armada: una sola pregunta o tensión abre el mazo, y una sola conclusión lo cierra. Todo lo del medio existe para llevar de una a la otra.</p>
+    </div>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📙 Paso a paso — Prompt para encontrar tu arco (RTCFL adaptado)</p>
+      <ol>
+        <li><strong>Rol:</strong> "Actuá como editor de presentaciones, especializado en storytelling."</li>
+        <li><strong>Tarea:</strong> "Leé mi Trabajo Integrador y proponeme un arco narrativo para exponerlo: qué gancho podría abrir la exposición, qué 3 o 4 ideas del desarrollo lo sostienen mejor, y qué idea central debería quedar como cierre."</li>
+        <li><strong>Contexto:</strong> subí el PDF de tu Trabajo Integrador (o pegá el texto, si la herramienta no acepta archivos).</li>
+        <li><strong>Formato:</strong> "Respondé en tres partes, en este orden: Gancho, Desarrollo (lista de ideas) y Cierre — cada una en una o dos oraciones, no un párrafo largo."</li>
+        <li><strong>Límites:</strong> "No inventes datos que no estén en el documento. Si no encontrás un gancho llamativo, decímelo en vez de inventar uno."</li>
+      </ol>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Encontrar tu arco con IA</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Subí el PDF de tu Trabajo Integrador a una IA que acepte archivos (por ejemplo ChatGPT, Claude, Gemini o NotebookLM).</li>
+          <li>Armá el prompt con RTCFL adaptado, como en el paso a paso de arriba.</li>
+          <li>Leé la propuesta de la IA con ojo crítico: ¿el gancho que eligió es realmente lo más interesante que tenés, o el dato más fácil de encontrar? ¿el cierre resuelve ese gancho, o es un resumen genérico de todo el trabajo?</li>
+          <li>Ajustá lo que no te convenza — el arco final lo decidís vos, la IA solo te dio un primer candidato.</li>
+          <li>Anotá tu gancho, tus 3 o 4 ideas de desarrollo y tu cierre en un lugar a mano: los vas a necesitar para el prompt del esquema, en la sección "Generar el borrador con IA".</li>
+        </ol>
+      </div>
+    </div>
+
+    <p>La estructura del arco define qué contás y en qué orden — pero un buen arco se puede arruinar en la entrega. Dos prácticas simples cuidan esa otra mitad.</p>
 
     <h3>Mirá al público, no la pantalla</h3>
     <p>Tu cuerpo y tu mirada apuntan a las personas que te escuchan, no a la diapositiva. Si necesitás recordar el orden, usá las notas del orador. El puntero láser, si lo usás, se enciende solo para señalar algo puntual.</p>
@@ -127,34 +178,22 @@
     <p>Un tiempo de exposición es un límite, no una sugerencia — practicá antes con cronómetro y ajustá el contenido para entrar cómodo. El celular queda en silencio y fuera de la mano durante toda la exposición.</p>
     <p><em>Qué NO hacer, y por qué:</em> extenderte todo lo que puedas "porque hay más para contar", o interrumpir tu propia exposición para atender el celular. Los dos casos le dicen al público que su tiempo importa menos que el tuyo.</p>
 
-    <h3>Citá lo que corresponda</h3>
-    <p>Toda afirmación que tomaste de una fuente lleva su crédito en pantalla, aunque sea abreviado — el mismo criterio de la cita APA que ya usás en un documento.</p>
-    <p><em>Qué NO hacer, y por qué:</em> presentar datos o ideas ajenas como propias, sin decir de dónde salen. Es el mismo problema de fondo que el plagio en un texto escrito — solo que en una presentación oral nadie te lo puede señalar en el momento.</p>
-
-    <div class="callout" data-type="closing">
-      <p>Las cinco resuelven, en el fondo, un solo problema: el aburrimiento. El público tolera el ridículo, hasta le cae simpático — lo que no perdona es aburrirse.</p>
-    </div>
-
-    <p>Estas cinco prácticas trabajan la mitad oral de una presentación: lo que decís y cómo lo decís. Falta la otra mitad — lo que se ve. Después de repasar qué se traduce del documento a la diapositiva y qué no, la próxima sección te da los principios para que esa otra mitad ayude a tu exposición en vez de competirle el protagonismo.</p>
+    <p>Con el arco resuelto y la entrega cuidada, falta el paso más mecánico: traducir ese contenido a diapositivas concretas — qué se lleva del documento y qué no, tema de la próxima sección.</p>
   </div>
 </section>
 
-<!-- 02 — DE DOCUMENTO A PRESENTACIÓN -->
-<section class="block" id="traduccion">
+<!-- 02 — DISEÑO VISUAL: CÓMO SE COMPONE UNA DIAPOSITIVA -->
+<section class="block" id="diseno-visual">
   <div class="block-head">
     <span class="block-num">02</span>
-    <h2 class="block-title">De documento a presentación: qué se traduce y qué no</h2>
+    <h2 class="block-title">Diseño visual: cómo se compone una diapositiva</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>¿Por qué copiar y pegar párrafos enteros del Word a Slides es el error más común en una primera presentación?</p>
-    </div>
-
-    <p>Un documento se lee: quien lo tiene enfrente controla el ritmo, puede releer una frase, volver atrás. Una presentación se ve y se escucha: el público tiene unos segundos por diapositiva, al ritmo que vos marcás con la voz. Si una diapositiva tiene un párrafo entero, nadie la lee — y mientras tanto, dejan de escucharte a vos.</p>
+    <p>Copiar y pegar párrafos enteros del Trabajo Integrador a las diapositivas es el error más común en una primera presentación. Un documento se lee: quien lo tiene enfrente controla el ritmo, puede releer una frase, volver atrás. Una presentación se ve y se escucha: el público tiene unos segundos por diapositiva, al ritmo que vos marcás con la voz. Si una diapositiva tiene un párrafo entero, nadie la lee — y mientras tanto, dejan de escucharte a vos. Reducir el texto es la mitad del trabajo; la otra mitad es cómo se ve lo que queda, y eso también es diseño — no hace falta ser diseñador para hacerlo bien.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>Cada diapositiva necesita <strong>una</strong> idea, no un párrafo. Si no podés resumir la diapositiva en una frase corta, son dos diapositivas, no una.</p>
+      <p>Cada diapositiva necesita <strong>una</strong> idea, no un párrafo. Si no podés resumir la diapositiva en una frase corta, son dos diapositivas, no una: elegí 3 a 5 palabras clave y decí el resto con tu voz, en vez de leerla palabra por palabra.</p>
     </div>
 
     <h3>Del documento a la diapositiva</h3>
@@ -170,25 +209,30 @@
         </tbody>
       </table>
     </div>
-  </div>
-</section>
 
-<!-- 03 — PRINCIPIOS DE DISEÑO VISUAL -->
-<section class="block" id="diseno-visual">
-  <div class="block-head">
-    <span class="block-num">03</span>
-    <h2 class="block-title">Principios de diseño visual: por qué una diapositiva funciona o no</h2>
-  </div>
-  <div class="prose">
-    <p>Ya sabés qué decir y cómo decirlo. Falta la otra mitad: cómo se ve. Una diapositiva prolija no es la que tiene más colores ni la plantilla más elegante — es la que el público entiende de un vistazo. Cuatro principios definen si una diapositiva funciona o no, conocidos por la sigla <strong>CRAP</strong> (Contraste, Repetición, Alineación, Proximidad) — un nombre poco elegante para algo que sí importa, y que se acuerda igual de fácil por lo feo que suena.</p>
+    <p>Ese mismo criterio de cita se sostiene en la presentación: toda afirmación que tomaste de una fuente lleva su crédito en pantalla, aunque sea abreviado — el mismo estándar que ya usás en el documento, solo que resumido. Presentar datos o ideas ajenas como propias sin decir de dónde salen es el mismo problema que el plagio en un texto escrito, solo que en una exposición oral nadie te lo puede señalar en el momento.</p>
+
+    <p>Reducido el contenido al mínimo, todavía falta cómo se ve: una diapositiva prolija no es la que tiene más colores ni la plantilla más elegante — es la que el público entiende de un vistazo, y eso no depende del gusto personal sino de un puñado de principios de composición simples. Uno de los métodos más conocidos para aplicarlos junta cuatro en una sigla poco elegante pero fácil de recordar: <strong>CRAP</strong> (Contraste, Repetición, Alineación, Proximidad). No es el único camino para pensar el diseño visual, pero alcanza y sobra para una diapositiva académica — y es el que vas a usar en esta clase.</p>
 
     <div class="callout" data-type="question">
       <p>¿Viste alguna vez una presentación con una plantilla hermosa que igual costaba entender? Si no era la estética, ¿qué estaba fallando?</p>
     </div>
 
     <h3>Contraste</h3>
-    <p>Dos elementos que cumplen roles distintos tienen que verse evidentemente distintos, no parecidos "por las dudas". Entre texto y fondo hace falta una diferencia fuerte de luminosidad — negro sobre blanco, blanco sobre un color bien oscuro. Un título se diferencia de un subtítulo por tamaño y peso, no solo por estar arriba.</p>
-    <p><em>Qué NO hacer, y por qué:</em> gris claro sobre blanco, o dorado sobre amarillo. Se ve elegante en la pantalla de tu computadora, a 40 centímetros de tus ojos — desde el fondo del aula, esa combinación se funde en un borrón ilegible.</p>
+    <p>Dos elementos que cumplen roles distintos tienen que verse evidentemente distintos, no parecidos "por las dudas". Entre texto y fondo hace falta una diferencia fuerte de luminosidad — negro sobre blanco, blanco sobre un color bien oscuro — y una tipografía clara, nunca decorativa ni "divertida": Comic Sans en una presentación formal le resta seriedad al contenido antes de que digas una palabra. Un título se diferencia de un subtítulo por tamaño y peso, no solo por estar arriba.</p>
+    <p><em>Qué NO hacer, y por qué:</em> gris claro sobre blanco, dorado sobre amarillo, o una tipografía informal en un tema serio. Se ve elegante en la pantalla de tu computadora, a 40 centímetros de tus ojos — desde el fondo del aula, esa combinación se funde en un borrón ilegible, y el público deja de leer a los pocos segundos.</p>
+
+    <svg class="diagram" role="img" aria-label="Comparación de contraste: texto gris claro sobre blanco, ilegible desde lejos, junto a texto blanco sobre fondo oscuro, legible desde lejos" viewBox="0 0 320 150">
+      <rect x="10" y="10" width="130" height="90" rx="4" fill="#ffffff" stroke="#d7d3e2" stroke-width="1.5"/>
+      <text x="75" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="14" fill="#d7d3e2">Título</text>
+      <text x="75" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#d7d3e2">gris claro sobre blanco</text>
+      <text x="75" y="123" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#8a1130">✗</text>
+      <rect x="180" y="10" width="130" height="90" rx="4" fill="#15141b"/>
+      <text x="245" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="14" fill="#ffffff">Título</text>
+      <text x="245" y="68" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#d7d3e2">blanco sobre oscuro</text>
+      <text x="245" y="123" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#0f7a5c">✓</text>
+    </svg>
+    <p class="screenshot-caption">La misma palabra, dos contrastes: a 40 cm se leen ambas — desde el fondo del aula, solo una.</p>
 
     <h3>Repetición</h3>
     <p>La misma tipografía, la misma paleta de dos o tres colores, el mismo estilo de imagen en todo el mazo. La repetición no es monotonía — es lo que le permite al público reconocer "esto sigue siendo la misma presentación" sin tener que pensarlo.</p>
@@ -198,13 +242,30 @@
     <p>Cada texto y cada imagen se alinean a una grilla invisible: al margen izquierdo, al centro, a un borde en común con otro elemento. Nada queda "flotando" a ojo.</p>
     <p><em>Qué NO hacer, y por qué:</em> mover un cuadro de texto un poco para un lado porque "quedaba mejor así", sin fijarse si coincide con algo más en la diapositiva. El desorden se nota aunque no sepas explicar por qué.</p>
 
+    <svg class="diagram" role="img" aria-label="Comparación de alineación: elementos sueltos sin un margen común, junto a los mismos elementos alineados a un margen izquierdo compartido" viewBox="0 0 320 150">
+      <rect x="10" y="10" width="130" height="90" rx="4" fill="#ffffff" stroke="#d7d3e2" stroke-width="1.5"/>
+      <rect x="24" y="24" width="55" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="34" y="42" width="70" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="18" y="60" width="40" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="40" y="78" width="60" height="7" rx="2" fill="#8d8b9c"/>
+      <text x="75" y="123" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#8a1130">✗</text>
+      <rect x="180" y="10" width="130" height="90" rx="4" fill="#ffffff" stroke="#d7d3e2" stroke-width="1.5"/>
+      <line x1="194" y1="16" x2="194" y2="94" stroke="#e8a317" stroke-width="1.5" stroke-dasharray="2 2"/>
+      <rect x="194" y="24" width="55" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="194" y="42" width="70" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="194" y="60" width="40" height="7" rx="2" fill="#8d8b9c"/>
+      <rect x="194" y="78" width="60" height="7" rx="2" fill="#8d8b9c"/>
+      <text x="245" y="123" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="17" fill="#0f7a5c">✓</text>
+    </svg>
+    <p class="screenshot-caption">Cuatro elementos sueltos a ojo, versus los mismos cuatro anclados a un margen invisible en común.</p>
+
     <h3>Proximidad</h3>
     <p>Lo que está relacionado va junto; lo que no, se separa con espacio. La distancia entre dos elementos le dice al ojo si son parte de la misma idea o de dos ideas distintas, antes de leer una sola palabra.</p>
     <p><em>Qué NO hacer, y por qué:</em> repartir varios elementos sueltos a la misma distancia entre sí, sin agrupar los que van juntos. El público no sabe por dónde empezar a mirar.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave — jerarquía visual</p>
-      <p>La jerarquía visual es el orden en que el ojo recorre la diapositiva, y lo define el tamaño y el contraste: lo más grande y con más contraste es lo primero que se mira. Si el título y la imagen central compiten en tamaño, el público no sabe qué mirar primero. Dale al elemento más importante de cada diapositiva el mayor tamaño y el mayor contraste, sin excepciones — es la misma idea de "una idea por diapositiva" de la sección anterior, aplicada al diseño.</p>
+      <p>La jerarquía visual es el orden en que el ojo recorre la diapositiva, y lo define el tamaño y el contraste: lo más grande y con más contraste es lo primero que se mira. Si el título y la imagen central compiten en tamaño, el público no sabe qué mirar primero. Dale al elemento más importante de cada diapositiva el mayor tamaño y el mayor contraste, sin excepciones — es la misma idea de "una idea por diapositiva" que ya vimos más arriba en esta sección, aplicada ahora al diseño.</p>
     </div>
 
     <div class="callout" data-type="warning">
@@ -212,35 +273,47 @@
       <p>Si usás colores para diferenciar datos — por ejemplo, dos barras de un gráfico —, agregá también una etiqueta de texto o un patrón distinto. Parte del público no distingue bien ciertos colores entre sí, y sin una segunda pista pierde la diferencia por completo.</p>
     </div>
 
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 La prueba del fondo del aula</p>
-      <p>Antes de dar por terminada una diapositiva, imaginate sentado en el último banco, lejos del proyector, y preguntate: ¿el título se lee sin esforzar la vista? ¿hay una sola idea, o tengo que elegir qué mirar? ¿el color de fondo compite con el texto? Si alguna respuesta te preocupa, la diapositiva todavía no está lista — no importa cuánto "linda" te parezca en la pantalla de tu compu. Esta es la diferencia entre una diapositiva que funciona y una que no: no es gusto, es si pasa esta prueba.</p>
+    <div class="callout" data-type="action">
+      <p class="callout-label">🔎 Para hacer ahora — la prueba del fondo del aula</p>
+      <p>Abrí una diapositiva de tu esquema (o cualquier diapositiva vieja tuya, si todavía no generaste el borrador) e imaginate sentado en el último banco, lejos del proyector. Contestá a ojo: ¿el título se lee sin esforzar la vista? ¿hay una sola idea, o tenés que elegir qué mirar? ¿el color de fondo compite con el texto? ¿todo está alineado a algo, o hay algo "flotando"? Si alguna respuesta te preocupa, corregila ahí mismo — no importa cuánto "linda" te parezca en la pantalla de tu compu. Esta prueba, no el gusto personal, es la que decide si una diapositiva funciona.</p>
     </div>
 
     <p>Estos cuatro principios son los que le vas a pedir a la IA que respete desde el primer prompt, y los mismos que vas a chequear con tus propios ojos antes de exportar — aparecen otra vez en las próximas dos secciones.</p>
   </div>
 </section>
 
-<!-- 04 — GENERAR EL BORRADOR CON IA -->
+<!-- 03 — GENERAR EL BORRADOR CON IA -->
 <section class="block" id="borrador">
   <div class="block-head">
-    <span class="block-num">04</span>
+    <span class="block-num">03</span>
     <h2 class="block-title">Generar el borrador con IA</h2>
   </div>
   <div class="prose">
-    <p>Vas a usar una IA para pasar de documento a estructura de diapositivas — no para que la IA "haga la presentación entera", sino para no arrancar de la hoja en blanco. En esta clase trabajamos solo con herramientas gratuitas.</p>
+    <p>Vas a usar una IA para pasar de documento a estructura de diapositivas — no para que la IA "haga la presentación entera", sino para no arrancar de la hoja en blanco. No hay una herramienta "correcta" para esto: cada una tiene un modelo de costo distinto (gratis, freemium o de pago) y conviene elegir la que mejor se adapte a tu situación, no la más nombrada.</p>
 
-    <p>Las herramientas de IA para presentaciones cambian rápido — la que sirve mejor hoy puede no ser la mejor opción en unos meses. Por eso el flujo de esta clase no se apoya en una sola herramienta: probás el mismo pedido en dos, comparás y elegís con criterio propio. Es una habilidad más duradera que memorizar los botones de una app puntual.</p>
+    <p>Las herramientas de IA para presentaciones cambian rápido — la que sirve mejor hoy puede no ser la mejor opción en unos meses, y varias ajustan su plan gratuito seguido. Por eso el flujo de esta clase no se apoya en una sola herramienta: elegís dos de la lista de abajo según tu situación (cuenta institucional, presupuesto, o simple curiosidad), probás el mismo pedido en ambas, comparás y elegís con criterio propio. Es una habilidad más duradera que memorizar los botones de una app puntual.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
         <thead><tr><th>Herramienta</th><th>Costo</th><th>Cómo se usa acá</th></tr></thead>
         <tbody>
-          <tr><td><img class="app-icon" src="../img/apps/Gamma%20-%20Gamma.png" alt="">Gamma (<code>gamma.app</code>)</td><td>Gratis, con créditos limitados por mes. Plan pago con más créditos y funciones — no hace falta para esta actividad.</td><td>Generá un mazo completo pegando el texto o un outline. Exporta directo a <code>.pptx</code>, PDF o <strong>Google Slides</strong> con un clic — elegí el destino según dónde quieras seguir editando en la próxima sección.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/Gamma%20-%20Gamma.png" alt="">Gamma (<a href="https://gamma.app" target="_blank" rel="noopener"><code>gamma.app</code></a>)</td><td>Freemium: plan gratis real (hasta 10 diapositivas por pedido), plan pago con más diapositivas por pedido y funciones extra.</td><td>Generá un mazo completo pegando el texto o un outline. Exporta directo a <code>.pptx</code>, PDF o <strong>Google Slides</strong> con un clic — elegí el destino según dónde quieras seguir editando en la próxima sección.</td></tr>
           <tr><td><img class="app-icon" src="../img/apps/Google%20-%20Gemini%20Notebook.png" alt="">Gemini Notebook Studio</td><td>Gratis con cuenta Google (ver Clase 03).</td><td>Si ya cargaste tu Trabajo Integrador como fuente, pedile una guía de estudio o un resumen por puntos — sirve como esquema de partida.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/Canva%20-%20Canva.png" alt=""><strong>Canva</strong> (<a href="https://canva.com" target="_blank" rel="noopener"><code>canva.com</code></a>) — Magic Studio</td><td>Freemium: el plan gratis alcanza para maquetar a mano con plantillas, pero la generación con IA (Magic Studio) tiene usos limitados por mes — el resto requiere plan pago.</td><td>Pegá tu documento y generá un primer diseño con Magic Studio; después lo ajustás a mano con las plantillas del plan gratuito.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/Pitch%20-%20Pitch.png" alt=""><strong>Pitch</strong> (<a href="https://pitch.com" target="_blank" rel="noopener"><code>pitch.com</code></a>)</td><td>Freemium: plan gratis "para siempre" pensado para uso individual, con créditos de IA incluidos por mes.</td><td>Generá el esquema con IA y editá directo en el navegador — buena opción si no tenés cuenta institucional de Google ni de Microsoft.</td></tr>
+          <tr><td><img class="app-icon" src="../img/apps/Beautiful.ai%20-%20Beautiful.ai.png" alt=""><strong>Beautiful.ai</strong> (<a href="https://beautiful.ai" target="_blank" rel="noopener"><code>beautiful.ai</code></a>)</td><td>De pago (no tiene plan gratis permanente, solo una prueba corta) — pero ofrece un año gratis con mail <code>.edu</code>. El mail de UNQ termina en <code>.edu.ar</code>, así que el sistema automático probablemente no lo reconozca: si pasa eso, escribile a <a href="mailto:support@beautiful.ai"><code>support@beautiful.ai</code></a> adjuntando una constancia de alumno regular de la UNQ y pedí la verificación manual — su propio centro de ayuda ofrece esa vía para quienes no tienen mail <code>.edu</code>.</td><td>Cada elemento se reacomoda solo al editar (diseño adaptativo) — útil para ver ese enfoque distinto, y con la verificación manual de arriba también podés acceder gratis un año.</td></tr>
         </tbody>
       </table>
     </div>
+
+    <p>Otras cinco opciones, para comparar sin entrar en tanto detalle — confirmá el modelo de costo actual antes de decidirte, porque cambia seguido:</p>
+    <ul>
+      <li><strong>Slidesgo AI</strong> (<a href="https://slidesgo.com" target="_blank" rel="noopener"><code>slidesgo.com</code></a>) — Freemium: pocas generaciones con IA gratis por mes, después plan pago.</li>
+      <li><strong>Tome</strong> (<a href="https://tome.app" target="_blank" rel="noopener"><code>tome.app</code></a>) — Freemium, pero la generación con IA no está en el plan gratis: hace falta plan pago para esa parte.</li>
+      <li><strong>Visme</strong> (<a href="https://visme.co" target="_blank" rel="noopener"><code>visme.co</code></a>) — Freemium con créditos de IA limitados; tiene plan especial para estudiantes con mail <code>.edu</code> (misma salvedad que Beautiful.ai para mails <code>.edu.ar</code>).</li>
+      <li><strong>Decktopus</strong> (<a href="https://decktopus.com" target="_blank" rel="noopener"><code>decktopus.com</code></a>) — De pago, sin plan gratis; ofrece un código de descuento para estudiantes.</li>
+      <li><strong>Microsoft Copilot</strong> (dentro de PowerPoint) — De pago: requiere una licencia de Microsoft 365 Copilot, sin versión gratuita para esta función.</li>
+    </ul>
 
     <img class="screenshot" src="../img/06-01-captura-gamma-inicio.png" alt="Panel principal de Gamma, con los botones Crear nuevo, Nuevo gamma e Importar, y los créditos disponibles del plan gratuito">
     <p class="screenshot-caption">El panel de Gamma al entrar: "Crear nuevo" arranca el asistente de IA que arma el mazo completo a partir de tu texto.</p>
@@ -256,16 +329,11 @@
     <img class="screenshot" src="../img/06-03-captura-gamma-exportacion-completa.png" alt="Aviso de Gamma confirmando que la exportación a Google Slides está completa, con el link para abrirla">
     <p class="screenshot-caption">Al terminar, Gamma avisa y te deja el link directo a la copia recién creada en Google Slides.</p>
 
-    <div class="callout" data-type="explore">
-      <p class="callout-label">🔎 Para explorar — más allá de Gamma y Gemini Notebook</p>
-      <p>Si querés un tercer punto de comparación, o alguna de las dos de arriba no te convenció: Plus AI (complemento gratuito con límites para Google Slides), Beautiful.ai, Slidesgo AI o Canva Magic Studio son puntos de partida — seguro encontrás otras. Antes de sumar una a tu comparación, confirmá qué tan gratuita es en la práctica: muchas ofrecen pocos usos gratis por mes y después piden plan pago.</p>
-    </div>
-
     <div class="callout" data-type="format">
       <p class="callout-label">📙 Paso a paso — Prompt para el esquema (RTCFL adaptado)</p>
       <ol>
         <li><strong>Rol:</strong> "Actuá como diseñador de presentaciones académicas."</li>
-        <li><strong>Tarea:</strong> "Convertí este documento en un esquema de 8 a 10 diapositivas."</li>
+        <li><strong>Tarea:</strong> "Convertí este documento en un esquema de 8 a 10 diapositivas con arco narrativo: no sigas el orden del documento — proponé un gancho que abra con una pregunta o tensión, un desarrollo que la sostenga, y un cierre que la resuelva."</li>
         <li><strong>Contexto:</strong> pegá el texto de tu Trabajo Integrador (o el link, si la herramienta lo permite).</li>
         <li><strong>Formato:</strong> "Un título + máximo 3 bullets de hasta 5 palabras por diapositiva. Contraste alto entre texto y fondo, sin combinar colores parecidos entre sí."</li>
         <li><strong>Límites:</strong> "No más de 10 diapositivas. Una sola idea central por diapositiva. No inventes datos o conclusiones que no estén en el texto."</li>
@@ -274,7 +342,7 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave: prompt pobre vs. prompt con RTCFL</p>
-      <p>Prompt pobre: <em>"Haceme una presentación sobre mi tema."</em> — la IA no sabe el tono, el largo, el diseño ni qué evitar, así que inventa todo eso por vos. Prompt con RTCFL: <em>"Actuá como diseñador de presentaciones académicas. Convertí este documento en un esquema de 8 a 10 diapositivas, un título + máximo 3 bullets de hasta 5 palabras cada una, con contraste alto y una sola idea central por diapositiva. No inventes datos que no estén en el texto: [pegás el documento]."</em> — mismo pedido, pero con rol, límites, formato <strong>y los principios de diseño de la sección anterior</strong> explícitos. El resultado necesita mucha menos edición manual después.</p>
+      <p>Prompt pobre: <em>"Haceme una presentación sobre mi tema."</em> — la IA no sabe el tono, el largo, el diseño ni qué evitar, así que inventa todo eso por vos. Prompt con RTCFL: <em>"Actuá como diseñador de presentaciones académicas. Convertí este documento en un esquema de 8 a 10 diapositivas con arco narrativo — gancho, desarrollo y cierre —, un título + máximo 3 bullets de hasta 5 palabras cada una, con contraste alto y una sola idea central por diapositiva. No inventes datos que no estén en el texto: [pegás el documento]."</em> — mismo pedido, pero con rol, límites, formato <strong>y los principios de diseño y de arco narrativo de las secciones anteriores</strong> explícitos. El resultado necesita mucha menos edición manual después.</p>
     </div>
 
     <div class="callout" data-type="warning">
@@ -284,15 +352,15 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 01</span>
+        <span class="activity-eyebrow">Actividad 02</span>
         <h3>Generar y comparar el esquema</h3>
       </div>
       <div class="prose">
         <ol>
           <li>Abrí tu Trabajo Integrador.</li>
           <li>Armá el prompt con RTCFL adaptado, como en el paso a paso de arriba.</li>
-          <li>Probá ese mismo prompt en <strong>dos</strong> herramientas gratuitas: Gamma y Gemini Notebook, o reemplazá una de las dos por alguna de "Para explorar".</li>
-          <li>Compará los dos resultados contra los principios de diseño visual de la sección anterior: ¿cuál respeta mejor el contraste? ¿cuál te deja menos texto para borrar? ¿cuál pasa mejor la prueba del fondo del aula?</li>
+          <li>Probá ese mismo prompt en <strong>dos</strong> herramientas de la tabla de arriba, elegidas según tu situación — por ejemplo, una sin registro especial (Gamma o Pitch) y otra con tu cuenta institucional de UNQ (Gemini Notebook), o cualquier otro par que tenga sentido para vos.</li>
+          <li>Compará los dos resultados contra los principios de diseño visual y de arco narrativo de las secciones anteriores: ¿cuál respeta mejor el contraste? ¿cuál te deja menos texto para borrar? ¿cuál pasa mejor la prueba del fondo del aula? ¿cuál arranca con un gancho en vez de un índice, y cierra resolviéndolo en vez de terminar en "Gracias"?</li>
           <li>Elegí el mejor de los dos como punto de partida y revisalo diapositiva por diapositiva contra tu documento: ¿la idea central está bien representada? ¿sobra texto?</li>
           <li>Elegí tu editor final — Google Slides o PowerPoint, según a dónde exportó mejor tu herramienta (Gamma exporta directo a los dos). Nombrá el resultado <code>Presentación Integradora - V01</code> y guardalo en la subcarpeta "Clase 06".</li>
         </ol>
@@ -306,11 +374,11 @@
   </div>
 </section>
 
-<!-- 05 — LA MECÁNICA: DE ESQUEMA A DIAPOSITIVA TERMINADA -->
+<!-- 04 — TEMA, TRANSICIÓN Y ANIMACIÓN -->
 <section class="block" id="mecanica">
   <div class="block-head">
-    <span class="block-num">05</span>
-    <h2 class="block-title">La mecánica: de esquema a diapositiva terminada</h2>
+    <span class="block-num">04</span>
+    <h2 class="block-title">Tema, transición y animación</h2>
   </div>
   <div class="prose">
     <p>Con el esquema ya armado, ahora el diseño manual: tema, diapositivas, transiciones y animaciones. No importa si tu esquema llegó a Google Slides o a PowerPoint — son los mismos cuatro pasos con otro nombre de menú, y el resultado final es equivalente. No hay una herramienta "correcta": las dos llegan al mismo lugar.</p>
@@ -346,7 +414,7 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 02</span>
+        <span class="activity-eyebrow">Actividad 03</span>
         <h3>Aplicar diseño y movimiento</h3>
       </div>
       <div class="prose">
@@ -362,11 +430,11 @@
   </div>
 </section>
 
-<!-- 06 — EXPORTAR -->
+<!-- 05 — EXPORTAR LA PRESENTACIÓN -->
 <section class="block" id="exportar">
   <div class="block-head">
-    <span class="block-num">06</span>
-    <h2 class="block-title">Exportar para exponer sin depender de internet</h2>
+    <span class="block-num">05</span>
+    <h2 class="block-title">Exportar la presentación</h2>
   </div>
   <div class="prose">
     <p>Si terminaste en Google Slides, necesitás bajarla: Presentaciones de Google no funciona sin conexión, y si falla el wifi del aula o el proyector no tiene navegador, no podés exponer desde <a href="https://slides.google.com" target="_blank" rel="noopener"><code>slides.google.com</code></a>. Si ya terminaste en PowerPoint de escritorio, este paso es más corto — el <code>.pptx</code> ya lo tenés, solo falta el respaldo en PDF.</p>
@@ -412,7 +480,7 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 03</span>
+        <span class="activity-eyebrow">Actividad 04</span>
         <h3>Exportar con respaldo</h3>
       </div>
       <div class="prose">
@@ -430,29 +498,31 @@
   </div>
 </section>
 
-<!-- 07 — RESUMEN DE LA CLASE -->
+<!-- 06 — RESUMEN DE LA CLASE -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">07</span>
+    <span class="block-num">06</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>El Trabajo Integrador que armaste como documento hoy se convirtió en una presentación: generaste el borrador con IA comparando dos herramientas, aplicaste los principios de diseño visual (CRAP) para que se entienda de un vistazo, le diste una estética consistente con tema y transiciones, y lo exportaste dos veces para no depender de la conexión del día de exponer.</p>
+    <p>El Trabajo Integrador que armaste como documento hoy se convirtió en una presentación: le encontraste un arco narrativo con ayuda de una IA — gancho, desarrollo y cierre —, generaste el borrador comparando dos herramientas, aplicaste los principios elementales de diseño visual (contraste, repetición, alineación y proximidad — CRAP) para que se entienda de un vistazo, le diste una estética consistente con tema y transiciones, y lo exportaste dos veces para no depender de la conexión del día de exponer.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-1" aria-label="Marcar como hecho"></td><td><label for="chk-06-1">La presentación se llama <code>Presentación Integradora - V01</code> y está en la subcarpeta "Clase 06".</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-2" aria-label="Marcar como hecho"></td><td><label for="chk-06-2">Probaste el prompt en al menos dos herramientas de IA y elegiste el mejor resultado con criterio propio.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-3" aria-label="Marcar como hecho"></td><td><label for="chk-06-3">Tiene entre 8 y 10 diapositivas, generadas con IA a partir del Trabajo Integrador y revisadas a mano.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-4" aria-label="Marcar como hecho"></td><td><label for="chk-06-4">El diseño respeta contraste, repetición, alineación y proximidad (CRAP), y pasa la prueba del fondo del aula.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-5" aria-label="Marcar como hecho"></td><td><label for="chk-06-5">El tema es consistente en todas las diapositivas.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-6" aria-label="Marcar como hecho"></td><td><label for="chk-06-6">La transición es la misma en todas las diapositivas.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-7" aria-label="Marcar como hecho"></td><td><label for="chk-06-7">Hay al menos 2 animaciones con disparador definido.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-8" aria-label="Marcar como hecho"></td><td><label for="chk-06-8">Hay al menos 1 imagen insertada.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-9" aria-label="Marcar como hecho"></td><td><label for="chk-06-9">Se descargó en <code>.pptx</code> y en PDF, ambos en la subcarpeta "Clase 06".</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-10" aria-label="Marcar como hecho"></td><td><label for="chk-06-10">Se subió a Moodle el <code>.pptx</code>, el PDF, y el link de Slides si corresponde.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-1" aria-label="Marcar como hecho"></td><td><label for="chk-06-1">Definiste tu arco narrativo con ayuda de una IA (gancho, desarrollo, cierre) a partir del Trabajo Integrador, y tenés las ideas anotadas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-2" aria-label="Marcar como hecho"></td><td><label for="chk-06-2">La presentación se llama <code>Presentación Integradora - V01</code> y está en la subcarpeta "Clase 06".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-3" aria-label="Marcar como hecho"></td><td><label for="chk-06-3">Probaste el prompt en al menos dos herramientas de IA y elegiste el mejor resultado con criterio propio.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-4" aria-label="Marcar como hecho"></td><td><label for="chk-06-4">La presentación abre con un gancho (no un índice) y cierra resolviéndolo (no una diapositiva de "Gracias").</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-5" aria-label="Marcar como hecho"></td><td><label for="chk-06-5">Tiene entre 8 y 10 diapositivas, generadas con IA a partir del Trabajo Integrador y revisadas a mano.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-6" aria-label="Marcar como hecho"></td><td><label for="chk-06-6">El diseño respeta contraste, repetición, alineación y proximidad (CRAP), y pasa la prueba del fondo del aula.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-7" aria-label="Marcar como hecho"></td><td><label for="chk-06-7">El tema es consistente en todas las diapositivas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-8" aria-label="Marcar como hecho"></td><td><label for="chk-06-8">La transición es la misma en todas las diapositivas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-9" aria-label="Marcar como hecho"></td><td><label for="chk-06-9">Hay al menos 2 animaciones con disparador definido.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-10" aria-label="Marcar como hecho"></td><td><label for="chk-06-10">Hay al menos 1 imagen insertada.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-11" aria-label="Marcar como hecho"></td><td><label for="chk-06-11">Se descargó en <code>.pptx</code> y en PDF, ambos en la subcarpeta "Clase 06".</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-06-12" aria-label="Marcar como hecho"></td><td><label for="chk-06-12">Se subió a Moodle el <code>.pptx</code>, el PDF, y el link de Slides si corresponde.</label></td></tr>
         </tbody>
       </table>
     </div>
@@ -643,6 +713,14 @@
       <div class="qr-row-label">Presentaciones</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-arc"></use></svg></div><span class="qr-cell-title">Storytelling (arco narrativo)</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">G</span><span class="qr-fdesc">Gancho</span></div>
+            <div class="qr-frow"><span class="qr-fletter">D</span><span class="qr-fdesc">Desarrollo</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Cierre</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-palette"></use></svg></div><span class="qr-cell-title">CRAP</span></div>
           <div class="qr-formula">
             <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Contraste</span></div>
@@ -681,6 +759,9 @@
 
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Storytelling</span><p class="gloss-def">Técnica de organizar contenido real (no ficción) como una historia, para sostener la atención de quien escucha o lee.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Arco narrativo</span><p class="gloss-def">Estructura en tres tramos — gancho, desarrollo y cierre — que organiza una presentación para sostener la atención, distinta del orden argumentativo de un documento.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gancho</span><p class="gloss-def">Primera diapositiva de contenido: una pregunta, tensión o dato que le da al público un motivo para seguir mirando.</p></div>
       <div class="gloss-item"><span class="gloss-term">CRAP</span><p class="gloss-def">Contraste, Repetición, Alineación, Proximidad — los cuatro principios que definen si una diapositiva se entiende de un vistazo.</p></div>
       <div class="gloss-item"><span class="gloss-term">Jerarquía visual</span><p class="gloss-def">Orden en que el ojo recorre una diapositiva, guiado por tamaño y contraste — el elemento más importante debe ser el que más se destaca.</p></div>
       <div class="gloss-item"><span class="gloss-term">Transición</span><p class="gloss-def">Efecto de cambio entre dos diapositivas. Se aplica a todas por igual para mantener consistencia.</p></div>
@@ -693,11 +774,13 @@
 
     <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
+      <li>Duarte, N. (2010). <em>Resonate: Present Visual Stories that Transform Audiences</em>. Wiley. Origen del concepto de arco narrativo (gancho, desarrollo, cierre) aplicado a presentaciones.</li>
+      <li>Storie, J. (28 de mayo de 2026). <em>Storytelling in Presentations: 7 Tips and Examples</em>. Duarte. <a href="https://duarte.com/blog/tips-for-crafting-a-storytelling-presentation/" target="_blank" rel="noopener"><code>duarte.com/blog/tips-for-crafting-a-storytelling-presentation/</code></a></li>
       <li>Williams, R. <em>The Non-Designer's Design Book</em>. Origen de los principios CRAP (Contraste, Repetición, Alineación, Proximidad).</li>
-      <li>Harvard Catalyst. <em>Slides — Visualize Science</em>. <code>catalyst.harvard.edu/writing-communication-center/visualize-science/slides</code></li>
-      <li>Google. <em>Create, view, or download a file</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/49114</code></li>
-      <li>Google. <em>Add or change animations and transitions</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/1689475</code></li>
-      <li>Google. <em>Use a template or change the theme, background or layout in Google Slides</em>. Google Docs Editors Help. <code>support.google.com/docs/answer/1705254</code></li>
+      <li>Harvard Catalyst. <em>Slides — Visualize Science</em>. <a href="https://catalyst.harvard.edu/writing-communication-center/visualize-science/slides" target="_blank" rel="noopener"><code>catalyst.harvard.edu/writing-communication-center/visualize-science/slides</code></a></li>
+      <li>Google. <em>Create, view, or download a file</em>. Google Docs Editors Help. <a href="https://support.google.com/docs/answer/49114" target="_blank" rel="noopener"><code>support.google.com/docs/answer/49114</code></a></li>
+      <li>Google. <em>Add or change animations and transitions</em>. Google Docs Editors Help. <a href="https://support.google.com/docs/answer/1689475" target="_blank" rel="noopener"><code>support.google.com/docs/answer/1689475</code></a></li>
+      <li>Google. <em>Use a template or change the theme, background or layout in Google Slides</em>. Google Docs Editors Help. <a href="https://support.google.com/docs/answer/1705254" target="_blank" rel="noopener"><code>support.google.com/docs/answer/1705254</code></a></li>
     </ul>
   </div>
 </section>

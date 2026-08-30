@@ -13,6 +13,7 @@
     --line:#e8e8ed;
     --blue:#0071e3;
     --gold-bg:#fbf1dd; --gold-ink:#8a5a00;
+    --violet-bg:#f2ecfb; --violet-ink:#6a3fb5;
     --sans:'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
     --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   }
@@ -86,6 +87,8 @@
   .pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
   .pill-paid{ background:var(--ink); color:#fff; }
   .pill-student{ background:var(--gold-bg); color:var(--gold-ink); }
+  .pill-suggested{ background:#fff; color:var(--violet-ink); border:1px dashed var(--violet-ink); }
+  .app-row-suggested{ background:var(--violet-bg); }
   .tags{ flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
 
   @media (max-width:640px){
@@ -110,6 +113,7 @@
   <header class="doc-head">
     <p class="doc-eyebrow">Informática · UNQ · 2026</p>
     <h1 class="doc-title">Caja de herramientas</h1>
+    <p style="margin:10px 4px 0; font-size:.85rem; color:var(--ink-soft);"><span class="pill pill-suggested" style="margin-right:6px;">💡 Sugerencia</span>marca una herramienta que todavía no aparece en ninguna clase — es una propuesta a evaluar, no algo ya confirmado en la guía.</p>
   </header>
 
   <div class="groups">
@@ -141,14 +145,19 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
-        <a class="app-row" href="https://calendar.google.com" target="_blank" rel="noopener">
-          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Calendar.png" alt="Google Calendar">
-          <div class="row-text">
-            <span class="row-name">Google Calendar</span>
-            <span class="row-domain">calendar.google.com</span>
+        <div class="app-row app-row-suggested">
+          <a class="app-row-link" href="https://calendar.google.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Calendar.png" alt="Google Calendar">
+            <div class="row-text">
+              <span class="row-name">Google Calendar</span>
+              <span class="row-domain">calendar.google.com</span>
+            </div>
+          </a>
+          <div class="tags">
+            <span class="pill pill-free">Gratis</span>
+            <span class="pill pill-suggested">💡 Sugerencia</span>
           </div>
-          <span class="pill pill-free">Gratis</span>
-        </a>
+        </div>
         <div class="app-row">
           <a class="app-row-link" href="https://onedrive.live.com" target="_blank" rel="noopener">
             <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20OneDrive.png" alt="OneDrive">
@@ -304,14 +313,19 @@
           </div>
           <span class="pill pill-freemium">Freemium</span>
         </a>
-        <a class="app-row" href="https://elicit.com" target="_blank" rel="noopener">
-          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Elicit%20-%20Elicit.png" alt="Elicit">
-          <div class="row-text">
-            <span class="row-name">Elicit</span>
-            <span class="row-domain">elicit.com</span>
+        <div class="app-row app-row-suggested">
+          <a class="app-row-link" href="https://elicit.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Elicit%20-%20Elicit.png" alt="Elicit">
+            <div class="row-text">
+              <span class="row-name">Elicit</span>
+              <span class="row-domain">elicit.com</span>
+            </div>
+          </a>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-suggested">💡 Sugerencia</span>
           </div>
-          <span class="pill pill-freemium">Freemium</span>
-        </a>
+        </div>
       </div>
     </section>
 
@@ -478,14 +492,19 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
-        <a class="app-row" href="https://forms.cloud.microsoft" target="_blank" rel="noopener">
-          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Forms.png" alt="Microsoft Forms">
-          <div class="row-text">
-            <span class="row-name">Microsoft Forms</span>
-            <span class="row-domain">forms.cloud.microsoft</span>
+        <div class="app-row app-row-suggested">
+          <a class="app-row-link" href="https://forms.cloud.microsoft" target="_blank" rel="noopener">
+            <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Forms.png" alt="Microsoft Forms">
+            <div class="row-text">
+              <span class="row-name">Microsoft Forms</span>
+              <span class="row-domain">forms.cloud.microsoft</span>
+            </div>
+          </a>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-suggested">💡 Sugerencia</span>
           </div>
-          <span class="pill pill-freemium">Freemium</span>
-        </a>
+        </div>
         <a class="app-row" href="https://airtable.com" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Airtable%20-%20Airtable.png" alt="Airtable">
           <div class="row-text">
@@ -508,14 +527,19 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
-        <a class="app-row" href="https://pexels.com" target="_blank" rel="noopener">
-          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Canva%20-%20Pexels.png" alt="Pexels">
-          <div class="row-text">
-            <span class="row-name">Pexels</span>
-            <span class="row-domain">pexels.com</span>
+        <div class="app-row app-row-suggested">
+          <a class="app-row-link" href="https://pexels.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Canva%20-%20Pexels.png" alt="Pexels">
+            <div class="row-text">
+              <span class="row-name">Pexels</span>
+              <span class="row-domain">pexels.com</span>
+            </div>
+          </a>
+          <div class="tags">
+            <span class="pill pill-free">Gratis</span>
+            <span class="pill pill-suggested">💡 Sugerencia</span>
           </div>
-          <span class="pill pill-free">Gratis</span>
-        </a>
+        </div>
       </div>
     </section>
 

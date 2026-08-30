@@ -83,6 +83,7 @@
   .pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
   .pill-paid{ background:var(--ink); color:#fff; }
   .pill-student{ background:var(--gold-bg); color:var(--gold-ink); }
+  .tags{ flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
 
   @media (max-width:640px){
     .page{ padding:32px 18px 60px; }
@@ -137,11 +138,27 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
+        <a class="app-row" href="https://onedrive.live.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20OneDrive.png" alt="OneDrive">
+          <div class="row-text">
+            <span class="row-name">OneDrive</span>
+            <span class="row-domain">onedrive.live.com</span>
+          </div>
+          <span class="pill pill-freemium">Freemium</span>
+        </a>
         <a class="app-row" href="https://www.linkedin.com" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20LinkedIn.png" alt="LinkedIn">
           <div class="row-text">
             <span class="row-name">LinkedIn</span>
             <span class="row-domain">linkedin.com</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
+        <a class="app-row" href="https://bitwarden.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Bitwarden%20-%20Bitwarden.png" alt="Bitwarden">
+          <div class="row-text">
+            <span class="row-name">Bitwarden</span>
+            <span class="row-domain">bitwarden.com</span>
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
@@ -173,8 +190,10 @@
             <span class="row-name">Gemini</span>
             <span class="row-domain">gemini.google.com</span>
           </div>
-          <span class="pill pill-student">🎓 1 año gratis</span>
-          <span class="pill pill-freemium">Freemium</span>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-student">🎓 1 año gratis</span>
+          </div>
         </a>
         <a class="app-row" href="https://claude.ai" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Anthropic%20-%20Claude.png" alt="Claude">
@@ -208,6 +227,14 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
+        <a class="app-row" href="https://arena.ai/leaderboard" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Arena%20-%20Arena.png" alt="Arena Leaderboard">
+          <div class="row-text">
+            <span class="row-name">Arena Leaderboard</span>
+            <span class="row-domain">arena.ai/leaderboard</span>
+          </div>
+          <span class="pill pill-free">Gratis</span>
+        </a>
       </div>
     </section>
 
@@ -236,7 +263,7 @@
             <span class="row-name">Copilot</span>
             <span class="row-domain">copilot.microsoft.com</span>
           </div>
-          <span class="pill pill-free">Gratis</span>
+          <span class="pill pill-freemium">Freemium</span>
         </a>
       </div>
     </section>
@@ -252,13 +279,16 @@
           </div>
           <span class="pill pill-free">Gratis</span>
         </a>
-        <a class="app-row" href="https://microsoft.com/es-ar/education/products/office" target="_blank" rel="noopener">
+        <a class="app-row" href="https://word.cloud.microsoft" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20Word.png" alt="Microsoft Word">
           <div class="row-text">
             <span class="row-name">Word</span>
-            <span class="row-domain">microsoft.com</span>
+            <span class="row-domain">word.cloud.microsoft</span>
           </div>
-          <span class="pill pill-freemium">Freemium</span>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-student">🎓 Incluido con tu cuenta UNQ</span>
+          </div>
         </a>
       </div>
     </section>
@@ -288,7 +318,10 @@
             <span class="row-name">PowerPoint</span>
             <span class="row-domain">office.com</span>
           </div>
-          <span class="pill pill-freemium">Freemium</span>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-student">🎓 Incluido con tu cuenta UNQ</span>
+          </div>
         </a>
         <a class="app-row" href="https://www.canva.com" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Canva%20-%20Canva.png" alt="Canva">
@@ -312,8 +345,10 @@
             <span class="row-name">Beautiful.ai</span>
             <span class="row-domain">beautiful.ai</span>
           </div>
-          <span class="pill pill-student">🎓 1 año gratis</span>
-          <span class="pill pill-paid">Pago</span>
+          <div class="tags">
+            <span class="pill pill-paid">Pago</span>
+            <span class="pill pill-student">🎓 1 año gratis</span>
+          </div>
         </a>
         <a class="app-row" href="https://slidesgo.com" target="_blank" rel="noopener">
           <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Slidesgo%20-%20Slidesgo.png" alt="Slidesgo">
@@ -329,7 +364,21 @@
             <span class="row-name">Visme</span>
             <span class="row-domain">visme.co</span>
           </div>
-          <span class="pill pill-freemium">Freemium</span>
+          <div class="tags">
+            <span class="pill pill-freemium">Freemium</span>
+            <span class="pill pill-student">🎓 Plan para estudiantes .edu</span>
+          </div>
+        </a>
+        <a class="app-row" href="https://decktopus.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Decktopus%20-%20Decktopus.png" alt="Decktopus">
+          <div class="row-text">
+            <span class="row-name">Decktopus</span>
+            <span class="row-domain">decktopus.com</span>
+          </div>
+          <div class="tags">
+            <span class="pill pill-paid">Pago</span>
+            <span class="pill pill-student">🎓 Código de descuento</span>
+          </div>
         </a>
       </div>
     </section>

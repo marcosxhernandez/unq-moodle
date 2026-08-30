@@ -859,6 +859,15 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .callout[data-type="action"] code{ color:var(--green); }
 .callout[data-type="action"] ol > li::before{ color:var(--green); background:#fff; }
 .callout[data-type="action"] ul > li::before{ background:var(--green); }
+/* íconos de apps en el label de un callout "action" — mismo tratamiento
+   que .callout[data-type="linkedin"] .callout-label img (ago. 2026):
+   32x32, fondo blanco propio y borde sutil para que no se pierdan sobre
+   el tinte verde. Solo afecta labels que de verdad tengan <img> — los
+   demás callouts "action" (ejercicios "Para hacer ahora") no llevan. */
+.callout[data-type="action"] .callout-label img{
+  width:32px; height:32px; border-radius:22%; flex-shrink:0;
+  background:#fff; box-shadow:0 0 0 1px rgba(17,17,17,.08);
+}
 
 .callout[data-type="explore"]{ background:var(--blue-tint); }
 .callout[data-type="explore"] .callout-label{ color:var(--blue); }
@@ -2140,9 +2149,12 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   /* URLs visibles junto a cualquier link externo real (no aplica a
      los anclajes internos del índice ni a los que envuelven un <code>
      — tarjetas de herramienta, dominios en el cuerpo, fuentes — porque
-     esos ya muestran su URL como texto visible). En el papel no se
-     puede hacer clic — así el dato no se pierde. */
-  .prose a[href^="http"]:not(:has(code))::after{
+     esos ya muestran su URL como texto visible). Se suma el link de
+     licencia del colofón (.colophon-license), que vive fuera de
+     .prose y si no quedaría sin URL visible en papel. En el papel no
+     se puede hacer clic — así el dato no se pierde. */
+  .prose a[href^="http"]:not(:has(code))::after,
+  .colophon-license a[href^="http"]::after{
     content:" (" attr(href) ")";
     font-size:.82em;
     color:var(--muted);

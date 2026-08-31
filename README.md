@@ -20,8 +20,8 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 07 | 1° Parcial | — | ⏳ | No tiene fuente .md |
 | 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
 | 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
-| 10 | Búsqueda y conexión entre hojas | ✅ | ✅ | Completo |
-| 11 | Análisis de datos con Excel e IA | ✅ | ✅ | Completo |
+| 10 | Búsqueda entre hojas y visualización | ✅ | ✅ | Completo |
+| 11 | Análisis de datos con Tablas Dinámicas e IA | ✅ | ✅ | Completo |
 | 12 | 2° Parcial | ✅ | ✅ | Completo |
 | 13 | Cómo piensan las bases de datos | ✅ | ✅ | Completo |
 | 14 | Del formulario a la base de datos | ✅ | ✅ | Completo |

@@ -1164,6 +1164,7 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .qr-row.qr-t-celeste{ --qr-c:var(--celeste); --qr-tint:var(--celeste-tint); --qr-soft:var(--celeste-soft); }
 .qr-row.qr-t-celeste-deep{ --qr-c:var(--celeste-deep); --qr-tint:var(--celeste-tint); --qr-soft:var(--celeste-soft); }
 .qr-row.qr-t-amber{ --qr-c:var(--amber-clase); --qr-tint:var(--amber-clase-tint); --qr-soft:var(--amber-clase-soft); }
+.qr-row.qr-t-verde{ --qr-c:var(--verde); --qr-tint:var(--verde-tint); --qr-soft:var(--verde-soft); }
 
 .qr-row-label{
   writing-mode:vertical-rl;

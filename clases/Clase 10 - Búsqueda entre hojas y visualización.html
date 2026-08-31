@@ -30,7 +30,7 @@
   <div class="cover-inner">
     <span class="cover-kicker">Clase 10 · Planilla de cálculo</span>
     <h1 class="cover-title">Búsqueda entre hojas y visualización</h1>
-    <p class="cover-subtitle">Google Sheets · referencias entre hojas · BUSCARV y BUSCARX · SIERROR · gráficos elegidos con propósito</p>
+    <p class="cover-subtitle">Cruce de datos con BUSCARV/BUSCARX y gráficos estadísticos</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
@@ -598,76 +598,323 @@
       </div>
     </div>
 
-    <div class="qr-row">
-      <div class="qr-row-label">Conexión entre hojas</div>
+    <div class="qr-row qr-t-blue">
+      <div class="qr-row-label">Búsqueda y validación</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🔗 Necesidad · Sintaxis</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">Operadores de Google</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Celda de otra hoja — <code>=NombreHoja!Celda</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nombre con espacios o tildes — <code>='Lista de Productos'!B2</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Hoja nueva — signo <code>+</code>, abajo a la izquierda</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Renombrar hoja — doble clic sobre la pestaña</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="qr-row">
-      <div class="qr-row-label">Funciones de búsqueda</div>
-      <div class="qr-row-cols">
-        <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🔍 Necesidad · Fórmula</span></div>
-          <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda vertical — <code>=BUSCARV(valor; rango; índice; FALSO)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda flexible — <code>=BUSCARX(valor; matriz_buscada; matriz_devuelta; [si_no_hay_valor])</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Manejo de errores — <code>=SIERROR(fórmula; valor_alternativo)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rango de búsqueda — siempre absoluto: <code>$A$2:$E$5</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code> — frase exacta</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code> — excluye un término</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code> — dentro de un dominio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code> — por tipo de archivo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code> — rango de años</span></div>
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">📐 Argumentos de BUSCARV</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Método CRAAP</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">1º</span><span class="qr-fdesc">Valor buscado — relativo, cada fila el suyo</span></div>
-            <div class="qr-frow"><span class="qr-fletter">2º</span><span class="qr-fdesc">Rango — absoluto, con la clave en la 1ª columna</span></div>
-            <div class="qr-frow"><span class="qr-fletter">3º</span><span class="qr-fdesc">Índice — número de columna dentro del rango</span></div>
-            <div class="qr-frow"><span class="qr-fletter">4º</span><span class="qr-fdesc">Ordenado — <code>FALSO</code> para coincidencia exacta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong> — ¿cuándo se publicó?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong> — ¿responde tu pregunta?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong> — ¿quién es el autor?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong> — ¿tiene fuentes?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong> — ¿informa, vende o persuade?</span></div>
+          </div>
+          <div class="qr-tip">Lectura lateral: abrí otra pestaña y verificá qué dicen otras fuentes independientes.</div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-violet">
+      <div class="qr-row-label">IA generativa</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">Fórmula RTCFL</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong> — "actuá como…"</span></div>
+            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong> — qué tiene que hacer</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — nivel, país, año</span></div>
+            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong> — cómo querés la respuesta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong> — ej. 300 palabras</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-chip"></use></svg></div><span class="qr-cell-title">Tipos de LLMs</span></div>
+          <div class="qr-mini-grid">
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">🇺🇸 Estadounidenses</div>
+              <div class="qr-mini-items">ChatGPT · Gemini<br>Claude · Copilot</div>
+            </div>
+            <div class="qr-mini-card">
+              <div class="qr-mini-name">🇨🇳 Chinos</div>
+              <div class="qr-mini-items">DeepSeek · Qwen<br>Kimi</div>
+            </div>
+          </div>
+          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los estadounidenses; censura activa en temas políticos sensibles en los chinos — ninguno es neutral.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-compass"></use></svg></div><span class="qr-cell-title">Acceso</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://perplexity.ai" target="_blank" rel="noopener"><code>perplexity.ai</code></a></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://notebook.google.com" target="_blank" rel="noopener"><code>notebook.google.com</code></a></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-clipboard"></use></svg></div><span class="qr-cell-title">APA · 4 formatos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Libro — Apellido, I. (Año). <em>Título</em>. Editorial.</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Web — Apellido, I. (Año, día mes). <em>Título</em>. Sitio. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Video — Canal. (Año, día mes). <em>Título</em> [Video]. Plataforma. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">IA — Empresa. (Año). <em>Modelo</em> (fecha) [Large language model]. URL</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-quote"></use></svg></div><span class="qr-cell-title">Cita y notas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Paráfrasis (Apellido, año) · Textual (Apellido, año, p. XX)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">DOI: <code>https://doi.org/10.xxxx/...</code> al final de la cita, si existe</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nota al pie: <code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — no reemplaza la cita APA</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-trophy"></use></svg></div><span class="qr-cell-title">Arena Leaderboard</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://arena.ai/leaderboard" target="_blank" rel="noopener"><code>arena.ai/leaderboard</code></a></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Categorías: Text · Document · Search · WebDev</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="qr-row">
-      <div class="qr-row-label">Gráficos</div>
+    <div class="qr-row qr-t-celeste">
+      <div class="qr-row-label">Google Docs</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">📊 Pregunta · Tipo de gráfico</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-new-doc"></use></svg></div><span class="qr-cell-title">Reglas de oro</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Comparar categorías — barras o columnas</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Evolución en el tiempo — líneas</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Composición de un total — circular (hasta 5 o 6 categorías)</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Relación entre dos variables — dispersión</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Dos magnitudes distintas — combinado, con eje secundario</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a> — lienzo en blanco al instante</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato, nunca directo de afuera</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) — comentario</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>) — deshacer</span></div>
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🛠️ Acción · Ruta</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-styles"></use></svg></div><span class="qr-cell-title">Estilos y estructura</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code> — Encabezado 1</span></div>
+            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code> — Encabezado 2</span></div>
+            <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code> — Texto normal</span></div>
+          </div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar gráfico — Insertar &gt; Gráfico</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cambiar tipo — Editor de gráficos &gt; Configuración</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar título y ejes — Editor de gráficos &gt; Personalizar</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel — Insertar &gt; Gráficos recomendados</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-toc"></use></svg>Índice: Insertar → Elementos de página → Índice</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Actualizar: clic en el índice → <svg class="tool-icon"><use href="#ti-refresh"></use></svg>ícono actualizar</span></div>
+          </div>
+          <div class="qr-tip">Los estilos son lo único que genera el índice automático — nunca agrandes la letra a mano.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-merge-cells"></use></svg></div><span class="qr-cell-title">Tablas complejas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg>Combinar: clic derecho → Combinar celdas — solo encabezados de grupo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Diseños rápidos: clic derecho → Opciones de tabla → Diseños rápidos</span></div>
+          </div>
+          <div class="qr-tip-amber">Combinar celdas rompe ordenar y filtrar en esa tabla.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-image"></use></svg></div><span class="qr-cell-title">Imágenes flotantes</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-image"></use></svg>Insertar → Imagen → Subir desde la computadora</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clic en la imagen → <svg class="tool-icon"><use href="#ti-wrap-text"></use></svg>Ajustar texto → Mover con el texto (nunca "Corregir en la página")</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Redimensionar: arrastrá desde los manejadores de esquina</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-link"></use></svg></div><span class="qr-cell-title">Hipervínculos y estructura</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-link"></use></svg><code>Ctrl+K</code> (Mac <code>⌘+K</code>) — externo: pegás la URL; interno: pestaña Encabezados y marcadores</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-bookmark"></use></svg>Insertar → Marcador — destino puntual (los títulos ya son destino automático)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-page-break"></use></svg><code>Ctrl+Intro</code> (Mac <code>⌘+Intro</code>) — salto de página, nunca Enter repetido</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Elementos de página → <svg class="tool-icon"><use href="#ti-header"></use></svg>Encabezado / <svg class="tool-icon"><use href="#ti-footer"></use></svg>Pie de página / <svg class="tool-icon"><use href="#ti-page-number"></use></svg>Números de página</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-comment"></use></svg></div><span class="qr-cell-title">Comentarios y versiones</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> — insertar; clic en el comentario → Responder / Resolver</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Archivo → Historial de versiones → Ver historial</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-suggest"></use></svg>Modo Sugerencias: ícono lápiz (arriba a la derecha) → Sugerencias</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="qr-row">
-      <div class="qr-row-label">Equivalencias con Excel en inglés</div>
+    <div class="qr-row qr-t-celeste-deep">
+      <div class="qr-row-label">Word</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
-          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Español · Inglés</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-page"></use></svg></div><span class="qr-cell-title">Papel y secciones</span></div>
           <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Word abre en Letter — Disposición → Tamaño → A4 antes de escribir</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Márgenes Normal = 2,54 cm en los cuatro lados</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Disposición → <svg class="tool-icon"><use href="#ti-page-break"></use></svg>Saltos: Página siguiente · Continuo · Página par/impar</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-columns"></use></svg></div><span class="qr-cell-title">Columnas y PDF</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Primero el <svg class="tool-icon"><use href="#ti-section-break"></use></svg>salto de sección, después Disposición → <svg class="tool-icon"><use href="#ti-columns"></use></svg>Columnas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Archivo → Exportar → Crear PDF/XPS → Estándar (siempre con imágenes)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-keyboard"></use></svg></div><span class="qr-cell-title">Atajos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — nota al pie</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Enter</code> (Mac <code>⌘+Intro</code>) — salto de página</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-mail-merge"></use></svg></div><span class="qr-cell-title">Combinación de correspondencia</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Correspondencia → <svg class="tool-icon"><use href="#ti-mail-merge"></use></svg>Iniciar combinación → <svg class="tool-icon"><use href="#ti-recipients"></use></svg>Seleccionar destinatarios → <svg class="tool-icon"><use href="#ti-merge-field"></use></svg>Insertar campo combinado → Finalizar y combinar</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-amber">
+      <div class="qr-row-label">Presentaciones</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-arc"></use></svg></div><span class="qr-cell-title">Storytelling (arco narrativo)</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">G</span><span class="qr-fdesc">Gancho</span></div>
+            <div class="qr-frow"><span class="qr-fletter">D</span><span class="qr-fdesc">Desarrollo</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Cierre</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-palette"></use></svg></div><span class="qr-cell-title">CRAP</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Contraste</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc">Repetición</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc">Alineación</span></div>
+            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc">Proximidad</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">IA para el borrador</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<a href="https://gamma.app" target="_blank" rel="noopener"><code>gamma.app</code></a>) — gratis, créditos limitados</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini Notebook Studio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini en Slides — requiere plan pago</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-transition"></use></svg></div><span class="qr-cell-title">Mecánica</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Una transición para todas las diapositivas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Animación con disparador "Al hacer clic"</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-export"></use></svg></div><span class="qr-cell-title">Exportar</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code> + PDF — siempre los dos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code>/<code>.ppsx</code> = XML actual · <code>.ppt</code>/<code>.pps</code> = binario viejo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Las "pp<strong>s</strong>" abren directo en modo presentación</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="qr-row qr-t-verde">
+      <div class="qr-row-label">Planilla de cálculo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y referencias</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula — <code>=</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa/absoluta/mixta — <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada — <code>F2</code> (Mac: doble clic)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autocompletar hacia abajo / derecha — <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones básicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code> — suma total</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code> — media aritmética</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code> — celdas numéricas / no vacías</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code> — valor más alto / más bajo</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Selección y formato condicional</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Seleccionar columna / fila entera — <code>Ctrl+Espacio</code> / <code>Shift+Espacio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ir a la última / primera celda con datos — <code>Ctrl+Fin</code> / <code>Ctrl+Inicio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir Formato condicional — Formato &gt; Formato condicional</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones lógicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple — <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado — <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador — siempre entre comillas: <code>"&gt;50000"</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Operadores de comparación</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">=</span><span class="qr-fdesc">Igual a</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;</span><span class="qr-fdesc">Mayor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;</span><span class="qr-fdesc">Menor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;=</span><span class="qr-fdesc">Mayor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;=</span><span class="qr-fdesc">Menor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;&gt;</span><span class="qr-fdesc">Distinto de</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">SUMAR.SI y CONTAR.SI</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional — <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional — <code>=CONTAR.SI(rango; criterio)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda — <code>=SUMAR.SI($C$2:$C$9; F2; $G$2:$G$9)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Validación de datos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir validación — Datos &gt; Validación de datos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano — Criterios &gt; Lista de elementos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas — Criterios &gt; Lista de un rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido — "Rechazar la entrada" · Solo avisar — "Mostrar una advertencia"</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">BUSCARV y BUSCARX</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=BUSCARV(valor; rango; índice_columna; falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=BUSCARX(valor; rango_búsqueda; rango_resultado)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Envolver en <code>SIERROR(...; "sin datos")</code> para no mostrar <code>#N/A</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Gráficos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar &gt; Gráfico, sobre el rango seleccionado</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Barras/columnas — comparar categorías · Líneas — evolución en el tiempo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Circular — partes de un total · Dispersión — relación entre dos variables</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Equivalencias con Excel en inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMA</code> — <code>SUM</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>PROMEDIO</code> — <code>AVERAGE</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR</code> — <code>COUNT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTARA</code> — <code>COUNTA</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code> — <code>IF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code> — <code>SUMIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code> — <code>COUNTIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Validación de datos</code> — <code>Data Validation</code></span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARV</code> — <code>VLOOKUP</code></span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARX</code> — <code>XLOOKUP</code></span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARH</code> — <code>HLOOKUP</code></span></div>
@@ -677,7 +924,7 @@
       </div>
     </div>
 
-    <h3 id="glosario">Glosario</h3>
+<h3 id="glosario">Glosario</h3>
     <div class="glossary">
       <div class="gloss-item"><span class="gloss-term">Referencia entre hojas</span><p class="gloss-def">Fórmula que apunta a una celda de otra hoja del mismo archivo, con la sintaxis <code>NombreHoja!Celda</code>.</p></div>
       <div class="gloss-item"><span class="gloss-term">Tabla de referencia</span><p class="gloss-def">Tabla donde un dato repetible —una tarifa, un responsable, una especificación— vive una sola vez y desde la que se lo busca cuando hace falta.</p></div>
@@ -710,6 +957,7 @@
 
 <footer class="colophon">
   <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes) — licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
 </footer>
 
 </div>

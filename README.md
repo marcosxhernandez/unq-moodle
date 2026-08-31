@@ -104,6 +104,14 @@ Este repo solo aloja el resultado final. Los parámetros de diseño, paginación
 
 ## Historial de cambios
 
+**2026-08-31:**
+- Clases 10 y 11 renombradas (archivo + H1 + índice) para calzar con el cronograma vigente: "Búsqueda entre hojas y visualización" y "Análisis de datos con Tablas Dinámicas e IA" (antes "Búsqueda y conexión entre hojas" / "Análisis de datos con Excel e IA") — CLAUDE.md 2.5 actualizado en el mismo sentido
+- Subtítulo de portada de Clases 08-11 sincronizado textualmente con la columna "Subtítulo" del cronograma (antes era una lista de herramientas, no el subtítulo pedagógico)
+- Referencia rápida de Clases 08-11 reconstruida como machete acumulativo (regla de ago. 2026, CLAUDE-clases.md 3.4quater): las 5 filas por programa ya vistas (Búsqueda y validación, IA generativa, Google Docs, Word, Presentaciones) más una fila nueva "Planilla de cálculo" que suma celdas clase a clase — antes cada clase tenía filas sueltas por tema, sin acumular
+- Clase 08 reconstruida de punta a punta: era la única sin el formato "Resumen de la clase" (Actividades en tabla + Referencia rápida + Glosario + Fuentes), sin colofón, y con una sección "Próxima clase" que violaba la regla de no autorreferenciarse hacia adelante (2.8 #7)
+- Colofón con el párrafo de licencia CC BY-NC-SA restituido en Clases 09, 10 y 11 (faltaba, mismo error ya documentado con la Clase 06)
+- Íconos de ChatGPT/Gemini/Copilot agregados a la caja de herramientas de Moodle de Clase 11 (ya estaban en el cuerpo de la Guía Visual)
+
 **2026-08-01:**
 - Agregadas 12 nuevas clases a index.html (Clases 08-17, 19-20)
 - Actualizado aula-pendiente con nota sobre Clase 07

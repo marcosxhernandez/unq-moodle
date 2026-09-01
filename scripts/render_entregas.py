@@ -1,14 +1,25 @@
 #!/usr/bin/env python3
 """
-Genera, para una aula (cyt o dcs), la version final y pegable de cada
-moodle/Clase NN - <Titulo>.html: reemplaza los placeholders
-{{ENTREGA:<clase>:<orden>}} por el id real de la Tarea de esa aula,
-segun moodle/entregas.csv.
+DEPRECADO EN FAVOR DEL LOADER (CLAUDE-moodle.md 4.2quinquies) -- sigue
+sirviendo como puente para las clases que todavia se pegan estaticas en
+Qoodle (no migradas al patron de carga dinamica), pero la idea es que deje
+de hacer falta a medida que se migran las clases restantes. No borrar
+moodle/_build/ ni este script sin confirmar que ninguna clase depende mas
+de el (ver estado real en Qoodle, este repo no lo trackea solo).
+
+Genera, para una aula (un curso real de Qoodle, ej. 39500 o 39501), la
+version final y pegable de cada moodle/Clase NN - <Titulo>.html: reemplaza
+los placeholders {{ENTREGA:<clase>:<orden>}} por el id real de la Tarea de
+esa aula, segun moodle/entregas.csv (columnas "<id_de_curso>_id").
+
+El nombre de aula NO esta hardcodeado -- se toma de las columnas reales de
+entregas.csv (cualquier columna que termine en "_id"), asi que corre para
+los cursos que haya cargados sin tocar el script.
 
 Uso:
-    python3 scripts/render_entregas.py cyt
-    python3 scripts/render_entregas.py dcs
-    python3 scripts/render_entregas.py cyt "Clase 01"      # solo esa clase
+    python3 scripts/render_entregas.py 39500
+    python3 scripts/render_entregas.py 39501
+    python3 scripts/render_entregas.py 39500 "Clase 01"      # solo esa clase
 
 Salida: moodle/_build/<aula>/Clase NN - <Titulo>.html
     (listo para copiar y pegar en Atto, sin ningun {{...}} suelto)
@@ -55,9 +66,17 @@ def render_archivo(path, aula, registro, faltantes):
     return TOKEN_RE.sub(reemplazar, texto)
 
 
+def aulas_disponibles():
+    with open(CSV_PATH, encoding="utf-8") as f:
+        header = next(csv.reader(f))
+    return sorted(col[:-3] for col in header if col.endswith("_id"))
+
+
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ("cyt", "dcs"):
+    disponibles = aulas_disponibles()
+    if len(sys.argv) < 2 or sys.argv[1] not in disponibles:
         print(__doc__)
+        print(f"Aulas disponibles segun entregas.csv: {', '.join(disponibles)}")
         sys.exit(1)
     aula = sys.argv[1]
     filtro = sys.argv[2] if len(sys.argv) > 2 else None

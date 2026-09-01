@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaders Moodle - Todas las Clases (v2 FINAL)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .note strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .note code {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .alert-error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .alert-error strong {
+            color: #721c24;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .loader-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .loader-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        .class-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .class-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .class-subtitle {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin-bottom: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            user-select: all;
+        }
+        .copy-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .copy-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+        .copy-btn.copied {
+            background: #27ae60;
+        }
+        .feriado {
+            opacity: 0.5;
+        }
+        .feriado .class-number {
+            background: #999;
+        }
+        .empty-msg {
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+        @media (max-width: 768px) {
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>📚 Loaders Moodle - Todas las Clases</h1>
+        <p>v2 FINAL · 2026 · Informática UNQ</p>
+    </div>
+
+    <div class="content">
+
+        <div class="alert-error">
+            <strong>⚠️ ATENCIÓN - Problema encontrado:</strong>
+            La clase 13 en el repositorio se llama <code>"Cómo piensan las bases de datos"</code>, pero tu cronograma dice <code>"De la planilla a la captura de datos"</code>. Hay un mismatch en los títulos de clases 13, 14, 15, 16, 17. Los loaders usan los nombres REALES de los archivos en GitHub, así que funcionan, pero los títulos mostrados pueden no coincidir con tu cronograma. <strong>Necesitas actualizar los nombres de los archivos HTML en el repo o los títulos en Qoodle.</strong>
+        </div>
+
+        <div class="note">
+            <strong>ℹ️ Antes de pegar en Qoodle:</strong>
+            <ul style="margin: 0; padding: 0 0 0 20px;">
+                <li>Verifica que <code>entregas.json</code> tenga resueltas las claves (ej: "01:1", "02:1", etc.)</li>
+                <li>Clases 07 y 18 no tienen contenido (evaluación y feriado)</li>
+                <li>Clase 00 (Bienvenida) ahora sí tiene loader</li>
+            </ul>
+        </div>
+
+        <div class="classes-grid">
+
+            <!-- CLASE 00 - BIENVENIDA -->
+            <div class="loader-card">
+                <div class="class-number">00</div>
+                <div class="class-title">Bienvenida</div>
+                <div class="code-block" id="code-00">&lt;div id="m00loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+    (function() {
+        var el = document.getElementById('m00loader');
+        var m = location.href.match(/[?&]id=(\d+)/);
+        var curso = m ? m[1] : null;
+        var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2000%20-%20Bienvenida.html';
+        Promise.all([
+            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2000%20-%20Bienvenida.html').then(function(r) { return r.text(); })
+        ]).then(function(resultados) {
+            var html = resultados[0];
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            el.innerHTML = doc.body.innerHTML;
+        }).catch(function() {
+            el.innerHTML = 'Error al sincronizar. &lt;a href="' + urlGuia + '" target="_blank"&gt;Abrí acá&lt;/a&gt;.';
+        });
+    })();
+&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-00')">Copiar</button>
+            </div>
+
+            <!-- CLASE 01 -->
+            <div class="loader-card">
+                <div class="class-number">01</div>
+                <div class="class-title">Herramientas Digitales</div>
+                <div class="code-block" id="code-01">&lt;div id="m01loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+    (function() {
+        var el = document.getElementById('m01loader');
+        var m = location.href.match(/[?&]id=(\d+)/);
+        var curso = m ? m[1] : null;
+        Promise.all([
+            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2001%20-%20Herramientas%20Digitales.html').then(r => r.text()),
+            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r => r.json())
+        ]).then(function(r) {
+            var mapa = r[1][curso] || {};
+            var html = r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, (m,c,o) => mapa[c+':'+o] || '');
+            el.innerHTML = new DOMParser().parseFromString(html, 'text/html').body.innerHTML;
+        }).catch(function(e) {
+            el.innerHTML = 'Error: ' + e;
+        });
+    })();
+&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-01')">Copiar</button>
+            </div>
+
+            <!-- CLASE 02 -->
+            <div class="loader-card">
+                <div class="class-number">02</div>
+                <div class="class-title">Arquitectura del documento profesional</div>
+                <div class="code-block" id="code-02">&lt;div id="m02loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m02loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-02')">Copiar</button>
+            </div>
+
+            <!-- CLASE 03 -->
+            <div class="loader-card">
+                <div class="class-number">03</div>
+                <div class="class-title">IA como asistente académico</div>
+                <div class="code-block" id="code-03">&lt;div id="m03loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m03loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-03')">Copiar</button>
+            </div>
+
+            <!-- CLASE 04 -->
+            <div class="loader-card">
+                <div class="class-number">04</div>
+                <div class="class-title">Arquitectura avanzada del documento</div>
+                <div class="code-block" id="code-04">&lt;div id="m04loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m04loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2004%20-%20Arquitectura%20avanzada%20del%20documento.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-04')">Copiar</button>
+            </div>
+
+            <!-- CLASE 05 -->
+            <div class="loader-card">
+                <div class="class-number">05</div>
+                <div class="class-title">Maquetación de alta precisión</div>
+                <div class="code-block" id="code-05">&lt;div id="m05loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m05loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-05')">Copiar</button>
+            </div>
+
+            <!-- CLASE 06 -->
+            <div class="loader-card">
+                <div class="class-number">06</div>
+                <div class="class-title">Presentaciones con IA</div>
+                <div class="code-block" id="code-06">&lt;div id="m06loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m06loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2006%20-%20Presentaciones%20con%20IA.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-06')">Copiar</button>
+            </div>
+
+            <!-- CLASE 07 -->
+            <div class="loader-card">
+                <div class="class-number">07</div>
+                <div class="class-title">1° Parcial</div>
+                <div class="code-block" id="code-07">&lt;div id="m07loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m07loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2007%20-%201%C2%B0%20Parcial.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-07')">Copiar</button>
+            </div>
+
+            <!-- CLASE 08 -->
+            <div class="loader-card">
+                <div class="class-number">08</div>
+                <div class="class-title">Lógica de celdas y funciones esenciales</div>
+                <div class="code-block" id="code-08">&lt;div id="m08loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m08loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2008%20-%20L%C3%B3gica%20de%20celdas%20y%20funciones%20esenciales.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-08')">Copiar</button>
+            </div>
+
+            <!-- CLASE 09 -->
+            <div class="loader-card">
+                <div class="class-number">09</div>
+                <div class="class-title">Funciones lógicas y validación de datos</div>
+                <div class="code-block" id="code-09">&lt;div id="m09loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m09loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2009%20-%20Funciones%20l%C3%B3gicas%20y%20validaci%C3%B3n%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-09')">Copiar</button>
+            </div>
+
+            <!-- CLASE 10 -->
+            <div class="loader-card">
+                <div class="class-number">10</div>
+                <div class="class-title">Búsqueda entre hojas y visualización</div>
+                <div class="code-block" id="code-10">&lt;div id="m10loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m10loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2010%20-%20B%C3%BAsqueda%20entre%20hojas%20y%20visualizaci%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-10')">Copiar</button>
+            </div>
+
+            <!-- CLASE 11 -->
+            <div class="loader-card">
+                <div class="class-number">11</div>
+                <div class="class-title">Análisis de datos con Tablas Dinámicas e IA</div>
+                <div class="code-block" id="code-11">&lt;div id="m11loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m11loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2011%20-%20An%C3%A1lisis%20de%20datos%20con%20Tablas%20Din%C3%A1micas%20e%20IA.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-11')">Copiar</button>
+            </div>
+
+            <!-- CLASE 12 -->
+            <div class="loader-card">
+                <div class="class-number">12</div>
+                <div class="class-title">2° Parcial</div>
+                <div class="code-block" id="code-12">&lt;div id="m12loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m12loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2012%20-%202%C2%B0%20Parcial.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-12')">Copiar</button>
+            </div>
+
+            <!-- CLASE 13 - ⚠️ MISMATCH TITLE -->
+            <div class="loader-card" style="border-color: #ffc107;">
+                <div class="class-number">13</div>
+                <div class="class-title">Cómo piensan las bases de datos</div>
+                <div class="class-subtitle">⚠️ NOTA: Tu cronograma dice "De la planilla a la captura de datos"</div>
+                <div class="code-block" id="code-13">&lt;div id="m13loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m13loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2013%20-%20C%C3%B3mo%20piensan%20las%20bases%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-13')">Copiar</button>
+            </div>
+
+            <!-- CLASE 14 -->
+            <div class="loader-card">
+                <div class="class-number">14</div>
+                <div class="class-title">Del formulario a la base de datos</div>
+                <div class="code-block" id="code-14">&lt;div id="m14loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m14loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2014%20-%20Del%20formulario%20a%20la%20base%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-14')">Copiar</button>
+            </div>
+
+            <!-- CLASE 15 -->
+            <div class="loader-card">
+                <div class="class-number">15</div>
+                <div class="class-title">Consultar para descubrir</div>
+                <div class="code-block" id="code-15">&lt;div id="m15loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m15loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2015%20-%20Consultar%20para%20descubrir.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-15')">Copiar</button>
+            </div>
+
+            <!-- CLASE 16 -->
+            <div class="loader-card">
+                <div class="class-number">16</div>
+                <div class="class-title">Cuando una tabla no alcanza</div>
+                <div class="code-block" id="code-16">&lt;div id="m16loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m16loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2016%20-%20Cuando%20una%20tabla%20no%20alcanza.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-16')">Copiar</button>
+            </div>
+
+            <!-- CLASE 17 -->
+            <div class="loader-card">
+                <div class="class-number">17</div>
+                <div class="class-title">Del dato a la decisión</div>
+                <div class="code-block" id="code-17">&lt;div id="m17loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m17loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2017%20-%20Del%20dato%20a%20la%20decisi%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-17')">Copiar</button>
+            </div>
+
+            <!-- CLASE 18 - FERIADO -->
+            <div class="loader-card feriado">
+                <div class="class-number">18</div>
+                <div class="class-title">Inmaculada Concepción</div>
+                <div class="empty-msg">🚫 Feriado (sin clase)</div>
+            </div>
+
+            <!-- CLASE 19 -->
+            <div class="loader-card">
+                <div class="class-number">19</div>
+                <div class="class-title">3° Parcial Integrador</div>
+                <div class="code-block" id="code-19">&lt;div id="m19loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m19loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2019%20-%203%C2%B0%20Parcial%20Integrador.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-19')">Copiar</button>
+            </div>
+
+            <!-- CLASE 20 -->
+            <div class="loader-card">
+                <div class="class-number">20</div>
+                <div class="class-title">Recuperatorio</div>
+                <div class="code-block" id="code-20">&lt;div id="m20loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m20loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2020%20-%20Recuperatorio.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+                <button class="copy-btn" onclick="copiar(this, 'code-20')">Copiar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        📚 Loaders Moodle v2 · UNQ Informática 2026 · © Marcos Hernández
+    </div>
+</div>
+
+<script>
+    function copiar(btn, codeId) {
+        const element = document.getElementById(codeId);
+        const text = element.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.textContent = '✓ Copiado al portapapeles';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copiar';
+                btn.classList.remove('copied');
+            }, 2000);
+        }).catch(err => alert('Error: ' + err));
+    }
+</script>
+
+</body>
+</html>

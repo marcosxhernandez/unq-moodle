@@ -17,7 +17,7 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 04 | Arquitectura avanzada del documento | ✅ | ✅ | 🔄 En progreso |
 | 05 | Maquetación de alta precisión | ✅ | ✅ | 🔄 En progreso |
 | 06 | Presentaciones con IA | ✅ | ✅ | 🔄 En progreso |
-| 07 | 1° Parcial | — | ⏳ | No tiene fuente .md |
+| 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de exámenes en `clases/` no se publica) |
 | 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
 | 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
 | 10 | Búsqueda entre hojas y visualización | ✅ | ✅ | Completo |
@@ -28,11 +28,11 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 15 | Consultar para descubrir | ✅ | ✅ | Completo |
 | 16 | Cuando una tabla no alcanza | ✅ | ✅ | Completo |
 | 17 | Del dato a la decisión | ✅ | ✅ | Completo |
-| 18 | Feriado — Inmaculada Concepción | — | — | N/A (feriado) |
+| 18 | Feriado — Inmaculada Concepción | — | ✅ | Fragmento Moodle agregado (sin Guía Visual — no hace falta, es aviso de "sin clase") |
 | 19 | 3.° Parcial Integrador | ✅ | ✅ | Completo |
 | 20 | Recuperatorio | ✅ | ✅ | Completo |
 
-**Total: 16 clases completadas + 3 en progreso (04-06, ajustes finales) — 18 con Guía Visual + 1 Bienvenida sin guía. Clase 07 pendiente de fuente .md.**
+**Total: 16 clases completadas + 3 en progreso (04-06, ajustes finales) — 18 con Guía Visual + 1 Bienvenida sin guía. Clases 07 y 18 tienen fragmento Moodle pero no Guía Visual (07: exámenes en carpeta no publicada; 18: feriado, no hace falta).**
 
 ## Estructura
 

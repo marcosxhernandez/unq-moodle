@@ -69,6 +69,7 @@ unq-moodle/
 |---|---|---|
 | `clases/Clase NN - Título.html` | **URL** (o el botón "Abrir la guía" ya embebido en el bloque) | Apunta directo a `https://marcosxhernandez.github.io/unq-moodle/clases/Clase%20NN%20-%20...html`. Se abre en pestaña nueva, imprime igual que abrir el archivo local. |
 | `moodle/Clase NN - Título.html` | **Página** o **Etiqueta** | Se pega el contenido en el editor Atto usando la vista de código fuente `<>`. Ya trae el botón "Abrir la guía" apuntando a GitHub Pages. |
+| `moodle/Clase NN - Título.html` (vía loader, sep. 2026 en adelante) | **Página** o **Etiqueta** | Se pega **una sola vez** un loader fijo y chico (`<div>` + `<script>` con `fetch()`, ver `CLAUDE-moodle.md` 4.2quinquies) — de ahí en más, editar el `.html` + `git push` alcanza, sin volver a tocar Atto. Migración en curso clase por clase; no asumir que todas ya lo usan sin confirmarlo en Qoodle real. |
 | `pdf/Clase NN - Título.pdf` | **Archivo** (opcional) | Backup para quien prefiera bajar el PDF en vez de abrir el link. |
 
 **Importante:** los links "Abrir la guía de la clase" dentro de cada `moodle/*.html` ya apuntan a GitHub Pages. Si se activa Pages con otra URL, hay que actualizar esos links a mano — están en los archivos `moodle/`, buscando `github.io`.
@@ -85,7 +86,7 @@ unq-moodle/
 ### Docentes / Mantenedores
 1. Editar contenido de clase: modificá el .md fuente en `Guia/Clase NN - <Título>.md` (en el Drive, no acá)
 2. Generar HTML: seguí los pasos en CLAUDE.md y CLAUDE-clases.md
-3. Publicar cambios: `git push` sube automáticamente a GitHub Pages
+3. Publicar cambios: `git push` sube automáticamente a GitHub Pages — para clases ya migradas al loader (ver Historial 2026-09-01 y `CLAUDE-moodle.md` 4.2quinquies), esto alcanza para actualizar Qoodle sin volver a pegar en Atto; para las que todavía no fueron migradas, sigue haciendo falta el paso manual de re-pegar
 
 ## Activar GitHub Pages (una sola vez)
 
@@ -98,11 +99,17 @@ unq-moodle/
 
 **⚠️ `index.html` embebe una copia pegada de cada `moodle/Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `moodle/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio.
 
+**Posible salida a este mismo problema (sep. 2026, anotado — no implementado):** el patrón de carga dinámica de `CLAUDE-moodle.md` 4.2quinquies podría aplicarse también acá — que `index.html` haga `fetch()` de cada `moodle/Clase NN.html` en vez de llevar una copia pegada. Como `index.html` se sirve desde el mismo repo de GitHub Pages, el fetch sería same-origin (sin la duda de CORS que sí aplica al pegar en Qoodle, origen distinto). Pendiente de evaluar.
+
 ## Convenciones de construcción
 
 Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-moodle.md`.
 
 ## Historial de cambios
+
+**2026-09-01:**
+- Clase 04 migrada en Qoodle a carga dinámica por `fetch()` (loader chico pegado una vez + `<script>` que trae `moodle/Clase 04....html` en tiempo real) en vez del pegado estático de siempre — primer caso real confirmado de que un `<script>` en bloque sobrevive al guardado de Atto y se ejecuta en Qoodle real (antes documentado como "sin confirmar" en `CLAUDE-moodle.md` 4.2). Patrón nuevo documentado en `CLAUDE-moodle.md` 4.2quinquies, con la lista de puntos a resolver antes de migrar el resto (timeout del fetch, mensaje de error con link de respaldo, loader centralizado, decisión pendiente sobre las clases de examen 07/12/19/20).
+- Decisión de alcance: Marcos definió migrar todas las clases a este patrón — no queda como piloto acotado a Clase 04.
 
 **2026-08-31:**
 - Clases 10 y 11 renombradas (archivo + H1 + índice) para calzar con el cronograma vigente: "Búsqueda entre hojas y visualización" y "Análisis de datos con Tablas Dinámicas e IA" (antes "Búsqueda y conexión entre hojas" / "Análisis de datos con Excel e IA") — CLAUDE.md 2.5 actualizado en el mismo sentido

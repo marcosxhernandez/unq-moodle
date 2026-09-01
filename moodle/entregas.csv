@@ -1,8 +1,8 @@
-clase,orden,titulo,cyt_id,dcs_id
-01,1,Carpeta de Drive,1946794,TODO
-01,2,Perfil de LinkedIn,1946797,TODO
-02,1,Link del documento,1980133,TODO
-03,1,Link del documento,1985521,TODO
-04,1,Trabajo Integrador,1890465,TODO
-05,1,Trabajo Integrador en PDF (archivo),1890466,TODO
-06,1,Presentación Integradora,TODO,TODO
+clase,orden,titulo,39500_id,39501_id
+01,1,Carpeta de Drive,1946794,1946837
+01,2,Perfil de LinkedIn,1946797,1946838
+02,1,Link del documento,1980133,1980136
+03,1,Link del documento,1985521,1985523
+04,1,Documento Base - V01,1988723,1988719
+05,1,"Trabajo Integrador en PDF (archivo) -- SIN CONFIRMAR, Tarea oculta/sin renombrar",TODO,TODO
+06,1,"Presentación Integradora -- SIN CONFIRMAR, Tarea oculta/sin renombrar",TODO,TODO

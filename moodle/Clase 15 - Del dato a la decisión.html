@@ -1,16 +1,16 @@
-<div id="m14root" style="font-family:Arial,Helvetica,sans-serif;color:#15141b;background:#ffffff;max-width:820px;margin:0 auto;">
+<div id="m15root" style="font-family:Arial,Helvetica,sans-serif;color:#15141b;background:#ffffff;max-width:820px;margin:0 auto;">
 
     <details open="" style="margin:0 4px 14px;">
         <summary style="cursor:pointer;list-style:none;">
     <!-- ═══════ HEADER ═══════ -->
             <div style="position:relative;display:flex;flex-wrap:wrap;border-radius:16px;overflow:hidden;margin:0 4px 14px;background:#f2eefa;min-height:120px;">
                 <div style="background:#673ab7;width:clamp(72px,22vw,104px);flex-shrink:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(30px,9vw,52px);color:#fff;line-height:1;">14</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(30px,9vw,52px);color:#fff;line-height:1;">15</div>
                     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px;">Clase</div>
                 </div>
                 <div style="padding:18px 22px 14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Del Formulario a la Base de Datos</div>
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Google Forms y validación · Filtrar, ordenar y QUERY · IA para consultar, con verificación · CSV e higiene de datos</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Del Dato a la Decisión</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Leer un tablero con ojo crítico · Contar una historia con datos · Verificar antes de decidir · Taller integrador</div>
                 </div>
             </div>
         </summary>
@@ -23,8 +23,8 @@
                   <span style="font-size:10px;font-weight:500;color:#673ab7;">marcos.hernandez@unq.edu.ar</span>
                 </span>
             </a>
-            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! El modelo que armaste la clase pasada se pone en marcha: hoy construís el circuito completo, desde que alguien carga un dato hasta que vos le hacés una pregunta a esa tabla. Vinculás un formulario con validación desde el origen, explorás con filtros y con QUERY, le pedís consultas a una IA sin creerle a ciegas — con un chequeo de tres pasos — e importás/exportás CSV auditando lo que entra. ¡Vamos! 📋</p>
-            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2014%20-%20Del%20formulario%20a%20la%20base%20de%20datos.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#673ab7;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
+            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">¡Hola! Cerramos la unidad de Datos, y esta clase no suma una herramienta más: suma el paso que le da sentido a todo lo anterior. Hoy no construís un tablero nuevo — lo leés con ojo crítico, ajeno, sin poder preguntarle a nadie cómo lo armó. Contás la historia que esos datos sostienen, con gancho, desarrollo y cierre. Y antes de decidir algo con ellos, la pasás por el mismo chequeo de tres pasos que usaste en la Clase 14. Cerramos con un taller integrador que funciona como ensayo de la evaluación de la unidad. ¡Vamos! 📊</p>
+            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2015%20-%20Del%20dato%20a%20la%20decisi%C3%B3n.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#673ab7;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
                 <!-- ═══════ LA CAJA DE HERRAMIENTAS ═══════ -->
         <details style="background:#fff;border:1px solid #ebe8f0;border-radius:16px;margin:0 4px 16px;overflow:hidden;">
@@ -39,48 +39,48 @@
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">01</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Google Forms como interfaz de carga</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Leer un tablero con ojo crítico</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Cada respuesta a un formulario genera una fila nueva en Sheets, sola. Validá cada pregunta según el tipo de dato que le corresponde — un campo categórico es Opción múltiple o Lista desplegable, nunca respuesta libre.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">La mayoría de las veces no armás el tablero que decide algo, lo leés. Antes de creerle, revisá dónde arranca el eje, sobre cuántos casos habla, qué pregunta no responde, y si lo que ves es correlación o causa.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé un Google Forms con al menos 5 campos, vinculado a una hoja de Sheets, con validación en al menos dos preguntas.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Identifiqué, en un tablero ajeno, dónde arranca el eje, sobre cuántos casos habla, y qué pregunta no responde.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">02</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Filtrar, ordenar y consultar con QUERY</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Contar una historia con datos</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Filtrar y ordenar no tocan la tabla original. QUERY va más lejos: selecciona columnas, filtra y ordena en una sola fórmula, con una sintaxis parecida a SQL.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Un analista de datos no es quien construye la tabla, es quien la lee y responde una pregunta real sobre ella. El mismo arco Gancho–Desarrollo–Cierre de la Clase 06 sirve para contar un hallazgo numérico.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Escribí una fórmula QUERY que responde una pregunta concreta sobre mi tabla.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Escribí (o le pedí a una IA) la historia de mi tablero con gancho, desarrollo y cierre.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">03</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Consultar con IA: verificá antes de confiar</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Verificar antes de decidir</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Una IA te puede escribir la fórmula QUERY, pero no conoce tu tabla mejor que vos. Todo lo que te devuelva pasa por tres chequeos: hechos, lógica y contexto.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">El mismo chequeo de tres pasos que usaste en la Clase 14 para una fórmula QUERY sirve, sin cambiar nada, para verificar una conclusión escrita: hechos, lógica y contexto.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Pedile a una IA una consulta QUERY y la verifiqué con el chequeo de tres pasos.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Verifiqué mi historia con el chequeo de tres pasos: hechos, lógica, contexto.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">04</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">CSV e higiene de datos</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;letter-spacing:-0.01em;">Taller integrador: de dato a decisión</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">CSV es el idioma común para pasar tablas entre programas. Antes de confiar en cualquier tabla —propia, ajena, o recién importada— auditala: duplicados, campos vacíos, inconsistencias de formato.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Un ejercicio que junta todo: armás un tablero simple, contás su historia, la verificás, y leés con ojo crítico el tablero de un compañero antes de conocer su conclusión. Ensayo de la evaluación integradora de la unidad.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Exporté mi tabla como CSV, la reimporté, y la auditê (duplicados, vacíos, formato).</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#673ab7;flex-shrink:0;cursor:pointer;" onchange="this.parentElement.style.background=this.checked?'#fdf1f2':'';this.parentElement.style.borderRadius=this.checked?'8px':'';this.nextElementSibling.style.textDecoration=this.checked?'line-through':'none';this.nextElementSibling.style.color=this.checked?'#8d8b9c':'#4b4959';"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completé el taller integrador de la unidad de Datos.</span></label>
                     </div>
                 </div>
             </details>

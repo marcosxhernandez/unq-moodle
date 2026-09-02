@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clase 14 - Del formulario a la base de datos</title>
+<title>Clase 15 - Del dato a la decisión</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
@@ -18,7 +18,7 @@
   }
   @page{
     @top-right{
-      content:"Clase 14 · Datos";
+      content:"Clase 15 · Datos";
       color:#432677;
     }
   }
@@ -65,11 +65,11 @@
 <symbol id="ti-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="10.9" y1="12.6" x2="20" y2="3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><line x1="15.3" y1="8.2" x2="18" y2="10.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><line x1="17.3" y1="6.2" x2="19.3" y2="8.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
 </defs></svg>
 
-<section class="cover-page" data-num="14">
+<section class="cover-page" data-num="15">
   <div class="cover-inner">
-    <span class="cover-kicker">Clase 14 · Datos</span>
-    <h1 class="cover-title">Del Formulario a la Base de Datos</h1>
-    <p class="cover-subtitle">Google Forms y validación · Filtrar, ordenar y QUERY · IA para consultar, con verificación · CSV e higiene de datos</p>
+    <span class="cover-kicker">Clase 15 · Datos</span>
+    <h1 class="cover-title">Del Dato a la Decisión</h1>
+    <p class="cover-subtitle">Leer un tablero con ojo crítico · Contar una historia con datos · Verificar antes de decidir · Taller integrador</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
@@ -86,185 +86,131 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">El modelo que diseñaste en Clase 13 deja de ser solo un diseño: hoy construís el circuito completo, desde la carga de un dato hasta la respuesta a una pregunta sobre él. Entendés cómo Google Forms alimenta una tabla con validación desde el origen, explorás esa tabla con filtros y con la función QUERY, usás IA para generar consultas verificándolas con un chequeo de tres pasos, e importás/exportás CSV auditando la calidad de lo que entra y sale.</p>
+  <p class="toc-intro">Cierra la unidad de Datos, y esta clase no suma una herramienta más: suma el paso que le da sentido a todo lo anterior. No construís un tablero nuevo — lo leés con ojo crítico. No escribís cualquier párrafo — contás la historia que esos datos sostienen. Y antes de decidir algo con ellos, los pasás por el mismo chequeo de tres pasos que ya usaste en la Clase 14. Cierra con un taller integrador que funciona como ensayo de la evaluación de la unidad.</p>
   <span class="toc-label">Contenido</span>
   <ol>
-    <li><a href="#forms"><span class="toc-num">01</span><span class="toc-text">Google Forms como interfaz de carga</span></a></li>
-    <li><a href="#explorar"><span class="toc-num">02</span><span class="toc-text">Filtrar, ordenar y consultar con QUERY</span></a></li>
-    <li><a href="#ia-consultas"><span class="toc-num">03</span><span class="toc-text">Consultar con IA: verificá antes de confiar</span></a></li>
-    <li><a href="#csv"><span class="toc-num">04</span><span class="toc-text">CSV e higiene de datos</span></a></li>
+    <li><a href="#leer-tablero"><span class="toc-num">01</span><span class="toc-text">Leer un tablero con ojo crítico</span></a></li>
+    <li><a href="#storytelling"><span class="toc-num">02</span><span class="toc-text">Contar una historia con datos</span></a></li>
+    <li><a href="#verificacion"><span class="toc-num">03</span><span class="toc-text">Verificar antes de decidir</span></a></li>
+    <li><a href="#taller"><span class="toc-num">04</span><span class="toc-text">Taller integrador: de dato a decisión</span></a></li>
     <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 01 — FORMS -->
-<section class="block" id="forms">
+<!-- 01 — LEER TABLERO -->
+<section class="block" id="leer-tablero">
   <div class="block-head">
     <span class="block-num">01</span>
-    <h2 class="block-title">Google Forms como interfaz de carga</h2>
+    <h2 class="block-title">Leer un tablero con ojo crítico</h2>
   </div>
   <div class="prose">
     <div class="callout" data-type="question">
-      <p>Si tuvieras que juntar los datos de 40 compañeros para un trabajo grupal —nombre, comisión, tema elegido— ¿les pedirías que editen todos la misma planilla a la vez, o les darías un formulario para que cada uno cargue su propio registro?</p>
+      <p>Un gráfico de barras muestra que las ventas "casi se duplicaron" — pero el eje vertical arranca en 80, no en 0. ¿Sigue siendo la misma diferencia visual si el eje arrancara en cero?</p>
     </div>
 
-    <p><strong>Google Forms</strong> es la interfaz de carga de registros: cada persona que responde el formulario genera automáticamente una fila nueva en una hoja de Sheets vinculada, sin tocar la planilla directamente ni pisar los datos de otra persona.</p>
+    <p>En la Clase 11 armaste un tablero propio: tabla dinámica, gráfico y segmentación. Hoy cambiás de rol — en vez de construirlo, te toca leer el de otra persona, sin poder preguntarle cómo lo armó. Ese es exactamente el trabajo real: la mayoría de las veces no armás el tablero que decide algo, lo leés.</p>
 
-    <h3>Cómo vincularlo</h3>
-    <ol>
-      <li>Creá un formulario en Google Forms, con una pregunta por campo que necesites (según el modelo que diseñaste en Clase 13).</li>
-      <li>En la pestaña <strong>Respuestas</strong>, hacé clic en el ícono de Sheets para crear (o vincular) una hoja de cálculo de destino.</li>
-      <li>Cada respuesta enviada aparece como una fila nueva en esa hoja, con una columna extra de <strong>marca temporal</strong> (fecha y hora exacta de envío) — un buen candidato a clave primaria natural.</li>
-    </ol>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>El orden de las preguntas en el formulario define el orden de las columnas en la hoja. Si cambiás el formulario después de tener respuestas cargadas, revisá que las columnas sigan alineadas.</p>
-    </div>
-
-    <h3>Validación en el origen</h3>
-    <p>Google Forms tiene su propio sistema de validación de respuestas, distinto del de Sheets pero con la misma idea: restringir lo que se puede cargar, para no tener que corregirlo después.</p>
-
+    <h3>Cuatro preguntas antes de creerle a un tablero</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Tipo de pregunta</th><th>Validación disponible</th></tr></thead>
+        <thead><tr><th>Pregunta</th><th>Qué revela</th></tr></thead>
         <tbody>
-          <tr><td>Respuesta corta (numérica)</td><td>Rango numérico, número entero, número mayor/menor que un valor</td></tr>
-          <tr><td>Respuesta corta (texto)</td><td>Expresión regular (patrón de texto), longitud máxima</td></tr>
-          <tr><td>Opción múltiple / Lista desplegable</td><td>La propia lista actúa como restricción</td></tr>
-          <tr><td>Casilla obligatoria</td><td>Marca la pregunta como requerida</td></tr>
+          <tr><td><strong>¿Dónde arranca el eje?</strong></td><td>Un eje recortado (que no empieza en cero) exagera visualmente diferencias chicas</td></tr>
+          <tr><td><strong>¿Sobre cuántos casos?</strong></td><td>"75%" de 8 respuestas no pesa igual que "75%" de 800</td></tr>
+          <tr><td><strong>¿Qué pregunta NO responde?</strong></td><td>Un tablero muestra lo que su autor decidió mostrar — lo que no incluyó también es información</td></tr>
+          <tr><td><strong>¿Correlación o causa?</strong></td><td>Que dos números suban juntos no prueba que uno cause el otro</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>Todo campo que en tu modelo de Clase 13 sea de tipo categórico debería ser, en Forms, una pregunta de "Opción múltiple" o "Lista desplegable" — nunca de respuesta libre. Es la validación desde el origen.</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Nada de esto significa que un tablero "miente" siempre — significa que leerlo bien es un trabajo activo, no pasivo. La misma tabla de datos admite un gráfico honesto y uno engañoso.</p>
     </div>
   </div>
 </section>
 
-<!-- 02 — EXPLORAR -->
-<section class="block" id="explorar">
+<!-- 02 — STORYTELLING -->
+<section class="block" id="storytelling">
   <div class="block-head">
     <span class="block-num">02</span>
-    <h2 class="block-title">Filtrar, ordenar y consultar con QUERY</h2>
+    <h2 class="block-title">Contar una historia con datos</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Tu tabla de respuestas ya tiene 40 filas. Necesitás ver solamente las que corresponden a una carrera puntual, ordenadas de la más reciente a la más antigua. ¿Alguna función que ya conocés te resuelve esto, o hace falta otra herramienta?</p>
-    </div>
-
-    <p><strong>Filtrar</strong> oculta temporalmente las filas que no cumplen una condición, sin borrar ni mover ningún dato. <strong>Ordenar</strong> reorganiza las filas visibles según el valor de una columna. Ninguna de las dos altera la tabla original — son formas de "mirarla" distinto.</p>
+    <p>Un analista de datos no es quien construye la tabla — es quien la lee y responde una pregunta real sobre ella. En la Clase 06 usaste el arco Gancho–Desarrollo–Cierre para armar una presentación; contar una historia con datos sigue la misma lógica, aplicada a un hallazgo:</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Herramienta</th><th>Cuándo usarla</th></tr></thead>
+        <thead><tr><th>Parte</th><th>Qué responde</th></tr></thead>
         <tbody>
-          <tr><td><strong>Filtro</strong> (Datos &gt; Crear un filtro)</td><td>Trabajás solo, explorando la tabla</td></tr>
-          <tr><td><strong>Vista de filtro</strong> (Datos &gt; Vistas de filtro)</td><td>Varios usuarios comparten la hoja al mismo tiempo</td></tr>
+          <tr><td><strong>Gancho</strong></td><td>¿Qué pregunta le importa a quien va a leer esto?</td></tr>
+          <tr><td><strong>Desarrollo</strong></td><td>¿Qué patrón ves en los datos que responde esa pregunta?</td></tr>
+          <tr><td><strong>Cierre</strong></td><td>¿Qué debería hacer distinto quien lo lee, a partir de esto?</td></tr>
         </tbody>
       </table>
     </div>
 
+    <h3>Pedirle a la IA que interprete, no que calcule</h3>
+    <p>Una IA puede generar el párrafo de una historia de datos, pero necesita contexto: qué pregunta estás respondiendo, a quién le escribís, qué datos son los más importantes. Sin ese contexto, puede inventar correlaciones que no existen.</p>
+
+    <div class="code-block">"Tengo una tabla de respuestas de un formulario de satisfacción. 120 personas respondieron, y el 75% expresó que prefiere trabajar en equipo. El 20% prefiere trabajar solo. El 5% se abstuvo. Escribí un párrafo corto para la dirección, con gancho, desarrollo y cierre, sobre qué implica esto para el próximo semestre."</div>
+
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>Si tu hoja de respuestas va a ser revisada o compartida, usá siempre "Vista de filtro" en lugar del filtro común, para no alterar lo que ven los demás.</p>
-    </div>
-
-    <h3>QUERY: preguntas más complejas en una sola fórmula</h3>
-    <p>Los filtros te muestran filas — pero ¿y si necesitás que la respuesta sea solo una columna? ¿O una suma de una columna filtrada? La función <strong>QUERY</strong> recupera información de una tabla aplicando condiciones, seleccionando columnas específicas y ordenando el resultado, todo sin tocar la tabla original, en una sola fórmula.</p>
-
-    <div class="code-block">=QUERY(rango; "select A, B, C where D &gt; 10 order by A")</div>
-
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Idea clave</p>
-      <p>QUERY funciona con un lenguaje parecido al SQL (el lenguaje de bases de datos reales), pero simplificado. No necesitás aprender SQL completo — alcanza con reconocer qué hace <code>select</code>, <code>where</code> y <code>order by</code>.</p>
+      <p>Una IA puede escribir algo que se ve profesional pero está mal. "Casi todos prefieren trabajar en equipo" es distinto a "el 75% prefiere" — uno omite el 25%, el otro no.</p>
     </div>
   </div>
 </section>
 
-<!-- 03 — IA-CONSULTAS -->
-<section class="block" id="ia-consultas">
+<!-- 03 — VERIFICACIÓN -->
+<section class="block" id="verificacion">
   <div class="block-head">
     <span class="block-num">03</span>
-    <h2 class="block-title">Consultar con IA: verificá antes de confiar</h2>
+    <h2 class="block-title">Verificar antes de decidir</h2>
   </div>
   <div class="prose">
-    <p>En la Clase 13 viste que una IA que consulta datos reales puede rendir muy bien en pruebas de laboratorio y fallar contra datos reales, casi siempre por ambigüedad en los campos. Pedirle a una IA una fórmula QUERY es exactamente ese escenario: la IA no conoce tu tabla mejor que vos, y si tu pedido es ambiguo, elige una interpretación sola y te la entrega con total seguridad.</p>
+    <p>El mismo chequeo de tres pasos que usaste en la Clase 14 para verificar una fórmula generada por IA sirve, sin cambiar nada, para verificar una conclusión escrita:</p>
 
-    <h3>Workflow de verificación en tres pasos</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
         <thead><tr><th>Paso</th><th>Qué verificás</th><th>Pregunta</th></tr></thead>
         <tbody>
-          <tr><td><strong>1. Hechos</strong></td><td>¿Los campos que usa la fórmula son los mismos de tu tabla, con el significado que vos les diste?</td><td>"¿'Activo' en la fórmula es lo mismo que 'Activo' en mi tabla?"</td></tr>
-          <tr><td><strong>2. Lógica</strong></td><td>¿La condición y el orden que aplica corresponden a lo que pediste?</td><td>"¿El <code>where</code> y el <code>order by</code> hacen lo que yo quería?"</td></tr>
-          <tr><td><strong>3. Contexto</strong></td><td>¿El resultado tiene sentido comparado con un chequeo manual rápido?</td><td>"¿Si filtro a mano, veo lo mismo que devuelve la fórmula?"</td></tr>
+          <tr><td><strong>1. Hechos</strong></td><td>¿Los números que cita son los mismos de tu tabla?</td><td>"¿El 75% es realmente lo que aparece en mis datos?"</td></tr>
+          <tr><td><strong>2. Lógica</strong></td><td>¿La conclusión se sigue de esos números?</td><td>"¿Es verdad que eso implica lo que la IA escribió?"</td></tr>
+          <tr><td><strong>3. Contexto</strong></td><td>¿La conclusión tiene sentido para quien la va a leer?</td><td>"¿Esto responde la pregunta que me hicieron?"</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>Si falla alguno de estos tres pasos, corregí la fórmula vos mismo o pedile a la IA una nueva versión señalando el error exacto. La consulta la firmás vos, la haya escrito quien la haya escrito.</p>
-    </div>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>Una fórmula QUERY generada por IA puede verse bien y estar mal — devuelve datos que parecen correctos a primera vista. Comparar con un filtro manual es la forma más simple de estar seguro.</p>
+      <p>Si falla alguno de estos tres pasos, editá la conclusión vos mismo o pedile a la IA una nueva versión. Tu nombre va a estar abajo — vos sos responsable de lo que dice, aunque una IA la haya escrito.</p>
     </div>
   </div>
 </section>
 
-<!-- 04 — CSV -->
-<section class="block" id="csv">
+<!-- 04 — TALLER -->
+<section class="block" id="taller">
   <div class="block-head">
     <span class="block-num">04</span>
-    <h2 class="block-title">CSV e higiene de datos</h2>
+    <h2 class="block-title">Taller integrador: de dato a decisión</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Un compañero te pasa un archivo `.csv` con 200 filas de datos. ¿Qué esperás que pase al abrirlo en Sheets? ¿Y si necesitás mandar tu propia tabla a alguien que usa otro sistema?</p>
-    </div>
+    <p>Este taller junta las tres secciones anteriores en un solo ejercicio, usando cualquier tabla que ya tengas armada en el curso (tu tabla de Forms de la Clase 14, o el dataset con el que trabajaste en la Clase 11).</p>
 
-    <p><strong>CSV</strong> (<em>Comma-Separated Values</em>) es el formato más universal para intercambiar tablas entre programas: es texto plano, sin formato, donde cada línea es un registro y cada valor va separado por una coma.</p>
-
-    <h3>Por qué importa</h3>
-    <p>Ninguna base de datos vive aislada: en algún momento vas a necesitar sacar datos de Sheets para llevarlos a otro sistema, o traer datos de otro sistema hacia tu planilla. El CSV es el "idioma común".</p>
-
-    <h3>Cómo exportar desde Sheets</h3>
+    <h3>Estructura del taller</h3>
     <ol>
-      <li><strong>Archivo &gt; Descargar &gt; Valores separados por comas (.csv)</strong></li>
-      <li>Si tu hoja tiene varias pestañas, el CSV solo exporta la hoja activa.</li>
+      <li><strong>Armá un tablero simple</strong> (Clase 11): un título claro, 3–5 números clave, y 2–3 visualizaciones que muestren un patrón.</li>
+      <li><strong>Contá su historia</strong> en un párrafo con gancho, desarrollo y cierre — a mano o con ayuda de una IA.</li>
+      <li><strong>Verificala</strong> con el chequeo de tres pasos (hechos, lógica, contexto).</li>
+      <li><strong>Intercambiá tu tablero</strong> con un compañero, sin tu historia escrita, y leélo con ojo crítico (sección 01) antes de leer la conclusión que él escribió.</li>
     </ol>
 
-    <h3>Cómo importar un CSV a Sheets</h3>
-    <ol>
-      <li><strong>Archivo &gt; Importar &gt; Subir</strong>, seleccioná el archivo `.csv`</li>
-      <li>Elegí si lo importás como hoja nueva, reemplazo, o insertado en una posición</li>
-      <li>Confirmá el separador (coma o punto y coma)</li>
-    </ol>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>Al importar un CSV, revisá siempre los tipos de dato después: es habitual que una columna de fechas o números llegue interpretada como texto, sobre todo con configuraciones regionales distintas.</p>
-    </div>
-
-    <h3>Auditar la tabla antes de confiar en ella</h3>
-    <p>Antes de dar por buena cualquier tabla —la tuya, la de un compañero, o la que acabás de importar— pasala por tres chequeos rápidos:</p>
-
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Chequeo</th><th>Cómo hacerlo</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Duplicados</strong></td><td>`=CONTAR.SI(rango_clave; celda_clave)` sobre tu clave primaria — si algún resultado es mayor a 1, hay un duplicado</td></tr>
-          <tr><td><strong>Campos vacíos</strong></td><td>Compará `=CONTARA(columna)` contra la cantidad total de filas — si no coinciden, faltan datos</td></tr>
-          <tr><td><strong>Inconsistencias de formato</strong></td><td>El mismo valor categórico escrito distinto ("activo" vs. "Activo") o con espacios de más — `=ESPACIOS(texto)` limpia los espacios sobrantes</td></tr>
-        </tbody>
-      </table>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Este taller funciona como ensayo de lo que vas a tener que resolver en la evaluación integradora de la unidad: no una tabla más para construir, sino una decisión para defender.</p>
     </div>
   </div>
 </section>
@@ -276,19 +222,18 @@
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>El circuito completo ya está armado: un formulario valida antes de guardar, una fórmula recupera sin modificar, y un chequeo de tres pasos evita que le creas a una IA lo que no verificaste vos. Lo que sigue es hacer que ese circuito también sepa leerse: convertir una tabla consultada en un panel que otra persona entienda de un vistazo.</p>
+    <p>Datos bien modelados (Clase 13), bien cargados y consultados (Clase 14), solo sirven si alguien puede leerlos con espíritu crítico, convertirlos en una historia clara y verificarla antes de firmarla. Ese es el trabajo completo de un analista de datos — y es la misma disciplina que necesitás cada vez que alguien te muestra un número y te pide que le creas.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-1" aria-label="Marcar como hecho"></td><td><label for="chk-14-1">Armé un Google Forms con al menos 5 campos, vinculado a una hoja de Sheets</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-2" aria-label="Marcar como hecho"></td><td><label for="chk-14-2">Apliqué validación de respuesta a al menos dos preguntas, según el tipo de dato de cada campo</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-3" aria-label="Marcar como hecho"></td><td><label for="chk-14-3">Apliqué un filtro (o una vista de filtro) a mi tabla de respuestas</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-4" aria-label="Marcar como hecho"></td><td><label for="chk-14-4">Escribí una fórmula QUERY que responde una pregunta concreta sobre mi tabla</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-5" aria-label="Marcar como hecho"></td><td><label for="chk-14-5">Pedile a una IA una consulta QUERY y la verifiqué con el chequeo de tres pasos (hechos, lógica, contexto)</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-6" aria-label="Marcar como hecho"></td><td><label for="chk-14-6">Exporté mi tabla como CSV y la volví a importar, verificando que los tipos de dato se reconstruyeron</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-14-7" aria-label="Marcar como hecho"></td><td><label for="chk-14-7">Auditê mi tabla: revisé duplicados con `CONTAR.SI`, campos vacíos y variantes de formato en un mismo valor categórico</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-1" aria-label="Marcar como hecho"></td><td><label for="chk-15-1">Identifiqué, en un tablero ajeno, dónde arranca el eje, sobre cuántos casos habla, y qué pregunta no responde</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-2" aria-label="Marcar como hecho"></td><td><label for="chk-15-2">Armé un tablero simple con título, 3-5 números clave y 2-3 visualizaciones</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-3" aria-label="Marcar como hecho"></td><td><label for="chk-15-3">Escribí (o le pedí a una IA) la historia de mi tablero con gancho, desarrollo y cierre</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-4" aria-label="Marcar como hecho"></td><td><label for="chk-15-4">Verifiqué esa historia con el chequeo de tres pasos: hechos, lógica, contexto</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-5" aria-label="Marcar como hecho"></td><td><label for="chk-15-5">Leí con ojo crítico el tablero de un compañero, antes de conocer su conclusión</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-6" aria-label="Marcar como hecho"></td><td><label for="chk-15-6">Completé el taller integrador de la unidad de Datos</label></td></tr>
         </tbody>
       </table>
     </div>
@@ -330,19 +275,34 @@
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Verificar consultas de IA</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Chequeo de 3 pasos</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">H</span><span class="qr-fdesc"><strong>Hechos</strong> — ¿los campos son los mismos de tu tabla?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Lógica</strong> — ¿la condición hace lo que pediste?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — ¿coincide con un chequeo manual?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">H</span><span class="qr-fdesc"><strong>Hechos</strong> — ¿coinciden con tu tabla?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Lógica</strong> — ¿se sigue de esos datos?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — ¿responde la pregunta?</span></div>
           </div>
+          <div class="qr-tip">Mismo chequeo, sirve tanto para una fórmula QUERY como para una conclusión escrita.</div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">CSV e higiene de datos</span></div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Exportar — Archivo &gt; Descargar &gt; CSV · Importar — Archivo &gt; Importar &gt; Subir</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Duplicados: <code>=CONTAR.SI(...)</code> &gt; 1 · Vacíos: <code>=CONTARA(...)</code> vs. total de filas</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Espacios sobrantes — <code>=ESPACIOS(texto)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Leer un tablero</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">¿Dónde arranca el eje? · ¿Sobre cuántos casos?</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">¿Qué pregunta no responde? · Correlación ≠ causa</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-arc"></use></svg></div><span class="qr-cell-title">Contar una historia con datos</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">G</span><span class="qr-fdesc">Gancho — qué pregunta le importa a quien lee</span></div>
+            <div class="qr-frow"><span class="qr-fletter">D</span><span class="qr-fdesc">Desarrollo — qué patrón responde esa pregunta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Cierre — qué debería hacer distinto quien lee</span></div>
           </div>
         </div>
       </div>
@@ -702,21 +662,18 @@
 
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">
-      <div class="gloss-item"><span class="gloss-term">Formulario (Google Forms)</span><p class="gloss-def">Interfaz de carga que genera automáticamente una fila nueva en una hoja de Sheets por cada respuesta enviada.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Marca temporal</span><p class="gloss-def">Columna que Forms agrega sola con la fecha y hora exacta de cada respuesta, buen candidato a clave primaria.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Validación de respuesta</span><p class="gloss-def">Restricción configurada en una pregunta de Forms (rango numérico, patrón de texto, lista cerrada) para impedir que se cargue un dato inválido.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Filtro</span><p class="gloss-def">Herramienta que oculta temporalmente las filas que no cumplen una condición, sin alterar la tabla original.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Vista de filtro</span><p class="gloss-def">Filtro personal que no afecta lo que ven otras personas que tienen la misma hoja abierta.</p></div>
-      <div class="gloss-item"><span class="gloss-term">QUERY</span><p class="gloss-def">Función de Sheets que selecciona, filtra y ordena datos de una tabla con un lenguaje similar a SQL, sin modificar la tabla de origen.</p></div>
-      <div class="gloss-item"><span class="gloss-term">CSV</span><p class="gloss-def">Formato de texto plano para intercambiar tablas entre programas, donde cada línea es un registro y los valores van separados por comas.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Auditoría de datos</span><p class="gloss-def">Revisión sistemática de una tabla para detectar duplicados, campos vacíos e inconsistencias de formato antes de confiar en ella.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Tablero</span><p class="gloss-def">Hoja de consulta que reúne tabla, gráfico y números clave, pensada para que alguien la lea de un vistazo sin editar el archivo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Eje recortado</span><p class="gloss-def">Eje de un gráfico que no arranca en cero, lo que exagera visualmente una diferencia entre valores.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Correlación</span><p class="gloss-def">Relación estadística entre dos variables que suben o bajan juntas, sin que eso pruebe que una causa la otra.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Storytelling con datos</span><p class="gloss-def">Comunicar un hallazgo numérico como una historia con gancho, desarrollo y cierre, en vez de solo mostrar la tabla.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Chequeo de tres pasos</span><p class="gloss-def">Verificación de hechos, lógica y contexto antes de confiar en una fórmula o una conclusión generada por IA.</p></div>
     </div>
 
     <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
-      <li>Google. <em>Cómo establecer reglas para tu formulario</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3378864</code></li>
-      <li>Google. <em>Función QUERY</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093343</code></li>
-      <li>Shafranovich, Y. (2005). <em>Common Format and MIME Type for Comma-Separated Values (CSV) Files</em>. RFC 4180, Internet Engineering Task Force.</li>
+      <li>Huff, D. (1954). <em>How to Lie with Statistics</em>. W. W. Norton &amp; Company.</li>
+      <li>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information</em> (2.ª ed.). Graphics Press.</li>
+      <li>Knaflic, C. N. (2015). <em>Storytelling with Data: A Data Visualization Guide for Business Professionals</em>. Wiley.</li>
     </ul>
   </div>
 </section>

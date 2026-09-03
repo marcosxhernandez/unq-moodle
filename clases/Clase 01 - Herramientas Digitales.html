@@ -27,6 +27,352 @@
       color:#3b3167;
     }
   }
+
+  /* Tarjetas flotantes de herramientas (nuevo patrón, ago. 2026) */
+  .tools-container {
+    float: right;
+    width: 320px;
+    margin: 4px 0 18px 22px;
+  }
+
+  /* Las tablas siempre ocupan el ancho completo, nunca se achican al
+     coexistir con una tarjeta flotante pendiente */
+  .table-wrap {
+    clear: both;
+    margin-top: 1.9em;
+  }
+
+  .app-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    transition: border-color 0.15s;
+  }
+
+  .app-row:hover {
+    border-color: var(--violet);
+  }
+
+  .app-row:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Para una tarjeta con un badge extra (ver Gemini más abajo): el link
+     envuelve ícono+texto sin generar su propia caja flex. */
+  .app-row-link {
+    display: contents;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .row-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+  }
+
+  .row-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .row-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row-domain {
+    font-size: 0.82rem;
+    color: #6e6e73;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pill {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+    background: rgba(0, 113, 227, 0.1);
+    color: var(--blue);
+  }
+
+  /* Layout 2 columnas para paneles comparativos (como herramientas.html) */
+  .ia-compare {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  /* min-width:0 es necesario: sin él, un track de grid respeta el
+     max-content de su columna (el dominio más largo del bloque, ej.
+     "copilot.microsoft.com" en EE.UU.) y esa columna se ensancha más
+     que la otra en vez de repartirse 50/50. */
+  .ia-group {
+    min-width: 0;
+    break-inside: avoid;
+  }
+
+  .ia-group-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 10px 4px;
+  }
+
+  .ia-cards {
+    width: 100%;
+  }
+
+  /* .ia-card replica .app-row al pixel (misma burbuja que Google Drive):
+     mismo padding, borde, radio, fondo y separación entre tarjetas. */
+  .ia-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    transition: border-color 0.15s;
+  }
+
+  .ia-card:hover {
+    border-color: var(--violet);
+  }
+
+  .ia-card:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Cuando una tarjeta trae un badge extra (ej. descuento estudiantil),
+     los dos badges se apilan a la derecha, igual que en herramientas.html */
+  .ia-tags {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .pill-student {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-decoration: none;
+    background: #fbf1dd;
+    color: #8a5a00;
+  }
+
+  .pill-student:hover {
+    text-decoration: underline;
+  }
+
+  /* Herramienta dentro de una celda de tabla angosta (tablas de LLMs):
+     mismo patrón ícono-izquierda/texto-derecha/precio-a-la-derecha que
+     .app-row, pero sin la "burbuja" (sin fondo ni borde) y compacto,
+     para que la columna no se ensanche. */
+  .llm-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .llm-row-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .llm-row-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .llm-row-name {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .llm-row-domain {
+    font-size: 0.72rem;
+    color: #6e6e73;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .llm-row-text .pill-sm {
+    margin-top: 3px;
+  }
+
+  .pill-sm {
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    background: rgba(0, 113, 227, 0.1);
+    color: var(--blue);
+  }
+
+  .screenshot {
+    max-width: 100%;
+    display: block;
+    border-radius: 8px;
+    margin: 16px auto;
+  }
+
+  .screenshot-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 8px 0 20px;
+  }
+
+  /* Captura de LinkedIn: un poco más chica para que entre completa en
+     su página al imprimir. */
+  .screenshot-sm {
+    max-width: 420px;
+  }
+
+  .qr-float {
+    float: right;
+    width: 160px;
+    margin: 4px 0 18px 22px;
+    text-align: center;
+  }
+
+  .qr-float .screenshot {
+    width: 100%;
+    margin: 0;
+  }
+
+  .qr-float .screenshot-caption {
+    font-size: 0.78rem;
+    margin: 8px 0 0;
+  }
+
+  @media print {
+    a[href]::after,
+    a[href]::before {
+      content: none !important;
+    }
+    /* guia-estilo.css deja .screenshot en 118mm y su leyenda en 118mm
+       también; acá la imagen crece un poco más (aún entra completa en
+       su página) y la leyenda pasa a centrarse en el ancho completo del
+       área de texto (164mm, ver --measure en guia-estilo.css) en vez de
+       quedar angosta y descentrada respecto a la hoja. */
+    .screenshot-sm {
+      max-width: 135mm;
+    }
+    .screenshot-sm + .screenshot-caption {
+      max-width: 164mm;
+    }
+    /* En papel el área de texto mide 164mm (ver --measure en
+       guia-estilo.css): a 320px fijos la tarjeta flotante ocupaba más
+       de media hoja. Se acota a ~1/3 del ancho y se compacta en
+       proporción para que siga siendo legible. */
+    .tools-container {
+      width: 55mm;
+      margin: 2px 0 12px 12px;
+    }
+    .app-row {
+      gap: 9px;
+      padding: 7px 9px;
+    }
+    .row-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      box-shadow: none;
+    }
+    .row-name {
+      font-size: 0.78rem;
+    }
+    .row-domain {
+      font-size: 0.66rem;
+    }
+    .pill,
+    .pill-student {
+      font-size: 0.6rem;
+      padding: 4px 8px;
+    }
+    .ia-tags {
+      gap: 4px;
+    }
+    .app-row:hover,
+    .ia-card:hover {
+      border-color: var(--line);
+    }
+    .ia-card {
+      break-inside: avoid;
+    }
+    .ia-group {
+      break-inside: avoid;
+    }
+    .ia-compare {
+      break-inside: avoid;
+    }
+    .llm-row {
+      gap: 7px;
+    }
+    .llm-row-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+    .llm-row-name {
+      font-size: 8pt;
+    }
+    .llm-row-domain {
+      font-size: 6.6pt;
+    }
+  }
 </style>
 </head>
 <body>
@@ -139,7 +485,16 @@
     <p>Ya sabés protegerte. Ahora sí, entremos al campus.</p>
 
     <h3>Entrar al campus</h3>
-    <img class="app-badge" src="../img/apps/UVQ%20-%20Campus%20Virtual.png" alt="Ícono del campus virtual UVQ">
+    <div class="tools-container">
+      <a class="app-row" href="https://campus.uvq.edu.ar" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/UVQ%20-%20Campus%20Virtual.png" alt="Campus Virtual UNQ">
+        <div class="row-text">
+          <span class="row-name">Campus UNQ</span>
+          <span class="row-domain">campus.uvq.edu.ar</span>
+        </div>
+        <span class="pill">Gratis</span>
+      </a>
+    </div>
     <p>Todo lo que vas a leer, entregar y consultar en esta materia, y en toda la carrera, pasa por acá. No es opcional.</p>
     <p>Ya tenés usuario: te lo generaron cuando te inscribiste en la universidad. Andá a <a href="https://campus.uvq.edu.ar" target="_blank" rel="noopener"><code>campus.uvq.edu.ar</code></a>, iniciá sesión con tu usuario y contraseña, y buscá el aula de Informática. Ahí vas a encontrar la clase de hoy, los avisos del docente y el lugar donde subís tus entregas.</p>
 
@@ -158,23 +513,22 @@
 
     <p>Además de entrar por el navegador, la UNQ tiene una app oficial para el celular: <strong>Moodle</strong>. No es una opción más entre tantas, es la app real de la plataforma, y está disponible ahora mismo para instalar.</p>
 
-    <div class="app-install">
-      <div class="app-install-head">
-        <img class="app-install-icon" src="../img/apps/Moodle%20-%20Moodle.png" alt="Ícono de Moodle">
-        <h3 class="app-install-title">Instalá la app</h3>
-      </div>
-      <div class="app-install-body">
-        <ol>
-          <li>Buscá <strong>Moodle</strong> en Play Store (Android) o App Store (iPhone) y descargala.</li>
-          <li>Abrila, elegí "Soy un estudiante" y buscá tu sitio: <a href="https://qoodle.uvq.edu.ar" target="_blank" rel="noopener"><code>qoodle.uvq.edu.ar</code></a></li>
-          <li>Iniciá sesión con tu usuario y contraseña del campus.</li>
-          <li>Activá las notificaciones de la app para no perderte avisos del docente.</li>
-        </ol>
-        <div class="app-install-qr">
-          <img src="../img/01-qr-moodle-app.png" alt="Código QR que carga el sitio qoodle.uvq.edu.ar dentro de la app Moodle">
-          <span>Escaneálo desde la app para cargar el sitio sin escribirlo</span>
+    <div class="tools-container">
+      <a class="app-row" href="https://download.moodle.org/mobile" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Moodle%20-%20Moodle.png" alt="App Moodle">
+        <div class="row-text">
+          <span class="row-name">App Moodle</span>
+          <span class="row-domain">download.moodle.org/mobile</span>
         </div>
-      </div>
+        <span class="pill">Gratis</span>
+      </a>
+    </div>
+
+    <p>Buscála en Play Store (Android) o App Store (iPhone) y descargala. Abrila, elegí "Soy un estudiante" y buscá tu sitio usando <code>qoodle.uvq.edu.ar</code>. Iniciá sesión con tu usuario y contraseña del campus, y activá las notificaciones de la app para no perderte avisos del docente. Podés escanear el código QR que va abajo desde la app para cargar el sitio sin escribirlo.</p>
+
+    <div class="qr-float">
+      <img class="screenshot" src="../img/01-qr-moodle-app.png" alt="Código QR que carga el sitio qoodle.uvq.edu.ar dentro de la app Moodle">
+      <p class="screenshot-caption">Escaneálo desde la app para cargar el sitio sin escribirlo.</p>
     </div>
 
     <p>Ya diste un paso concreto para dejar de ser usuario pasivo: sabés en qué capa de internet vive cada cosa que usás, sabés protegerte y ya estás adentro del campus. El siguiente paso es entender qué pasa un escalón más allá, cuando esa información que generás y guardás vive en la nube, y qué das a cambio.</p>
@@ -188,8 +542,17 @@
     <h2 class="block-title">La nube y Google Drive</h2>
   </div>
   <div class="prose">
-    <img class="app-badge" src="../img/apps/Google%20-%20Drive.png" alt="Ícono de Google Drive">
-    <p>"Subí el archivo a la nube." ¿Pero qué es exactamente la nube? No es algo etéreo flotando en el aire: es una <strong>red de servidores</strong> (computadoras muy potentes) distribuidos por el mundo, a los que accedés a través de internet. Solo se llama "nube" por marketing. Cuando guardás algo en <strong>Drive</strong> (<a href="https://drive.google.com" target="_blank" rel="noopener"><code>drive.google.com</code></a>), ese archivo viaja por un cable físico y queda en un servidor, en algún edificio de algún país.</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://drive.google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Google%20-%20Drive.png" alt="Google Drive">
+        <div class="row-text">
+          <span class="row-name">Google Drive</span>
+          <span class="row-domain">drive.google.com</span>
+        </div>
+        <span class="pill">Gratis</span>
+      </a>
+    </div>
+    <p>"Subí el archivo a la nube." ¿Pero qué es exactamente la nube? No es algo etéreo flotando en el aire: es una <strong>red de servidores</strong> (computadoras muy potentes) distribuidos por el mundo, a los que accedés a través de internet. Solo se llama "nube" por marketing. Cuando guardás algo en Drive, ese archivo viaja por un cable físico y queda en un servidor, en algún edificio de algún país.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -204,24 +567,6 @@
     </div>
 
     <p>Google Workspace (Docs, Sheets, Slides) es el ejemplo más claro de herramienta colaborativa: varias personas editan el mismo archivo en tiempo real, ven los cambios al instante y comentan sin perder versiones.</p>
-
-    <div class="tool-cards">
-      <div class="tool-card">
-        <img src="../img/apps/Google%20-%20Docs.png" alt="Google Docs">
-        <span class="tool-card-name">Docs</span>
-        <a href="https://docs.google.com" target="_blank" rel="noopener"><code>docs.google.com</code></a>
-      </div>
-      <div class="tool-card">
-        <img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
-        <span class="tool-card-name">Sheets</span>
-        <a href="https://sheets.google.com" target="_blank" rel="noopener"><code>sheets.google.com</code></a>
-      </div>
-      <div class="tool-card">
-        <img src="../img/apps/Google%20-%20Slides.png" alt="Google Slides">
-        <span class="tool-card-name">Slides</span>
-        <a href="https://slides.google.com" target="_blank" rel="noopener"><code>slides.google.com</code></a>
-      </div>
-    </div>
 
     <h3>El precio de lo gratis</h3>
     <p>Gmail, Instagram, WhatsApp, TikTok. <strong>Todas gratuitas.</strong> ¿Por qué una empresa que vale cientos de miles de millones de dólares te da un servicio sin cobrarte nada? La respuesta es corta: porque vos no sos el cliente. <strong>Sos el producto.</strong></p>
@@ -302,8 +647,17 @@
     <p>Buscar no es lo mismo que encontrar información de calidad. Validar no es lo mismo que creerle al primer resultado. Y usar IA no es lo mismo que pensar con IA. Es la parte central de dejar de ser usuario pasivo: acá aprendés a decidir qué información merece tu confianza.</p>
 
     <h3>Operadores de búsqueda en Google</h3>
-    <img class="app-badge" src="../img/apps/Google%20-%20Google.png" alt="Ícono de Google">
-    <p>Los operadores son comandos especiales que refinan los resultados en <strong>Google</strong> (<a href="https://google.com" target="_blank" rel="noopener"><code>google.com</code></a>). La búsqueda sin operadores te da millones de resultados; con operadores, te da los que realmente necesitás.</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Google%20-%20Google.png" alt="Google">
+        <div class="row-text">
+          <span class="row-name">Google</span>
+          <span class="row-domain">google.com</span>
+        </div>
+        <span class="pill">Gratis</span>
+      </a>
+    </div>
+    <p>Los operadores son comandos especiales que refinan los resultados en Google. La búsqueda sin operadores te da millones de resultados; con operadores, te da los que realmente necesitás.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -434,23 +788,76 @@
       <p>Probalo vos mismo: preguntale a la IA que uses "Quiero lavar mi auto. El lavadero está a 50 metros de casa. ¿Voy caminando o en auto?" La respuesta lógica es en auto, no importa la distancia, es el auto el que hay que llevar, no vos. En un test de 2026 con 53 modelos de IA, 42 (entre ellos varias versiones de ChatGPT, Claude y DeepSeek) contestaron "caminando", prediciendo la respuesta típica para "50 metros" en vez de razonar qué hace falta en verdad (Opper AI, 2026). Los modelos de razonamiento más avanzados (Claude Opus 4.6, Gemini 3 Pro) ya lo resuelven bien de forma consistente: si a vos te contesta "en auto", no es que el ejercicio falló, es que esa IA aprendió a frenar el atajo automático. La IA predice patrones: algunas, ya aprendieron a corregirlos.</p>
     </div>
 
-    <div class="compare-panel">
-      <div class="tool-group">
-        <p class="tool-group-title">🇺🇸 Grandes de EE.UU.</p>
-        <div class="tool-cards">
-          <div class="tool-card"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT"><span class="tool-card-name">ChatGPT</span><a href="https://chatgpt.com" target="_blank" rel="noopener"><code>chatgpt.com</code></a></div>
-          <div class="tool-card"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini"><span class="tool-card-name">Gemini</span><a href="https://gemini.google.com" target="_blank" rel="noopener"><code>gemini.google.com</code></a></div>
-          <div class="tool-card"><img src="../img/apps/Anthropic%20-%20Claude.png" alt="Claude"><span class="tool-card-name">Claude</span><a href="https://claude.ai" target="_blank" rel="noopener"><code>claude.ai</code></a></div>
-          <div class="tool-card"><img src="../img/apps/Microsoft%20-%20Copilot.png" alt="Copilot"><span class="tool-card-name">Copilot</span><a href="https://copilot.microsoft.com" target="_blank" rel="noopener"><code>copilot.microsoft.com</code></a></div>
+    <div class="ia-compare">
+      <div class="ia-group">
+        <h4 class="ia-group-title">🇺🇸 Grandes de EE.UU.</h4>
+        <div class="ia-cards">
+          <a class="ia-card" href="https://chatgpt.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT">
+            <div class="row-text">
+              <span class="row-name">ChatGPT</span>
+              <span class="row-domain">chatgpt.com</span>
+            </div>
+            <span class="pill">Freemium</span>
+          </a>
+          <div class="ia-card">
+            <a class="app-row-link" href="https://gemini.google.com" target="_blank" rel="noopener">
+              <img class="row-icon" src="../img/apps/Google%20-%20Gemini.png" alt="Gemini">
+              <div class="row-text">
+                <span class="row-name">Gemini</span>
+                <span class="row-domain">gemini.google.com</span>
+              </div>
+            </a>
+            <div class="ia-tags">
+              <span class="pill">Freemium</span>
+              <a class="pill-student" href="https://gemini.google/ar/students/?hl=es-419" target="_blank" rel="noopener">🎓 1 año gratis</a>
+            </div>
+          </div>
+          <a class="ia-card" href="https://claude.ai" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/Anthropic%20-%20Claude.png" alt="Claude">
+            <div class="row-text">
+              <span class="row-name">Claude</span>
+              <span class="row-domain">claude.ai</span>
+            </div>
+            <span class="pill">Freemium</span>
+          </a>
+          <a class="ia-card" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/Microsoft%20-%20Copilot.png" alt="Copilot">
+            <div class="row-text">
+              <span class="row-name">Copilot</span>
+              <span class="row-domain">copilot.microsoft.com</span>
+            </div>
+            <span class="pill">Freemium</span>
+          </a>
         </div>
       </div>
-      <div class="tool-group-divider"></div>
-      <div class="tool-group">
-        <p class="tool-group-title">🇨🇳 Grandes de China</p>
-        <div class="tool-cards">
-          <div class="tool-card"><img src="../img/apps/DeepSeek%20-%20DeepSeek.png" alt="DeepSeek"><span class="tool-card-name">DeepSeek</span><a href="https://chat.deepseek.com" target="_blank" rel="noopener"><code>chat.deepseek.com</code></a></div>
-          <div class="tool-card"><img src="../img/apps/Alibaba%20-%20Qwen.png" alt="Qwen"><span class="tool-card-name">Qwen</span><a href="https://chat.qwen.ai" target="_blank" rel="noopener"><code>chat.qwen.ai</code></a></div>
-          <div class="tool-card"><img src="../img/apps/Moonshot%20AI%20-%20Kimi.png" alt="Kimi"><span class="tool-card-name">Kimi</span><a href="https://www.kimi.ai" target="_blank" rel="noopener"><code>kimi.ai</code></a></div>
+      <div class="ia-group">
+        <h4 class="ia-group-title">🇨🇳 Grandes de China</h4>
+        <div class="ia-cards">
+          <a class="ia-card" href="https://chat.deepseek.com" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/DeepSeek%20-%20DeepSeek.png" alt="DeepSeek">
+            <div class="row-text">
+              <span class="row-name">DeepSeek</span>
+              <span class="row-domain">chat.deepseek.com</span>
+            </div>
+            <span class="pill">Gratis</span>
+          </a>
+          <a class="ia-card" href="https://chat.qwen.ai" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/Alibaba%20-%20Qwen.png" alt="Qwen">
+            <div class="row-text">
+              <span class="row-name">Qwen</span>
+              <span class="row-domain">chat.qwen.ai</span>
+            </div>
+            <span class="pill">Gratis</span>
+          </a>
+          <a class="ia-card" href="https://www.kimi.ai" target="_blank" rel="noopener">
+            <img class="row-icon" src="../img/apps/Moonshot%20AI%20-%20Kimi.png" alt="Kimi">
+            <div class="row-text">
+              <span class="row-name">Kimi</span>
+              <span class="row-domain">kimi.ai</span>
+            </div>
+            <span class="pill">Freemium</span>
+          </a>
         </div>
       </div>
     </div>
@@ -464,25 +871,25 @@
         <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Gratis</th><th>Plan pago</th></tr></thead>
         <tbody>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/OpenAI%20-%20ChatGPT.png" alt=""><span class="llm-tool-name">ChatGPT</span><a href="https://chatgpt.com" target="_blank" rel="noopener"><code>chatgpt.com</code></a></div></td>
+            <td><a class="llm-row" href="https://chatgpt.com" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT"><span class="llm-row-text"><span class="llm-row-name">ChatGPT</span><span class="llm-row-domain">chatgpt.com</span><span class="pill-sm">Freemium</span></span></a></td>
             <td>Redacción fluida, estructurar textos, explicaciones largas.</td>
             <td>~10 mensajes cada 5 horas.</td>
             <td>ChatGPT Plus: ~160 mensajes cada 3 horas + 3.000 mensajes de razonamiento por semana.</td>
           </tr>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/Google%20-%20Gemini.png" alt=""><span class="llm-tool-name">Gemini</span><a href="https://gemini.google.com" target="_blank" rel="noopener"><code>gemini.google.com</code></a></div></td>
+            <td><a class="llm-row" href="https://gemini.google.com" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/Google%20-%20Gemini.png" alt="Gemini"><span class="llm-row-text"><span class="llm-row-name">Gemini</span><span class="llm-row-domain">gemini.google.com</span><span class="pill-sm">Freemium</span></span></a></td>
             <td>Integración directa con Drive y Docs.</td>
             <td>Cuota diaria limitada, con cualquier cuenta Google.</td>
             <td>Google AI Pro (ex Gemini Advanced): modelo más potente, ~100 consultas/día, 2 TB en Google One.</td>
           </tr>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/Microsoft%20-%20Copilot.png" alt=""><span class="llm-tool-name">Copilot</span><a href="https://copilot.microsoft.com" target="_blank" rel="noopener"><code>copilot.microsoft.com</code></a></div></td>
+            <td><a class="llm-row" href="https://copilot.microsoft.com" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/Microsoft%20-%20Copilot.png" alt="Copilot"><span class="llm-row-text"><span class="llm-row-name">Copilot</span><span class="llm-row-domain">copilot.microsoft.com</span><span class="pill-sm">Freemium</span></span></a></td>
             <td>Integrado con Office (Word, Teams).</td>
             <td>Con cuenta Microsoft, con límites diarios.</td>
-            <td>Microsoft 365 Premium (reemplazó al viejo Copilot Pro standalone en 2026). No viene incluido solo por tener cuenta <code>@uvq.edu.ar</code>, confirmá en tu cuenta si la universidad lo activó.</td>
+            <td>Microsoft 365 Premium (reemplazó al viejo Copilot Pro standalone en 2026). No viene incluido con tu cuenta <code>@uvq.edu.ar</code>: esa cuenta solo te da 100 GB de almacenamiento en OneDrive.</td>
           </tr>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/Perplexity%20-%20Perplexity.png" alt=""><span class="llm-tool-name">Perplexity</span><a href="https://perplexity.ai" target="_blank" rel="noopener"><code>perplexity.ai</code></a></div></td>
+            <td><a class="llm-row" href="https://perplexity.ai" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/Perplexity%20-%20Perplexity.png" alt="Perplexity"><span class="llm-row-text"><span class="llm-row-name">Perplexity</span><span class="llm-row-domain">perplexity.ai</span><span class="pill-sm">Freemium</span></span></a></td>
             <td>Cita fuentes junto a cada afirmación.</td>
             <td>~3-5 búsquedas Pro por día, búsquedas básicas sin límite fijo.</td>
             <td>Perplexity Pro: búsquedas Pro sin límite práctico + modo Académico. Con mail <code>.edu</code> verificado, accedés a Education Pro con descuento, confirmá vigencia y valor en <a href="https://www.perplexity.ai/es/pro" target="_blank" rel="noopener"><code>perplexity.ai/es/pro</code></a>.</td>
@@ -494,7 +901,7 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Tu cuenta @uvq.edu.ar y Microsoft</p>
-      <p>Dos cosas separadas, para no confundirlas. Copilot Premium (la columna "Plan pago" de arriba) no viene incluido solo por tener mail <code>@uvq.edu.ar</code>, depende de si la universidad lo activó, y eso no está confirmado. Pero ese mismo mail sí califica para el alta gratuita de <strong>Microsoft 365 Educación</strong> (Office 365 A1, donado por Microsoft a instituciones académicas): entrando con <code>@uvq.edu.ar</code> a <a href="https://go.microsoft.com/fwlink/?linkid=2283200" target="_blank" rel="noopener">signup.microsoft.com</a> llega un código de verificación al instante y se arma una cuenta propia con Word, Excel, PowerPoint (versión web), OneDrive y Teams sin costo. No incluye el programa de escritorio ni Copilot Premium, eso sigue pago.</p>
+      <p>Tu cuenta <code>@uvq.edu.ar</code> no te da Microsoft 365 Educación ni Copilot Premium (la columna "Plan pago" de arriba): lo único que incluye es 100 GB de almacenamiento en OneDrive, sin costo. Si querés el paquete completo de Office (Word, Excel, PowerPoint) o Copilot Premium, son planes pagos aparte, la cuenta de la universidad no los cubre.</p>
     </div>
 
     <h3>LLMs chinos</h3>
@@ -504,19 +911,19 @@
         <thead><tr><th>Herramienta</th><th>Mejor para...</th><th>Gratis</th><th>Plan pago</th></tr></thead>
         <tbody>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/DeepSeek%20-%20DeepSeek.png" alt=""><span class="llm-tool-name">DeepSeek</span><a href="https://chat.deepseek.com" target="_blank" rel="noopener"><code>chat.deepseek.com</code></a></div></td>
+            <td><a class="llm-row" href="https://chat.deepseek.com" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/DeepSeek%20-%20DeepSeek.png" alt="DeepSeek"><span class="llm-row-text"><span class="llm-row-name">DeepSeek</span><span class="llm-row-domain">chat.deepseek.com</span><span class="pill-sm">Gratis</span></span></a></td>
             <td>Razonamiento técnico, matemática, código. Desarrollado en China, sujeto a restricciones del gobierno chino.</td>
             <td>Sin límite fijo publicado, por chat web.</td>
             <td>No hace falta para este uso, los planes pagos son de API para desarrolladores, no del chat web.</td>
           </tr>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/Alibaba%20-%20Qwen.png" alt=""><span class="llm-tool-name">Qwen (Alibaba)</span><a href="https://chat.qwen.ai" target="_blank" rel="noopener"><code>chat.qwen.ai</code></a></div></td>
+            <td><a class="llm-row" href="https://chat.qwen.ai" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/Alibaba%20-%20Qwen.png" alt="Qwen"><span class="llm-row-text"><span class="llm-row-name">Qwen (Alibaba)</span><span class="llm-row-domain">chat.qwen.ai</span><span class="pill-sm">Gratis</span></span></a></td>
             <td>Textos largos, análisis de documentos. De Alibaba Cloud, mismo marco legal que DeepSeek.</td>
             <td>Sin límite fijo publicado, por chat web.</td>
             <td>No hace falta para este uso, los planes pagos son de API para desarrolladores, no del chat web.</td>
           </tr>
           <tr>
-            <td><div class="llm-tool"><img class="llm-icon" src="../img/apps/Moonshot%20AI%20-%20Kimi.png" alt=""><span class="llm-tool-name">Kimi (Moonshot)</span><a href="https://www.kimi.ai" target="_blank" rel="noopener"><code>kimi.ai</code></a></div></td>
+            <td><a class="llm-row" href="https://www.kimi.ai" target="_blank" rel="noopener"><img class="llm-row-icon" src="../img/apps/Moonshot%20AI%20-%20Kimi.png" alt="Kimi"><span class="llm-row-text"><span class="llm-row-name">Kimi (Moonshot)</span><span class="llm-row-domain">kimi.ai</span><span class="pill-sm">Freemium</span></span></a></td>
             <td>Procesamiento de documentos y contextos largos. Desarrollado por Moonshot AI.</td>
             <td>Con límites de uso diario, por chat web.</td>
             <td>Existen planes pagos de mayor consumo, no hacen falta para esta materia.</td>
@@ -717,10 +1124,19 @@
     </div>
 
     <h3>Tu huella positiva: LinkedIn desde primer año</h3>
-    <img class="app-badge" src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="Ícono de LinkedIn">
-    <p>La primera acción concreta para construir una huella activa a tu favor: tu identidad profesional en <strong>LinkedIn</strong> (<a href="https://www.linkedin.com" target="_blank" rel="noopener"><code>linkedin.com</code></a>). Se construye, no aparece de golpe, y cada habilidad que aprendés en esta cursada puede estar en tu perfil desde hoy. Empezar en primer año te da una ventaja real frente a quienes esperan hasta el final.</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://www.linkedin.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="LinkedIn">
+        <div class="row-text">
+          <span class="row-name">LinkedIn</span>
+          <span class="row-domain">linkedin.com</span>
+        </div>
+        <span class="pill">Gratis</span>
+      </a>
+    </div>
+    <p>La primera acción concreta para construir una huella activa a tu favor: tu identidad profesional en LinkedIn. Se construye, no aparece de golpe, y cada habilidad que aprendés en esta cursada puede estar en tu perfil desde hoy. Empezar en primer año te da una ventaja real frente a quienes esperan hasta el final.</p>
 
-    <img class="screenshot" src="../img/04-captura-linkedin-inicio.png" alt="Página de inicio de LinkedIn">
+    <img class="screenshot screenshot-sm" src="../img/04-captura-linkedin-inicio.png" alt="Página de inicio de LinkedIn">
     <p class="screenshot-caption">Tu punto de partida en LinkedIn: foto, titular y educación son lo primero que ve cualquiera que entre a tu perfil.</p>
 
     <div class="table-wrap">
@@ -910,6 +1326,7 @@
     <div class="gloss-item"><span class="gloss-term">Dark web</span><p class="gloss-def">Porción chica de la deep web a la que se accede con software específico (como Tor), pensada para el anonimato. Tiene usos legítimos e ilegítimos.</p></div>
     <div class="gloss-item"><span class="gloss-term">Deep web</span><p class="gloss-def">Contenido de internet que no está indexado por buscadores: requiere login o contraseña. En su mayoría es legal (el campus virtual, tu email).</p></div>
     <div class="gloss-item"><span class="gloss-term">Fake news</span><p class="gloss-def">Contenido diseñado para parecer información real y viajar rápido, aunque sea falso.</p></div>
+    <div class="gloss-item"><span class="gloss-term">Freemium</span><p class="gloss-def">Modelo de negocio donde la versión básica es gratis pero hay opciones pagas con más características. Ejemplo: Perplexity (búsquedas limitadas gratis, ilimitadas en el plan pago).</p></div>
     <div class="gloss-item"><span class="gloss-term">Huella digital</span><p class="gloss-def">Rastro de datos en internet: activa (lo que publicás) y pasiva (lo que se recopila).</p></div>
     <div class="gloss-item"><span class="gloss-term">Internet superficial</span><p class="gloss-def">La parte de internet que un buscador como Google puede indexar y mostrarte en los resultados.</p></div>
     <div class="gloss-item"><span class="gloss-term">Lectura lateral</span><p class="gloss-def">Verificar una fuente buscando en otras pestañas qué dicen medios o especialistas independientes sobre ella, en vez de evaluarla solo por su propio contenido. Complementa a CRAAP.</p></div>

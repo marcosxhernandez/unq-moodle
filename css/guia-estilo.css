@@ -1649,7 +1649,9 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
    isotipo suelto sobre fondo transparente. object-fit:contain evita
    que se recorte; el fondo blanco lo hace ver "de un solo tamaño"
    aunque los PNG de origen no vengan todos con el mismo margen
-   interno. Decidido ago. 2026. */
+   interno. Decidido ago. 2026. `.row-icon` NO entra en esta lista — su
+   fondo tiene que ser el de `.app-row` (#fafafa), no blanco puro, ver
+   la regla propia más abajo y el gotcha en CLAUDE-clases.md 3.4decies. */
 .app-icon,
 .app-icon-lg,
 .llm-icon,
@@ -1708,6 +1710,70 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   object-fit:contain;
   margin:4px 0 18px 22px;
 }
+/* ⚠️ .app-badge muestra el ícono SOLO, sin nombre/URL/precio — desde
+   set. 2026 dejó de ser el patrón correcto para abrir una sección
+   donde una app es protagonista. Usar la "burbuja" (.app-row de acá
+   abajo) en su lugar; ver CLAUDE-clases.md 3.4decies. Se deja la regla
+   sin borrar por si algún archivo viejo sin migrar todavía la usa. */
+
+/* ---------- "Burbuja" de app: ícono + nombre + dominio + precio ----------
+   Fila clickeable completa para nombrar UNA app (icono a la izquierda,
+   nombre/dominio a la derecha, pill de costo al final) — a diferencia
+   de .app-icon/.app-icon-lg/.app-badge (arriba), que solo muestran el
+   logo. Nace en herramientas.html (fuente de verdad de nombre/dominio/
+   pill de cada herramienta del curso) y es el patrón único para
+   "nombrar un programa" en cualquier Guía Visual desde set. 2026 —
+   ver CLAUDE-clases.md 3.4decies. */
+.tools-container{ float:right; width:320px; margin:4px 0 18px 22px; }
+
+.app-row{
+  display:flex; align-items:center; gap:14px;
+  padding:10px 14px; text-decoration:none; color:inherit;
+  border:1px solid var(--line); border-radius:12px;
+  margin-bottom:8px; background:#fafafa;
+  transition:border-color .15s;
+}
+.app-row:hover{ border-color:var(--acento); }
+.app-row:last-child{ margin-bottom:0; }
+.app-row-link{ display:contents; color:inherit; text-decoration:none; }
+
+.row-icon{
+  width:56px; height:56px; object-fit:contain; border-radius:14px;
+  box-shadow:0 1px 2px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06);
+  flex-shrink:0;
+  /* Fondo igual al de .app-row (#fafafa), NO #fff puro — el margen
+     transparente del PNG tiene que fundirse con la fila, no marcar un
+     cuadrado blanco de un tono distinto encima de un fondo gris claro
+     (ver gotcha en CLAUDE-clases.md 3.4decies). */
+  background:#fafafa;
+}
+.row-text{ flex:1; min-width:0; display:flex; flex-direction:column; gap:1px; }
+.row-name{
+  font-size:.92rem; font-weight:600; color:var(--ink); line-height:1.3;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.row-domain{
+  font-size:.82rem; color:#6e6e73; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Pill de costo — mismos 4 estados que herramientas.html, no reinventar. */
+.pill{
+  flex-shrink:0; font-size:.72rem; font-weight:700;
+  padding:6px 11px; border-radius:999px; white-space:nowrap;
+  text-decoration:none; display:inline-block;
+}
+.pill-free{ background:rgba(0,113,227,.1); color:#0071e3; }
+.pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
+.pill-paid{ background:var(--ink); color:#fff; }
+.pill-student{ background:#fbf1dd; color:#8a5a00; }
+a.pill-student:hover{ text-decoration:underline; }
+/* Segundo pill (descuento estudiantil) al lado del principal, apilado
+   a la derecha — ej. "Freemium" + "🎓 50% off" en la misma fila. */
+.tags{ flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+/* Reglas de impresión de este componente: ver bloque @media print
+   principal más abajo (junto a .app-badge), no repetidas acá — todo
+   el CSS de impresión del archivo vive en ese único bloque. */
 
 .screenshot{
   display:block;
@@ -2150,18 +2216,28 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 
   /* URLs visibles junto a cualquier link externo real (no aplica a
      los anclajes internos del índice ni a los que envuelven un <code>
-     — tarjetas de herramienta, dominios en el cuerpo, fuentes — porque
-     esos ya muestran su URL como texto visible). Se suma el link de
-     licencia del colofón (.colophon-license), que vive fuera de
-     .prose y si no quedaría sin URL visible en papel. En el papel no
-     se puede hacer clic — así el dato no se pierde. */
-  .prose a[href^="http"]:not(:has(code))::after,
+     — tarjetas de herramienta, dominios en el cuerpo, fuentes — ni a
+     la burbuja .app-row/.app-row-link, que ya muestra su .row-domain
+     como texto visible — porque esos ya muestran su URL como texto
+     visible). Se suma el link de licencia del colofón
+     (.colophon-license), que vive fuera de .prose y si no quedaría
+     sin URL visible en papel. En el papel no se puede hacer clic —
+     así el dato no se pierde. */
+  .prose a[href^="http"]:not(:has(code)):not(.app-row):not(.app-row-link)::after,
   .colophon-license a[href^="http"]::after{
     content:" (" attr(href) ")";
     font-size:.82em;
     color:var(--muted);
     word-break:break-all;
   }
+  /* La burbuja .tools-container/.app-row nunca suma "(url)" — el
+     .row-domain ya es la URL visible, y el pill de descuento
+     estudiantil (.pill-student) es también un <a href> real que la
+     regla de arriba alcanzaría igual (no es .app-row ni .app-row-link,
+     así que el :not() de arriba no lo cubre). Sin esto, el texto del
+     pill se desborda de la burbuja y sale de la hoja. */
+  .tools-container a[href]::after,
+  .tools-container a[href]::before{ content:none !important; }
 
   /* ---------- Escala tipográfica de impresión ----------
      El cuerpo en pantalla (17.5px ≈ 13.1pt) es cómodo para leer de
@@ -2268,6 +2344,20 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   .tool-cards{ gap:14px; margin:.8em 0 1em; }
   .tool-card img{ width:40px; height:40px; }
   .app-badge{ width:38px; height:38px; margin:2px 0 10px 14px; }
+
+  /* "Burbuja" de app (.app-row, ver arriba) — reescalado a papel. */
+  .tools-container{ width:55mm; margin:2px 0 12px 12px; }
+  .app-row{ gap:9px; padding:7px 9px; break-inside:avoid-page; }
+  /* box-shadow:none (no border:none) — sin la sombra el margen que ya
+     trae el PNG (ver CLAUDE-clases.md 3.4decies) deja de leerse como
+     margen: al no haber ningún borde que marque dónde termina el
+     "botón", el ícono vuelve a parecer que llega al borde. Un filete
+     de 1px sí se imprime bien a este tamaño y cumple esa función. */
+  .row-icon{ width:34px; height:34px; border-radius:9px; box-shadow:none; border:1px solid var(--line); }
+  .row-name{ font-size:.78rem; }
+  .row-domain{ font-size:.66rem; }
+  .pill, .pill-student{ font-size:.6rem; padding:4px 8px; }
+  .tags{ gap:4px; }
 
   .glossary{ column-gap:22px; }
   .gloss-item{ padding:4.5pt 0; }

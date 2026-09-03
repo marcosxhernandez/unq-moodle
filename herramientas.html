@@ -96,6 +96,40 @@
     .groups{ grid-template-columns:1fr; }
   }
 
+  .benefits-section{ margin-top:40px; break-inside:avoid; }
+  .benefits-title{
+    font-family:var(--sans); font-weight:700; font-size:1.3rem;
+    letter-spacing:-.01em; color:var(--ink); margin:0 0 6px;
+  }
+  .benefits-intro{
+    font-size:.92rem; color:var(--ink-soft); margin:0 0 18px; max-width:640px;
+  }
+  .benefits-intro strong{ color:var(--ink); }
+  .benefits-card{
+    background:#ffffff; border-radius:18px; overflow:hidden;
+    box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12);
+  }
+  .benefit-row{
+    display:flex; align-items:center; gap:16px;
+    padding:16px 20px; border-bottom:1px solid var(--line);
+  }
+  .benefit-row:last-child{ border-bottom:none; }
+  .benefit-icon{
+    width:48px; height:48px; object-fit:contain; border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06);
+    flex-shrink:0;
+  }
+  .benefit-text{ flex:1 1 auto; min-width:0; }
+  .benefit-name{
+    display:block; font-size:.92rem; font-weight:600; color:var(--ink); margin-bottom:2px;
+  }
+  .benefit-desc{
+    display:block; font-size:.82rem; color:var(--ink-soft); line-height:1.4;
+  }
+  .benefits-note{
+    font-size:.8rem; color:var(--muted); margin:16px 4px 0; max-width:680px;
+  }
+
   @page{ size:A4; margin:16mm 14mm; }
   @media print{
     body{ font-size:10.5pt; background:#fff; }
@@ -104,6 +138,8 @@
     .cat-card{ box-shadow:none; border:1px solid var(--line); }
     .row-icon{ box-shadow:none; border:1px solid var(--line); }
     .cat-section{ break-inside:avoid; }
+    .benefits-card{ box-shadow:none; border:1px solid var(--line); }
+    .benefit-icon{ box-shadow:none; border:1px solid var(--line); }
   }
 </style>
 </head>
@@ -499,6 +535,62 @@
     </section>
 
   </div>
+
+  <section class="benefits-section">
+    <h2 class="benefits-title">Beneficios para estudiantes</h2>
+    <p class="benefits-intro">Estas herramientas dan algo extra si acreditás tu condición de estudiante con el correo <strong>@uvq.edu.ar</strong>:</p>
+    <div class="benefits-card">
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Gemini.png" alt="Gemini">
+        <div class="benefit-text">
+          <span class="benefit-name">Gemini</span>
+          <span class="benefit-desc">1 año gratis de Google One AI Premium (Gemini Advanced) acreditando la condición de estudiante.</span>
+        </div>
+        <a class="pill pill-student" href="https://gemini.google/ar/students/?hl=es-419" target="_blank" rel="noopener">Activar</a>
+      </div>
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Beautiful.ai%20-%20Beautiful.ai.png" alt="Beautiful.ai">
+        <div class="benefit-text">
+          <span class="benefit-name">Beautiful.ai</span>
+          <span class="benefit-desc">1 año gratis del plan Pro, registrándose con el correo universitario en beautiful.ai/education.</span>
+        </div>
+        <a class="pill pill-student" href="https://www.beautiful.ai/education" target="_blank" rel="noopener">Activar</a>
+      </div>
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20OneDrive.png" alt="Microsoft 365">
+        <div class="benefit-text">
+          <span class="benefit-name">Microsoft (OneDrive, Word, Excel, PowerPoint)</span>
+          <span class="benefit-desc">100 GB de almacenamiento en la nube ingresando con la cuenta @uvq.edu.ar, y 50% de descuento en la suscripción de Microsoft 365 para estudiantes universitarios.</span>
+        </div>
+        <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">Activar</a>
+      </div>
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Perplexity%20-%20Perplexity.png" alt="Perplexity">
+        <div class="benefit-text">
+          <span class="benefit-name">Perplexity</span>
+          <span class="benefit-desc">50% de descuento en Perplexity Pro validando el correo institucional a través de SheerID.</span>
+        </div>
+        <a class="pill pill-student" href="https://shop.sheerid.com/offers/50-off-perplexity-pro-for-students-and-educators/" target="_blank" rel="noopener">Activar</a>
+      </div>
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Visme%20-%20Visme.png" alt="Visme">
+        <div class="benefit-text">
+          <span class="benefit-name">Visme</span>
+          <span class="benefit-desc">Plan especial para educación, con tarifas reducidas para estudiantes universitarios en su sección institucional (visme.co/teams/education).</span>
+        </div>
+        <a class="pill pill-student" href="https://www.visme.co/teams/education/" target="_blank" rel="noopener">Activar</a>
+      </div>
+      <div class="benefit-row">
+        <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Decktopus%20-%20Decktopus.png" alt="Decktopus">
+        <div class="benefit-text">
+          <span class="benefit-name">Decktopus</span>
+          <span class="benefit-desc">Código de descuento educativo (50% off) para estudiantes y docentes universitarios al momento del pago.</span>
+        </div>
+        <a class="pill pill-student" href="https://www.decktopus.com/pricing" target="_blank" rel="noopener">Activar</a>
+      </div>
+    </div>
+    <p class="benefits-note">El resto de las herramientas de esta guía son gratuitas para cualquier usuario, o freemium sin ventajas adicionales por tener el correo @uvq.edu.ar.</p>
+  </section>
 
 </div>
 </body>

@@ -367,7 +367,7 @@
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>Si aplicás columnas sin un salto de sección antes, Word convierte todo el documento a ese número de columnas. Siempre creá primero el salto, después aplicá las columnas.</p>
+      <p>Si aplicás columnas sin un salto de sección antes, Word convierte todo el documento a ese número de columnas. Siempre creá primero el salto, después aplicá las columnas, o si preferís el método automático, seleccioná el texto que querés en columnas antes de ir a Disposición → Columnas: Word inserta los saltos continuos solo, antes y después de la selección. En cualquiera de los dos casos, trabajá con ¶ activo y fijate bien dónde queda el cursor antes de cambiar el número de columnas, es fácil dejar una línea suelta con un formato que no le corresponde.</p>
     </div>
 
     <h3>El layout más frecuente</h3>
@@ -420,6 +420,11 @@
     </div>
 
     <p>Por defecto, cada sección hereda el <svg class="tool-icon"><use href="#ti-header"></use></svg>encabezado de la anterior ("Vincular al anterior"). Para tener un encabezado propio: doble clic sobre el encabezado de esa sección → en la cinta Encabezado y pie de página, desactivá <strong>"Vincular al anterior"</strong> → editá el texto → doble clic afuera para cerrar.</p>
+
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El <svg class="tool-icon"><use href="#ti-footer"></use></svg>pie de página es una cadena de vinculación aparte: desvincular el encabezado no desvincula el pie. Si necesitás números de página distintos entre secciones, hay que desvincular cada uno por separado, con el mismo botón "Vincular al anterior" pero parado en el pie.</p>
+    </div>
 
     <h3>Revisar antes de exportar</h3>
     <p>Archivo → Imprimir abre la vista previa en el panel derecho. Úsala siempre antes de entregar, no solo cuando vas a imprimir en papel: recorré el documento página por página y revisá si hay páginas en blanco inesperadas, si los encabezados tienen el texto correcto en cada sección, si las columnas no se cortaron.</p>
@@ -492,7 +497,7 @@
           <li>Abrí <code>Documento Base - V01</code> en Google Docs → Archivo → Descargar → Microsoft Word (.docx) → abrilo en Word de escritorio.</li>
           <li>Estructuralo en secciones: <strong>Sección 1</strong> (una columna) con portada, título, tu nombre, fecha; salto de sección; <strong>Sección 2</strong> (el cuerpo, dos columnas si el contenido lo permite); salto de sección; <strong>Sección 3</strong> (una columna) con la bibliografía.</li>
           <li>Configurá los <svg class="tool-icon"><use href="#ti-header"></use></svg>encabezados: la portada sin encabezado (activá "Primera página diferente" y dejalo vacío); las secciones siguientes, desvinculadas del anterior, con el título del trabajo.</li>
-          <li>Agregá número de página en el <svg class="tool-icon"><use href="#ti-footer"></use></svg>pie, a partir de la Sección 2.</li>
+          <li>En la Sección 2, desvinculá el <svg class="tool-icon"><use href="#ti-footer"></use></svg>pie del anterior y agregá el número de página ahí (Encabezado y pie de página → Número de página). Después, en Número de página → Formato del número de página, elegí "Iniciar en" y poné 1, para que la primera página de contenido arranque numerada desde ahí.</li>
           <li>Revisá en Archivo → Imprimir que se ve correcto en todas las páginas.</li>
           <li>Exportá: Archivo → Exportar → Crear PDF/XPS → Estándar (publicar e imprimir) → guardalo como <code>Documento Base - V01.pdf</code> en la subcarpeta "Clase 05".</li>
           <li>Subí el PDF a la tarea de Moodle de la Clase 05.</li>
@@ -502,7 +507,7 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Consejo</p>
-      <p>Al abrir un .docx descargado de Google Docs, algunos estilos pueden haberse desalineado. Antes de aplicar secciones, revisá que los títulos tengan Título 1 / Título 2 correctos, son la base de la jerarquía del documento.</p>
+      <p>Al abrir un .docx descargado de Google Docs, algunos estilos pueden haberse desalineado. Antes de aplicar secciones, revisá que los títulos tengan Título 1 / Título 2 correctos, son la base de la jerarquía del documento. Lo mismo puede pasar con la tipografía: si en Docs usaste una fuente de Google que la computadora no tiene instalada, Word la reemplaza sola por otra, y eso puede correr la paginación. Si el texto ocupa más o menos espacio del esperado, revisá primero la fuente antes de tocar cualquier otra cosa.</p>
     </div>
   </div>
 </section>

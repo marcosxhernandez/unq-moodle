@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
 <link rel="stylesheet" href="../css/guia-estilo.css">
 <style>
-  /* Acento de clase — Planilla de cálculo (Clase 09) = verde */
+  /* Acento de clase, Planilla de cálculo (Clase 09) = verde */
   :root{
     --acento:var(--verde);
     --acento-deep:var(--verde-deep);
@@ -34,7 +34,7 @@
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
-    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
       <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
       <span class="cover-teacher-text">
         <span class="cover-teacher-name">Marcos Hernández</span>
@@ -47,7 +47,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">La clase anterior dejó un archivo que calcula números: total, promedio, máximo, mínimo. Pero muchas veces lo que una organización necesita no es un número sino una <strong>decisión</strong>: ¿este registro entra en revisión o no?, ¿en qué categoría cae? Hoy se traslada ese "si pasa esto, entonces…" del razonamiento cotidiano a una fórmula que la planilla evalúa sobre miles de filas — y se cierra el circuito por el otro extremo, controlando desde el origen qué se puede escribir en cada celda cuando el archivo pasa a otras manos.</p>
+  <p class="toc-intro">La clase anterior dejó un archivo que calcula números: total, promedio, máximo, mínimo. Pero muchas veces lo que una organización necesita no es un número sino una <strong>decisión</strong>: ¿este registro entra en revisión o no?, ¿en qué categoría cae? Hoy se traslada ese "si pasa esto, entonces…" del razonamiento cotidiano a una fórmula que la planilla evalúa sobre miles de filas, y se cierra el circuito por el otro extremo, controlando desde el origen qué se puede escribir en cada celda cuando el archivo pasa a otras manos.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#automatizar"><span class="toc-num">01</span><span class="toc-text">Por qué automatizar decisiones</span></a></li>
@@ -77,8 +77,8 @@
     <h3>De dónde venimos</h3>
     <p>En la Clase 08 armaste, para una de cuatro organizaciones, un archivo con la hoja <code>DATOS</code> (ocho registros de junio, con <code>importe_bruto</code> e <code>importe_neto</code> calculados), un panel <code>RESUMEN</code> y un parámetro del negocio alojado en una sola celda y referenciado con <code>$</code>. Ese archivo es el punto de partida de hoy.</p>
     <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo — Si no tenés el archivo a mano</p>
-      <p>Podés rehacerlo en diez minutos: el dataset completo de las cuatro organizaciones y sus parámetros están en el material de la Clase 08. Y si preferís, trabajá con una tabla propia de al menos ocho filas que tenga la misma estructura —identificador, fecha, un campo de agrupación, una categoría, una cantidad y un valor unitario—; todo lo de hoy funciona igual.</p>
+      <p class="callout-label">💡 Consejo: Si no tenés el archivo a mano</p>
+      <p>Podés rehacerlo en diez minutos: el dataset completo de las cuatro organizaciones y sus parámetros están en el material de la Clase 08. Y si preferís, trabajá con una tabla propia de al menos ocho filas que tenga la misma estructura (identificador, fecha, un campo de agrupación, una categoría, una cantidad y un valor unitario); todo lo de hoy funciona igual.</p>
     </div>
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
@@ -108,7 +108,7 @@
       <div class="brief-meta">
         <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
         <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
-        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Junio — necesito saber dónde mirar, no solo cuánto</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Junio: necesito saber dónde mirar, no solo cuánto</span></div>
       </div>
       <div class="brief-body">
         <p>Gracias por el resumen, sirvió. Ahora te pido tres cosas más:</p>
@@ -148,7 +148,7 @@
       </table>
     </div>
     <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo — Control de resultado</p>
+      <p class="callout-label">💡 Consejo: Control de resultado</p>
       <p>Con el dataset de junio, cualquiera sea tu organización, la clasificación tiene que dar <strong>un solo registro en "Revisar"</strong> (el que tiene la cantidad en cero) y <strong>tres o cuatro en "Alto valor"</strong>. Si te da otra cosa, el error está en el orden de las condiciones o en el umbral, no en la sintaxis.</p>
     </div>
   </div>
@@ -171,8 +171,8 @@
     <p>Un ejemplo completo:</p>
 <div class="code-block">=SI(B2&gt;=6; "Aprobado"; "Desaprobado")</div>
     <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención — El texto va entre comillas</p>
-      <p>Si el resultado que querés mostrar es texto (no un número ni el resultado de otra fórmula), tiene que ir entre comillas dobles: <code>"Aprobado"</code>, no <code>Aprobado</code>. Es el error más común al escribir un <code>SI</code> por primera vez — la planilla tira <code>#¿NOMBRE?</code> porque intenta interpretar "Aprobado" como el nombre de una función o de un rango.</p>
+      <p class="callout-label">⚠️ Atención: El texto va entre comillas</p>
+      <p>Si el resultado que querés mostrar es texto (no un número ni el resultado de otra fórmula), tiene que ir entre comillas dobles: <code>"Aprobado"</code>, no <code>Aprobado</code>. Es el error más común al escribir un <code>SI</code> por primera vez, la planilla tira <code>#¿NOMBRE?</code> porque intenta interpretar "Aprobado" como el nombre de una función o de un rango.</p>
     </div>
 
     <h3>Los operadores de comparación</h3>
@@ -239,12 +239,12 @@
 <div class="code-block">=SI(B2&gt;=9; "Excelente"; SI(B2&gt;=6; "Aprobado"; "Desaprobado"))</div>
     <p>La lógica se lee así: <em>"si la nota es 9 o más, Excelente. Si no, evaluá esta otra condición: si es 6 o más, Aprobado. Si tampoco se cumple, Desaprobado."</em></p>
     <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo — El orden decide el resultado</p>
-      <p>Escribí primero la condición que corta el grupo más chico o más excepcional, y dejá la última rama sin condición: es el "de lo contrario" que agarra todo lo que no entró antes. Si ponés primero la condición más amplia, se traga los casos que debían caer en las otras ramas — y la fórmula no da error, simplemente clasifica mal.</p>
+      <p class="callout-label">💡 Consejo: El orden decide el resultado</p>
+      <p>Escribí primero la condición que corta el grupo más chico o más excepcional, y dejá la última rama sin condición: es el "de lo contrario" que agarra todo lo que no entró antes. Si ponés primero la condición más amplia, se traga los casos que debían caer en las otras ramas, y la fórmula no da error, simplemente clasifica mal.</p>
     </div>
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>Cada <code>SI</code> que abrís necesita su paréntesis de cierre. Con dos o tres anidados es fácil perder la cuenta — la planilla te marca el error, pero conviene ir cerrando cada uno apenas lo abrís, antes de seguir escribiendo.</p>
+      <p>Cada <code>SI</code> que abrís necesita su paréntesis de cierre. Con dos o tres anidados es fácil perder la cuenta: la planilla te marca el error, pero conviene ir cerrando cada uno apenas lo abrís, antes de seguir escribiendo.</p>
     </div>
 
     <div class="activity">
@@ -293,7 +293,7 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Agregá una categoría más: <strong>"Excepcional"</strong> para los registros que superen el <strong>doble</strong> del umbral. Vas a necesitar un tercer <code>SI</code> anidado — y decidir en qué posición del orden va.</li>
+          <li>Agregá una categoría más: <strong>"Excepcional"</strong> para los registros que superen el <strong>doble</strong> del umbral. Vas a necesitar un tercer <code>SI</code> anidado, y decidir en qué posición del orden va.</li>
           <li>Verificá que ningún registro quedó sin categoría y que ninguno cambió de grupo salvo los que debían.</li>
         </ol>
       </div>
@@ -334,7 +334,7 @@
     </div>
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Consejo</p>
-      <p>El criterio de texto va entre comillas (<code>"García"</code>). El criterio con operador de comparación <strong>también</strong> va entre comillas, porque es una cadena que la planilla interpreta: <code>"&gt;50000"</code>, no <code>&gt;50000</code> suelto. Y mejor todavía: en lugar de escribir el nombre entre comillas, apuntá a la celda donde está escrito — así el subtotal se puede arrastrar.</p>
+      <p>El criterio de texto va entre comillas (<code>"García"</code>). El criterio con operador de comparación <strong>también</strong> va entre comillas, porque es una cadena que la planilla interpreta: <code>"&gt;50000"</code>, no <code>&gt;50000</code> suelto. Y mejor todavía: en lugar de escribir el nombre entre comillas, apuntá a la celda donde está escrito, así el subtotal se puede arrastrar.</p>
     </div>
 
     <h3>Sin condición y con condición: la misma familia</h3>
@@ -360,7 +360,7 @@
           <li>En una hoja aparte cargá siete filas con dos columnas: nombre y monto. Usá <code>García</code> (45000, 61000, 19000), <code>López</code> (32000, 55000) y <code>Pérez</code> (28000, 47000), en cualquier orden.</li>
           <li>Con <code>SUMAR.SI</code>, calculá el total de cada uno. Deberías obtener 125.000, 87.000 y 75.000.</li>
           <li>Con <code>CONTAR.SI</code>, contá cuántos registros tiene cada uno: 3, 2 y 2.</li>
-          <li><strong>Control:</strong> la suma de los tres subtotales tiene que dar exactamente el <code>SUMA</code> de la columna completa (287.000), y la suma de los tres conteos, la cantidad de filas (7). Si no cierra, hay un registro que ningún criterio está agarrando — típicamente por una diferencia de escritura.</li>
+          <li><strong>Control:</strong> la suma de los tres subtotales tiene que dar exactamente el <code>SUMA</code> de la columna completa (287.000), y la suma de los tres conteos, la cantidad de filas (7). Si no cierra, hay un registro que ningún criterio está agarrando, típicamente por una diferencia de escritura.</li>
         </ol>
       </div>
     </div>
@@ -373,7 +373,7 @@
       <div class="prose">
         <p>Este es el punto 2 del pedido. Va en la hoja <code>RESUMEN</code>, debajo del panel de la semana pasada.</p>
         <ol>
-          <li>Escribí en una columna los valores distintos del campo que agrupa tu organización: los tres canales, las cuatro sedes, los tres turnos o los tres responsables. <strong>Escribilos una sola vez, en celdas</strong> — no dentro de las fórmulas.</li>
+          <li>Escribí en una columna los valores distintos del campo que agrupa tu organización: los tres canales, las cuatro sedes, los tres turnos o los tres responsables. <strong>Escribilos una sola vez, en celdas</strong>: no dentro de las fórmulas.</li>
           <li>Al lado, con <code>SUMAR.SI</code>, calculá el <strong>importe bruto total</strong> de cada uno, apuntando el criterio a la celda con el nombre. Arrastrá la fórmula hacia abajo.</li>
           <li>En la columna siguiente, con <code>CONTAR.SI</code>, la <strong>cantidad de registros</strong> de cada uno.</li>
           <li><strong>Control obligatorio:</strong> sumá los subtotales y comparalo con el total bruto del panel. Sumá los conteos y comparalo con "registros cargados". Las dos comparaciones tienen que cerrar exactamente. Si no cierran, hay un valor mal escrito en la columna que agrupa.</li>
@@ -421,7 +421,7 @@
       <li>En "Criterios", elegí el tipo de restricción:
         <ul>
           <li><strong>Lista de elementos:</strong> escribís a mano las opciones válidas, separadas por coma.</li>
-          <li><strong>Lista de un rango:</strong> las opciones válidas son los valores de un rango de celdas — ideal si esa lista puede cambiar con el tiempo.</li>
+          <li><strong>Lista de un rango:</strong> las opciones válidas son los valores de un rango de celdas, ideal si esa lista puede cambiar con el tiempo.</li>
           <li><strong>Número:</strong> solo permite valores dentro de un rango numérico.</li>
           <li><strong>Casilla de verificación:</strong> convierte la celda en un checkbox.</li>
         </ul>
@@ -430,7 +430,7 @@
       <li>Guardá la regla.</li>
     </ol>
     <img class="screenshot" src="../img/09-01-captura-validacion-datos.png" alt="Panel de Reglas de validación de datos en Google Sheets, con Menú desplegable (de un intervalo) apuntando a Datos!$A$9:$A$15 y los días de la semana como opciones">
-    <p class="screenshot-caption">"Menú desplegable (de un intervalo)" es la opción "Lista de un rango": las opciones válidas —acá, los días de la semana— vienen de celdas, no de texto escrito a mano.</p>
+    <p class="screenshot-caption">"Menú desplegable (de un intervalo)" es la opción "Lista de un rango": las opciones válidas (acá, los días de la semana) vienen de celdas, no de texto escrito a mano.</p>
 
     <h3>Por qué "Lista de un rango" y no "Lista de elementos"</h3>
     <p>Si escribís las opciones a mano dentro de la regla, para agregar una opción nueva tenés que volver a editar la regla. Si en cambio las opciones viven en un rango de celdas, agregar una opción es tan simple como escribir una fila más: la lista desplegable se actualiza sola. En un archivo que va a pasar por varias manos, esa diferencia es la que decide si el control sobrevive tres meses o no.</p>
@@ -440,7 +440,7 @@
     </div>
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>"Mostrar una advertencia" no impide que se cargue un dato incorrecto, solo lo señala con un triángulo en la esquina de la celda. Si necesitás garantizar que nadie pueda romper la validación —que es exactamente lo que pide el correo—, usá "Rechazar la entrada".</p>
+      <p>"Mostrar una advertencia" no impide que se cargue un dato incorrecto, solo lo señala con un triángulo en la esquina de la celda. Si necesitás garantizar que nadie pueda romper la validación, que es exactamente lo que pide el correo, usá "Rechazar la entrada".</p>
     </div>
 
     <div class="activity">
@@ -525,7 +525,7 @@
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>Si tu Excel está configurado en inglés, todas las funciones de hoy cambian de nombre: <code>SI</code> es <code>IF</code>, <code>SUMAR.SI</code> es <code>SUMIF</code>, <code>CONTAR.SI</code> es <code>COUNTIF</code>. La lógica y los argumentos son exactamente los mismos — solo cambia el nombre.</p>
+      <p>Si tu Excel está configurado en inglés, todas las funciones de hoy cambian de nombre: <code>SI</code> es <code>IF</code>, <code>SUMAR.SI</code> es <code>SUMIF</code>, <code>CONTAR.SI</code> es <code>COUNTIF</code>. La lógica y los argumentos son exactamente los mismos, solo cambia el nombre.</p>
     </div>
 
     <div class="callout" data-type="action">
@@ -569,7 +569,7 @@
     </div>
 
     <div class="callout" data-type="closing">
-      <p>Una función matemática responde "cuánto". Una función lógica responde "cuál" — cuál categoría, cuál decisión, cuál registro hay que mirar. Y una validación responde algo todavía más difícil: qué es lo que el archivo <em>no</em> va a aceptar, aunque quien lo escriba esté apurado.</p>
+      <p>Una función matemática responde "cuánto". Una función lógica responde "cuál", cuál categoría, cuál decisión, cuál registro hay que mirar. Y una validación responde algo todavía más difícil: qué es lo que el archivo <em>no</em> va a aceptar, aunque quien lo escriba esté apurado.</p>
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>
@@ -580,11 +580,11 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">🏢 Organización · Campo que agrupa · Umbral</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">💼 Hotel Bahía Norte — <code>canal</code> — $250.000</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">📚 Territorio Abierto — <code>sede</code> — $40.000</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🔬 Planta piloto Sur — <code>turno</code> — $300.000</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🎨 Estudio Delta — <code>responsable</code> — $150.000</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Control — 1 "Revisar", 3 o 4 "Alto valor"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">💼 Hotel Bahía Norte: <code>canal</code>: $250.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">📚 Territorio Abierto: <code>sede</code>: $40.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🔬 Planta piloto Sur: <code>turno</code>: $300.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">🎨 Estudio Delta: <code>responsable</code>: $150.000</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Control: 1 "Revisar", 3 o 4 "Alto valor"</span></div>
           </div>
         </div>
       </div>
@@ -596,21 +596,21 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">Operadores de Google</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code> — frase exacta</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code> — excluye un término</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code> — dentro de un dominio</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code> — por tipo de archivo</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code> — rango de años</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code>: frase exacta</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code>: excluye un término</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code>: dentro de un dominio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code>: por tipo de archivo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code>: rango de años</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Método CRAAP</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong> — ¿cuándo se publicó?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong> — ¿responde tu pregunta?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong> — ¿quién es el autor?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong> — ¿tiene fuentes?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong> — ¿informa, vende o persuade?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong>: ¿cuándo se publicó?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong>: ¿responde tu pregunta?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong>: ¿quién es el autor?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong>: ¿tiene fuentes?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong>: ¿informa, vende o persuade?</span></div>
           </div>
           <div class="qr-tip">Lectura lateral: abrí otra pestaña y verificá qué dicen otras fuentes independientes.</div>
         </div>
@@ -622,11 +622,11 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">Fórmula RTCFL</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong> — "actuá como…"</span></div>
-            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong> — qué tiene que hacer</span></div>
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — nivel, país, año</span></div>
-            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong> — cómo querés la respuesta</span></div>
-            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong> — ej. 300 palabras</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong>: "actuá como…"</span></div>
+            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong>: qué tiene que hacer</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong>: nivel, país, año</span></div>
+            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong>: cómo querés la respuesta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong>: ej. 300 palabras</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -641,7 +641,7 @@
               <div class="qr-mini-items">DeepSeek · Qwen<br>Kimi</div>
             </div>
           </div>
-          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los estadounidenses; censura activa en temas políticos sensibles en los chinos — ninguno es neutral.</div>
+          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los estadounidenses; censura activa en temas políticos sensibles en los chinos, ninguno es neutral.</div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-compass"></use></svg></div><span class="qr-cell-title">Acceso</span></div>
@@ -653,10 +653,10 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-clipboard"></use></svg></div><span class="qr-cell-title">APA · 4 formatos</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Libro — Apellido, I. (Año). <em>Título</em>. Editorial.</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Web — Apellido, I. (Año, día mes). <em>Título</em>. Sitio. URL</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Video — Canal. (Año, día mes). <em>Título</em> [Video]. Plataforma. URL</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">IA — Empresa. (Año). <em>Modelo</em> (fecha) [Large language model]. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Libro: Apellido, I. (Año). <em>Título</em>. Editorial.</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Web: Apellido, I. (Año, día mes). <em>Título</em>. Sitio. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Video: Canal. (Año, día mes). <em>Título</em> [Video]. Plataforma. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">IA: Empresa. (Año). <em>Modelo</em> (fecha) [Large language model]. URL</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -664,7 +664,7 @@
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Paráfrasis (Apellido, año) · Textual (Apellido, año, p. XX)</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">DOI: <code>https://doi.org/10.xxxx/...</code> al final de la cita, si existe</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nota al pie: <code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — no reemplaza la cita APA</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nota al pie: <code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>): no reemplaza la cita APA</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -682,29 +682,29 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-new-doc"></use></svg></div><span class="qr-cell-title">Reglas de oro</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a> — lienzo en blanco al instante</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato, nunca directo de afuera</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) — comentario</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>) — deshacer</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a>: lienzo en blanco al instante</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>): pegar sin formato, nunca directo de afuera</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>): comentario</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>): deshacer</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-styles"></use></svg></div><span class="qr-cell-title">Estilos y estructura</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code> — Encabezado 1</span></div>
-            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code> — Encabezado 2</span></div>
-            <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code> — Texto normal</span></div>
+            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code>: Encabezado 1</span></div>
+            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code>: Encabezado 2</span></div>
+            <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code>: Texto normal</span></div>
           </div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-toc"></use></svg>Índice: Insertar → Elementos de página → Índice</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Actualizar: clic en el índice → <svg class="tool-icon"><use href="#ti-refresh"></use></svg>ícono actualizar</span></div>
           </div>
-          <div class="qr-tip">Los estilos son lo único que genera el índice automático — nunca agrandes la letra a mano.</div>
+          <div class="qr-tip">Los estilos son lo único que genera el índice automático, nunca agrandes la letra a mano.</div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-merge-cells"></use></svg></div><span class="qr-cell-title">Tablas complejas</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg>Combinar: clic derecho → Combinar celdas — solo encabezados de grupo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg>Combinar: clic derecho → Combinar celdas: solo encabezados de grupo</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Diseños rápidos: clic derecho → Opciones de tabla → Diseños rápidos</span></div>
           </div>
           <div class="qr-tip-amber">Combinar celdas rompe ordenar y filtrar en esa tabla.</div>
@@ -720,16 +720,16 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-link"></use></svg></div><span class="qr-cell-title">Hipervínculos y estructura</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-link"></use></svg><code>Ctrl+K</code> (Mac <code>⌘+K</code>) — externo: pegás la URL; interno: pestaña Encabezados y marcadores</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-bookmark"></use></svg>Insertar → Marcador — destino puntual (los títulos ya son destino automático)</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-page-break"></use></svg><code>Ctrl+Intro</code> (Mac <code>⌘+Intro</code>) — salto de página, nunca Enter repetido</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-link"></use></svg><code>Ctrl+K</code> (Mac <code>⌘+K</code>): externo: pegás la URL; interno: pestaña Encabezados y marcadores</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-bookmark"></use></svg>Insertar → Marcador: destino puntual (los títulos ya son destino automático)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-page-break"></use></svg><code>Ctrl+Intro</code> (Mac <code>⌘+Intro</code>): salto de página, nunca Enter repetido</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar → Elementos de página → <svg class="tool-icon"><use href="#ti-header"></use></svg>Encabezado / <svg class="tool-icon"><use href="#ti-footer"></use></svg>Pie de página / <svg class="tool-icon"><use href="#ti-page-number"></use></svg>Números de página</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-comment"></use></svg></div><span class="qr-cell-title">Comentarios y versiones</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> — insertar; clic en el comentario → Responder / Resolver</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code>: insertar; clic en el comentario → Responder / Resolver</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Archivo → Historial de versiones → Ver historial</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-suggest"></use></svg>Modo Sugerencias: ícono lápiz (arriba a la derecha) → Sugerencias</span></div>
           </div>
@@ -742,7 +742,7 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-page"></use></svg></div><span class="qr-cell-title">Papel y secciones</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Word abre en Letter — Disposición → Tamaño → A4 antes de escribir</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Word abre en Letter: Disposición → Tamaño → A4 antes de escribir</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Márgenes Normal = 2,54 cm en los cuatro lados</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Disposición → <svg class="tool-icon"><use href="#ti-page-break"></use></svg>Saltos: Página siguiente · Continuo · Página par/impar</span></div>
           </div>
@@ -757,9 +757,9 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-keyboard"></use></svg></div><span class="qr-cell-title">Atajos</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — nota al pie</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Enter</code> (Mac <code>⌘+Intro</code>) — salto de página</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>): pegar sin formato</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>): nota al pie</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Enter</code> (Mac <code>⌘+Intro</code>): salto de página</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -793,9 +793,9 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">IA para el borrador</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<a href="https://gamma.app" target="_blank" rel="noopener"><code>gamma.app</code></a>) — gratis, créditos limitados</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gamma (<a href="https://gamma.app" target="_blank" rel="noopener"><code>gamma.app</code></a>): gratis, créditos limitados</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini Notebook Studio</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini en Slides — requiere plan pago</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Gemini en Slides: requiere plan pago</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -808,7 +808,7 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-export"></use></svg></div><span class="qr-cell-title">Exportar</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code> + PDF — siempre los dos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code> + PDF: siempre los dos</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>.pptx</code>/<code>.ppsx</code> = XML actual · <code>.ppt</code>/<code>.pps</code> = binario viejo</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Las "pp<strong>s</strong>" abren directo en modo presentación</span></div>
           </div>
@@ -821,35 +821,35 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y referencias</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula — <code>=</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa/absoluta/mixta — <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada — <code>F2</code> (Mac: doble clic)</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autocompletar hacia abajo / derecha — <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula: <code>=</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa/absoluta/mixta: <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada: <code>F2</code> (Mac: doble clic)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autocompletar hacia abajo / derecha: <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Funciones básicas</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code> — suma total</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code> — media aritmética</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code> — celdas numéricas / no vacías</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code> — valor más alto / más bajo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code>: suma total</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code>: media aritmética</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code>: celdas numéricas / no vacías</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code>: valor más alto / más bajo</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Selección y formato condicional</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Seleccionar columna / fila entera — <code>Ctrl+Espacio</code> / <code>Shift+Espacio</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ir a la última / primera celda con datos — <code>Ctrl+Fin</code> / <code>Ctrl+Inicio</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir Formato condicional — Formato &gt; Formato condicional</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Seleccionar columna / fila entera: <code>Ctrl+Espacio</code> / <code>Shift+Espacio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ir a la última / primera celda con datos: <code>Ctrl+Fin</code> / <code>Ctrl+Inicio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir Formato condicional: Formato &gt; Formato condicional</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Funciones lógicas</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple — <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado — <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador — siempre entre comillas: <code>"&gt;50000"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple: <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado: <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador: siempre entre comillas: <code>"&gt;50000"</code></span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -866,31 +866,31 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">SUMAR.SI y CONTAR.SI</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional — <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional — <code>=CONTAR.SI(rango; criterio)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda — <code>=SUMAR.SI($C$2:$C$9; F2; $G$2:$G$9)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional: <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional: <code>=CONTAR.SI(rango; criterio)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda: <code>=SUMAR.SI($C$2:$C$9; F2; $G$2:$G$9)</code></span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Validación de datos</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir validación — Datos &gt; Validación de datos</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano — Criterios &gt; Lista de elementos</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas — Criterios &gt; Lista de un rango</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido — "Rechazar la entrada" · Solo avisar — "Mostrar una advertencia"</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir validación: Datos &gt; Validación de datos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano: Criterios &gt; Lista de elementos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas: Criterios &gt; Lista de un rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido: "Rechazar la entrada" · Solo avisar: "Mostrar una advertencia"</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">🔤 Equivalencias con Excel en inglés</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMA</code> — <code>SUM</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>PROMEDIO</code> — <code>AVERAGE</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR</code> — <code>COUNT</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTARA</code> — <code>COUNTA</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code> — <code>IF</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code> — <code>SUMIF</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code> — <code>COUNTIF</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Validación de datos</code> — <code>Data Validation</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMA</code>: <code>SUM</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>PROMEDIO</code>: <code>AVERAGE</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR</code>: <code>COUNT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTARA</code>: <code>COUNTA</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code>: <code>IF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code>: <code>SUMIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code>: <code>COUNTIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Validación de datos</code>: <code>Data Validation</code></span></div>
           </div>
         </div>
       </div>
@@ -902,7 +902,7 @@
       <div class="gloss-item"><span class="gloss-term">Condición</span><p class="gloss-def">Comparación (con <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> o <code>&lt;&gt;</code>) que la planilla evalúa como verdadera o falsa.</p></div>
       <div class="gloss-item"><span class="gloss-term"><code>SI</code></span><p class="gloss-def">Devuelve un valor si una condición es verdadera y otro si es falsa: <code>=SI(condición; valor_si_verdadero; valor_si_falso)</code>.</p></div>
       <div class="gloss-item"><span class="gloss-term">SI anidado</span><p class="gloss-def">Un <code>SI</code> colocado dentro de otro, en el lugar del "valor si falso", para evaluar más de dos resultados posibles.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Regla de negocio</span><p class="gloss-def">Criterio de la organización —un umbral, una excepción, una prioridad— que la planilla aplica de forma automática y uniforme sobre cada registro.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Regla de negocio</span><p class="gloss-def">Criterio de la organización (un umbral, una excepción, una prioridad) que la planilla aplica de forma automática y uniforme sobre cada registro.</p></div>
       <div class="gloss-item"><span class="gloss-term"><code>SUMAR.SI</code></span><p class="gloss-def">Suma los valores de un rango que cumplen una condición definida sobre otro rango (o el mismo).</p></div>
       <div class="gloss-item"><span class="gloss-term"><code>CONTAR.SI</code></span><p class="gloss-def">Cuenta las celdas de un rango que cumplen una condición definida.</p></div>
       <div class="gloss-item"><span class="gloss-term">Criterio</span><p class="gloss-def">Segundo argumento de <code>SUMAR.SI</code> y <code>CONTAR.SI</code>: el valor o la comparación que debe cumplirse. Va entre comillas, o se apunta a una celda.</p></div>
@@ -928,7 +928,7 @@
 
 <footer class="colophon">
   <p>Marcos Hernández</p>
-  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes) — licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
 </footer>
 
 </div>

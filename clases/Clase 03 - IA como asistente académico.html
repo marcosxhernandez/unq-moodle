@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
 <link rel="stylesheet" href="../css/guia-estilo.css">
 <style>
-  /* Acento de clase — Procesador de texto (Bloque 2, Clases 02-05 y 07) = celeste */
+  /* Acento de clase, Procesador de texto (Bloque 2, Clases 02-05 y 07) = celeste */
   :root{
     --acento:var(--celeste);
     --acento-deep:var(--celeste-deep);
@@ -88,7 +88,7 @@
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
-    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández — Docente de Informática, UNQ">
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
       <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
       <span class="cover-teacher-text">
         <span class="cover-teacher-name">Marcos Hernández</span>
@@ -101,7 +101,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Pedile a un chat de IA genérico tres fuentes académicas sobre cualquier tema: es probable que al menos una sea inventada. Esa es la trampa de hoy, y hay dos formas de resolverla: <strong>RAG abierto</strong> busca con respaldo en toda la web y cita cada afirmación (Perplexity); <strong>RAG cerrado</strong> solo responde con los documentos que vos le diste (Gemini Notebook). Mismo problema — que la IA no invente la fuente —, dos arquitecturas distintas.</p>
+  <p class="toc-intro">Pedile a un chat de IA genérico tres fuentes académicas sobre cualquier tema: es probable que al menos una sea inventada. Esa es la trampa de hoy, y hay dos formas de resolverla: <strong>RAG abierto</strong> busca con respaldo en toda la web y cita cada afirmación (Perplexity); <strong>RAG cerrado</strong> solo responde con los documentos que vos le diste (Gemini Notebook). Mismo problema, que la IA no invente la fuente, dos arquitecturas distintas.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#rag-abierto"><span class="toc-num">01</span><span class="toc-text">RAG abierto: buscar con respaldo en toda la web (Perplexity)</span></a></li>
@@ -113,7 +113,7 @@
 
 <main>
 
-<!-- 01 — RAG ABIERTO (Perplexity + APA) -->
+<!-- 01 – RAG ABIERTO (Perplexity + APA) -->
 <section class="block" id="rag-abierto">
   <div class="block-head">
     <span class="block-num">01</span>
@@ -124,7 +124,7 @@
       <p>¿Cómo sabés si una fuente que te dio una IA es real, o si el modelo la inventó?</p>
     </div>
 
-    <p>Recién viste una demo en vivo: un chat de IA genérico armó tres fuentes académicas sobre un tema cualquiera, y al menos una cita no existía o no decía lo que el modelo afirmaba. No fue un accidente — es cómo funciona un LLM genérico. Todo lo que sigue responde a la misma pregunta: cómo buscar con IA sin ese riesgo, y cómo dejar el rastro para que cualquiera pueda verificarlo.</p>
+    <p>Recién viste una demo en vivo: un chat de IA genérico armó tres fuentes académicas sobre un tema cualquiera, y al menos una cita no existía o no decía lo que el modelo afirmaba. No fue un accidente, es cómo funciona un LLM genérico. Todo lo que sigue responde a la misma pregunta: cómo buscar con IA sin ese riesgo, y cómo dejar el rastro para que cualquiera pueda verificarlo.</p>
 
     <h3>La diferencia que importa</h3>
     <p>Un LLM genera texto a partir de su entrenamiento: predice qué palabra viene después, basándose en miles de millones de textos que procesó meses o años atrás. No busca, no verifica, no sabe si lo que dice es verdad. Perplexity (<code>perplexity.ai</code>) funciona distinto: busca en internet en tiempo real y cita cada afirmación con la fuente de donde la sacó. Podés hacer clic en el número y verificar.</p>
@@ -134,8 +134,8 @@
         <thead><tr><th></th><th><img class="app-icon-lg" src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="">LLM genérico (ChatGPT)</th><th><img class="app-icon-lg" src="../img/apps/Perplexity%20-%20Perplexity.png" alt="">Perplexity</th></tr></thead>
         <tbody>
           <tr><td>¿De dónde viene la respuesta?</td><td>De su entrenamiento (datos de hace meses o años), salvo que la búsqueda web esté activa en esa conversación</td><td>De una búsqueda en internet en tiempo real, siempre</td></tr>
-          <tr><td>¿Cita fuentes?</td><td>Depende de si buscó en la web para esa respuesta puntual — y aun con búsqueda activa, no siempre te avisa que la usó</td><td>Sí, siempre — número en el texto, link a la fuente real</td></tr>
-          <tr><td>¿Podés verificar?</td><td>Solo cuando muestra de dónde sacó el dato</td><td>Sí — un clic lleva a la fuente original</td></tr>
+          <tr><td>¿Cita fuentes?</td><td>Depende de si buscó en la web para esa respuesta puntual (y aun con búsqueda activa, no siempre te avisa que la usó</td><td>Sí, siempre) número en el texto, link a la fuente real</td></tr>
+          <tr><td>¿Podés verificar?</td><td>Solo cuando muestra de dónde sacó el dato</td><td>Sí, un clic lleva a la fuente original</td></tr>
           <tr><td>Riesgo de alucinación</td><td>Alto sin búsqueda activa: puede inventar datos, autores o títulos</td><td>Menor, pero no cero: siempre verificá</td></tr>
           <tr><td>Mejor para</td><td>Redactar, resumir, explicar conceptos</td><td>Buscar información con respaldo verificable</td></tr>
         </tbody>
@@ -147,7 +147,7 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave: por qué esto no es blanco o negro</p>
-      <p>ChatGPT y Gemini pueden buscar en la web y citar por su cuenta cuando detectan que la pregunta lo necesita — no es que nunca lo hagan. La diferencia real con Perplexity no es "busca / no busca", es la transparencia: Perplexity siempre te muestra si buscó y de dónde salió cada dato; un LLM genérico puede hacerlo o no según la pregunta, y no siempre queda claro cuál de las dos cosas pasó.</p>
+      <p>ChatGPT y Gemini pueden buscar en la web y citar por su cuenta cuando detectan que la pregunta lo necesita, no es que nunca lo hagan. La diferencia real con Perplexity no es "busca / no busca", es la transparencia: Perplexity siempre te muestra si buscó y de dónde salió cada dato; un LLM genérico puede hacerlo o no según la pregunta, y no siempre queda claro cuál de las dos cosas pasó.</p>
     </div>
 
     <div class="callout" data-type="idea">
@@ -157,17 +157,17 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Consejo: Perplexity + Google Scholar</p>
-      <p>Google Scholar (<a href="https://scholar.google.com" target="_blank" rel="noopener"><code>scholar.google.com</code></a>) es el índice de referencia universal para artículos académicos. Se usa en combinación con Perplexity: Scholar para explorar qué existe sobre tu tema y encontrar el DOI exacto de un artículo, Perplexity para obtener el resumen verificado y la cita lista para usar. Ninguno reemplaza al otro. El modo Académico de Perplexity (que restringe la búsqueda a revistas científicas) es una función de la versión Pro — con la versión gratuita también obtenés citas verificables, solo que sin ese filtro.</p>
+      <p>Google Scholar (<a href="https://scholar.google.com" target="_blank" rel="noopener"><code>scholar.google.com</code></a>) es el índice de referencia universal para artículos académicos. Se usa en combinación con Perplexity: Scholar para explorar qué existe sobre tu tema y encontrar el DOI exacto de un artículo, Perplexity para obtener el resumen verificado y la cita lista para usar. Ninguno reemplaza al otro. El modo Académico de Perplexity (que restringe la búsqueda a revistas científicas) es una función de la versión Pro, con la versión gratuita también obtenés citas verificables, solo que sin ese filtro.</p>
     </div>
 
     <img class="screenshot" src="../img/03-02-captura-perplexity-modo-academico.png" alt="Menú de Perplexity con la opción Académico visible entre Descubrir, Finanzas, CFO Personal, Salud y Patentes">
-    <p class="screenshot-caption">El modo Académico vive en este menú — restringe la búsqueda a revistas científicas, pero es una función de Perplexity Pro.</p>
+    <p class="screenshot-caption">El modo Académico vive en este menú, restringe la búsqueda a revistas científicas, pero es una función de Perplexity Pro.</p>
 
     <h3>Prompt chaining: encadenar instrucciones</h3>
     <p>Un prompt bien construido con RTCFL ya mejora los resultados. El prompt chaining agrega un paso más: usás la respuesta de un prompt como punto de partida del siguiente. En lugar de pedirle todo a la vez, dividís la tarea en pasos.</p>
 
     <div class="callout" data-type="format">
-      <p class="callout-label">📙 Paso a paso — Prompt chaining para buscar fuentes académicas</p>
+      <p class="callout-label">📙 Paso a paso: Prompt chaining para buscar fuentes académicas</p>
       <ol>
         <li>Construí un prompt RTCFL y pedile a Perplexity: "Buscá 3 fuentes sobre [tu tema]. Dame título, autor, año y un resumen de 2 líneas de cada una."</li>
         <li>Evaluá las fuentes con CRAAP. Descartá las que no pasen.</li>
@@ -184,7 +184,7 @@
       </div>
       <div class="prose">
         <ol>
-          <li>Abrí <code>perplexity.ai</code> en una pestaña nueva. Si ya llegaste al límite diario gratuito, usá <a href="https://scholar.google.com" target="_blank" rel="noopener"><code>scholar.google.com</code></a> + verificación manual con CRAAP en su lugar — ninguna herramienta es la única vía para buscar con respaldo.</li>
+          <li>Abrí <code>perplexity.ai</code> en una pestaña nueva. Si ya llegaste al límite diario gratuito, usá <a href="https://scholar.google.com" target="_blank" rel="noopener"><code>scholar.google.com</code></a> + verificación manual con CRAAP en su lugar, ninguna herramienta es la única vía para buscar con respaldo.</li>
           <li>Construí un prompt RTCFL sobre tu tema (el mismo de tu Documento Base). Pedile 3 fuentes con resumen.</li>
           <li>Evaluá las 3 fuentes con CRAAP. Anotá qué criterio usaste para cada una.</li>
           <li>Hacé clic en al menos 2 números de cita (o, si usaste Google Scholar, abrí al menos 2 artículos) y verificá que la fuente exista y diga lo que se afirma.</li>
@@ -200,7 +200,7 @@
       <p>Dos aptitudes concretas en una sola actividad: <strong>Encadenamiento de Prompts</strong> (dividir una tarea compleja en pasos, usando la respuesta de un prompt como contexto del siguiente) y <strong>Búsqueda Académica</strong> (evaluar fuentes con CRAAP y usar Perplexity/Google Scholar para encontrar artículos con DOI verificable).</p>
     </div>
 
-    <p>Ya tenés fuentes verificadas, no inventadas. El siguiente paso es citarlas de forma que cualquiera pueda rastrearlas hasta el original — verificar no alcanza si no dejás el rastro para que otra persona también pueda hacerlo. Las normas APA tienen cientos de variantes. Acá van los cuatro casos que vas a usar el 90% de las veces como estudiante universitario, más dos conceptos que aparecen en cualquier trabajo académico: la cita en el cuerpo del texto y las notas al pie.</p>
+    <p>Ya tenés fuentes verificadas, no inventadas. El siguiente paso es citarlas de forma que cualquiera pueda rastrearlas hasta el original, verificar no alcanza si no dejás el rastro para que otra persona también pueda hacerlo. Las normas APA tienen cientos de variantes. Acá van los cuatro casos que vas a usar el 90% de las veces como estudiante universitario, más dos conceptos que aparecen en cualquier trabajo académico: la cita en el cuerpo del texto y las notas al pie.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
@@ -208,18 +208,18 @@
     </div>
 
     <h3>Derechos de autor: por qué esto no es solo prolijidad</h3>
-    <p>Todo lo que alguien escribe, graba o publica —un libro, un artículo, una página, un video— tiene derechos de autor desde el momento en que se crea, sin necesidad de ningún trámite. Usar las ideas o las palabras de otra persona sin decir de dónde salen se llama <strong>plagio</strong>, y no es un detalle de forma: es presentar como propio el trabajo intelectual de alguien más.</p>
+    <p>Todo lo que alguien escribe, graba o publica (un libro, un artículo, una página, un video) tiene derechos de autor desde el momento en que se crea, sin necesidad de ningún trámite. Usar las ideas o las palabras de otra persona sin decir de dónde salen se llama <strong>plagio</strong>, y no es un detalle de forma: es presentar como propio el trabajo intelectual de alguien más.</p>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Advertencia: consecuencias reales</p>
-      <p>En la universidad, el plagio puede significar la desaprobación directa del trabajo y, según el reglamento de cada institución, sanciones disciplinarias más serias. Es más fácil de detectar de lo que parece: la mayoría de las cátedras cruza los trabajos con herramientas antiplagio. Fuera de la facultad, en un texto publicado profesionalmente, plagiar puede derivar en un reclamo legal del autor original. Copiar una respuesta de una IA sin verificar si repite, sin atribución, el contenido de una fuente identificable tampoco te exime — la responsabilidad de citar bien es tuya, no de la herramienta.</p>
+      <p>En la universidad, el plagio puede significar la desaprobación directa del trabajo y, según el reglamento de cada institución, sanciones disciplinarias más serias. Es más fácil de detectar de lo que parece: la mayoría de las cátedras cruza los trabajos con herramientas antiplagio. Fuera de la facultad, en un texto publicado profesionalmente, plagiar puede derivar en un reclamo legal del autor original. Copiar una respuesta de una IA sin verificar si repite, sin atribución, el contenido de una fuente identificable tampoco te exime, la responsabilidad de citar bien es tuya, no de la herramienta.</p>
     </div>
 
-    <p>Citar bien, entonces, cumple dos funciones a la vez: separa tu aporte del de otros, y deja que cualquiera pueda rastrear una afirmación hasta el original — la misma lógica que ya usaste con Perplexity.</p>
+    <p>Citar bien, entonces, cumple dos funciones a la vez: separa tu aporte del de otros, y deja que cualquiera pueda rastrear una afirmación hasta el original, la misma lógica que ya usaste con Perplexity.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave: APA no es solo para "letras"</p>
-      <p>APA 7 es el estándar más usado en ciencias sociales, humanidades, comunicación, educación y psicología — pero <strong>en esta cursada se usa como convención única para todas las carreras</strong>, más allá de que tu campo use otro estilo más adelante (IEEE en ingeniería, Vancouver en ciencias de la salud, por ejemplo). El DOI, en particular, es más frecuente en artículos de ciencias exactas y salud; en humanidades y ciencias sociales muchos artículos no tienen DOI y se cita con la URL directamente — no es un error tuyo si no lo encontrás.</p>
+      <p>APA 7 es el estándar más usado en ciencias sociales, humanidades, comunicación, educación y psicología, pero <strong>en esta cursada se usa como convención única para todas las carreras</strong>, más allá de que tu campo use otro estilo más adelante (IEEE en ingeniería, Vancouver en ciencias de la salud, por ejemplo). El DOI, en particular, es más frecuente en artículos de ciencias exactas y salud; en humanidades y ciencias sociales muchos artículos no tienen DOI y se cita con la URL directamente, no es un error tuyo si no lo encontrás.</p>
     </div>
 
     <h3>Los 4 casos esenciales</h3>
@@ -242,26 +242,26 @@
       <table class="tbl-wide">
         <thead><tr><th>Tipo de cita en el texto</th><th>Cuándo usarla</th><th>Ejemplo</th></tr></thead>
         <tbody>
-          <tr><td>Cita indirecta (paráfrasis) — (Apellido, año)</td><td>Cuando tomás una idea pero la reescribís con tus palabras.</td><td>La IA predice texto en lugar de comprenderlo (Castells, 2009).</td></tr>
-          <tr><td>Cita directa (textual) — (Apellido, año, p. XX)</td><td>Cuando copiás las palabras exactas del autor. Usala poco.</td><td>La IA "no busca, no verifica, no razona: predice" (Hernández, 2026, p. 7).</td></tr>
-          <tr><td>Autor mencionado en el texto — Autor (año)</td><td>Cuando el nombre del autor forma parte de la oración.</td><td>Según Castells (2009), el poder se ejerce a través de redes.</td></tr>
+          <tr><td>Cita indirecta (paráfrasis): (Apellido, año)</td><td>Cuando tomás una idea pero la reescribís con tus palabras.</td><td>La IA predice texto en lugar de comprenderlo (Castells, 2009).</td></tr>
+          <tr><td>Cita directa (textual): (Apellido, año, p. XX)</td><td>Cuando copiás las palabras exactas del autor. Usala poco.</td><td>La IA "no busca, no verifica, no razona: predice" (Hernández, 2026, p. 7).</td></tr>
+          <tr><td>Autor mencionado en el texto, Autor (año)</td><td>Cuando el nombre del autor forma parte de la oración.</td><td>Según Castells (2009), el poder se ejerce a través de redes.</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Advertencia</p>
-      <p>La cita directa (textual) se usa poco. Si buena parte de tu texto son comillas, no estás analizando la fuente, la estás recortando. Preferí la paráfrasis con cita — (Apellido, año) — y reservá la cita textual para frases que realmente necesitan citarse palabra por palabra.</p>
+      <p>La cita directa (textual) se usa poco. Si buena parte de tu texto son comillas, no estás analizando la fuente, la estás recortando. Preferí la paráfrasis con cita (Apellido, año) y reservá la cita textual para frases que realmente necesitan citarse palabra por palabra.</p>
     </div>
 
     <h3>DOI: dato adicional</h3>
-    <p>El DOI (<em>Digital Object Identifier</em>) es un identificador permanente para artículos de revistas científicas. Si buscás en bases académicas y el artículo tiene DOI, lo ponés al final de la cita en lugar de la URL: <code>https://doi.org/10.xxxx/xxxxxxx</code>. Si no ves un DOI, usás la URL normal — en humanidades, sociales y comunicación muchos artículos no tienen DOI.</p>
+    <p>El DOI (<em>Digital Object Identifier</em>) es un identificador permanente para artículos de revistas científicas. Si buscás en bases académicas y el artículo tiene DOI, lo ponés al final de la cita en lugar de la URL: <code>https://doi.org/10.xxxx/xxxxxxx</code>. Si no ves un DOI, usás la URL normal, en humanidades, sociales y comunicación muchos artículos no tienen DOI.</p>
 
     <h3><svg class="tool-icon"><use href="#ti-footnote"></use></svg>Notas al pie</h3>
-    <p>La nota al pie es información complementaria que no encaja en el cuerpo del texto sin interrumpir el argumento: una aclaración, una referencia secundaria, un dato de contexto. No reemplaza a la cita APA — si citás una fuente, va en el texto con (Apellido, año) y en la bibliografía al final. La nota al pie es para todo lo demás.</p>
+    <p>La nota al pie es información complementaria que no encaja en el cuerpo del texto sin interrumpir el argumento: una aclaración, una referencia secundaria, un dato de contexto. No reemplaza a la cita APA, si citás una fuente, va en el texto con (Apellido, año) y en la bibliografía al final. La nota al pie es para todo lo demás.</p>
 
     <div class="callout" data-type="format">
-      <p class="callout-label">📙 Paso a paso — Insertar una nota al pie en Google Docs</p>
+      <p class="callout-label">📙 Paso a paso: Insertar una nota al pie en Google Docs</p>
       <ol>
         <li>Posicioná el cursor donde querés el número de referencia.</li>
         <li>Insertar → Elementos de página → <svg class="tool-icon"><use href="#ti-footnote"></use></svg>Nota a pie de página (atajo: <code>Ctrl+Alt+F</code>, Mac: <code>⌘+Opción+F</code>).</li>
@@ -287,23 +287,23 @@
 
     <div class="callout" data-type="linkedin">
       <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-      <p><strong>Escritura Académica</strong>: producir textos con citas APA 7ma edición verificadas — cita en el texto, bibliografía y DOI como enlace — es una aptitud puntual y demostrable con el documento que acabás de armar.</p>
+      <p><strong>Escritura Académica</strong>: producir textos con citas APA 7ma edición verificadas (cita en el texto, bibliografía y DOI como enlace) es una aptitud puntual y demostrable con el documento que acabás de armar.</p>
     </div>
 
   </div>
 </section>
 
-<!-- 02 — RAG CERRADO (Gemini Notebook) -->
+<!-- 02 – RAG CERRADO (Gemini Notebook) -->
 <section class="block" id="rag-cerrado">
   <div class="block-head">
     <span class="block-num">02</span>
     <h2 class="block-title">RAG cerrado: trabajar con tus propias fuentes (Gemini Notebook)</h2>
   </div>
   <div class="prose">
-    <p>Ya resolviste la trampa buscando con respaldo en toda la web. Acá el problema es el mismo — que la IA no invente la fuente —, pero el corpus es distinto: en vez de salir a buscar, trabajás solo con documentos que vos elegiste.</p>
+    <p>Ya resolviste la trampa buscando con respaldo en toda la web. Acá el problema es el mismo, que la IA no invente la fuente, pero el corpus es distinto: en vez de salir a buscar, trabajás solo con documentos que vos elegiste.</p>
 
     <h3>La diferencia con Perplexity</h3>
-    <p>Perplexity y Gemini Notebook (<code>notebook.google.com</code>) se parecieron más desde que Gemini Notebook sumó <strong>Discover Sources</strong>: un botón en el panel de Fuentes que, a partir de un tema que describís, rastrea la web y te sugiere documentos para sumar al cuaderno. La diferencia que importa no desapareció, solo se corrió: Perplexity te devuelve una respuesta ya redactada, con números de cita que llevan a la web abierta, en el momento; Gemini Notebook nunca responde "a partir de la web" directamente — todo lo que Discover Sources encuentra entra primero como fuente al cuaderno, y recién ahí la IA puede usarlo, siempre citando el pasaje exacto de esa fuente. Uno te da una respuesta; el otro te ayuda a construir un corpus propio y después responde solo con eso. Son herramientas complementarias, no alternativas.</p>
+    <p>Perplexity y Gemini Notebook (<code>notebook.google.com</code>) se parecieron más desde que Gemini Notebook sumó <strong>Discover Sources</strong>: un botón en el panel de Fuentes que, a partir de un tema que describís, rastrea la web y te sugiere documentos para sumar al cuaderno. La diferencia que importa no desapareció, solo se corrió: Perplexity te devuelve una respuesta ya redactada, con números de cita que llevan a la web abierta, en el momento; Gemini Notebook nunca responde "a partir de la web" directamente, todo lo que Discover Sources encuentra entra primero como fuente al cuaderno, y recién ahí la IA puede usarlo, siempre citando el pasaje exacto de esa fuente. Uno te da una respuesta; el otro te ayuda a construir un corpus propio y después responde solo con eso. Son herramientas complementarias, no alternativas.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -311,8 +311,8 @@
         <tbody>
           <tr><td>¿De dónde viene la respuesta?</td><td>Internet en tiempo real</td><td>Solo de las fuentes del cuaderno (Discover Sources puede sumar fuentes nuevas, pero primero las importa, no responde "al vuelo")</td></tr>
           <tr><td>¿Para qué se usa?</td><td>Obtener una respuesta ya redactada, con la web como respaldo</td><td>Construir un corpus propio (tuyo o sugerido) y trabajarlo en profundidad</td></tr>
-          <tr><td>¿Cita fuentes?</td><td>Sí — links a páginas web</td><td>Sí — párrafo exacto de tu documento</td></tr>
-          <tr><td>¿Podés verificar?</td><td>Sí — clic al número lleva a la web</td><td>Sí — clic al chip lleva al pasaje exacto</td></tr>
+          <tr><td>¿Cita fuentes?</td><td>Sí, links a páginas web</td><td>Sí, párrafo exacto de tu documento</td></tr>
+          <tr><td>¿Podés verificar?</td><td>Sí, clic al número lleva a la web</td><td>Sí, clic al chip lleva al pasaje exacto</td></tr>
           <tr><td>El resultado es...</td><td>Una respuesta</td><td>Una fuente que queda en tu cuaderno, más una respuesta anclada en ella</td></tr>
           <tr><td>Costo</td><td>Gratis con límites diarios · Perplexity Pro (pago) suma más búsquedas y el modo Académico</td><td>Gratis con cuenta Google, con límites generosos de cuadernos y fuentes · Gemini Notebook Plus (dentro de Google One AI Premium o Workspace) suma más cupo, no funciones nuevas para este uso</td></tr>
         </tbody>
@@ -343,11 +343,11 @@
     </ul>
 
     <div class="callout" data-type="explore">
-      <p class="callout-label">🔎 Para explorar — Discover Sources</p>
-      <p>En el panel de Fuentes, botón "Discover" (o "Descubrir"): describí tu tema en una frase y Gemini Notebook te devuelve hasta 10 documentos recomendados, cada uno con un resumen de por qué es relevante. Sumá el que te sirva con un clic — pasa a ser una fuente más de tu cuaderno, con el mismo tratamiento que un PDF que subís vos.</p>
+      <p class="callout-label">🔎 Para explorar: Discover Sources</p>
+      <p>En el panel de Fuentes, botón "Discover" (o "Descubrir"): describí tu tema en una frase y Gemini Notebook te devuelve hasta 10 documentos recomendados, cada uno con un resumen de por qué es relevante. Sumá el que te sirva con un clic, pasa a ser una fuente más de tu cuaderno, con el mismo tratamiento que un PDF que subís vos.</p>
     </div>
 
-    <p>El flujo de trabajo es simple: cargás las fuentes, le hacés preguntas ancladas en ellas, y desde el panel <strong>Studio</strong> generás material de estudio a partir de ese mismo corpus — resúmenes, guías de estudio o un Resumen de Audio (un pódcast generado a partir de tus fuentes). Todo lo que genera Studio sigue anclado en las fuentes que cargaste, no en el entrenamiento general del modelo.</p>
+    <p>El flujo de trabajo es simple: cargás las fuentes, le hacés preguntas ancladas en ellas, y desde el panel <strong>Studio</strong> generás material de estudio a partir de ese mismo corpus: resúmenes, guías de estudio o un Resumen de Audio (un pódcast generado a partir de tus fuentes). Todo lo que genera Studio sigue anclado en las fuentes que cargaste, no en el entrenamiento general del modelo.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave: por qué conviene para estudiar, no solo para citar</p>
@@ -376,21 +376,21 @@
       </div>
     </div>
 
-    <p>Ya viste dos arquitecturas distintas para el mismo problema — que la IA no invente la fuente —, según de dónde sale la información: toda la web (RAG abierto, Perplexity) o solo tus documentos (RAG cerrado, Gemini Notebook). Para cerrar, un dato rápido: ninguna de las dos herramientas es "la mejor IA" en términos absolutos — eso también se puede medir.</p>
+    <p>Ya viste dos arquitecturas distintas para el mismo problema, que la IA no invente la fuente, según de dónde sale la información: toda la web (RAG abierto, Perplexity) o solo tus documentos (RAG cerrado, Gemini Notebook). Para cerrar, un dato rápido: ninguna de las dos herramientas es "la mejor IA" en términos absolutos, eso también se puede medir.</p>
   </div>
 </section>
 
-<!-- 03 — ARENA LEADERBOARD (cierre corto) -->
+<!-- 03 – ARENA LEADERBOARD (cierre corto) -->
 <section class="block" id="arena">
   <div class="block-head">
     <span class="block-num">03</span>
     <h2 class="block-title">Elegir el modelo adecuado: Arena Leaderboard</h2>
   </div>
   <div class="prose">
-    <p>Google, OpenAI, Anthropic y otras empresas lanzan modelos nuevos cada pocos meses, y cada uno es mejor en algunas tareas y peor en otras — no hay un modelo que gane siempre. Arena (<code>arena.ai/leaderboard</code>, antes LMArena o Chatbot Arena) es un sitio independiente donde cualquiera compara dos respuestas de IA a ciegas y vota cuál es mejor; con millones de votos arma un ranking tipo Elo, separado por categoría de tarea. No hace falta cuenta para consultarlo.</p>
+    <p>Google, OpenAI, Anthropic y otras empresas lanzan modelos nuevos cada pocos meses, y cada uno es mejor en algunas tareas y peor en otras, no hay un modelo que gane siempre. Arena (<code>arena.ai/leaderboard</code>, antes LMArena o Chatbot Arena) es un sitio independiente donde cualquiera compara dos respuestas de IA a ciegas y vota cuál es mejor; con millones de votos arma un ranking tipo Elo, separado por categoría de tarea. No hace falta cuenta para consultarlo.</p>
 
     <img class="screenshot" src="../img/03-03-captura-arena-leaderboard.png" alt="Tabla del ranking Arena Leaderboard en la pestaña Text → Overall, con columnas de empresa, modelo y puntaje Elo en las primeras filas">
-    <p class="screenshot-caption">La pestaña Text → Overall es el ranking general — más abajo están las categorías específicas (Document, Search, WebDev) que importan más a la hora de elegir herramienta según la tarea.</p>
+    <p class="screenshot-caption">La pestaña Text → Overall es el ranking general, más abajo están las categorías específicas (Document, Search, WebDev) que importan más a la hora de elegir herramienta según la tarea.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -406,7 +406,7 @@
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>El ranking cambia cada pocas semanas — no memorices "el modelo número 1", aprendé a volver acá y mirar la categoría que te sirve. Y elegir el modelo adecuado no reemplaza verificar lo que dice: un modelo mejor rankeado igual puede alucinar. El trabajo de verificar (CRAAP, clic en la fuente, chequear la cita) sigue siendo tuyo, como en todo lo de hoy.</p>
+      <p>El ranking cambia cada pocas semanas, no memorices "el modelo número 1", aprendé a volver acá y mirar la categoría que te sirve. Y elegir el modelo adecuado no reemplaza verificar lo que dice: un modelo mejor rankeado igual puede alucinar. El trabajo de verificar (CRAAP, clic en la fuente, chequear la cita) sigue siendo tuyo, como en todo lo de hoy.</p>
     </div>
 
     <div class="callout" data-type="explore">
@@ -418,7 +418,7 @@
   </div>
 </section>
 
-<!-- 04 — RESUMEN DE LA CLASE -->
+<!-- 04 – RESUMEN DE LA CLASE -->
 <section class="block" id="resumen">
   <div class="block-head">
     <span class="block-num">04</span>
@@ -450,21 +450,21 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">Operadores de Google</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code> — frase exacta</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code> — excluye un término</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code> — dentro de un dominio</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code> — por tipo de archivo</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code> — rango de años</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>"frase"</code>: frase exacta</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>-excluir</code>: excluye un término</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>site:</code>: dentro de un dominio</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>filetype:</code>: por tipo de archivo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>2020..2026</code>: rango de años</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Método CRAAP</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong> — ¿cuándo se publicó?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong> — ¿responde tu pregunta?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong> — ¿quién es el autor?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong> — ¿tiene fuentes?</span></div>
-            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong> — ¿informa, vende o persuade?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Actualidad</strong>: ¿cuándo se publicó?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Relevancia</strong>: ¿responde tu pregunta?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Autoridad</strong>: ¿quién es el autor?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">A</span><span class="qr-fdesc"><strong>Exactitud</strong>: ¿tiene fuentes?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">P</span><span class="qr-fdesc"><strong>Propósito</strong>: ¿informa, vende o persuade?</span></div>
           </div>
           <div class="qr-tip">Lectura lateral: abrí otra pestaña y verificá qué dicen otras fuentes independientes.</div>
         </div>
@@ -476,11 +476,11 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-robot"></use></svg></div><span class="qr-cell-title">Fórmula RTCFL</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong> — "actuá como…"</span></div>
-            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong> — qué tiene que hacer</span></div>
-            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong> — nivel, país, año</span></div>
-            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong> — cómo querés la respuesta</span></div>
-            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong> — ej. 300 palabras</span></div>
+            <div class="qr-frow"><span class="qr-fletter">R</span><span class="qr-fdesc"><strong>Rol</strong>: "actuá como…"</span></div>
+            <div class="qr-frow"><span class="qr-fletter">T</span><span class="qr-fdesc"><strong>Tarea</strong>: qué tiene que hacer</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong>: nivel, país, año</span></div>
+            <div class="qr-frow"><span class="qr-fletter">F</span><span class="qr-fdesc"><strong>Formato</strong>: cómo querés la respuesta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Límites</strong>: ej. 300 palabras</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -495,7 +495,7 @@
               <div class="qr-mini-items">DeepSeek · Qwen<br>Kimi</div>
             </div>
           </div>
-          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los estadounidenses; censura activa en temas políticos sensibles en los chinos — ninguno es neutral.</div>
+          <div class="qr-tip-amber">Sesgo geográfico/lingüístico en los estadounidenses; censura activa en temas políticos sensibles en los chinos, ninguno es neutral.</div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-compass"></use></svg></div><span class="qr-cell-title">Acceso</span></div>
@@ -507,10 +507,10 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-clipboard"></use></svg></div><span class="qr-cell-title">APA · 4 formatos</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Libro — Apellido, I. (Año). <em>Título</em>. Editorial.</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Web — Apellido, I. (Año, día mes). <em>Título</em>. Sitio. URL</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Video — Canal. (Año, día mes). <em>Título</em> [Video]. Plataforma. URL</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">IA — Empresa. (Año). <em>Modelo</em> (fecha) [Large language model]. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Libro: Apellido, I. (Año). <em>Título</em>. Editorial.</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Web: Apellido, I. (Año, día mes). <em>Título</em>. Sitio. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Video: Canal. (Año, día mes). <em>Título</em> [Video]. Plataforma. URL</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">IA: Empresa. (Año). <em>Modelo</em> (fecha) [Large language model]. URL</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -518,7 +518,7 @@
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Paráfrasis (Apellido, año) · Textual (Apellido, año, p. XX)</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">DOI: <code>https://doi.org/10.xxxx/...</code> al final de la cita, si existe</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nota al pie: <code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>) — no reemplaza la cita APA</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nota al pie: <code>Ctrl+Alt+F</code> (Mac <code>⌘+Opción+F</code>): no reemplaza la cita APA</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -536,24 +536,24 @@
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-new-doc"></use></svg></div><span class="qr-cell-title">Reglas de oro</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a> — lienzo en blanco al instante</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>) — pegar sin formato, nunca directo de afuera</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>) — comentario</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>) — deshacer</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><a href="https://docs.new" target="_blank" rel="noopener"><code>docs.new</code></a>: lienzo en blanco al instante</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Shift+V</code> (Mac <code>⌘+Shift+V</code>): pegar sin formato, nunca directo de afuera</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-comment"></use></svg><code>Ctrl+Alt+M</code> (Mac <code>⌘+Opción+M</code>): comentario</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Z</code> (Mac <code>⌘+Z</code>): deshacer</span></div>
           </div>
         </div>
         <div class="qr-cell">
           <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-styles"></use></svg></div><span class="qr-cell-title">Estilos y estructura</span></div>
           <div class="qr-formula">
-            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code> — Encabezado 1</span></div>
-            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code> — Encabezado 2</span></div>
-            <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code> — Texto normal</span></div>
+            <div class="qr-frow"><span class="qr-fletter">1</span><span class="qr-fdesc"><code>Ctrl+Alt+1</code>: Encabezado 1</span></div>
+            <div class="qr-frow"><span class="qr-fletter">2</span><span class="qr-fdesc"><code>Ctrl+Alt+2</code>: Encabezado 2</span></div>
+            <div class="qr-frow"><span class="qr-fletter">0</span><span class="qr-fdesc"><code>Ctrl+Alt+0</code>: Texto normal</span></div>
           </div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><svg class="tool-icon"><use href="#ti-toc"></use></svg>Índice: Insertar → Elementos de página → Índice</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Actualizar: clic en el índice → <svg class="tool-icon"><use href="#ti-refresh"></use></svg>ícono actualizar</span></div>
           </div>
-          <div class="qr-tip">Los estilos son lo único que genera el índice automático — nunca agrandes la letra a mano.</div>
+          <div class="qr-tip">Los estilos son lo único que genera el índice automático, nunca agrandes la letra a mano.</div>
         </div>
       </div>
     </div>
@@ -567,7 +567,7 @@
       <div class="gloss-item"><span class="gloss-term">Arena Leaderboard</span><p class="gloss-def">Ranking de modelos de IA por votos humanos a ciegas, con puntaje Elo separado por categoría de tarea (Text, Document, Search, WebDev, entre otras). Antes conocido como LMArena o Chatbot Arena.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita en el texto</span><p class="gloss-def">Mención breve de la fuente dentro del párrafo: (Apellido, año) para paráfrasis, (Apellido, año, p. XX) para cita textual.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita textual</span><p class="gloss-def">Reproducción exacta de las palabras del autor, entre comillas, con número de página. Se usa poco: la paráfrasis con cita es lo que se espera.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse — no genera una respuesta directa desde la web.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse, no genera una respuesta directa desde la web.</p></div>
       <div class="gloss-item"><span class="gloss-term">DOI</span><p class="gloss-def"><em>Digital Object Identifier</em>. Identificador permanente de artículos de revistas científicas. Va al final de la cita APA en lugar de la URL cuando está disponible.</p></div>
       <div class="gloss-item"><span class="gloss-term">Nota al pie</span><p class="gloss-def">Información complementaria al pie de la página: aclaraciones, referencias secundarias, datos de contexto. No reemplaza a la cita APA.</p></div>
       <div class="gloss-item"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG cerrado. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
@@ -581,7 +581,7 @@
     <ul class="sources">
       <li>Arena (Arena Intelligence). <em>Leaderboard</em>. <a href="https://arena.ai/leaderboard" target="_blank" rel="noopener"><code>arena.ai/leaderboard</code></a></li>
       <li>APA Style, American Psychological Association. <em>How to cite ChatGPT</em>. <a href="https://apastyle.apa.org/blog/how-to-cite-chatgpt" target="_blank" rel="noopener"><code>apastyle.apa.org/blog/how-to-cite-chatgpt</code></a></li>
-      <li>APA Style, American Psychological Association. <em>AI references — Reference examples</em>. <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references" target="_blank" rel="noopener"><code>apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references</code></a></li>
+      <li>APA Style, American Psychological Association. <em>AI references, Reference examples</em>. <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references" target="_blank" rel="noopener"><code>apastyle.apa.org/style-grammar-guidelines/references/examples/ai-references</code></a></li>
       <li>Google. <em>Add or discover new sources for your notebook</em>. Gemini Notebook Help. <a href="https://support.google.com/notebooklm/answer/16215270" target="_blank" rel="noopener"><code>support.google.com/notebooklm/answer/16215270</code></a></li>
     </ul>
   </div>
@@ -591,7 +591,7 @@
 
 <footer class="colophon">
   <p>Marcos Hernández</p>
-  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes) — licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
 </footer>
 
 </div>

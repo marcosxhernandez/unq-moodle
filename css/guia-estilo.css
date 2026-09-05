@@ -1426,7 +1426,15 @@ table.check-table td:not(.check-cell) label{
 
 .sources em{ font-style:italic; color:var(--ink); }
 
-.sources a{ white-space:nowrap; }
+/* Las URL cortas quedan en una sola línea (más prolijo que partirlas
+   a mitad de palabra); pero si la URL es muy larga (fuentes con slugs
+   largos, común en soporte de Microsoft), nowrap la deja más ancha
+   que la columna de lectura y desborda la página — al imprimir, Chrome
+   reduce la escala de TODA la hoja para que ese desborde entre (bug
+   visto en Clase 05: el folio entero salía a ~70%). overflow-wrap:anywhere
+   corta la URL solo cuando hace falta, así las cortas siguen en una
+   línea y las largas envuelven en vez de desbordar. */
+.sources a{ overflow-wrap:anywhere; }
 
 /* ---------- Footer ---------- */
 

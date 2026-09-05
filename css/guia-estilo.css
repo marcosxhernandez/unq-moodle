@@ -1053,6 +1053,8 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
   background:var(--acento);
   padding:7px 14px;
   border-radius:999px;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 .activity-head h3{

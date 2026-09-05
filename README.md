@@ -25,14 +25,12 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 12 | 2° Parcial | ✅ | ✅ | Completo |
 | 13 | Cómo piensan las bases de datos | ✅ | ✅ | Completo |
 | 14 | Del formulario a la base de datos | ✅ | ✅ | Completo |
-| 15 | Consultar para descubrir | ✅ | ✅ | Completo |
-| 16 | Cuando una tabla no alcanza | ✅ | ✅ | Completo |
-| 17 | Del dato a la decisión | ✅ | ✅ | Completo |
-| 18 | Feriado — Inmaculada Concepción | — | ✅ | Fragmento Moodle agregado (sin Guía Visual — no hace falta, es aviso de "sin clase") |
-| 19 | 3.° Parcial Integrador | ✅ | ✅ | Completo |
-| 20 | Recuperatorio | ✅ | ✅ | Completo |
+| 15 | Del dato a la decisión | ✅ | ✅ | Completo |
+| 16 | 3° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
+| 17 | Recuperatorio | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
+| 18 | Feriado / Paro docente (comodín) | — | ✅ | Bloques reutilizables sin número fijo de clase (`Comodín - Feriado.html`, `Comodín - Paro docente.html`), no ocupan un slot 18 propio |
 
-**Total: 16 clases completadas + 3 en progreso (04-06, ajustes finales) — 18 con Guía Visual + 1 Bienvenida sin guía. Clases 07 y 18 tienen fragmento Moodle pero no Guía Visual (07: exámenes en carpeta no publicada; 18: feriado, no hace falta).**
+**Total: 18 clases (00–17) — 14 con Guía Visual + 1 Bienvenida sin guía + 3 exámenes (07, 16, 17) con fragmento Moodle pero sin Guía Visual (carpetas de examen en `clases/` sin publicar o vacías). El feriado y el paro docente son bloques "comodín" reutilizables, sin número de clase fijo.**
 
 ## Estructura
 
@@ -51,11 +49,13 @@ unq-moodle/
 ├── clases/
 │   ├── Clase 01 - Herramientas Digitales.html
 │   ├── Clase 02 - Arquitectura del documento...
-│   └── ... (19 archivos: 01-06, 08-17, 19-20)
+│   └── ... (18 archivos/carpetas: 00-17 — 07,12,16,17 son carpetas de examen, algunas vacías)
 ├── moodle/
 │   ├── Clase 00 - Bienvenida.html
 │   ├── Clase 01 - Herramientas Digitales.html
-│   └── ... (20 archivos: 00-06, 08-17, 19-20)
+│   ├── Comodín - Feriado.html
+│   ├── Comodín - Paro docente.html
+│   └── ... (18 archivos numerados 00-17 + 2 comodines sin número fijo)
 ├── index.html                   ← Vista previa con todos los bloques Moodle
 ├── README.md                    ← Este archivo
 ├── CLAUDE.md                    ← Manual técnico integral
@@ -97,15 +97,24 @@ unq-moodle/
 
 ## Importante: index.html y sincronización
 
-**⚠️ `index.html` embebe una copia pegada de cada `moodle/Clase NN.html`, no un include.** Sirve para previsualizar los bloques tal como se ven pegados en Qoodle, pero no se actualiza sola: después de editar un fragmento en `moodle/`, hay que volver a pegar ese mismo contenido dentro de `index.html`, en el bloque `<div id="mNNroot">` correspondiente (identificado por el `id`, único por clase). Si no, `index.html` queda desincronizado en silencio.
+**`index.html` ya NO lleva una copia pegada de cada `moodle/Clase NN.html`.** Cada bloque es un `<div data-mdl-src="moodle/Clase NN - Título.html">` vacío; `js/index-loader.js` recorre esos atributos al cargar la página y hace `fetch()` de cada fragmento publicado en GitHub Pages (mismo patrón de `CLAUDE-moodle.md` 4.2quinquies), resolviendo también los placeholders `{{ENTREGA:NN:orden}}` contra `moodle/entregas.json` para el aula de vista previa (39500, ver `js/index-loader.js`). Para sumar una clase nueva a `index.html` alcanza con agregar el `<div data-mdl-src="...">` correspondiente — no hace falta pegar contenido a mano ni tocar el loader.
 
-**Posible salida a este mismo problema (sep. 2026, anotado — no implementado):** el patrón de carga dinámica de `CLAUDE-moodle.md` 4.2quinquies podría aplicarse también acá — que `index.html` haga `fetch()` de cada `moodle/Clase NN.html` en vez de llevar una copia pegada. Como `index.html` se sirve desde el mismo repo de GitHub Pages, el fetch sería same-origin (sin la duda de CORS que sí aplica al pegar en Qoodle, origen distinto). Pendiente de evaluar.
+**Contrapartida:** como el fetch apunta al sitio YA PUBLICADO (no al archivo en disco), un cambio recién editado en `moodle/*.html` no se ve en `index.html` hasta hacer `git push` (y GitHub Pages puede tardar unos minutos, cache `max-age=600`). Para previsualizar un cambio todavía sin publicar, conviene abrir ese `.html` suelto directamente.
 
 ## Convenciones de construcción
 
 Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-moodle.md`.
 
 ## Historial de cambios
+
+**2026-09-05:**
+- Revertida la unidad de Bases de Datos a 3 clases de contenido (13, 14, 15) + examen (16) + recuperatorio (17), para que `moodle/` vuelva a calzar con `clases/` (la Guía Visual, que nunca se expandió a la estructura de 5 clases que había quedado en `moodle/`).
+- Eliminados de `moodle/`: "Clase 15 - Consultar para descubrir.html" y "Clase 16 - Cuando una tabla no alcanza.html" (clases que no existen en `clases/`), y el archivo huérfano "Clase 15 - Del dato a la decisión.html" que pisaba el número 15 duplicado — se conservó como el único Clase 15 vigente.
+- Descartada la versión expandida de "Clase 17 - Del dato a la decisión.html" (pensada para la estructura de 5 clases); el contenido original que estaba mal numerado en 15 pasa a ser el definitivo.
+- Renumerados "Clase 19 - 3.° Parcial Integrador" → **Clase 16 - 3° Parcial** y "Clase 20 - Recuperatorio" → **Clase 17 - Recuperatorio** (título y texto interno ajustados: "Clases 13–17" → "Clases 13–15").
+- **Cambio de política:** las clases de examen (07, 12, 16, 17) ahora SÍ tienen bloque de entrega ("✅/📤 Cómo entregás..." + botón "Subir link"), integrado al mismo sistema de `entregas.csv` + `{{ENTREGA:NN:orden}}` que las clases normales — revierte la decisión anterior (documentada en `CLAUDE-moodle.md` 4.2quinquies) de gestionarlas aparte. Faltan los ids reales de Tarea en Qoodle (quedaron en `TODO` en `entregas.csv`) — completar y correr `python3 scripts/build_entregas_json.py` antes de dar por cerrado el punto.
+- `index.html` y `loaders/loaders.html` actualizados para reflejar la nueva numeración (15/16/17 renombrados, 19/20 eliminados).
+- Documentada la carga dinámica de `index.html` (ya implementada, ver sección de arriba) — estaba descripta como "pendiente de evaluar" y hacía tiempo que no era así.
 
 **2026-09-01:**
 - Clase 04 migrada en Qoodle a carga dinámica por `fetch()` (loader chico pegado una vez + `<script>` que trae `moodle/Clase 04....html` en tiempo real) en vez del pegado estático de siempre — primer caso real confirmado de que un `<script>` en bloque sobrevive al guardado de Atto y se ejecuta en Qoodle real (antes documentado como "sin confirmar" en `CLAUDE-moodle.md` 4.2). Patrón nuevo documentado en `CLAUDE-moodle.md` 4.2quinquies, con la lista de puntos a resolver antes de migrar el resto (timeout del fetch, mensaje de error con link de respaldo, loader centralizado, decisión pendiente sobre las clases de examen 07/12/19/20).

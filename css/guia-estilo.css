@@ -1821,6 +1821,44 @@ a.pill-student:hover{ text-decoration:underline; }
   color:var(--muted);
 }
 
+/* Marcador de "acá va una captura que todavía no se sacó" — para no bloquear
+   la redacción de una clase esperando a Marcos con Word/Excel/etc. abierto.
+   Mismo ancho que .screenshot para que el layout no salte cuando se reemplaza
+   por la imagen real. Deliberadamente distinto (gris, borde punteado, rótulo
+   en mayúsculas) para que no se confunda con contenido terminado ni pase
+   desapercibido en una lectura rápida — ver checklist 3.8 #13: ninguna clase
+   se da por auditada con un .screenshot-todo todavía en pie. */
+.screenshot-todo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.5em;
+  width:100%;
+  max-width:560px;
+  min-height:180px;
+  margin:.6em auto 1.8em;
+  padding:1.4em 1.8em;
+  background:var(--gris-tint);
+  border:2px dashed var(--muted);
+  border-radius:var(--radius-sm);
+  text-align:center;
+}
+.screenshot-todo-label{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--wine);
+}
+.screenshot-todo-desc{
+  font-size:.86rem;
+  color:var(--muted);
+  font-style:italic;
+  max-width:44ch;
+}
+
 /* Diagrama / infografía de referencia — un machete, no una captura.
    Distinto de .screenshot: no necesita legibilidad de UI, solo ilustrar. */
 .diagram{
@@ -2047,6 +2085,106 @@ a.pill-student:hover{ text-decoration:underline; }
 
 .tool-urls code{ font-size:.9em; }
 
+/* ---------- Guía de decisión (dos ramas, ej. qué tipo de salto de sección
+   usar) — set. 2026. Caja que resume de un vistazo dos caminos posibles y
+   qué sub-casos caen en cada uno. display:grid con columnas fijas, nunca
+   flex (ver CLAUDE.md, error "Panel comparativo con display:flex y grupos
+   desiguales"). Selectores con .prose por delante para ganarle en
+   especificidad a .prose ul/.prose ul > li (viñeta y sangría por defecto),
+   ver CLAUDE-clases.md 3.4octies. */
+.decision-guide{
+  margin:1.7em 0 2.1em;
+  padding:22px 24px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:#fafafa;
+}
+
+.decision-guide-q{
+  font-family:var(--serif-display);
+  font-style:italic;
+  font-weight:480;
+  font-size:1.08rem;
+  color:var(--ink);
+  margin:0 0 18px;
+  text-align:center;
+}
+
+.decision-guide-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:22px;
+}
+
+.decision-guide-branch{ min-width:0; }
+
+.decision-guide-head{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  padding-bottom:11px;
+  margin-bottom:11px;
+  border-bottom:1px solid var(--line-strong);
+}
+
+.decision-guide-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  border-radius:7px;
+  background:var(--acento);
+  color:#fff;
+}
+.decision-guide-icon svg{ width:17px; height:17px; margin:0; }
+
+.decision-guide-title{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:.92rem;
+  color:var(--ink);
+  margin:0 0 3px;
+  line-height:1.3;
+}
+
+.decision-guide-sub{
+  font-size:.8rem;
+  color:var(--ink-soft);
+  margin:0;
+  line-height:1.42;
+}
+.decision-guide-sub strong{ color:var(--acento-deep); }
+
+.prose .decision-guide-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.prose .decision-guide-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:0;
+  margin:0;
+  font-size:.85rem;
+  line-height:1.46;
+  color:var(--ink-soft);
+}
+.prose .decision-guide-list li::before{ content:none; }
+.decision-guide-list .tool-icon{
+  width:1em;
+  height:1em;
+  margin:.18em 0 0;
+  flex-shrink:0;
+  color:var(--acento);
+}
+
+
 @media (max-width: 640px){
   .app-badge{ float:none; margin:0 0 16px; }
   .icon-row{ gap:12px; }
@@ -2071,6 +2209,7 @@ a.pill-student:hover{ text-decoration:underline; }
   .app-install-body{ flex-direction:column; align-items:stretch; gap:18px; }
   .app-install-qr{ flex-direction:row; width:auto; align-self:flex-start; }
   .compare-panel{ flex-direction:column; padding:20px; gap:20px; }
+  .decision-guide-grid{ grid-template-columns:1fr; gap:20px; }
   .tool-group-divider{ width:auto; height:1px; }
 }
 
@@ -2203,6 +2342,7 @@ a.pill-student:hover{ text-decoration:underline; }
   .gloss-item,
   .tool-cards,
   .screenshot,
+  .screenshot-todo,
   .diagram,
   .screenshot-caption,
   .activity-head{ break-inside:avoid-page; }
@@ -2213,7 +2353,7 @@ a.pill-student:hover{ text-decoration:underline; }
   .activity-head{ break-after:avoid-page; }
 
   /* Imagen y leyenda son una sola unidad visual: nunca se separan. */
-  .screenshot, .diagram{ break-after:avoid-page; }
+  .screenshot, .screenshot-todo, .diagram{ break-after:avoid-page; }
   .screenshot-caption{ break-before:avoid-page; }
 
   /* Ninguna fila se parte al medio; si la tabla cruza el salto, el
@@ -2358,6 +2498,20 @@ a.pill-student:hover{ text-decoration:underline; }
   /* "Burbuja" de app (.app-row, ver arriba) — reescalado a papel. */
   .tools-container{ width:55mm; margin:2px 0 12px 12px; }
   .app-row{ gap:9px; padding:7px 9px; break-inside:avoid-page; }
+
+  /* Guía de decisión (.decision-guide, ver arriba) — reescalado a papel,
+     misma unidad completa (avoid-page), es corta, ver CLAUDE-clases.md 3.6. */
+  .decision-guide{ margin:12pt 0 15pt; padding:12pt 14pt; break-inside:avoid-page; }
+  .decision-guide-q{ font-size:9.4pt; margin:0 0 10pt; }
+  .decision-guide-grid{ gap:12pt; }
+  .decision-guide-head{ gap:7pt; padding-bottom:7pt; margin-bottom:7pt; }
+  .decision-guide-icon{ width:15pt; height:15pt; border-radius:3.5pt; }
+  .decision-guide-icon svg{ width:9pt; height:9pt; }
+  .decision-guide-title{ font-size:7.4pt; margin:0 0 2pt; }
+  .decision-guide-sub{ font-size:6.6pt; }
+  .prose .decision-guide-list{ gap:5pt; }
+  .prose .decision-guide-list li{ font-size:6.8pt; gap:5pt; }
+  .decision-guide-list .tool-icon{ margin:.2em 0 0; }
   /* box-shadow:none (no border:none) — sin la sombra el margen que ya
      trae el PNG (ver CLAUDE-clases.md 3.4decies) deja de leerse como
      margen: al no haber ningún borde que marque dónde termina el
@@ -2378,6 +2532,7 @@ a.pill-student:hover{ text-decoration:underline; }
   /* Las imágenes son lo que más hoja consume. Se achican al ancho
      mínimo en el que la interfaz sigue siendo legible en papel. */
   .screenshot{ max-width:118mm; margin:.4em auto 0; }
+  .screenshot-todo{ max-width:118mm; min-height:auto; margin:.4em auto .9em; padding:8pt 10pt; }
   .screenshot-caption{ max-width:118mm; margin:5pt auto .9em; font-size:8.2pt; }
   .diagram{ max-width:62mm; margin:.7em auto 0; }
 

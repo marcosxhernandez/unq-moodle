@@ -4,6 +4,19 @@ Archivos que descarga el estudiante. Se publican con el sitio, así que la URL
 es estable: `https://marcosxhernandez.github.io/unq-moodle/archivos/<archivo>`.
 Desde Qoodle se enlazan, no se vuelven a subir.
 
+## Clase 05 — Combinación de correspondencia
+
+| Archivo | Qué es | Aparece en |
+|---|---|---|
+| `Contactos_comerciales_2026.xlsx` | Fuente de datos de ejemplo para combinación de correspondencia: 6 contactos inventados, columnas `Nombre`, `Rubro`, `Necesidad detectada` | Sección 07, callout "Para explorar, paso a paso" |
+
+Archivo genérico (no del tema del día — paneles solares, termotanques, aerogeneradores —
+que es el de la Actividad 06): sirve para que el paso "Correspondencia → Seleccionar
+destinatarios → Usar una lista existente → el archivo con tu tabla" tenga un archivo real
+para abrir en el momento, en vez de quedar solo como instrucción abstracta. La Actividad 06
+sigue pidiendo que el estudiante arme su propia tabla con datos inventados por una IA — este
+archivo no la reemplaza.
+
 ## Proyecto Andes Sur (Clases 08.1 a 11.1)
 
 | Archivo | Qué es | Aparece en |

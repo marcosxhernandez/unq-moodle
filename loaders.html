@@ -214,6 +214,45 @@
             </ul>
         </div>
 
+        <div class="alert-error" style="background: #d4edda; border-left-color: #28a745;">
+            <strong>🗓️ Cronograma (bloque lateral) — sin probar en Qoodle real todavía:</strong>
+            A diferencia de los loaders de clase de abajo (confirmados desde Clase 04), este suma un paso nuevo: después del <code>fetch</code>, recrea el <code>&lt;script&gt;</code> que trae adentro <code>Cronograma.html</code> — si no se hace ese paso aparte, Moodle inserta el HTML pero el navegador no ejecuta el script, y el bloque queda mostrando "--%" y "--/-- clases dadas" para siempre, sin resaltar la clase de hoy ni hacer el auto-scroll. Es la misma técnica que ya usa <code>js/index-loader.js</code> en la vista previa de <code>index.html</code>, pero ahí nunca pasó por Atto ni por Qoodle real. Antes de darlo por bueno: pegalo en <strong>una sola aula</strong> primero, confirmá que el % deja de decir "--%" y que la lista arranca scrolleada en la clase actual — recién ahí replicalo en la segunda aula. Va en un bloque HTML de la columna lateral del curso (Bloques → Agregar un bloque → Texto/HTML, o el bloque que use tu tema) — se pega <strong>una sola vez para todo el curso</strong>, no por clase.
+        </div>
+
+        <div class="loader-card" style="border-color: #28a745; max-width: 560px; margin-bottom: 20px;">
+            <div class="class-title">🗓️ Cronograma — bloque lateral del curso</div>
+            <div class="class-subtitle">Se pega una sola vez por aula, en un bloque de la columna lateral — no es contenido de una clase.</div>
+            <div class="code-block" id="code-cronograma">&lt;div id="cronoloader"&gt;Cargando el cronograma ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('cronoloader');
+  var urlFallback = 'https://marcosxhernandez.github.io/unq-moodle/';
+  fetch('https://marcosxhernandez.github.io/unq-moodle/Cronograma.html')
+    .then(function (r) { return r.text(); })
+    .then(function (html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      el.innerHTML = doc.body.innerHTML;
+      // Insertar HTML vía innerHTML no ejecuta los &lt;script&gt; que trae adentro
+      // (lo ignora el navegador, a propósito) — hay que recrear cada nodo a mano
+      // para que el conteo, la tarjeta de "próxima clase" y el auto-scroll corran.
+      var scripts = el.querySelectorAll('script');
+      scripts.forEach(function (viejo) {
+        var nuevo = document.createElement('script');
+        for (var i = 0; i &lt; viejo.attributes.length; i++) {
+          nuevo.setAttribute(viejo.attributes[i].name, viejo.attributes[i].value);
+        }
+        nuevo.textContent = viejo.textContent;
+        viejo.parentNode.replaceChild(nuevo, viejo);
+      });
+    })
+    .catch(function () {
+      el.innerHTML = 'No se pudo cargar el cronograma. &lt;a href="' + urlFallback + '" target="_blank" rel="noopener"&gt;Abrilo acá&lt;/a&gt;.';
+    });
+})();
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copiar(this, 'code-cronograma')">Copiar</button>
+        </div>
+
         <div class="classes-grid">
 
             <!-- CLASE 00 - BIENVENIDA -->

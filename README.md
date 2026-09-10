@@ -6,31 +6,32 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 
 🔗 Sitio publicado: **https://marcosxhernandez.github.io/unq-moodle/**
 
-## Estado de avance (2026-08-27)
+## Estado de avance (2026-09-10)
 
-| Clase | Título | Guía Visual | Fragment Moodle | Estado |
+| Clase | Título | Guía Visual | Fragmento Moodle | Estado |
 |-------|--------|-------------|-----------------|--------|
 | 00 | Bienvenida | — | ✅ | Completo |
-| 01 | Herramientas Digitales | ✅ | ✅ | Completo |
-| 02 | Arquitectura del documento profesional | ✅ | ✅ | Completo |
-| 03 | IA como asistente académico | ✅ | ✅ | Completo |
-| 04 | Arquitectura avanzada del documento | ✅ | ✅ | 🔄 En progreso |
-| 05 | Maquetación de alta precisión | ✅ | ✅ | 🔄 En progreso |
-| 06 | Presentaciones con IA | ✅ | ✅ | 🔄 En progreso |
-| 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de exámenes en `clases/` no se publica) |
+| 01 | Herramientas Digitales | ✅ | ✅ | Completo (confirmado) |
+| 02 | Arquitectura del documento profesional | ✅ | ✅ | Completo (confirmado) |
+| 03 | IA como asistente académico | ✅ | ✅ | Completo (confirmado) |
+| 04 | Arquitectura avanzada del documento | ✅ | ✅ | Completo (confirmado) |
+| 05 | Maquetación de alta precisión | ✅ | ✅ | Completo (confirmado) |
+| 06 | Presentaciones con IA | ✅ | ✅ | 🔄 En progreso (contenido armado, todavía sin confirmar) |
+| 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — `clases/Clase 07 - Examen...` es carpeta de material/consignas, no se publica) |
 | 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
 | 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
 | 10 | Búsqueda entre hojas y visualización | ✅ | ✅ | Completo |
 | 11 | Análisis de datos con Tablas Dinámicas e IA | ✅ | ✅ | Completo |
-| 12 | 2° Parcial | ✅ | ✅ | Completo |
+| 12 | 2° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — `clases/Clase 12 - Examen...` es carpeta vacía; corregido acá, la versión anterior de esta tabla decía ✅ por error) |
 | 13 | Cómo piensan las bases de datos | ✅ | ✅ | Completo |
 | 14 | Del formulario a la base de datos | ✅ | ✅ | Completo |
 | 15 | Del dato a la decisión | ✅ | ✅ | Completo |
 | 16 | 3° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 | 17 | Recuperatorio | — | ✅ | Fragmento Moodle completo (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
-| 18 | Feriado / Paro docente (comodín) | — | ✅ | Bloques reutilizables sin número fijo de clase (`Comodín - Feriado.html`, `Comodín - Paro docente.html`), no ocupan un slot 18 propio |
 
-**Total: 18 clases (00–17) — 14 con Guía Visual + 1 Bienvenida sin guía + 3 exámenes (07, 16, 17) con fragmento Moodle pero sin Guía Visual (carpetas de examen en `clases/` sin publicar o vacías). El feriado y el paro docente son bloques "comodín" reutilizables, sin número de clase fijo.**
+**Feriado y Paro docente son bloques "comodín" reutilizables (`moodle/Comodín - Feriado.html`, `Comodín - Paro docente.html`), sin número de clase fijo — no ocupan un slot propio en esta tabla.**
+
+**Total: 18 clases numeradas (00-17) — 13 con Guía Visual + fragmento Moodle (01-06, 08-11, 13-15), Bienvenida (00) y los cuatro exámenes (07, 12, 16, 17) solo con fragmento Moodle. Confirmadas de punta a punta: 01-05. Entregas ("Subir link") pendientes de id real de Tarea en Qoodle para los cuatro exámenes — ver `moodle/entregas.csv`.**
 
 ## Estructura
 
@@ -39,29 +40,40 @@ unq-moodle/
 ├── css/
 │   └── guia-estilo.css          ← Estilos únicos, compartido por todas las guías
 ├── js/
-│   └── guia-print.js            ← Botón "Guardar PDF" (solo en clases/)
+│   ├── guia-print.js            ← Botón "Guardar PDF" (solo en clases/)
+│   └── index-loader.js          ← Carga dinámica de index.html (ver más abajo)
 ├── img/
 │   ├── marcos-hernandez.png     ← Foto del docente
 │   ├── apps/                    ← Íconos de herramientas
 │   └── ...                      ← Imágenes de clase
 ├── archivos/                    ← Datasets para descargar
-├── pdf/                         ← Guías exportadas (opcional)
+├── scripts/                     ← Generadores de datasets + build_entregas_json.py
 ├── clases/
 │   ├── Clase 01 - Herramientas Digitales.html
 │   ├── Clase 02 - Arquitectura del documento...
-│   └── ... (18 archivos/carpetas: 00-17 — 07,12,16,17 son carpetas de examen, algunas vacías)
+│   ├── Clase 00 - Programa Regulares - Informática 2025-2026.html  ← documento de materia, no de clase (CLAUDE.md §1)
+│   ├── Docente - Guia de Contenidos - Clases 01-06.html            ← Guía Docente, uso interno, propio CSS (CLAUDE.md §1)
+│   ├── Docente - Guia de actividades - Clases 01-06.html           ← ídem
+│   └── ... (carpetas `Clase NN - Examen...` para 07/12/16/17: material/consignas, no una Guía Visual publicada)
 ├── moodle/
 │   ├── Clase 00 - Bienvenida.html
 │   ├── Clase 01 - Herramientas Digitales.html
 │   ├── Comodín - Feriado.html
 │   ├── Comodín - Paro docente.html
+│   ├── entregas.csv             ← ids reales de Tarea por clase y aula (39500/39501), fuente única
+│   ├── entregas.json            ← generado de entregas.csv por scripts/build_entregas_json.py
 │   └── ... (18 archivos numerados 00-17 + 2 comodines sin número fijo)
-├── index.html                   ← Vista previa con todos los bloques Moodle
+├── loaders.html                 ← loaders de 4.2quinquies listos para pegar en Qoodle, uno por clase
+├── herramientas.html            ← catálogo de herramientas citadas en el curso
+├── Cronograma.html              ← cronograma/countdown del curso (antes "bloque derecho.html")
+├── index.html                   ← Vista previa: carga cada moodle/*.html por fetch() (ver más abajo)
 ├── README.md                    ← Este archivo
-├── CLAUDE.md                    ← Manual técnico integral
+├── CLAUDE.md                    ← Manual técnico integral (vive en la raíz del Drive, no acá)
 ├── CLAUDE-clases.md             ← Especificación de Guía Visual
 └── CLAUDE-moodle.md             ← Especificación de fragmento Moodle
 ```
+
+**Los PDF ya exportados NO están en este árbol.** Viven en `PDF/`, en la raíz del proyecto de Drive, fuera del repo — no se publican por GitHub Pages, es backup para bajar a mano (ver `CLAUDE-moodle.md` 4.7).
 
 ## Cómo se usa cada pieza en Qoodle
 
@@ -70,7 +82,7 @@ unq-moodle/
 | `clases/Clase NN - Título.html` | **URL** (o el botón "Abrir la guía" ya embebido en el bloque) | Apunta directo a `https://marcosxhernandez.github.io/unq-moodle/clases/Clase%20NN%20-%20...html`. Se abre en pestaña nueva, imprime igual que abrir el archivo local. |
 | `moodle/Clase NN - Título.html` | **Página** o **Etiqueta** | Se pega el contenido en el editor Atto usando la vista de código fuente `<>`. Ya trae el botón "Abrir la guía" apuntando a GitHub Pages. |
 | `moodle/Clase NN - Título.html` (vía loader, sep. 2026 en adelante) | **Página** o **Etiqueta** | Se pega **una sola vez** un loader fijo y chico (`<div>` + `<script>` con `fetch()`, ver `CLAUDE-moodle.md` 4.2quinquies) — de ahí en más, editar el `.html` + `git push` alcanza, sin volver a tocar Atto. Migración en curso clase por clase; no asumir que todas ya lo usan sin confirmarlo en Qoodle real. |
-| `pdf/Clase NN - Título.pdf` | **Archivo** (opcional) | Backup para quien prefiera bajar el PDF en vez de abrir el link. |
+| `PDF/Clase NN - Título.pdf` (raíz del Drive, no en este repo) | **Archivo** (opcional) | Backup para quien prefiera bajar el PDF en vez de abrir el link. |
 
 **Importante:** los links "Abrir la guía de la clase" dentro de cada `moodle/*.html` ya apuntan a GitHub Pages. Si se activa Pages con otra URL, hay que actualizar esos links a mano — están en los archivos `moodle/`, buscando `github.io`.
 
@@ -84,8 +96,8 @@ unq-moodle/
 3. Descargá el PDF con Ctrl+P y el botón "Guardar PDF" de cada guía
 
 ### Docentes / Mantenedores
-1. Editar contenido de clase: modificá el .md fuente en `Guia/Clase NN - <Título>.md` (en el Drive, no acá)
-2. Generar HTML: seguí los pasos en CLAUDE.md y CLAUDE-clases.md
+1. Editar contenido de clase: directo en HTML, en `unq-moodle/clases/Clase NN - <Título>.html` (Guía Visual) y `unq-moodle/moodle/Clase NN - <Título>.html` (fragmento Moodle) — la carpeta `Guia/` con archivos `.md` ya no se usa (retirada, ver `CLAUDE.md` §1).
+2. Seguir los parámetros de `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-moodle.md` al escribir o ajustar una clase.
 3. Publicar cambios: `git push` sube automáticamente a GitHub Pages — para clases ya migradas al loader (ver Historial 2026-09-01 y `CLAUDE-moodle.md` 4.2quinquies), esto alcanza para actualizar Qoodle sin volver a pegar en Atto; para las que todavía no fueron migradas, sigue haciendo falta el paso manual de re-pegar
 
 ## Activar GitHub Pages (una sola vez)
@@ -97,7 +109,7 @@ unq-moodle/
 
 ## Importante: index.html y sincronización
 
-**`index.html` ya NO lleva una copia pegada de cada `moodle/Clase NN.html`.** Cada bloque es un `<div data-mdl-src="moodle/Clase NN - Título.html">` vacío; `js/index-loader.js` recorre esos atributos al cargar la página y hace `fetch()` de cada fragmento publicado en GitHub Pages (mismo patrón de `CLAUDE-moodle.md` 4.2quinquies), resolviendo también los placeholders `{{ENTREGA:NN:orden}}` contra `moodle/entregas.json` para el aula de vista previa (39500, ver `js/index-loader.js`). Para sumar una clase nueva a `index.html` alcanza con agregar el `<div data-mdl-src="...">` correspondiente — no hace falta pegar contenido a mano ni tocar el loader.
+**`index.html` ya NO lleva una copia pegada de cada `moodle/Clase NN.html`.** Cada bloque es un `<div data-mdl-src="moodle/Clase NN - Título.html">` vacío; `js/index-loader.js` recorre esos atributos al cargar la página y hace `fetch()` de cada fragmento publicado en GitHub Pages (mismo patrón que el loader de `CLAUDE-moodle.md` 4.2quinquies, pero código propio — detalle técnico completo en `CLAUDE-moodle.md` 4.2sexies), resolviendo también los placeholders `{{ENTREGA:NN:orden}}` contra `moodle/entregas.json` para el aula de vista previa (39500). Para sumar una clase nueva a `index.html` alcanza con agregar el `<div data-mdl-src="...">` correspondiente — no hace falta pegar contenido a mano ni tocar el loader.
 
 **Contrapartida:** como el fetch apunta al sitio YA PUBLICADO (no al archivo en disco), un cambio recién editado en `moodle/*.html` no se ve en `index.html` hasta hacer `git push` (y GitHub Pages puede tardar unos minutos, cache `max-age=600`). Para previsualizar un cambio todavía sin publicar, conviene abrir ese `.html` suelto directamente.
 
@@ -106,6 +118,15 @@ unq-moodle/
 Este repo solo aloja el resultado final. Los parámetros de diseño, paginación, tipografía e identidad visual de cada Guía Visual están en `CLAUDE.md` (en la raíz del proyecto de Drive). Ese archivo es la **única fuente de verdad** para construcción de clases nuevas — no se duplica acá para no perder sincronía. Ante cualquier duda de formato, consultá `CLAUDE.md`, `CLAUDE-clases.md` y `CLAUDE-moodle.md`.
 
 ## Historial de cambios
+
+**2026-09-10:**
+- Auditoría completa de los 4 archivos de documentación (`CLAUDE.md`, `CLAUDE-clases.md`, `CLAUDE-moodle.md`, este README) contra el estado real del repo: `CLAUDE.md` §2.5 todavía tenía el esquema de 20 clases de antes de la reversión del 2 de sep. (commit `15c502e`), la estructura de carpetas todavía decía `bloque derecho.html` en vez de `Cronograma.html`, y `CLAUDE-moodle.md` §4.7/4.8 describía el flujo viejo de entregas por aula (CyT/DCS, `render_entregas.py`, `moodle/_build/`) como si fuera el vigente en vez del loader dinámico de 4.2quinquies. Los tres quedaron corregidos. De paso: documentada formalmente la Guía Docente (`clases/Docente - Guia de Contenidos/actividades - Clases NN-NN.html`, sin sección propia hasta ahora), corregida la ubicación real de los PDF exportados (`PDF/` en la raíz del Drive, no `unq-moodle/pdf/`), confirmado que "Clase 00 - Programa..." vive a propósito dentro de `clases/`, y borrado `unq-moodle/_dashfix_incoming.tar.gz` (archivo suelto sin uso).
+- `loaders.html` movido de `loaders/loaders.html` a la raíz de `unq-moodle/` (commit `b02a774`), junto con actualizaciones a `Cronograma.html` y Clases 08-11.
+
+**2026-09-08:**
+- Clases 02-06 y `guia-estilo.css` actualizados; sumadas capturas de exportación a PDF de Word (Clase 05) y archivadas capturas viejas de Gamma en `img/_reserva/`.
+- Sumado el dataset de contactos comerciales y las capturas de combinación de correspondencia de Clase 05 (fuente real para la Actividad de Correspondencia, ver `CLAUDE-clases.md` 3.8quater).
+- `entregas.csv`/`entregas.json` actualizados con los ids reales del curso 39501 para Clases 05-09.
 
 **2026-09-05:**
 - Revertida la unidad de Bases de Datos a 3 clases de contenido (13, 14, 15) + examen (16) + recuperatorio (17), para que `moodle/` vuelva a calzar con `clases/` (la Guía Visual, que nunca se expandió a la estructura de 5 clases que había quedado en `moodle/`).
@@ -138,4 +159,6 @@ Este repo solo aloja el resultado final. Los parámetros de diseño, paginación
 - Estado: 19/20 clases completas (Clase 07 pendiente de .md)
 
 **Pendiente:**
-- Crear fuente .md para Clase 07 (1° Parcial)
+- Confirmar contenido de Clase 06 (hoy en progreso, no confirmada).
+- Completar los ids reales de Tarea en Qoodle para los cuatro exámenes (07, 12, 16, 17) en `entregas.csv` — hoy en `TODO` — y correr `python3 scripts/build_entregas_json.py` antes de dar el punto por cerrado.
+- Validar si "Archivo → Exportar → Crear PDF/XPS" (ya corregido en Clase 05, ver `CLAUDE-clases.md` 3.8bis) también cambió en Clase 06 (PowerPoint), 08-11 (Excel) y 13-15 (bases de datos/Access) — no tocado todavía porque cada programa puede haber migrado la interfaz en un momento distinto.

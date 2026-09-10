@@ -22,9 +22,59 @@
       color:#145c28;
     }
   }
+  /* Captura del panel de formato condicional: recorte angosto, el texto de la UI
+     se ve grande al lado del resto de la guía. Se achica al 75% del tamaño
+     normal de .screenshot (560px / 118mm), en pantalla y en impresión. */
+  .screenshot-cond{
+    max-width:420px;
+  }
+  @media print{
+    .screenshot-cond{
+      max-width:88.5mm;
+    }
+  }
 </style>
 </head>
 <body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-transition" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.2 2"/><path d="M11 12 H13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 9.8 L14.6 12 L12.4 14.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-animation" viewBox="0 0 24 24"><path d="M13.5 3.5 L15.3 8.6 L20.5 8.8 L16.4 12.2 L17.8 17.3 L13.5 14.3 L9.2 17.3 L10.6 12.2 L6.5 8.8 L11.7 8.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10.5 H5.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.6 14 L5.4 13.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor"/></symbol>
+<symbol id="ti-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="9" y="2.5" width="6" height="3.4" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="14.5" x2="16" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="18" x2="13" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-quote" viewBox="0 0 24 24"><path d="M6 8 C6 8 4 9.5 4 12.5 C4 14.5 5.3 16 7 16 C8.4 16 9.5 14.9 9.5 13.5 C9.5 12.1 8.4 11 7 11 C6.7 11 6.4 11.1 6.1 11.2 C6.4 9.7 7.5 8.5 9 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 8 C14.5 8 12.5 9.5 12.5 12.5 C12.5 14.5 13.8 16 15.5 16 C16.9 16 18 14.9 18 13.5 C18 12.1 16.9 11 15.5 11 C15.2 11 14.9 11.1 14.6 11.2 C14.9 9.7 16 8.5 17.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-trophy" viewBox="0 0 24 24"><path d="M7 4 H17 V8 A5 5 0 0 1 7 8 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 5 H4 V7 A3 3 0 0 0 7 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 5 H20 V7 A3 3 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="13" x2="12" y2="17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 20.5 H16 M9 17.5 H15 L15.5 20.5 H8.5 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-new-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="9" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="ti-page" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5.5" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="8.5" y1="9.5" x2="8.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="11.5" y1="9.5" x2="11.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="14.5" y1="9.5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="17.5" y1="9.5" x2="17.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+<symbol id="ti-palette" viewBox="0 0 24 24"><path d="M12 3 C6.5 3 2 6.8 2 11.5 C2 15 4.5 16 6.5 16 H8 A2 2 0 0 1 10 18 V19 C10 20.5 11.2 21.5 12.8 21.2 C18 20.2 22 16.3 22 11.5 C22 6.8 17.5 3 12 3 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="10" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="12" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-link" viewBox="0 0 24 24"><path d="M9.5 14.5 L14.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 7 L13.5 4.5 A4 4 0 0 1 19.5 10.5 L17 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17 L10.5 19.5 A4 4 0 0 1 4.5 13.5 L7 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-comment" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 15.5 L8 19.5 L12.5 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-columns" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-mail-merge" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7 L12 13.5 L20.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-toc" viewBox="0 0 24 24"><line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="6" r="1" fill="currentColor"/><line x1="4" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="12" r="1" fill="currentColor"/><line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="18" r="1" fill="currentColor"/></symbol>
+<symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M5 6.5 A9 9 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 3.5 L19.5 9 L14 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17.5 A9 9 0 0 1 4.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 21 L4.5 15 L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-wrap-text" viewBox="0 0 24 24"><rect x="9" y="9" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="12.5" x2="8" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-bookmark" viewBox="0 0 24 24"><path d="M6 3.5 H18 V21 L12 16.5 L6 21 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+<symbol id="ti-suggest" viewBox="0 0 24 24"><path d="M4 17.5 L5 20 L7.5 19 L18 8.5 A1.8 1.8 0 0 0 15.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><line x1="14" y1="7.5" x2="16.5" y2="10" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-page-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M9.5 9.7 L12 12.2 L9.5 14.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-arc" viewBox="0 0 24 24"><path d="M3 17 C7 17 8 6 12 6 C16 6 15 12 21 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="3" cy="17" r="1.4" fill="currentColor"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="21" cy="10" r="1.4" fill="currentColor"/></symbol>
+</defs></svg>
 
 <section class="cover-page" data-num="08">
   <div class="cover-inner">
@@ -47,7 +97,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Esta clase construye esa lógica desde cero (cómo se nombra una celda, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, qué funciones resuelven las cuentas que nadie quiere hacer a mano) y la pone a trabajar sobre un encargo que efectivamente llega a un escritorio profesional.</p>
+  <p class="toc-intro">Esta clase construye la lógica de una planilla desde cero: cómo se nombra una celda, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, y qué funciones resuelven las cuentas que nadie quiere hacer a mano. Todo aplicado sobre un encargo que llega a un escritorio profesional.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#crear"><span class="toc-num">01</span><span class="toc-text">La planilla: crear el archivo y conocer Google Sheets</span></a></li>
@@ -69,10 +119,51 @@
     <h2 class="block-title">La planilla: crear el archivo y conocer Google Sheets</h2>
   </div>
   <div class="prose">
-    <p>Antes de trabajar con datos, necesitás el espacio donde van a vivir. El primer paso de esta clase no es escribir una fórmula: es crear el archivo correctamente y entender la herramienta.</p>
+    <p>Antes de trabajar con datos, necesitás el espacio donde van a vivir. Una <strong>planilla de cálculo</strong> es un archivo organizado en filas y columnas, donde cada celda guarda un dato o una fórmula que calcula algo a partir de otras celdas. La diferencia con anotar números en un papel o en un documento de texto es esa: si cambiás un dato de origen, todo lo que depende de él se recalcula solo, sin que tengas que rehacer las cuentas a mano.</p>
 
-    <div class="callout" data-type="question">
-      <p>Si tuvieras que calcular a mano cuánto le corresponde pagar a cada persona en un grupo de ocho amigos que gastaron montos distintos en un viaje, ¿cuántas veces tendrías que rehacer la cuenta si alguien agrega un gasto nuevo a mitad de camino?</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://sheets.google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+        <div class="row-text">
+          <span class="row-name">Google Sheets</span>
+          <span class="row-domain">sheets.google.com</span>
+        </div>
+        <span class="pill pill-free">Gratis</span>
+      </a>
+      <div class="app-row">
+        <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img class="row-icon" src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+          <div class="row-text">
+            <span class="row-name">Excel</span>
+            <span class="row-domain">office.com</span>
+          </div>
+        </a>
+        <div class="tags">
+          <span class="pill pill-freemium">Freemium</span>
+          <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+        </div>
+      </div>
+    </div>
+
+    <h3>Cuáles existen</h3>
+    <p>Vas a escuchar hablar de "Excel" y de "Sheets" como si fueran lo mismo. Son las dos planillas de cálculo que vas a encontrar en cualquier trabajo, comparten la misma lógica (celdas, filas, columnas, fórmulas) pero no son la misma herramienta.</p>
+
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th>Google Sheets</th><th>Excel de escritorio</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Costo</strong></td><td>Gratuito con cuenta de Google</td><td>Requiere licencia de Microsoft Office</td></tr>
+          <tr><td><strong>Dónde vive el archivo</strong></td><td>En la nube (Drive), se guarda solo</td><td>En tu computadora (o OneDrive), hay que guardar manualmente</td></tr>
+          <tr><td><strong>Colaboración</strong></td><td>Tiempo real, múltiples personas a la vez</td><td>Requiere compartir el archivo o usar Excel Online</td></tr>
+          <tr><td><strong>Funciones avanzadas</strong></td><td>Cubre la gran mayoría de casos de uso</td><td>Tablas dinámicas más potentes, macros, Power Query</td></tr>
+          <tr><td><strong>Ideal para</strong></td><td>Trabajo colaborativo, planillas livianas, uso cotidiano</td><td>Análisis pesado, archivos grandes, entornos corporativos con Office</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>En esta materia vamos a trabajar en Google Sheets porque es gratuito y accesible para todos desde el primer día. Todo lo que aprendas acá (referencias, funciones, formato condicional) se traslada directamente a Excel: las fórmulas son casi idénticas.</p>
     </div>
 
     <h3>Google Sheets: la interfaz</h3>
@@ -111,39 +202,70 @@
       <p>El autoguardado de Sheets no reemplaza la buena nomenclatura. "Hoja de cálculo sin título" guardada en la raíz de Drive es tan difícil de encontrar como un archivo suelto en cualquier escritorio. Nombrá la planilla en cuanto la creás, con el mismo formato que ya usás desde la Clase 01: <code>AAAA-MM-DD_Informatica_ClaseNN_VN</code>.</p>
     </div>
 
-    <h3>Google Sheets vs. Excel de escritorio</h3>
-    <p>Vas a escuchar hablar de "Excel" y de "Sheets" como si fueran lo mismo. Comparten la lógica (celdas, filas, columnas, fórmulas) pero no son la misma herramienta.</p>
+    <h3>El encargo de esta clase</h3>
+    <p>A partir de hoy vas a trabajar sobre un solo archivo que se arma clase a clase: cada actividad de hoy, y de las tres clases de planilla de cálculo que siguen, le agrega algo nuevo al mismo archivo. Elegís una organización ficticia ahora y la mantenés hasta el cierre del bloque.</p>
 
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Necesito números confiables de junio</span></div>
+      </div>
+      <div class="brief-body">
+        <p>Hola. Te paso los registros de junio como los tenemos: una lista larga, cargada a mano, sin ningún total. Necesito que me armes una planilla con estos datos y que me digas, de un vistazo, cuánto facturamos, cuánto es el promedio, y cuáles son los casos más altos y más bajos. Con eso alcanza por ahora.</p>
+        <p>Gracias.</p>
+      </div>
+    </div>
+
+    <h3>Elegí tu organización</h3>
+    <p>Las cuatro organizaciones son las mismas que vas a usar en las tres clases siguientes: elegí una y quedate con ella. Los ejemplos de esta Guía Visual desarrollan 💼 Hotel Bahía Norte; si elegís otra, adaptá los nombres de campo con la fila que te corresponde.</p>
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th></th><th>Google Sheets</th><th>Excel de escritorio</th></tr></thead>
+        <thead><tr><th>Organización</th><th>Campo que agrupa</th><th>Categoría</th><th>Cantidad</th><th>Valor unitario</th><th>Comisión</th><th>Umbral "alto valor"</th></tr></thead>
         <tbody>
-          <tr><td><strong>Costo</strong></td><td>Gratuito con cuenta de Google</td><td>Requiere licencia de Microsoft Office</td></tr>
-          <tr><td><strong>Dónde vive el archivo</strong></td><td>En la nube (Drive), se guarda solo</td><td>En tu computadora (o OneDrive), hay que guardar manualmente</td></tr>
-          <tr><td><strong>Colaboración</strong></td><td>Tiempo real, múltiples personas a la vez</td><td>Requiere compartir el archivo o usar Excel Online</td></tr>
-          <tr><td><strong>Funciones avanzadas</strong></td><td>Cubre la gran mayoría de casos de uso</td><td>Tablas dinámicas más potentes, macros, Power Query</td></tr>
-          <tr><td><strong>Ideal para</strong></td><td>Trabajo colaborativo, planillas livianas, uso cotidiano</td><td>Análisis pesado, archivos grandes, entornos corporativos con Office</td></tr>
+          <tr><td>💼 Hotel Bahía Norte</td><td><code>canal</code> (Directo / Booking / Agencia)</td><td><code>tipo_habitacion</code> (Individual / Doble / Suite)</td><td><code>noches</code></td><td>Tarifa por noche</td><td>12%</td><td>$250.000</td></tr>
+          <tr><td>📚 Territorio Abierto</td><td><code>sede</code> (Centro / Norte / Sur / Oeste)</td><td><code>tipo_actividad</code> (Taller / Excursión / Curso)</td><td><code>participantes</code></td><td>Costo por participante</td><td>15%</td><td>$40.000</td></tr>
+          <tr><td>🔬 Planta piloto Sur</td><td><code>turno</code> (Mañana / Tarde / Noche)</td><td><code>linea</code> (Línea A / Línea B / Línea C)</td><td><code>unidades</code></td><td>Precio por unidad</td><td>8%</td><td>$300.000</td></tr>
+          <tr><td>🎨 Estudio Delta</td><td><code>responsable</code> (3 o 4 nombres a elección)</td><td><code>formato</code> (Video / Podcast / Gráfica)</td><td><code>horas</code></td><td>Tarifa por hora</td><td>10%</td><td>$150.000</td></tr>
         </tbody>
       </table>
     </div>
-
     <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>En esta materia vamos a trabajar en Google Sheets porque es gratuito y accesible para todos desde el primer día. Todo lo que aprendas acá (referencias, funciones, formato condicional) se traslada directamente a Excel: las fórmulas son casi idénticas.</p>
+      <p class="callout-label">💡 Consejo: Comisión y umbral, por ahora en un papel</p>
+      <p>No hace falta cargar la comisión ni el umbral de tu organización todavía, los vas a necesitar recién en la Actividad 03 y en la Actividad 05. Anotalos aparte para no tener que volver a esta tabla cada vez.</p>
     </div>
 
-    <h3>Actividad 1 · Crear la planilla</h3>
     <div class="activity">
-      <ol>
-        <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 08" (creala si no existe).</li>
-        <li>Dentro de esa carpeta, creá una hoja de cálculo nueva. Nombrala exactamente: <code>2026-XX-XX_Informatica_Clase08_V01</code> (reemplazá XX por la fecha de hoy).</li>
-        <li>En la celda <code>A1</code> escribí "Producto" y en <code>B1</code> escribí "Precio".</li>
-        <li>Cargá 5 productos con precios en las filas siguientes (podés inventarlos).</li>
-        <li>Probá el controlador de relleno: en una celda vacía escribí "lunes" y usá el cuadradito de la esquina para completar los días de la semana.</li>
-        <li>En otra celda escribí el número <code>1</code> y debajo <code>2</code>. Seleccioná ambas y arrastrá el controlador hacia abajo, Sheets va a detectar el patrón y continuar la serie (3, 4, 5...).</li>
-      </ol>
-      <p><strong>Ya tenés la planilla creada, nombrada correctamente y en la carpeta que compartiste con el docente.</strong></p>
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Crear el archivo y cargar los registros de junio</h3>
+      </div>
+      <div class="prose">
+        <p>Esta va a ser tu planilla de trabajo para las próximas cuatro clases: cada actividad le agrega algo nuevo, nunca arrancás de cero.</p>
+        <ol>
+          <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 08" (creala si no existe).</li>
+          <li>Dentro de esa carpeta, creá una hoja de cálculo nueva. Nombrala exactamente: <code>2026-XX-XX_Informatica_Clase08_V01</code> (reemplazá XX por la fecha de hoy).</li>
+          <li>Renombrá la primera hoja como <code>DATOS</code> (doble clic sobre la pestaña, abajo a la izquierda).</li>
+          <li>Desde <code>A1</code>, cargá ocho registros de junio con esta estructura (acá, el ejemplo de Hotel Bahía Norte; si tu organización es otra, usá los nombres de campo y de categoría que te tocaron en la tabla de arriba):
+            <table class="tbl-activity" style="margin-top:0.5rem">
+              <tr><th>id</th><th>fecha</th><th>canal</th><th>tipo_habitacion</th><th>noches</th><th>tarifa_noche</th></tr>
+              <tr><td>1</td><td>03/06</td><td>Directo</td><td>Doble</td><td>3</td><td>45000</td></tr>
+              <tr><td>2</td><td>05/06</td><td>Booking</td><td>Suite</td><td>5</td><td>90000</td></tr>
+              <tr><td>3</td><td>08/06</td><td>Agencia</td><td>Individual</td><td>2</td><td>30000</td></tr>
+              <tr><td>4</td><td>10/06</td><td>Directo</td><td>Suite</td><td>4</td><td>90000</td></tr>
+              <tr><td>5</td><td>14/06</td><td>Booking</td><td>Doble</td><td>0</td><td>45000</td></tr>
+              <tr><td>6</td><td>18/06</td><td>Directo</td><td>Individual</td><td>6</td><td>30000</td></tr>
+              <tr><td>7</td><td>22/06</td><td>Agencia</td><td>Suite</td><td>3</td><td>90000</td></tr>
+              <tr><td>8</td><td>27/06</td><td>Booking</td><td>Doble</td><td>6</td><td>45000</td></tr>
+            </table>
+          </li>
+          <li>La columna <code>id</code> es una serie simple: escribí <code>1</code> y <code>2</code> en las dos primeras filas, seleccioná ambas celdas y usá el controlador de relleno (el cuadradito de la esquina inferior derecha) para completar del <code>3</code> al <code>8</code> arrastrando hacia abajo.</li>
+          <li>Dejá el registro <code>5</code> con cantidad en <code>0</code> tal como está en la tabla: no es un error de carga, es una reserva que se canceló y todavía tiene que aparecer en tus datos. Lo vas a necesitar más adelante.</li>
+        </ol>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -165,6 +287,23 @@
       <p class="callout-label">⚠️ Atención</p>
       <p>Antes de aplicar cualquier función o formato, seleccioná primero el rango correcto. La mayoría de los errores en planillas nuevas vienen de aplicar algo sobre el rango equivocado: una fila de más, una columna de menos.</p>
     </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Un primer cálculo, sin funciones</h3>
+      </div>
+      <div class="prose">
+        <p>Retomá la hoja <code>DATOS</code> de la Actividad 01. Antes de conocer las funciones de la próxima sección, vas a calcular el importe de cada registro sumando y multiplicando celda por celda.</p>
+        <ol>
+          <li>Agregá una columna <strong><code>importe_bruto</code></strong> y, para el primer registro, escribí la multiplicación de la cantidad por el valor unitario (por ejemplo <code>=E2*F2</code>, ajustá las letras según dónde te hayan quedado <code>noches</code> y <code>tarifa_noche</code>, o los campos equivalentes de tu organización).</li>
+          <li>Copiá esa fórmula hacia abajo con el controlador de relleno para los ocho registros. El registro con cantidad <code>0</code> tiene que dar <code>importe_bruto</code> igual a <code>0</code>, no en blanco ni con error.</li>
+          <li>En una celda aparte, sumá el total general escribiendo, celda por celda, la suma de los ocho importes (por ejemplo <code>=G2+G3+G4+G5+G6+G7+G8+G9</code>).</li>
+          <li>Agregá una columna <strong>"% del total"</strong> y calculá, para cada registro, qué porcentaje representa su <code>importe_bruto</code> sobre el total general. Aplicá formato de porcentaje desde Formato → Número → Porcentaje.</li>
+        </ol>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -175,10 +314,6 @@
     <h2 class="block-title">Referencias relativas y absolutas</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Tenés una fórmula que convierte un precio en pesos a dólares dividiendo por la cotización, que está escrita en una única celda. Si arrastrás esa fórmula hacia las diez filas de abajo, ¿qué creés que pasa con la celda de la cotización?</p>
-    </div>
-
     <p>Esta es la distinción más importante de la clase, y la que más confunde a quien recién empieza.</p>
 
     <img class="screenshot" src="../img/08-02-captura-referencia-formula.png" alt="Barra de fórmulas de Google Sheets con la celda B5 activa mostrando la fórmula =D4+G9">
@@ -215,34 +350,22 @@
       <p>Si tu planilla arroja errores <code>#N/A</code> o valores en blanco al arrastrar una fórmula, la primera sospecha debería ser una referencia que necesitabas fija y quedó relativa.</p>
     </div>
 
-    <h3>Actividad 2</h3>
     <div class="activity">
-      <ol>
-        <li>En una hoja nueva, armá esta tabla a partir de la fila 1:
-          <table class="tbl-activity" style="margin-top:0.5rem">
-            <tr><th>Producto</th><th>Precio USD</th></tr>
-            <tr><td>Auriculares</td><td>25</td></tr>
-            <tr><td>Mochila</td><td>40</td></tr>
-            <tr><td>Termo</td><td>18</td></tr>
-          </table>
-        </li>
-        <li>En una celda separada (por ejemplo <code>D1</code>), escribí "Cotización dólar" y en <code>D2</code> cargá un valor, por ejemplo <code>1050</code>.</li>
-        <li>Agregá una columna "Precio ARS" y calculá, para el primer producto, <code>=B2*$D$2</code>.</li>
-        <li>Usá el controlador de relleno para copiar la fórmula hacia abajo. Verificá que los tres productos muestren un resultado correcto, si alguno da error o queda en blanco, revisá que hayas fijado <code>D2</code> con <code>$</code>.</li>
-        <li>Cambiá el valor de la cotización en <code>D2</code>. Confirmá que los tres precios en pesos se recalculan solos.</li>
-      </ol>
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>La comisión, con referencia absoluta</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En una celda aparte de <code>DATOS</code> (por ejemplo <code>J1</code>), escribí el texto "Comisión" y en <code>J2</code> cargá el porcentaje de comisión de tu organización (de la tabla de la Actividad 01), en formato porcentaje.</li>
+          <li>Agregá una columna <strong><code>importe_neto</code></strong> y calculá, para el primer registro, el <code>importe_bruto</code> menos la comisión: <code>=G2*(1-$J$2)</code> (ajustá la letra de <code>importe_bruto</code> si te quedó en otra columna).</li>
+          <li>Copiá la fórmula hacia abajo con el controlador de relleno. Si alguna fila da un resultado sin sentido, revisá que hayas fijado <code>J2</code> con <code>$</code> (o presioná <code>F4</code> sobre la referencia para fijarla automáticamente, en Mac: <code>⌘+T</code> o <code>Fn+F4</code>).</li>
+          <li>Cambiá el valor de <code>J2</code>. Confirmá que los ocho <code>importe_neto</code> se recalculan solos, incluido el registro con <code>importe_bruto</code> en <code>0</code>, que tiene que seguir dando <code>0</code>.</li>
+          <li>Aparte de <code>DATOS</code>, armá una tabla chica para practicar la referencia mixta: fila 1 con dos precios (<code>B1:C1</code>) y columna A con dos porcentajes de descuento (<code>A2:A3</code>). En <code>B2</code>, calculá el precio con descuento usando <code>=B$1*(1-$A2)</code> y copiala hacia toda la tabla (derecha y abajo con un solo arrastre).</li>
+        </ol>
+      </div>
     </div>
 
-    <h3>Actividad 2 · Extra</h3>
-    <div class="activity">
-      <p><strong>Referencias mixtas: fijar solo la fila o solo la columna.</strong></p>
-      <ol>
-        <li>En una hoja nueva, armá una tabla de multiplicar: en la fila 1 (celdas B1:F1) cargá los números 1 a 5; en la columna A (A2:A6) cargá también los números 1 a 5.</li>
-        <li>En la celda <code>B2</code>, escribí una fórmula que multiplique el valor de la fila 1 por el valor de la columna A, usando referencias mixtas: <code>=B$1*$A2</code>.</li>
-        <li>Copiá esa fórmula hacia toda la tabla (arrastrando primero hacia la derecha, después seleccionando toda la fila 2 y arrastrando hacia abajo). Si las referencias mixtas están bien puestas, obtenés una tabla de multiplicar completa con una sola fórmula.</li>
-        <li>Explicá con tus palabras por qué <code>B$1</code> necesita la fila fija y <code>$A2</code> necesita la columna fija, y no al revés.</li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -253,10 +376,6 @@
     <h2 class="block-title">Funciones matemáticas esenciales</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>¿Cómo escribirías, sin usar ninguna función, la fórmula para sumar 300 celdas? ¿Y para calcular el promedio de esas mismas 300 celdas a mano, una por una?</p>
-    </div>
-
     <h3>Qué es una función</h3>
     <p>Una fórmula como <code>=A1+A2+A3+A4+A5</code> funciona, pero se vuelve inmanejable si en vez de 5 celdas tenés 500. Una <strong>función</strong> es una fórmula predefinida por Sheets que resuelve una operación común con una sintaxis breve.</p>
     <p>Toda función tiene la misma estructura:</p>
@@ -296,36 +415,24 @@
       <p>Podés escribir la función completa a mano o dejar que Sheets te sugiera el autocompletado apenas empezás a tipear <code>=SUM</code>, aparece una ayuda con la sintaxis exacta y una breve descripción. Usala para no memorizar el orden de los argumentos de memoria.</p>
     </div>
 
-    <h3>Actividad 3</h3>
     <div class="activity">
-      <p><strong>Vas a armar una planilla de gastos para un viaje de egresados.</strong></p>
-      <ol>
-        <li>En una hoja nueva, cargá esta tabla desde <code>A1</code>:
-          <table class="tbl-activity" style="margin-top:0.5rem">
-            <tr><th>Categoría</th><th>Enero</th><th>Febrero</th><th>Marzo</th></tr>
-            <tr><td>Alojamiento</td><td>45000</td><td>38000</td><td>52000</td></tr>
-            <tr><td>Comida</td><td>22000</td><td>25000</td><td>19000</td></tr>
-            <tr><td>Transporte</td><td>15000</td><td>12000</td><td>18000</td></tr>
-            <tr><td>Excursiones</td><td>30000</td><td>0</td><td>41000</td></tr>
-          </table>
-        </li>
-        <li>Agregá una columna "Total categoría" y calculá, para cada fila, la suma de los tres meses con <code>SUMA</code>.</li>
-        <li>Agregá una fila "Total mes" debajo de la tabla y calculá, para cada mes, la suma de las cuatro categorías.</li>
-        <li>En una celda aparte, calculá el <strong>promedio</strong> mensual de la categoría "Comida" con <code>PROMEDIO</code>.</li>
-        <li>Calculá el gasto <strong>máximo</strong> y <strong>mínimo</strong> registrado en toda la tabla con <code>MAX</code> y <code>MIN</code>.</li>
-        <li>En otra celda, usá <code>CONTAR</code> sobre el rango de meses de "Excursiones" para verificar que reconoce el 0 de Febrero como un valor numérico válido (el resultado debe ser 3, no 2).</li>
-      </ol>
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>El panel RESUMEN</h3>
+      </div>
+      <div class="prose">
+        <p>Es lo que pidió la coordinación: no ocho filas sueltas, sino un panel que se lea de un vistazo. Va en una hoja aparte.</p>
+        <ol>
+          <li>Creá una hoja nueva y renombrala <strong><code>RESUMEN</code></strong>.</li>
+          <li>Reemplazá, en <code>DATOS</code>, el "% del total" de la Actividad 02 (el que calculaste sin funciones) por uno que use <code>SUMA</code> en el denominador, y confirmá que da el mismo resultado que antes.</li>
+          <li>En <code>RESUMEN</code>, calculá con <code>SUMA</code> el <strong>total bruto</strong> y el <strong>total neto</strong> de los ocho registros de <code>DATOS</code>.</li>
+          <li>Calculá el <strong>promedio</strong> del <code>importe_bruto</code> con <code>PROMEDIO</code>, y el <strong>máximo</strong> y el <strong>mínimo</strong> con <code>MAX</code> y <code>MIN</code>.</li>
+          <li>Con <code>CONTAR</code> sobre la columna de cantidad de <code>DATOS</code>, confirmá que el resultado es <strong>8</strong> (el registro en cero cuenta como valor numérico, no como celda vacía).</li>
+          <li>Con <code>CONTARA</code> sobre la columna del campo que agrupa tu organización (canal, sede, turno o responsable), agregá el indicador <strong>"Registros cargados"</strong>. Borrá el contenido de una celda de esa columna en <code>DATOS</code> (dejala vacía) y confirmá que el resultado baja en uno; después probá qué te devuelve <code>CONTAR</code> sobre esa misma columna de texto. Volvé a cargar el valor que borraste antes de seguir.</li>
+        </ol>
+      </div>
     </div>
 
-    <h3>Actividad 3 · Extra</h3>
-    <div class="activity">
-      <ol>
-        <li>Agregá una columna "Responsable" a la izquierda de "Categoría" y cargá un nombre en cada fila (podés repetir nombres).</li>
-        <li>Calculá con <code>CONTARA</code> cuántas filas de responsables hay cargadas.</li>
-        <li>Borrá el contenido de una celda de la columna "Responsable" (dejala vacía) y verificá que el resultado de <code>CONTARA</code> baja en uno.</li>
-        <li>Reflexioná: si hubieras usado <code>CONTAR</code> en lugar de <code>CONTARA</code> sobre esa misma columna, ¿qué resultado te habría dado? Probalo.</li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -336,10 +443,6 @@
     <h2 class="block-title">Formato condicional</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Tenés una planilla con 200 filas de gastos. ¿Cómo harías para detectar, sin leer fila por fila, cuáles superan tu presupuesto?</p>
-    </div>
-
     <h3>Qué resuelve</h3>
     <p>Una tabla con cien filas de números es difícil de leer a simple vista. El <strong>formato condicional</strong> aplica automáticamente un estilo visual (color de fondo, color de fuente) a las celdas que cumplen una condición que vos definís. No cambia el dato, cambia cómo se ve.</p>
 
@@ -356,7 +459,7 @@
       <li>Definí la condición y el formato a aplicar, y hacé clic en <strong>Listo</strong>.</li>
     </ol>
 
-    <img class="screenshot" src="../img/08-03-captura-formato-condicional.png" alt="Panel de Formato condicional en Google Sheets, con la regla Es igual a 0 aplicada al rango A1:A1000 y estilo de formato personalizado en rojo">
+    <img class="screenshot screenshot-cond" src="../img/08-03-captura-formato-condicional.png" alt="Panel de Formato condicional en Google Sheets, con la regla Es igual a 0 aplicada al rango A1:A1000 y estilo de formato personalizado en rojo">
     <p class="screenshot-caption">El panel de Formato condicional: elegís el rango, la condición ("Es igual a", "Es mayor que"...) y el estilo: acá, fondo rojo para marcar un caso puntual.</p>
 
     <h3>Casos de uso frecuentes</h3>
@@ -382,23 +485,30 @@
       <p>El formato condicional se aplica al rango que tenías seleccionado en el momento de crear la regla. Si después agregás filas nuevas por fuera de ese rango, no van a heredar el formato, hay que editar la regla y extender el rango, o aplicarla sobre una columna completa desde el principio.</p>
     </div>
 
-    <h3>Actividad 4</h3>
     <div class="activity">
-      <ol>
-        <li>Sobre la tabla de gastos de la Actividad 3, seleccioná el rango de valores (sin encabezados) y aplicá una <strong>escala de color</strong> para visualizar en qué categoría y mes se concentraron los gastos más altos.</li>
-        <li>En una copia de la fila "Total mes", aplicá una regla de un solo color: fondo rojo y fuente blanca para los meses cuyo total supere los $110.000.</li>
-        <li>Agregá una columna "Estado" con el texto "revisar" en al menos dos filas y el resto vacío. Aplicá una regla que resalte en amarillo las celdas de esa columna que contengan la palabra "revisar".</li>
-        <li>Cambiá un valor de la tabla de forma que un mes que antes no superaba $110.000 ahora sí lo supere. Confirmá que el formato condicional se actualiza sin que tengas que tocar nada más.</li>
-      </ol>
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05</span>
+        <h3>Formato condicional sobre los registros de junio</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>DATOS</code>, seleccioná la columna <code>importe_bruto</code> (sin encabezado) y aplicá una <strong>escala de color</strong> para ver de un vistazo los registros más altos y más bajos.</li>
+          <li>Sobre <code>importe_neto</code>, aplicá una regla de un solo color: fondo rojo y fuente blanca para los registros por debajo de $20.000.</li>
+          <li>Sobre <code>importe_bruto</code>, aplicá una segunda regla de un solo color, <strong>amarilla</strong>, para los registros que lleguen o superen el umbral "alto valor" de tu organización (de la tabla de la Actividad 01). Escribí el número directo en la condición de la regla, todavía no hace falta que viva en una celda. Tienen que quedar en amarillo <strong>tres o cuatro</strong> registros: si te queda un número muy distinto, revisá el umbral que usaste.</li>
+          <li>Sobre <code>importe_bruto</code>, aplicá una regla con <strong>fórmula personalizada</strong> que resalte en verde la fila con el valor máximo y en rojo la fila con el valor mínimo, comparando cada celda contra <code>MAX</code> o <code>MIN</code> del rango completo (fijalo con <code>$</code> para que la comparación no se mueva fila por fila).
+
+            <div class="screenshot-todo">
+              <span class="screenshot-todo-label">📷 Captura pendiente</span>
+              <span class="screenshot-todo-desc">Panel de Formato condicional de Google Sheets con "Formato de celdas" cambiado a "La fórmula personalizada es", mostrando una fórmula del tipo =B2=MAX($B$2:$B$9) cargada en el campo.</span>
+            </div>
+
+          </li>
+          <li>Si te trabás con la fórmula personalizada, pedile ayuda a una IA con un prompt específico: contale qué rango tenés y qué querés resaltar, y pedile la fórmula exacta para pegar en "fórmula personalizada". Verificá el resultado antes de darlo por bueno, no copies una fórmula que no entendés.</li>
+          <li>Cambiá el <code>tarifa_noche</code> (o el campo equivalente) de un registro que antes no llegaba al umbral, de forma que ahora sí lo supere. Confirmá que las cuatro reglas se actualizan solas, sin que tengas que tocar nada más.</li>
+        </ol>
+      </div>
     </div>
 
-    <h3>Actividad 4 · Extra</h3>
-    <div class="activity">
-      <ol>
-        <li>Sobre la columna "Total categoría", aplicá una regla que resalte en verde la fila con el valor máximo y en rojo la fila con el valor mínimo. Pista: podés usar una fórmula personalizada dentro de Formato condicional (opción "La fórmula personalizada es") comparando cada celda contra <code>MAX</code> o <code>MIN</code> del rango completo, para esto vas a necesitar fijar el rango con <code>$</code>.</li>
-        <li>Si te trabás, pedile ayuda a una IA con un prompt específico: contale qué rango tenés, qué querés resaltar, y pedile la fórmula exacta para pegar en "fórmula personalizada". Verificá el resultado antes de darlo por bueno, no copies una fórmula que no entendés.</li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -409,67 +519,85 @@
     <h2 class="block-title">Ejercicio integrador: de Google Sheets a Excel</h2>
   </div>
   <div class="prose">
-    <p>Cerramos la clase con un ejercicio único que obliga a usar <strong>todo</strong> lo visto hoy: referencias relativas y absolutas, las cinco funciones matemáticas y formato condicional. Lo armás primero en Google Sheets y después lo replicás en Excel, para practicar los dos entornos que vas a necesitar a lo largo del cuatrimestre.</p>
+    <p>Cerrás la clase sobre la misma planilla de gastos que venís armando desde la Actividad 01: le falta juntar todo en una sola vista y confirmar que aguanta un dato nuevo sin romperse. Lo hacés primero en Google Sheets y después lo replicás en Excel, para practicar los dos entornos que vas a necesitar a lo largo del cuatrimestre.</p>
 
-    <h3>Parte A · Google Sheets</h3>
-    <p><strong>Vas a armar el control de ventas semanal de un emprendimiento.</strong></p>
-    <ol>
-      <li>En una hoja nueva, cargá esta tabla desde <code>A1</code>:
-        <table class="tbl-activity" style="margin-top:0.5rem">
-          <tr><th>Producto</th><th>Precio unitario</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th></tr>
-          <tr><td>Velas aromáticas</td><td>3500</td><td>4</td><td>2</td><td>0</td><td>6</td><td>3</td></tr>
-          <tr><td>Jabones artesanales</td><td>1800</td><td>8</td><td>10</td><td>5</td><td>0</td><td>12</td></tr>
-          <tr><td>Sales de baño</td><td>2200</td><td>3</td><td>3</td><td>4</td><td>2</td><td>5</td></tr>
-          <tr><td>Difusores</td><td>5600</td><td>1</td><td>0</td><td>2</td><td>1</td><td>3</td></tr>
-        </table>
-      </li>
-      <li>En una celda aparte, cargá "Comisión de la plataforma" con un valor de <code>8%</code>. Esta celda es tu <strong>referencia absoluta</strong> para todo el ejercicio.</li>
-      <li>Agregá una columna <strong>"Unidades vendidas"</strong> con la suma de lunes a viernes (<code>SUMA</code>, referencia relativa).</li>
-      <li>Agregá una columna <strong>"Total vendido"</strong> que multiplique "Unidades vendidas" por "Precio unitario" (referencia relativa).</li>
-      <li>Agregá una columna <strong>"Total neto"</strong> que le reste a "Total vendido" la comisión de la plataforma, usando la celda de comisión con referencia absoluta (<code>$</code>).</li>
-      <li>Calculá, debajo de la tabla:
-        <ul>
-          <li>El <strong>total</strong> vendido en la semana (<code>SUMA</code>)</li>
-          <li>El <strong>promedio</strong> de unidades vendidas por día del producto "Jabones artesanales" (<code>PROMEDIO</code> sobre el rango de días de esa fila)</li>
-          <li>El producto con <strong>más</strong> y con <strong>menos</strong> unidades vendidas en la semana (<code>MAX</code>, <code>MIN</code>)</li>
-          <li>La cantidad de días de la semana en los que "Velas aromáticas" <strong>no tuvo ventas</strong>: pista: contás con <code>CONTAR</code> sobre el rango de días y comparás contra la cantidad total de días</li>
-        </ul>
-      </li>
-      <li>Aplicá <strong>formato condicional</strong>:
-        <ul>
-          <li>Escala de color sobre las celdas de ventas diarias (lunes a viernes), para ver de un vistazo los días fuertes y flojos</li>
-          <li>Una regla de un solo color que resalte en rojo los productos cuyo "Total neto" sea menor a $10.000</li>
-        </ul>
-      </li>
-    </ol>
-
-    <h3>Parte B · La misma planilla, en Excel</h3>
-    <p>Abrí Excel (de escritorio si tenés licencia, o Excel Online si no, con tu mail <code>@uvq.edu.ar</code> podés sacar gratis una cuenta de Microsoft 365 Educación en <a href="https://go.microsoft.com/fwlink/?linkid=2283200" target="_blank" rel="noopener">signup.microsoft.com</a> si todavía no tenés ninguna cuenta Microsoft, aunque esa cuenta gratuita es solo versión web) y reconstruí exactamente la misma tabla, las mismas fórmulas y el mismo formato condicional.</p>
-
-    <img class="screenshot" src="../img/08-04-captura-excel-inicio.png" alt="Libro1 en blanco abierto en Excel de escritorio, con la cinta en la pestaña Inicio y la celda A1 activa">
-    <p class="screenshot-caption">Excel de escritorio: misma lógica de celdas y filas que Sheets, pero con la cinta de pestañas (Inicio, Insertar, Disposición de página...) en vez del menú de Google.</p>
-
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Qué buscás</th><th>En Google Sheets</th><th>En Excel</th></tr></thead>
-        <tbody>
-          <tr><td>Fijar una referencia</td><td><code>F4</code></td><td><code>F4</code> (Windows) / <code>⌘+T</code> (Mac)</td></tr>
-          <tr><td>Formato condicional</td><td>Formato > Formato condicional</td><td>Pestaña <strong>Inicio</strong> > Estilos > Formato condicional</td></tr>
-          <tr><td>Separador de argumentos en funciones</td><td>Coma <code>,</code> o punto y coma <code>;</code> según configuración regional</td><td>Punto y coma <code>;</code> en configuración regional Argentina</td></tr>
-          <tr><td>Guardar el trabajo</td><td>Automático, en la nube</td><td>Manual, con <code>Ctrl+G</code>, elegí formato <code>.xlsx</code></td></tr>
-          <tr><td>Autosuma</td><td>Ícono Σ en la barra de herramientas</td><td>Ícono Σ en la pestaña <strong>Inicio</strong></td></tr>
-        </tbody>
-      </table>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 06 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Confirmá que tu archivo tiene, entre <code>DATOS</code> y <code>RESUMEN</code>: <code>importe_bruto</code> e <code>importe_neto</code> calculados, el panel con total, promedio, máximo, mínimo y registros cargados de la Actividad 04, y las cuatro reglas de formato condicional de la Actividad 05.</li>
+          <li>Creá una hoja <strong><code>LEEME</code></strong> y documentá: qué organización elegiste, qué significa cada columna de <code>DATOS</code>, en qué celda está la comisión y en qué celda (o regla) está el umbral "alto valor". Es la hoja que vas a ir actualizando en las próximas tres clases.</li>
+          <li>Agregá un noveno registro a <code>DATOS</code>, cargándolo solo con los datos base (fecha, campo que agrupa, categoría, cantidad, valor unitario). Confirmá que <code>importe_bruto</code>, <code>importe_neto</code> y las cuatro reglas de formato condicional se extienden solos a la fila nueva, sin que tengas que tocar nada. Si alguna no se extiende, revisá el rango de esa fórmula o esa regla.</li>
+          <li>Compartí el archivo con el docente como <strong>Editor</strong> (ver Clase 01 si no recordás el paso).</li>
+        </ol>
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+          <p><strong>Google Sheets.</strong> Cómo la justificás: construyo planillas con referencias relativas y absolutas correctamente diferenciadas, funciones matemáticas esenciales y formato condicional aplicado sobre datos reales, de modo que un archivo se pueda extender con registros nuevos sin corromper cálculos ni reglas.</p>
+        </div>
+        <div class="callout" data-type="action">
+          <p class="callout-label">📤 Entrega de la clase</p>
+          <p>Subí a Moodle el <strong>enlace</strong> de tu planilla con acceso de lectura habilitado, nombrada <code>2026-XX-XX_Informatica_Clase08_V01</code>. Guardá el archivo: lo vas a seguir usando en las próximas tres clases.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="callout" data-type="action">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>Es normal que algo no ande igual a la primera. Si una fórmula tira error en Excel, revisá primero el separador de argumentos, es la diferencia que más problemas genera al pasar de un programa al otro.</p>
-    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 06 · Parte B</span>
+        <h3>La misma planilla, en Excel</h3>
+      </div>
+      <div class="prose">
+        <div class="tools-container">
+          <div class="app-row">
+            <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+              <img class="row-icon" src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+              <div class="row-text">
+                <span class="row-name">Excel</span>
+                <span class="row-domain">office.com</span>
+              </div>
+            </a>
+            <div class="tags">
+              <span class="pill pill-freemium">Freemium</span>
+              <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+            </div>
+          </div>
+        </div>
+        <p>Abrí Excel (de escritorio si tenés licencia, o Excel Online si no, con tu mail <code>@uvq.edu.ar</code> podés sacar gratis una cuenta de Microsoft 365 Educación en <a href="https://go.microsoft.com/fwlink/?linkid=2283200" target="_blank" rel="noopener">signup.microsoft.com</a> si todavía no tenés ninguna cuenta Microsoft, aunque esa cuenta gratuita es solo versión web) y reconstruí exactamente la misma hoja <code>DATOS</code>, las mismas fórmulas y el mismo formato condicional de tu archivo de Sheets.</p>
 
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>No se trata de memorizar en qué menú está cada botón. Se trata de confirmar que la lógica, relativa vs. absoluta, cómo se arma una función, qué hace el formato condicional, es la misma sin importar el programa. Esa lógica es lo que te llevás de esta clase.</p>
+        <img class="screenshot" src="../img/08-04-captura-excel-inicio.png" alt="Libro1 en blanco abierto en Excel de escritorio, con la cinta en la pestaña Inicio y la celda A1 activa">
+        <p class="screenshot-caption">Excel de escritorio: misma lógica de celdas y filas que Sheets, pero con la cinta de pestañas (Inicio, Insertar, Disposición de página...) en vez del menú de Google.</p>
+
+        <div class="table-wrap">
+          <table class="tbl-wide">
+            <thead><tr><th>Qué buscás</th><th>En Google Sheets</th><th>En Excel</th></tr></thead>
+            <tbody>
+              <tr><td>Fijar una referencia</td><td><code>F4</code></td><td><code>F4</code> (Windows) / <code>⌘+T</code> (Mac)</td></tr>
+              <tr><td>Formato condicional</td><td>Formato > Formato condicional</td><td>Pestaña <strong>Inicio</strong> > Estilos > Formato condicional</td></tr>
+              <tr><td>Separador de argumentos en funciones</td><td>Coma <code>,</code> o punto y coma <code>;</code> según configuración regional</td><td>Punto y coma <code>;</code> en configuración regional Argentina</td></tr>
+              <tr><td>Guardar el trabajo</td><td>Automático, en la nube</td><td>Manual, con <code>Ctrl+G</code>, elegí formato <code>.xlsx</code></td></tr>
+              <tr><td>Autosuma</td><td>Ícono Σ en la barra de herramientas</td><td>Ícono Σ en la pestaña <strong>Inicio</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" data-type="action">
+          <p class="callout-label">⚠️ Atención</p>
+          <p>Es normal que algo no ande igual a la primera. Si una fórmula tira error en Excel, revisá primero el separador de argumentos, es la diferencia que más problemas genera al pasar de un programa al otro.</p>
+        </div>
+
+        <div class="callout" data-type="idea">
+          <p class="callout-label">💡 Consejo</p>
+          <p>No se trata de memorizar en qué menú está cada botón. Se trata de confirmar que la lógica, relativa vs. absoluta, cómo se arma una función, qué hace el formato condicional, es la misma sin importar el programa. Esa lógica es lo que te llevás de esta clase.</p>
+        </div>
+
+        <div class="callout" data-type="linkedin">
+          <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+          <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel la misma lógica de referencias, funciones matemáticas y formato condicional que construyo en Google Sheets, adaptando separadores y menús según el idioma y la configuración regional.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -487,15 +615,14 @@
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-1" aria-label="Marcar como hecho"></td><td><label for="chk-08-1">Creé la planilla con el nombre exacto <code>2026-XX-XX_Informatica_Clase08_V01</code>, en la subcarpeta "Clase 08".</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-2" aria-label="Marcar como hecho"></td><td><label for="chk-08-2">Probé el controlador de relleno para copiar una fórmula y para continuar una serie.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-3" aria-label="Marcar como hecho"></td><td><label for="chk-08-3">Resolví la conversión de moneda con una referencia absoluta y comprobé que no se mueve al copiar la fórmula.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-4" aria-label="Marcar como hecho"></td><td><label for="chk-08-4">Apliqué <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>MAX</code> y <code>MIN</code> sobre el mismo rango de datos.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-5" aria-label="Marcar como hecho"></td><td><label for="chk-08-5">Apliqué una escala de color y una regla de un solo color en formato condicional.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-6" aria-label="Marcar como hecho"></td><td><label for="chk-08-6">Resolví el ejercicio integrador completo en Google Sheets.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-7" aria-label="Marcar como hecho"></td><td><label for="chk-08-7">Repliqué el mismo ejercicio en Excel y anoté al menos una diferencia entre los dos programas.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-8" aria-label="Marcar como hecho"></td><td><label for="chk-08-8">(Extra) Usé una fórmula personalizada en formato condicional.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-9" aria-label="Marcar como hecho"></td><td><label for="chk-08-9">Entregué en Moodle el enlace a la planilla, compartida con el docente como Editor.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-1" aria-label="Marcar como hecho"></td><td><label for="chk-08-1">Elegí una organización, creé el archivo con el nombre exacto <code>2026-XX-XX_Informatica_Clase08_V01</code> y cargué los ocho registros de junio en <code>DATOS</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-2" aria-label="Marcar como hecho"></td><td><label for="chk-08-2">Calculé <code>importe_bruto</code> y el porcentaje de cada registro sumando y multiplicando celda por celda, sin usar funciones.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-3" aria-label="Marcar como hecho"></td><td><label for="chk-08-3">Apliqué una referencia absoluta para calcular <code>importe_neto</code> con la comisión fija, y usé <code>F4</code> para fijarla.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-4" aria-label="Marcar como hecho"></td><td><label for="chk-08-4">Armé el panel <code>RESUMEN</code> con <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>CONTARA</code>, <code>MAX</code> y <code>MIN</code> sobre <code>DATOS</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-5" aria-label="Marcar como hecho"></td><td><label for="chk-08-5">Apliqué una escala de color, dos reglas de un solo color (incluida la amarilla de "alto valor") y una regla con fórmula personalizada en formato condicional.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-6" aria-label="Marcar como hecho"></td><td><label for="chk-08-6">Documenté el archivo en la hoja <code>LEEME</code>, agregué un registro nuevo y confirmé que fórmulas y formato condicional se extendieron solos.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-7" aria-label="Marcar como hecho"></td><td><label for="chk-08-7">Entregué en Moodle el enlace al archivo, compartido con el docente como Editor.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-8" aria-label="Marcar como hecho"></td><td><label for="chk-08-8">Repliqué <code>DATOS</code> completo en Excel y anoté al menos una diferencia entre los dos programas.</label></td></tr>
         </tbody>
       </table>
     </div>
@@ -506,7 +633,7 @@
     </div>
 
     <div class="callout" data-type="closing">
-      <p>Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Referencias relativas y absolutas son la gramática de esa dependencia, dominarlas es lo que separa "cargar datos" de "construir una herramienta que se actualiza sola".</p>
+      <p>Una referencia relativa cambia de fila en fila; una absoluta, fijada con el signo <code>$</code>, se queda igual. Elegir bien cuál usar en cada celda es lo que evita corregir a mano cada fila cuando la planilla crece.</p>
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>

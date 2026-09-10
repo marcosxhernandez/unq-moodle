@@ -26,6 +26,45 @@
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-transition" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.2 2"/><path d="M11 12 H13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 9.8 L14.6 12 L12.4 14.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-animation" viewBox="0 0 24 24"><path d="M13.5 3.5 L15.3 8.6 L20.5 8.8 L16.4 12.2 L17.8 17.3 L13.5 14.3 L9.2 17.3 L10.6 12.2 L6.5 8.8 L11.7 8.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10.5 H5.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.6 14 L5.4 13.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor"/></symbol>
+<symbol id="ti-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="9" y="2.5" width="6" height="3.4" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="14.5" x2="16" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="18" x2="13" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-quote" viewBox="0 0 24 24"><path d="M6 8 C6 8 4 9.5 4 12.5 C4 14.5 5.3 16 7 16 C8.4 16 9.5 14.9 9.5 13.5 C9.5 12.1 8.4 11 7 11 C6.7 11 6.4 11.1 6.1 11.2 C6.4 9.7 7.5 8.5 9 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 8 C14.5 8 12.5 9.5 12.5 12.5 C12.5 14.5 13.8 16 15.5 16 C16.9 16 18 14.9 18 13.5 C18 12.1 16.9 11 15.5 11 C15.2 11 14.9 11.1 14.6 11.2 C14.9 9.7 16 8.5 17.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-trophy" viewBox="0 0 24 24"><path d="M7 4 H17 V8 A5 5 0 0 1 7 8 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 5 H4 V7 A3 3 0 0 0 7 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 5 H20 V7 A3 3 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="13" x2="12" y2="17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 20.5 H16 M9 17.5 H15 L15.5 20.5 H8.5 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-new-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="9" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="ti-page" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5.5" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="8.5" y1="9.5" x2="8.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="11.5" y1="9.5" x2="11.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="14.5" y1="9.5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="17.5" y1="9.5" x2="17.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+<symbol id="ti-palette" viewBox="0 0 24 24"><path d="M12 3 C6.5 3 2 6.8 2 11.5 C2 15 4.5 16 6.5 16 H8 A2 2 0 0 1 10 18 V19 C10 20.5 11.2 21.5 12.8 21.2 C18 20.2 22 16.3 22 11.5 C22 6.8 17.5 3 12 3 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="10" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="12" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-link" viewBox="0 0 24 24"><path d="M9.5 14.5 L14.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 7 L13.5 4.5 A4 4 0 0 1 19.5 10.5 L17 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17 L10.5 19.5 A4 4 0 0 1 4.5 13.5 L7 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-comment" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 15.5 L8 19.5 L12.5 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-columns" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-mail-merge" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7 L12 13.5 L20.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-toc" viewBox="0 0 24 24"><line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="6" r="1" fill="currentColor"/><line x1="4" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="12" r="1" fill="currentColor"/><line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="18" r="1" fill="currentColor"/></symbol>
+<symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M5 6.5 A9 9 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 3.5 L19.5 9 L14 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17.5 A9 9 0 0 1 4.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 21 L4.5 15 L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-wrap-text" viewBox="0 0 24 24"><rect x="9" y="9" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="12.5" x2="8" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-bookmark" viewBox="0 0 24 24"><path d="M6 3.5 H18 V21 L12 16.5 L6 21 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+<symbol id="ti-suggest" viewBox="0 0 24 24"><path d="M4 17.5 L5 20 L7.5 19 L18 8.5 A1.8 1.8 0 0 0 15.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><line x1="14" y1="7.5" x2="16.5" y2="10" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-page-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M9.5 9.7 L12 12.2 L9.5 14.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-arc" viewBox="0 0 24 24"><path d="M3 17 C7 17 8 6 12 6 C16 6 15 12 21 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="3" cy="17" r="1.4" fill="currentColor"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="21" cy="10" r="1.4" fill="currentColor"/></symbol>
+</defs></svg>
+
 <section class="cover-page" data-num="10">
   <div class="cover-inner">
     <span class="cover-kicker">Clase 10 · Planilla de cálculo</span>
@@ -47,7 +86,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Hasta acá el archivo vivía en una hoja y cada fila cargaba su propio precio, su propia tarifa, su propio costo. Funciona con ocho registros; con ochocientos, cada cambio de tarifa es un incendio. Hoy la información de referencia se muda a su propia hoja, donde vive una sola vez, y se trae con una fórmula en el momento en que hace falta. Es exactamente lo que hacen las bases de datos reales. Y una vez que el cruce está hecho, hay que poder mostrarlo: elegir el gráfico que responde la pregunta, no el que la planilla sugiere por defecto.</p>
+  <p class="toc-intro">Hasta acá el archivo vivía en una hoja y cada fila cargaba su propio precio, su propia tarifa, su propio costo. Funciona con ocho registros, pero no escala: con cientos, cada cambio de tarifa obliga a revisar fila por fila sin ninguna garantía de no saltearse una. Hoy la información de referencia se muda a su propia hoja, donde vive una sola vez, y se trae con una fórmula en el momento en que hace falta, así organizan sus datos las bases de datos reales. Y una vez que el cruce está hecho, hay que poder mostrarlo: elegir el gráfico que responde la pregunta, no el que la planilla sugiere por defecto.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#varias-hojas"><span class="toc-num">01</span><span class="toc-text">Por qué separar datos en varias hojas</span></a></li>
@@ -69,9 +108,7 @@
     <h2 class="block-title">Por qué separar datos en varias hojas</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>En tu archivo, la tarifa o el costo unitario está escrito en cada fila. Si en agosto sube un 20%, ¿cuántas celdas tenés que tocar? ¿Y cómo sabés que no te olvidaste ninguna?</p>
-    </div>
+    <p>En tu archivo, la tarifa o el costo unitario está escrito en cada fila. Si en agosto sube un 20%, hay que tocar una celda por cada fila que la usa, y no queda ningún registro de si te olvidaste alguna.</p>
 
     <h3>De dónde venimos</h3>
     <p>En las clases anteriores armaste, para una de cuatro organizaciones, un archivo con la hoja <code>DATOS</code> (registros de junio, con importe bruto, importe neto y una columna <code>estado</code> que clasifica sola), un panel <code>RESUMEN</code> con subtotales por área, una hoja <code>LISTAS</code> que alimenta las validaciones y un <code>LEEME</code>. Hoy ese archivo suma una hoja más, y deja de repetir información.</p>
@@ -112,12 +149,23 @@
     <h2 class="block-title">El encargo de esta semana</h2>
   </div>
   <div class="prose">
+    <div class="tools-container">
+      <a class="app-row" href="https://sheets.google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+        <div class="row-text">
+          <span class="row-name">Google Sheets</span>
+          <span class="row-domain">sheets.google.com</span>
+        </div>
+        <span class="pill pill-free">Gratis</span>
+      </a>
+    </div>
+
     <div class="brief">
       <span class="brief-kind">Correo electrónico</span>
       <div class="brief-meta">
         <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
         <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
-        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Actualización de valores: y algo para mostrar en la reunión</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Actualización de valores, y algo para mostrar en la reunión</span></div>
       </div>
       <div class="brief-body">
         <p>Dos cosas.</p>
@@ -210,10 +258,7 @@
     <h2 class="block-title">BUSCARV</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Si tenés en cada fila el nombre de una categoría y, en otra hoja, una tabla con todas las categorías y sus datos, ¿cómo le pedirías a la planilla que "busque esta categoría y me traiga el valor que está tres columnas más a la derecha"?</p>
-    </div>
-    <p><code>BUSCARV</code> (búsqueda vertical) resuelve exactamente ese problema: busca un valor en la primera columna de un rango y devuelve el valor de otra columna de esa misma fila.</p>
+    <p>Tenés en cada fila el nombre de una categoría y, en otra hoja, una tabla con todas las categorías y sus datos. <code>BUSCARV</code> (búsqueda vertical) es la función que le pide a la planilla "buscá esta categoría y traeme el valor que está tres columnas más a la derecha": busca un valor en la primera columna de un rango y devuelve el valor de otra columna de esa misma fila.</p>
 
     <h3>Sintaxis</h3>
 <div class="code-block">=BUSCARV(valor_buscado; rango; índice; [ordenado])</div>
@@ -239,56 +284,37 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 1 · Ejemplo mínimo</span>
-        <h3>Dos tablas chiquitas</h3>
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Traer el valor oficial desde su propia hoja</h3>
       </div>
       <div class="prose">
+        <p>Antes de tocar tu archivo, dos tablas chiquitas para aislar la mecánica.</p>
         <ol>
-          <li>En una hoja nueva llamada <code>Productos</code>, cargá cuatro filas: <code>P001</code> Cuaderno Papelería 850 · <code>P002</code> Mochila Accesorios 15000 · <code>P003</code> Resma A4 Papelería 4200 · <code>P004</code> Cartuchera Accesorios 6500.</li>
-          <li>En otra hoja llamada <code>Pedidos</code>, cargá tres filas con código y cantidad: <code>P002</code> 2 · <code>P001</code> 10 · <code>P004</code> 1.</li>
-          <li>En <code>Pedidos</code>, traé el nombre y el precio con <code>BUSCARV</code>, y agregá una columna "Total" (cantidad × precio). Deberías obtener 30.000, 8.500 y 6.500.</li>
-          <li>Cambiá el precio del Cuaderno en <code>Productos</code> y confirmá que el total de <code>Pedidos</code> se actualiza solo. Eso es lo que no pasaba cuando el precio estaba copiado en cada fila.</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 2 · Sobre el encargo</span>
-        <h3>Mudar el valor oficial a su hoja</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>Creá una hoja <strong><code>REFERENCIA</code></strong> y cargá la tabla de tu organización, con los encabezados en la fila 1.</li>
+          <li>En una hoja nueva llamada <code>Productos</code>, cargá cuatro filas: <code>P001</code> Cuaderno Papelería 850 · <code>P002</code> Mochila Accesorios 15000 · <code>P003</code> Resma A4 Papelería 4200 · <code>P004</code> Cartuchera Accesorios 6500. En otra hoja llamada <code>Pedidos</code>, cargá tres filas con código y cantidad: <code>P002</code> 2 · <code>P001</code> 10 · <code>P004</code> 1.</li>
+          <li>En <code>Pedidos</code>, traé el nombre y el precio con <code>BUSCARV</code>, y agregá una columna "Total" (cantidad × precio). Deberías obtener 30.000, 8.500 y 6.500. Cambiá el precio del Cuaderno en <code>Productos</code> y confirmá que el total de <code>Pedidos</code> se actualiza solo: eso es lo que no pasaba cuando el precio estaba copiado en cada fila.</li>
+          <li>Creá en tu archivo una hoja <strong><code>REFERENCIA</code></strong> y cargá la tabla de tu organización, con los encabezados en la fila 1.</li>
           <li>En <code>DATOS</code>, agregá una columna <strong><code>valor_vigente</code></strong> que traiga con <code>BUSCARV</code> el valor unitario desde <code>REFERENCIA</code>, buscando por la <strong>categoría</strong> de cada fila (tipo de habitación / tipo de actividad / línea / formato). Rango absoluto, valor buscado relativo, coincidencia exacta.
             <div class="callout" data-type="warning">
               <p class="callout-label">⚠️ Atención</p>
               <p>Para que <code>BUSCARV</code> encuentre la categoría, esta tiene que ser la <strong>primera columna del rango</strong> que le pasás. En las tablas de arriba la primera columna es el código, así que el rango tiene que empezar en la columna de la categoría, no en la del código.</p>
             </div>
+
+            <div class="screenshot-todo">
+              <span class="screenshot-todo-label">📷 Captura pendiente</span>
+              <span class="screenshot-todo-desc">Barra de fórmulas de Google Sheets con la celda de valor_vigente activa en la hoja DATOS, mostrando la fórmula BUSCARV completa (con el rango de REFERENCIA fijado con $) y el resultado ya calculado en la celda.</span>
+            </div>
+
           </li>
           <li><strong>Control:</strong> la columna <code>valor_vigente</code> tiene que dar exactamente lo mismo que la columna de valor unitario que ya tenías. Si alguna fila difiere, encontraste un valor que alguien había cambiado a mano, que es justamente lo que denuncia el correo.</li>
           <li>Agregá una columna más con el <strong>valor de contexto</strong> (capacidad / área temática / lote nominal / horas estimadas) y otra con el <strong>responsable</strong>, ambas con <code>BUSCARV</code> sobre la misma tabla, cambiando solo el índice.</li>
           <li>Ahora reemplazá la columna vieja de valor unitario por <code>valor_vigente</code> en el cálculo de <code>importe_bruto</code>. Verificá que el total del panel <code>RESUMEN</code> no cambió.</li>
           <li><strong>Probá el efecto:</strong> subí un 20% un valor en <code>REFERENCIA</code> y mirá cómo se recalculan las filas afectadas, el importe neto, la columna <code>estado</code> y los subtotales, todo de una vez. Después devolvelo.</li>
+          <li><strong>Cuando no encuentra:</strong> en una celda de prueba fuera de la tabla, escribí una búsqueda con una categoría que no exista en <code>REFERENCIA</code>, por ejemplo la misma pero en minúsculas, y observá el <code>#N/A</code>. Envolvé esa fórmula con <code>SIERROR</code> para que muestre <code>"Revisar categoría"</code> en lugar del error: <code>=SIERROR(BUSCARV(...); "Revisar categoría")</code>. Aplicá <code>SIERROR</code> a las tres columnas que trajiste. Un <code>#N/A</code> en pantalla le dice a quien abre el archivo que está roto; un "Revisar categoría" le dice qué hacer.</li>
         </ol>
         <div class="callout" data-type="linkedin">
           <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-          <p><strong>Google Sheets.</strong> Cómo la justificás: conecto tablas alojadas en hojas distintas con funciones de búsqueda, manteniendo cada dato de referencia en una única fuente de verdad en lugar de duplicarlo fila por fila.</p>
+          <p><strong>Google Sheets.</strong> Cómo la justificás: conecto tablas alojadas en hojas distintas con funciones de búsqueda, manteniendo cada dato de referencia en una única fuente de verdad en lugar de duplicarlo fila por fila, y controlo el caso de valor no encontrado en vez de dejar un error a la vista.</p>
         </div>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 2 · Extra</span>
-        <h3>Cuando no encuentra</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>En una celda de prueba <strong>fuera</strong> de la tabla, escribí una búsqueda con una categoría que no exista en <code>REFERENCIA</code>: por ejemplo, la misma pero en minúsculas. Observá el <code>#N/A</code>.</li>
-          <li>Envolvé esa fórmula con <code>SIERROR</code> para que muestre <code>"Revisar categoría"</code> en lugar del error: <code>=SIERROR(BUSCARV(...); "Revisar categoría")</code>.</li>
-          <li>Aplicá <code>SIERROR</code> a las tres columnas que trajiste en la Actividad 2. Un <code>#N/A</code> en pantalla le dice a quien abre el archivo que está roto; un "Revisar categoría" le dice qué hacer.</li>
-        </ol>
       </div>
     </div>
   </div>
@@ -334,24 +360,16 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 3 · Ejemplo mínimo</span>
-        <h3>La misma búsqueda, más corta</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>Sobre las hojas <code>Productos</code> y <code>Pedidos</code> de la Actividad 1, traé la categoría del producto con <code>BUSCARX</code> en lugar de <code>BUSCARV</code>, usando <code>si_no_hay_valor</code> con el texto "Revisar código".</li>
-          <li>Agregá una fila en <code>Pedidos</code> con el código <code>P999</code>. Confirmá que <code>BUSCARX</code> muestra el texto de reemplazo mientras que el <code>BUSCARV</code> de al lado muestra <code>#N/A</code>.</li>
-          <li>En <code>Productos</code>, insertá una columna nueva entre "Nombre" y "Categoría". Mirá qué le pasa al <code>BUSCARV</code> y qué le pasa al <code>BUSCARX</code>. Esa diferencia es la razón práctica más fuerte para preferir <code>BUSCARX</code>.</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 4 · Sobre el encargo</span>
+        <span class="activity-eyebrow">Actividad 02</span>
         <h3>El indicador que la coordinación no podía calcular</h3>
       </div>
       <div class="prose">
+        <p>Antes de tocar tu archivo, la misma búsqueda de la actividad anterior, pero más corta.</p>
+        <ol>
+          <li>Sobre las hojas <code>Productos</code> y <code>Pedidos</code> de la Actividad 01, traé la categoría del producto con <code>BUSCARX</code> en lugar de <code>BUSCARV</code>, usando <code>si_no_hay_valor</code> con el texto "Revisar código". Agregá una fila en <code>Pedidos</code> con el código <code>P999</code>: confirmá que <code>BUSCARX</code> muestra el texto de reemplazo mientras que el <code>BUSCARV</code> de al lado muestra <code>#N/A</code>.</li>
+          <li>En <code>Productos</code>, insertá una columna nueva entre "Nombre" y "Categoría". Mirá qué le pasa al <code>BUSCARV</code> (se desfasa y trae otra columna, sin avisar) y qué le pasa al <code>BUSCARX</code> (nada, sigue apuntando a la misma). Esa diferencia es la razón práctica más fuerte para preferir <code>BUSCARX</code>. Sacá la columna que insertaste antes de seguir.</li>
+          <li><strong>Buscar hacia la izquierda:</strong> en <code>REFERENCIA</code>, movés la columna del valor unitario para que quede a la <strong>izquierda</strong> de la columna de categoría. Intentá traer el valor con <code>BUSCARV</code> y confirmá que no hay forma sin reorganizar la tabla. Resolvé el mismo caso con <code>BUSCARX</code>, que no depende de cuál es "la primera" columna. Devolvé la tabla a su orden original y verificá que ninguna otra fórmula del archivo quedó rota.</li>
+        </ol>
         <p>Ahora que tenés el valor de contexto en cada fila, aparece una pregunta nueva. Es distinta según la organización, pero la fórmula es la misma: un cociente entre lo real y lo de referencia.</p>
         <div class="table-wrap">
           <table class="tbl-wide">
@@ -364,7 +382,7 @@
             </tbody>
           </table>
         </div>
-        <ol>
+        <ol start="4">
           <li>Agregá esa columna en <code>DATOS</code>, con <code>BUSCARX</code> trayendo el valor de contexto desde <code>REFERENCIA</code> dentro de la misma fórmula del cociente. Dale formato de porcentaje.</li>
           <li>Aplicá formato condicional: rojo por debajo del 70%, verde por encima del 100%.</li>
           <li>Agregá al panel <code>RESUMEN</code> el <strong>promedio</strong> de ese indicador y, con <code>CONTAR.SI</code>, <strong>cuántos registros están por debajo del 70%</strong>.</li>
@@ -374,21 +392,6 @@
           <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
           <p><strong>Microsoft Excel.</strong> Cómo la justificás: cruzo información entre tablas con <code>BUSCARV</code> y <code>BUSCARX</code>, con manejo explícito del caso "no encontrado", y construyo indicadores de desempeño comparando el valor real de cada registro contra su valor de referencia.</p>
         </div>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 4 · Extra</span>
-        <h3>Buscar hacia la izquierda</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>En <code>REFERENCIA</code>, movés la columna del valor unitario para que quede <strong>a la izquierda</strong> de la columna de categoría.</li>
-          <li>Intentá traer el valor con <code>BUSCARV</code>. Confirmá que no hay forma sin reorganizar la tabla.</li>
-          <li>Resolvé el mismo caso con <code>BUSCARX</code>, que no depende de cuál es "la primera" columna.</li>
-          <li>Devolvé la tabla a su orden original y verificá que ninguna otra fórmula del archivo quedó rota.</li>
-        </ol>
       </div>
     </div>
   </div>
@@ -401,10 +404,7 @@
     <h2 class="block-title">Gráficos con propósito</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>La coordinación pidió "un gráfico que se entienda sin que yo lo explique". Con los datos que ya tenés podrías hacer cinco gráficos distintos. ¿Cuál de todos responde la pregunta que esa persona va a tener que contestar en la reunión?</p>
-    </div>
-    <p>Un gráfico no es una decoración: es una herramienta de comunicación. El tipo que elegís tiene que responder al tipo de pregunta que el dato está contestando.</p>
+    <p>La coordinación pidió "un gráfico que se entienda sin que yo lo explique". Con los datos que ya tenés podrías hacer cinco gráficos distintos, y solo uno responde la pregunta que esa persona va a tener que contestar en la reunión. El gráfico que elegís es una herramienta de comunicación: tiene que responder al tipo de pregunta que el dato está contestando.</p>
 
     <h3>Cómo elegir el tipo de gráfico</h3>
     <div class="table-wrap">
@@ -431,7 +431,10 @@
       <li>En el <strong>Editor de gráficos</strong>, pestaña "Configuración", cambiá el tipo si hace falta.</li>
       <li>En la pestaña "Personalizar", ajustá el título del gráfico, los títulos de los ejes y la leyenda.</li>
     </ol>
-    <p class="photo-note">📷 Imagen pendiente: Editor de gráficos de Google Sheets con un gráfico de columnas configurado, mostrando las pestañas Configuración y Personalizar</p>
+    <div class="screenshot-todo">
+      <span class="screenshot-todo-label">📷 Captura pendiente</span>
+      <span class="screenshot-todo-desc">Editor de gráficos de Google Sheets con un gráfico de columnas configurado, mostrando las pestañas Configuración y Personalizar.</span>
+    </div>
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Consejo: El título hace la mitad del trabajo</p>
       <p>Un buen título responde a la pregunta que el gráfico contesta, no describe los ejes. "Importe por canal" describe los ejes. "Tres de cada cuatro pesos entran por agencias online" cuenta lo que el gráfico muestra, y es lo que la coordinación va a repetir en la reunión.</p>
@@ -439,50 +442,30 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 5 · Ejemplo mínimo</span>
-        <h3>El mismo dato, dos gráficos</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>Con los totales por producto de la Actividad 1, insertá un gráfico <strong>circular</strong> y después uno de <strong>barras</strong> con los mismos datos.</li>
-          <li>Miralos uno al lado del otro treinta segundos. ¿En cuál te resulta más fácil decir cuál es el segundo más grande?</li>
-          <li>Escribí un título para el que hayas elegido, con forma de afirmación y no de rótulo.</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 6 · Sobre el encargo</span>
+        <span class="activity-eyebrow">Actividad 03</span>
         <h3>El gráfico de la reunión</h3>
       </div>
       <div class="prose">
-        <p>Uno solo. El pedido fue explícito.</p>
+        <p>Antes de tocar tu archivo, el mismo dato en dos gráficos distintos.</p>
         <ol>
+          <li>Con los totales por producto de la Actividad 01, insertá un gráfico <strong>circular</strong> y después uno de <strong>barras</strong> con los mismos datos. Miralos uno al lado del otro treinta segundos: ¿en cuál te resulta más fácil decir cuál es el segundo más grande? Escribí un título para el que hayas elegido, con forma de afirmación y no de rótulo.</li>
           <li>Sobre la tabla de subtotales por área que armaste con <code>SUMAR.SI</code>, insertá un gráfico de <strong>barras o columnas</strong> comparando el importe bruto de cada canal / sede / turno / responsable.</li>
           <li><strong>Ordená las barras de mayor a menor.</strong> Un gráfico de comparación sin ordenar obliga a quien lo mira a hacer el trabajo de ordenar mentalmente.</li>
           <li>Escribí un título que sea una <strong>afirmación sobre tus datos</strong>. Mirá los subtotales antes de escribirlo: en las cuatro organizaciones hay un área que concentra bastante más que las demás, y ese es el titular.</li>
           <li>Sacá la leyenda si el gráfico tiene una sola serie: no aporta nada y ocupa lugar. Etiquetá los valores directamente sobre las barras.</li>
           <li>Verificá que los números del gráfico coincidan con los del panel. Un gráfico que no reconcilia con la tabla de al lado destruye la confianza en las dos cosas.</li>
+          <li><strong>Variante, dos ejes:</strong> armá una tabla con cada área en filas y dos columnas, el importe bruto y el promedio del indicador porcentual de la Actividad 02. Insertá un gráfico combinado: el importe en <strong>columnas</strong> sobre el eje izquierdo, el porcentaje en <strong>líneas</strong> sobre el eje derecho, las magnitudes son incomparables y mezclarlas en un solo eje haría el gráfico ilegible.
+            <div class="screenshot-todo">
+              <span class="screenshot-todo-label">📷 Captura pendiente</span>
+              <span class="screenshot-todo-desc">Editor de gráficos de Google Sheets con un gráfico combinado (columnas + líneas) configurado, pestaña Configuración mostrando la serie del indicador porcentual asignada al eje derecho.</span>
+            </div>
+          </li>
+          <li>Escribí un título que comunique la relación entre las dos series de la variante: ¿el área que más factura es también la que mejor rinde, o no?</li>
         </ol>
         <div class="callout" data-type="linkedin">
           <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-          <p><strong>Visualización de datos (Data Visualization).</strong> Cómo la justificás: elijo el tipo de gráfico según la pregunta que necesito responder (comparación, evolución, composición o correlación), ordeno las series para facilitar la lectura y titulo cada visualización con la conclusión que comunica, no con el nombre de los ejes.</p>
+          <p><strong>Visualización de datos (Data Visualization).</strong> Cómo la justificás: elijo el tipo de gráfico según la pregunta que necesito responder (comparación, evolución, composición o correlación), ordeno las series para facilitar la lectura, uso un eje secundario cuando comparo magnitudes distintas y titulo cada visualización con la conclusión que comunica, no con el nombre de los ejes.</p>
         </div>
-      </div>
-    </div>
-
-    <div class="activity">
-      <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 6 · Extra</span>
-        <h3>Gráfico combinado, dos ejes</h3>
-      </div>
-      <div class="prose">
-        <ol>
-          <li>Armá una tabla con cada área en filas y dos columnas: el <strong>importe bruto</strong> y el <strong>promedio del indicador porcentual</strong> de la Actividad 4.</li>
-          <li>Insertá un gráfico combinado: el importe en <strong>columnas</strong> sobre el eje izquierdo, el porcentaje en <strong>líneas</strong> sobre el eje derecho. Las magnitudes son incomparables y mezclarlas en un solo eje haría el gráfico ilegible.</li>
-          <li>Escribí un título que comunique la relación entre las dos series: ¿el área que más factura es también la que mejor rinde, o no?</li>
-        </ol>
       </div>
     </div>
   </div>
@@ -497,7 +480,7 @@
   <div class="prose">
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 7 · Parte A</span>
+        <span class="activity-eyebrow">Actividad 04 · Parte A</span>
         <h3>Dejar el archivo entregable</h3>
       </div>
       <div class="prose">
@@ -511,10 +494,25 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 7 · Parte B</span>
+        <span class="activity-eyebrow">Actividad 04 · Parte B</span>
         <h3>La misma planilla, en Excel</h3>
       </div>
       <div class="prose">
+        <div class="tools-container">
+          <div class="app-row">
+            <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+              <img class="row-icon" src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+              <div class="row-text">
+                <span class="row-name">Excel</span>
+                <span class="row-domain">office.com</span>
+              </div>
+            </a>
+            <div class="tags">
+              <span class="pill pill-freemium">Freemium</span>
+              <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+            </div>
+          </div>
+        </div>
         <p>Reconstruí en Excel la hoja <code>REFERENCIA</code>, las búsquedas y el gráfico.</p>
         <div class="table-wrap">
           <table class="tbl-wide">
@@ -561,23 +559,21 @@
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-1" aria-label="Marcar como hecho"></td><td><label for="chk-10-1">Referencio una celda de otra hoja con la sintaxis <code>Hoja!Celda</code>, y sé cuándo hacen falta comillas simples</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-2" aria-label="Marcar como hecho"></td><td><label for="chk-10-2">Explico por qué un dato que se repite y puede cambiar tiene que vivir en una sola hoja de referencia</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-3" aria-label="Marcar como hecho"></td><td><label for="chk-10-3">Escribo <code>BUSCARV</code> con rango absoluto y <code>valor_buscado</code> relativo, con coincidencia exacta</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-4" aria-label="Marcar como hecho"></td><td><label for="chk-10-4">Los valores unitarios ya no están escritos en <code>DATOS</code>: se traen desde <code>REFERENCIA</code></label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-5" aria-label="Marcar como hecho"></td><td><label for="chk-10-5">Manejo el error <code>#N/A</code> con <code>SIERROR</code>, o lo evito con el argumento propio de <code>BUSCARX</code></label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-6" aria-label="Marcar como hecho"></td><td><label for="chk-10-6">Distingo cuándo usar <code>BUSCARV</code> y cuándo <code>BUSCARX</code>, y sé qué pasa si se inserta una columna</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-7" aria-label="Marcar como hecho"></td><td><label for="chk-10-7">Construí el indicador porcentual comparando el valor real contra el de referencia</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-8" aria-label="Marcar como hecho"></td><td><label for="chk-10-8">Elijo el tipo de gráfico según la pregunta que quiero contestar, no por defecto</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-9" aria-label="Marcar como hecho"></td><td><label for="chk-10-9">Mi gráfico está ordenado, sin leyenda redundante, y su título es una afirmación</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-10" aria-label="Marcar como hecho"></td><td><label for="chk-10-10">Verifiqué que cambiar un valor en <code>REFERENCIA</code> propaga hasta el gráfico</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-11" aria-label="Marcar como hecho"></td><td><label for="chk-10-11">Repliqué búsquedas y gráfico en Excel, y entregué el enlace en Moodle</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-1" aria-label="Marcar como hecho"></td><td><label for="chk-10-1">Explico por qué un dato que se repite y puede cambiar tiene que vivir en su propia hoja de referencia, y sé referenciarla con la sintaxis <code>Hoja!Celda</code></label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-2" aria-label="Marcar como hecho"></td><td><label for="chk-10-2">Escribo <code>BUSCARV</code> con rango absoluto y <code>valor_buscado</code> relativo, con coincidencia exacta, y los valores unitarios de <code>DATOS</code> ya se traen desde <code>REFERENCIA</code></label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-3" aria-label="Marcar como hecho"></td><td><label for="chk-10-3">Manejo el caso "no encontrado" con <code>SIERROR</code>, o con el argumento propio de <code>BUSCARX</code>, en vez de dejar un <code>#N/A</code> a la vista</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-4" aria-label="Marcar como hecho"></td><td><label for="chk-10-4">Distingo cuándo usar <code>BUSCARV</code> y cuándo <code>BUSCARX</code>, y sé qué pasa con cada una si se inserta una columna o si hay que buscar hacia la izquierda</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-5" aria-label="Marcar como hecho"></td><td><label for="chk-10-5">Construí el indicador porcentual comparando el valor real de cada registro contra su valor de referencia, con formato condicional</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-6" aria-label="Marcar como hecho"></td><td><label for="chk-10-6">Elijo el tipo de gráfico según la pregunta que quiero contestar, no por el que la planilla sugiere por defecto</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-7" aria-label="Marcar como hecho"></td><td><label for="chk-10-7">Mi gráfico principal está ordenado, sin leyenda redundante si tiene una sola serie, y su título es una afirmación sobre los datos</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-8" aria-label="Marcar como hecho"></td><td><label for="chk-10-8">Armé un gráfico combinado con eje secundario para comparar dos magnitudes distintas sobre la misma tabla</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-9" aria-label="Marcar como hecho"></td><td><label for="chk-10-9">Verifiqué que cambiar un valor en <code>REFERENCIA</code> propaga hasta el gráfico, repliqué búsquedas y gráfico en Excel, y entregué el enlace en Moodle</label></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout" data-type="closing">
-      <p>Los datos no tienen por qué vivir todos juntos para poder usarse juntos. Las funciones de búsqueda son el puente entre información organizada por separado, y ese puente es lo que hace que actualizar una tarifa sea tocar una celda, no revisar ochocientas filas rezando por no olvidarse ninguna.</p>
+      <p>Los datos no tienen por qué vivir todos juntos para poder usarse juntos. Con las funciones de búsqueda, actualizar una tarifa pasó a ser tocar una sola celda en su propia hoja, y ese cambio llega solo hasta cada fila que la usa, sin revisar la planilla completa. Y una vez que el cruce está hecho, el resultado se puede mostrar en un gráfico elegido a propósito, no en el que salió primero.</p>
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>

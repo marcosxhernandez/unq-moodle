@@ -1,251 +1,332 @@
-<div class="unq-moodle-container" id="unq-cronograma" style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; padding: 0; width: 100%; max-width: 100%; box-sizing: border-box;">
+<div class="unq-moodle-container" id="unq-cronograma" style="font-family: -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif; background-color: transparent; padding: 0; width: 100%; max-width: 100%; box-sizing: border-box;">
 
-    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e6e4ec;">
-        <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 1.0625rem; font-weight: 600; color: #15141B; letter-spacing: -0.01em;">Cronograma</h2>
-        <span style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6d6b7a;">2° cuatrimestre</span>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px 4px; box-sizing: border-box;">
+        <span style="font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; color: #1d1d1f;">Cronograma</span>
+        <span style="font-size: 0.68rem; font-weight: 600; color: #86868b;">2° cuatrimestre</span>
     </div>
 
-    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-        <span id="unq-cr-progreso-texto" style="font-size: 0.75rem; font-weight: 500; color: #6d6b7a;">--/-- clases dadas</span>
-        <span id="unq-cr-progreso-pct" style="font-size: 0.875rem; font-weight: 800; color: #15141B;">--%</span>
-    </div>
-    <div style="height: 5px; border-radius: 3px; background: #eeedf3; overflow: hidden; margin-bottom: 14px;">
-        <div id="unq-cr-progreso-barra" style="height: 100%; width: 0%; border-radius: 3px; background: #673AB7; transition: width .5s ease, background .3s ease;"></div>
-    </div>
-
-    <div class="unq-cr-grupo" style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6b7a; margin: 0 2px 6px;">Herramientas digitales</div>
-
-    <div class="unq-cr-row" data-fecha="2026-08-11" data-tipo="clase" data-numero="1" data-icono="" data-unidad="Herramientas digitales" data-titulo="Herramientas Digitales: Internet, Nube e IA" data-accent="#5B4B9E" data-bgtinte="#F3F1FB" data-fechacorta="11/08" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #F3F1FB; color: #5B4B9E; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">01</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Herramientas Digitales: Internet, Nube e IA</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #5B4B9E; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">11/08</span>
+    <div style="text-align: center; padding: 10px 6px 16px; box-sizing: border-box;">
+        <span id="unq-cr-pct" style="font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; color: #1d1d1f; line-height: 1;">--<span style="font-size: 1.15rem; font-weight: 700; color: #86868b;">%</span></span>
+        <div id="unq-cr-texto" style="font-size: 0.78rem; color: #6e6e73; margin-top: 4px;">--/-- clases dadas</div>
+        <div style="height: 4px; border-radius: 2px; background: #e3e3e8; overflow: hidden; margin: 10px auto 0; max-width: 200px;">
+            <div id="unq-cr-barra" style="height: 100%; width: 0%; border-radius: 2px; background: linear-gradient(90deg,#2A63C9,#0071e3); transition: width .5s ease;"></div>
+        </div>
     </div>
 
-    <div class="unq-cr-grupo" style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6b7a; margin: 16px 2px 6px;">Procesador de texto</div>
-
-    <div class="unq-cr-row" data-fecha="2026-08-18" data-tipo="clase" data-numero="2" data-icono="" data-unidad="Procesador de texto" data-titulo="Arquitectura del documento profesional" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="18/08" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #EEF3FE; color: #2A63C9; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">02</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Arquitectura del documento profesional</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #2A63C9; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">18/08</span>
+    <div id="unq-cr-proxima" style="background: #fff; border-radius: 16px; padding: 16px 16px 18px; margin-bottom: 16px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 8px 24px -12px rgba(0,0,0,.16); border: 1px solid #eef3fe; box-sizing: border-box;">
+        <div id="unq-cr-prox-eyebrow" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #2A63C9; margin-bottom: 6px;">Próxima clase</div>
+        <div id="unq-cr-prox-titulo" style="font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; color: #1d1d1f; line-height: 1.3; margin-bottom: 4px;">&nbsp;</div>
+        <div id="unq-cr-prox-unidad" style="font-size: 0.74rem; color: #6e6e73;">&nbsp;</div>
     </div>
 
-    <div class="unq-cr-row" data-fecha="2026-08-25" data-tipo="clase" data-numero="3" data-icono="" data-unidad="Procesador de texto" data-titulo="IA como asistente académico" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="25/08" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #EEF3FE; color: #2A63C9; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">03</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">IA como asistente académico</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #2A63C9; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">25/08</span>
-    </div>
+    <div id="unq-cr-lista" style="padding-right: 4px; margin-right: -4px; box-sizing: border-box;">
 
-    <div class="unq-cr-row" data-fecha="2026-09-01" data-tipo="clase" data-numero="4" data-icono="" data-unidad="Procesador de texto" data-titulo="Arquitectura avanzada del documento" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="01/09" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #EEF3FE; color: #2A63C9; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">04</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Arquitectura avanzada del documento</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #2A63C9; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">01/09</span>
-    </div>
+        <div class="unq-cr-grupo" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #86868b; margin: 0 0 6px 6px;">Herramientas digitales</div>
+        <div style="background: #fff; border-radius: 14px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); box-sizing: border-box;">
+            <div class="unq-cr-row" data-fecha="2026-08-11" data-tipo="clase" data-icono="" data-unidad="Herramientas digitales" data-titulo="Herramientas Digitales: Internet, Nube e IA" data-accent="#5B4B9E" data-bgtinte="#F3F1FB" data-fechacorta="11/08" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #5B4B9E; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Herramientas Digitales: Internet, Nube e IA</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">11/08</span>
+                </span>
+            </div>
+        </div>
 
-    <div class="unq-cr-row" data-fecha="2026-09-08" data-tipo="paro" data-numero="" data-icono="P" data-unidad="Paro docente" data-titulo="Sin clase por paro docente" data-accent="#9A5E1A" data-bgtinte="#FBF1E6" data-fechacorta="08/09" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FBF1E6; color: #9A5E1A; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">P</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Sin clase por paro docente</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #9A5E1A; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">08/09</span>
-    </div>
+        <div class="unq-cr-grupo" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #86868b; margin: 0 0 6px 6px;">Procesador de texto</div>
+        <div style="background: #fff; border-radius: 14px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); box-sizing: border-box;">
+            <div class="unq-cr-row" data-fecha="2026-08-18" data-tipo="clase" data-icono="" data-unidad="Procesador de texto" data-titulo="Arquitectura del documento profesional" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="18/08" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #2A63C9; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Arquitectura del documento profesional</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">18/08</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-08-25" data-tipo="clase" data-icono="" data-unidad="Procesador de texto" data-titulo="IA como asistente académico" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="25/08" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #2A63C9; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">IA como asistente académico</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">25/08</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-09-01" data-tipo="clase" data-icono="" data-unidad="Procesador de texto" data-titulo="Arquitectura avanzada del documento" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="01/09" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #2A63C9; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Arquitectura avanzada del documento</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">01/09</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-09-08" data-tipo="paro" data-icono="P" data-unidad="Paro docente" data-titulo="Sin clase por paro docente" data-accent="#9A5E1A" data-bgtinte="#FBF1E6" data-fechacorta="08/09" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.6rem; font-weight: 800; background: #f2e9db; color: #9A5E1A;">P</span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 500; font-style: italic; color: #1A1822; line-height: 1.3;">Sin clase por paro docente</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">08/09</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-09-15" data-tipo="clase" data-icono="" data-unidad="Procesador de texto" data-titulo="Maquetación de alta precisión" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="15/09" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #2A63C9; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Maquetación de alta precisión</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">15/09</span>
+                </span>
+            </div>
+        </div>
 
-    <div class="unq-cr-row" data-fecha="2026-09-15" data-tipo="clase" data-numero="5" data-icono="" data-unidad="Procesador de texto" data-titulo="Maquetación de alta precisión" data-accent="#2A63C9" data-bgtinte="#EEF3FE" data-fechacorta="15/09" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #EEF3FE; color: #2A63C9; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">05</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Maquetación de alta precisión</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #2A63C9; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">15/09</span>
-    </div>
+        <div class="unq-cr-grupo" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #86868b; margin: 0 0 6px 6px;">Presentaciones</div>
+        <div style="background: #fff; border-radius: 14px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); box-sizing: border-box;">
+            <div class="unq-cr-row" data-fecha="2026-09-22" data-tipo="clase" data-icono="" data-unidad="Presentaciones" data-titulo="Presentaciones con IA: de borrador a entrega" data-accent="#93601A" data-bgtinte="#FDF3E0" data-fechacorta="22/09" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #93601A; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Presentaciones con IA: de borrador a entrega</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">22/09</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-09-29" data-tipo="evaluacion" data-icono="" data-unidad="Evaluación" data-titulo="1° Parcial" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="29/09" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 9px; height: 9px; border-radius: 50%; background: #8A1130; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 700; color: #1A1822; line-height: 1.3;">1° Parcial</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.82rem; font-weight: 800; color: #8A1130;">29/09</span>
+                </span>
+            </div>
+        </div>
 
-    <div class="unq-cr-grupo" style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6b7a; margin: 16px 2px 6px;">Presentaciones</div>
+        <div class="unq-cr-grupo" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #86868b; margin: 0 0 6px 6px;">Planilla de cálculo</div>
+        <div style="background: #fff; border-radius: 14px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); box-sizing: border-box;">
+            <div class="unq-cr-row" data-fecha="2026-10-06" data-tipo="clase" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Lógica de celdas y funciones esenciales" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="06/10" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #1E7E3E; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Lógica de celdas y funciones esenciales</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">06/10</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-10-13" data-tipo="clase" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Funciones lógicas y validación de datos" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="13/10" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #1E7E3E; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Funciones lógicas y validación de datos</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">13/10</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-10-20" data-tipo="clase" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Búsqueda entre hojas y visualización" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="20/10" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #1E7E3E; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Búsqueda entre hojas y visualización</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">20/10</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-10-27" data-tipo="clase" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Análisis de datos con Tablas Dinámicas e IA" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="27/10" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #1E7E3E; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Análisis de datos con Tablas Dinámicas e IA</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">27/10</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-11-03" data-tipo="evaluacion" data-icono="" data-unidad="Evaluación" data-titulo="2° Parcial" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="03/11" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 9px; height: 9px; border-radius: 50%; background: #8A1130; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 700; color: #1A1822; line-height: 1.3;">2° Parcial</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.82rem; font-weight: 800; color: #8A1130;">03/11</span>
+                </span>
+            </div>
+        </div>
 
-    <div class="unq-cr-row" data-fecha="2026-09-22" data-tipo="clase" data-numero="6" data-icono="" data-unidad="Presentaciones" data-titulo="Presentaciones con IA: de borrador a entrega" data-accent="#93601A" data-bgtinte="#FDF3E0" data-fechacorta="22/09" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FDF3E0; color: #93601A; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">06</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Presentaciones con IA: de borrador a entrega</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #93601A; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">22/09</span>
-    </div>
+        <div class="unq-cr-grupo" style="font-size: 0.64rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #86868b; margin: 0 0 6px 6px;">Datos estructurados y bases de datos</div>
+        <div style="background: #fff; border-radius: 14px; overflow: hidden; margin: 0 0 4px; box-shadow: 0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); box-sizing: border-box;">
+            <div class="unq-cr-row" data-fecha="2026-11-10" data-tipo="clase" data-icono="" data-unidad="Datos estructurados y bases de datos" data-titulo="De la planilla a la captura de datos" data-accent="#673AB7" data-bgtinte="#F2EEFA" data-fechacorta="10/11" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #673AB7; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">De la planilla a la captura de datos <span title="Título aún no confirmado en la planilla maestra" style="color: #673AB7; font-weight: 700; cursor: help;">*</span></span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">10/11</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-11-17" data-tipo="clase" data-icono="" data-unidad="Datos estructurados y bases de datos" data-titulo="Preguntar a los datos: Consultas e IA" data-accent="#673AB7" data-bgtinte="#F2EEFA" data-fechacorta="17/11" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 7px; height: 7px; border-radius: 50%; background: #673AB7; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 560; color: #1A1822; line-height: 1.3;">Preguntar a los datos: Consultas e IA <span title="Título aún no confirmado en la planilla maestra" style="color: #673AB7; font-weight: 700; cursor: help;">*</span></span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">17/11</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-11-24" data-tipo="evaluacion" data-icono="" data-unidad="Evaluación" data-titulo="3.º Parcial Integrador" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="24/11" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 9px; height: 9px; border-radius: 50%; background: #8A1130; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 700; color: #1A1822; line-height: 1.3;">3.º Parcial Integrador</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.82rem; font-weight: 800; color: #8A1130;">24/11</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-12-01" data-tipo="evaluacion" data-icono="" data-unidad="Evaluación" data-titulo="Recuperatorio" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="01/12" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 9px; height: 9px; border-radius: 50%; background: #8A1130; flex-shrink: 0;"></span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 700; color: #1A1822; line-height: 1.3;">Recuperatorio</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.82rem; font-weight: 800; color: #8A1130;">01/12</span>
+                </span>
+            </div>
+            <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
+            <div class="unq-cr-row" data-fecha="2026-12-08" data-tipo="feriado" data-icono="F" data-unidad="Feriado nacional" data-titulo="Inmaculada Concepción" data-accent="#6D6B7A" data-bgtinte="#F4F3F6" data-fechacorta="08/12" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
+                <span class="unq-cr-dot" style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.6rem; font-weight: 800; background: #eceaf0; color: #6d6b7a;">F</span>
+                <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 500; font-style: italic; color: #1A1822; line-height: 1.3;">Inmaculada Concepción</span>
+                <span style="text-align: right; flex-shrink: 0;">
+                    <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
+                    <span class="unq-cr-fecha" style="display: block; font-size: 0.78rem; font-weight: 700; color: #1A1822;">08/12</span>
+                </span>
+            </div>
+        </div>
 
-    <div class="unq-cr-row" data-fecha="2026-09-29" data-tipo="evaluacion" data-numero="7" data-icono="" data-unidad="Evaluación" data-titulo="1° Parcial" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="29/09" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FBEAEE; color: #8A1130; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">07</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">1° Parcial</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #8A1130; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">29/09</span>
-    </div>
-
-    <div class="unq-cr-grupo" style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6b7a; margin: 16px 2px 6px;">Planilla de cálculo</div>
-
-    <div class="unq-cr-row" data-fecha="2026-10-06" data-tipo="clase" data-numero="8" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Lógica de celdas y funciones esenciales" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="06/10" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #E9F7EE; color: #1E7E3E; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">08</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Lógica de celdas y funciones esenciales</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #1E7E3E; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">06/10</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-10-13" data-tipo="clase" data-numero="9" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Funciones lógicas y validación de datos" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="13/10" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #E9F7EE; color: #1E7E3E; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">09</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Funciones lógicas y validación de datos</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #1E7E3E; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">13/10</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-10-20" data-tipo="clase" data-numero="10" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Búsqueda entre hojas y visualización" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="20/10" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #E9F7EE; color: #1E7E3E; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">10</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Búsqueda entre hojas y visualización</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #1E7E3E; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">20/10</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-10-27" data-tipo="clase" data-numero="11" data-icono="" data-unidad="Planilla de cálculo" data-titulo="Análisis de datos con Tablas Dinámicas e IA" data-accent="#1E7E3E" data-bgtinte="#E9F7EE" data-fechacorta="27/10" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #E9F7EE; color: #1E7E3E; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">11</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Análisis de datos con Tablas Dinámicas e IA</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #1E7E3E; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">27/10</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-11-03" data-tipo="evaluacion" data-numero="12" data-icono="" data-unidad="Evaluación" data-titulo="2° Parcial" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="03/11" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FBEAEE; color: #8A1130; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">12</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">2° Parcial</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #8A1130; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">03/11</span>
-    </div>
-
-    <div class="unq-cr-grupo" style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6b7a; margin: 16px 2px 6px;">Datos estructurados y bases de datos</div>
-
-    <div class="unq-cr-row" data-fecha="2026-11-10" data-tipo="clase" data-numero="13" data-icono="" data-unidad="Datos estructurados y bases de datos" data-titulo="De la planilla a la captura de datos" data-accent="#673AB7" data-bgtinte="#F2EEFA" data-fechacorta="10/11" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #F2EEFA; color: #673AB7; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">13</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">De la planilla a la captura de datos</span> <span class="unq-cr-nota" title="Título aún no confirmado en la planilla maestra" aria-label="Título aún no confirmado en la planilla maestra" style="font-size: 0.8125rem; font-weight: 700; color: #673AB7; flex-shrink: 0; cursor: help;">*</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #673AB7; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">10/11</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-11-17" data-tipo="clase" data-numero="14" data-icono="" data-unidad="Datos estructurados y bases de datos" data-titulo="Preguntar a los datos: Consultas e IA" data-accent="#673AB7" data-bgtinte="#F2EEFA" data-fechacorta="17/11" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #F2EEFA; color: #673AB7; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">14</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Preguntar a los datos: Consultas e IA</span> <span class="unq-cr-nota" title="Título aún no confirmado en la planilla maestra" aria-label="Título aún no confirmado en la planilla maestra" style="font-size: 0.8125rem; font-weight: 700; color: #673AB7; flex-shrink: 0; cursor: help;">*</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #673AB7; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">17/11</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-11-24" data-tipo="evaluacion" data-numero="15" data-icono="" data-unidad="Evaluación" data-titulo="3.º Parcial Integrador" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="24/11" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FBEAEE; color: #8A1130; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">15</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">3.º Parcial Integrador</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #8A1130; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">24/11</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-12-01" data-tipo="evaluacion" data-numero="16" data-icono="" data-unidad="Evaluación" data-titulo="Recuperatorio" data-accent="#8A1130" data-bgtinte="#FBEAEE" data-fechacorta="01/12" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #FBEAEE; color: #8A1130; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">16</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Recuperatorio</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #8A1130; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">01/12</span>
-    </div>
-
-    <div class="unq-cr-row" data-fecha="2026-12-08" data-tipo="feriado" data-numero="" data-icono="F" data-unidad="Feriado nacional" data-titulo="Inmaculada Concepción" data-accent="#6D6B7A" data-bgtinte="#F4F3F6" data-fechacorta="08/12" style="display: flex; align-items: flex-start; gap: 10px; padding: 7px 4px; box-sizing: border-box;">
-        <span class="unq-cr-badge" style="display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #F4F3F6; color: #6D6B7A; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; box-sizing: border-box; margin-top: 1px;">F</span>
-        <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.8125rem; font-weight: 500; line-height: 1.35; color: #1A1822; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Inmaculada Concepción</span>
-        <span class="unq-cr-fecha" style="font-size: 0.75rem; font-weight: 700; color: #6D6B7A; flex-shrink: 0; white-space: nowrap; margin-top: 1px;">08/12</span>
     </div>
 </div>
 <script>
     (function() {
+        var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
         function pad2(n) { return (n < 10 ? '0' : '') + n; }
+        function parseFecha(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
         function fechaKey(d) { return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
 
-        var filas = Array.prototype.slice.call(document.querySelectorAll('#unq-cronograma .unq-cr-row[data-fecha]'));
+        var cont = document.getElementById('unq-cronograma');
+        var lista = document.getElementById('unq-cr-lista');
+        if (!cont || !lista) return;
+        var filas = Array.prototype.slice.call(cont.querySelectorAll('.unq-cr-row[data-fecha]'));
         filas.sort(function(a, b) { return a.getAttribute('data-fecha') < b.getAttribute('data-fecha') ? -1 : 1; });
 
-        function marcarPasada(fila) {
+        var primeraCarga = true;
+
+        function estilizarFila(fila, estado) {
             var tipo = fila.getAttribute('data-tipo');
-            var esClase = (tipo === 'clase' || tipo === 'evaluacion');
-            fila.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:7px 4px;box-sizing:border-box;';
-
-            var badge = fila.querySelector('.unq-cr-badge');
-            var tit = fila.querySelector('.unq-cr-titulo');
-            var fec = fila.querySelector('.unq-cr-fecha');
-            var nota = fila.querySelector('.unq-cr-nota');
-            if (badge) {
-                badge.style.cssText = 'display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#eeedf2;color:#6d6b7a;font-size:0.6875rem;font-weight:700;flex-shrink:0;box-sizing:border-box;margin-top:1px;';
-                badge.innerHTML = esClase ? '✓' : (fila.getAttribute('data-icono') || '·');
-            }
-            if (tit) tit.style.cssText = 'flex:1;min-width:0;font-size:0.8125rem;font-weight:400;line-height:1.35;color:#6d6b7a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;';
-            if (fec) { fec.style.cssText = 'font-size:0.75rem;font-weight:400;color:#6d6b7a;flex-shrink:0;white-space:nowrap;margin-top:1px;'; fec.textContent = fila.getAttribute('data-fechacorta'); }
-            if (nota) nota.style.color = '#6d6b7a';
-        }
-
-        function marcarEstado(fila, estado) {
+            var esEval = (tipo === 'evaluacion');
+            var esComodin = (tipo === 'paro' || tipo === 'feriado');
             var accent = fila.getAttribute('data-accent');
-            var bgtinte = fila.getAttribute('data-bgtinte');
-            var numero = fila.getAttribute('data-numero');
-            var icono = fila.getAttribute('data-icono');
+            var pasada = (estado === 'pasada');
             var destacada = (estado === 'hoy' || estado === 'proxima');
 
-            if (destacada) {
-                var padV = (estado === 'hoy') ? '11px' : '10px';
-                fila.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:' + padV + ' 11px ' + padV + ' 12px;border-radius:8px;background:' + bgtinte + ';border-left:3px solid ' + accent + ';box-shadow:0 1px 4px rgba(20,15,40,.08);box-sizing:border-box;margin:2px 0;';
-            } else {
-                fila.style.cssText = 'display:flex;align-items:flex-start;gap:10px;padding:7px 4px;box-sizing:border-box;';
-            }
+            var bg = destacada ? 'rgba(0,113,227,.07)' : (esEval ? 'rgba(138,17,48,.045)' : 'transparent');
+            var borderLeft = destacada ? '3px solid #0071e3' : '3px solid transparent';
+            fila.style.cssText = 'display:flex;align-items:center;gap:11px;padding:10px 14px 10px ' + (destacada ? '11px' : '14px') + ';box-sizing:border-box;background:' + bg + ';border-left:' + borderLeft + ';';
 
-            var badge = fila.querySelector('.unq-cr-badge');
+            var dot = fila.querySelector('.unq-cr-dot');
             var tit = fila.querySelector('.unq-cr-titulo');
+            var rot = fila.querySelector('.unq-cr-rotulo');
             var fec = fila.querySelector('.unq-cr-fecha');
-            var nota = fila.querySelector('.unq-cr-nota');
 
-            if (badge) {
-                if (estado === 'hoy') {
-                    badge.style.cssText = 'display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:' + accent + ';color:#fff;font-size:0.75rem;font-weight:800;flex-shrink:0;box-sizing:border-box;box-shadow:0 0 0 3px #fff,0 0 0 5px ' + accent + '40;';
-                } else if (estado === 'proxima') {
-                    badge.style.cssText = 'display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#fff;color:' + accent + ';font-size:0.6875rem;font-weight:800;flex-shrink:0;box-sizing:border-box;border:2px solid ' + accent + ';';
+            var colorFecha = destacada ? '#0071e3' : (esEval ? '#8A1130' : (pasada ? '#a1a1a6' : '#1A1822'));
+            var colorTexto = pasada ? '#a1a1a6' : '#1A1822';
+
+            if (dot) {
+                if (esComodin) {
+                    dot.style.cssText = 'width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.6rem;font-weight:800;background:' + (pasada ? '#eeedf2' : '#f2e9db') + ';color:' + (pasada ? '#a1a1a6' : '#9A5E1A') + ';';
                 } else {
-                    badge.style.cssText = 'display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:' + bgtinte + ';color:' + accent + ';font-size:0.6875rem;font-weight:700;flex-shrink:0;box-sizing:border-box;margin-top:1px;';
+                    var tam = destacada ? '9px' : '7px';
+                    dot.style.cssText = 'width:' + tam + ';height:' + tam + ';border-radius:50%;flex-shrink:0;background:' + (pasada ? '#c7c7cc' : accent) + ';' + (destacada ? 'box-shadow:0 0 0 3px rgba(0,113,227,.18);' : '');
                 }
-                badge.innerHTML = icono || (numero ? pad2(parseInt(numero, 10)) : '');
             }
-            if (tit) tit.style.cssText = 'flex:1;min-width:0;font-size:' + (destacada ? '0.875rem' : '0.8125rem') + ';font-weight:' + (destacada ? '700' : '500') + ';line-height:1.35;color:#1A1822;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;';
-            if (nota) nota.style.color = accent;
-            if (fec) {
-                fec.style.cssText = 'font-size:0.75rem;font-weight:700;color:' + accent + ';flex-shrink:0;white-space:nowrap;margin-top:1px;';
-                var fc = fila.getAttribute('data-fechacorta');
-                if (estado === 'hoy') fec.textContent = 'HOY';
-                else if (estado === 'proxima') fec.textContent = fc + ' · próx.';
-                else fec.textContent = fc;
+            if (tit) tit.style.cssText = 'flex:1;min-width:0;font-size:0.82rem;font-weight:' + ((destacada || esEval) ? '700' : '560') + ';font-style:' + (esComodin && !destacada ? 'italic' : 'normal') + ';color:' + colorTexto + ';line-height:1.3;';
+            if (rot) {
+                if (estado === 'hoy' || estado === 'proxima') {
+                    rot.style.cssText = 'display:block;font-size:0.6rem;font-weight:800;letter-spacing:.04em;color:#0071e3;margin-bottom:1px;';
+                    rot.textContent = (estado === 'hoy') ? 'HOY' : 'PRÓXIMA';
+                } else {
+                    rot.style.display = 'none';
+                }
             }
+            if (fec) fec.style.cssText = 'display:block;font-size:' + ((destacada || esEval) ? '0.82rem' : '0.78rem') + ';font-weight:' + ((destacada || esEval) ? '800' : '700') + ';color:' + colorFecha + ';';
         }
 
-        function calcularYMostrar() {
-            var ahora = new Date();
-            var hoyKey = fechaKey(ahora);
+        function actualizarProxima(fila, estado) {
+            var card = document.getElementById('unq-cr-proxima');
+            var eyebrow = document.getElementById('unq-cr-prox-eyebrow');
+            var titulo = document.getElementById('unq-cr-prox-titulo');
+            var unidad = document.getElementById('unq-cr-prox-unidad');
+            if (!card) return;
+            if (!fila) { card.style.display = 'none'; return; }
+            card.style.display = '';
+            var accent = fila.getAttribute('data-accent');
+            var d = parseFecha(fila.getAttribute('data-fecha'));
+            if (eyebrow) { eyebrow.style.color = accent; eyebrow.textContent = (estado === 'hoy' ? 'Hoy' : 'Próxima clase') + ' · ' + DIAS[d.getDay()] + ' ' + fila.getAttribute('data-fechacorta'); }
+            if (titulo) titulo.textContent = fila.getAttribute('data-titulo');
+            if (unidad) unidad.textContent = fila.getAttribute('data-unidad');
+            card.style.borderColor = fila.getAttribute('data-bgtinte');
+        }
+
+        function calcular() {
+            var hoyKey = fechaKey(new Date());
 
             var idxHoy = -1;
-            for (var h = 0; h < filas.length; h++) {
-                if (filas[h].getAttribute('data-fecha') === hoyKey) { idxHoy = h; break; }
-            }
-            var tipoHoy = idxHoy > -1 ? filas[idxHoy].getAttribute('data-tipo') : null;
+            for (var h = 0; h < filas.length; h++) { if (filas[h].getAttribute('data-fecha') === hoyKey) { idxHoy = h; break; } }
+
             var idxProxima = -1;
-            if (idxHoy === -1 || tipoHoy === 'paro' || tipoHoy === 'feriado') {
-                var desde = (idxHoy === -1) ? 0 : idxHoy + 1;
-                for (var j = desde; j < filas.length; j++) {
-                    if (filas[j].getAttribute('data-fecha') > hoyKey) { idxProxima = j; break; }
-                }
+            for (var j = 0; j < filas.length; j++) {
+                var tipoJ = filas[j].getAttribute('data-tipo');
+                if ((tipoJ === 'clase' || tipoJ === 'evaluacion') && filas[j].getAttribute('data-fecha') > hoyKey) { idxProxima = j; break; }
             }
 
-            var totalClases = 0, dadas = 0, accentActivo = null;
+            var total = 0, dadas = 0;
 
             filas.forEach(function(fila, i) {
-                var k = fila.getAttribute('data-fecha');
                 var tipo = fila.getAttribute('data-tipo');
                 var esClase = (tipo === 'clase' || tipo === 'evaluacion');
-                if (esClase) totalClases++;
+                if (esClase) total++;
 
-                if (k < hoyKey) {
-                    marcarPasada(fila);
-                    if (esClase) dadas++;
-                    return;
-                }
+                var estado;
+                if (i === idxHoy) estado = 'hoy';
+                else if (fila.getAttribute('data-fecha') < hoyKey) estado = 'pasada';
+                else if (i === idxProxima) estado = 'proxima';
+                else estado = 'futura';
 
-                var estado = (i === idxHoy) ? 'hoy' : (i === idxProxima ? 'proxima' : 'futura');
-                if (estado === 'hoy' || estado === 'proxima') accentActivo = fila.getAttribute('data-accent');
-                marcarEstado(fila, estado);
+                if (estado === 'pasada' && esClase) dadas++;
+                estilizarFila(fila, estado);
             });
 
-            var textoEl = document.getElementById('unq-cr-progreso-texto');
-            var pctEl = document.getElementById('unq-cr-progreso-pct');
-            var barraEl = document.getElementById('unq-cr-progreso-barra');
-            if (textoEl && pctEl && barraEl && totalClases > 0) {
-                var pct = Math.round((dadas / totalClases) * 100);
-                textoEl.textContent = dadas + '/' + totalClases + ' clases dadas';
-                pctEl.textContent = pct + '%';
+            var filaHoy = (idxHoy > -1) ? filas[idxHoy] : null;
+            var tipoHoy = filaHoy ? filaHoy.getAttribute('data-tipo') : null;
+            var esClaseHoy = (tipoHoy === 'clase' || tipoHoy === 'evaluacion');
+            var filaDestacada = esClaseHoy ? filaHoy : (idxProxima > -1 ? filas[idxProxima] : null);
+            var estadoDestacado = esClaseHoy ? 'hoy' : 'proxima';
+            actualizarProxima(filaDestacada, estadoDestacado);
+
+            var pctEl = document.getElementById('unq-cr-pct');
+            var textoEl = document.getElementById('unq-cr-texto');
+            var barraEl = document.getElementById('unq-cr-barra');
+            if (pctEl && textoEl && barraEl && total > 0) {
+                var pct = Math.round((dadas / total) * 100);
+                pctEl.innerHTML = pct + '<span style="font-size:1.15rem;font-weight:700;color:#86868b;">%</span>';
+                textoEl.textContent = dadas + ' de ' + total + ' clases dadas';
                 barraEl.style.width = pct + '%';
-                barraEl.style.background = accentActivo || '#673AB7';
+            }
+
+            if (primeraCarga && filaDestacada) {
+                var contRect = lista.getBoundingClientRect();
+                var filaRect = filaDestacada.getBoundingClientRect();
+                var offset = (filaRect.top - contRect.top) + lista.scrollTop - 6;
+                lista.scrollTop = Math.max(0, offset);
+                primeraCarga = false;
             }
         }
 
-        calcularYMostrar();
-        setInterval(calcularYMostrar, 60000);
+        calcular();
+        setInterval(calcular, 60000);
     })();
 </script>

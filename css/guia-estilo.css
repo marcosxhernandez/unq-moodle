@@ -875,6 +875,19 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
 .callout[data-type="explore"] ol > li::before{ color:var(--blue); background:#fff; }
 .callout[data-type="explore"] ul > li::before{ background:var(--blue); }
 
+/* data-type="tip" — consejo que apunta a una herramienta externa (ej. un
+   compresor de PDF): mismos tokens --blue/--blue-tint que "explore", pero
+   como categoría propia porque "explore" está reservado semánticamente
+   para "🔎 Para explorar" (ejercicio autoguiado, ver CLAUDE-clases.md
+   3.4quinquies y ss.) — un consejo con burbuja de app no es lo mismo que
+   una consigna de exploración, aunque comparta el color. Nace en Clase 05
+   ("PDF más liviano"), set. 2026. */
+.callout[data-type="tip"]{ background:var(--blue-tint); }
+.callout[data-type="tip"] .callout-label{ color:var(--blue); }
+.callout[data-type="tip"] code{ color:var(--blue); }
+.callout[data-type="tip"] ol > li::before{ color:var(--blue); background:#fff; }
+.callout[data-type="tip"] ul > li::before{ background:var(--blue); }
+
 .callout[data-type="warning"]{ background:var(--wine-tint); }
 .callout[data-type="warning"] .callout-label{ color:var(--wine); }
 .callout[data-type="warning"] code{ color:var(--wine-deep); background:#fff; }

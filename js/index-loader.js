@@ -44,6 +44,8 @@
   var TIMEOUT_MS = 12000;
 
   var entregasPromise = null;
+  var cronogramaPromise = null;
+  var CLASE_ID_RE = /^m(\d{2})root$/;
 
   function fetchConTimeout(url, ms) {
     var controller = new AbortController();
@@ -91,6 +93,43 @@
     });
   }
 
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function hoyKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  // moodle/cronograma.json (clase -> {fecha, tipo, unidad, titulo}) se pide
+  // una sola vez y se comparte entre todos los bloques, igual que
+  // entregas.json. Generado por scripts/build_cronograma_json.py a partir
+  // de moodle/cronograma.csv -- nunca a mano (CLAUDE.md raiz S1).
+  function obtenerCronograma() {
+    if (!cronogramaPromise) {
+      cronogramaPromise = fetchConTimeout(BASE + 'moodle/cronograma.json', TIMEOUT_MS)
+        .then(function (r) { return r.json(); })
+        .catch(function () { return {}; });
+    }
+    return cronogramaPromise;
+  }
+
+  // Si el bloque recien cargado corresponde a una clase cuya fecha ya paso
+  // -- mismo criterio "pasada" que Cronograma.html, data-fecha < hoy en
+  // comparacion de string 'YYYY-MM-DD' -- colapsa su <details> exterior.
+  // El primer <details> en el documento es siempre el que envuelve todo
+  // el fragmento (anatomia en CLAUDE-moodle.md 4.1). Sin entrada en
+  // cronograma.json (clase sin fecha confirmada todavia, o Clase 00 que
+  // no lleva <details> exterior) no se toca nada.
+  function colapsarSiPasada(el, cronograma) {
+    var m = CLASE_ID_RE.exec(el.id);
+    if (!m) return;
+    var entrada = cronograma[m[1]];
+    if (!entrada || !entrada.fecha) return;
+    if (entrada.fecha >= hoyKey()) return;
+    var detallesRaiz = el.querySelector('details');
+    if (detallesRaiz) detallesRaiz.removeAttribute('open');
+  }
+
   function mostrarError(el, src, err) {
     el.innerHTML =
       '<div style="padding:22px 16px;text-align:center;font-size:12.5px;line-height:1.6;color:#8d8b9c;">' +
@@ -110,12 +149,14 @@
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();
       }),
-      obtenerEntregas()
+      obtenerEntregas(),
+      obtenerCronograma()
     ]).then(function (resultados) {
       var html = resolverPlaceholders(resultados[0], resultados[1][AULA_PREVIEW]);
       var doc = new DOMParser().parseFromString(html, 'text/html');
       el.innerHTML = doc.body.innerHTML;
       ejecutarScripts(el);
+      colapsarSiPasada(el, resultados[2]);
     }).catch(function (err) {
       mostrarError(el, src, err);
     });

@@ -1,0 +1,98 @@
+{
+  "01": {
+    "fecha": "2026-08-11",
+    "tipo": "clase",
+    "titulo": "Herramientas Digitales: Internet, Nube e IA",
+    "unidad": "Herramientas digitales"
+  },
+  "02": {
+    "fecha": "2026-08-18",
+    "tipo": "clase",
+    "titulo": "Arquitectura del documento profesional",
+    "unidad": "Procesador de texto"
+  },
+  "03": {
+    "fecha": "2026-08-25",
+    "tipo": "clase",
+    "titulo": "IA como asistente académico",
+    "unidad": "Procesador de texto"
+  },
+  "04": {
+    "fecha": "2026-09-01",
+    "tipo": "clase",
+    "titulo": "Arquitectura avanzada del documento",
+    "unidad": "Procesador de texto"
+  },
+  "05": {
+    "fecha": "2026-09-15",
+    "tipo": "clase",
+    "titulo": "Maquetación de alta precisión",
+    "unidad": "Procesador de texto"
+  },
+  "06": {
+    "fecha": "2026-09-22",
+    "tipo": "clase",
+    "titulo": "Presentaciones con IA: de borrador a entrega",
+    "unidad": "Presentaciones"
+  },
+  "07": {
+    "fecha": "2026-09-29",
+    "tipo": "evaluacion",
+    "titulo": "1° Parcial",
+    "unidad": "Evaluación"
+  },
+  "08": {
+    "fecha": "2026-10-06",
+    "tipo": "clase",
+    "titulo": "Lógica de celdas y funciones esenciales",
+    "unidad": "Planilla de cálculo"
+  },
+  "09": {
+    "fecha": "2026-10-13",
+    "tipo": "clase",
+    "titulo": "Funciones lógicas y validación de datos",
+    "unidad": "Planilla de cálculo"
+  },
+  "10": {
+    "fecha": "2026-10-20",
+    "tipo": "clase",
+    "titulo": "Búsqueda entre hojas y visualización",
+    "unidad": "Planilla de cálculo"
+  },
+  "11": {
+    "fecha": "2026-10-27",
+    "tipo": "clase",
+    "titulo": "Análisis de datos con Tablas Dinámicas e IA",
+    "unidad": "Planilla de cálculo"
+  },
+  "12": {
+    "fecha": "2026-11-03",
+    "tipo": "evaluacion",
+    "titulo": "2° Parcial",
+    "unidad": "Evaluación"
+  },
+  "13": {
+    "fecha": "2026-11-10",
+    "tipo": "clase",
+    "titulo": "Cómo piensan las bases de datos",
+    "unidad": "Gestión de datos e IA"
+  },
+  "14": {
+    "fecha": "2026-11-17",
+    "tipo": "clase",
+    "titulo": "Del formulario a la base de datos",
+    "unidad": "Gestión de datos e IA"
+  },
+  "16": {
+    "fecha": "2026-11-24",
+    "tipo": "evaluacion",
+    "titulo": "3° Parcial",
+    "unidad": "Evaluación"
+  },
+  "17": {
+    "fecha": "2026-12-01",
+    "tipo": "evaluacion",
+    "titulo": "Recuperatorio",
+    "unidad": "Evaluación"
+  }
+}

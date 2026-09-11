@@ -112,9 +112,11 @@ body{
         <div class="note">
             <strong>ℹ️ Antes de pegar en Qoodle:</strong>
             <ul style="margin: 0; padding: 0 0 0 20px;">
-                <li>Verifica que <code>entregas.json</code> tenga resueltas las claves (ej: "01:1", "02:1", etc.)</li>
-                <li>Clase 07 no tiene contenido propio (es evaluación)</li>
-                <li>Feriado y Paro docente son comodines sin número fijo — van al final de la lista, código directo, no cargador</li>
+                <li>Cada loader trae ahora <code>entregas.json</code> (botón "Subir link") y <code>cronograma.json</code> (para decidir si arranca colapsada).</li>
+                <li>Comportamiento nuevo: al cargar, cada clase se compara contra <strong>la clase de la semana</strong> (la de hoy, o si no la próxima con fecha futura, mismo criterio que la tarjeta "Próxima clase" del Cronograma) — solo esa queda abierta, <strong>todas las demás colapsan, pasadas o futuras</strong>.</li>
+                <li>Clase 00 no tiene <code>&lt;details&gt;</code> exterior (4.1ter) y no participa de este colapso — siempre se muestra completa.</li>
+                <li>Feriado y Paro docente son comodines sin número fijo — van al final de la lista, código directo, no cargador, no colapsan.</li>
+                <li>Verificar <code>moodle/entregas.csv</code> antes de pegar una clase cuyo botón "Subir link" importe hoy — las filas con <code>TODO</code> quedan marcadas con ⚠️ en la lista de abajo.</li>
             </ul>
         </div>
 
@@ -166,17 +168,12 @@ body{
 &lt;script&gt;
     (function() {
         var el = document.getElementById('m00loader');
-        var m = location.href.match(/[?&]id=(\d+)/);
-        var curso = m ? m[1] : null;
         var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2000%20-%20Bienvenida.html';
-        Promise.all([
-            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2000%20-%20Bienvenida.html').then(function(r) { return r.text(); })
-        ]).then(function(resultados) {
-            var html = resultados[0];
+        fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2000%20-%20Bienvenida.html').then(function(r) { return r.text(); }).then(function(html) {
             var doc = new DOMParser().parseFromString(html, 'text/html');
             el.innerHTML = doc.body.innerHTML;
         }).catch(function() {
-            el.innerHTML = 'Error al sincronizar. &lt;a href="' + urlGuia + '" target="_blank"&gt;Abrí acá&lt;/a&gt;.';
+            el.innerHTML = 'Error al sincronizar. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí acá&lt;/a&gt;.';
         });
     })();
 &lt;/script&gt;</div>
@@ -188,21 +185,40 @@ body{
     <div class="row-body">
       <div class="code-block" id="code-01">&lt;div id="m01loader"&gt;Cargando la clase ...&lt;/div&gt;
 &lt;script&gt;
-    (function() {
-        var el = document.getElementById('m01loader');
-        var m = location.href.match(/[?&]id=(\d+)/);
-        var curso = m ? m[1] : null;
-        Promise.all([
-            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2001%20-%20Herramientas%20Digitales.html').then(r => r.text()),
-            fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r => r.json())
-        ]).then(function(r) {
-            var mapa = r[1][curso] || {};
-            var html = r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, (m,c,o) => mapa[c+':'+o] || '');
-            el.innerHTML = new DOMParser().parseFromString(html, 'text/html').body.innerHTML;
-        }).catch(function(e) {
-            el.innerHTML = 'Error: ' + e;
-        });
-    })();
+(function () {
+  var el = document.getElementById('m01loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2001%20-%20Herramientas%20Digitales.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2001%20-%20Herramientas%20Digitales.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '01') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
 &lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-01')">Copiar</button>
     </div>
@@ -210,112 +226,688 @@ body{
   <details class="loader-row">
     <summary><span class="row-num">02</span><span class="row-title">Arquitectura del documento profesional</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-02')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-02">&lt;div id="m02loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m02loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-02">&lt;div id="m02loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m02loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2002%20-%20Arquitectura%20del%20documento%20profesional.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '02') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-02')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">03</span><span class="row-title">IA como asistente académico</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-03')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-03">&lt;div id="m03loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m03loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-03">&lt;div id="m03loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m03loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2003%20-%20IA%20como%20asistente%20acad%C3%A9mico.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '03') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-03')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">04</span><span class="row-title">Arquitectura avanzada del documento</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-04')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-04">&lt;div id="m04loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m04loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2004%20-%20Arquitectura%20avanzada%20del%20documento.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-04">&lt;div id="m04loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m04loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2004%20-%20Arquitectura%20avanzada%20del%20documento.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2004%20-%20Arquitectura%20avanzada%20del%20documento.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '04') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-04')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">05</span><span class="row-title">Maquetación de alta precisión</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-05')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-05">&lt;div id="m05loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m05loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-05">&lt;div id="m05loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m05loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2005%20-%20Maquetaci%C3%B3n%20de%20alta%20precisi%C3%B3n.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '05') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-05')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">06</span><span class="row-title">Presentaciones con IA</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-06')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-06">&lt;div id="m06loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m06loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2006%20-%20Presentaciones%20con%20IA.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-06">&lt;div id="m06loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m06loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2006%20-%20Presentaciones%20con%20IA.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2006%20-%20Presentaciones%20con%20IA.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '06') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-06')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">07</span><span class="row-title">1° Parcial</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-07')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">07</span><span class="row-title">1° Parcial</span><span class="row-hint">⚠️ 39500 sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-07')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-07">&lt;div id="m07loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m07loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2007%20-%201%C2%B0%20Parcial.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-07">&lt;div id="m07loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m07loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2007%20-%201%C2%B0%20Parcial.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2007%20-%201%C2%B0%20Parcial.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '07') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-07')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">08</span><span class="row-title">Lógica de celdas y funciones esenciales</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-08')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-08">&lt;div id="m08loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m08loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2008%20-%20L%C3%B3gica%20de%20celdas%20y%20funciones%20esenciales.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-08">&lt;div id="m08loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m08loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2008%20-%20L%C3%B3gica%20de%20celdas%20y%20funciones%20esenciales.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2008%20-%20L%C3%B3gica%20de%20celdas%20y%20funciones%20esenciales.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '08') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-08')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
     <summary><span class="row-num">09</span><span class="row-title">Funciones lógicas y validación de datos</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-09')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-09">&lt;div id="m09loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m09loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2009%20-%20Funciones%20l%C3%B3gicas%20y%20validaci%C3%B3n%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-09">&lt;div id="m09loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m09loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2009%20-%20Funciones%20l%C3%B3gicas%20y%20validaci%C3%B3n%20de%20datos.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2009%20-%20Funciones%20l%C3%B3gicas%20y%20validaci%C3%B3n%20de%20datos.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '09') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-09')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">10</span><span class="row-title">Búsqueda entre hojas y visualización</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-10')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">10</span><span class="row-title">Búsqueda entre hojas y visualización</span><span class="row-hint">⚠️ 39501 sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-10')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-10">&lt;div id="m10loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m10loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2010%20-%20B%C3%BAsqueda%20entre%20hojas%20y%20visualizaci%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-10">&lt;div id="m10loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m10loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2010%20-%20B%C3%BAsqueda%20entre%20hojas%20y%20visualizaci%C3%B3n.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2010%20-%20B%C3%BAsqueda%20entre%20hojas%20y%20visualizaci%C3%B3n.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '10') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-10')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">11</span><span class="row-title">Análisis de datos con Tablas Dinámicas e IA</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-11')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">11</span><span class="row-title">Análisis de datos con Tablas Dinámicas e IA</span><span class="row-hint">⚠️ 39501 sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-11')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-11">&lt;div id="m11loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m11loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2011%20-%20An%C3%A1lisis%20de%20datos%20con%20Tablas%20Din%C3%A1micas%20e%20IA.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-11">&lt;div id="m11loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m11loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2011%20-%20An%C3%A1lisis%20de%20datos%20con%20Tablas%20Din%C3%A1micas%20e%20IA.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2011%20-%20An%C3%A1lisis%20de%20datos%20con%20Tablas%20Din%C3%A1micas%20e%20IA.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '11') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-11')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">12</span><span class="row-title">2° Parcial</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-12')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">12</span><span class="row-title">2° Parcial</span><span class="row-hint">⚠️ las dos aulas sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-12')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-12">&lt;div id="m12loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m12loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2012%20-%202%C2%B0%20Parcial.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-12">&lt;div id="m12loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m12loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2012%20-%202%C2%B0%20Parcial.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2012%20-%202%C2%B0%20Parcial.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '12') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-12')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">13</span><span class="row-title">Cómo piensan las bases de datos</span><span class="row-hint">⚠️ NOTA: Tu cronograma dice "De la planilla a la captura de datos"</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-13')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">13</span><span class="row-title">Cómo piensan las bases de datos</span><span class="row-hint">⚠️ sin fila en entregas.csv todavía (clase sin bloque de entrega armado)</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-13')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-13">&lt;div id="m13loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m13loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2013%20-%20C%C3%B3mo%20piensan%20las%20bases%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-13">&lt;div id="m13loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m13loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2013%20-%20C%C3%B3mo%20piensan%20las%20bases%20de%20datos.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2013%20-%20C%C3%B3mo%20piensan%20las%20bases%20de%20datos.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '13') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-13')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">14</span><span class="row-title">Del formulario a la base de datos</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-14')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">14</span><span class="row-title">Del formulario a la base de datos</span><span class="row-hint">⚠️ sin fila en entregas.csv todavía (clase sin bloque de entrega armado)</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-14')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-14">&lt;div id="m14loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m14loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2014%20-%20Del%20formulario%20a%20la%20base%20de%20datos.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-14">&lt;div id="m14loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m14loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2014%20-%20Del%20formulario%20a%20la%20base%20de%20datos.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2014%20-%20Del%20formulario%20a%20la%20base%20de%20datos.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '14') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-14')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">15</span><span class="row-title">Del dato a la decisión</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-15')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">15</span><span class="row-title">Del dato a la decisión</span><span class="row-hint">⚠️ sin fila en entregas.csv todavía, y sin fecha en Cronograma.html</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-15')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-15">&lt;div id="m15loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m15loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2015%20-%20Del%20dato%20a%20la%20decisi%C3%B3n.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-15">&lt;div id="m15loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m15loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2015%20-%20Del%20dato%20a%20la%20decisi%C3%B3n.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2015%20-%20Del%20dato%20a%20la%20decisi%C3%B3n.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '15') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-15')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">16</span><span class="row-title">3° Parcial</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-16')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">16</span><span class="row-title">3° Parcial</span><span class="row-hint">⚠️ las dos aulas sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-16')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-16">&lt;div id="m16loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m16loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2016%20-%203%C2%B0%20Parcial.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-16">&lt;div id="m16loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m16loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2016%20-%203%C2%B0%20Parcial.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2016%20-%203%C2%B0%20Parcial.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '16') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-16')">Copiar</button>
     </div>
   </details>
   <details class="loader-row">
-    <summary><span class="row-num">17</span><span class="row-title">Recuperatorio</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-17')" title="Copiar sin abrir">📋</button></summary>
+    <summary><span class="row-num">17</span><span class="row-title">Recuperatorio</span><span class="row-hint">⚠️ las dos aulas sin id todavía</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-17')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
-      <div class="code-block" id="code-17">&lt;div id="m17loader"&gt;Cargando...&lt;/div&gt;&lt;script&gt;(function(){var el=document.getElementById('m17loader'),m=location.href.match(/[?&]id=(\d+)/),curso=m?m[1]:null;Promise.all([fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2017%20-%20Recuperatorio.html').then(r=>r.text()),fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(r=>r.json())]).then(function(r){var mapa=r[1][curso]||{},html=r[0].replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g,(m,c,o)=>mapa[c+':'+o]||'');el.innerHTML=new DOMParser().parseFromString(html,'text/html').body.innerHTML;}).catch(function(e){el.innerHTML='Error: '+e;});})();&lt;/script&gt;</div>
+      <div class="code-block" id="code-17">&lt;div id="m17loader"&gt;Cargando la clase ...&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  var el = document.getElementById('m17loader');
+  var m = location.href.match(/[?&]id=(\d+)/);
+  var curso = m ? m[1] : null;
+  var urlGuia = 'https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2017%20-%20Recuperatorio.html';
+
+  Promise.all([
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/Clase%2017%20-%20Recuperatorio.html').then(function (r) { return r.text(); }),
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/entregas.json').then(function (r) { return r.json(); })
+  ]).then(function (resultados) {
+    var html = resultados[0];
+    var mapa = resultados[1][curso] || {};
+    html = html.replace(/\{\{ENTREGA:(\d+):(\d+)\}\}/g, function (coincide, clase, orden) {
+      return mapa[clase + ':' + orden] || '';
+    });
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    el.innerHTML = doc.body.innerHTML;
+
+    fetch('https://marcosxhernandez.github.io/unq-moodle/moodle/cronograma.json').then(function (r) { return r.json(); }).then(function (cronograma) {
+      var claves = Object.keys(cronograma).sort(function (a, b) { return cronograma[a].fecha &lt; cronograma[b].fecha ? -1 : 1; });
+      var pad2 = function (n) { return (n &lt; 10 ? '0' : '') + n; };
+      var d = new Date();
+      var hoy = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+      var actual = null;
+      for (var i = 0; i &lt; claves.length; i++) { if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; } }
+      if (!actual) { for (var j = 0; j &lt; claves.length; j++) { if (cronograma[claves[j]].fecha &gt; hoy) { actual = claves[j]; break; } } }
+      if (actual === '17') return;
+      var detallesRaiz = el.querySelector('details');
+      if (detallesRaiz) detallesRaiz.removeAttribute('open');
+    }).catch(function () {});
+  }).catch(function () {
+    el.innerHTML = 'Error al sincronizar la clase. &lt;a href="' + urlGuia + '" target="_blank" rel="noopener"&gt;Abrí la guía acá&lt;/a&gt;.';
+  });
+})();
+&lt;/script&gt;</div>
       <button class="copy-btn" onclick="copiar(this, 'code-17')">Copiar</button>
     </div>
   </details>

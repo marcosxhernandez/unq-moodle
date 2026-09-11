@@ -74,19 +74,19 @@
   "13": {
     "fecha": "2026-11-10",
     "tipo": "clase",
-    "titulo": "Cómo piensan las bases de datos",
-    "unidad": "Gestión de datos e IA"
+    "titulo": "De la planilla a la captura de datos",
+    "unidad": "Datos estructurados y bases de datos"
   },
   "14": {
     "fecha": "2026-11-17",
     "tipo": "clase",
-    "titulo": "Del formulario a la base de datos",
-    "unidad": "Gestión de datos e IA"
+    "titulo": "Preguntar a los datos: Consultas e IA",
+    "unidad": "Datos estructurados y bases de datos"
   },
   "16": {
     "fecha": "2026-11-24",
     "tipo": "evaluacion",
-    "titulo": "3° Parcial",
+    "titulo": "3.º Parcial Integrador",
     "unidad": "Evaluación"
   },
   "17": {

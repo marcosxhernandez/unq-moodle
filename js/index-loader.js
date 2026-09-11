@@ -45,6 +45,7 @@
 
   var entregasPromise = null;
   var cronogramaPromise = null;
+  var claseActualPromise = null;
   var CLASE_ID_RE = /^m(\d{2})root$/;
 
   function fetchConTimeout(url, ms) {
@@ -113,19 +114,44 @@
     return cronogramaPromise;
   }
 
-  // Si el bloque recien cargado corresponde a una clase cuya fecha ya paso
-  // -- mismo criterio "pasada" que Cronograma.html, data-fecha < hoy en
-  // comparacion de string 'YYYY-MM-DD' -- colapsa su <details> exterior.
-  // El primer <details> en el documento es siempre el que envuelve todo
-  // el fragmento (anatomia en CLAUDE-moodle.md 4.1). Sin entrada en
-  // cronograma.json (clase sin fecha confirmada todavia, o Clase 00 que
-  // no lleva <details> exterior) no se toca nada.
-  function colapsarSiPasada(el, cronograma) {
+  // De todas las clases con fecha en cronograma.json, cual es "la de la
+  // semana": la de hoy si hay una, si no la primera con fecha futura --
+  // mismo criterio que la tarjeta "Proxima clase" de Cronograma.html
+  // (idxHoy / idxProxima). Se calcula una sola vez y se comparte entre
+  // todos los bloques (memoizado, igual que obtenerEntregas/obtenerCronograma).
+  function obtenerClaseActual() {
+    if (!claseActualPromise) {
+      claseActualPromise = obtenerCronograma().then(function (cronograma) {
+        var claves = Object.keys(cronograma).sort(function (a, b) {
+          return cronograma[a].fecha < cronograma[b].fecha ? -1 : 1;
+        });
+        var hoy = hoyKey();
+        var actual = null;
+        for (var i = 0; i < claves.length; i++) {
+          if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; }
+        }
+        if (!actual) {
+          for (var j = 0; j < claves.length; j++) {
+            if (cronograma[claves[j]].fecha > hoy) { actual = claves[j]; break; }
+          }
+        }
+        return actual;
+      });
+    }
+    return claseActualPromise;
+  }
+
+  // Colapsa el <details> exterior de todo bloque que NO sea la clase de
+  // la semana (obtenerClaseActual) -- pasada o futura, da igual: a lo
+  // sumo una clase queda abierta a la vez. El primer <details> en el
+  // documento es siempre el que envuelve todo el fragmento (anatomia en
+  // CLAUDE-moodle.md 4.1). Sin match de id (Clase 00, que no lleva
+  // <details> exterior) o sin clase actual todavia (antes de la primera
+  // fecha del cuatrimestre) no se toca nada.
+  function colapsarSiNoEsLaActual(el, claseActual) {
     var m = CLASE_ID_RE.exec(el.id);
     if (!m) return;
-    var entrada = cronograma[m[1]];
-    if (!entrada || !entrada.fecha) return;
-    if (entrada.fecha >= hoyKey()) return;
+    if (m[1] === claseActual) return;
     var detallesRaiz = el.querySelector('details');
     if (detallesRaiz) detallesRaiz.removeAttribute('open');
   }
@@ -150,13 +176,13 @@
         return r.text();
       }),
       obtenerEntregas(),
-      obtenerCronograma()
+      obtenerClaseActual()
     ]).then(function (resultados) {
       var html = resolverPlaceholders(resultados[0], resultados[1][AULA_PREVIEW]);
       var doc = new DOMParser().parseFromString(html, 'text/html');
       el.innerHTML = doc.body.innerHTML;
       ejecutarScripts(el);
-      colapsarSiPasada(el, resultados[2]);
+      colapsarSiNoEsLaActual(el, resultados[2]);
     }).catch(function (err) {
       mostrarError(el, src, err);
     });

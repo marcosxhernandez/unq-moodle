@@ -115,10 +115,15 @@
   }
 
   // De todas las clases con fecha en cronograma.json, cual es "la de la
-  // semana": la de hoy si hay una, si no la primera con fecha futura --
-  // mismo criterio que la tarjeta "Proxima clase" de Cronograma.html
-  // (idxHoy / idxProxima). Se calcula una sola vez y se comparte entre
-  // todos los bloques (memoizado, igual que obtenerEntregas/obtenerCronograma).
+  // semana": la ULTIMA clase cuya fecha ya llegó (hoy incluido) -- se
+  // mantiene abierta desde su propio día hasta el día de la siguiente,
+  // sin importar el orden numérico. Si el cuatrimestre todavía no arrancó
+  // (ninguna fecha llegó todavía), cae a la primera fecha futura.
+  // (Distinto a criterio "hoy / próxima" de Cronograma.html, que es un
+  // cronograma/countdown y sí le interesa mostrar la próxima por venir;
+  // acá el interés es "qué clase están trabajando los alumnos ahora".)
+  // Se calcula una sola vez y se comparte entre todos los bloques
+  // (memoizado, igual que obtenerEntregas/obtenerCronograma).
   function obtenerClaseActual() {
     if (!claseActualPromise) {
       claseActualPromise = obtenerCronograma().then(function (cronograma) {
@@ -128,7 +133,7 @@
         var hoy = hoyKey();
         var actual = null;
         for (var i = 0; i < claves.length; i++) {
-          if (cronograma[claves[i]].fecha === hoy) { actual = claves[i]; break; }
+          if (cronograma[claves[i]].fecha <= hoy) { actual = claves[i]; }
         }
         if (!actual) {
           for (var j = 0; j < claves.length; j++) {

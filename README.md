@@ -6,7 +6,7 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 
 🔗 Sitio publicado: **https://marcosxhernandez.github.io/unq-moodle/**
 
-## Estado de avance (2026-09-10)
+## Estado de avance (2026-09-16)
 
 | Clase | Título | Guía Visual | Fragmento Moodle | Estado |
 |-------|--------|-------------|-----------------|--------|
@@ -15,8 +15,8 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 | 02 | Arquitectura del documento profesional | ✅ | ✅ | Completo (confirmado) |
 | 03 | IA como asistente académico | ✅ | ✅ | Completo (confirmado) |
 | 04 | Arquitectura avanzada del documento | ✅ | ✅ | Completo (confirmado) |
-| 05 | Maquetación de alta precisión | ✅ | ✅ | Completo (confirmado) |
-| 06 | Presentaciones con IA | ✅ | ✅ | 🔄 En progreso (contenido armado, todavía sin confirmar) |
+| 05 | Maquetación de alta precisión | ✅ | ✅ | Completo (confirmado) — recuperatorio dictado el 22/09, después de la Clase 06 |
+| 06 | Presentaciones con IA | ✅ | ✅ | Completo (confirmado el 15/09, día de dictado) |
 | 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — `clases/Clase 07 - Examen...` es carpeta de material/consignas, no se publica) |
 | 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | Completo |
 | 09 | Funciones lógicas y validación de datos | ✅ | ✅ | Completo |
@@ -31,7 +31,7 @@ Materiales de **Informática (UNQ, 2026)** publicados para usar en Qoodle (Moodl
 
 **Feriado y Paro docente son bloques "comodín" reutilizables (`moodle/Comodín - Feriado.html`, `Comodín - Paro docente.html`), sin número de clase fijo — no ocupan un slot propio en esta tabla.**
 
-**Total: 18 clases numeradas (00-17) — 13 con Guía Visual + fragmento Moodle (01-06, 08-11, 13-15), Bienvenida (00) y los cuatro exámenes (07, 12, 16, 17) solo con fragmento Moodle. Confirmadas de punta a punta: 01-05. Entregas ("Subir link") pendientes de id real de Tarea en Qoodle para los cuatro exámenes — ver `moodle/entregas.csv`.**
+**Total: 18 clases numeradas (00-17) — 13 con Guía Visual + fragmento Moodle (01-06, 08-11, 13-15), Bienvenida (00) y los cuatro exámenes (07, 12, 16, 17) solo con fragmento Moodle. Confirmadas de punta a punta: 01-06. Entregas ("Subir link") pendientes de id real de Tarea en Qoodle para los cuatro exámenes — ver `moodle/entregas.csv`.**
 
 ## Estructura
 
@@ -119,6 +119,11 @@ Este repo solo aloja el resultado final. Los parámetros de diseño, paginación
 
 ## Historial de cambios
 
+**2026-09-16:**
+- Confirmada de punta a punta la Clase 06 (Presentaciones con IA) — dictada el 15/09, contenido cerrado ese mismo día (Guía Visual y cronograma editados el 15/09 por la tarde/noche). Tabla de "Estado de avance" actualizada.
+- Reordenamiento pedagógico confirmado por Marcos: este cuatrimestre la Clase 06 (Presentaciones con IA) se dio *antes* que la Clase 05 (Maquetación de alta precisión) — la Clase 05 queda como recuperatorio el 22/09. El cronograma (`moodle/cronograma.json`) ya reflejaba esto (fecha de 05 posterior a la de 06); no fue un error de carga.
+- **Bug corregido en `js/index-loader.js`:** `obtenerClaseActual()` elegía como "clase de la semana" la primera fecha *futura* del cronograma — con el reordenamiento anterior, eso hacía que el día después de dictar la Clase 06 el sitio saltara a destacar/abrir la Clase 05 (todavía a una semana de distancia) en vez de mantener abierta la 06 recién dada. Ahora elige la última clase cuya fecha ya llegó (hoy incluido), así que una clase queda abierta desde su propio día hasta el día de la siguiente, sin importar el orden numérico. Sin cambios en `Cronograma.html` (esa vista sí quiere mostrar la "próxima" por venir, es un criterio distinto a propósito).
+
 **2026-09-10:**
 - Auditoría completa de los 4 archivos de documentación (`CLAUDE.md`, `CLAUDE-clases.md`, `CLAUDE-moodle.md`, este README) contra el estado real del repo: `CLAUDE.md` §2.5 todavía tenía el esquema de 20 clases de antes de la reversión del 2 de sep. (commit `15c502e`), la estructura de carpetas todavía decía `bloque derecho.html` en vez de `Cronograma.html`, y `CLAUDE-moodle.md` §4.7/4.8 describía el flujo viejo de entregas por aula (CyT/DCS, `render_entregas.py`, `moodle/_build/`) como si fuera el vigente en vez del loader dinámico de 4.2quinquies. Los tres quedaron corregidos. De paso: documentada formalmente la Guía Docente (`clases/Docente - Guia de Contenidos/actividades - Clases NN-NN.html`, sin sección propia hasta ahora), corregida la ubicación real de los PDF exportados (`PDF/` en la raíz del Drive, no `unq-moodle/pdf/`), confirmado que "Clase 00 - Programa..." vive a propósito dentro de `clases/`, y borrado `unq-moodle/_dashfix_incoming.tar.gz` (archivo suelto sin uso).
 - `loaders.html` movido de `loaders/loaders.html` a la raíz de `unq-moodle/` (commit `b02a774`), junto con actualizaciones a `Cronograma.html` y Clases 08-11.
@@ -159,6 +164,5 @@ Este repo solo aloja el resultado final. Los parámetros de diseño, paginación
 - Estado: 19/20 clases completas (Clase 07 pendiente de .md)
 
 **Pendiente:**
-- Confirmar contenido de Clase 06 (hoy en progreso, no confirmada).
 - Completar los ids reales de Tarea en Qoodle para los cuatro exámenes (07, 12, 16, 17) en `entregas.csv` — hoy en `TODO` — y correr `python3 scripts/build_entregas_json.py` antes de dar el punto por cerrado.
 - Validar si "Archivo → Exportar → Crear PDF/XPS" (ya corregido en Clase 05, ver `CLAUDE-clases.md` 3.8bis) también cambió en Clase 06 (PowerPoint), 08-11 (Excel) y 13-15 (bases de datos/Access) — no tocado todavía porque cada programa puede haber migrado la interfaz en un momento distinto.

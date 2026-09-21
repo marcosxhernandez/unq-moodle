@@ -44,9 +44,7 @@
   var TIMEOUT_MS = 12000;
 
   var entregasPromise = null;
-  var cronogramaPromise = null;
-  var claseActualPromise = null;
-  var CLASE_ID_RE = /^m(\d{2})root$/;
+  var CLASE_ID_RE = /^m\d{2}root$/;
 
   function fetchConTimeout(url, ms) {
     var controller = new AbortController();
@@ -101,62 +99,15 @@
     return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
   }
 
-  // moodle/cronograma.json (clase -> {fecha, tipo, unidad, titulo}) se pide
-  // una sola vez y se comparte entre todos los bloques, igual que
-  // entregas.json. Generado por scripts/build_cronograma_json.py a partir
-  // de moodle/cronograma.csv -- nunca a mano (CLAUDE.md raiz S1).
-  function obtenerCronograma() {
-    if (!cronogramaPromise) {
-      cronogramaPromise = fetchConTimeout(BASE + 'moodle/cronograma.json', TIMEOUT_MS)
-        .then(function (r) { return r.json(); })
-        .catch(function () { return {}; });
-    }
-    return cronogramaPromise;
-  }
 
-  // De todas las clases con fecha en cronograma.json, cual es "la de la
-  // semana": la ULTIMA clase cuya fecha ya llegó (hoy incluido) -- se
-  // mantiene abierta desde su propio día hasta el día de la siguiente,
-  // sin importar el orden numérico. Si el cuatrimestre todavía no arrancó
-  // (ninguna fecha llegó todavía), cae a la primera fecha futura.
-  // (Distinto a criterio "hoy / próxima" de Cronograma.html, que es un
-  // cronograma/countdown y sí le interesa mostrar la próxima por venir;
-  // acá el interés es "qué clase están trabajando los alumnos ahora".)
-  // Se calcula una sola vez y se comparte entre todos los bloques
-  // (memoizado, igual que obtenerEntregas/obtenerCronograma).
-  function obtenerClaseActual() {
-    if (!claseActualPromise) {
-      claseActualPromise = obtenerCronograma().then(function (cronograma) {
-        var claves = Object.keys(cronograma).sort(function (a, b) {
-          return cronograma[a].fecha < cronograma[b].fecha ? -1 : 1;
-        });
-        var hoy = hoyKey();
-        var actual = null;
-        for (var i = 0; i < claves.length; i++) {
-          if (cronograma[claves[i]].fecha <= hoy) { actual = claves[i]; }
-        }
-        if (!actual) {
-          for (var j = 0; j < claves.length; j++) {
-            if (cronograma[claves[j]].fecha > hoy) { actual = claves[j]; break; }
-          }
-        }
-        return actual;
-      });
-    }
-    return claseActualPromise;
-  }
 
-  // Colapsa el <details> exterior de todo bloque que NO sea la clase de
-  // la semana (obtenerClaseActual) -- pasada o futura, da igual: a lo
-  // sumo una clase queda abierta a la vez. El primer <details> en el
-  // documento es siempre el que envuelve todo el fragmento (anatomia en
-  // CLAUDE-moodle.md 4.1). Sin match de id (Clase 00, que no lleva
-  // <details> exterior) o sin clase actual todavia (antes de la primera
-  // fecha del cuatrimestre) no se toca nada.
-  function colapsarSiNoEsLaActual(el, claseActual) {
-    var m = CLASE_ID_RE.exec(el.id);
-    if (!m) return;
-    if (m[1] === claseActual) return;
+  // Colapsa siempre el <details> exterior de todo bloque (salvo si no
+  // matchea el patrón de id). En index.html (GitHub Pages), todos los
+  // bloques arrancan cerrados, sin depender de fechas o clase "actual".
+  // El primer <details> en el documento es siempre el que envuelve todo el
+  // fragmento (anatomia en CLAUDE-moodle.md 4.1).
+  function colapsarSiempreCerrado(el) {
+    if (!CLASE_ID_RE.test(el.id)) return;
     var detallesRaiz = el.querySelector('details');
     if (detallesRaiz) detallesRaiz.removeAttribute('open');
   }
@@ -180,14 +131,13 @@
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();
       }),
-      obtenerEntregas(),
-      obtenerClaseActual()
+      obtenerEntregas()
     ]).then(function (resultados) {
       var html = resolverPlaceholders(resultados[0], resultados[1][AULA_PREVIEW]);
       var doc = new DOMParser().parseFromString(html, 'text/html');
       el.innerHTML = doc.body.innerHTML;
       ejecutarScripts(el);
-      colapsarSiNoEsLaActual(el, resultados[2]);
+      colapsarSiempreCerrado(el);
     }).catch(function (err) {
       mostrarError(el, src, err);
     });

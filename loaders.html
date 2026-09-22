@@ -113,20 +113,12 @@ body{
             <strong>ℹ️ Antes de pegar en Qoodle:</strong>
             <ul style="margin: 0; padding: 0 0 0 20px;">
                 <li>Cada loader trae <code>entregas.json</code> (botón "Subir link").</li>
-                <li><strong>Comportamiento nuevo:</strong> todos los bloques de clase arrancan <strong>siempre cerrados</strong> cuando se cargan en index.html (GitHub Pages). En Moodle, cada clase se abre/cierra automáticamente según si su sección tiene la clase CSS <code>current</code> (marcador nativo de Moodle al "Destacar" una sección) — solo esa queda abierta, todas las demás colapsan, sin depender de fechas.</li>
                 <li>Clase 00 no tiene <code>&lt;details&gt;</code> exterior (4.1ter) y no participa de este colapso — siempre se muestra completa.</li>
-                <li>Feriado y Paro docente son comodines sin número fijo — van al final de la lista, código directo, sí colapsan cuando no está su sección "Destacada".</li>
-                <li>Verificar <code>moodle/entregas.csv</code> antes de pegar una clase cuyo botón "Subir link" importe hoy — las filas con <code>TODO</code> quedan marcadas con ⚠️ en la lista de abajo.</li>
             </ul>
         </div>
 
-        <div class="alert-error" style="border-left-color:#1e7e3e;">
-            <strong>🗓️ Cronograma (bloque lateral) — sin probar en Qoodle real todavía:</strong>
-            A diferencia de los loaders de clase de abajo (confirmados desde Clase 04), este suma un paso nuevo: después del <code>fetch</code>, recrea el <code>&lt;script&gt;</code> que trae adentro <code>Cronograma.html</code> — si no se hace ese paso aparte, Moodle inserta el HTML pero el navegador no ejecuta el script, y el bloque queda mostrando "--%" para siempre. Antes de darlo por bueno: pegalo en <strong>una sola aula</strong> primero y confirmá que el % deja de decir "--%".
-        </div>
-
 <div class="loader-list">
-  <details class="loader-row" open>
+  <details class="loader-row">
     <summary><span class="row-num">🗓️</span><span class="row-title">🗓️ Cronograma — bloque lateral del curso</span><span class="row-hint">pegar 1 vez por aula, en un bloque lateral</span><button class="row-copy" type="button" onclick="copiarChip(event, this, 'code-cronograma')" title="Copiar sin abrir">📋</button></summary>
     <div class="row-body">
       <p class="row-note">Se pega una sola vez por aula, en un bloque de la columna lateral — no es contenido de una clase.</p>

@@ -183,7 +183,7 @@
             </div>
             <div style="margin-left: 32px; border-top: 1px solid #f0f0f2;"></div>
             <div class="unq-cr-row" data-fecha="2026-12-08" data-tipo="feriado" data-unidad="Feriado nacional" data-titulo="Inmaculada Concepción" data-accent="#6D6B7A" data-bgtinte="#F4F3F6" data-fechacorta="08/12" style="display: flex; align-items: center; gap: 11px; padding: 10px 14px; box-sizing: border-box;">
-                <span class="unq-cr-dot" style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.6rem; font-weight: 800; background: #eceaf0; color: #6d6b7a;">F</span>
+                <span class="unq-cr-dot" style="width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.05rem; line-height: 1;">🎉</span>
                 <span class="unq-cr-titulo" style="flex: 1; min-width: 0; font-size: 0.82rem; font-weight: 500; font-style: italic; color: #1A1822; line-height: 1.3;">Inmaculada Concepción</span>
                 <span style="text-align: right; flex-shrink: 0;">
                     <span class="unq-cr-rotulo" style="display: none; font-size: 0.6rem; font-weight: 800; letter-spacing: .04em; margin-bottom: 1px;"></span>
@@ -238,10 +238,8 @@
             var colorTexto = (!vivid && !esComodin) ? accent + '99' : '#1A1822';
 
             if (dot) {
-                if (tipo === 'paro') {
+                if (tipo === 'paro' || tipo === 'feriado') {
                     dot.style.cssText = 'width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.05rem;line-height:1;background:transparent;';
-                } else if (tipo === 'feriado') {
-                    dot.style.cssText = 'width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.6rem;font-weight:800;' + (vivid ? 'background:' + accent + ';color:#fff;' : 'background:rgba(255,255,255,.85);color:' + accent + ';border:1.5px solid ' + accent + '90;');
                 } else if (esEval) {
                     if (vivid) {
                         dot.style.cssText = 'width:14px;height:14px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:' + accent + ';box-shadow:0 0 0 2px rgba(255,255,255,.7);';

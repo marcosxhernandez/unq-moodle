@@ -8,7 +8,7 @@
                 </div>
                 <div style="padding:18px 40px 32px 22px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
                     <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Lógica de celdas y funciones esenciales</div>
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Referencias relativas/absolutas, formato y funciones matemáticas</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Formato de celdas, filas y hojas, referencias y funciones esenciales</div>
                 </div>
             <span style="position:absolute;bottom:12px;right:12px;width:24px;height:24px;border-radius:50%;background:#1e8e3e;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(21,20,27,.25);"><span class="cv" style="display:block;width:6px;height:6px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex-shrink:0;"></span></span></div>
         </summary>
@@ -20,7 +20,7 @@
                   <span style="font-size:10px;font-weight:500;color:#1e8e3e;">marcos.hernandez@unq.edu.ar</span>
                 </span>
             </a>
-            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Esta clase construye esa lógica desde cero. Entendés cómo se nombra una celda, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, qué funciones resuelven las cuentas que nadie quiere hacer a mano. 📊</p>
+            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">Una planilla no es una tabla con números: es un sistema donde cada celda puede depender de otra. Esta clase la construís sobre un caso real: la exportación de inscripciones de un centro cultural, cargada a mano durante meses, con 336 filas y errores de carga por todos lados. Vas a dejarla prolija, organizada, y vas a aprender cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, y qué funciones resuelven las cuentas que nadie quiere hacer a mano. 📊</p>
             <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2008%20-%20L%C3%B3gica%20de%20celdas%20y%20funciones%20esenciales.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#1e8e3e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
                 <!-- ═══════ LA CAJA DE HERRAMIENTAS ═══════ -->
@@ -35,69 +35,104 @@
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">01</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Crear la planilla y conocer Google Sheets</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">La planilla: crear el archivo y conocer Google Sheets</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Crear un archivo en Google Sheets, reconocer los elementos clave de la interfaz (barra de fórmulas, celda activa, encabezados, controlador de relleno), entender las diferencias con Excel.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Creás el archivo y cargás a mano las primeras ocho inscripciones del Centro Cultural La Usina, tal como llegan del sistema real: con errores de tipeo, fechas mezcladas y datos inconsistentes. Todavía no corregís nada, solo mirás.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Creé una planilla nueva nombrada correctamente (<code>AAAA-MM-DD_Informatica_Clase08_V01</code>).</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Probé el controlador de relleno: completé una serie y continué un patrón.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Creé la planilla con el nombre exacto (<code>AAAA-MM-DD_Informatica_Clase08_V01</code>) y cargué las primeras ocho inscripciones tal como llegan, sin corregir nada.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Anoté los errores de carga que noté a simple vista: fechas mezcladas, mayúsculas, sede vacía, arancel en cero.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">02</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Referencias relativas y absolutas</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Formato de celdas: alineación, fuentes, bordes, relleno y número</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">La diferencia más importante de la clase. Relativa (<code>A1</code>) se ajusta al copiar; absoluta (<code>$A$1</code>) se queda fija. Mixtas (<code>$A1</code>, <code>A$1</code>) para casos especiales.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Las cinco solapas de Formato → Formato de celdas: número, alineación, fuentes, bordes y relleno. No cambian el dato, cambian cómo se lee. Diagnóstico clave: texto a la izquierda, números a la derecha.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Diferencio referencias relativas de absolutas sin confundirme.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Usé <code>F4</code> (o <code>⌘+T</code> en Mac) para alternar tipos de referencia.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completé la Actividad 2: conversión de moneda con referencia absoluta.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Formateé el encabezado (negrita, relleno, centrado) y apliqué bordes a toda la tabla.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Descargué el archivo CSV completo (336 filas): lo voy a necesitar en la Actividad 4.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">03</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Funciones matemáticas esenciales</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Filas, columnas y hojas: insertar, eliminar y organizar</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Cinco funciones que usás todos los días: <code>SUMA()</code>, <code>PROMEDIO()</code>, <code>CONTAR()</code>, <code>CONTARA()</code>, <code>MAX()</code>, <code>MIN()</code>. Sintaxis: <code>=FUNCIÓN(rango)</code>.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Insertar/eliminar filas y columnas, ajustar anchos, trabajar con varias hojas en un mismo libro y referenciar una celda de otra hoja con <code>=NombreDeHoja!A1</code>.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Escribo <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>MAX</code>, <code>MIN</code> sin dudas.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Diferencio <code>CONTAR</code> (solo números) de <code>CONTARA</code> (números y texto).</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completé la Actividad 3: planilla de gastos con todas las funciones.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Inserté la columna <code>orden</code> entre <code>id_inscripcion</code> y <code>fecha_inscripcion</code>, y ajusté el ancho de una columna.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Creé la hoja <code>RESUMEN</code> y probé una referencia entre hojas del tipo <code>=DATOS!A2</code>.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">04</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Formato condicional</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">La planilla de cálculo como herramienta para pensar con datos</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Visualizar patrones sin escribir fórmulas. Dos tipos: escala de color (gradiente) y regla de un solo color (condición específica: &gt;, &lt;, contiene, etc.).</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Configurás la Configuración regional en Argentina para que Sheets lea bien el arancel, importás las 336 filas reales, y calculás <code>importe_bruto</code> celda por celda, sin funciones todavía.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Apliqué escala de color a un rango para visualizar valores altos y bajos.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Apliqué una regla de un solo color con una condición específica (ej: &gt;100000).</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completé la Actividad 4: formato condicional en una tabla de gastos.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Configuré la Configuración regional en Argentina e importé las 336 filas completas a <code>DATOS</code>.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Calculé <code>importe_bruto</code> para las 336 filas con una fórmula sin funciones, copiada con el controlador de relleno.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">05</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Ejercicio integrador y Excel</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Referencias relativas y absolutas</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Un ejercicio que junta TODO: referencias (relativa + absoluta), funciones y formato condicional. Primero en Google Sheets, luego replicado en Excel para ver las diferencias (<code>F4</code>, separador de argumentos, menús).</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">La diferencia más importante de la clase. Relativa (<code>A1</code>) se ajusta al copiar; absoluta (<code>$A$1</code>), fijada con <code>F4</code>, se queda igual. La usás para descontar el costo administrativo fijo ($500) de cada inscripción.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Resolví el ejercicio integrador completo en Google Sheets.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Repliqué el mismo ejercicio en Excel (de escritorio u Online).</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Noté al menos una diferencia de interfaz o sintaxis entre Google Sheets y Excel.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Calculé <code>importe_neto</code> con una referencia absoluta al costo administrativo fijo, y usé <code>F4</code> (Mac: <code>⌘+T</code>) para fijarla.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Practiqué la referencia mixta (<code>B$1</code>, <code>$A2</code>) en una tabla chica aparte.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">06</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Funciones matemáticas esenciales</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;"><code>SUMA()</code>, <code>PROMEDIO()</code>, <code>CONTAR()</code>, <code>CONTARA()</code>, <code>MAX()</code>, <code>MIN()</code>, <code>POTENCIA()</code> y <code>RAIZ()</code>. Con ellas armás el primero de "los dos números que no coinciden" del correo de la coordinación: un total bruto de $4.115.000 que todavía incluye anuladas, duplicados y errores.</p>
+                    <div style="margin:12px 0 0;">
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé el panel <code>RESUMEN</code> con <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>CONTARA</code>, <code>MAX</code> y <code>MIN</code> sobre las 336 filas.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Detecté con <code>MIN</code> un arancel negativo (-$14.000): la primera pista concreta de un error de carga.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">07</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Formato condicional</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Visualizás patrones sin escribir fórmulas nuevas: una escala de color, dos reglas de un solo color (aranceles en cero o negativos, becas por encima del 50% autorizado) y una regla con fórmula personalizada contra <code>MAX</code>/<code>MIN</code>.</p>
+                    <div style="margin:12px 0 0;">
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Apliqué las cuatro reglas de formato condicional sobre <code>arancel</code> y <code>beca_pct</code>.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Confirmé que las diez inscripciones de Guitarra con beca superior al 50% quedaron marcadas.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">08</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Ejercicio integrador: de Google Sheets a Excel</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Documentás el archivo, confirmás que todo se extiende solo a una fila nueva, compartís con el docente, y replicás la misma planilla en Excel para practicar los dos entornos.</p>
+                    <div style="margin:12px 0 0;">
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Documenté el archivo en la hoja <code>LEEME</code> y agregué una inscripción nueva para confirmar que todo se extiende solo.</span></label>
+                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Repliqué <code>DATOS</code> completo en Excel y anoté al menos una diferencia entre los dos programas.</span></label>
                     </div>
                 </div>
             </details>
@@ -105,12 +140,12 @@
         <!-- ═══════ PRESENTE ═══════ -->
         <div style="margin:0 4px 16px;background:linear-gradient(180deg,#e9f7f0,#fff 55%);border:1px solid #cdeadb;border-radius:16px;padding:22px 24px;">
             <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0f7a5c;margin:0 0 8px;">✅ Así se registra tu presente</div>
-            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">No es una entrega con nota: es la forma de dejar constancia de que hiciste la clase de hoy. Compartí tu planilla <code style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.9em;background:#fff;border:1px solid #cdeadb;padding:1px 6px;border-radius:5px;color:#0f7a5c;">AAAA-MM-DD_Informatica_Clase08_V01</code> (permiso de comentario) y subí el enlace acá abajo.</p>
+            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">No es una entrega con nota: es la forma de dejar constancia de que hiciste la clase de hoy. Compartí tu planilla <code style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.9em;background:#fff;border:1px solid #cdeadb;padding:1px 6px;border-radius:5px;color:#0f7a5c;">AAAA-MM-DD_Informatica_Clase08_V01</code> (permiso de Editor para el docente) y subí el enlace acá abajo.</p>
             <div style="display:flex;flex-wrap:wrap;gap:14px;">
                 <div style="flex:1 1 220px;background:#fff;border:1px solid #cdeadb;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;">
                     <div style="width:24px;height:24px;border-radius:50%;background:#0f7a5c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">1</div>
                     <div style="font-size:14px;font-weight:700;color:#15141b;">📊 Planilla Clase 08</div>
-                    <div style="font-size:11px;color:#4b4959;">Con las funciones básicas, el formato condicional y el ejercicio integrador resueltos.</div>
+                    <div style="font-size:11px;color:#4b4959;">Con las 336 filas importadas, referencias, funciones, formato condicional y el ejercicio integrador resueltos.</div>
                     <a href="https://qoodle.uvq.edu.ar/mod/assign/view.php?id={{ENTREGA:08:1}}&amp;action=editsubmission" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#0f7a5c;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">Subir link</a>
                 </div>
             </div>

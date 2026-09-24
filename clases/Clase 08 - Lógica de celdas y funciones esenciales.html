@@ -80,7 +80,7 @@
   <div class="cover-inner">
     <span class="cover-kicker">Clase 08 · Planilla de cálculo</span>
     <h1 class="cover-title">Lógica de celdas y funciones esenciales</h1>
-    <p class="cover-subtitle">Referencias relativas/absolutas, formato y funciones matemáticas</p>
+    <p class="cover-subtitle">Formato de celdas, filas y hojas, referencias y funciones esenciales</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
@@ -97,16 +97,18 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Esta clase construye la lógica de una planilla desde cero: cómo se nombra una celda, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, y qué funciones resuelven las cuentas que nadie quiere hacer a mano. Todo aplicado sobre un encargo que llega a un escritorio profesional.</p>
+  <p class="toc-intro">Esta clase construye la lógica de una planilla desde cero: cómo se ve prolija una tabla, cómo se organiza en filas, columnas y hojas, cuándo una referencia tiene que moverse y cuándo tiene que quedarse quieta, y qué funciones resuelven las cuentas que nadie quiere hacer a mano. Todo aplicado sobre un archivo real que llega sucio a un escritorio profesional.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#crear"><span class="toc-num">01</span><span class="toc-text">La planilla: crear el archivo y conocer Google Sheets</span></a></li>
-    <li><a href="#pensar"><span class="toc-num">02</span><span class="toc-text">La planilla de cálculo como herramienta para pensar con datos</span></a></li>
-    <li><a href="#referencias"><span class="toc-num">03</span><span class="toc-text">Referencias relativas y absolutas</span></a></li>
-    <li><a href="#funciones"><span class="toc-num">04</span><span class="toc-text">Funciones matemáticas esenciales</span></a></li>
-    <li><a href="#formato"><span class="toc-num">05</span><span class="toc-text">Formato condicional</span></a></li>
-    <li><a href="#integrador"><span class="toc-num">06</span><span class="toc-text">Ejercicio integrador: de Google Sheets a Excel</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#formato-celdas"><span class="toc-num">02</span><span class="toc-text">Formato de celdas: alineación, fuentes, bordes, relleno y número</span></a></li>
+    <li><a href="#filas-columnas"><span class="toc-num">03</span><span class="toc-text">Filas, columnas y hojas: insertar, eliminar y organizar</span></a></li>
+    <li><a href="#pensar"><span class="toc-num">04</span><span class="toc-text">La planilla de cálculo como herramienta para pensar con datos</span></a></li>
+    <li><a href="#referencias"><span class="toc-num">05</span><span class="toc-text">Referencias relativas y absolutas</span></a></li>
+    <li><a href="#funciones"><span class="toc-num">06</span><span class="toc-text">Funciones matemáticas esenciales</span></a></li>
+    <li><a href="#formato"><span class="toc-num">07</span><span class="toc-text">Formato condicional</span></a></li>
+    <li><a href="#integrador"><span class="toc-num">08</span><span class="toc-text">Ejercicio integrador: de Google Sheets a Excel</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">09</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
@@ -203,43 +205,48 @@
     </div>
 
     <h3>El encargo de esta clase</h3>
-    <p>A partir de hoy vas a trabajar sobre un solo archivo que se arma clase a clase: cada actividad de hoy, y de las tres clases de planilla de cálculo que siguen, le agrega algo nuevo al mismo archivo. Elegís una organización ficticia ahora y la mantenés hasta el cierre del bloque.</p>
+    <p>A partir de hoy vas a trabajar sobre un solo archivo que se arma clase a clase: cada actividad de hoy, y de las tres clases de planilla de cálculo que siguen, le agrega algo nuevo al mismo archivo. Es el mismo caso durante todo el bloque, así que conviene entenderlo bien desde acá.</p>
 
     <div class="brief">
       <span class="brief-kind">Correo electrónico</span>
       <div class="brief-meta">
-        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación de la organización</span></div>
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación · Centro Cultural La Usina</span></div>
         <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
-        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Necesito números confiables de junio</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">No sabemos cuánto facturamos este cuatrimestre</span></div>
       </div>
       <div class="brief-body">
-        <p>Hola. Te paso los registros de junio como los tenemos: una lista larga, cargada a mano, sin ningún total. Necesito que me armes una planilla con estos datos y que me digas, de un vistazo, cuánto facturamos, cuánto es el promedio, y cuáles son los casos más altos y más bajos. Con eso alcanza por ahora.</p>
+        <p>Hola. Te paso la exportación del sistema de inscripciones a talleres tal como la descarga la persona de administración: una lista larga, cargada a mano durante meses, con errores de tipeo por todos lados. Necesitamos saber cuánto facturamos realmente este cuatrimestre, porque tenemos dos números que no coinciden y ninguno de los dos nos cierra.</p>
+        <p>Con que armes una planilla prolija con estos datos y nos digas el total real, alcanza por ahora.</p>
         <p>Gracias.</p>
       </div>
     </div>
 
-    <h3>Elegí tu organización</h3>
-    <p>Las cuatro organizaciones son las mismas que vas a usar en las tres clases siguientes: elegí una y quedate con ella. Los ejemplos de esta Guía Visual desarrollan 💼 Hotel Bahía Norte; si elegís otra, adaptá los nombres de campo con la fila que te corresponde.</p>
+    <h3>Centro Cultural La Usina</h3>
+    <p>Es un centro cultural comunitario con tres sedes (Centro, Norte y Sur) que dicta ocho talleres. Vas a trabajar con la exportación real de inscripciones del cuatrimestre: <code>Inscripciones_LaUsina_202606.csv</code>, separada por punto y coma, con los aranceles en formato argentino y bastantes errores de carga adentro. La vas a descargar completa en la Actividad 02, pero para arrancar alcanza con cargar a mano las primeras filas.</p>
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Organización</th><th>Campo que agrupa</th><th>Categoría</th><th>Cantidad</th><th>Valor unitario</th><th>Comisión</th><th>Umbral "alto valor"</th></tr></thead>
+        <thead><tr><th>Taller</th><th>Docente</th><th>Sede</th><th>Arancel base</th></tr></thead>
         <tbody>
-          <tr><td>💼 Hotel Bahía Norte</td><td><code>canal</code> (Directo / Booking / Agencia)</td><td><code>tipo_habitacion</code> (Individual / Doble / Suite)</td><td><code>noches</code></td><td>Tarifa por noche</td><td>12%</td><td>$250.000</td></tr>
-          <tr><td>📚 Territorio Abierto</td><td><code>sede</code> (Centro / Norte / Sur / Oeste)</td><td><code>tipo_actividad</code> (Taller / Excursión / Curso)</td><td><code>participantes</code></td><td>Costo por participante</td><td>15%</td><td>$40.000</td></tr>
-          <tr><td>🔬 Planta piloto Sur</td><td><code>turno</code> (Mañana / Tarde / Noche)</td><td><code>linea</code> (Línea A / Línea B / Línea C)</td><td><code>unidades</code></td><td>Precio por unidad</td><td>8%</td><td>$300.000</td></tr>
-          <tr><td>🎨 Estudio Delta</td><td><code>responsable</code> (3 o 4 nombres a elección)</td><td><code>formato</code> (Video / Podcast / Gráfica)</td><td><code>horas</code></td><td>Tarifa por hora</td><td>10%</td><td>$150.000</td></tr>
+          <tr><td>Cerámica</td><td>Valeria Núñez</td><td>Sede Centro</td><td>$14.000</td></tr>
+          <tr><td>Guitarra</td><td>Emiliano Pais</td><td>Sede Centro</td><td>$12.000</td></tr>
+          <tr><td>Fotografía analógica</td><td>Rocío Beltrán</td><td>Sede Norte</td><td>$16.000</td></tr>
+          <tr><td>Yoga</td><td>Marina Suárez</td><td>Sede Sur</td><td>$10.000</td></tr>
+          <tr><td>Huerta orgánica</td><td>Tomás Leiva</td><td>Sede Norte</td><td>$9.000</td></tr>
+          <tr><td>Serigrafía</td><td>Julieta Campos</td><td>Sede Centro</td><td>$15.000</td></tr>
+          <tr><td>Percusión</td><td>Braian Ortiz</td><td>Sede Sur</td><td>$11.000</td></tr>
+          <tr><td>Costura creativa</td><td>Noelia Ferreyra</td><td>Sede Norte</td><td>$13.000</td></tr>
         </tbody>
       </table>
     </div>
     <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo: Comisión y umbral, por ahora en un papel</p>
-      <p>No hace falta cargar la comisión ni el umbral de tu organización todavía, los vas a necesitar recién en la Actividad 03 y en la Actividad 05. Anotalos aparte para no tener que volver a esta tabla cada vez.</p>
+      <p class="callout-label">💡 Consejo</p>
+      <p>Esta tabla de talleres, docentes y aranceles va a volver en la Clase 10 como archivo aparte (<code>Catalogo_talleres_2026.xlsx</code>), para buscar datos con <code>BUSCARV</code>. Por ahora no hace falta cargarla, es solo para que entiendas de dónde sale cada arancel de la exportación.</p>
     </div>
 
     <div class="activity">
       <div class="activity-head">
         <span class="activity-eyebrow">Actividad 01</span>
-        <h3>Crear el archivo y cargar los registros de junio</h3>
+        <h3>Crear el archivo y cargar las primeras inscripciones</h3>
       </div>
       <div class="prose">
         <p>Esta va a ser tu planilla de trabajo para las próximas cuatro clases: cada actividad le agrega algo nuevo, nunca arrancás de cero.</p>
@@ -247,21 +254,20 @@
           <li>Abrí Drive → carpeta "Informática - UNQ" → subcarpeta "Clase 08" (creala si no existe).</li>
           <li>Dentro de esa carpeta, creá una hoja de cálculo nueva. Nombrala exactamente: <code>2026-XX-XX_Informatica_Clase08_V01</code> (reemplazá XX por la fecha de hoy).</li>
           <li>Renombrá la primera hoja como <code>DATOS</code> (doble clic sobre la pestaña, abajo a la izquierda).</li>
-          <li>Desde <code>A1</code>, cargá ocho registros de junio con esta estructura (acá, el ejemplo de Hotel Bahía Norte; si tu organización es otra, usá los nombres de campo y de categoría que te tocaron en la tabla de arriba):
+          <li>Desde <code>A1</code>, cargá a mano estas primeras ocho inscripciones, tal como llegan en el archivo real (no corrijas nada todavía, ni los aranceles con punto y coma decimal ni las fechas mezcladas):
             <table class="tbl-activity" style="margin-top:0.5rem">
-              <tr><th>id</th><th>fecha</th><th>canal</th><th>tipo_habitacion</th><th>noches</th><th>tarifa_noche</th></tr>
-              <tr><td>1</td><td>03/06</td><td>Directo</td><td>Doble</td><td>3</td><td>45000</td></tr>
-              <tr><td>2</td><td>05/06</td><td>Booking</td><td>Suite</td><td>5</td><td>90000</td></tr>
-              <tr><td>3</td><td>08/06</td><td>Agencia</td><td>Individual</td><td>2</td><td>30000</td></tr>
-              <tr><td>4</td><td>10/06</td><td>Directo</td><td>Suite</td><td>4</td><td>90000</td></tr>
-              <tr><td>5</td><td>14/06</td><td>Booking</td><td>Doble</td><td>0</td><td>45000</td></tr>
-              <tr><td>6</td><td>18/06</td><td>Directo</td><td>Individual</td><td>6</td><td>30000</td></tr>
-              <tr><td>7</td><td>22/06</td><td>Agencia</td><td>Suite</td><td>3</td><td>90000</td></tr>
-              <tr><td>8</td><td>27/06</td><td>Booking</td><td>Doble</td><td>6</td><td>45000</td></tr>
+              <tr><th>id_inscripcion</th><th>fecha_inscripcion</th><th>taller</th><th>sede</th><th>alumno</th><th>arancel</th><th>beca_pct</th><th>estado</th></tr>
+              <tr><td>INS-20001</td><td>04/03/2026</td><td>Cerámica</td><td>Sede Centro</td><td>Sofía Gómez</td><td>14.000,00</td><td>0</td><td>Confirmada</td></tr>
+              <tr><td>INS-20002</td><td>05/03/2026</td><td>Guitarra </td><td>Sede Centro</td><td>Mateo Rodríguez</td><td>12.000,00</td><td>20</td><td>CONFIRMADA</td></tr>
+              <tr><td>INS-20003</td><td>2026-03-06</td><td>YOGA</td><td>Sede Sur</td><td>Valentina Díaz</td><td>10.000,00</td><td></td><td>Confirm.</td></tr>
+              <tr><td>INS-20004</td><td>09/03/2026</td><td>Huerta orgánica</td><td></td><td>Bautista López</td><td>9.000,00</td><td>30</td><td>Pendiente</td></tr>
+              <tr><td>INS-20005</td><td>10/03/2026</td><td>Serigrafía</td><td>Sede Centro</td><td>Catalina Martínez</td><td>15.000,00</td><td>0</td><td>Anulada</td></tr>
+              <tr><td>INS-20006</td><td>11/03/2026</td><td>Costura Creativa II</td><td>norte</td><td>Benjamín Pérez</td><td>13.000,00</td><td></td><td>confirmada</td></tr>
+              <tr><td>INS-20007</td><td>12/03/2026</td><td>Cerámica</td><td>Sede Centro</td><td>Martina García</td><td>0,00</td><td></td><td>Confirmada</td></tr>
+              <tr><td>INS-20008</td><td>13/03/2026</td><td>Fotografía analógica</td><td>Sede Norte</td><td>Thiago Romero</td><td>16.000,00</td><td>50</td><td>Confirmada</td></tr>
             </table>
           </li>
-          <li>La columna <code>id</code> es una serie simple: escribí <code>1</code> y <code>2</code> en las dos primeras filas, seleccioná ambas celdas y usá el controlador de relleno (el cuadradito de la esquina inferior derecha) para completar del <code>3</code> al <code>8</code> arrastrando hacia abajo.</li>
-          <li>Dejá el registro <code>5</code> con cantidad en <code>0</code> tal como está en la tabla: no es un error de carga, es una reserva que se canceló y todavía tiene que aparecer en tus datos. Lo vas a necesitar más adelante.</li>
+          <li>Anotá aparte (en una celda o en un papel, todavía no hace falta que viva en una fórmula) todo lo raro que notes con solo mirar estas ocho filas: aranceles con punto de miles y coma decimal en vez de número, dos formatos de fecha, un taller con espacio final, otro en mayúsculas, uno que no está en el catálogo de la Actividad anterior, una sede vacía, una sede en minúscula, un arancel en cero, y "estado" escrito de cuatro formas distintas. Lo vas a ir resolviendo, uno por uno, durante las próximas cuatro clases.</li>
         </ol>
       </div>
     </div>
@@ -270,36 +276,164 @@
 </section>
 
 <!-- 02 -->
-<section class="block" id="pensar">
+<section class="block" id="formato-celdas">
   <div class="block-head">
     <span class="block-num">02</span>
-    <h2 class="block-title">La planilla de cálculo como herramienta para pensar con datos</h2>
+    <h2 class="block-title">Formato de celdas: alineación, fuentes, bordes, relleno y número</h2>
   </div>
   <div class="prose">
-    <p>Un documento de texto organiza ideas. Una planilla de cálculo organiza <strong>datos que se relacionan entre sí mediante operaciones</strong>. La diferencia no es cosmética: en una planilla, cuando cambiás un dato de origen, todo lo que depende de él se recalcula solo.</p>
-    <p>Esa es la ventaja central de la herramienta: separar el <strong>dato</strong> (lo que cargás) de la <strong>fórmula</strong> (lo que calculás a partir de ese dato). Si en algún momento aprendiste a usar una calculadora para resolver un problema y después tuviste que "empezar de nuevo" porque cambió un número, ya sabés por qué esto importa.</p>
-    <p>Antes de escribir una sola fórmula, preguntate: ¿qué dato de esta planilla es fijo (no cambia fila a fila) y cuál cambia? Esa pregunta es la que vas a responder hoy con referencias relativas y absolutas.</p>
+    <p>Las ocho filas que acabás de cargar son datos correctos técnicamente (Sheets los acepta), pero no son legibles: no hay forma de distinguir el encabezado del contenido, los números de texto quedan pegados a la izquierda como si fueran palabras, y no hay ningún límite visual entre una fila y la siguiente. El <strong>formato de celdas</strong> no cambia ningún dato: cambia cómo se lee.</p>
 
-    <h3>Celdas, rangos y referenciación</h3>
-    <p>Cada celda se nombra por la intersección de su columna (letra) y su fila (número): <code>A1</code>, <code>C12</code>, <code>AB3</code>. Un <strong>rango</strong> es un conjunto de celdas contiguas y se escribe con dos puntos: <code>A2:A10</code> incluye A2, A3, A4... hasta A10.</p>
+    <h3>Las cinco solapas del cuadro de formato</h3>
+    <p>Todo lo que sigue vive en un solo lugar: seleccioná el rango, después <strong>Formato → Formato de celdas</strong> (o los botones equivalentes de la barra de herramientas, más rápidos para un cambio puntual).</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Solapa</th><th>Qué resuelve</th><th>Dónde está en la barra</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Número</strong></td><td>Cómo se muestra un valor: moneda, porcentaje, fecha, texto plano</td><td>Ícono <code>123</code> en la barra de herramientas</td></tr>
+          <tr><td><strong>Alineación</strong></td><td>Horizontal (izquierda/centro/derecha) y vertical (arriba/medio/abajo) del contenido dentro de la celda</td><td>Íconos de alineación, al lado de la fuente</td></tr>
+          <tr><td><strong>Fuentes</strong></td><td>Tipo de letra, tamaño, negrita, cursiva, color de texto</td><td>Menú de fuente + íconos <strong>N</strong>/<em>K</em>/color de texto</td></tr>
+          <tr><td><strong>Bordes</strong></td><td>Líneas entre celdas: todas, solo el contorno, solo horizontales</td><td>Ícono de cuadrícula (borde), al lado del color de relleno</td></tr>
+          <tr><td><strong>Relleno</strong></td><td>Color de fondo de la celda (distinto del formato condicional: este es fijo, no depende de una regla)</td><td>Ícono de balde de pintura</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-    <div class="callout" data-type="action">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>Antes de aplicar cualquier función o formato, seleccioná primero el rango correcto. La mayoría de los errores en planillas nuevas vienen de aplicar algo sobre el rango equivocado: una fila de más, una columna de menos.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Texto a la izquierda, números a la derecha: es el comportamiento por defecto de Sheets, y por eso sirve como diagnóstico. Si cargaste un número y ves que quedó alineado a la izquierda (como el <code>arancel</code> de tus ocho filas), Sheets lo está interpretando como <strong>texto</strong>, no como número, aunque a simple vista parezca uno. Vas a resolver justo ese problema en la Actividad 04.</p>
     </div>
 
     <div class="activity">
       <div class="activity-head">
         <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Encabezado prolijo y primera limpieza de número</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Seleccioná la fila 1 (los encabezados: <code>id_inscripcion</code>, <code>fecha_inscripcion</code>, etc.) y aplicá <strong>negrita</strong>, alineación <strong>centrada</strong> y un color de <strong>relleno</strong> sólido distinto del resto de la tabla.</li>
+          <li>Aplicá <strong>bordes</strong> a todo el rango <code>A1:H9</code>: contorno completo más líneas horizontales entre filas (no verticales entre columnas, para que se lea más como tabla y menos como grilla).</li>
+          <li>Confirmá que la columna <code>arancel</code> quedó alineada a la izquierda (síntoma de que Sheets la está leyendo como texto, por el formato argentino con punto de miles y coma decimal). Vas a corregir el dato real en la Actividad 04, cuando importes el archivo completo — por ahora, seleccioná la columna y alineala a la <strong>derecha</strong> a mano, para practicar el comando aunque el dato de fondo siga mal.</li>
+          <li>Descargá el archivo completo: en tu navegador, abrí <a href="https://marcosxhernandez.github.io/unq-moodle/archivos/Inscripciones_LaUsina_202606.csv" target="_blank" rel="noopener"><code>archivos/Inscripciones_LaUsina_202606.csv</code></a> (clic derecho → Guardar como, si tu navegador lo abre en la pestaña en vez de descargarlo). Son 336 filas: no lo cargues manualmente, lo vas a importar en la Actividad 04.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="filas-columnas">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Filas, columnas y hojas: insertar, eliminar y organizar</h2>
+  </div>
+  <div class="prose">
+    <p>Un archivo de trabajo real casi nunca queda con la estructura exacta con la que arrancó: falta una columna, sobra una fila, hace falta una hoja nueva para no mezclar el detalle con el resumen. Estas operaciones se hacen todas desde el mismo lugar: clic derecho sobre el encabezado de fila/columna, o sobre la pestaña de la hoja.</p>
+
+    <h3>Insertar y eliminar filas o columnas</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Cómo</th></tr></thead>
+        <tbody>
+          <tr><td>Insertar una fila/columna nueva</td><td>Clic derecho sobre el número de fila (o la letra de columna) → <strong>Insertar 1 fila arriba/abajo</strong> (o <strong>columna a la izquierda/derecha</strong>)</td></tr>
+          <tr><td>Eliminar una fila/columna completa</td><td>Clic derecho sobre el número/letra → <strong>Eliminar fila</strong> / <strong>Eliminar columna</strong></td></tr>
+          <tr><td>Cambiar el ancho de una columna</td><td>Arrastrar el límite entre dos letras de columna, o clic derecho → <strong>Cambiar tamaño de columna</strong> (a medida o "Ajustar al dato")</td></tr>
+          <tr><td>Ocultar sin borrar</td><td>Clic derecho → <strong>Ocultar columna</strong> (distinto de eliminar: el dato sigue ahí, solo no se ve)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Eliminar una fila o columna corre todo lo que está debajo o a la derecha, y <strong>puede romper una fórmula</strong> que hacía referencia a esa celda por su dirección exacta. Antes de eliminar, revisá si alguna fórmula de la planilla apunta justo a esa fila o columna.</p>
+    </div>
+
+    <h3>Varias hojas dentro de un mismo libro</h3>
+    <p>Un archivo de Sheets (un "libro") puede tener varias hojas, cada una con su propio nombre y su propio contenido, pero todas dentro del mismo archivo. Es la forma correcta de separar, por ejemplo, el detalle de datos de un panel de resumen, sin mezclar todo en una sola pestaña gigante.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Cómo</th></tr></thead>
+        <tbody>
+          <tr><td>Insertar una hoja nueva</td><td>Ícono <code>+</code> abajo a la izquierda, al lado de las pestañas</td></tr>
+          <tr><td>Renombrar una hoja</td><td>Doble clic sobre el nombre de la pestaña, escribir el nombre nuevo, Enter</td></tr>
+          <tr><td>Mover una hoja</td><td>Arrastrar la pestaña hacia la izquierda o la derecha</td></tr>
+          <tr><td>Duplicar una hoja</td><td>Clic derecho sobre la pestaña → <strong>Duplicar</strong> (útil para probar algo sin arriesgar el original)</td></tr>
+          <tr><td>Referenciar una celda de otra hoja</td><td><code>=NombreDeHoja!A1</code> (el signo de exclamación separa el nombre de hoja de la celda)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Organizar el archivo antes de que crezca</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En <code>DATOS</code>, insertá una columna nueva entre <code>id_inscripcion</code> y <code>fecha_inscripcion</code>, llamada <code>orden</code>, y cargala con una serie <code>1, 2, 3...</code> usando el controlador de relleno (Clase anterior).</li>
+          <li>Ajustá el ancho de la columna <code>alumno</code> arrastrando el límite de la letra, hasta que ningún nombre quede cortado.</li>
+          <li>Creá una hoja nueva y renombrala <strong><code>RESUMEN</code></strong>: va a ser el panel de indicadores que armás en la Actividad 06, en vez de mezclarlo con el detalle de <code>DATOS</code>.</li>
+          <li>En una celda de <code>RESUMEN</code> (por ejemplo <code>A1</code>), escribí <code>=DATOS!A2</code> para confirmar que referenciar una celda de otra hoja funciona, y borrala después: era solo para comprobarlo.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="pensar">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">La planilla de cálculo como herramienta para pensar con datos</h2>
+  </div>
+  <div class="prose">
+    <p>Un documento de texto organiza ideas. Una planilla de cálculo organiza <strong>datos que se relacionan entre sí mediante operaciones</strong>. La diferencia no es cosmética: en una planilla, cuando cambiás un dato de origen, todo lo que depende de él se recalcula solo.</p>
+    <p>Esa es la ventaja central de la herramienta: separar el <strong>dato</strong> (lo que cargás) de la <strong>fórmula</strong> (lo que calculás a partir de ese dato). Si en algún momento aprendiste a usar una calculadora para resolver un problema y después tuviste que "empezar de nuevo" porque cambió un número, ya sabés por qué esto importa.</p>
+    <p>Hasta acá trabajaste con ocho filas cargadas a mano. La coordinación te pasó <strong>336</strong>. Antes de escribir una sola fórmula sobre el archivo completo, preguntate: ¿qué dato es fijo (no cambia fila a fila) y cuál cambia? Esa pregunta es la que vas a responder en la próxima sección con referencias relativas y absolutas.</p>
+
+    <h3>Celdas, rangos y referenciación</h3>
+    <p>Cada celda se nombra por la intersección de su columna (letra) y su fila (número): <code>A1</code>, <code>C12</code>, <code>AB3</code>. Un <strong>rango</strong> es un conjunto de celdas contiguas y se escribe con dos puntos: <code>A2:A337</code> incluye A2, A3, A4... hasta A337.</p>
+
+    <div class="callout" data-type="action">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Antes de aplicar cualquier función o formato, seleccioná primero el rango correcto. La mayoría de los errores en planillas nuevas vienen de aplicar algo sobre el rango equivocado: una fila de más, una columna de menos, y con 336 filas ese error es mucho más fácil de cometer que con ocho.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04 · Parte A</span>
+        <h3>Importar el archivo completo</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Antes de importar nada, fijá la configuración regional del archivo en <strong>Archivo → Configuración → Configuración regional</strong> y elegí <strong>Argentina</strong>. Sin este paso, Sheets puede seguir leyendo el punto de miles y la coma decimal del CSV al revés.</li>
+          <li>Andá a <strong>Archivo → Importar → Subir</strong> y seleccioná el <code>Inscripciones_LaUsina_202606.csv</code> que descargaste en la Actividad 02. En la ubicación de importación, elegí <strong>Insertar nueva hoja</strong>. Va a aparecer una hoja nueva (llamala <code>CRUDO</code>) con las 336 filas y sus 8 columnas originales: <code>id_inscripcion</code>, <code>fecha_inscripcion</code>, <code>taller</code>, <code>sede</code>, <code>alumno</code>, <code>arancel</code>, <code>beca_pct</code>, <code>estado</code>.</li>
+          <li>En <code>DATOS</code>, seleccioná el rango <code>A2:I9</code> (las ocho filas de prueba, sin el encabezado) y borrá el contenido con <code>Suprimir</code>, dejando la fila 1 y el formato intactos.</li>
+          <li>En <code>CRUDO</code>, copiá la columna <code>id_inscripcion</code> (<code>A2:A337</code>) y pegala en <code>DATOS!A2</code>. Después copiá el resto de las columnas (<code>B2:H337</code>, de <code>fecha_inscripcion</code> a <code>estado</code>) y pegalas en <code>DATOS!C2</code>: se corren dos columnas a la derecha porque en <code>DATOS</code> la columna <code>B</code> es <code>orden</code>, que <code>CRUDO</code> no tiene.</li>
+          <li>Completá la columna <code>orden</code> hasta la fila 337: seleccioná <code>B2:B3</code> (que ya tienen <code>1</code> y <code>2</code>) y hacé doble clic sobre el controlador de relleno, en la esquina inferior derecha de la selección, para que Sheets continúe la serie automáticamente hasta donde hay datos en las columnas vecinas.</li>
+          <li>Extendé el formato de la Actividad 02 (negrita y relleno en el encabezado, bordes, alineación derecha en <code>arancel</code>) del rango original <code>A1:I9</code> a todo el rango real <code>A1:I337</code>.</li>
+          <li>Confirmá que <code>arancel</code> quedó alineado a la derecha en (casi) todas las filas: ahora Sheets lo interpreta como número, gracias al cambio de configuración regional. Las fechas en formato <code>AAAA-MM-DD</code> mezcladas con <code>DD/MM/AAAA</code> siguen sin resolverse, eso lo vas a trabajar en la Clase 09.</li>
+          <li>Borrá la hoja <code>CRUDO</code>: ya cumplió su función y no tiene sentido mantener duplicado todo el archivo.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>El doble clic sobre el controlador de relleno es distinto de arrastrarlo: en vez de que vos definas hasta dónde llega, Sheets mira la columna de al lado y completa automáticamente hasta la última fila con datos. Es la forma correcta de rellenar una serie o una fórmula sobre cientos de filas sin arrastrar a mano.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04 · Parte B</span>
         <h3>Un primer cálculo, sin funciones</h3>
       </div>
       <div class="prose">
-        <p>Retomá la hoja <code>DATOS</code> de la Actividad 01. Antes de conocer las funciones de la próxima sección, vas a calcular el importe de cada registro sumando y multiplicando celda por celda.</p>
+        <p>Con las 336 filas ya en <code>DATOS</code>, vas a calcular el importe de cada inscripción sumando y multiplicando celda por celda, antes de conocer las funciones de la próxima sección.</p>
         <ol>
-          <li>Agregá una columna <strong><code>importe_bruto</code></strong> y, para el primer registro, escribí la multiplicación de la cantidad por el valor unitario (por ejemplo <code>=E2*F2</code>, ajustá las letras según dónde te hayan quedado <code>noches</code> y <code>tarifa_noche</code>, o los campos equivalentes de tu organización).</li>
-          <li>Copiá esa fórmula hacia abajo con el controlador de relleno para los ocho registros. El registro con cantidad <code>0</code> tiene que dar <code>importe_bruto</code> igual a <code>0</code>, no en blanco ni con error.</li>
-          <li>En una celda aparte, sumá el total general escribiendo, celda por celda, la suma de los ocho importes (por ejemplo <code>=G2+G3+G4+G5+G6+G7+G8+G9</code>).</li>
-          <li>Agregá una columna <strong>"% del total"</strong> y calculá, para cada registro, qué porcentaje representa su <code>importe_bruto</code> sobre el total general. Aplicá formato de porcentaje desde Formato → Número → Porcentaje.</li>
+          <li>Agregá una columna <strong><code>importe_bruto</code></strong> y, para el primer registro, escribí la fórmula que aplica el descuento de beca sobre el arancel: <code>=G2*(1-H2/100)</code> (ajustá las letras si <code>arancel</code> o <code>beca_pct</code> te quedaron en otra columna). Las filas con <code>beca_pct</code> vacío tienen que dar <code>importe_bruto</code> igual al <code>arancel</code> completo, sin error: una celda vacía se comporta como <code>0</code> en una operación aritmética.</li>
+          <li>Copiá esa fórmula hacia abajo con doble clic en el controlador de relleno, para que se extienda sola hasta la fila 337.</li>
+          <li>Pensá antes de seguir: con 336 filas, sumar el total general escribiendo <code>=J2+J3+J4+...</code> celda por celda ya no es viable. Anotá esa limitación aparte, la vas a resolver en la próxima sección.</li>
         </ol>
       </div>
     </div>
@@ -307,10 +441,10 @@
   </div>
 </section>
 
-<!-- 03 -->
+<!-- 05 -->
 <section class="block" id="referencias">
   <div class="block-head">
-    <span class="block-num">03</span>
+    <span class="block-num">05</span>
     <h2 class="block-title">Referencias relativas y absolutas</h2>
   </div>
   <div class="prose">
@@ -352,16 +486,17 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 03</span>
-        <h3>La comisión, con referencia absoluta</h3>
+        <span class="activity-eyebrow">Actividad 05</span>
+        <h3>El costo administrativo, con referencia absoluta</h3>
       </div>
       <div class="prose">
+        <p>El centro cultural cobra un costo administrativo fijo por cada inscripción, sin importar el taller ni el arancel: son <strong>$500</strong> que se descuentan del importe antes de que quede disponible para la sede. Es un único valor, igual para las 336 filas: el caso ideal para practicar una referencia absoluta.</p>
         <ol>
-          <li>En una celda aparte de <code>DATOS</code> (por ejemplo <code>J1</code>), escribí el texto "Comisión" y en <code>J2</code> cargá el porcentaje de comisión de tu organización (de la tabla de la Actividad 01), en formato porcentaje.</li>
-          <li>Agregá una columna <strong><code>importe_neto</code></strong> y calculá, para el primer registro, el <code>importe_bruto</code> menos la comisión: <code>=G2*(1-$J$2)</code> (ajustá la letra de <code>importe_bruto</code> si te quedó en otra columna).</li>
-          <li>Copiá la fórmula hacia abajo con el controlador de relleno. Si alguna fila da un resultado sin sentido, revisá que hayas fijado <code>J2</code> con <code>$</code> (o presioná <code>F4</code> sobre la referencia para fijarla automáticamente, en Mac: <code>⌘+T</code> o <code>Fn+F4</code>).</li>
-          <li>Cambiá el valor de <code>J2</code>. Confirmá que los ocho <code>importe_neto</code> se recalculan solos, incluido el registro con <code>importe_bruto</code> en <code>0</code>, que tiene que seguir dando <code>0</code>.</li>
-          <li>Aparte de <code>DATOS</code>, armá una tabla chica para practicar la referencia mixta: fila 1 con dos precios (<code>B1:C1</code>) y columna A con dos porcentajes de descuento (<code>A2:A3</code>). En <code>B2</code>, calculá el precio con descuento usando <code>=B$1*(1-$A2)</code> y copiala hacia toda la tabla (derecha y abajo con un solo arrastre).</li>
+          <li>En una celda aparte de <code>DATOS</code> (por ejemplo <code>L1</code>), escribí el texto "Costo administrativo" y en <code>L2</code> cargá el valor <code>500</code>.</li>
+          <li>Agregá una columna <strong><code>importe_neto</code></strong> y calculá, para el primer registro, el <code>importe_bruto</code> menos el costo administrativo: <code>=J2-$L$2</code> (ajustá la letra de <code>importe_bruto</code> si te quedó en otra columna).</li>
+          <li>Copiá la fórmula hacia abajo con doble clic en el controlador de relleno. Si alguna fila da un resultado sin sentido, revisá que hayas fijado <code>L2</code> con <code>$</code> (o presioná <code>F4</code> sobre la referencia para fijarla automáticamente, en Mac: <code>⌘+T</code> o <code>Fn+F4</code>).</li>
+          <li>Cambiá el valor de <code>L2</code> a <code>600</code> y confirmá que las 336 filas de <code>importe_neto</code> se recalculan solas. Volvé a dejarlo en <code>500</code> antes de seguir.</li>
+          <li>Aparte de <code>DATOS</code>, armá una tabla chica para practicar la referencia mixta: fila 1 con dos aranceles de ejemplo (<code>B1:C1</code>) y columna A con dos porcentajes de beca (<code>A2:A3</code>). En <code>B2</code>, calculá el arancel con beca aplicada usando <code>=B$1*(1-$A2)</code> y copiala hacia toda la tabla (derecha y abajo con un solo arrastre).</li>
         </ol>
       </div>
     </div>
@@ -369,10 +504,10 @@
   </div>
 </section>
 
-<!-- 04 -->
+<!-- 06 -->
 <section class="block" id="funciones">
   <div class="block-head">
-    <span class="block-num">04</span>
+    <span class="block-num">06</span>
     <h2 class="block-title">Funciones matemáticas esenciales</h2>
   </div>
   <div class="prose">
@@ -388,7 +523,7 @@
     </ul>
     <p><code>=SUMA(A1:A5)</code> es equivalente a <code>=A1+A2+A3+A4+A5</code>, pero se sigue funcionando igual de bien si el rango tiene 5 celdas o 5.000.</p>
 
-    <h3>Las cinco funciones que tenés que dominar hoy</h3>
+    <h3>Las siete funciones que tenés que dominar hoy</h3>
     <div class="table-wrap">
       <table class="tbl-wide">
         <thead><tr><th>Función</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
@@ -398,6 +533,8 @@
           <tr><td><code>CONTAR</code></td><td>Cuenta cuántas celdas del rango contienen <strong>números</strong></td><td><code>=CONTAR(B2:B10)</code></td></tr>
           <tr><td><code>CONTARA</code></td><td>Cuenta cuántas celdas del rango <strong>no están vacías</strong> (números, texto, lo que sea)</td><td><code>=CONTARA(A2:A10)</code></td></tr>
           <tr><td><code>MAX</code> / <code>MIN</code></td><td>Devuelven el valor más alto / más bajo del rango</td><td><code>=MAX(B2:B10)</code> / <code>=MIN(B2:B10)</code></td></tr>
+          <tr><td><code>POTENCIA</code></td><td>Eleva un número a un exponente</td><td><code>=POTENCIA(2;10)</code> → 1024</td></tr>
+          <tr><td><code>RAIZ</code></td><td>Calcula la raíz cuadrada de un número</td><td><code>=RAIZ(144)</code> → 12</td></tr>
         </tbody>
       </table>
     </div>
@@ -417,29 +554,33 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 04</span>
-        <h3>El panel RESUMEN</h3>
+        <span class="activity-eyebrow">Actividad 06</span>
+        <h3>El panel RESUMEN: los dos números que no cierran</h3>
       </div>
       <div class="prose">
-        <p>Es lo que pidió la coordinación: no ocho filas sueltas, sino un panel que se lea de un vistazo. Va en una hoja aparte.</p>
+        <p>Volvé al correo de la Actividad 01: "tenemos dos números que no coinciden y ninguno de los dos nos cierra". Con las funciones de hoy podés construir el primero de esos dos números, y vas a entender por qué el segundo requiere algo que todavía no tenés.</p>
         <ol>
-          <li>Creá una hoja nueva y renombrala <strong><code>RESUMEN</code></strong>.</li>
-          <li>Reemplazá, en <code>DATOS</code>, el "% del total" de la Actividad 02 (el que calculaste sin funciones) por uno que use <code>SUMA</code> en el denominador, y confirmá que da el mismo resultado que antes.</li>
-          <li>En <code>RESUMEN</code>, calculá con <code>SUMA</code> el <strong>total bruto</strong> y el <strong>total neto</strong> de los ocho registros de <code>DATOS</code>.</li>
-          <li>Calculá el <strong>promedio</strong> del <code>importe_bruto</code> con <code>PROMEDIO</code>, y el <strong>máximo</strong> y el <strong>mínimo</strong> con <code>MAX</code> y <code>MIN</code>.</li>
-          <li>Con <code>CONTAR</code> sobre la columna de cantidad de <code>DATOS</code>, confirmá que el resultado es <strong>8</strong> (el registro en cero cuenta como valor numérico, no como celda vacía).</li>
-          <li>Con <code>CONTARA</code> sobre la columna del campo que agrupa tu organización (canal, sede, turno o responsable), agregá el indicador <strong>"Registros cargados"</strong>. Borrá el contenido de una celda de esa columna en <code>DATOS</code> (dejala vacía) y confirmá que el resultado baja en uno; después probá qué te devuelve <code>CONTAR</code> sobre esa misma columna de texto. Volvé a cargar el valor que borraste antes de seguir.</li>
+          <li>En <code>RESUMEN</code> (la hoja que creaste en la Actividad 03), calculá con <code>SUMA</code> el total de la columna <code>arancel</code> de <code>DATOS</code>, sobre las 336 filas. Llamalo <strong>"Total bruto (sin depurar)"</strong>. Te tiene que dar <strong>$4.115.000</strong>.</li>
+          <li>Es un número exagerado, y ahora sabés por qué: incluye inscripciones <code>Anuladas</code> y <code>Pendientes</code> (no solo confirmadas), filas con el mismo <code>id_inscripcion</code> repetido, y aranceles cargados con error. Todavía no tenés forma de excluir esos casos, porque para eso necesitás sumar <strong>bajo una condición</strong>, no toda la columna. Es exactamente lo que vas a resolver en la Clase 09 con <code>SUMAR.SI</code>.</li>
+          <li>Con <code>PROMEDIO</code>, <code>MAX</code> y <code>MIN</code> sobre la misma columna <code>arancel</code>, agregá los tres indicadores al panel. El promedio te tiene que dar <strong>$12.247</strong> y el máximo <strong>$16.000</strong>. El mínimo te va a dar <strong>-$14.000</strong>: un número negativo, algo imposible para un arancel real. Es la primera pista concreta y verificable de que hay errores de carga en el archivo.</li>
+          <li>Con <code>CONTAR</code> sobre <code>arancel</code>, confirmá que el resultado es <strong>336</strong>: todas las celdas son numéricas, gracias al cambio de configuración regional de la Actividad 04. Con <code>CONTARA</code> sobre <code>id_inscripcion</code>, confirmá también <strong>336</strong>.</li>
+          <li>Con <code>CONTARA</code> sobre <code>beca_pct</code>, agregá el indicador <strong>"Inscripciones con beca cargada"</strong>. Te tiene que dar <strong>281</strong>. Restá <code>336-281</code> a mano en una celda aparte: el resultado, <strong>55</strong>, son las inscripciones con la celda de beca vacía, sin dato, no becas cargadas en <code>0%</code>. Es una diferencia importante: un valor vacío no es lo mismo que un valor en cero.</li>
+          <li>Con fines de práctica (no forma parte del panel de La Usina, pero está en el programa de la materia), calculá en una celda aparte <code>=POTENCIA(2;10)</code> y <code>=RAIZ(144)</code>, y confirmá los resultados: <strong>1024</strong> y <strong>12</strong>.</li>
         </ol>
+        <div class="callout" data-type="idea">
+          <p class="callout-label">💡 Adónde vas</p>
+          <p>Con lo de hoy podés sumar y contar <strong>todo</strong> el rango, pero todavía no podés sumar "solo lo confirmado" o contar "solo Sede Sur". Esa es exactamente la pregunta que abre la Clase 09, y con la que vas a llegar al número real de facturación del cuatrimestre.</p>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- 05 -->
+<!-- 07 -->
 <section class="block" id="formato">
   <div class="block-head">
-    <span class="block-num">05</span>
+    <span class="block-num">07</span>
     <h2 class="block-title">Formato condicional</h2>
   </div>
   <div class="prose">
@@ -487,24 +628,24 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 05</span>
-        <h3>Formato condicional sobre los registros de junio</h3>
+        <span class="activity-eyebrow">Actividad 07</span>
+        <h3>Formato condicional sobre las inscripciones</h3>
       </div>
       <div class="prose">
         <ol>
-          <li>En <code>DATOS</code>, seleccioná la columna <code>importe_bruto</code> (sin encabezado) y aplicá una <strong>escala de color</strong> para ver de un vistazo los registros más altos y más bajos.</li>
-          <li>Sobre <code>importe_neto</code>, aplicá una regla de un solo color: fondo rojo y fuente blanca para los registros por debajo de $20.000.</li>
-          <li>Sobre <code>importe_bruto</code>, aplicá una segunda regla de un solo color, <strong>amarilla</strong>, para los registros que lleguen o superen el umbral "alto valor" de tu organización (de la tabla de la Actividad 01). Escribí el número directo en la condición de la regla, todavía no hace falta que viva en una celda. Tienen que quedar en amarillo <strong>tres o cuatro</strong> registros: si te queda un número muy distinto, revisá el umbral que usaste.</li>
-          <li>Sobre <code>importe_bruto</code>, aplicá una regla con <strong>fórmula personalizada</strong> que resalte en verde la fila con el valor máximo y en rojo la fila con el valor mínimo, comparando cada celda contra <code>MAX</code> o <code>MIN</code> del rango completo (fijalo con <code>$</code> para que la comparación no se mueva fila por fila).
+          <li>En <code>DATOS</code>, seleccioná la columna <code>arancel</code> (sin encabezado, hasta la fila 337) y aplicá una <strong>escala de color</strong> para ver de un vistazo los registros más altos y más bajos.</li>
+          <li>Sobre esa misma columna <code>arancel</code>, aplicá una regla de un solo color, <strong>roja</strong>, condición "Es menor o igual que" <code>0</code>. Esta regla marca de una sola vez dos de los defectos de carga que anotaste en la Actividad 01: los aranceles en cero por error y los aranceles negativos.</li>
+          <li>Sobre <code>beca_pct</code>, aplicá una regla de un solo color, <strong>amarilla</strong>, condición "Es mayor que" <code>50</code>. La política del centro autoriza becas de hasta el 50%: esta regla marca las inscripciones que la superan. Tienen que quedar resaltadas <strong>diez</strong> filas, todas del taller <strong>Guitarra</strong>; si te queda otro número, revisá la condición.</li>
+          <li>Sobre <code>arancel</code>, aplicá una cuarta regla con <strong>fórmula personalizada</strong> que resalte en verde la fila con el valor máximo y en violeta la fila con el valor mínimo, comparando cada celda contra <code>MAX</code> o <code>MIN</code> del rango completo (fijalo con <code>$</code> para que la comparación no se mueva fila por fila).
 
             <div class="screenshot-todo">
               <span class="screenshot-todo-label">📷 Captura pendiente</span>
-              <span class="screenshot-todo-desc">Panel de Formato condicional de Google Sheets con "Formato de celdas" cambiado a "La fórmula personalizada es", mostrando una fórmula del tipo =B2=MAX($B$2:$B$9) cargada en el campo.</span>
+              <span class="screenshot-todo-desc">Panel de Formato condicional de Google Sheets con "Formato de celdas" cambiado a "La fórmula personalizada es", mostrando una fórmula del tipo =G2=MAX($G$2:$G$337) cargada en el campo.</span>
             </div>
 
           </li>
           <li>Si te trabás con la fórmula personalizada, pedile ayuda a una IA con un prompt específico: contale qué rango tenés y qué querés resaltar, y pedile la fórmula exacta para pegar en "fórmula personalizada". Verificá el resultado antes de darlo por bueno, no copies una fórmula que no entendés.</li>
-          <li>Cambiá el <code>tarifa_noche</code> (o el campo equivalente) de un registro que antes no llegaba al umbral, de forma que ahora sí lo supere. Confirmá que las cuatro reglas se actualizan solas, sin que tengas que tocar nada más.</li>
+          <li>Cambiá el <code>beca_pct</code> de una inscripción que antes no superaba el 50%, de forma que ahora sí lo supere. Confirmá que las cuatro reglas se actualizan solas, sin que tengas que tocar nada más.</li>
         </ol>
       </div>
     </div>
@@ -512,25 +653,25 @@
   </div>
 </section>
 
-<!-- 06 -->
+<!-- 08 -->
 <section class="block" id="integrador">
   <div class="block-head">
-    <span class="block-num">06</span>
+    <span class="block-num">08</span>
     <h2 class="block-title">Ejercicio integrador: de Google Sheets a Excel</h2>
   </div>
   <div class="prose">
-    <p>Cerrás la clase sobre la misma planilla de gastos que venís armando desde la Actividad 01: le falta juntar todo en una sola vista y confirmar que aguanta un dato nuevo sin romperse. Lo hacés primero en Google Sheets y después lo replicás en Excel, para practicar los dos entornos que vas a necesitar a lo largo del cuatrimestre.</p>
+    <p>Cerrás la clase sobre la misma planilla de La Usina que venís armando desde la Actividad 01: le falta juntar todo en una sola vista y confirmar que aguanta un dato nuevo sin romperse. Lo hacés primero en Google Sheets y después lo replicás en Excel, para practicar los dos entornos que vas a necesitar a lo largo del cuatrimestre.</p>
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 06 · Parte A</span>
+        <span class="activity-eyebrow">Actividad 08 · Parte A</span>
         <h3>Dejar el archivo entregable</h3>
       </div>
       <div class="prose">
         <ol>
-          <li>Confirmá que tu archivo tiene, entre <code>DATOS</code> y <code>RESUMEN</code>: <code>importe_bruto</code> e <code>importe_neto</code> calculados, el panel con total, promedio, máximo, mínimo y registros cargados de la Actividad 04, y las cuatro reglas de formato condicional de la Actividad 05.</li>
-          <li>Creá una hoja <strong><code>LEEME</code></strong> y documentá: qué organización elegiste, qué significa cada columna de <code>DATOS</code>, en qué celda está la comisión y en qué celda (o regla) está el umbral "alto valor". Es la hoja que vas a ir actualizando en las próximas tres clases.</li>
-          <li>Agregá un noveno registro a <code>DATOS</code>, cargándolo solo con los datos base (fecha, campo que agrupa, categoría, cantidad, valor unitario). Confirmá que <code>importe_bruto</code>, <code>importe_neto</code> y las cuatro reglas de formato condicional se extienden solos a la fila nueva, sin que tengas que tocar nada. Si alguna no se extiende, revisá el rango de esa fórmula o esa regla.</li>
+          <li>Confirmá que tu archivo tiene, entre <code>DATOS</code> y <code>RESUMEN</code>: las 336 filas importadas con el formato de celdas extendido, <code>importe_bruto</code> e <code>importe_neto</code> calculados, el panel con total bruto, promedio, máximo, mínimo y "Inscripciones con beca cargada" de la Actividad 06, y las cuatro reglas de formato condicional de la Actividad 07.</li>
+          <li>Creá una hoja <strong><code>LEEME</code></strong> y documentá: qué significa cada columna de <code>DATOS</code>, en qué celda está el costo administrativo fijo ($500) y qué marca cada una de las cuatro reglas de formato condicional. Es la hoja que vas a ir actualizando en las próximas tres clases, a medida que resuelvas el resto de los defectos que anotaste en la Actividad 01.</li>
+          <li>Agregá una inscripción número 337 a <code>DATOS</code> (podés inventarla, con datos limpios: sin errores de carga). Confirmá que <code>orden</code>, <code>importe_bruto</code>, <code>importe_neto</code> y las cuatro reglas de formato condicional se extienden solos a la fila nueva, sin que tengas que tocar nada. Si alguna no se extiende, revisá el rango de esa fórmula o esa regla.</li>
           <li>Compartí el archivo con el docente como <strong>Editor</strong> (ver Clase 01 si no recordás el paso).</li>
         </ol>
         <div class="callout" data-type="linkedin">
@@ -546,7 +687,7 @@
 
     <div class="activity">
       <div class="activity-head">
-        <span class="activity-eyebrow">Actividad 06 · Parte B</span>
+        <span class="activity-eyebrow">Actividad 08 · Parte B</span>
         <h3>La misma planilla, en Excel</h3>
       </div>
       <div class="prose">
@@ -602,38 +743,39 @@
   </div>
 </section>
 
-<!-- 07 -->
+<!-- 09 -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">07</span>
+    <span class="block-num">09</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Pasaste de escribir números sueltos a construir un sistema: referencias que se mueven o se quedan quietas según lo que necesitás, funciones que resuelven en un clic lo que nadie quiere sumar a mano, y formato condicional que hace visibles los patrones sin tocar un solo dato.</p>
+    <p>Pasaste de ocho filas cargadas a mano a un archivo de 336, y de anotar "cosas raras" a poder nombrarlas con precisión: aranceles negativos, becas que exceden la política, celdas vacías que no son ceros. Formato de celdas para que se lea, filas/columnas/hojas para organizar, referencias que se mueven o se quedan quietas según lo que necesitás, funciones que resuelven en un clic lo que nadie quiere sumar a mano, y formato condicional que hace visibles los patrones sin tocar un solo dato. El archivo todavía no cierra las cuentas, esa es exactamente la puerta que abre la Clase 09.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-1" aria-label="Marcar como hecho"></td><td><label for="chk-08-1">Elegí una organización, creé el archivo con el nombre exacto <code>2026-XX-XX_Informatica_Clase08_V01</code> y cargué los ocho registros de junio en <code>DATOS</code>.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-2" aria-label="Marcar como hecho"></td><td><label for="chk-08-2">Calculé <code>importe_bruto</code> y el porcentaje de cada registro sumando y multiplicando celda por celda, sin usar funciones.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-3" aria-label="Marcar como hecho"></td><td><label for="chk-08-3">Apliqué una referencia absoluta para calcular <code>importe_neto</code> con la comisión fija, y usé <code>F4</code> para fijarla.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-4" aria-label="Marcar como hecho"></td><td><label for="chk-08-4">Armé el panel <code>RESUMEN</code> con <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>CONTARA</code>, <code>MAX</code> y <code>MIN</code> sobre <code>DATOS</code>.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-5" aria-label="Marcar como hecho"></td><td><label for="chk-08-5">Apliqué una escala de color, dos reglas de un solo color (incluida la amarilla de "alto valor") y una regla con fórmula personalizada en formato condicional.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-6" aria-label="Marcar como hecho"></td><td><label for="chk-08-6">Documenté el archivo en la hoja <code>LEEME</code>, agregué un registro nuevo y confirmé que fórmulas y formato condicional se extendieron solos.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-7" aria-label="Marcar como hecho"></td><td><label for="chk-08-7">Entregué en Moodle el enlace al archivo, compartido con el docente como Editor.</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-8" aria-label="Marcar como hecho"></td><td><label for="chk-08-8">Repliqué <code>DATOS</code> completo en Excel y anoté al menos una diferencia entre los dos programas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-1" aria-label="Marcar como hecho"></td><td><label for="chk-08-1">Creé el archivo con el nombre exacto <code>2026-XX-XX_Informatica_Clase08_V01</code> y cargué a mano las primeras ocho inscripciones de La Usina en <code>DATOS</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-2" aria-label="Marcar como hecho"></td><td><label for="chk-08-2">Formateé el encabezado (negrita, relleno, alineación), apliqué bordes al rango y descargué el archivo CSV completo.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-3" aria-label="Marcar como hecho"></td><td><label for="chk-08-3">Inserté la columna <code>orden</code>, ajusté el ancho de <code>alumno</code>, creé la hoja <code>RESUMEN</code> y probé una referencia entre hojas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-4" aria-label="Marcar como hecho"></td><td><label for="chk-08-4">Configuré la configuración regional en Argentina, importé las 336 filas completas a <code>DATOS</code> y calculé <code>importe_bruto</code> sin usar funciones.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-5" aria-label="Marcar como hecho"></td><td><label for="chk-08-5">Apliqué una referencia absoluta para calcular <code>importe_neto</code> con el costo administrativo fijo, y usé <code>F4</code> para fijarla.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-6" aria-label="Marcar como hecho"></td><td><label for="chk-08-6">Armé el panel <code>RESUMEN</code> con <code>SUMA</code>, <code>PROMEDIO</code>, <code>CONTAR</code>, <code>CONTARA</code>, <code>MAX</code> y <code>MIN</code>, y confirmé el arancel mínimo negativo.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-7" aria-label="Marcar como hecho"></td><td><label for="chk-08-7">Apliqué una escala de color, dos reglas de un solo color (aranceles en cero o negativos, becas por encima de la política) y una regla con fórmula personalizada en formato condicional.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-8" aria-label="Marcar como hecho"></td><td><label for="chk-08-8">Documenté el archivo en la hoja <code>LEEME</code>, agregué una inscripción nueva y confirmé que fórmulas y formato condicional se extendieron solos. Entregué en Moodle el enlace, compartido con el docente como Editor.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-08-9" aria-label="Marcar como hecho"></td><td><label for="chk-08-9">Repliqué <code>DATOS</code> completo en Excel y anoté al menos una diferencia entre los dos programas.</label></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout" data-type="linkedin">
       <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-      <p><strong>Google Sheets.</strong> Cómo la justificás: construyo planillas con referencias relativas y absolutas correctamente diferenciadas, de modo que una fórmula se pueda copiar sobre un rango completo sin corromper los cálculos ni requerir corrección manual celda por celda.</p>
+      <p><strong>Google Sheets.</strong> Cómo la justificás: construyo planillas con referencias relativas y absolutas correctamente diferenciadas, funciones matemáticas esenciales y formato condicional aplicado sobre 336 filas de datos reales con errores de carga, de modo que un archivo se pueda extender con registros nuevos sin corromper cálculos ni reglas.</p>
     </div>
 
     <div class="callout" data-type="closing">
-      <p>Una referencia relativa cambia de fila en fila; una absoluta, fijada con el signo <code>$</code>, se queda igual. Elegir bien cuál usar en cada celda es lo que evita corregir a mano cada fila cuando la planilla crece.</p>
+      <p>Una referencia relativa cambia de fila en fila; una absoluta, fijada con el signo <code>$</code>, se queda igual. Elegir bien cuál usar en cada celda es lo que evita corregir a mano cada fila cuando la planilla crece de ocho a 336 filas, o a las que hagan falta.</p>
     </div>
 
     <h3 id="referencia-rapida">Referencia rápida</h3>
@@ -867,12 +1009,22 @@
       <div class="qr-row-label">Planilla de cálculo</div>
       <div class="qr-row-cols">
         <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Formato y organización</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Formato de celdas: Formato → Formato de celdas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar/eliminar fila o columna: clic derecho sobre el número/letra</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Configuración regional: Archivo → Configuración → Configuración regional</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Referenciar otra hoja: <code>=NombreDeHoja!A1</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y referencias</span></div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula: <code>=</code></span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa/absoluta/mixta: <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada: <code>F2</code> (Mac: doble clic)</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autocompletar hacia abajo / derecha: <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rellenar/continuar serie hasta el final de los datos: doble clic en el controlador de relleno</span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -882,6 +1034,7 @@
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code>: media aritmética</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code>: celdas numéricas / no vacías</span></div>
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code>: valor más alto / más bajo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=POTENCIA(base;exp)</code> / <code>=RAIZ(número)</code></span></div>
           </div>
         </div>
         <div class="qr-cell">
@@ -907,11 +1060,14 @@
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">
       <div class="gloss-item"><span class="gloss-term">Celda</span><p class="gloss-def">Unidad básica de una planilla, identificada por la intersección de una columna (letra) y una fila (número), por ejemplo <code>B4</code>.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Rango</span><p class="gloss-def">Conjunto de celdas contiguas, definido por la celda de inicio y la de fin separadas por dos puntos, por ejemplo <code>A2:A10</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Rango</span><p class="gloss-def">Conjunto de celdas contiguas, definido por la celda de inicio y la de fin separadas por dos puntos, por ejemplo <code>A2:A337</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Formato de celdas</span><p class="gloss-def">Conjunto de propiedades visuales de una celda (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterar el dato en sí.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Configuración regional</span><p class="gloss-def">Ajuste del archivo que define, entre otras cosas, qué símbolo usa Sheets como separador decimal y de miles al interpretar un número.</p></div>
       <div class="gloss-item"><span class="gloss-term">Referencia relativa</span><p class="gloss-def">Referencia a una celda que se ajusta automáticamente según la posición al copiar una fórmula. Es el comportamiento por defecto.</p></div>
       <div class="gloss-item"><span class="gloss-term">Referencia absoluta</span><p class="gloss-def">Referencia a una celda que se mantiene fija al copiar una fórmula, indicada con el símbolo <code>$</code> antes de la columna y/o la fila.</p></div>
       <div class="gloss-item"><span class="gloss-term">Referencia mixta</span><p class="gloss-def">Referencia que fija solo la fila (<code>B$2</code>) o solo la columna (<code>$B2</code>), dejando libre la otra dimensión.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Controlador de relleno</span><p class="gloss-def">Cuadrado en la esquina inferior derecha de una celda seleccionada que permite copiar contenido, fórmulas o continuar series arrastrando.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Referencia entre hojas</span><p class="gloss-def">Referencia a una celda de otra hoja del mismo libro, con la sintaxis <code>=NombreDeHoja!Celda</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Controlador de relleno</span><p class="gloss-def">Cuadrado en la esquina inferior derecha de una celda seleccionada que permite copiar contenido, fórmulas o continuar series arrastrando, o con doble clic hasta el final de los datos de la columna vecina.</p></div>
       <div class="gloss-item"><span class="gloss-term">Función</span><p class="gloss-def">Fórmula predefinida que ejecuta una operación específica sobre uno o más argumentos, con la sintaxis <code>=NOMBRE(argumentos)</code>.</p></div>
       <div class="gloss-item"><span class="gloss-term">Argumento</span><p class="gloss-def">Cada uno de los valores, celdas o rangos que recibe una función entre paréntesis.</p></div>
       <div class="gloss-item"><span class="gloss-term">SUMA</span><p class="gloss-def">Función que devuelve la suma total de los valores numéricos de un rango.</p></div>
@@ -919,14 +1075,18 @@
       <div class="gloss-item"><span class="gloss-term">CONTAR</span><p class="gloss-def">Función que cuenta la cantidad de celdas con valores numéricos dentro de un rango.</p></div>
       <div class="gloss-item"><span class="gloss-term">CONTARA</span><p class="gloss-def">Función que cuenta la cantidad de celdas no vacías (numéricas o de texto) dentro de un rango.</p></div>
       <div class="gloss-item"><span class="gloss-term">MAX / MIN</span><p class="gloss-def">Funciones que devuelven el valor más alto / más bajo dentro de un rango.</p></div>
+      <div class="gloss-item"><span class="gloss-term">POTENCIA / RAIZ</span><p class="gloss-def">Funciones que elevan un número a un exponente, o calculan su raíz cuadrada.</p></div>
       <div class="gloss-item"><span class="gloss-term">Formato condicional</span><p class="gloss-def">Conjunto de reglas que aplican un formato visual automático a las celdas que cumplen una condición definida, sin alterar el dato.</p></div>
       <div class="gloss-item"><span class="gloss-term">Escala de color</span><p class="gloss-def">Tipo de formato condicional que aplica un gradiente de color según el valor relativo de cada celda dentro de un rango.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Registro duplicado</span><p class="gloss-def">Fila que repite un identificador (como <code>id_inscripcion</code>) que debería ser único, y que infla cualquier suma o conteo hasta que se elimina.</p></div>
     </div>
 
     <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
       <li>Google. <em>Función SUMA</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093669</code></li>
       <li>Google. <em>Usar el formato condicional</em>. <code>support.google.com/docs/answer/78413</code></li>
+      <li>Google. <em>Cambiar la configuración regional, la zona horaria y la moneda predeterminada</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/58515</code></li>
+      <li>Google. <em>Insertar y eliminar filas, columnas o celdas</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/54813</code></li>
       <li>Microsoft. <em>Referencias de celda relativas y absolutas</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
       <li>Microsoft. <em>Usar el formato condicional para resaltar información</em>. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
     </ul>

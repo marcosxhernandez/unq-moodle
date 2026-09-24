@@ -1,0 +1,337 @@
+id_inscripcion;fecha_inscripcion;taller;sede;alumno;dni;arancel;beca_pct;estado;medio_pago
+INS-20023;10/04/2026;Serigrafía;Sede Centro;Martina Rojas;39360154;15.000,00;0;Anulada;Transferencia
+INS-20114;08/05/2026;Fotografía analógica;Sede Norte;Dante Correa;33084264;16.000,00;0;confirmada;Efectivo
+INS-20186;08/05/2026;Cerámica;Sede Centro;Mora Castro;44338596;14.000,00;20;Confirm.;Efectivo
+INS-20016;16/04/2026;Cerámica ;Sede Centro;Mora Ibáñez;42475318;14.000,00;30;Confirm.;Efectivo
+INS-20188;2026-06-02;Cerámica;Sede Centro;Pilar Vega;44090160;14.000,00;0;CONFIRMADA;Efectivo
+INS-20175;18/04/2026;Costura creativa;Sede Norte;Pilar Vega;36338366;13.000,00;0;Confirmada;Efectivo
+INS-20251;2026-05-12;Serigrafía;Sede Centro;Ariadna López;44684715;15.000,00;;Confirmada;Efectivo
+INS-20321;05/05/2026;Huerta orgánica;Sede Norte;Catalina Castro;44415272;9.000,00;0;confirmada;Tarjeta
+INS-20139;22/05/2026;Yoga;Sede Sur;Abril Núñez;34149521;10.000,00;20;Confirm.;Transferencia
+INS-20117;14/03/2026;Guitarra;;Olivia Torres;31294051;12.000,00;60;Confirmada;Tarjeta
+INS-20066;27/04/2026;Yoga;Sede Sur;Camila Castro;35949401;10.000,00;;confirmada;Efectivo
+INS-20084;01/06/2026;Cerámica;Sede Centro;Lautaro Flores;37418388;14.000,00;0;Pendiente;Tarjeta
+INS-20178;27/03/2026;Serigrafía;Sede Centro;Milagros Castro;38055966;15.000,00;20;Confirmada;Tarjeta
+INS-20130;23/04/2026;Yoga;Sede Sur;Ramiro Gómez;42539775;10.000,00;;Confirm.;Tarjeta
+INS-20099;11/03/2026;Huerta orgánica;Sede Norte;Baltasar Rodríguez;42971117;9.000,00;30;Confirm.;Efectivo
+INS-20230;27/03/2026;GUITARRA;Sede Centro;Gael Molina;35242902;12.000,00;;Confirm.;Efectivo
+INS-20102;19/03/2026;Cerámica;Sede Centro;Guadalupe Martínez;45260907;14.000,00;0;Confirmada;Efectivo
+INS-20062;01/05/2026;Guitarra;Sede Centro;Isabella Gómez;33157639;12.000,00;0;confirmada;Tarjeta
+INS-20079;23/05/2026;Cerámica;centro;Josefina Martínez;40273700;14.000,00;50;Confirmada;Tarjeta
+INS-20257;06/05/2026;Huerta orgánica;Sede Norte;Agustina Torres;43162560;9.000,00;20;Confirm.;Efectivo
+INS-20297;05/03/2026;Yoga;Sede Sur;Valentina Molina;39490881;10.000,00;20;confirmada;Tarjeta
+INS-20284;11/05/2026;Costura creativa;Sede Norte;Thiago López;42579136;13.000,00;0;confirmada;Transferencia
+INS-20312;26/04/2026;Fotografía analógica;Sede Norte;Ariadna Rodríguez;33247785;16.000,00;;CONFIRMADA;Efectivo
+INS-20112;26/05/2026;Yoga;Sede Sur;Martina Herrera;32933123;10.000,00;0;CONFIRMADA;Tarjeta
+INS-20209;13/03/2026;Serigrafía;Sede Centro;Renata Sosa;44379496;15.000,00;30;Confirmada;Tarjeta
+INS-20224;22/05/2026;Cerámica;Sede Centro;Pilar Aguirre;36371671;14.000,00;0;Confirmada;Tarjeta
+INS-20303;31/05/2026;Yoga;Sede Sur;Victoria Ibáñez;31474366;-10.000,00;20;Confirmada;Transferencia
+INS-20013;23/04/2026;Huerta orgánica;Sede Norte;Emma Romero;35863626;9.000,00;0;confirmada;Transferencia
+INS-20052;30/03/2026;Yoga;Sede Sur;Delfina Sosa;40945451;10.000,00;30;Confirmada;Efectivo
+INS-20259;31/03/2026;Yoga;Sede Sur;Thiago Correa;39181233;10.000,00;0;Confirmada;Tarjeta
+INS-20092;31/05/2026;Serigrafía;Sede Centro;Malena Correa;36303443;15.000,00;;Confirmada;Tarjeta
+INS-20080;26/04/2026;Guitarra;Sede Centro;Thiago López;33024655;12.000,00;60;Confirm.;Efectivo
+INS-20019;02/05/2026;Serigrafía;Sede Centro;Mateo Ortega;33430021;15.000,00;50;Confirmada;Tarjeta
+INS-20073;26/04/2026;Fotografía analógica;Sede Norte;Mariano Ortega;40744489;16.000,00;0;Pendiente;Efectivo
+INS-20038;2026-05-28;Yoga;Sede Sur;Alma Ortega;35554714;10.000,00;20;Confirmada;Efectivo
+INS-20078;17/04/2026;Costura creativa;Sede Norte;Mateo Herrera;43063006;13.000,00;0;CONFIRMADA;Tarjeta
+INS-20002;18/03/2026;Cerámica;Sede Centro;Lorenzo Rodríguez;42244654;14.000,00;0;CONFIRMADA;Tarjeta
+INS-20216;01/05/2026;Serigrafía;Sede Centro;Simón Herrera;34092278;15.000,00;0;Pendiente;Transferencia
+INS-20148;11/04/2026;Cerámica;Sede Centro;Josefina Domínguez;32077620;14.000,00;0;Confirm.;Efectivo
+INS-20270;2026-05-25;Yoga;Sede Sur;Lucía Correa;42996451;10.000,00;0;Pendiente;Tarjeta
+INS-20021;23/05/2026;Cerámica;Sede Centro;Sofía Martínez;40222749;14.000,00;30;Confirmada;Tarjeta
+INS-20037;04/06/2026;Costura creativa;Sede Norte;Ariadna Ruiz;30474382;13.000,00;0;Confirmada;Transferencia
+INS-20164;18/03/2026;Fotografía analógica;Sede Norte;Benjamín Godoy;33473251;16.000,00;0;CONFIRMADA;Efectivo
+INS-20074;25/04/2026;Yoga;Sede Sur;Ian Acosta;34626400;10.000,00;;Confirm.;Efectivo
+INS-20115;24/04/2026;Guitarra;Sede Centro;Isabella Pérez;34295571;12.000,00;0;CONFIRMADA;Transferencia
+INS-20113;04/06/2026;Cerámica;Sede Centro;Ariadna Peralta;41582077;14.000,00;20;Confirmada;Transferencia
+INS-20058;10/05/2026;Guitarra;Sede Centro;Victoria Acosta;40670268;12.000,00;70;Confirmada;Tarjeta
+INS-20322;24/05/2026;Yoga;Sede Sur;Ignacio Domínguez;40502476;10.000,00;0;Confirmada;Transferencia
+INS-20301;12/03/2026;Yoga;Sede Sur;Pilar Martínez;34515797;10.000,00;0;CONFIRMADA;Transferencia
+INS-20094;27/03/2026;Serigrafía;Sede Centro;Alma Pérez;39861466;15.000,00;0;Pendiente;Transferencia
+INS-20095;2026-05-14;Yoga;Sede Sur;Lautaro García;44362309;10.000,00;0;CONFIRMADA;Tarjeta
+INS-20266;07/03/2026;Huerta orgánica;Sede Norte;Bautista Godoy;37822888;9.000,00;0;Confirmada;Transferencia
+INS-20253;22/03/2026;Cerámica;Sede Centro;Isabella Martínez;36334271;14.000,00;;Confirmada;Efectivo
+INS-20138;02/06/2026;Guitarra;Sede Centro;Victoria García;38072335;12.000,00;65;CONFIRMADA;Transferencia
+INS-20245;05/03/2026;Cerámica;;Sofía Molina;31605188;14.000,00;20;CONFIRMADA;Transferencia
+INS-20005;23/05/2026;Cerámica;Sede Centro;Valentino Medina;45350383;14.000,00;;CONFIRMADA;Tarjeta
+INS-20254;27/05/2026;Huerta orgánica;Sede Norte;Ignacio Peralta;36129009;9.000,00;50;Confirmada;Efectivo
+INS-20279;14/05/2026;Yoga;Sede Sur;Tomás Castro;32556891;10.000,00;30;Confirmada;Tarjeta
+INS-20238;2026-05-11;Yoga;Sede Sur;Zoe Romero;35822061;10.000,00;20;Confirmada;Efectivo
+INS-20304;26/03/2026;Yoga;Sede Sur;Valentino García;39175064;10.000,00;0;Confirmada;Transferencia
+INS-20328;02/05/2026;Serigrafía;Sede Centro;Nicolás Flores;41957919;15.000,00;30;confirmada;Transferencia
+INS-20209;13/03/2026;Serigrafía;Sede Centro;Renata Sosa;44379496;15.000,00;30;Confirmada;Tarjeta
+INS-20153;07/04/2026;Yoga;Sede Sur;Pilar Ibáñez;32280547;10.000,00;0;Confirmada;Tarjeta
+INS-20226;27/03/2026;Serigrafía;Sede Centro;Milagros Torres;34385139;15.000,00;0;Anulada;Tarjeta
+INS-20141;03/03/2026;Yoga;Sede Sur;Ariadna Ortega;30580643;10.000,00;;Pendiente;Efectivo
+INS-20316;13/05/2026;Yoga;Sede Sur;Lorenzo Ruiz;36601068;10.000,00;20;Pendiente;Transferencia
+INS-20185;2026-03-14;Yoga;Sede Sur;Lucía Godoy;34627025;10.000,00;0;confirmada;Efectivo
+INS-20190;17/05/2026;Costura creativa;Sede Norte;Ciro Romero;38056710;13.000,00;0;Anulada;Tarjeta
+INS-20264;30/03/2026;Guitarra;Sede Centro;Francisco Cabrera;34178862;12.000,00;20;Confirmada;Tarjeta
+INS-20241;20/05/2026;Serigrafía;Sede Centro;Lautaro Herrera;40763885;15.000,00;30;Pendiente;Efectivo
+INS-20183;10/04/2026;Costura creativa;Sede Norte;Mora Silva;36696428;13.000,00;30;Confirm.;Tarjeta
+INS-20306;2026-04-06;Yoga;Sede Sur;Mateo Gómez;35243602;10.000,00;;Anulada;Efectivo
+INS-20154;10/03/2026;COSTURA CREATIVA;Sede Norte;Ramiro Acosta;37057776;13.000,00;0;Confirm.;Efectivo
+INS-20071;09/05/2026;Guitarra;Sede Centro;Agustina Romero;35200501;12.000,00;;Anulada;Efectivo
+INS-20223;01/04/2026;Yoga;Sede Sur;Santino Flores;35645695;10.000,00;30;Confirmada;Tarjeta
+INS-20261;15/03/2026;Costura creativa;Sede Norte;Valentina Núñez;40923800;13.000,00;0;CONFIRMADA;Transferencia
+INS-20231;18/05/2026;Fotografía analógica;Sede Norte;Malena Rojas;39795142;16.000,00;30;confirmada;Efectivo
+INS-20147;30/05/2026;Serigrafía;Sede Centro;Simón Medina;45984689;15.000,00;30;Confirm.;Tarjeta
+INS-20039;03/05/2026;Guitarra;Sede Centro;Abril Domínguez;40794303;12.000,00;30;Pendiente;Transferencia
+INS-20048;25/04/2026;Fotografía analógica;Sede Norte;Ciro Núñez;37143807;16.000,00;20;Anulada;Tarjeta
+INS-20221;22/05/2026;Yoga;Sede Sur;Guadalupe Rojas;42732826;10.000,00;0;Anulada;Tarjeta
+INS-20295;10/03/2026;Cerámica;Sede Centro;Tomás Peralta;32939473;14.000,00;30;confirmada;Efectivo
+INS-20286;03/06/2026;Guitarra;Sede Centro;Agustina Ruiz;35750885;12.000,00;65;confirmada;Tarjeta
+INS-20026;13/05/2026;Yoga;Sede Sur;Josefina Pérez;35643061;10.000,00;20;confirmada;Efectivo
+INS-20003;04/06/2026;Cerámica;Sede Centro;Ramiro Pérez;39709184;14.000,00;50;Anulada;Tarjeta
+INS-20123;2026-03-27;Costura creativa;Sede Norte;Mateo Rojas;41460725;13.000,00;0;Pendiente;Tarjeta
+INS-20108;22/04/2026;Guitarra;Sede Centro;Baltasar Rodríguez;36054267;12.000,00;;confirmada;Efectivo
+INS-20098;2026-04-18;Yoga;Sede Sur;Benicio Cabrera;42187494;10.000,00;0;Pendiente;Efectivo
+INS-20029;2026-06-04;Cerámica;Sede Centro;Olivia García;36283802;14.000,00;0;Confirmada;Tarjeta
+INS-20111;28/03/2026;Cerámica;Sede Centro;Mariano Vega;38976709;14.000,00;0;Pendiente;Efectivo
+INS-20237;05/06/2026;Yoga;Sede Sur;Francisco Flores;36528497;10.000,00;20;Anulada;Efectivo
+INS-20155;15/04/2026;Serigrafía;Sede Centro;Lautaro Díaz;36425664;15.000,00;0;Confirmada;Tarjeta
+INS-20032;21/03/2026;Cerámica;Sede Centro;Ariadna Aguirre;33170946;14.000,00;20;Confirmada;Efectivo
+INS-20189;26/05/2026;Huerta orgánica;Sede Norte;Ciro Rojas;34355442;9.000,00;50;Pendiente;Tarjeta
+INS-20280;03/04/2026;Foto analogica;Sede Norte;Valentina Sosa;32991375;16.000,00;0;Confirmada;Transferencia
+INS-20022;06/05/2026;Guitarra;Sede Centro;Felipe Herrera;37612674;12.000,00;0;Confirmada;Transferencia
+INS-20214;30/04/2026;FOTOGRAFÍA ANALÓGICA;Sede Norte;Nicolás Herrera;31611193;16.000,00;;confirmada;Efectivo
+INS-20275;09/04/2026;Costura creativa;Sede Norte;Santino Martínez;35583184;13.000,00;30;Confirm.;Tarjeta
+INS-20014;11/03/2026;Fotografía analógica;Sede Norte;Mora Martínez;30271239;16.000,00;0;Pendiente;Tarjeta
+INS-20205;2026-03-12;Huerta orgánica;Sede Norte;Mateo Herrera;41388203;9.000,00;50;Confirm.;Tarjeta
+INS-20180;18/03/2026;Serigrafía;Sede Centro;León Sosa;37460841;15.000,00;0;Confirmada;Tarjeta
+INS-20008;13/04/2026;Guitarra;Sede Centro;Ramiro Correa;37657502;12.000,00;20;Pendiente;Efectivo
+INS-20149;2026-05-20;Cerámica;Sede Centro;Lucía Aguirre;40463585;14.000,00;20;Pendiente;Efectivo
+INS-20103;05/04/2026;Fotografía analógica;Sede Norte;Santino Vega;43295721;16.000,00;;Confirmada;Efectivo
+INS-20033;14/05/2026;Serigrafía;Sede Centro;Lorenzo Castro;44874174;15.000,00;20;Confirmada;Transferencia
+INS-20247;15/04/2026;Costura creativa;Sede Norte;Tomás Pérez;41462002;13.000,00;;Confirm.;Efectivo
+INS-20171;27/04/2026;Serigrafía;Sede Centro;Simón Aguirre;39260732;15.000,00;0;Pendiente;Efectivo
+INS-20202;09/03/2026;Fotografía analógica;Sede Norte;Valentino Sosa;44411820;16.000,00;0;Confirmada;Tarjeta
+INS-20197;05/04/2026;Cerámica;Sede Centro;León Herrera;37251128;14.000,00;0;Pendiente;Tarjeta
+INS-20100;24/05/2026;Cerámica;Sede Centro;Ariadna Aguirre;42229569;14.000,00;;confirmada;Tarjeta
+INS-20046;18/05/2026;Yoga;Sede Sur;Mora Acosta;32218842;10.000,00;0;CONFIRMADA;Efectivo
+INS-20244;07/03/2026;Guitarra;Sede Centro;Catalina Godoy;31159491;12.000,00;20;CONFIRMADA;Transferencia
+INS-20089;28/05/2026;Cerámica;Sede Centro;Valentino Vega;39283948;14.000,00;0;Confirm.;Transferencia
+INS-20146;19/05/2026;Fotografía analógica;Sede Norte;Baltasar Molina;35920660;16.000,00;20;Confirm.;Transferencia
+INS-20167;27/04/2026;Huerta orgánica;Sede Norte;Isabella Núñez;40877740;9.000,00;20;Anulada;Tarjeta
+INS-20045;05/06/2026;Serigrafía;Sede Centro;Bruno Núñez;44766818;15.000,00;;Confirmada;Tarjeta
+INS-20220;05/05/2026;Fotografía analógica;Sede Norte;Milagros Domínguez;37813127;16.000,00;20;Confirmada;Tarjeta
+INS-20177;24/05/2026;Serigrafía;Sede Centro;Valentino Medina;45381898;15.000,00;30;Anulada;Efectivo
+INS-20120;21/05/2026;Yoga;Sede Sur;Santino Núñez;36635920;10.000,00;;Confirmada;Transferencia
+INS-20320;2026-03-07;Yoga;Sede Sur;Ariadna Ruiz;37031383;10.000,00;0;Confirmada;Efectivo
+INS-20311;26/04/2026;Cerámica;Sede Centro;Abril Acosta;41148228;14.000,00;20;Confirmada;Efectivo
+INS-20175;2026-04-18;Costura creativa;Sede Norte;Pilar Vega;36338366;13.000,00;0;Confirm.;Efectivo
+INS-20018;21/05/2026;Yoga;Sede Sur;Ariadna Torres;34940472;10.000,00;0;Confirm.;Transferencia
+INS-20159;2026-05-10;Cerámica;Sede Centro;Ian Rodríguez;45720887;14.000,00;0;Confirmada;Efectivo
+INS-20166;31/03/2026;Cerámica;Sede Centro;Lucía García;38528873;14.000,00;0;Confirmada;Tarjeta
+INS-20198;06/03/2026;Fotografía analógica;Sede Norte;Francisco Castro;45574863;16.000,00;;Confirm.;Efectivo
+INS-20200;2026-04-11;Serigrafía;Sede Centro;Camila Molina;41153247;15.000,00;0;Pendiente;Transferencia
+INS-20036;10/05/2026;Cerámica;Sede Centro;Francisco Molina;41416158;14.000,00;20;Anulada;Transferencia
+INS-20097;04/06/2026;Huerta orgánica;Sede Norte;Valentino Fernández;38277506;9.000,00;30;CONFIRMADA;Efectivo
+INS-20040;05/05/2026;Cerámica;centro;Thiago Domínguez;41177578;14.000,00;;Pendiente;Tarjeta
+INS-20313;05/03/2026;Serigrafía;Sede Centro;Sofía Godoy;43699354;15.000,00;20;Confirmada;Tarjeta
+INS-20236;11/05/2026;Serigrafía;Sede Centro;Bautista Correa;32587172;15.000,00;;Confirmada;Tarjeta
+INS-20293;12/04/2026;Huerta orgánica;Sede Norte;Bruno García;44990488;9.000,00;0;Pendiente;Efectivo
+INS-20061;29/03/2026;Costura creativa;Sede Norte;Gael Gómez;33420643;13.000,00;;Anulada;Tarjeta
+INS-20068;11/03/2026;Huerta orgánica;Sede Norte;Julieta Medina;40332693;9.000,00;;Confirm.;Transferencia
+INS-20011;05/05/2026;Guitarra;Sede Centro;Ciro Martínez;40619619;12.000,00;20;confirmada;Tarjeta
+INS-20082;28/04/2026;Serigrafía;Sede Centro;Benjamín Núñez;37863293;15.000,00;;Confirm.;Transferencia
+INS-20184;21/05/2026;Fotografía analógica;Sede Norte;Mateo Díaz;38964396;16.000,00;0;Confirm.;Transferencia
+INS-20290;2026-04-30;Yoga;Sede Sur;Ignacio Ruiz;44418872;10.000,00;20;Anulada;Transferencia
+INS-20323;12/03/2026;Cerámica;Sede Centro;Benjamín Rodríguez;36709597;14.000,00;0;Confirmada;Efectivo
+INS-20173;17/05/2026;Serigrafía;Sede Centro;Valentino Torres;44410867;15.000,00;30;CONFIRMADA;Tarjeta
+INS-20034;19/03/2026;Huerta orgánica;Sede Norte;Bruno Martínez;41366747;9.000,00;;Anulada;Efectivo
+INS-20327;04/05/2026;Cerámica;Sede Centro;Camila Sosa;37943634;14.000,00;20;Confirmada;Transferencia
+INS-20091;28/03/2026;Cerámica;Sede Centro;Agustina Sosa;37513673;14.000,00;20;CONFIRMADA;Transferencia
+INS-20043;02/04/2026;Cerámica;Sede Centro;Camila García;30978784;14.000,00;0;CONFIRMADA;Efectivo
+INS-20208;2026-04-15;Guitarra;Sede Centro;Francisco García;33680322;12.000,00;0;Confirm.;Transferencia
+INS-20028;28/03/2026;Fotografía analógica;Sede Norte;Malena Cabrera;40351681;16.000,00;0;Confirm.;Tarjeta
+INS-20269;2026-05-18;Huerta orgánica;Sede Norte;Victoria Sosa;39679425;9.000,00;20;confirmada;Efectivo
+INS-20289;28/03/2026;Cerámica;Sede Centro;Alma Herrera;35526808;14.000,00;20;Confirmada;Efectivo
+INS-20181;2026-03-23;Cerámica;Sede Centro;Dante Ruiz;37498854;14.000,00;20;Anulada;Transferencia
+INS-20317;10/04/2026;Costura creativa;Sede Norte;Ignacio Ruiz;40082132;13.000,00;0;Confirmada;Tarjeta
+INS-20315;06/04/2026;Huerta orgánica;Sede Norte;Zoe Silva;34270184;9.000,00;20;CONFIRMADA;Transferencia
+INS-20206;02/04/2026;Fotografía analógica;Sede Norte;Abril Rodríguez;35277947;16.000,00;50;Confirmada;Tarjeta
+INS-20288;2026-05-21;Huerta orgánica;Sede Norte;León Ruiz;35542173;9.000,00;30;Confirmada;Transferencia
+INS-20192;15/05/2026;Huerta orgánica;Sede Norte;Lucía López;40047846;9.000,00;20;Confirmada;Efectivo
+INS-20010;18/03/2026;Cerámica;Sede Centro;Sofía Gómez;45088936;14.000,00;0;Confirmada;Efectivo
+INS-20015;17/03/2026;Serigrafía;Sede Centro;Joaquín Núñez;38810656;15.000,00;20;Pendiente;Tarjeta
+INS-20127;20/03/2026;Cerámica;Sede Centro;Valentino Correa;31351455;14.000,00;0;Pendiente;Transferencia
+INS-20267;01/04/2026;Yoga;Sede Sur;Renata Romero;35508725;10.000,00;;confirmada;Transferencia
+INS-20133;16/03/2026;Huerta orgánica;Sede Norte;Ariadna García;38732671;9.000,00;0;Confirmada;Efectivo
+INS-20035;12/04/2026;Cerámica;Sede Centro;Camila Torres;32452623;14.000,00;0;Pendiente;Efectivo
+INS-20030;09/05/2026;Yoga;Sede Sur;Abril Domínguez;33639903;10.000,00;0;CONFIRMADA;Transferencia
+INS-20300;2026-03-10;Huerta orgánica;Sede Norte;Mariano Sosa;40703954;9.000,00;0;CONFIRMADA;Efectivo
+INS-20265;10/04/2026;Costura creativa;Sede Norte;Nicolás Cabrera;32457498;13.000,00;0;Anulada;Efectivo
+INS-20239;18/04/2026;Guitarra;Sede Centro;Mariano Pérez;43559888;12.000,00;65;confirmada;Tarjeta
+INS-20210;13/03/2026;Huerta orgánica;Sede Norte;Valentino Sosa;41255684;9.000,00;50;confirmada;Tarjeta
+INS-20298;17/04/2026;Cerámica;Sede Centro;Franco Rojas;42328929;14.000,00;;CONFIRMADA;Tarjeta
+INS-20219;24/04/2026;Serigrafía;Sede Centro;Ian Pérez;41723745;15.000,00;30;confirmada;Tarjeta
+INS-20307;31/05/2026;Cerámica;Sede Centro;Sofía Pérez;45845855;14.000,00;50;confirmada;Tarjeta
+INS-20157;18/04/2026;Yoga;Sede Sur;Ciro Torres;39515979;10.000,00;50;Confirmada;Transferencia
+INS-20106;08/04/2026;Costura creativa;Sede Norte;Gael Godoy;36806797;13.000,00;;Confirmada;Transferencia
+INS-20110;2026-04-05;Costura creativa;Sede Norte;Ariadna Aguirre;40250764;13.000,00;50;CONFIRMADA;Transferencia
+INS-20194;19/05/2026;Yoga;Sede Sur;Milagros Cabrera;32755837;10.000,00;0;Confirmada;Transferencia
+INS-20119;08/05/2026;Costura creativa;Sede Norte;Guadalupe Molina;45772062;13.000,00;30;Pendiente;Tarjeta
+INS-20276;13/05/2026;Serigrafía;Sede Centro;Tomás Aguirre;36112227;15.000,00;0;Pendiente;Tarjeta
+INS-20191;29/03/2026;Cerámica;Sede Centro;Benicio Ortega;39057427;14.000,00;0;CONFIRMADA;Efectivo
+INS-20063;02/03/2026;Costura creativa;norte;Gael Gómez;37388035;13.000,00;0;Pendiente;Tarjeta
+INS-20213;08/04/2026;Cerámica;Sede Centro;Benicio Domínguez;42699864;14.000,00;30;confirmada;Transferencia
+INS-20240;09/03/2026;Fotografía analógica;Sede Norte;Ignacio López;34353027;16.000,00;0;CONFIRMADA;Efectivo
+INS-20235;19/03/2026;Fotografía analógica;Sede Norte;Tomás Díaz;40729751;16.000,00;50;confirmada;Transferencia
+INS-20049;05/06/2026;Cerámica;Sede Centro;Tomás Flores;37569792;14.000,00;;CONFIRMADA;Tarjeta
+INS-20158;25/03/2026;Fotografía analógica;Sede Norte;Benjamín Molina;36206072;16.000,00;;Confirmada;Tarjeta
+INS-20012;11/03/2026;Fotografía analógica;Sede Norte;Benicio Ortega;32370905;16.000,00;20;confirmada;Efectivo
+INS-20324;12/03/2026;Cerámica;Sede Centro;Mora Peralta;44192038;14.000,00;0;Confirm.;Tarjeta
+INS-20268;13/05/2026;Guitarra;Sede Centro;Renata García;38461321;12.000,00;80;confirmada;Efectivo
+INS-20326;2026-04-26;Fotografía analógica;Sede Norte;Thiago Molina;33119471;16.000,00;;confirmada;Efectivo
+INS-20207;15/04/2026;Yoga;Sede Sur;Bautista Martínez;35688607;10.000,00;50;Confirmada;Tarjeta
+INS-20143;21/05/2026;Huerta orgánica;Sede Norte;Valentina Molina;31409559;9.000,00;0;Confirmada;Efectivo
+INS-20243;01/06/2026;Cerámica;Sede Centro;Lorenzo Pérez;32725012;14.000,00;0;confirmada;Transferencia
+INS-20281;01/05/2026;Serigrafía;Sede Centro;Franco Molina;45688101;15.000,00;;CONFIRMADA;Transferencia
+INS-20073;26/04/2026;Fotografía analógica;Sede Norte;Mariano Ortega;40744489;16.000,00;0;Pendiente;Efectivo
+INS-20234;25/05/2026;Huerta orgánica;Sede Norte;Julieta García;42014620;9.000,00;0;Pendiente;Transferencia
+INS-20227;2026-03-27;Huerta orgánica ;;Joaquín Flores;36294258;9.000,00;20;confirmada;Efectivo
+INS-20056;2026-04-21;Serigrafía;Sede Centro;Guadalupe Correa;34386324;15.000,00;50;Anulada;Tarjeta
+INS-20271;15/03/2026;Huerta orgánica;Sede Norte;Antonella Domínguez;33154289;9.000,00;;Confirmada;Transferencia
+INS-20027;15/03/2026;Fotografía analógica;Sede Norte;Alma Rojas;44642606;16.000,00;0;Pendiente;Tarjeta
+INS-20296;11/04/2026;Fotografía analógica;Sede Norte;Alma Rojas;35099036;16.000,00;0;Confirmada;Tarjeta
+INS-20101;14/04/2026;Huerta orgánica;Sede Norte;Antonella Ortega;44881944;9.000,00;0;CONFIRMADA;Transferencia
+INS-20137;07/04/2026;Serigrafía;Sede Centro;Isabella Gómez;36774210;15.000,00;0;Anulada;Tarjeta
+INS-20176;30/05/2026;Guitarra;Sede Centro;Benjamín Correa;30464010;12.000,00;0;confirmada;Transferencia
+INS-20105;11/04/2026;Yoga;Sede Sur;Abril Flores;35082856;-10.000,00;;Confirm.;Efectivo
+INS-20145;02/05/2026;Fotografía analógica;Sede Norte;Mariano Correa;40935389;16.000,00;0;Confirm.;Efectivo
+INS-20107;11/05/2026;yoga;Sede Sur;Agustina Aguirre;40333575;10.000,00;50;Anulada;Efectivo
+INS-20325;2026-03-20;Serigrafía;Sede Centro;León Gómez;34910107;15.000,00;20;Pendiente;Transferencia
+INS-20174;19/05/2026;Fotografía analógica;Sede Norte;Renata Correa;45117857;16.000,00;;Confirmada;Efectivo
+INS-20246;27/05/2026;Cerámica;Sede Centro;Guadalupe Ortega;43952252;14.000,00;0;Confirmada;Tarjeta
+INS-20248;26/04/2026;Cerámica;Sede Centro;Gael Vega;41254229;14.000,00;30;Confirmada;Transferencia
+INS-20172;05/04/2026;Guitarra;Sede Centro;Guadalupe Aguirre;42197041;12.000,00;30;Confirm.;Tarjeta
+INS-20163;10/05/2026;Yoga;Sede Sur;Olivia Acosta;42786181;10.000,00;50;Confirmada;Efectivo
+INS-20069;29/03/2026;Huerta orgánica;Sede Norte;Tomás Acosta;31253009;9.000,00;0;CONFIRMADA;Tarjeta
+INS-20096;22/05/2026;Serigrafía;Sede Centro;Bruno Martínez;31703201;15.000,00;0;CONFIRMADA;Tarjeta
+INS-20088;29/05/2026;Yoga;Sede Sur;Baltasar García;37054466;10.000,00;0;Confirm.;Efectivo
+INS-20004;10/03/2026;Cerámica;Sede Centro;Camila Sosa;45963143;14.000,00;0;confirmada;Tarjeta
+INS-20125;27/04/2026;Guitarra;Sede Centro;Mora Rodríguez;35676734;12.000,00;0;Confirmada;Tarjeta
+INS-20020;28/03/2026;Guitarra;Sede Centro;León Medina;40340404;12.000,00;65;Confirm.;Efectivo
+INS-20283;19/04/2026;Yoga;Sede Sur;Emma Castro;35823612;10.000,00;20;Anulada;Efectivo
+INS-20087;21/03/2026;Huerta orgánica;Sede Norte;Lucía Rojas;39400706;9.000,00;20;CONFIRMADA;Tarjeta
+INS-20308;27/04/2026;Cerámica;Sede Centro;Dante López;40873827;14.000,00;0;CONFIRMADA;Tarjeta
+INS-20196;2026-04-17;Huerta orgánica;Sede Norte;Alma Peralta;43302807;9.000,00;0;Confirm.;Tarjeta
+INS-20131;07/04/2026;Yoga;Sede Sur;Pilar Torres;34869057;10.000,00;0;Confirmada;Efectivo
+INS-20065;14/04/2026;Yoga;Sede Sur;Olivia Flores;45541042;10.000,00;0;Pendiente;Efectivo
+INS-20165;2026-04-14;Cerámica;Sede Centro;Antonella Molina;39124927;14.000,00;0;Anulada;Efectivo
+INS-20310;08/03/2026;Cerámica;Sede Centro;Camila Castro;40772146;14.000,00;50;CONFIRMADA;Tarjeta
+INS-20218;25/04/2026;Yoga;Sede Sur;León Rojas;33281601;10.000,00;0;Pendiente;Tarjeta
+INS-20187;19/04/2026;Cerámica;Sede Centro;Josefina Acosta;38541798;14.000,00;30;Confirm.;Tarjeta
+INS-20077;29/05/2026;Guitarra;Sede Centro;Malena Medina;37930747;12.000,00;0;Confirm.;Tarjeta
+INS-20170;12/05/2026;Yoga;Sede Sur;Dante Castro;43460425;10.000,00;;Pendiente;Tarjeta
+INS-20083;03/04/2026;Serigrafía;Sede Centro;Lucía Rodríguez;41791044;15.000,00;0;Confirmada;Efectivo
+INS-20292;16/05/2026;Huerta orgánica;Sede Norte;Lautaro Romero;45697589;9.000,00;50;CONFIRMADA;Efectivo
+INS-20215;18/04/2026;Cerámica;Sede Centro;Dante Silva;32972444;14.000,00;0;CONFIRMADA;Efectivo
+INS-20217;19/04/2026;Cerámica ;Sede Centro;Abril Torres;45275789;14.000,00;50;Confirmada;Transferencia
+INS-20179;25/04/2026;Huerta orgánica;Sede Norte;Victoria Torres;31174628;9.000,00;0;confirmada;Efectivo
+INS-20203;16/05/2026;Costura creativa;Sede Norte;Malena Aguirre;30130349;13.000,00;0;Confirmada;Efectivo
+INS-20116;27/04/2026;Huerta orgánica;Sede Norte;Nicolás Herrera;35034726;9.000,00;0;Confirmada;Tarjeta
+INS-20017;28/03/2026;Yoga;Sede Sur;Pilar Domínguez;40947743;10.000,00;50;CONFIRMADA;Transferencia
+INS-20070;02/04/2026;Serigrafía;Sede Centro;Victoria Rojas;38551512;15.000,00;20;Pendiente;Transferencia
+INS-20142;2026-03-29;Cerámica;Sede Centro;Tomás Acosta;36445290;14.000,00;0;Confirmada;Tarjeta
+INS-20081;16/05/2026;Yoga;Sede Sur;Delfina Domínguez;31360709;10.000,00;;Confirmada;Transferencia
+INS-20204;07/04/2026;Cerámica;Sede Centro;Simón Díaz;38704602;14.000,00;0;CONFIRMADA;Tarjeta
+INS-20135;02/06/2026;Cerámica;Sede Centro;Mora Correa;41013749;14.000,00;0;confirmada;Efectivo
+INS-20047;15/05/2026;Huerta orgánica;Sede Norte;Victoria Martínez;39232735;9.000,00;30;Confirmada;Efectivo
+INS-20282;23/04/2026;Yoga;Sede Sur;Francisco Medina;33476366;10.000,00;0;CONFIRMADA;Tarjeta
+INS-20090;10/04/2026;Guitarra;Sede Centro;Dante Ruiz;45409852;12.000,00;30;Confirmada;Tarjeta
+INS-20160;02/04/2026;Huerta orgánica;Sede Norte;Mora Rojas;30209029;9.000,00;;Confirmada;Efectivo
+INS-20152;29/03/2026;Huerta orgánica;Sede Norte;Franco Silva;34849373;9.000,00;20;Pendiente;Efectivo
+INS-20044;2026-05-02;Cerámica;Sede Centro;Ariadna Herrera;40152700;14.000,00;0;confirmada;Transferencia
+INS-20250;25/03/2026;Cerámica;Sede Centro;Julieta Díaz;45433519;14.000,00;20;Confirmada;Transferencia
+INS-20050;19/04/2026;Fotografía analógica;Sede Norte;Emma Martínez;45928857;16.000,00;20;Pendiente;Tarjeta
+INS-20076;04/05/2026;Costura creativa;Sede Norte;Joaquín Herrera;36460047;13.000,00;;CONFIRMADA;Efectivo
+INS-20182;28/04/2026;Fotografía analógica;Sede Norte;Sofía Domínguez;30930549;16.000,00;30;Confirmada;Transferencia
+INS-20086;2026-03-04;Costura creativa;Sede Norte;Pilar Rodríguez;44406727;13.000,00;0;Confirmada;Tarjeta
+INS-20144;21/04/2026;Cerámica;Sede Centro;Lorenzo Ibáñez;30534225;14.000,00;0;Confirmada;Transferencia
+INS-20272;20/04/2026;Yoga;Sede Sur;Francisco Núñez;45213827;-10.000,00;0;Confirm.;Transferencia
+INS-20140;30/04/2026;Cerámica;Sede Centro;Mora Ruiz;45824518;14.000,00;0;CONFIRMADA;Efectivo
+INS-20233;19/03/2026;Cerámica;Sede Centro;Julieta Torres;42287149;14.000,00;;Pendiente;Efectivo
+INS-20075;13/04/2026;Yoga;Sede Sur;Gael Ortega;31978325;10.000,00;20;Anulada;Efectivo
+INS-20122;08/03/2026;Cerámica;Sede Centro;Agustina Martínez;37351778;14.000,00;0;Confirmada;Efectivo
+INS-20041;2026-06-03;Costura creativa;Sede Norte;Felipe Domínguez;43225254;13.000,00;0;confirmada;Tarjeta
+INS-20126;20/05/2026;CERÁMICA;Sede Centro;Ignacio Medina;36789254;14.000,00;;CONFIRMADA;Efectivo
+INS-20001;14/05/2026;Costura creativa;Sede Norte;Agustina Herrera;32718686;13.000,00;0;Anulada;Tarjeta
+INS-20150;06/03/2026;Cerámica;Sede Centro;Abril Vega;30800030;14.000,00;;CONFIRMADA;Efectivo
+INS-20232;2026-05-29;Yoga;Sede Sur;Olivia Acosta;37438596;10.000,00;;Anulada;Transferencia
+INS-20222;17/05/2026;Costura creativa;Sede Norte;Lorenzo Peralta;32485708;13.000,00;0;Confirmada;Efectivo
+INS-20299;15/05/2026;Cerámica;Sede Centro;Dante López;34229368;14.000,00;20;CONFIRMADA;Efectivo
+INS-20104;26/04/2026;Yoga;Sede Sur;Dante Fernández;35079889;10.000,00;20;Confirmada;Tarjeta
+INS-20009;25/03/2026;Guitarra;Sede Centro;Bautista Gómez;37592070;12.000,00;65;Confirm.;Transferencia
+INS-20294;04/05/2026;Yoga;Sede Sur;Catalina Flores;45898295;10.000,00;0;Confirmada;Transferencia
+INS-20124;2026-05-23;Cerámica ;Sede Centro;Sofía Vega;44636486;-14.000,00;20;Confirmada;Efectivo
+INS-20161;23/04/2026;Cerámica ;Sede Centro;Benjamín Ortega;31466367;14.000,00;0;Confirm.;Tarjeta
+INS-20054;10/04/2026;Yoga;Sede Sur;Guadalupe Cabrera;45475084;10.000,00;30;Pendiente;Transferencia
+INS-20274;05/04/2026;Serigrafía;Sede Centro;Franco Pérez;43752871;15.000,00;0;Confirmada;Efectivo
+INS-20212;24/03/2026;Huerta orgánica;Sede Norte;Zoe Torres;44259317;9.000,00;0;confirmada;Tarjeta
+INS-20024;07/04/2026;Cerámica;Sede Centro;Renata Romero;33759940;14.000,00;0;Anulada;Transferencia
+INS-20051;15/04/2026;Fotografía analógica;Sede Norte;Milagros Díaz;41777063;16.000,00;;Pendiente;Transferencia
+INS-20018;21/05/2026;Yoga;Sede Sur;Ariadna Torres;34940472;10.000,00;0;Confirmada;Transferencia
+INS-20263;05/05/2026;Guitarra;Sede Centro;Santino Romero;30603613;12.000,00;30;Confirmada;Efectivo
+INS-20242;26/04/2026;Serigrafía;Sede Centro;Agustina Acosta;39572251;15.000,00;50;Confirmada;Efectivo
+INS-20085;31/05/2026;Yoga;Sede Sur;Benjamín Romero;34196560;10.000,00;;confirmada;Transferencia
+INS-20260;18/05/2026;cerámica;Sede Centro;Nicolás Torres;37522870;14.000,00;0;Confirmada;Efectivo
+INS-20156;17/04/2026;Yoga;Sede Sur;Alma Acosta;30300362;10.000,00;50;Pendiente;Transferencia
+INS-20057;16/04/2026;Costura creativa;Sede Norte;Mora Ruiz;37225418;13.000,00;0;Confirm.;Efectivo
+INS-20262;20/04/2026;Foto analogica;Sede Norte;Nicolás Ortega;39979714;16.000,00;;Pendiente;Efectivo
+INS-20201;09/03/2026;Fotografía analógica;Sede Norte;Delfina Domínguez;34382649;16.000,00;0;Confirmada;Transferencia
+INS-20075;13/04/2026;Yoga;Sede Sur;Gael Ortega;31978325;10.000,00;20;Anulada;Efectivo
+INS-20273;07/05/2026;Guitarra;Sede Centro;Santino Sosa;42049847;12.000,00;0;confirmada;Tarjeta
+INS-20064;04/03/2026;Guitarra;Sede Centro;Lucía Herrera;36641050;12.000,00;70;Confirmada;Efectivo
+INS-20109;30/04/2026;Guitarra;Sede Centro;Malena Aguirre;30766271;12.000,00;0;Confirmada;Efectivo
+INS-20169;16/03/2026;Cerámica;Sede Centro;Catalina Peralta;42779348;14.000,00;0;Confirmada;Efectivo
+INS-20302;17/04/2026;Costura creativa;Sede Norte;Ciro Fernández;45837534;13.000,00;20;Confirm.;Efectivo
+INS-20121;21/03/2026;Guitarra ;Sede Centro;Guadalupe Correa;30302960;12.000,00;0;Confirmada;Tarjeta
+INS-20319;02/06/2026;Costura creativa;Sede Norte;Mora Aguirre;39554793;13.000,00;50;Confirmada;Efectivo
+INS-20136;02/04/2026;Serigrafía;Sede Centro;Alma Cabrera;32793572;15.000,00;;CONFIRMADA;Efectivo
+INS-20128;27/05/2026;Guitarra;Sede Centro;Abril Rodríguez;34561743;12.000,00;50;Confirm.;Tarjeta
+INS-20199;19/04/2026;Yoga;Sede Sur;Malena Ruiz;43038827;-10.000,00;0;Confirm.;Efectivo
+INS-20277;05/05/2026;Cerámica;Sede Centro;Ian López;42767345;14.000,00;50;Confirmada;Efectivo
+INS-20007;15/05/2026;Costura creativa;Sede Norte;Bruno Correa;38955964;13.000,00;0;Confirmada;Transferencia
+INS-20314;11/05/2026;Yoga;Sede Sur;Bautista Rojas;37246815;10.000,00;0;confirmada;Tarjeta
+INS-20291;29/03/2026;Yoga;Sede Sur;Alma Cabrera;35350034;10.000,00;30;Confirmada;Transferencia
+INS-20228;07/05/2026;Fotografía analógica;Sede Norte;Renata García;35007970;16.000,00;20;Pendiente;Tarjeta
+INS-20317;10/04/2026;Costura creativa;Sede Norte;Ignacio Ruiz;40082132;13.000,00;0;Confirmada;Tarjeta
+INS-20229;23/05/2026;Cerámica;Sede Centro;Zoe Rojas;43118108;14.000,00;0;Confirmada;Transferencia
+INS-20134;14/04/2026;Costura creativa;Sede Norte;Benicio Peralta;43947186;13.000,00;0;confirmada;Efectivo
+INS-20305;05/06/2026;Costura creativa;Sede Norte;Antonella Romero;34671701;13.000,00;0;CONFIRMADA;Efectivo
+INS-20072;04/06/2026;Yoga;Sede Sur;Nicolás Vega;37147853;10.000,00;0;Confirmada;Tarjeta
+INS-20042;24/03/2026;Cerámica;Sede Centro;Antonella Domínguez;38697184;14.000,00;0;Pendiente;Transferencia
+INS-20211;29/04/2026;Guitarra;Sede Centro;Gael Ibáñez;41411775;12.000,00;0;confirmada;Efectivo
+INS-20287;02/04/2026;Huerta orgánica;Sede Norte;Dante García;33966103;9.000,00;;Confirmada;Transferencia
+INS-20060;05/03/2026;Ceramica Avanzada;Sede Centro;Abril Silva;33323459;14.000,00;0;Confirmada;Transferencia
+INS-20285;11/03/2026;Huerta orgánica;Sede Norte;Abril Silva;42568945;9.000,00;;Anulada;Tarjeta
+INS-20309;31/03/2026;Cerámica;Sede Centro;Milagros Herrera;34513121;14.000,00;20;confirmada;Transferencia
+INS-20162;26/04/2026;Serigrafía;Sede Centro;Renata Godoy;32941109;15.000,00;0;Confirmada;Efectivo
+INS-20168;18/03/2026;Cerámica;Sede Centro;Victoria Flores;34024955;14.000,00;0;Confirmada;Tarjeta
+INS-20118;03/05/2026;Yoga;Sede Sur;Emma Peralta;37577802;10.000,00;20;Confirmada;Efectivo
+INS-20256;21/04/2026;Yoga;Sede Sur;Isabella Núñez;37677420;10.000,00;;Confirm.;Transferencia
+INS-20225;13/04/2026;YOGA;Sede Sur;Ramiro Romero;34877587;10.000,00;20;Confirmada;Efectivo
+INS-20270;2026-05-25;Yoga;Sede Sur;Lucía Correa;42996451;10.000,00;;Pendiente;Tarjeta
+INS-20252;25/05/2026;Cerámica;Sede Centro;Santino Gómez;40839564;14.000,00;20;Confirmada;Tarjeta
+INS-20255;07/04/2026;Yoga;Sede Sur;Franco Peralta;36411896;10.000,00;;confirmada;Transferencia
+INS-20129;27/04/2026;Guitarra;Sede Centro;Santino Ortega;35282689;12.000,00;0;confirmada;Tarjeta
+INS-20193;18/04/2026;Serigrafía;Sede Centro;Nicolás Acosta;38654091;15.000,00;0;Pendiente;Efectivo
+INS-20151;04/06/2026;Huerta orgánica;Sede Norte;Pilar Díaz;44316963;9.000,00;0;Confirm.;Efectivo
+INS-20093;17/05/2026;Fotografía analógica;Sede Norte;Ariadna Herrera;30956613;16.000,00;0;Confirmada;Transferencia
+INS-20053;04/06/2026;yoga;Sede Sur;Ignacio Molina;45172744;10.000,00;50;Confirmada;Tarjeta
+INS-20025;2026-05-18;Costura creativa;Sede Norte;Sofía Ruiz;42688828;13.000,00;0;confirmada;Transferencia
+INS-20278;18/04/2026;Huerta orgánica;Sede Norte;Mateo Ibáñez;35582144;9.000,00;0;Confirmada;Tarjeta
+INS-20318;03/06/2026;Guitarra;Sede Centro;Antonella López;42633090;12.000,00;0;Confirm.;Transferencia
+INS-20132;2026-05-06;Huerta orgánica;;Alma Castro;38242872;9.000,00;0;Confirmada;Transferencia
+INS-20249;21/04/2026;Serigrafía;Sede Centro;Mateo Ibáñez;30931817;15.000,00;20;CONFIRMADA;Transferencia
+INS-20258;19/04/2026;Guitarra;Sede Centro;Santino Correa;44441157;12.000,00;30;Confirmada;Efectivo
+INS-20059;26/04/2026;Huerta orgánica;Sede Norte;Catalina Ortega;43808894;9.000,00;;Pendiente;Transferencia
+INS-20263;2026-05-05;Guitarra;Sede Centro;Santino Romero;30603613;12.000,00;30;Confirmada;Efectivo
+INS-20195;21/05/2026;CERÁMICA;Sede Centro;Bruno Pérez;32470884;14.000,00;;Confirmada;Tarjeta
+INS-20067;23/04/2026;Guitarra;Sede Centro;Martina Flores;43891247;12.000,00;0;confirmada;Efectivo
+INS-20006;21/04/2026;Fotografía analógica;Sede Norte;Lucía Romero;40952591;16.000,00;30;Confirmada;Transferencia
+INS-20031;02/05/2026;Ceramica Avanzada;Sede Centro;Emma López;36281731;14.000,00;0;Confirmada;Efectivo
+INS-20055;10/04/2026;Costura creativa;Sede Norte;Dante Gómez;41149750;13.000,00;50;Confirm.;Tarjeta

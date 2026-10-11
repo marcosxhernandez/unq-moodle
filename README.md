@@ -18,16 +18,18 @@ Este repo se sube a GitHub y se sirve con **GitHub Pages**: las Guías Visuales 
 | 05 | Maquetación de alta precisión | ✅ | ✅ | Confirmado (dictada) — recuperatorio el 22/09, después de la Clase 06 |
 | 06 | Presentaciones con IA | ✅ | ✅ | Confirmado (dictada el 15/09) |
 | 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — `clases/Clase 07 - Examen...` es carpeta de material/consignas, no se publica) |
-| 08 | Lógica de celdas y funciones esenciales | ✅ | ✅ | A confirmar |
-| 09 | Funciones lógicas y validación de datos | ✅ | ✅ | A confirmar |
-| 10 | Búsqueda entre hojas y visualización | ✅ | ✅ | A confirmar |
-| 11 | Análisis de datos con Tablas Dinámicas e IA | ✅ | ✅ | A confirmar |
+| 08 | Primeros pasos y formato de celdas | ✅ | ✅ | A confirmar |
+| 09 | Fórmulas y funciones básicas | ✅ | ✅ | A confirmar |
+| 10 | Funciones condicionales y trabajo con datos | ✅ | ✅ | A confirmar |
+| 11 | Gráficos, impresión y trabajo colaborativo | ✅ | ✅ | A confirmar |
 | 12 | 2° Parcial | — | ✅ | A confirmar (sin Guía Visual — `clases/Clase 12 - Examen...` es carpeta vacía) |
 | 13 | Cómo piensan las bases de datos | ✅ | ✅ | A confirmar |
 | 14 | Del formulario a la base de datos | ✅ | ✅ | A confirmar |
 | 15 | Del dato a la decisión | ✅ | ✅ | A confirmar |
 | 16 | 3° Parcial | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 | 17 | Recuperatorio | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
+
+Clases 08-11 (oct. 2026): son las 4 guías de Excel del módulo anterior, renombradas. Las versiones de Sheets (caso "Retrato del curso", reescritas desde cero en oct. 2026) quedaron como boceto en `clases/Boceto - Trabajo de Sheets/` y `moodle/Boceto - Trabajo de Sheets/`, sin publicar en ningún índice. La primera versión (caso La Usina) se conserva en las carpetas `Boceto - Trabajo de Sheets (v1 La Usina)`.
 
 Feriado y Paro docente son comodines reutilizables (`moodle/Comodín - Feriado.html`, `Comodín - Paro docente.html`), sin número de clase fijo — no ocupan un slot propio en esta tabla.
 
@@ -40,6 +42,7 @@ unq-moodle/
 ├── css/guia-estilo.css          ← único CSS, compartido por todas las guías
 ├── js/
 │   ├── guia-print.js            ← botón "Guardar PDF" (solo en clases/)
+│   ├── guia-nav.js              ← menú lateral con todos los títulos (solo en clases/)
 │   └── index-loader.js          ← carga dinámica de index.html
 ├── img/
 │   ├── marcos-hernandez.png     ← foto del docente

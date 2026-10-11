@@ -1,0 +1,124 @@
+ID;Fecha;Carrera;Edad;Trabaja;Horas_estudio;Horas_celular;Viaje_min;Uso_IA;Dominio_Excel;Gasto_mensual
+1;23/08/2026;Licenciatura en Comercio Internacional;19;No;16;2;87;Seguido;1;66000
+2;13/08/2026;Licenciatura en Artes Electrónicas;42;Sí;7;4;57;Todos los días;1;157000
+3;18/08/2026;Tecnicatura en Programación Informática;42;No;6;6;10;A veces;2;67000
+4;22/08/2026;Contador Público;28;Sí;4;7;85;Seguido;4;75000
+5;19/08/2026;Licenciatura en Comercio Internacional;20;Sí;4;9;46;Todos los días;1;114000 pesos
+6;19/08/2026;Licenciatura en Administración;22;Sí;11;1;106;A veces;2;180000
+7;19/08/2026;Ingeniería en Alimentos;21;No;5;1;16;A veces;3;53000
+8;11/08/2026;Licenciatura en Administración;20;Sí;10;4;93;Seguido;2;136000
+9;18/08/2026;Contador Público;22;Sí;4;5;43;Seguido;2;165000
+10;07/08/2026;Licenciatura en Trabajo Social;42;No;10;3;12;A veces;3;143000
+11;11/08/2026;Licenciatura en Música y Tecnología;20;No;9;5;71;Seguido;4;125000
+12;21/08/2026;Contador Público;19;Sí;2;3;;A veces;2;105000
+13;16/08/2026;Licenciatura en Trabajo Social;36;Sí;9;5;82;Nunca;3;161000
+14;13/08/2026;Licenciatura en Biotecnología;20;Sí;4;7;66;Seguido;2;126000
+15;11/08/2026;Licenciatura en Administración;18;Sí;3;3;;Seguido;2;149000
+16;16/08/2026;Contador Público;25;Sí;3;4;72;A veces;4;187000
+17;08/08/2026;Licenciatura en Administración;22;Sí;9;3;10;Nunca;1;146000
+18;05/08/2026;Ingeniería en Alimentos;19;Sí;6;5;46;Seguido;3;121000
+19;13/08/2026;Licenciatura en Música y Tecnología;19;Sí;4;5;10;Todos los días;4;136000
+20;03/08/2026;Tecnicatura en Programación Informática;28;Sí;1;5;49;A veces;5;173000
+21;21/08/2026;Licenciatura en Comunicación Social;21 años;No;5;7;90;A veces;2;71000
+22;04/08/2026;  Contador Público;25;Sí;7;5;60;A veces;5;125000
+23;17/08/2026;Licenciatura en Artes Electrónicas;17;No;12;6;50;Seguido;1;109000
+24;10/08/2026;Licenciatura en Trabajo Social;18;No;11;1;77;A veces;2;121000
+25;14/08/2026;Licenciatura en Educación;23;Sí;3;5;78;A veces;3;108000
+26;06/08/2026;Licenciatura en Artes Electrónicas;17;No;9;5;;Todos los días;3;124000
+27;06/08/2026;Licenciatura en Trabajo Social;36;Sí;7;4;24;Todos los días;3;153000
+28;12/08/2026;Licenciatura en Administración;20;Sí;8;5;55;Nunca;1;133000
+29;21/08/2026;Licenciatura en Trabajo Social;23;Sí;8;3;108;A veces;1;205000
+30;16/08/2026;Tecnicatura en Programación Informática;36;Sí;5;6;65;Todos los días;4;146000
+31;23/08/2026;Licenciatura en Trabajo Social;18;No;9;5;69;Nunca;4;130000
+32;07/08/2026;Licenciatura en Comunicación Social;20;Sí;0;6;54;Todos los días;2;113000
+33;13/08/2026;Licenciatura en Trabajo Social;19;No;15;5;16;Todos los días;2;61000
+34;09/08/2026;Licenciatura en Biotecnología;31;Sí;11;6;91;Seguido;1;52000
+35;15/08/2026; Licenciatura en Administración ;22;No;6;2;19;Seguido;2;90000
+36;09/08/2026;Licenciatura en Administración;20;Sí;3;4;49;Seguido;3;94000
+37;23/08/2026;Licenciatura en Artes Electrónicas;25;Sí;7;5;81;Seguido;2;137000
+38;19/08/2026;INGENIERÍA EN ALIMENTOS;20;Sí;8;4;58;Todos los días;1;207000
+39;13/08/2026;Licenciatura en Comercio Internacional;19;No;5;7;69;Todos los días;3;110000
+40;15/08/2026;LICENCIATURA EN ADMINISTRACIÓN;28;Sí;12;8;39;Todos los días;1;135000
+41;19/08/2026;Licenciatura en Administración;31;Sí;2;6;27;A veces;4;116000
+42;08/08/2026;Contador Público;23;No;8;8;31;Seguido;2;78000
+43;07/08/2026;Contador Público;20;Sí;5;4;57;Seguido;2;150000
+44;17/08/2026; Licenciatura en Artes Electrónicas ;36;Sí;6;7;36;A veces;1;143000
+45;22/08/2026;Licenciatura en Administración;17;Sí;7;4;100;Todos los días;4;153000
+46;13/08/2026;Tecnicatura en Programación Informática;28;Sí;10;5;;A veces;1;159000
+47;18/08/2026;Licenciatura en Comercio Internacional;20;Sí;3;4;62;Todos los días;1;104000
+48;17/08/2026;Licenciatura en Biotecnología;28;Sí;5;1;45;Seguido;2;130000
+49;23/08/2026;Tecnicatura en Programación Informática;42;No;7;6;41;Seguido;5;97000
+50;17/08/2026;Licenciatura en Administración;22;No;9;5;33;A veces;3;116000
+51;13/08/2026;Tecnicatura en Programación Informática;22;No;6;3;39;A veces;2;89000
+52;14/08/2026;Licenciatura en Comunicación Social;18;Sí;5;5;60;A veces;2;152000
+53;11/08/2026;Licenciatura en Comunicación Social;36;Sí;6;4;33;Nunca;1;119000
+54;10/08/2026;Licenciatura en Comercio Internacional;25;Sí;6;3;76;A veces;3;107000
+55;06/08/2026;Licenciatura en Administración;18;Sí;7;6;;A veces;2;160000
+56;12/08/2026;Tecnicatura en Programación Informática;42;No;11;5;65;A veces;5;105000
+57;04/08/2026;Ingeniería en Alimentos;19;Sí;8;5;76;Todos los días;1;104000
+58;16/08/2026;Licenciatura en Administración;42;No;10;4;15;Todos los días;1;126000
+59;13/08/2026;Licenciatura en Administración;18;No;7;4;75;Todos los días;3;67000
+60;08/08/2026;Licenciatura en Comercio Internacional;17;No;12;6;53;Todos los días;4;98000
+61;13/08/2026;Licenciatura en Comercio Internacional;42;Sí;3;9;47;A veces;2;199000
+62;10/08/2026;Licenciatura en Comunicación Social;21;No;11;3;70;Todos los días;3;104000
+63;15/08/2026;licenciatura en comunicación social;18;No;10;4;110;Todos los días;2;70000
+64;23/08/2026;Licenciatura en Comercio Internacional;17;Sí;4;8;68;Todos los días;1;136000
+65;08/08/2026;Ingeniería en Alimentos;42;Sí;6;6;67;A veces;1;146000
+66;19/08/2026;Licenciatura en Comunicación Social;21;No;8;3;47;A veces;1;97000
+67;09/08/2026;licenciatura en música y tecnología;17;No;6;3;85;Todos los días;3;92000
+68;17/08/2026;Licenciatura en Administración;42;Sí;6;7;11;A veces;1;133000
+69;10/08/2026;Licenciatura en Educación;28;No;10;6;17;A veces;3;139000
+70;06/08/2026;Licenciatura en Administración;31;Sí;7;6;43;Todos los días;2;159000
+71;22/08/2026;Licenciatura en Comunicación Social;36;Sí;3;5;65;Seguido;3;151000
+72;18/08/2026;Licenciatura en Comercio Internacional;21;No;7;8;54;Todos los días;3;30000 pesos
+73;07/08/2026;Licenciatura en Educación;19;Sí;6;8;83;A veces;4;171000
+74;14/08/2026;Licenciatura en Administración;23;No;8;6;10;A veces;1;147000
+75;09/08/2026;Licenciatura en Administración;22;No;15;6;66;A veces;3;89000
+76;19/08/2026;Contador Público;21;Sí;5;5;63;Nunca;3;147000
+77;16/08/2026;Licenciatura en Comercio Internacional;20;No;8;4;55;A veces;2;88000
+78;13/08/2026;Licenciatura en Artes Electrónicas;42;Sí;10;4;38;A veces;3;134000
+79;19/08/2026;Licenciatura en Administración;18;Sí;3;9;46;Seguido;3;129000
+80;05/08/2026;Licenciatura en Administración;25;No;11;6;52;Seguido;2;125000
+81;17/08/2026;Licenciatura en Biotecnología  ;42;Sí;6;5;74;Todos los días;3;132000
+82;16/08/2026;Ingeniería en Alimentos;19;Sí;4;4;49;A veces;3;145000
+83;06/08/2026;Licenciatura en Artes Electrónicas;19;Sí;3;4;54;A veces;4;113000
+84;22/08/2026;Licenciatura en Comercio Internacional;25;Sí;4;2;32;Todos los días;1;187000
+85;20/08/2026;Licenciatura en Administración;18;Sí;5;6;44;Todos los días;1;170000
+86;14/08/2026;Tecnicatura en Programación Informática;18;No;4;6;85;A veces;3;133000
+87;03/08/2026;Licenciatura en Trabajo Social;18 años;No;8;6;107;A veces;2;112000
+88;16/08/2026;Licenciatura en Comunicación Social;18;Sí;11;6;42;A veces;3;140000
+89;10/08/2026;Licenciatura en Administración;42;No;14;7;70;Todos los días;2;104000
+90;09/08/2026;Licenciatura en Administración;19;Sí;3;4;98;Nunca;3;168000
+91;04/08/2026;Licenciatura en Comunicación Social;23;Sí;7;7;48;Todos los días;3;148000
+92;11/08/2026;Licenciatura en Administración;18 años;Sí;5;8;19;A veces;2;136000
+93;07/08/2026;Tecnicatura en Programación Informática;19;No;8;5;93;Seguido;4;131000
+94;04/08/2026;Tecnicatura en Programación Informática;17;No;8;9;38;A veces;4;73000
+95;04/08/2026;  Licenciatura en Trabajo Social;19;No;8;6;47;Seguido;4;135000
+96;04/08/2026;Licenciatura en Comunicación Social;17;No;11;7;82;Todos los días;1;126000
+97;18/08/2026;Licenciatura en Administración;17;Sí;1;9;63;A veces;2;192000
+98;22/08/2026;Licenciatura en Comercio Internacional;18;No;7;5;51;A veces;2;51000
+99;11/08/2026;Licenciatura en Administración;21;No;6;4;58;Nunca;2;112000
+100;06/08/2026;Ingeniería en Alimentos  ;19;Sí;9;2;98;A veces;3;133000
+101;14/08/2026;Contador Público;18;No;6;5;96;Todos los días;3;175000
+102;10/08/2026;Licenciatura en Comunicación Social;18;No;11;4;41;Seguido;4;79000
+103;20/08/2026;Licenciatura en Biotecnología;18;No;8;6;45;Todos los días;2;137000
+104;15/08/2026;Licenciatura en Educación;18;No;3;5;10;Seguido;1;125000
+105;05/08/2026;Licenciatura en Comunicación Social;25;Sí;7;6;53;Nunca;1;93000
+106;19/08/2026;Licenciatura en Trabajo Social;20;Sí;4;5;106;Todos los días;2;168000
+107;11/08/2026;Contador Público;28;Sí;4;7;14;Todos los días;5;124000 pesos
+108;20/08/2026;Contador Público;22;Sí;10;5;36;A veces;1;115000
+109;15/08/2026;Contador Público;28;Sí;5;6;77;Seguido;4;179000 pesos
+110;16/08/2026;Licenciatura en Trabajo Social;28;Sí;9;2;23;Seguido;2;120000
+111;19/08/2026;Ingeniería en Alimentos;23;Sí;6;7;10;Seguido;2;131000
+112;03/08/2026;Contador Público;28;Sí;7;5;42;Todos los días;3;220000
+113;15/08/2026;Licenciatura en Comunicación Social;18;Sí;10;5;75;A veces;5;120000
+114;10/08/2026;Licenciatura en Comercio Internacional;25;No;16;3;61;A veces;3;164000
+115;11/08/2026;Ingeniería en Alimentos;25;Sí;7;8;10;A veces;2;112000
+116;06/08/2026;Tecnicatura en Programación Informática;18 años;No;7;5;40;Seguido;4;120000
+117;09/08/2026;Licenciatura en Música y Tecnología;22;Sí;4;6;96;A veces;3;171000
+118;12/08/2026;Licenciatura en Administración;42;Sí;6;5;74;Todos los días;1;119000
+119;18/08/2026;Contador Público;28;Sí;4;5;51;Seguido;2;162000
+120;21/08/2026;Licenciatura en Comunicación Social;19;No;7;3;34;Seguido;2;99000
+53;11/08/2026;Licenciatura en Comunicación Social;36;Sí;6;4;33;Nunca;1;119000
+111;19/08/2026;Ingeniería en Alimentos;23;Sí;6;7;10;Seguido;2;131000
+43;07/08/2026;Contador Público;20;Sí;5;4;57;Seguido;2;150000

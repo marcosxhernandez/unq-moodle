@@ -1,8 +1,8 @@
 /* ==========================================================================
    Informática UNQ — Hoja de estilos editorial para guías de clase
-   v4 — ARCHIVO ÚNICO COMPARTIDO, vive en la raíz del proyecto (no dentro de
+   v4 — ARCHIVO ÚNICO COMPARTIDO, vive en unq-moodle/css/ (no dentro de
    cada carpeta "Clase NN"). Cada Guía Visual lo referencia con una ruta
-   relativa hacia arriba: <link rel="stylesheet" href="../guia-estilo.css">.
+   relativa hacia arriba: <link rel="stylesheet" href="../css/guia-estilo.css">.
    Un solo archivo para las 17 clases evita que una edición local en una
    carpeta se desvíe silenciosamente del resto — cualquier ajuste de diseño
    se hace acá una vez y las 17 clases lo heredan.
@@ -216,7 +216,6 @@
   @bottom-center{ content:none; border-top:none; }
   @bottom-right{ content:none; border-top:none; }
 }
-
 
 :root{
   --paper:#ffffff;
@@ -713,12 +712,6 @@ code{
   color:var(--acento-deep);
 }
 
-hr.rule{
-  border:none;
-  border-top:1px solid var(--line);
-  margin:2.4em 0;
-}
-
 /* ---------- Body lists ---------- */
 
 .prose ol, .prose ul{ padding-left:1.35em; margin:0 0 1.2em; color:var(--ink-soft); }
@@ -938,35 +931,6 @@ table.tbl-wide tbody td:first-child{ white-space:normal; }
   line-height:1.5;
   color:var(--ink);
   margin:0;
-}
-
-.callout[data-type="closing"]{
-  background:transparent;
-  text-align:center;
-  padding: 2.4em 0 .4em;
-  position:relative;
-}
-.callout[data-type="closing"]::before{
-  content:'\201C';
-  display:block;
-  font-family:var(--serif-display);
-  font-size:4.5rem;
-  line-height:.5;
-  color:var(--acento-tint);
-  margin-bottom:.2em;
-}
-.callout[data-type="closing"] .callout-label{ justify-content:center; }
-.callout[data-type="closing"] p{
-  font-family:var(--serif-display);
-  font-style:italic;
-  font-weight:460;
-  font-size:clamp(1.35rem, 2.6vw, 1.7rem);
-  line-height:1.5;
-  color:var(--ink);
-  text-align:center;
-  max-width:34rem;
-  margin-left:auto;
-  margin-right:auto;
 }
 
 /* ---------- Tarjeta de instalación de app (ícono + pasos + QR) ---------- */
@@ -1619,38 +1583,12 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 .brief-body p{ margin:0 0 .75em; color:var(--ink-soft); }
 .brief-body p:last-child{ margin-bottom:0; }
 .brief-body ol, .brief-body ul{ margin:0 0 .9em; }
-.brief-sign{ font-style:italic; color:var(--ink-soft); }
 
 /* Mensajería (Teams/WhatsApp): cada burbuja con autor y hora arriba. */
-.brief-msg{
-  margin:0 0 .8em;
-  padding:.6em .85em;
-  background:var(--acento-tint);
-  border-radius:var(--radius);
-}
-.brief-msg:last-child{ margin-bottom:0; }
-.brief-msg-head{
-  display:block;
-  font-family:var(--sans);
-  font-size:.78rem;
-  font-weight:700;
-  color:var(--acento-deep);
-  margin-bottom:.2em;
-}
-.brief-msg p{ margin:0; }
-
-.brief-attach{
-  margin:1em 0 0;
-  padding-top:.8em;
-  border-top:1px solid var(--line);
-  font-family:var(--sans);
-  font-size:.82rem;
-  color:var(--muted);
-}
 
 /* Indivisible solo si es corto — un correo largo tiene que poder cortarse
    entre hojas (ver 3.6: nunca marcar bloques largos como avoid-page). */
-.brief-meta, .brief-msg, .brief-attach{ break-inside:avoid-page; }
+.brief-meta{ break-inside:avoid-page; }
 
 /* ---------- Utility ---------- */
 
@@ -1664,8 +1602,7 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 }
 
 /* ---------- Ícono de app estilo "botón de app de celular" ----------
-   Todo ícono de app (.app-icon, .app-icon-lg, .llm-icon, .app-badge,
-   .tool-card img) comparte esta terminación: cuadrado, esquinas
+   Todo ícono de app (.app-icon, .app-icon-lg, .llm-icon, .tool-card img) comparte esta terminación: cuadrado, esquinas
    redondeadas al ~22% (aprox. al "squircle" de iOS/Android), fondo
    blanco y un filete de 1px — mismo tratamiento que un ícono en la
    ficha de Play Store/App Store, aunque el PNG de origen sea un
@@ -1678,7 +1615,6 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 .app-icon,
 .app-icon-lg,
 .llm-icon,
-.app-badge,
 .tool-card img{
   border-radius:22%;
   background:#fff;
@@ -1709,40 +1645,16 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 /* Ícono de app tipo "ícono de celular" dentro de una celda de tabla
    (ver tablas comparativas de LLM, Clase 02) — más grande que .app-icon,
    pensado para ir solo (sin texto al lado) con el nombre debajo. */
-.llm-tool{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:3px;
-}
 .llm-icon{
   display:block;
   width:32px;
   height:32px;
   object-fit:contain;
 }
-.llm-tool-name{
-  font-weight:700;
-  color:var(--ink);
-}
-
-.app-badge{
-  float:right;
-  width:56px;
-  height:56px;
-  object-fit:contain;
-  margin:4px 0 18px 22px;
-}
-/* ⚠️ .app-badge muestra el ícono SOLO, sin nombre/URL/precio — desde
-   set. 2026 dejó de ser el patrón correcto para abrir una sección
-   donde una app es protagonista. Usar la "burbuja" (.app-row de acá
-   abajo) en su lugar; ver CLAUDE-clases.md 3.4decies. Se deja la regla
-   sin borrar por si algún archivo viejo sin migrar todavía la usa. */
-
 /* ---------- "Burbuja" de app: ícono + nombre + dominio + precio ----------
    Fila clickeable completa para nombrar UNA app (icono a la izquierda,
    nombre/dominio a la derecha, pill de costo al final) — a diferencia
-   de .app-icon/.app-icon-lg/.app-badge (arriba), que solo muestran el
+   de .app-icon/.app-icon-lg (arriba), que solo muestran el
    logo. Nace en herramientas.html (fuente de verdad de nombre/dominio/
    pill de cada herramienta del curso) y es el patrón único para
    "nombrar un programa" en cualquier Guía Visual desde set. 2026 —
@@ -1795,7 +1707,7 @@ a.pill-student:hover{ text-decoration:underline; }
    a la derecha — ej. "Freemium" + "🎓 50% off" en la misma fila. */
 .tags{ flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
 /* Reglas de impresión de este componente: ver bloque @media print
-   principal más abajo (junto a .app-badge), no repetidas acá — todo
+   principal más abajo, no repetidas acá — todo
    el CSS de impresión del archivo vive en ese único bloque. */
 
 .screenshot{
@@ -2197,9 +2109,7 @@ a.pill-student:hover{ text-decoration:underline; }
   color:var(--acento);
 }
 
-
 @media (max-width: 640px){
-  .app-badge{ float:none; margin:0 0 16px; }
   .icon-row{ gap:12px; }
   .icon-row-item{ width:52px; }
   .icon-row-item img{ width:36px; height:36px; }
@@ -2375,8 +2285,6 @@ a.pill-student:hover{ text-decoration:underline; }
   thead{ display:table-header-group; }
   tfoot{ display:table-footer-group; }
 
-  .callout[data-type="closing"] p{ font-size:15pt; }
-
   /* URLs visibles junto a cualquier link externo real (no aplica a
      los anclajes internos del índice ni a los que envuelven un <code>
      — tarjetas de herramienta, dominios en el cuerpo, fuentes — ni a
@@ -2428,7 +2336,6 @@ a.pill-student:hover{ text-decoration:underline; }
   .prose ol, .prose ul{ margin-bottom:.7em; }
   .prose li{ margin-bottom:.28em; }
   .prose ol > li{ margin-bottom:.35em; padding-left:2em; }
-  hr.rule{ margin:1.3em 0; }
 
   .callout{ margin:.95em 0; padding:11pt 13pt; border-radius:9px; }
   .callout-label{ margin-bottom:5pt; }
@@ -2436,8 +2343,6 @@ a.pill-student:hover{ text-decoration:underline; }
   .callout ul, .callout ol{ margin:.25em 0 .5em; }
   .callout li{ margin-bottom:.22em; }
   .callout[data-type="question"]{ padding:10pt 13pt; }
-  .callout[data-type="closing"]{ padding:1.2em 0 .2em; }
-  .callout[data-type="closing"]::before{ font-size:3rem; }
 
   .table-wrap{ margin:.9em 0 1.1em; }
   table{ font-size:.94em; }
@@ -2463,9 +2368,6 @@ a.pill-student:hover{ text-decoration:underline; }
   .brief{ margin:1.1em 0 1.2em; padding:10pt 12pt 11pt; border-radius:5px; }
   .brief-kind{ font-size:7.4pt; margin-bottom:6pt; }
   .brief-meta{ margin-bottom:7pt; padding-bottom:6pt; font-size:8pt; line-height:1.4; }
-  .brief-msg{ margin-bottom:5pt; padding:5pt 7pt; }
-  .brief-msg-head{ font-size:7.4pt; }
-  .brief-attach{ margin-top:7pt; padding-top:6pt; font-size:7.8pt; }
 
   .app-install{ margin:.95em 0; padding:11pt 13pt 13pt; }
   .app-install-head{ gap:9px; }
@@ -2506,7 +2408,6 @@ a.pill-student:hover{ text-decoration:underline; }
   .compare-panel .tool-card-name{ font-size:8.4pt; }
   .tool-cards{ gap:14px; margin:.8em 0 1em; }
   .tool-card img{ width:40px; height:40px; }
-  .app-badge{ width:38px; height:38px; margin:2px 0 10px 14px; }
 
   /* "Burbuja" de app (.app-row, ver arriba) — reescalado a papel. */
   .tools-container{ width:55mm; margin:2px 0 12px 12px; }
@@ -2800,4 +2701,134 @@ a.pill-student:hover{ text-decoration:underline; }
 @media print{
   .pdf-fab,
   .pdf-sheet-overlay{ display:none !important; }
+}
+
+/* ==========================================================================
+   Menú lateral de navegación (.gnav, .gbar, .gtoggle) — oct. 2026
+   Lo arma js/guia-nav.js desde el propio documento (h2 de cada section.block
+   + todos sus h3 y h4); no hay markup que copiar por clase. Solo existe en
+   pantalla: en papel se apaga (último bloque de abajo) y el índice impreso
+   (.toc) no se toca. Hereda --acento, así que toma el color de cada clase.
+   Escritorio (>=1100px): panel fijo gris claro de 304px, dividido en cabecera,
+   lista y pie por filetes gris más oscuro, con una "línea de tiempo" que se
+   llena a medida que se lee. Debajo de 1100px: barra superior con la sección
+   actual + hoja desplegable con la misma lista.
+   Jerarquía: h2 = círculo numerado + serif; h3 = punto mediano + Inter 13px;
+   h4 = punto chico + Inter 12px apagado. Un punto de color marca los títulos
+   de actividad. El scroll animado lo resuelve el JS (una sola curva para
+   todo), por eso los contenedores animados fuerzan scroll-behavior:auto.
+   ========================================================================== */
+:root{
+  --g-bg:#f2f2f5;
+  --g-line:#cbcbd4;
+  --g-line-soft:#e2e2e9;
+  --g-muted:#65637a;      /* 5,3:1 sobre --g-bg: pasa AA a 12-13px */
+  --g-rail:#d3d3dc;
+  --g-dot:#c4c4cf;
+}
+.gnav,.gbar,.gtoggle{ display:none; }
+
+@media screen{
+  section.block, section.block h3, section.block h4{ scroll-margin-top:28px; }
+  .gnav ol,.gnav ul{ list-style:none; margin:0; padding:0; }
+  .gnav a{ display:flex; align-items:baseline; gap:10px; position:relative; color:var(--ink-soft); text-decoration:none; border-radius:8px; transition:background .18s, color .18s; }
+  .gnav a:hover{ background:rgba(21,20,27,.05); color:var(--ink); }
+  .gnav a.is-active{ color:var(--acento-deep); background:var(--acento-tint); font-weight:650; }
+  .gnav .gnav-text{ min-width:0; }
+  .gnav .lv2{ padding:8px 10px; margin-top:6px; font-family:var(--serif-display); font-weight:540; font-size:15.5px; line-height:1.25; color:var(--ink); }
+  .gnav .lv3{ padding:5px 10px 5px 36px; font:500 13px/1.35 var(--sans); }
+  .gnav .lv4{ padding:4px 10px 4px 50px; font:450 12.5px/1.35 var(--sans); color:var(--g-muted); }
+  .gnav .gnav-num{ flex:none; min-width:2ch; font:600 12.5px/1 var(--sans); font-variant-numeric:tabular-nums; color:var(--acento-deep); }
+  .gnav a.is-act{ padding-right:26px; }
+  .gnav a.is-act::after{ content:""; position:absolute; right:12px; top:.95em; width:6px; height:6px; border-radius:50%; background:var(--acento); opacity:.75; }
+  .gnav-kicker{ display:block; font:700 11px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--acento-deep); margin-bottom:8px; }
+  .gnav-title{ display:block; font-family:var(--serif-display); font-weight:520; font-size:20px; line-height:1.15; color:var(--ink); letter-spacing:-.01em; }
+  .gnav-bar{ height:4px; border-radius:4px; background:var(--g-line-soft); overflow:hidden; }
+  .gnav-bar i{ display:block; height:100%; width:0; background:var(--acento); border-radius:4px; transition:width .15s linear; }
+  .gnav-meta{ display:flex; justify-content:space-between; align-items:center; margin-top:9px; font:500 12px/1 var(--sans); color:var(--g-muted); font-variant-numeric:tabular-nums; }
+  .gnav-meta button{ all:unset; cursor:pointer; color:var(--acento-deep); font-weight:600; }
+  .gnav-meta button:hover{ text-decoration:underline; }
+  .gnav-meta button:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:4px; }
+  .gnav-legend{ display:flex; align-items:center; gap:6px; margin-top:10px; font:500 11.5px/1 var(--sans); color:var(--g-muted); }
+  .gnav-legend i{ width:6px; height:6px; border-radius:50%; background:var(--acento); opacity:.75; }
+}
+
+/* ---------- Móvil / tablet: barra superior + hoja desplegable ---------- */
+@media screen and (max-width:1099.98px){
+  section.block, section.block h3, section.block h4{ scroll-margin-top:64px; }
+  /* Siempre visible (también arriba de todo, sobre la portada): en una ventana angosta es la única forma de llegar al menú. */
+  body.has-gnav{ padding-top:48px; }
+  .gbar{ display:flex; position:fixed; top:0; left:0; right:0; z-index:60; height:48px; align-items:center; padding:0 14px; background:rgba(242,242,245,.92); -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--g-line); }
+  .gbar button{ all:unset; cursor:pointer; display:flex; align-items:center; gap:10px; width:100%; font:600 14px/1 var(--sans); color:var(--ink); }
+  .gbar button:focus-visible{ outline:2px solid var(--acento); outline-offset:-3px; border-radius:4px; }
+  .gbar-num{ color:var(--acento); font-variant-numeric:tabular-nums; }
+  .gbar-text{ flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .gbar svg{ width:16px; height:16px; stroke:var(--g-muted); fill:none; stroke-width:2; transition:transform .2s; }
+  body.nav-open .gbar svg{ transform:rotate(180deg); }
+  .gbar-progress{ position:absolute; left:0; bottom:-1px; height:2px; width:0; background:var(--acento); }
+  .gnav{ display:block; position:fixed; z-index:55; top:48px; left:0; right:0; max-height:72vh; background:rgba(242,242,245,.97); -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px); border-bottom:1px solid var(--g-line); box-shadow:0 12px 32px rgba(21,20,27,.12); opacity:0; pointer-events:none; transform:translateY(-8px); transition:opacity .2s, transform .2s; }
+  body.nav-open .gnav{ opacity:1; pointer-events:auto; transform:none; }
+  .gnav-head,.gnav-foot{ display:none; }
+  .gnav-scroll{ max-height:72vh; overflow:auto; padding:8px 10px 14px; }
+  .gnav .lv2{ padding:11px 10px; font-size:16px; }
+  .gnav .lv3{ padding:9px 10px 9px 40px; font-size:14.5px; }
+  .gnav .lv4{ padding:8px 10px 8px 54px; font-size:13.5px; }
+}
+
+/* ---------- Escritorio: panel fijo con línea de tiempo ---------- */
+@media screen and (min-width:1100px){
+  /* El índice de la portada pasa al panel; queda solo el párrafo de intro. */
+  body.has-gnav .toc ol, body.has-gnav .toc-label{ display:none; }
+  body.has-gnav .toc-intro{ margin-bottom:0; border-bottom:none; padding-bottom:0; }
+  body.has-gnav .toc{ padding-bottom:clamp(36px, 5vw, 56px); }
+  body.has-gnav{ padding-left:304px; transition:padding-left .3s cubic-bezier(.2,.8,.2,1); }
+  body.has-gnav.nav-collapsed{ padding-left:0; }
+
+  .gnav{ display:flex; flex-direction:column; position:fixed; z-index:40; top:0; bottom:0; left:0; width:304px; background:var(--g-bg); border-right:1px solid var(--g-line); transition:transform .3s cubic-bezier(.2,.8,.2,1); }
+  .nav-collapsed .gnav{ transform:translateX(-100%); }
+  .gnav-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; padding:24px 14px 16px 20px; border-bottom:1px solid var(--g-line); }
+  .gnav-brand{ all:unset; cursor:pointer; display:block; }
+  .gnav-brand:focus-visible{ outline:2px solid var(--acento); outline-offset:4px; border-radius:4px; }
+  .gnav-hide,.gtoggle{ all:unset; cursor:pointer; display:grid; place-items:center; flex:none; width:34px; height:34px; border-radius:9px; color:var(--g-muted); transition:background .15s, color .15s; }
+  .gnav-hide:hover,.gtoggle:hover{ background:rgba(21,20,27,.07); color:var(--ink); }
+  .gnav-hide:focus-visible,.gtoggle:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  .gnav-hide svg,.gtoggle svg{ width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .gtoggle{ position:fixed; z-index:50; top:16px; left:16px; background:#fff; box-shadow:0 0 0 1px var(--g-line), 0 4px 14px rgba(21,20,27,.1); opacity:0; pointer-events:none; transition:opacity .2s; }
+  .nav-collapsed .gtoggle{ opacity:1; pointer-events:auto; }
+  .gnav-scroll{ flex:1; overflow:auto; padding:10px 10px 24px; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#c4c4cf transparent; }
+  .gnav-foot{ padding:14px 20px 16px; border-top:1px solid var(--g-line); background:rgba(255,255,255,.45); }
+
+  /* Vía: gris de fondo + relleno con el acento hasta el título actual (--rail-fill, lo fija el JS) */
+  .gnav-tree{ position:relative; }
+  .gnav-tree > ol{ position:relative; z-index:1; }
+  .gnav-tree::before, .gnav-tree::after{ content:""; position:absolute; left:29px; top:18px; width:2px; border-radius:2px; z-index:0; }
+  .gnav-tree::before{ bottom:18px; background:var(--g-rail); }
+  .gnav-tree::after{ height:var(--rail-fill,0); background:var(--acento); transition:height .3s cubic-bezier(.2,.8,.2,1); }
+
+  .gnav a.is-active{ background:none; }
+  .gnav .lv2{ padding:8px 10px 8px 58px; margin-top:10px; }
+  .gnav .lv3{ padding:5px 10px 5px 58px; color:var(--g-muted); }
+  .gnav .lv4{ padding:4px 10px 4px 68px; font-size:12px; }
+  .gnav a.is-done{ color:var(--ink-soft); }
+  .gnav .lv2.is-done{ color:var(--ink); }
+  .gnav a.is-active{ color:var(--acento-deep); font-weight:650; }
+  .gnav .lv2 .gnav-num{ position:absolute; left:18px; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:24px; height:24px; border-radius:50%; background:#fff; border:2px solid var(--g-dot); color:var(--g-muted); font-size:10.5px; font-weight:700; z-index:2; transition:all .25s; }
+  .gnav .lv2.is-done .gnav-num{ background:var(--acento-deep); border-color:var(--acento-deep); color:#fff; } /* -deep: el blanco de 10,5px sobre el amber de Clase 06 no pasa AA */
+  .gnav .lv2.is-active .gnav-num{ box-shadow:0 0 0 4px var(--acento-tint); }
+  .gnav .lv3::before, .gnav .lv4::before{ content:""; position:absolute; border-radius:50%; z-index:2; transition:all .25s; }
+  .gnav .lv3::before{ left:26px; top:50%; width:8px; height:8px; margin-top:-4px; background:#fff; border:2px solid var(--g-dot); }
+  .gnav .lv4::before{ left:27px; top:50%; width:6px; height:6px; margin-top:-3px; background:var(--g-dot); }
+  .gnav .lv3.is-done::before{ background:var(--acento); border-color:var(--acento); }
+  .gnav .lv4.is-done::before{ background:var(--acento); }
+  .gnav .lv3.is-active::before, .gnav .lv4.is-active::before{ box-shadow:0 0 0 4px var(--acento-tint); }
+}
+
+/* Movimiento reducido: sin transiciones en el menú (el JS salta directo, sin animar el scroll) */
+@media (prefers-reduced-motion:reduce){
+  .gnav, .gnav *, .gbar, .gtoggle{ transition:none !important; }
+}
+
+/* En papel no existe: el índice impreso (.toc) sigue siendo el de siempre. */
+@media print{
+  .gnav, .gbar, .gtoggle{ display:none !important; }
 }

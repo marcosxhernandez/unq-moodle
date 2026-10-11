@@ -217,7 +217,10 @@ with open(csv_path, "w", encoding="utf-8", newline="") as fh:
         sede_out = f.get("sede_csv_override", f["sede"])
         estado_out = f.get("estado_csv_override", f["estado"])
         beca_out = f.get("beca_csv_override", str(f["beca_pct"]))
-        arancel_out = formato_arg(f["arancel_base"] if not f.get("_arancel_negativo") else -f["arancel_base"])
+        if f.get("_arancel_cero_error"):
+            arancel_out = formato_arg(0)
+        else:
+            arancel_out = formato_arg(f["arancel_base"] if not f.get("_arancel_negativo") else -f["arancel_base"])
         w.writerow([
             f["id_inscripcion"],
             fecha_csv(f),

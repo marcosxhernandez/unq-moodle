@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 09 - Funciones lógicas y validación de datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../../css/guia-estilo.css">
+<style>
+  /* Acento de clase, Planilla de cálculo (Clase 09) = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 09 · Planilla de cálculo";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-transition" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.2 2"/><path d="M11 12 H13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 9.8 L14.6 12 L12.4 14.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-animation" viewBox="0 0 24 24"><path d="M13.5 3.5 L15.3 8.6 L20.5 8.8 L16.4 12.2 L17.8 17.3 L13.5 14.3 L9.2 17.3 L10.6 12.2 L6.5 8.8 L11.7 8.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10.5 H5.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.6 14 L5.4 13.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor"/></symbol>
+<symbol id="ti-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="9" y="2.5" width="6" height="3.4" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="14.5" x2="16" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="18" x2="13" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-quote" viewBox="0 0 24 24"><path d="M6 8 C6 8 4 9.5 4 12.5 C4 14.5 5.3 16 7 16 C8.4 16 9.5 14.9 9.5 13.5 C9.5 12.1 8.4 11 7 11 C6.7 11 6.4 11.1 6.1 11.2 C6.4 9.7 7.5 8.5 9 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 8 C14.5 8 12.5 9.5 12.5 12.5 C12.5 14.5 13.8 16 15.5 16 C16.9 16 18 14.9 18 13.5 C18 12.1 16.9 11 15.5 11 C15.2 11 14.9 11.1 14.6 11.2 C14.9 9.7 16 8.5 17.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-trophy" viewBox="0 0 24 24"><path d="M7 4 H17 V8 A5 5 0 0 1 7 8 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 5 H4 V7 A3 3 0 0 0 7 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 5 H20 V7 A3 3 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="13" x2="12" y2="17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 20.5 H16 M9 17.5 H15 L15.5 20.5 H8.5 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-new-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="9" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="ti-page" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5.5" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="8.5" y1="9.5" x2="8.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="11.5" y1="9.5" x2="11.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="14.5" y1="9.5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="17.5" y1="9.5" x2="17.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+<symbol id="ti-palette" viewBox="0 0 24 24"><path d="M12 3 C6.5 3 2 6.8 2 11.5 C2 15 4.5 16 6.5 16 H8 A2 2 0 0 1 10 18 V19 C10 20.5 11.2 21.5 12.8 21.2 C18 20.2 22 16.3 22 11.5 C22 6.8 17.5 3 12 3 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="10" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="12" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-link" viewBox="0 0 24 24"><path d="M9.5 14.5 L14.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 7 L13.5 4.5 A4 4 0 0 1 19.5 10.5 L17 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17 L10.5 19.5 A4 4 0 0 1 4.5 13.5 L7 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-comment" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 15.5 L8 19.5 L12.5 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-columns" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-mail-merge" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7 L12 13.5 L20.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-toc" viewBox="0 0 24 24"><line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="6" r="1" fill="currentColor"/><line x1="4" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="12" r="1" fill="currentColor"/><line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="18" r="1" fill="currentColor"/></symbol>
+<symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M5 6.5 A9 9 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 3.5 L19.5 9 L14 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17.5 A9 9 0 0 1 4.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 21 L4.5 15 L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-wrap-text" viewBox="0 0 24 24"><rect x="9" y="9" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="12.5" x2="8" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-bookmark" viewBox="0 0 24 24"><path d="M6 3.5 H18 V21 L12 16.5 L6 21 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+<symbol id="ti-suggest" viewBox="0 0 24 24"><path d="M4 17.5 L5 20 L7.5 19 L18 8.5 A1.8 1.8 0 0 0 15.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><line x1="14" y1="7.5" x2="16.5" y2="10" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-page-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M9.5 9.7 L12 12.2 L9.5 14.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-arc" viewBox="0 0 24 24"><path d="M3 17 C7 17 8 6 12 6 C16 6 15 12 21 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="3" cy="17" r="1.4" fill="currentColor"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="21" cy="10" r="1.4" fill="currentColor"/></symbol>
+</defs></svg>
+
+<section class="cover-page" data-num="09">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 09 · Planilla de cálculo</span>
+    <h1 class="cover-title">Funciones lógicas y validación de datos</h1>
+    <p class="cover-subtitle">Decisiones con SI, Y y O, conteo condicional, subtotales y control de errores</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">La clase anterior dejó un archivo que calcula números: total, promedio, máximo, mínimo. Hoy esos números se convierten en <strong>decisiones</strong>: cada inscripción queda clasificada sola, según una regla que definís una vez y la planilla aplica fila por fila. Se separa el número real de los dos que circulaban en el centro, se reparte por sede y por taller, y se cierra el circuito por el otro extremo, controlando desde el origen qué se puede escribir en cada celda cuando el archivo pasa a otras manos.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#automatizar"><span class="toc-num">01</span><span class="toc-text">Por qué automatizar decisiones</span></a></li>
+    <li><a href="#encargo"><span class="toc-num">02</span><span class="toc-text">El encargo de esta semana</span></a></li>
+    <li><a href="#si"><span class="toc-num">03</span><span class="toc-text">La función SI</span></a></li>
+    <li><a href="#anidados"><span class="toc-num">04</span><span class="toc-text">Y, O y SI anidados</span></a></li>
+    <li><a href="#condicionales"><span class="toc-num">05</span><span class="toc-text">SUMAR.SI y CONTAR.SI</span></a></li>
+    <li><a href="#validacion"><span class="toc-num">06</span><span class="toc-text">Validación de datos y listas desplegables</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">07</span><span class="toc-text">Cerrar el encargo y replicarlo en Excel</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="automatizar">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Por qué automatizar decisiones</h2>
+  </div>
+  <div class="prose">
+    <h3>De dónde venimos</h3>
+    <p>En la Clase 08 armaste el archivo de La Usina: la hoja <code>DATOS</code> con las 336 inscripciones importadas, con <code>importe_bruto</code> e <code>importe_neto</code> calculados; la hoja <code>PARAMETROS</code> con el costo administrativo; un panel <code>RESUMEN</code> con los indicadores y un formato condicional que marca los errores de carga más visibles. Ese archivo es el punto de partida de hoy. Hacé una copia con <strong>Archivo → Hacer una copia</strong> y nombrala <code>2026-XX-XX_Informatica_Clase09_V01</code>: así la entrega de la clase anterior queda intacta.</p>
+    <p>Para que las letras de las fórmulas de hoy coincidan con las de tu archivo, <code>DATOS</code> tiene que tener estas columnas:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th><th>L</th><th>M</th></tr></thead>
+        <tbody>
+          <tr><td><code>id_inscripcion</code></td><td><code>orden</code></td><td><code>fecha_inscripcion</code></td><td><code>taller</code></td><td><code>sede</code></td><td><code>alumno</code></td><td><code>dni</code></td><td><code>arancel</code></td><td><code>beca_pct</code></td><td><code>estado</code></td><td><code>medio_pago</code></td><td><code>importe_bruto</code></td><td><code>importe_neto</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: Si no tenés el archivo a mano</p>
+      <p>Podés rehacerlo en diez minutos: descargá <a href="https://marcosxhernandez.github.io/unq-moodle/archivos/Inscripciones_LaUsina_202606.csv" target="_blank" rel="noopener">Inscripciones_LaUsina_202606.csv</a>, importalo con configuración regional Argentina y agregá <code>orden</code>, <code>importe_bruto</code> e <code>importe_neto</code> como en la clase anterior. Si ya tenés el archivo, verificá que la hoja <code>PARAMETROS</code> tenga el costo administrativo en <code>B2</code>.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Todo lo de hoy asume que ya podés fijar una referencia con <code>$</code> sin pensarlo, y que la sintaxis <code>=FUNCIÓN(rango)</code> te sale de memoria. Si todavía dudás, repasá eso antes de seguir: las funciones de esta clase se construyen literalmente arriba de esos conceptos.</p>
+    </div>
+    <h3>De calcular a decidir</h3>
+    <p>Hasta ahora tu planilla calculaba números. Una <strong>función lógica</strong> hace otra cosa: evalúa una condición y devuelve un resultado distinto según si esa condición se cumple o no. Traslada el "si pasa esto, entonces aquello" a una fórmula que la planilla evalúa fila por fila, sobre 336 filas, en el mismo tiempo que tarda en evaluar una sola.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de escribir la fórmula, escribí la regla en español, en una oración con "si": <em>"si la beca supera el máximo autorizado, es una excepción; si no, está dentro de la política"</em>. Traducir esa oración a la planilla es después un trámite casi mecánico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="encargo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">El encargo de esta semana</h2>
+  </div>
+  <div class="prose">
+    <p>El panel de la semana pasada funcionó, pero dejó una duda abierta. Ahora llega el pedido siguiente, y es de otro orden: no más números sueltos, sino <strong>criterios</strong> que la planilla aplique sola y una carga que el resto del equipo no pueda romper. Seguís trabajando sobre el mismo archivo de Google Sheets de la Clase 08.</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://sheets.google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+        <div class="row-text">
+          <span class="row-name">Google Sheets</span>
+          <span class="row-domain">sheets.google.com</span>
+        </div>
+        <span class="pill pill-free">Gratis</span>
+      </a>
+    </div>
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación · Centro Cultural La Usina</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Ahora sí: el número real, y que no vuelva a pasar</span></div>
+      </div>
+      <div class="brief-body">
+        <p>Gracias por el panel. Vimos que el total del sistema da <strong>$3.525.000</strong>. Administración, por su parte, filtró las inscripciones "Confirmada" y le dio <strong>$2.277.700</strong>. Ninguno de los dos nos cierra y no sabemos cuál creer. Te pedimos tres cosas:</p>
+        <ol>
+          <li>Que cada inscripción <strong>quede clasificada sola</strong>: cuáles cuentan como facturación real, cuáles no cuentan (pendientes o anuladas), cuáles están repetidas y cuáles hay que revisar porque tienen algún error de carga.</li>
+          <li>El <strong>total real</strong>, y cuánto aporta cada sede y cada taller, con cuántas inscripciones.</li>
+          <li>A partir de julio la carga la van a hacer <strong>tres personas distintas</strong>. Necesitamos que el archivo no acepte cualquier cosa: que el estado, la sede y el taller salgan de una lista y no de lo que a cada uno se le ocurra escribir.</li>
+        </ol>
+        <p>Gracias.</p>
+      </div>
+    </div>
+    <h3>Qué te está pidiendo realmente</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que dice el pedido</th><th>Lo que hay que hacer</th><th>Herramienta de esta clase</th></tr></thead>
+        <tbody>
+          <tr><td>"Que cada inscripción quede clasificada sola"</td><td>Una regla de decisión con más de dos salidas, evaluada fila por fila</td><td><code>SI</code> anidado, con <code>Y</code> y <code>O</code></td></tr>
+          <tr><td>"Si cambia la política, que se reclasifique"</td><td>El valor de la política fuera de la fórmula, en su propia celda</td><td>Referencia absoluta (<code>$</code>)</td></tr>
+          <tr><td>"El total real y cuánto aporta cada sede y taller"</td><td>Sumar y contar solo el subconjunto que cumple un criterio</td><td><code>SUMAR.SI</code>, <code>CONTAR.SI</code></td></tr>
+          <tr><td>"Que el archivo no acepte cualquier cosa"</td><td>Restringir la carga desde el origen, no corregir después</td><td>Validación de datos por lista</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Las reglas de La Usina</h3>
+    <p>La coordinación definió cómo se clasifica cada inscripción. Estas son las reglas que la planilla va a aplicar, en el orden en que se evalúan:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Situación</th><th>Cuándo corresponde</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Duplicada</strong></td><td>El mismo <code>id_inscripcion</code> ya apareció más arriba en la lista (doble carga)</td></tr>
+          <tr><td><strong>Válida</strong></td><td>El estado es Confirmada (escrito como sea: <code>Confirmada</code>, <code>CONFIRMADA</code>, <code>confirmada</code> o <code>Confirm.</code>) y el arancel es mayor que cero</td></tr>
+          <tr><td><strong>No cuenta</strong></td><td>El estado es Pendiente o Anulada</td></tr>
+          <tr><td><strong>Revisar</strong></td><td>Cualquier otro caso: una inscripción confirmada con arancel en cero o negativo, un error de carga que alguien tiene que corregir</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: Control de resultado</p>
+      <p>Con los datos de La Usina, la clasificación tiene que dar <strong>248</strong> válidas, <strong>72</strong> que no cuentan, <strong>8</strong> para revisar y <strong>8</strong> duplicadas: en total, 336. Si te da otra cosa, el error está en el orden de las condiciones, no en la sintaxis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="si">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">La función SI</h2>
+  </div>
+  <div class="prose">
+    <h3>Sintaxis</h3>
+    <div class="code-block">=SI(condición; valor_si_verdadero; valor_si_falso)</div>
+    <ul>
+      <li><strong>Condición</strong>: una comparación que la planilla puede evaluar como verdadera o falsa. Usa los operadores <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code> (distinto de).</li>
+      <li><strong>Valor si verdadero</strong>: lo que aparece en la celda cuando la condición se cumple.</li>
+      <li><strong>Valor si falso</strong>: lo que aparece cuando no se cumple.</li>
+    </ul>
+    <p>Un ejemplo completo:</p>
+    <div class="code-block">=SI(B2&gt;=6; "Aprobado"; "Desaprobado")</div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención: El texto va entre comillas</p>
+      <p>Si el resultado que querés mostrar es texto (no un número ni el resultado de otra fórmula), tiene que ir entre comillas dobles: <code>"Aprobado"</code>, no <code>Aprobado</code>. Es el error más común al escribir un <code>SI</code> por primera vez: la planilla tira <code>#¿NOMBRE?</code> porque intenta interpretar <code>Aprobado</code> como el nombre de una función o de un rango.</p>
+    </div>
+    <h3>Los operadores de comparación</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Operador</th><th>Significa</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>=</code></td><td>Igual a</td><td><code>B2=100</code></td></tr>
+          <tr><td><code>&gt;</code></td><td>Mayor que</td><td><code>B2&gt;6</code></td></tr>
+          <tr><td><code>&lt;</code></td><td>Menor que</td><td><code>B2&lt;6</code></td></tr>
+          <tr><td><code>&gt;=</code></td><td>Mayor o igual que</td><td><code>B2&gt;=6</code></td></tr>
+          <tr><td><code>&lt;=</code></td><td>Menor o igual que</td><td><code>B2&lt;=6</code></td></tr>
+          <tr><td><code>&lt;&gt;</code></td><td>Distinto de</td><td><code>B2&lt;&gt;0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Comparar texto con <code>=</code> no distingue mayúsculas de minúsculas: <code>J2="Confirmada"</code> es verdadero tanto para <code>Confirmada</code> como para <code>CONFIRMADA</code> o <code>confirmada</code>. Lo que sí distingue es cualquier carácter de más, como un punto o un espacio al final.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Un SI de dos ramas, aplicado a la política de becas</h3>
+      </div>
+      <div class="prose">
+        <p>Antes de tocar tu archivo, cinco filas sin contexto para aislar la mecánica.</p>
+        <ol>
+          <li>En una hoja aparte, cargá cinco notas: <code>8</code>, <code>4</code>, <code>6</code>, <code>3</code>, <code>9</code>. Al lado, con <code>SI</code>, mostrá "Aprobado" si la nota es mayor o igual a 6, y "Desaprobado" si no. Copiá hacia abajo: deberías obtener tres "Aprobado" y dos "Desaprobado". Si te sale <code>#¿NOMBRE?</code>, faltan las comillas.</li>
+          <li>Cargá el 6 en una celda aparte y reescribí la fórmula para que compare contra <strong>esa celda</strong> con referencia absoluta. Cambiala a 7 y confirmá que la columna entera se recalcula sin tocar ninguna fórmula.</li>
+          <li>Abrí tu archivo de la Clase 08. En la hoja <code>PARAMETROS</code>, debajo del costo administrativo, agregá en <code>A3</code> el texto <code>Beca máxima autorizada (%)</code> y en <code>B3</code> el valor <code>50</code>.</li>
+          <li>En la hoja <code>DATOS</code>, agregá una columna <code>beca_alerta</code> (la <code>N</code>) con un <code>SI</code> de dos ramas: <code>"Excede política"</code> si <code>beca_pct</code> supera ese máximo, <code>"Dentro de política"</code> si no. El máximo, con referencia absoluta a la otra hoja: <code>=SI(I2&gt;PARAMETROS!$B$3;"Excede política";"Dentro de política")</code>.</li>
+          <li>Contá a ojo cuántas filas dicen "Excede política" y comparalo con las celdas que se pintaron de amarillo en la clase anterior: tienen que ser exactamente las mismas <strong>10</strong>.</li>
+          <li>Bajá el máximo a 20 en <code>PARAMETROS</code> y confirmá que la columna se recalcula sola. Después devolvelo a 50.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo decisiones sobre datos con funciones lógicas, parametrizando los umbrales en celdas propias de modo que un cambio de criterio del negocio se aplique a todo el conjunto sin editar fórmulas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="anidados">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Y, O y SI anidados</h2>
+  </div>
+  <div class="prose">
+    <p>Una condición con dos salidas no alcanza: la regla de La Usina tiene <strong>tres</strong> resultados posibles para una inscripción que no es repetida. Para clasificar en tres o más categorías se anida un <code>SI</code> dentro de otro, en el lugar del "valor si falso". Y para que una misma rama exija varias condiciones a la vez, existen <code>Y</code> y <code>O</code>.</p>
+    <h3>Combinar condiciones: Y y O</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Función</th><th>Devuelve verdadero cuando...</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>Y(cond1; cond2; ...)</code></td><td><strong>Todas</strong> las condiciones se cumplen</td><td><code>=Y(H2&gt;0; I2&lt;=50)</code>: arancel positivo <strong>y</strong> beca dentro de la política</td></tr>
+          <tr><td><code>O(cond1; cond2; ...)</code></td><td><strong>Alguna</strong> de las condiciones se cumple (basta una)</td><td><code>=O(J2="Pendiente"; J2="Anulada")</code>: pendiente <strong>o</strong> anulada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Las dos se usan casi siempre adentro de un <code>SI</code>, en el lugar de la condición: <code>=SI(Y(H2&gt;0; I2&lt;=50); "Ok"; "Revisar")</code>. Y se pueden combinar entre sí: <code>Y(O(a; b); c)</code> significa "(a o b) y c".</p>
+    <h3>SI anidados</h3>
+    <p>Clasificar una nota en "Excelente" (9 o más), "Aprobado" (entre 6 y 8) o "Desaprobado" (menos de 6):</p>
+    <div class="code-block">=SI(B2&gt;=9; "Excelente"; SI(B2&gt;=6; "Aprobado"; "Desaprobado"))</div>
+    <p>La lógica se lee así: <em>"si la nota es 9 o más, Excelente. Si no, evaluá esta otra condición: si es 6 o más, Aprobado. Si tampoco se cumple, Desaprobado."</em></p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: El orden decide el resultado</p>
+      <p>Escribí primero la condición que corta el grupo más específico o más excepcional, y dejá la última rama sin condición: es el "de lo contrario" que agarra todo lo que no entró antes. Si ponés primero la condición más amplia, se traga los casos que debían caer en las otras ramas, y la fórmula no da error, simplemente clasifica mal.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Cada <code>SI</code> que abrís necesita su paréntesis de cierre. Con dos o tres anidados es fácil perder la cuenta: la planilla te marca el error, pero conviene ir cerrando cada uno apenas lo abrís, antes de seguir escribiendo.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Clasificar cada inscripción en tres grupos</h3>
+      </div>
+      <div class="prose">
+        <p>Este es el punto 1 del pedido. La regla tiene tres salidas y una de ellas es la excepción, así que el orden importa.</p>
+        <ol>
+          <li>Antes de tocar tu archivo, probá la mecánica en chico: sobre las cinco notas de la Actividad 01, agregá una columna "Categoría" con tres salidas ("Excelente" 9 o más, "Aprobado" 6 a 8, "Desaprobado" menos de 6), agregá dos notas más (10 y 5) y confirmá que caen donde corresponde. Después invertí el orden poniendo primero la condición de "Aprobado": mirá qué pasa con el 9 y el 10, es el error de lógica que la fórmula no te va a avisar. Volvé a dejar el orden correcto.</li>
+          <li>En la misma hoja de práctica, agregá una segunda columna de notas y una tercera columna con <code>=SI(Y(B2&gt;=6; C2&gt;=6); "Promociona"; "Recupera")</code>. Cambiá una nota por debajo de 6 y mirá cómo cambia el resultado. Después reemplazá <code>Y</code> por <code>O</code> y comprobá la diferencia.</li>
+          <li>En <code>DATOS</code>, agregá una columna <code>situacion</code> (la <code>O</code>) con un <code>SI</code> anidado que devuelva "Válida" si el estado es Confirmada (o <code>Confirm.</code>) <strong>y</strong> el arancel es mayor que cero, "No cuenta" si el estado es Pendiente o Anulada, y "Revisar" en cualquier otro caso:
+    <div class="code-block">=SI(Y(O(J2="Confirmada"; J2="Confirm."); H2&gt;0); "Válida"; SI(O(J2="Pendiente"; J2="Anulada"); "No cuenta"; "Revisar"))</div>
+          </li>
+          <li>Probá tres filas conocidas: una con estado <code>Confirm.</code> y arancel positivo tiene que dar "Válida"; la inscripción <code>INS-20124</code> (confirmada, con arancel de -$14.000) tiene que dar "Revisar"; cualquier fila con estado Pendiente tiene que dar "No cuenta".</li>
+          <li>Quitale a la primera condición el <code>H2&gt;0</code> y mirá qué pasa con <code>INS-20124</code>: pasa a "Válida" y su arancel negativo va a restar del total. Esa es la razón de ponerle el control a la rama más importante. Volvé a dejar la fórmula completa.</li>
+          <li>Aplicá formato condicional sobre la columna <code>situacion</code>: verde para "Válida", rojo para "Revisar" y gris para "No cuenta". Ahora el archivo se lee de un vistazo.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="condicionales">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">SUMAR.SI y CONTAR.SI</h2>
+  </div>
+  <div class="prose">
+    <p>El pedido quiere saber cuánto aporta cada sede y cada taller. Filtrar y sumar a mano da un número que queda anotado en un papel: sirve para hoy, pero hay que rehacerlo entero cuando llegue el archivo de julio. <code>SUMA</code> y <code>CONTAR</code> operan sobre todo un rango. <code>SUMAR.SI</code> y <code>CONTAR.SI</code> agregan una condición: solo suman o cuentan las celdas que la cumplen.</p>
+    <h3>Sintaxis</h3>
+    <div class="code-block">=SUMAR.SI(rango_criterio; criterio; rango_suma)
+=CONTAR.SI(rango; criterio)</div>
+    <ul>
+      <li><code>SUMAR.SI</code> revisa <code>rango_criterio</code> y, para cada celda que cumple <code>criterio</code>, suma el valor de la celda correspondiente en <code>rango_suma</code>.</li>
+      <li><code>CONTAR.SI</code> cuenta cuántas celdas de <code>rango</code> cumplen <code>criterio</code>: no necesita un rango de suma porque no suma nada, solo cuenta.</li>
+    </ul>
+    <p>Sobre <code>DATOS</code>, con la sede en la columna <code>E</code> y el importe bruto en la <code>L</code>:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Fórmula</th></tr></thead>
+        <tbody>
+          <tr><td>Total de "Sede Sur"</td><td><code>=SUMAR.SI(E2:E337; "Sede Sur"; L2:L337)</code></td></tr>
+          <tr><td>Cantidad de inscripciones de "Sede Sur"</td><td><code>=CONTAR.SI(E2:E337; "Sede Sur")</code></td></tr>
+          <tr><td>Total de los aranceles mayores a $14.000</td><td><code>=SUMAR.SI(H2:H337; "&gt;14000")</code></td></tr>
+          <tr><td>Cantidad de aranceles mayores a $14.000</td><td><code>=CONTAR.SI(H2:H337; "&gt;14000")</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>El criterio de texto va entre comillas (<code>"Sede Sur"</code>). El criterio con operador de comparación también va entre comillas, porque es una cadena que la planilla interpreta: <code>"&gt;14000"</code>, no <code>&gt;14000</code> suelto. Y mejor todavía: en lugar de escribir el nombre entre comillas, apuntá a la celda donde está escrito, así la fórmula se puede arrastrar. Igual que <code>=</code>, estos criterios no distinguen mayúsculas, pero sí los espacios de más.</p>
+    </div>
+    <h3>Sin condición y con condición: la misma familia</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Función</th><th>Qué hace</th><th>Cuándo la usás</th></tr></thead>
+        <tbody>
+          <tr><td><code>SUMA</code></td><td>Suma todo el rango, sin condición</td><td>Querés el total general</td></tr>
+          <tr><td><code>CONTAR</code></td><td>Cuenta celdas numéricas, sin condición</td><td>Querés saber cuántos registros hay</td></tr>
+          <tr><td><code>SUMAR.SI</code></td><td>Suma solo lo que cumple una condición</td><td>Querés el total de un subconjunto</td></tr>
+          <tr><td><code>CONTAR.SI</code></td><td>Cuenta solo lo que cumple una condición</td><td>Querés cuántos registros cumplen algo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Un conteo con memoria: detectar repetidas</h3>
+    <p>Una inscripción duplicada es una fila cuyo <code>id_inscripcion</code> ya apareció más arriba. <code>CONTAR.SI</code> sirve para detectarla si el rango crece a medida que bajás: <code>=CONTAR.SI($A$2:A2; A2)</code>. El inicio del rango queda fijo (<code>$A$2</code>) y el final es relativo (<code>A2</code>). En la fila 2 cuenta solo <code>A2</code>; en la fila 3 cuenta <code>A2:A3</code>; en la fila 4, <code>A2:A4</code>. Si el resultado es mayor que 1, ese id ya había aparecido.</p>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Los dos números que circulan y el real</h3>
+      </div>
+      <div class="prose">
+        <p>Este es el punto 2 del pedido. Todo lo que sigue va en la hoja <code>RESUMEN</code>, debajo de los indicadores de la semana pasada. Los rangos de hoy llegan hasta la fila 1000, para que entren las inscripciones que se carguen más adelante.</p>
+        <ol>
+          <li>Antes de tocar tu archivo, probá la mecánica en chico: en una hoja aparte cargá siete filas con nombre y monto, García (45000, 61000, 19000), López (32000, 55000) y Pérez (28000, 47000). Con <code>SUMAR.SI</code> calculá el total de cada uno (125.000, 87.000 y 75.000) y con <code>CONTAR.SI</code> la cantidad de registros de cada uno (3, 2 y 2). La suma de los tres subtotales tiene que dar exactamente el <code>SUMA</code> de la columna completa (287.000), y la suma de los tres conteos, la cantidad de filas (7).</li>
+          <li>En <code>DATOS</code>, sumá una cuarta rama a <code>situacion</code>: las repetidas. Editá la fórmula de la <code>O2</code> y anteponé un nuevo <code>SI</code>, de modo que la primera pregunta sea si el id ya apareció. Copiala hacia abajo hasta la fila 337:
+    <div class="code-block">=SI(CONTAR.SI($A$2:A2; A2)&gt;1; "Duplicada"; SI(Y(O(J2="Confirmada"; J2="Confirm."); H2&gt;0); "Válida"; SI(O(J2="Pendiente"; J2="Anulada"); "No cuenta"; "Revisar")))</div>
+          </li>
+          <li>Agregá dos columnas auxiliares más: <code>importe_valido</code> (la <code>P</code>) con <code>=SI(O2="Válida"; L2; 0)</code> y <code>cuenta</code> (la <code>Q</code>) con <code>=SI(O2="Válida"; 1; 0)</code>. Son el importe de las válidas y un 1 por cada válida; las dos valen 0 en todo lo demás.</li>
+          <li>En <code>RESUMEN</code>, armá un bloque "Situación de las inscripciones" con <code>CONTAR.SI</code> sobre <code>DATOS!O2:O1000</code> para cada valor: Válida (<strong>248</strong>), No cuenta (<strong>72</strong>), Revisar (<strong>8</strong>) y Duplicada (<strong>8</strong>). La suma de los cuatro tiene que dar <strong>336</strong>, igual que <code>CONTARA</code> sobre <code>id_inscripcion</code>.</li>
+          <li>Armá un bloque "Los tres números": el <strong>total del sistema</strong>, <code>=SUMA(DATOS!L2:L1000)</code>, que da <strong>$3.525.000</strong>; el <strong>total de administración</strong>, <code>=SUMAR.SI(DATOS!J2:J1000; "Confirmada"; DATOS!L2:L1000)</code>, que da <strong>$2.277.700</strong> y cuenta <strong>215</strong> inscripciones con <code>CONTAR.SI</code>; y el <strong>total real</strong>, <code>=SUMA(DATOS!P2:P1000)</code>, que da <strong>$2.696.800</strong> con <strong>248</strong> inscripciones.
+    <p>Mirá por qué ninguno de los dos primeros es el real: el del sistema suma repetidas, anuladas, pendientes y aranceles mal cargados; el de administración se pierde las <strong>46</strong> inscripciones escritas <code>Confirm.</code> (el criterio exige <code>Confirmada</code> completo) y además suma repetidas y aranceles negativos. Anotá estas dos explicaciones al lado de los números.</p>
+          </li>
+          <li>Agregá una línea "Disponible para las sedes (neto de costo administrativo)" con <code>=SUMAR.SI(DATOS!O2:O1000; "Válida"; DATOS!M2:M1000)</code>. Tiene que dar <strong>$2.572.800</strong>: el total real menos $500 por cada una de las 248 inscripciones válidas.</li>
+          <li>Creá una hoja <code>LISTAS</code>. En <code>A1</code> escribí <code>sede</code> y debajo, una sola vez, las tres sedes (<code>Sede Centro</code>, <code>Sede Norte</code>, <code>Sede Sur</code>). En <code>B1</code> escribí <code>taller</code> y debajo los ocho talleres del catálogo: <code>Cerámica</code>, <code>Guitarra</code>, <code>Fotografía analógica</code>, <code>Yoga</code>, <code>Huerta orgánica</code>, <code>Serigrafía</code>, <code>Percusión</code> y <code>Costura creativa</code>. Las áreas se escriben una sola vez, en celdas, nunca dentro de las fórmulas.
+          </li>
+          <li>En <code>RESUMEN</code>, armá los subtotales por sede a partir de la celda <code>A20</code>: el nombre viene de la lista (<code>=LISTAS!A2</code>), el importe va en la columna B con <code>=SUMAR.SI(DATOS!$E$2:$E$1000; A20; DATOS!$P$2:$P$1000)</code> y la cantidad en la C con <code>=SUMAR.SI(DATOS!$E$2:$E$1000; A20; DATOS!$Q$2:$Q$1000)</code>. Copiá hacia las otras dos sedes. Tenés que obtener Sede Centro <strong>$1.368.300</strong> (118), Sede Norte <strong>$899.300</strong> (81) y Sede Sur <strong>$397.000</strong> (45).</li>
+          <li>Control obligatorio: sumá los tres subtotales y compará con el total real. <strong>No cierra</strong>: faltan <strong>$32.200</strong> y <strong>4</strong> inscripciones. Agregá una línea "Sin sede" con la diferencia (total real menos la suma de las sedes). La explicación está en los datos: hay 4 inscripciones válidas con la sede vacía, y ningún criterio las atrapa.</li>
+          <li>Repetí el bloque para los ocho talleres, con los nombres desde <code>LISTAS!B2:B9</code>. Tenés que obtener Cerámica <strong>$760.200</strong> (61), Guitarra <strong>$300.600</strong> (34), Fotografía analógica <strong>$360.000</strong> (25), Yoga <strong>$397.000</strong> (45), Huerta orgánica <strong>$257.400</strong> (33), Serigrafía <strong>$295.500</strong> (23), Percusión <strong>$0</strong> (0) y Costura creativa <strong>$282.100</strong> (24). Otra vez la suma no cierra: agregá una línea "Taller no reconocido" con la diferencia, <strong>$44.000</strong> y <strong>3</strong> inscripciones. Cada diferencia es una pista sobre un dato mal cargado.</li>
+          <li>Verificación cruzada: con <code>CONTAR.SI</code> sobre <code>beca_alerta</code> contá las "Excede política". Tienen que ser <strong>10</strong>, las mismas filas de la regla amarilla.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Análisis de datos (Data Analysis).</strong> Cómo la justificás: produzco agregaciones por categoría con funciones de suma y conteo condicional, y verifico su integridad comprobando que los subtotales reconcilien contra el total general antes de informar cualquier cifra.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="validacion">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Validación de datos y listas desplegables</h2>
+  </div>
+  <div class="prose">
+    <p>A partir de julio cargan tres personas distintas. Si una escribe <code>Confirmada</code>, otra <code>Confirm.</code> y la tercera <code>confirmada </code>, con un espacio al final, el <code>SUMAR.SI</code> que armaste recién se rompe en silencio: devuelve un número más bajo que el real y no avisa nada. Los subtotales dejan de cerrar contra el total, y alguien va a tardar una hora en descubrir por qué. La <strong>validación de datos</strong> previene ese problema desde el origen: restringe lo que se puede escribir en una celda.</p>
+    <h3>Cómo aplicarla</h3>
+    <ol>
+      <li>Seleccioná el rango donde querés restringir la carga.</li>
+      <li>Andá a <strong>Datos &gt; Validación de datos</strong> y hacé clic en <strong>Añadir regla</strong>.</li>
+      <li>En "Criterios", elegí el tipo de restricción: <strong>Menú desplegable</strong> (escribís a mano las opciones válidas), <strong>Menú desplegable (de un intervalo)</strong> (las opciones válidas son los valores de un rango de celdas), criterios numéricos como <strong>Mayor que</strong> o <strong>Está entre</strong> (solo valores dentro de un rango) o <strong>Casilla</strong>.</li>
+      <li>En las opciones avanzadas, elegí qué pasa si alguien ingresa un dato inválido: <strong>Rechazar los datos introducidos</strong> (no lo deja escribir) o <strong>Mostrar una advertencia</strong> (lo deja, pero avisa).</li>
+      <li>Hacé clic en <strong>Hecho</strong>.</li>
+    </ol>
+    <img class="screenshot" src="../../img/09-01-captura-validacion-datos.png" alt="Panel de Reglas de validación de datos en Google Sheets, con Menú desplegable (de un intervalo) apuntando a Datos!$A$9:$A$15 y los días de la semana como opciones">
+    <p class="screenshot-caption">"Menú desplegable (de un intervalo)" es la opción que toma las opciones válidas de un rango de celdas (acá, los días de la semana): no de texto escrito a mano.</p>
+    <h3>Por qué un intervalo y no una lista escrita a mano</h3>
+    <p>Si escribís las opciones a mano dentro de la regla, para agregar una opción nueva tenés que volver a editar la regla. Si en cambio las opciones viven en un rango de celdas, agregar una opción es tan simple como escribir una fila más: la lista desplegable se actualiza sola. En un archivo que va a pasar por varias manos, esa diferencia es la que decide si el control sobrevive tres meses o no.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Guardá las listas de opciones en la hoja <code>LISTAS</code>. Mantiene la hoja principal limpia y hace que todas las validaciones del archivo apunten a un mismo lugar: si cambiás una opción ahí, cambia en todos lados a la vez.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>"Mostrar una advertencia" no impide que se cargue un dato incorrecto, solo lo señala. Si necesitás garantizar que nadie pueda romper la validación, que es exactamente lo que pide el correo, usá "Rechazar los datos introducidos". Y recordá que la regla controla lo que se escriba <strong>a partir de ahora</strong>: los datos que ya estaban en la hoja no se modifican.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>Blindar la carga</h3>
+      </div>
+      <div class="prose">
+        <p>Punto 3 del pedido: que el archivo aguante a tres personas cargando datos.</p>
+        <ol>
+          <li>Antes de tocar tu archivo, probá la mecánica en chico: en una hoja aparte armá una columna "Prioridad" y aplicale validación con "Menú desplegable" (<code>Alta</code>, <code>Media</code>, <code>Baja</code>), con "Rechazar los datos introducidos". Cargá tres filas usando el desplegable e intentá escribir "urgente" a mano: tiene que rechazarlo.</li>
+          <li>En <code>LISTAS</code> agregá dos columnas más: <code>estado</code> (<code>Confirmada</code>, <code>Pendiente</code>, <code>Anulada</code>) en la <code>C</code> y <code>medio_pago</code> (<code>Efectivo</code>, <code>Tarjeta</code>, <code>Transferencia</code>) en la <code>D</code>.</li>
+          <li>En <code>DATOS</code>, aplicá validación con "Menú desplegable (de un intervalo)" y "Rechazar los datos introducidos" a cuatro columnas, siempre desde la fila 2 hasta la 1000: <code>sede</code> (<code>E2:E1000</code>) apuntando a <code>LISTAS!A2:A10</code>, <code>taller</code> (<code>D2:D1000</code>) a <code>LISTAS!B2:B20</code>, <code>estado</code> (<code>J2:J1000</code>) a <code>LISTAS!C2:C10</code> y <code>medio_pago</code> (<code>K2:K1000</code>) a <code>LISTAS!D2:D10</code>. Los rangos de <code>LISTAS</code> son más largos que las listas actuales para que quepan opciones nuevas.</li>
+          <li>Probá que funciona: en la primera fila libre de <code>DATOS</code> (la 338), intentá escribir <code>Confirm.</code> en <code>estado</code> y <code>Centro</code> en <code>sede</code>. Tiene que rechazar las dos entradas. Ese es, literalmente, el error que iba a romper tus subtotales.</li>
+          <li>Cargá la inscripción completa en la fila 338, usando solo los desplegables, con una fecha, un alumno, un dni, un arancel y una beca a tu criterio. Copiá hacia esa fila las fórmulas de <code>orden</code>, <code>importe_bruto</code>, <code>importe_neto</code>, <code>beca_alerta</code>, <code>situacion</code>, <code>importe_valido</code> y <code>cuenta</code>. Confirmá que los totales del panel de esta clase (que llegan a la fila 1000) se actualizan. Los de la Clase 08 (<code>SUMA</code> de <code>importe_bruto</code>, por ejemplo) no, porque su rango termina en la fila 337: editalos para que lleguen a la 1000.</li>
+          <li>Agregá un valor nuevo en <code>LISTAS</code> (una sede más, <code>Sede Oeste</code>) y confirmá que aparece en el desplegable de <code>sede</code> sin editar la regla de validación. Después borralo.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Control de calidad de datos (Data Quality Control).</strong> Cómo la justificás: prevengo errores de carga en archivos compartidos por varios usuarios mediante reglas de validación con listas alimentadas desde un rango único, de modo que las categorías se mantengan consistentes y las agregaciones no se rompan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Cerrar el encargo y replicarlo en Excel</h2>
+  </div>
+  <div class="prose">
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Actualizá la hoja <code>LEEME</code>: qué significa cada valor de la columna <code>situacion</code> y en qué orden se evalúan, qué hacen las columnas <code>beca_alerta</code>, <code>importe_valido</code> y <code>cuenta</code>, cuál es el valor vigente de la beca máxima y en qué celda se cambia, y qué columnas están validadas por lista.</li>
+          <li>Verificá el archivo completo: ninguna celda con error, ningún valor de política ni nombre de sede o taller escrito dentro de una fórmula, y los bloques de situación y de sedes cerrando contra el total (con las líneas "Sin sede" y "Taller no reconocido" explicando lo que no cierra).</li>
+          <li>Escribí, en tres o cuatro renglones, la respuesta al correo: cuál es el total real y cuántas inscripciones lo componen, por qué no coinciden los otros dos números, qué sede aporta más y qué pasa con las 8 inscripciones en "Revisar" y las 7 que no cuadran en sede o taller.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entrega de la clase</p>
+      <p>Subí a Moodle el <strong>enlace</strong> de tu planilla con acceso de lectura habilitado, nombrada <code>2026-XX-XX_Informatica_Clase09_V01</code>. Antes de entregar, probá cargar a propósito un valor inválido en una columna validada: si entra, la regla quedó mal configurada.</p>
+    </div>
+
+    <div class="tools-container">
+      <div class="app-row">
+        <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img class="row-icon" src="../../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+          <div class="row-text">
+            <span class="row-name">Excel</span>
+            <span class="row-domain">office.com</span>
+          </div>
+        </a>
+        <div class="tags">
+          <span class="pill pill-freemium">Freemium</span>
+          <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+        </div>
+      </div>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05 · Parte B</span>
+        <h3>La misma planilla, en Excel</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Descargá tu planilla con <strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong> y abrila en Excel.</li>
+          <li>Verificá que las columnas <code>situacion</code>, <code>importe_valido</code> y <code>cuenta</code> conservan sus fórmulas y que el total real de <code>RESUMEN</code> da lo mismo ($2.696.800).</li>
+          <li>Probá la validación en Excel: Datos → Validación de datos. Fijate si las cuatro columnas conservaron sus listas y si el modo es el de "Detener" (rechazar).</li>
+          <li>Escribí en una celda libre la misma fórmula de <code>situacion</code> pero con una condición cambiada, y comprobá que los argumentos van separados por <code>;</code> igual que en Sheets.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Qué revisar</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td>Separador de argumentos</td><td>En Excel con configuración regional Argentina, los argumentos de <code>SI</code>, <code>Y</code>, <code>O</code>, <code>SUMAR.SI</code> y <code>CONTAR.SI</code> van separados por <code>;</code>, igual que en Sheets</td></tr>
+          <tr><td>Validación de datos</td><td>Pestaña Datos &gt; Validación de datos, con la opción "Lista" en el desplegable de Permitir. La lista puede apuntar directamente a un rango de otra hoja. El modo "Detener" equivale a "Rechazar los datos introducidos"</td></tr>
+          <tr><td>Nombres de función</td><td><code>SI</code>, <code>Y</code>, <code>O</code>, <code>SUMAR.SI</code> y <code>CONTAR.SI</code> se llaman igual en Excel en español; si tu Excel está en inglés, son <code>IF</code>, <code>AND</code>, <code>OR</code>, <code>SUMIF</code> y <code>COUNTIF</code></td></tr>
+          <tr><td>Mayúsculas</td><td>La comparación con <code>=</code> y los criterios de <code>SUMAR.SI</code> tampoco distinguen mayúsculas en Excel</td></tr>
+          <tr><td>Fijar una referencia</td><td><code>F4</code> (Mac: <code>⌘+T</code>), igual que en Sheets</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu Excel está configurado en inglés, todas las funciones de hoy cambian de nombre: <code>SI</code> es <code>IF</code>, <code>Y</code> es <code>AND</code>, <code>O</code> es <code>OR</code>, <code>SUMAR.SI</code> es <code>SUMIF</code>, <code>CONTAR.SI</code> es <code>COUNTIF</code>. La lógica y los argumentos son exactamente los mismos, solo cambia el nombre.</p>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel la misma lógica de clasificación condicional, agregación por criterio y validación de datos que construyo en Google Sheets, adaptando nombres de función y separadores según el idioma y la configuración regional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Pasaste de calcular a decidir: escribiste una regla de negocio que la planilla aplica sola sobre cada registro, separaste el número real de los dos que circulaban, produjiste subtotales que reconcilian contra el total (y explican lo que no cierra), y blindaste la carga para que el archivo sobreviva a tres personas escribiendo en él.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-1" aria-label="Marcar como hecho"></td><td><label for="chk-09-1">Hice una copia de mi archivo de la Clase 08 con el nombre <code>2026-XX-XX_Informatica_Clase09_V01</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-2" aria-label="Marcar como hecho"></td><td><label for="chk-09-2">Escribo una función <code>SI</code> con condición, valor verdadero y valor falso, con el texto entre comillas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-3" aria-label="Marcar como hecho"></td><td><label for="chk-09-3">Agregué el parámetro "Beca máxima autorizada" en <code>PARAMETROS</code> y la columna <code>beca_alerta</code>, con el valor fijado por referencia absoluta.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-4" aria-label="Marcar como hecho"></td><td><label for="chk-09-4">Combiné condiciones con <code>Y</code> y <code>O</code> y anidé <code>SI</code> para clasificar <code>situacion</code> en tres grupos, y sé por qué la condición exigente va primera.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-5" aria-label="Marcar como hecho"></td><td><label for="chk-09-5">Sumé la rama de repetidas con <code>CONTAR.SI($A$2:A2; A2)</code> y mi columna <code>situacion</code> da 248 Válidas, 72 No cuenta, 8 Revisar y 8 Duplicadas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-6" aria-label="Marcar como hecho"></td><td><label for="chk-09-6">Armé el bloque "Los tres números": sistema, administración y real, y puedo explicar por qué los dos primeros están mal.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-7" aria-label="Marcar como hecho"></td><td><label for="chk-09-7">Armé los subtotales por sede y por taller con <code>SUMAR.SI</code>, apuntando el criterio a una celda de <code>LISTAS</code>, y las líneas de diferencia explican lo que no cierra.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-8" aria-label="Marcar como hecho"></td><td><label for="chk-09-8">Validé <code>sede</code>, <code>taller</code>, <code>estado</code> y <code>medio_pago</code> con "Rechazar los datos introducidos" y probé que el archivo rechaza <code>Confirm.</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-9" aria-label="Marcar como hecho"></td><td><label for="chk-09-9">Entregué en Moodle el enlace con el <code>LEEME</code> actualizado.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-09-10" aria-label="Marcar como hecho"></td><td><label for="chk-09-10">Comprobé la clasificación, los totales y la validación en Excel.</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo decisiones sobre datos con funciones lógicas, parametrizando los umbrales en celdas propias de modo que un cambio de criterio del negocio se aplique a todo el conjunto sin editar fórmulas.</p>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: replico en Excel la misma lógica de clasificación condicional, agregación por criterio y validación de datos que construyo en Google Sheets, adaptando nombres de función y separadores según el idioma y la configuración regional.</p>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+
+    <div class="qr-row qr-t-verde">
+      <div class="qr-row-label">Planilla de cálculo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Archivo y hojas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Crear una planilla: <code>sheets.new</code> en la barra del navegador</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Renombrar una hoja: doble clic sobre la pestaña</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Duplicar o copiar una hoja: clic derecho sobre la pestaña</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar o eliminar fila o columna: clic derecho sobre el número o la letra</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Configuración regional: Archivo &gt; Configuración &gt; Configuración regional</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Formato de celdas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Número, alineación, fuente, bordes y relleno: barra de herramientas o menú Formato</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel: <code>Ctrl+1</code> (Mac: <code>⌘+1</code>) abre el cuadro Formato de celdas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ajustar el ancho: arrastrar el límite entre dos letras de columna</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Texto a la izquierda, números a la derecha: si un número queda a la izquierda, es texto</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Edición</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copiar / cortar / pegar: <code>Ctrl+C</code> / <code>Ctrl+X</code> / <code>Ctrl+V</code> (Mac: <code>⌘+C</code> / <code>⌘+X</code> / <code>⌘+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Pegar solo valores: <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Pegar solo formato: <code>Ctrl+Alt+V</code> (Mac: <code>⌘+Option+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otras opciones de pegado: Edición &gt; Pegado especial</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rellenar hacia abajo / derecha: <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Serie: arrastrar el controlador de relleno; doble clic = hasta el final de los datos vecinos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Buscar y reemplazar: <code>Ctrl+H</code> (Mac: <code>⌘+Shift+H</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar: Datos &gt; Ordenar rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Imagen: Insertar &gt; Imagen &gt; Insertar imagen en celda o sobre celdas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y referencias</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula: <code>=</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa / absoluta / mixta: <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otra hoja: <code>=NombreDeHoja!A1</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada: <code>F2</code> (Mac: doble clic)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Operadores aritméticos</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">+</span><span class="qr-fdesc">Suma</span></div>
+            <div class="qr-frow"><span class="qr-fletter">-</span><span class="qr-fdesc">Resta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">*</span><span class="qr-fdesc">Multiplicación</span></div>
+            <div class="qr-frow"><span class="qr-fletter">/</span><span class="qr-fdesc">División</span></div>
+            <div class="qr-frow"><span class="qr-fletter">^</span><span class="qr-fdesc">Potencia</span></div>
+            <div class="qr-frow"><span class="qr-fletter">%</span><span class="qr-fdesc">Porcentaje</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones esenciales</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code>: suma total</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code>: media aritmética</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code>: celdas numéricas / no vacías</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code>: valor más alto / más bajo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=POTENCIA(base;exp)</code> / <code>=RAIZ(número)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autosuma: ícono Σ de la barra de herramientas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Selección y formato condicional</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Columna / fila entera: <code>Ctrl+Espacio</code> / <code>Shift+Espacio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ir al borde de los datos: <code>Ctrl+flecha</code> (Mac: <code>⌘+flecha</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir Formato condicional: Formato &gt; Formato condicional</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Reglas: escala de color, un solo color o fórmula personalizada</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Versiones y listas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copia del archivo para la clase nueva: Archivo &gt; Hacer una copia</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Datos con rango que crece al copiar: <code>$A$2:A2</code> (la segunda referencia es relativa)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones lógicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple: <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado: <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Todas deben cumplirse: <code>=Y(cond1; cond2)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Basta con que se cumpla una: <code>=O(cond1; cond2)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">El texto va entre comillas dobles: <code>"Válida"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">La comparación <code>=</code> no distingue mayúsculas de minúsculas, pero sí los espacios</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Operadores de comparación</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">=</span><span class="qr-fdesc">Igual a</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;</span><span class="qr-fdesc">Mayor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;</span><span class="qr-fdesc">Menor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;=</span><span class="qr-fdesc">Mayor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;=</span><span class="qr-fdesc">Menor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;&gt;</span><span class="qr-fdesc">Distinto de</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">SUMAR.SI y CONTAR.SI</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional: <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional: <code>=CONTAR.SI(rango; criterio)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador, siempre entre comillas: <code>"&gt;50"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda: <code>=SUMAR.SI($E$2:$E$1000; A15; $P$2:$P$1000)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Validación de datos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir: Datos &gt; Validación de datos &gt; Añadir regla</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas: Criterios &gt; Menú desplegable (de un intervalo)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano: Criterios &gt; Menú desplegable</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido: "Rechazar los datos introducidos". Solo avisar: "Mostrar una advertencia"</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Equivalencias con Excel en inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMA</code>: <code>SUM</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>PROMEDIO</code>: <code>AVERAGE</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR</code>: <code>COUNT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTARA</code>: <code>COUNTA</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>POTENCIA</code>: <code>POWER</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>RAIZ</code>: <code>SQRT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code>: <code>IF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Y</code>: <code>AND</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>O</code>: <code>OR</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code>: <code>SUMIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code>: <code>COUNTIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Validación de datos</code>: <code>Data Validation</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Función lógica</span><p class="gloss-def">Función que evalúa una condición y devuelve un resultado distinto según si esa condición se cumple o no.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Condición</span><p class="gloss-def">Comparación (con <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> o <code>&lt;&gt;</code>) que la planilla evalúa como verdadera o falsa.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SI</code></span><p class="gloss-def">Devuelve un valor si una condición es verdadera y otro si es falsa: <code>=SI(condición; valor_si_verdadero; valor_si_falso)</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">SI anidado</span><p class="gloss-def">Un <code>SI</code> colocado dentro de otro, en el lugar del "valor si falso", para evaluar más de dos resultados posibles.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>Y</code> / <code>O</code></span><p class="gloss-def"><code>Y</code> devuelve verdadero si se cumplen todas sus condiciones; <code>O</code>, si se cumple alguna.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Regla de negocio</span><p class="gloss-def">Criterio de la organización (un umbral, una excepción, una prioridad) que la planilla aplica de forma automática y uniforme sobre cada registro.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SUMAR.SI</code></span><p class="gloss-def">Suma los valores de un rango que cumplen una condición definida sobre otro rango (o el mismo).</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>CONTAR.SI</code></span><p class="gloss-def">Cuenta las celdas de un rango que cumplen una condición definida.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Criterio</span><p class="gloss-def">Segundo argumento de <code>SUMAR.SI</code> y <code>CONTAR.SI</code>: el valor o la comparación que debe cumplirse. Va entre comillas, o se apunta a una celda.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Rango que crece</span><p class="gloss-def">Rango con el inicio fijo y el final relativo, como <code>$A$2:A2</code>, que se amplía fila a fila al copiar la fórmula hacia abajo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Registro duplicado</span><p class="gloss-def">Fila que repite un identificador (como <code>id_inscripcion</code>) que debería ser único, y que infla cualquier suma o conteo hasta que se detecta.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Reconciliación</span><p class="gloss-def">Comprobación de que la suma de los subtotales por categoría es igual al total general. Si no cierra, hay registros que ningún criterio está capturando.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Validación de datos</span><p class="gloss-def">Conjunto de reglas que restringen qué se puede escribir en una celda, para prevenir errores de carga.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Menú desplegable</span><p class="gloss-def">Lista de opciones predefinidas que aparece al hacer clic en una celda con validación por lista.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Rechazar los datos introducidos</span><p class="gloss-def">Modo de validación que impide directamente cargar un valor fuera de las opciones permitidas.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. *Función SI*. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093364</code></li>
+      <li>Google. *Funciones SUMAR.SI y CONTAR.SI*. <code>support.google.com/docs/answer/3093583</code></li>
+      <li>Google. *Crear listas desplegables y validar datos*. <code>support.google.com/docs/answer/186103</code></li>
+      <li>Microsoft. *Función SI*. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Microsoft. *Aplicar validación de datos a celdas*. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+
+<script defer src="../../js/guia-print.js"></script>
+
+</body>
+</html>

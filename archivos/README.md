@@ -83,7 +83,61 @@ Las primeras veinte operaciones (`OP-10021` a `OP-10039`) son exactamente las
 que la Guía Visual de la Clase 08.1 publica como muestra: el estudiante tiene
 que poder cargarlas a mano y encontrar las mismas filas en el archivo completo.
 
-## Centro Cultural La Usina (Clases 08 a 11) — caso vigente
+## Retrato del curso (Clases 08 a 11 de Sheets) — caso vigente
+
+Encuesta simulada a ingresantes 2026. Un único archivo de Sheets que crece de clase en clase. Datos inventados (no son los de la encuesta real), con proporciones por departamento balanceadas a propósito para que cada selector tenga filas suficientes.
+
+| Archivo | Contenido |
+|---|---|
+| `Encuesta_ingresantes_2026.csv` | 120 respuestas más 3 duplicadas (123 filas de datos, 124 con encabezado). Separador `;`, UTF-8, fechas `dd/mm/aaaa`. Columnas: ID, Fecha, Carrera, Edad, Trabaja, Horas_estudio, Horas_celular, Viaje_min, Uso_IA, Dominio_Excel, Gasto_mensual |
+| `Catalogo_carreras_2026.csv` | 11 carreras y su departamento (DEyA, CS, CyT, EUdA). Para BUSCARV |
+| `Practica_encuesta_mini.csv` | Muestra de 11 filas con cada defecto una sola vez (texto en Edad, texto en Gasto, espacios en Carrera, un vacío en Viaje y una fila repetida). Para los micro ejercicios de la Clase 08 |
+
+Generador: `scripts/gen_dataset_encuesta.py` (semilla 20260609). No editar los CSV a mano.
+
+### Defectos intencionales (se limpian en la Clase 08)
+
+| Defecto | Cantidad | Herramienta |
+|---|---|---|
+| Carrera con espacios de más o mayúsculas/minúsculas mezcladas | 10 filas (6 con espacios) | Recortar espacio en blanco (las mayúsculas no se tocan) |
+| Edad con texto (`21 años`) | 4 | Buscar y reemplazar |
+| Gasto con texto (`114000 pesos`) | 4 | Buscar y reemplazar |
+| Viaje_min vacío | 5 | Se dejan vacíos (decisión didáctica: vacío no es cero) |
+| Filas duplicadas exactas (al final, filas 122 a 124) | 3 | Quitar duplicados |
+
+### Micro ejercicios: cifras de control
+
+- Muestra mini (Clase 08): 11 filas, 12 con encabezado. Tras limpiar quedan 10 filas: suma de Edad 260, suma de Gasto 1.050.000.
+- Primeras 8 respuestas de DATOS (Clases 09 a 11): Edad promedio 26,75. Gasto: suma 848.000, promedio 106.000, máximo 180.000, mínimo 53.000. Viaje promedio 62,5. Trabajan 5. Atención (trabaja y estudia menos de 5 h) 2. IA frecuente 5. Nivel_Excel: 6 Inicial y 2 Intermedio. Viajes de más de 90 min: 2; de más de 60: 4. Por departamento: DEyA 5 (gasto promedio 114.200, 80% trabaja), CyT 2 (60.000, 0%), EUdA 1 (157.000, 100%), CS 0. Fechas: 11/08/2026 a 23/08/2026 (12 días).
+
+### Cifras de control (sobre los datos limpios: 120 filas)
+
+- Respuestas 120. Con dato de viaje 115. Edad promedio 24,24 (17 a 42). Gasto promedio $ 127.016,67 (mínimo $ 30.000, máximo $ 220.000), total $ 15.242.000. Viaje promedio 55,48 (53,17 si los vacíos se cargaran como 0).
+- Horas de celular promedio 5,10. Horas de estudio promedio 6,98. Trabajan 73 (60,83%). Viajes de más de 90 min: 13. Horas de estudio menores a 4: 16.
+- Nivel_Excel (1-2 Inicial, 3-4 Intermedio, 5 Avanzado): 65 / 49 / 6. Riesgo_carga (trabaja y estudia menos de 5 h): 27. IA frecuente (Seguido o Todos los días): 65.
+- Gasto proyectado promedio a 6 meses con 40% anual (2,84% mensual): $ 150.288,15. Escenarios (gasto promedio por POTENCIA): 3% a 6 meses $ 151.664,54.
+- Fechas: primera respuesta 03/08/2026, última 23/08/2026 (20 días).
+- Uso de IA (Nunca / A veces / Seguido / Todos los días): 9 / 46 / 30 / 35.
+- Trabaja y viaja más de 60 min: 29. Viajan más de 60 min: 48.
+- Por carrera (respuestas; gasto promedio): Administración 27, $ 132.740,74. Comercio Internacional 13, $ 111.846,15. Contador Público 14, $ 143.357,14. Comunicación Social 15, $ 112.133,33. Educación 4, $ 135.750,00. Trabajo Social 11, $ 137.181,82. Programación 11, $ 117.545,45. Ingeniería en Alimentos 9, $ 128.000,00. Biotecnología 5, $ 115.400,00. Artes Electrónicas 7, $ 131.000,00. Música y Tecnología 4, $ 131.000,00.
+- Por departamento (n; % trabaja; gasto promedio; viaje promedio; IA Nunca/A veces/Seguido/Todos): DEyA 54; 66,7%; $ 130.462,96; 54,18; 5/18/13/18. CS 30; 50,0%; $ 124.466,67; 58,77; 4/12/6/8. CyT 25; 60,0%; $ 120.880,00; 53,17; 0/12/8/5. EUdA 11; 63,6%; $ 131.000,00; 57,80; 0/4/3/4.
+
+### Clave de la entrega final (uso docente, Clase 11)
+
+- DEyA: gasto promedio con trabajo $ 144.694 y sin trabajo $ 102.000 (en DEyA); proyección a 12 meses con la inflación de PARAMETROS.
+- CS: trabaja y viaja más de 60 min: 13 (DEyA), 7 (CS), 7 (CyT), 2 (EUdA), 29 en total.
+- CyT: correlación entre Horas_celular y Horas_estudio -0,165 (casi nula). Promedio de horas de estudio por Dominio_Excel: 1: 7,71; 2: 6,62; 3: 7,06; 4: 6,53; 5: 6,67.
+- EUdA: uso de IA por nivel de Excel con `CONTAR.SI.CONJUNTO`; la consigna es de comunicación, no tiene cifra única.
+
+### Reproducibilidad
+
+```
+python3 scripts/gen_dataset_encuesta.py archivos
+```
+
+Imprime en JSON las cifras de control del generador. Si se cambia la semilla o el diseño, regenerar los CSV y actualizar esta sección y las guías.
+
+## Centro Cultural La Usina (Clases 08 a 11) — caso de la versión v1 de Sheets, reemplazado por Retrato del curso
 
 | Archivo | Qué es | Aparece en |
 |---|---|---|
@@ -95,7 +149,7 @@ Centro Cultural La Usina es un centro cultural comunitario ficticio con tres sed
 
 ### El CSV está sucio a propósito
 
-Separador **`;`**, aranceles con formato argentino (`14.000,00`) y codificación UTF-8. No "arreglar" nada de esta lista: cada punto es una actividad.
+El CSV tiene **10 columnas**: `id_inscripcion`, `fecha_inscripcion`, `taller`, `sede`, `alumno`, `dni`, `arancel`, `beca_pct`, `estado`, `medio_pago`. Está desordenado (no ordenado por id). Separador **`;`**, aranceles con formato argentino (`14.000,00`) y codificación UTF-8. No "arreglar" nada de esta lista: cada punto es una actividad.
 
 | # | Defecto | Casos | Se trabaja en |
 |---|---|---|---|
@@ -110,7 +164,7 @@ Separador **`;`**, aranceles con formato argentino (`14.000,00`) y codificación
 | 9 | Taller que no está en el catálogo (typo) | 4 operaciones | 10 · huérfanos |
 | 10 | `sede` vacía o mal escrita | 7 | 10 · control de carga |
 | 11 | Percusión: está en el catálogo y nunca tuvo una inscripción | — | 10 · sin rotación |
-| 12 | Serigrafía con inscripciones anteriores al alta de su docente (Julieta Campos, alta 04/05/2026) | 9 | 10 · control interno |
+| 12 | Serigrafía con inscripciones anteriores al alta de su docente (Julieta Campos, alta 04/05/2026) | 29 filas con fecha anterior (16 Válidas) | 10 · control interno |
 | 13 | Becas por encima del 50% autorizado (concentradas en Guitarra) | 10 | 11 · costo del exceso |
 
 ### Cifras de control (uso docente)
@@ -122,14 +176,19 @@ Todas calculadas por `scripts/gen_dataset_usina.py` sobre el CSV publicado — c
 | Filas en el CSV (con las 8 duplicadas) | 336 |
 | Filas base únicas | 328 |
 | Total que informa el sistema (bruto, con duplicados) | $3.525.000 |
-| Total con filtro exacto `estado = "Confirmada"` | $1.270.000 |
+| Total con `SUMAR.SI(estado;"Confirmada";...)` en Sheets/Excel (no distingue mayúsculas; deja afuera las 46 filas "Confirm.") | $2.277.700 (215 filas) |
 | **Total correcto, depurado** | **$2.696.800** |
 | Inscripciones utilizables (depuradas) | 248 |
-| Arancel promedio | $10.874 |
+| Arancel promedio | $12.009 (suma 4.035.000; máx 16.000; mín -14.000) |
+| Situación (Válida / No cuenta / Revisar / Duplicada) | 248 / 72 / 8 / 8 |
+| Neto de costo administrativo ($500 × 248) | $2.572.800 |
+| Subtotales por sede (sede completada desde el catálogo) | Centro $1.384.300 · Norte $915.500 · Sur $397.000 |
+| Por mes (válidas) | Mar $745.000 · Abr $881.800 · May $877.600 · Jun $192.400 |
+| Cerámica sobre el total | 28,2% ($760.200) |
 | Costo de los excesos de beca (por encima del 50%) | $19.800 |
 | Facturación de Sede Sur | $397.000 (14,7%) |
 
-Ninguno de los dos números que circulan en el centro es el correcto: el sistema cuenta de más (duplicados, algún arancel cargado en negativo) y el filtro exacto por `estado = "Confirmada"` cuenta de mucho menos (se le escapan las 140 filas donde "confirmada" está escrito de otra forma). Esa es la reconstrucción que el estudiante tiene que poder hacer y explicar en la Clase 08.
+Ninguno de los dos números que circulan en el centro es el correcto: el sistema cuenta de más (duplicados, algún arancel cargado en negativo) y la suma condicional por `estado = "Confirmada"` cuenta de menos (en Sheets y Excel la comparación no distingue mayúsculas, pero se le escapan las 46 filas escritas "Confirm."). Esa es la reconstrucción que el estudiante tiene que poder hacer y explicar en la Clase 08.
 
 ### Reproducibilidad
 

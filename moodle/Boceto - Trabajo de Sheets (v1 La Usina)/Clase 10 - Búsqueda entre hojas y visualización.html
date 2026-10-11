@@ -1,14 +1,14 @@
-<div id="m09root" style="font-family:Arial,Helvetica,sans-serif;color:#15141b;background:#ffffff;max-width:820px;margin:0 auto;">
+<div id="m10root" style="font-family:Arial,Helvetica,sans-serif;color:#15141b;background:#ffffff;max-width:820px;margin:0 auto;">
     <details style="margin:0 4px 14px;">
         <summary style="cursor:pointer;list-style:none;" onclick="var o=this.parentElement.open,c=this.querySelector('.cv');c.style.transform=o?'translateY(-2px) rotate(45deg)':'translateY(2px) rotate(225deg)';">
             <div style="position:relative;display:flex;flex-wrap:wrap;border-radius:16px;overflow:hidden;margin:0 4px 14px;background:#e9f7ee;min-height:120px;">
                 <div style="background:#1e8e3e;width:clamp(72px,22vw,104px);flex-shrink:1;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(30px,9vw,52px);color:#fff;line-height:1;">09</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(30px,9vw,52px);color:#fff;line-height:1;">10</div>
                     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px;">Clase</div>
                 </div>
                 <div style="padding:18px 40px 32px 22px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Funciones lógicas y validación de datos</div>
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Toma de decisiones, conteo condicional y control de errores</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Búsqueda entre hojas y visualización</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Cruce de datos con BUSCARV/BUSCARX y gráficos estadísticos</div>
                 </div>
             <span style="position:absolute;bottom:12px;right:12px;width:24px;height:24px;border-radius:50%;background:#1e8e3e;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(21,20,27,.25);"><span class="cv" style="display:block;width:6px;height:6px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex-shrink:0;"></span></span></div>
         </summary>
@@ -20,8 +20,8 @@
                   <span style="font-size:10px;font-weight:500;color:#1e8e3e;">marcos.hernandez@unq.edu.ar</span>
                 </span>
             </a>
-            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">De números a decisiones. Usás `SI` para resolver "si esto, entonces aquello", y SI anidados para decisiones más complejas. `SUMAR.SI` y `CONTAR.SI` combinan condición + función. Validación de datos te permite crear listas desplegables que impiden errores de entrada. Control de calidad desde el origen. ✓</p>
-            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2009%20-%20Funciones%20l%C3%B3gicas%20y%20validaci%C3%B3n%20de%20datos.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#1e8e3e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
+            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">La información no vive toda junta, la separás en varias hojas y las conectás. BUSCARV busca un valor en una columna y devuelve algo de otra. BUSCARX es más moderno y flexible. Múltiples hojas evitan repetir datos: si cambia un precio, cambia una sola vez. Gráficos comunican patrones más que números sueltos. 🔍</p>
+            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2010%20-%20B%C3%BAsqueda%20entre%20hojas%20y%20visualizaci%C3%B3n.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#1e8e3e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
                 <!-- ═══════ LA CAJA DE HERRAMIENTAS ═══════ -->
         <details style="background:#fff;border:1px solid #ebe8f0;border-radius:16px;margin:0 4px 16px;overflow:hidden;">
@@ -35,39 +35,64 @@
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">01</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Funciones lógicas: SI y variantes</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Por qué separar datos en varias hojas y el encargo</span>
                 </summary>
-                <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">SI simple: `=SI(condición; valor_si_verdadero; valor_si_falso)`. SI anidado para decisiones múltiples. SUMAR.SI y CONTAR.SI.</p>
-                    <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Escribo `SI` anidado y `SUMAR.SI`/`CONTAR.SI` de memoria.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Reconozco cuándo usar SUMAR.SI vs. SUMA + SI.</span></label>
-                    </div>
+                <div style="padding:0 8px 24px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Un catálogo, un registro y una fuente única para cada valor.</p>
+                    <div style="margin:12px 0 0;"><label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Entiendo por qué TALLERES y DOCENTES son hojas separadas.</span></label></div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">02</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Validación de datos y listas</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">BUSCARV y BUSCARX</span>
                 </summary>
                 <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Listas desplegables que limitan opciones. Evita que alguien escriba mal una categoría (p. ej., "alta", "ALTA", "Alta" todas juntas).</p>
-                    <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Creé una lista desplegable con validación de datos.</span></label>
-                    </div>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Traer columnas de otra hoja, con rango absoluto y manejo del caso "no encontrado".</p>
+                    <div style="margin:12px 0 0;"><label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Traje sede, cupo y arancel con BUSCARV/BUSCARX y controlé los 4 talleres huérfanos.</span></label></div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">03</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Fechas: contar días y comparar</span>
+                </summary>
+                <div style="padding:0 8px 24px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Funciones de fecha para detectar pendientes viejos y controlar altas.</p>
+                    <div style="margin:12px 0 0;"><label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Calculé días con fechas reales (fecha_ok) y detecté los pendientes de más de 30 días.</span></label></div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">04</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Gráficos con propósito</span>
+                </summary>
+                <div style="padding:0 8px 24px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Un gráfico que responde una pregunta, con título en forma de afirmación.</p>
+                    <div style="margin:12px 0 0;"><label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé el gráfico de la reunión con título que afirma algo.</span></label></div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">05</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Cerrar el encargo y replicarlo en Excel</span>
+                </summary>
+                <div style="padding:0 8px 24px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Descargá el archivo como .xlsx y verificá las búsquedas y los gráficos.</p>
+                    <div style="margin:12px 0 0;"><label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Repetí en Excel una búsqueda y un gráfico, y comparé con Sheets.</span></label></div>
                 </div>
             </details>
         </div>
         <!-- ═══════ PRESENTE ═══════ -->
         <div style="margin:0 4px 16px;background:linear-gradient(180deg,#e9f7f0,#fff 55%);border:1px solid #cdeadb;border-radius:16px;padding:22px 24px;">
             <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0f7a5c;margin:0 0 8px;">✅ Así se registra tu presente</div>
-            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">No es una entrega con nota: es la forma de dejar constancia de que hiciste la clase de hoy. Compartí el link de la planilla que usaste hoy (permiso de comentario) y subilo acá abajo.</p>
+            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">No es una entrega con nota: es la forma de dejar constancia de que hiciste la clase de hoy. Compartí el link de la planilla de hoy (permiso de comentario) y subilo acá abajo.</p>
             <div style="display:flex;flex-wrap:wrap;gap:14px;">
                 <div style="flex:1 1 220px;background:#fff;border:1px solid #cdeadb;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;">
                     <div style="width:24px;height:24px;border-radius:50%;background:#0f7a5c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">1</div>
-                    <div style="font-size:14px;font-weight:700;color:#15141b;">📊 Planilla Clase 09</div>
-                    <div style="font-size:11px;color:#4b4959;">Con SI anidado, SUMAR.SI/CONTAR.SI y al menos una lista desplegable con validación de datos.</div>
-                    <a href="https://qoodle.uvq.edu.ar/mod/assign/view.php?id={{ENTREGA:09:1}}&amp;action=editsubmission" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#0f7a5c;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">Subir link</a>
+                    <div style="font-size:14px;font-weight:700;color:#15141b;">📊 Planilla Clase 10</div>
+                    <div style="font-size:11px;color:#4b4959;">Con BUSCARV/BUSCARX entre hojas (con manejo de error) y al menos un gráfico con conclusión concreta.</div>
+                    <a href="https://qoodle.uvq.edu.ar/mod/assign/view.php?id={{ENTREGA:10:1}}&amp;action=editsubmission" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#0f7a5c;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">Subir link</a>
                 </div>
             </div>
         </div>

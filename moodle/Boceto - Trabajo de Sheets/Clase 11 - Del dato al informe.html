@@ -7,8 +7,8 @@
                     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px;">Clase</div>
                 </div>
                 <div style="padding:18px 40px 32px 22px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1 1 240px;min-width:0;">
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Análisis de datos con Tablas Dinámicas e IA</div>
-                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Tablas dinámicas, segmentación y asistencia de IA para fórmulas</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(17px,4.3vw,22px);color:#15141b;line-height:1.25;margin-bottom:8px;">Del dato al informe</div>
+                    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:#4b4959;line-height:1.5;">Gráficos, tablero con selector, impresión, colaboración e IA como auditora</div>
                 </div>
             <span style="position:absolute;bottom:12px;right:12px;width:24px;height:24px;border-radius:50%;background:#1e8e3e;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(21,20,27,.25);"><span class="cv" style="display:block;width:6px;height:6px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-2px) rotate(45deg);transition:transform .2s;flex-shrink:0;"></span></span></div>
         </summary>
@@ -20,8 +20,8 @@
                   <span style="font-size:10px;font-weight:500;color:#1e8e3e;">marcos.hernandez@unq.edu.ar</span>
                 </span>
             </a>
-            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">Última clase del Bloque 4. Las tablas dinámicas reorganizan datos sin tocar el original: en vez de escribir una fórmula nueva por cada pregunta, reorganizás columnas y filas. Segmentación filtra sin escribir. IA te ayuda con fórmulas complejas, vos verificás. Gemini en Sheets genera análisis. Trabajo integrador de todo el bloque. 📈</p>
-            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Clase%2011%20-%20An%C3%A1lisis%20de%20datos%20con%20Tablas%20Din%C3%A1micas%20e%20IA.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#1e8e3e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
+            <p style="margin:0 0 14px;font-size:14px;line-height:1.72;color:#4b4959;">Esta clase cierra el caso. Convertís los números en gráficos que responden preguntas, armás un tablero con un selector que cambia todo lo que muestra, lo imprimís en una página, trabajás en el mismo archivo con otra persona, lo llevás a Excel y usás la IA como auditora de tu propio trabajo. Cada herramienta nueva trae un micro ejercicio sobre 8 filas, y la clase cierra con el <strong>pedido final</strong>: el Retrato del curso con una pregunta propia, según el departamento de tu carrera. Ese pedido es lo que entregás. 📈</p>
+            <a href="https://marcosxhernandez.github.io/unq-moodle/clases/Boceto%20-%20Trabajo%20de%20Sheets/Clase%2011%20-%20Del%20dato%20al%20informe.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#1e8e3e;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">📖 Abrir la guía de la clase</a>
         </div>
                                 <!-- ═══════ LA CAJA DE HERRAMIENTAS ═══════ -->
                 <details style="background:#fff;border:1px solid #ebe8f0;border-radius:16px;margin:0 4px 16px;overflow:hidden;">
@@ -35,26 +35,91 @@
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">01</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Tablas dinámicas y segmentación</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Qué gráfico para qué pregunta</span>
                 </summary>
                 <div style="padding:0 0 24px 8px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Reorganiza datos arrastrando columnas/filas. Sin tocar el original. Segmentación = filtro visual sin escribir fórmulas.</p>
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Elegir el tipo de gráfico según lo que se quiere mostrar, y graficar un resumen en lugar de la tabla cruda.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé una tabla dinámica arrastrando campos.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Apliqué segmentación funcional a la tabla.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Elijo el tipo de gráfico según la pregunta.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Sé por qué no usar una torta con muchas categorías.</span></label>
                     </div>
                 </div>
             </details>
             <details style="border-top:1px solid #ebe8f0;">
                 <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
                     <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">02</span>
-                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">IA para fórmulas complejas y Gemini</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Armar y personalizar un gráfico</span>
                 </summary>
-                <div style="padding:0 8px 24px;">
-                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Pedile a ChatGPT/Gemini una fórmula, copiá, verificá. Gemini en Sheets genera análisis. Vos siempre verificás.</p>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">El editor de gráficos, datos no contiguos, títulos con conclusión y gráficos que siguen a su tabla. Micro ejercicio sobre 8 filas.</p>
                     <div style="margin:12px 0 0;">
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Pedile a una IA una fórmula compleja y la verificaste en la planilla.</span></label>
-                        <label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Completé el trabajo integrador del Bloque 4 (Clases 08-11).</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé tres gráficos, uno con datos no contiguos.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Puse títulos que dicen algo.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">03</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">El tablero con selector</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Una hoja con un menú desplegable de departamentos y fórmulas que leen esa celda, incluida CONTAR.SI.CONJUNTO. Micro ejercicio en miniatura.</p>
+                    <div style="margin:12px 0 0;">
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Mi tablero cambia al elegir otro departamento.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Mis cifras coinciden con la tabla de control.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">04</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Imprimir y exportar a PDF</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Celdas seleccionadas, orientación, escala y salto de página para sacar el tablero en una sola página.</p>
+                    <div style="margin:12px 0 0;">
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Imprimí el tablero en una página.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Descargué el PDF.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">05</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">Colaborar y pasar a Excel</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Compartir con roles, comentarios y menciones, historial de versiones, proteger rangos y descargar a .xlsx.</p>
+                    <div style="margin:12px 0 0;">
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Intercambié comentarios con otra persona.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Abrí mi archivo en Excel y comprobé las cifras.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">06</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">La IA como auditora de tu trabajo</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">Usar Gemini u otro asistente para explicar, proponer y revisar, verificando todo contra un control y registrándolo en AUDITORIA.</p>
+                    <div style="margin:12px 0 0;">
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Registré consultas con su verificación.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Detecté algo que la IA hizo mal o que hubo que corregir.</span></label>
+                    </div>
+                </div>
+            </details>
+            <details style="border-top:1px solid #ebe8f0;">
+                <summary style="cursor:pointer;padding:12px 4px;display:flex;align-items:baseline;gap:8px;">
+                    <span style="font-family:'Courier New',monospace;font-size:12px;color:#888780;">07</span>
+                    <span style="font-size:15px;font-weight:700;color:#2c2c2a;">El pedido de la clase: la entrega final</span>
+                </summary>
+                <div style="padding:0 0 24px 8px;">
+                    <p style="margin:0 0 12px 18px;font-size:13px;line-height:1.7;color:#4b4959;">El Retrato del curso completo, con tablero, tres gráficos, una pregunta propia según tu departamento (DEyA, CS, CyT o EUdA), la auditoría de IA y el PDF. Es la entrega de la clase.</p>
+                    <div style="margin:12px 0 0;">
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Armé MI_PREGUNTA con la consigna de mi departamento.</span></label>
+<label style="display:flex;align-items:flex-start;gap:10px;padding:6px 0;cursor:pointer;"><input type="checkbox" style="width:16px;height:16px;margin:2px 0 0;accent-color:#1e8e3e;flex-shrink:0;cursor:pointer;"><span style="font-size:13px;color:#4b4959;line-height:1.5;">Entregué la copia final y el PDF.</span></label>
                     </div>
                 </div>
             </details>
@@ -62,12 +127,12 @@
         <!-- ═══════ PRESENTE ═══════ -->
         <div style="margin:0 4px 16px;background:linear-gradient(180deg,#e9f7f0,#fff 55%);border:1px solid #cdeadb;border-radius:16px;padding:22px 24px;">
             <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0f7a5c;margin:0 0 8px;">✅ Así se registra tu presente</div>
-            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">Esta clase cierra el Bloque 4 con la <strong>Entrega Integradora</strong> (esta sí lleva nota). Nombrá tu archivo <code style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.9em;background:#fff;border:1px solid #cdeadb;padding:1px 6px;border-radius:5px;color:#0f7a5c;">2026-XX-XX_Informatica_Clase11_V01</code>, compartilo con acceso de lectura por enlace, y subí el enlace acá abajo.</p>
+            <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#4b4959;">Esta clase cierra el módulo con la <strong>entrega final</strong> del caso. Nombrá tu archivo <code style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.9em;background:#fff;border:1px solid #cdeadb;padding:1px 6px;border-radius:5px;color:#0f7a5c;">AAAA-MM-DD_Informatica_Clase11_V01</code>, compartilo con permiso de Comentador para el docente, subí el enlace acá abajo y adjuntá el PDF del tablero y de tu pregunta.</p>
             <div style="display:flex;flex-wrap:wrap;gap:14px;">
                 <div style="flex:1 1 220px;background:#fff;border:1px solid #cdeadb;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;">
                     <div style="width:24px;height:24px;border-radius:50%;background:#0f7a5c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">1</div>
-                    <div style="font-size:14px;font-weight:700;color:#15141b;">📊 Entrega Integradora — Bloque 4</div>
-                    <div style="font-size:11px;color:#4b4959;">Tabla dinámica, segmentación, BUSCARV/X, SI anidado, fórmula verificada con IA y hoja LEEME.</div>
+                    <div style="font-size:14px;font-weight:700;color:#15141b;">📊 Planilla Clase 11 (entrega final)</div>
+                    <div style="font-size:11px;color:#4b4959;">La copia final de <em>Retrato del curso</em> con <strong>TABLERO</strong>, <strong>MI_PREGUNTA</strong> y <strong>AUDITORIA</strong>, más el PDF del tablero y de la pregunta. Es la entrega y el presente de la clase.</div>
                     <a href="https://qoodle.uvq.edu.ar/mod/assign/view.php?id={{ENTREGA:11:1}}&amp;action=editsubmission" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:#0f7a5c;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap;">Subir link</a>
                 </div>
             </div>

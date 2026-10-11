@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 11 - Gráficos, impresión y trabajo colaborativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento: Planilla de cálculo = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 11 · Gráficos y colaboración";
+      color:#145c28;
+    }
+  }
+
+  /* Mini planilla ilustrativa (reemplaza capturas): namespace xl-*, no choca con guia-estilo.css */
+  .xl{ margin:1rem 0 1.2rem; break-inside:avoid-page; }
+  .xl-box{ display:inline-block; max-width:100%; border:1px solid #cfcdd6; border-radius:6px; background:#fff; overflow:hidden; }
+  .xl-fbar{ display:flex; align-items:center; gap:0; border-bottom:1px solid #cfcdd6; background:#fafafa; font-family:var(--sans); font-size:.8rem; }
+  .xl-name{ min-width:3.6rem; padding:4px 10px; border-right:1px solid #cfcdd6; font-weight:600; color:#3b3a45; text-align:center; }
+  .xl-fx{ padding:4px 9px; border-right:1px solid #cfcdd6; font-family:Georgia, serif; font-style:italic; font-weight:700; color:#6b6a76; }
+  .xl-fval{ padding:4px 12px; font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.78rem; color:#1f1e26; }
+  table.xl-grid{ border-collapse:collapse; margin:0; width:auto; font-family:var(--sans); font-size:.8rem; background:#fff; border:0; }
+  table.xl-grid th{ background:#f1f1f4; color:#6b6a76; font-weight:500; border:1px solid #d9d8de; padding:2px 10px; text-align:center; font-size:.7rem; text-transform:none; letter-spacing:0; }
+  table.xl-grid th.xl-rn{ width:1.8rem; padding:2px 6px; }
+  table.xl-grid td{ border:1px solid #e3e2e8; padding:3px 10px; min-width:4.8rem; height:1.45rem; white-space:nowrap; color:#1f1e26; background:#fff; text-align:left; vertical-align:middle; }
+  table.xl-grid td.n{ text-align:right; }
+  table.xl-grid td.c{ text-align:center; }
+  table.xl-grid td.h{ background:var(--acento-tint); font-weight:700; text-align:center; color:var(--acento-deep); white-space:normal; }
+  table.tbl-activity th{ text-align:left; }
+  table.xl-grid td.t{ background:var(--acento); color:#fff; font-weight:700; text-align:center; }
+  table.xl-grid td.sel{ outline:2px solid var(--acento); outline-offset:-2px; }
+  table.xl-grid td.hl{ background:#fff3c4; }
+  table.xl-grid td.bad{ background:#fde4e8; color:#8a1130; }
+  table.xl-grid td.good{ background:#dff3e6; color:#145c28; }
+  table.xl-grid td.mid{ background:#dbe8fb; color:#1f3f7d; }
+  table.xl-grid td.b{ font-weight:700; }
+  table.xl-grid td.m{ font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.74rem; }
+  table.xl-grid td.e{ background:#fafafa; }
+  .xl-cap{ margin:.35rem 0 0; font-size:.82rem; color:var(--muted); line-height:1.45; }
+  @media print{
+    .xl{ margin:8pt 0 9pt; }
+    .xl-fbar{ font-size:7.4pt; }
+    table.xl-grid{ font-size:7.6pt; }
+    table.xl-grid th{ font-size:6.6pt; padding:1pt 6pt; }
+    table.xl-grid td{ padding:2pt 6pt; min-width:17mm; height:auto; }
+    table.xl-grid td.m{ font-size:7pt; }
+    .xl-cap{ font-size:7.8pt; }
+    .qr-row{ break-inside:auto !important; }
+    .qr-cell{ break-inside:avoid; }
+  }
+
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-bold" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="16"  fill="currentColor">N</text></symbol>
+<symbol id="ti-italic" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="16" font-style="italic" fill="currentColor">K</text></symbol>
+<symbol id="ti-underline" viewBox="0 0 24 24"><text x="12" y="17.0" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14"  fill="currentColor">S</text><line x1="6" y1="20" x2="18" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-align-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="10.5" x2="14" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="4" y1="19.5" x2="12" y2="19.5"/></g></symbol>
+<symbol id="ti-align-center" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="10.5" x2="17" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="8" y1="19.5" x2="16" y2="19.5"/></g></symbol>
+<symbol id="ti-align-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="10" y1="10.5" x2="20" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="12" y1="19.5" x2="20" y2="19.5"/></g></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke-width="1.3"/><line x1="12" y1="12" x2="12" y2="19.5" stroke-width="1.3"/></g></symbol>
+<symbol id="ti-fill-color" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L11 6 L17 12 L11 18 Z"/><path d="M19 14.5 C19.8 15.8 20.2 16.4 20.2 17 A1.2 1.2 0 0 1 17.8 17 C17.8 16.4 18.2 15.8 19 14.5 Z" fill="currentColor" stroke-width="1"/></g><line x1="4" y1="21" x2="20" y2="21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-font-color" viewBox="0 0 24 24"><text x="12" y="17.4" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15"  fill="currentColor">A</text><line x1="5" y1="20.5" x2="19" y2="20.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-borders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1"/><line x1="12" y1="4" x2="12" y2="20" stroke-dasharray="1.6 2.2"/><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="1.6 2.2"/></g></symbol>
+<symbol id="ti-wrap-cell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><path d="M4 12 H16.5 A2.5 2.5 0 0 1 16.5 17 H11"/><path d="M13 14.6 L10.6 17 L13 19.4"/></g></symbol>
+<symbol id="ti-sigma" viewBox="0 0 24 24"><text x="12" y="18.1" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="17"  fill="currentColor">Σ</text></symbol>
+<symbol id="ti-fx" viewBox="0 0 24 24"><text x="12" y="16.7" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="13" font-style="italic" fill="currentColor">fx</text></symbol>
+<symbol id="ti-percent" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="16"  fill="currentColor">%</text></symbol>
+<symbol id="ti-money" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.3" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="12"  fill="currentColor">$</text></symbol>
+<symbol id="ti-sort" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="12" y2="6"/><line x1="4" y1="11" x2="9.5" y2="11"/><line x1="4" y1="16" x2="7" y2="16"/><line x1="17" y1="5" x2="17" y2="19"/><path d="M13.5 15.5 L17 19 L20.5 15.5"/></g></symbol>
+<symbol id="ti-filter" viewBox="0 0 24 24"><path d="M4 5 H20 L14 12.5 V19 L10 17 V12.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-chart-col" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="12" width="4" height="7.5"/><rect x="10" y="6" width="4" height="13.5"/><rect x="15.5" y="9.5" width="4" height="10"/></g></symbol>
+<symbol id="ti-chart-pie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 A8 8 0 1 0 20 12 H12 Z"/><path d="M14.5 3.7 A8 8 0 0 1 20.3 9.5 H14.5 Z"/></g></symbol>
+<symbol id="ti-chart-line" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5,17 8.5,11 13,14 20.5,5.5"/></g><circle cx="3.5" cy="17" r="1.3" fill="currentColor"/><circle cx="8.5" cy="11" r="1.3" fill="currentColor"/><circle cx="13" cy="14" r="1.3" fill="currentColor"/><circle cx="20.5" cy="5.5" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5"/></g><circle cx="8.5" cy="9.5" r="1.6" fill="currentColor"/></symbol>
+<symbol id="ti-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="12" rx="1.5"/><path d="M15.5 8.5 V5.5 A1.5 1.5 0 0 0 14 4 H5.5 A1.5 1.5 0 0 0 4 5.5 V14.5 A1.5 1.5 0 0 0 5.5 16 H8.5"/></g></symbol>
+<symbol id="ti-cut" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="17" r="2.6"/><circle cx="17.5" cy="17" r="2.6"/><line x1="8.3" y1="15" x2="17" y2="4"/><line x1="15.7" y1="15" x2="7" y2="4"/></g></symbol>
+<symbol id="ti-paste" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="1.8"/><rect x="9" y="2.5" width="6" height="3.6" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="14" y2="15"/></g></symbol>
+<symbol id="ti-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8 H15 A4.5 4.5 0 0 1 15 17 H8"/><path d="M11 4.8 L7.8 8 L11 11.2"/></g></symbol>
+<symbol id="ti-save" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 4.5 H16.5 L19.5 7.5 V19.5 H4.5 Z"/><rect x="8" y="4.5" width="7" height="5"/><rect x="7.5" y="13" width="9" height="6.5"/></g></symbol>
+<symbol id="ti-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15 V4"/><path d="M8.2 7.6 L12 3.8 L15.8 7.6"/><path d="M6 11 H5 A1.5 1.5 0 0 0 3.5 12.5 V19 A1.5 1.5 0 0 0 5 20.5 H19 A1.5 1.5 0 0 0 20.5 19 V12.5 A1.5 1.5 0 0 0 19 11 H18"/></g></symbol>
+<symbol id="ti-table" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="3.5" y1="14.5" x2="20.5" y2="14.5"/><line x1="9.2" y1="4.5" x2="9.2" y2="19.5"/><line x1="14.8" y1="4.5" x2="14.8" y2="19.5"/></g></symbol>
+<symbol id="ti-cf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/></g><rect x="5" y="6" width="6" height="5" fill="currentColor" opacity=".85"/><rect x="13" y="13" width="6" height="5" fill="currentColor" opacity=".45"/></symbol>
+<symbol id="ti-validate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6.5" width="17" height="11" rx="1.8"/><path d="M14.5 10.8 L16.5 13 L18.5 10.8"/><line x1="6.5" y1="12" x2="11.5" y2="12"/></g></symbol>
+<symbol id="ti-orientation" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="7" width="11" height="14" rx="1.4"/><path d="M13 3.7 A6.5 6.5 0 0 1 19.8 9"/><path d="M19.8 4.6 V9 H15.4"/></g></symbol>
+<symbol id="ti-paper-size" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3.5" width="10" height="17" rx="1.4"/><path d="M3.5 8 V16 M2 9.5 L3.5 8 L5 9.5 M2 14.5 L3.5 16 L5 14.5"/></g></symbol>
+<symbol id="ti-margins" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.4"/><rect x="8" y="6.5" width="8" height="11" stroke-dasharray="2 2"/></g></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/></g><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/></g><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17.4" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15"  fill="currentColor">#</text></symbol>
+<symbol id="ti-handle" viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="currentColor"/></symbol>
+</defs></svg>
+
+<section class="cover-page" data-num="04">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 11 · Planilla de cálculo</span>
+    <h1 class="cover-title">Gráficos, impresión y trabajo colaborativo</h1>
+    <p class="cover-subtitle">Elegir y armar gráficos, pegado especial, impresión, OneDrive y proyectos integradores</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Los números ordenados en una tabla informan, pero un buen gráfico convence. En esta clase aprendés a elegir el tipo de gráfico correcto, a armarlo y corregirlo, a imprimir tu planilla con criterio y a trabajar en equipo sobre un mismo libro desde la nube. Cerrás con dos proyectos integradores que usan todo lo aprendido en el módulo.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#tipos"><span class="toc-num">01</span><span class="toc-text">Qué gráfico elegir</span></a></li>
+    <li><a href="#crear"><span class="toc-num">02</span><span class="toc-text">Armar un gráfico paso a paso</span></a></li>
+    <li><a href="#combinados"><span class="toc-num">03</span><span class="toc-text">Gráficos combinados y selección de datos no contiguos</span></a></li>
+    <li><a href="#pegado"><span class="toc-num">04</span><span class="toc-text">Pegado especial y trabajo con hojas</span></a></li>
+    <li><a href="#impresion"><span class="toc-num">05</span><span class="toc-text">Preparar la planilla para imprimir</span></a></li>
+    <li><a href="#colaboracion"><span class="toc-num">06</span><span class="toc-text">Trabajo colaborativo con OneDrive</span></a></li>
+    <li><a href="#integradores"><span class="toc-num">07</span><span class="toc-text">Ejercicios integradores</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="tipos">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Qué gráfico elegir</h2>
+  </div>
+  <div class="prose">
+    
+
+    <p>El tipo de gráfico depende de <strong>qué querés mostrar</strong>, no de cuál queda más lindo. Antes de abrir el menú, preguntate qué relación hay entre tus datos.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Querés mostrar...</th><th>Tipo recomendado</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Comparar</strong> valores entre categorías</td><td><svg class="tool-icon"><use href="#ti-chart-col"></use></svg> Columnas o barras</td><td>Ventas por sucursal</td></tr>
+          <tr><td><strong>Evolución</strong> en el tiempo</td><td><svg class="tool-icon"><use href="#ti-chart-line"></use></svg> Líneas</td><td>Temperatura mes a mes</td></tr>
+          <tr><td><strong>Partes de un total</strong> (proporciones)</td><td><svg class="tool-icon"><use href="#ti-chart-pie"></use></svg> Circular (torta)</td><td>Cómo se reparte el presupuesto</td></tr>
+          <tr><td><strong>Relación</strong> entre dos variables numéricas</td><td>Dispersión (XY)</td><td>Horas de estudio y nota</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ La torta tiene reglas</p>
+      <p>El gráfico <strong>circular</strong> es el más abusado. Funciona solo si: hay <strong>una sola serie</strong>, no más de unas <strong>7 categorías</strong>, los valores son <strong>positivos</strong> y representan partes de <strong>un mismo total</strong>. Si no se cumple alguna, usá columnas.</p>
+    </div>
+    <p>Una diferencia que genera confusión: en el gráfico de <strong>líneas</strong> el eje horizontal es una lista de categorías equiespaciadas (meses, años), mientras que en el de <strong>dispersión</strong> ambos ejes son numéricos y los puntos se ubican según su valor real.</p>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Práctica: elegí el gráfico</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Para cada situación, anotá qué tipo de gráfico elegirías y por qué: (a) la cantidad de alumnos por carrera; (b) la cotización del dólar durante un año; (c) qué porcentaje del sueldo se va en alquiler, comida, transporte y ocio; (d) la relación entre la altura y el peso de veinte personas.</li>
+          <li>Compará tus respuestas con las de un compañero y discutan las que difieran. Si dudaste, probá dibujar los datos con dos tipos distintos y mirá cuál se entiende más rápido.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 02 -->
+<section class="block" id="crear">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Armar un gráfico paso a paso</h2>
+  </div>
+  <div class="prose">
+    <h3>Las partes de un gráfico</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Parte</th><th>Qué es</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Título</strong></td><td>Dice de qué trata el gráfico. Tiene que ser específico: <em>Ventas por sucursal, primer trimestre 2026</em>, no <em>Gráfico 1</em>.</td></tr>
+          <tr><td><strong>Series de datos</strong></td><td>Cada conjunto de valores que se dibuja (una serie de columnas del mismo color).</td></tr>
+          <tr><td><strong>Categorías</strong></td><td>Los rótulos que identifican cada dato (los meses, las sucursales).</td></tr>
+          <tr><td><strong>Ejes</strong></td><td>El eje de categorías (horizontal) y el eje de valores (vertical), con su escala.</td></tr>
+          <tr><td><strong>Leyenda</strong></td><td>La referencia que indica qué color corresponde a cada serie.</td></tr>
+          <tr><td><strong>Etiquetas de datos</strong></td><td>Los valores escritos sobre cada barra, columna o porción.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Crear un gráfico</h3>
+    <ol>
+      <li>Seleccioná los datos <strong>incluyendo los encabezados</strong> (categorías y nombres de las series). Con <code>Ctrl</code> podés elegir rangos no contiguos.</li>
+      <li>Andá a la pestaña <strong>Insertar</strong> y elegí un tipo en el grupo <em>Gráficos</em>, o abrí <strong>Gráficos recomendados</strong> para que Excel te sugiera opciones.</li>
+      <li>Con el gráfico seleccionado aparecen las pestañas <strong>Diseño de gráfico</strong> y <strong>Formato</strong>. También los botones <code>+</code> (elementos del gráfico) y el pincel (estilos y colores) junto al gráfico.</li>
+      <li>Para ponerlo en una hoja propia: clic derecho sobre el gráfico → <strong>Mover gráfico</strong> → <em>Hoja nueva</em>.</li>
+    </ol>
+    <div class="xl"><div class="xl-box">
+<table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>A</th><th>B</th><th>C</th></tr></thead><tbody>
+<tr><th class="xl-rn">1</th>
+<td class="h">Mes</td>
+<td class="h">Ventas</td>
+<td class="h">Gastos</td>
+</tr>
+<tr><th class="xl-rn">2</th>
+<td class="">Enero</td>
+<td class="n">420</td>
+<td class="n">310</td>
+</tr>
+<tr><th class="xl-rn">3</th>
+<td class="">Febrero</td>
+<td class="n">380</td>
+<td class="n">290</td>
+</tr>
+<tr><th class="xl-rn">4</th>
+<td class="">Marzo</td>
+<td class="n">510</td>
+<td class="n">350</td>
+</tr>
+<tr><th class="xl-rn">5</th>
+<td class="">Abril</td>
+<td class="n">470</td>
+<td class="n">340</td>
+</tr>
+</tbody></table></div>
+<p class="xl-cap">La primera columna son las <strong>categorías</strong>; cada columna siguiente es una <strong>serie</strong> (Ventas, Gastos). Se selecciona todo, encabezados incluidos.</p>
+</div>
+
+    <h3>Rotular el eje horizontal</h3>
+    <p>Cuando las categorías son números (por ejemplo años), Excel puede confundirlos con una serie de datos. Para corregirlo, con el gráfico seleccionado abrí <strong>Seleccionar datos</strong>, en el cuadro <em>Etiquetas del eje horizontal (categoría)</em> hacé clic en <strong>Editar</strong> y seleccioná con el mouse las celdas que contienen los años.</p>
+
+    <h3>Filas o columnas: cómo lee Excel tus series</h3>
+    <p>Excel decide solo qué es serie y qué es categoría. Si el gráfico quedó "al revés" (por ejemplo, los meses como series y las sucursales como categorías), usá en Diseño de gráfico el botón <strong>Cambiar fila/columna</strong>. Para ver y editar qué datos usa cada serie, abrí <strong>Seleccionar datos</strong>.</p>
+
+    <h3>Filtros del gráfico</h3>
+    <p>Cuando un gráfico tiene muchas series o categorías, no hace falta borrar datos de la tabla para simplificarlo. Con el gráfico seleccionado, hacé clic en el botón del embudo, <strong>Filtros de gráfico</strong>, que aparece junto al gráfico. Ahí tildás o destildás qué <em>series</em> y qué <em>categorías</em> se dibujan, y confirmás con <strong>Aplicar</strong>. Los datos siguen en la tabla; solo dejan de verse en el gráfico, y volvés a tildarlos para mostrarlos de nuevo.</p>
+
+    <h3>Los errores más frecuentes</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que pasa</th><th>Por qué</th><th>Cómo se arregla</th></tr></thead>
+        <tbody>
+          <tr><td>El gráfico incluye la fila de <strong>Totales</strong> como una columna más</td><td>Seleccionaste de más.</td><td>Reducí el rango de datos, sin la fila o columna de totales.</td></tr>
+          <tr><td>Los <strong>años</strong> aparecen como una serie más</td><td>Excel cree que una columna numérica es una serie.</td><td>Dejá vacía la celda del encabezado de los años, o editá la serie en <em>Seleccionar datos</em> y pasá los años a categorías.</td></tr>
+          <tr><td>La <strong>leyenda</strong> dice <em>Serie1, Serie2</em></td><td>Faltó seleccionar los encabezados.</td><td>Editá cada serie en <em>Seleccionar datos</em> y asignale su nombre.</td></tr>
+          <tr><td>El gráfico queda <strong>ilegible</strong></td><td>Demasiados datos o series.</td><td>Graficá solo lo esencial; si hace falta, dividí en dos gráficos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Un gráfico de calidad se puede leer sin explicación: <strong>título claro</strong>, <strong>ejes rotulados</strong> si hay unidades, <strong>una leyenda solo si hace falta</strong> y <strong>sin adornos</strong> que distraigan (nada de 3D o fondos recargados).</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>Ejercicio 31: El Habano de Oro</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá esta tabla de ventas por ciudad y año (datos de práctica, en miles de unidades): <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Ciudad</th><th>2024</th><th>2025</th><th>2026</th></tr><tr><td>Buenos Aires</td><td>120</td><td>135</td><td>150</td></tr><tr><td>Córdoba</td><td>80</td><td>95</td><td>110</td></tr><tr><td>Rosario</td><td>60</td><td>72</td><td>85</td></tr><tr><td>Mendoza</td><td>40</td><td>55</td><td>60</td></tr></table></li>
+          <li>Seleccioná los datos y creá un gráfico de <strong>columnas</strong>.</li>
+          <li>Usá <strong>Cambiar fila/columna</strong> para que las <strong>ciudades</strong> sean las series que aparecen en la leyenda.</li>
+          <li>Si Excel tomó los años como una serie más, abrí <strong>Seleccionar datos</strong> y editá las <strong>etiquetas del eje horizontal</strong> para que muestren los años (2024, 2025, 2026).</li>
+          <li>Cambiá el tipo de gráfico a <strong>Líneas</strong>.</li>
+          <li>Guardá como <code>Ejercicio 31 - El Habano de Oro - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Ejercicio 32: Ventas de comidas</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá esta tabla de ventas de comida del día (datos de práctica), con una fila de <em>Total</em> al final: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Comida</th><th>Ventas</th></tr><tr><td>Pizza</td><td>120</td></tr><tr><td>Empanadas</td><td>95</td></tr><tr><td>Hamburguesas</td><td>80</td></tr><tr><td>Sandwiches</td><td>60</td></tr><tr><td>Ensaladas</td><td>35</td></tr><tr><td>Postres</td><td>28</td></tr><tr><td>Total</td><td>418</td></tr></table></li>
+          <li>Creá un gráfico <strong>circular</strong> <strong>sin incluir la fila Total</strong>.</li>
+          <li>Mostrá las <strong>etiquetas de datos</strong> en porcentaje.</li>
+          <li>Separá la porción <em>Sandwiches</em> arrastrándola hacia afuera.</li>
+          <li>Cambiá el título del gráfico a <em>Ventas Comidas 25/5/26</em>.</li>
+          <li>Guardá como <code>Ejercicio 32 - Ventas Comidas - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>Práctica: filtros de gráfico</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En el gráfico de líneas del Ejercicio 31, abrí <strong>Filtros de gráfico</strong> y ocultá dos de las ciudades. Observá que la tabla no cambia.</li>
+          <li>Volvé a mostrar todas las series y guardá el libro.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- 03 -->
+<section class="block" id="combinados">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Gráficos combinados y selección de datos no contiguos</h2>
+  </div>
+  <div class="prose">
+    <p>A veces querés mostrar dos series de naturaleza distinta en el mismo gráfico: por ejemplo, la <strong>cantidad</strong> de unidades vendidas (columnas) y el <strong>precio promedio</strong> (línea). Si las escalas son muy diferentes (cientos de unidades contra decenas de pesos), una de las series casi desaparece. La solución es un <strong>gráfico combinado con eje secundario</strong>.</p>
+    <ol>
+      <li>Seleccioná los datos y creá un gráfico de columnas.</li>
+      <li>Hacé clic derecho en la serie que querés cambiar → <strong>Cambiar tipo de gráfico de series</strong>.</li>
+      <li>Elegí <strong>Combinado</strong>, asigná <em>Línea</em> a esa serie y tildá <strong>Eje secundario</strong>.</li>
+      <li>Rotulá ambos ejes, para que se sepa qué escala corresponde a cada serie.</li>
+    </ol>
+    <h3>Seleccionar datos no contiguos</h3>
+    <p>No siempre los datos que querés graficar están uno al lado del otro. Seleccioná el primer rango (por ejemplo, los años y una columna de valores), mantené apretada la tecla <code>Ctrl</code> y seleccioná el segundo rango (otra columna). Después insertá el gráfico: Excel dibuja solo lo seleccionado.</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Dos escalas, dos rótulos</p>
+      <p>Un eje secundario mal rotulado confunde: el lector no sabe a qué serie le corresponde cada escala. Usá <strong>títulos de eje</strong> con la unidad y, si podés, el mismo color en la serie y en su eje.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05</span>
+        <h3>Ejercicio 33: Gráfico combinado</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá esta tabla de ventas por región (datos de práctica): <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Mes</th><th>Nordeste</th><th>Noroeste</th></tr><tr><td>Enero</td><td>420</td><td>310</td></tr><tr><td>Febrero</td><td>380</td><td>290</td></tr><tr><td>Marzo</td><td>510</td><td>350</td></tr><tr><td>Abril</td><td>470</td><td>340</td></tr><tr><td>Mayo</td><td>530</td><td>390</td></tr><tr><td>Junio</td><td>495</td><td>370</td></tr></table></li>
+          <li>Creá un gráfico de <strong>columnas</strong> con las series <em>Nordeste</em> y <em>Noroeste</em>.</li>
+          <li>Seleccioná la serie <em>Noroeste</em>, hacé clic derecho y elegí <strong>Cambiar tipo de gráfico de series</strong> → <strong>Línea</strong>.</li>
+          <li>Guardá como <code>Ejercicio 33 - Gráfico combinado - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 06</span>
+        <h3>Práctica: eje secundario</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá esta tabla de práctica: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Mes</th><th>Unidades vendidas</th><th>Precio promedio ($)</th></tr><tr><td>Enero</td><td>850</td><td>42</td></tr><tr><td>Febrero</td><td>720</td><td>45</td></tr><tr><td>Marzo</td><td>930</td><td>41</td></tr><tr><td>Abril</td><td>1010</td><td>39</td></tr><tr><td>Mayo</td><td>880</td><td>44</td></tr><tr><td>Junio</td><td>960</td><td>43</td></tr></table></li>
+          <li>Creá un gráfico de columnas con las dos series y observá por qué el precio casi no se ve.</li>
+          <li>Convertí <em>Precio promedio</em> en una línea sobre el <strong>eje secundario</strong>, rotulá ambos ejes y poné un título al gráfico.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 07</span>
+        <h3>Ejercicio 34: Selección de datos no contiguos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá esta tabla de práctica en la <code>Hoja1</code>, con los años en la columna A: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Años</th><th>España</th><th>Francia</th><th>Italia</th><th>Alemania</th></tr><tr><td>2019</td><td>280</td><td>560</td><td>470</td><td>1420</td></tr><tr><td>2020</td><td>260</td><td>490</td><td>430</td><td>1380</td></tr><tr><td>2021</td><td>310</td><td>590</td><td>520</td><td>1560</td></tr><tr><td>2022</td><td>340</td><td>640</td><td>590</td><td>1690</td></tr><tr><td>2023</td><td>355</td><td>660</td><td>610</td><td>1720</td></tr><tr><td>2024</td><td>372</td><td>690</td><td>630</td><td>1760</td></tr></table></li>
+          <li>Seleccioná el rango de <em>Años</em> y <em>España</em> (<code>A1:B7</code>), mantené apretada la tecla <code>Ctrl</code> y seleccioná el rango de <em>Alemania</em> (<code>E1:E7</code>).</li>
+          <li>Generá un gráfico combinado en la <code>Hoja2</code> (con una de las series como línea).</li>
+          <li>Guardá como <code>Ejercicio 34 - Selección de datos no contiguos - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 08</span>
+        <h3>Ejercicio 35: Delitos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En la <code>Hoja1</code>, cargá esta tabla de práctica (en miles de hechos): <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Año</th><th>Capital</th><th>Provincia</th><th>Resto del país</th></tr><tr><td>2020</td><td>120</td><td>310</td><td>240</td></tr><tr><td>2021</td><td>132</td><td>335</td><td>251</td></tr><tr><td>2022</td><td>141</td><td>348</td><td>263</td></tr><tr><td>2023</td><td>138</td><td>352</td><td>270</td></tr><tr><td>2024</td><td>150</td><td>371</td><td>282</td></tr></table></li>
+          <li>Graficá la evolución de <strong>Capital</strong> con un gráfico de <strong>líneas</strong>, la de <strong>Provincia</strong> con un gráfico <strong>circular</strong> y la del <strong>resto del país</strong> con un gráfico de <strong>barras</strong>.</li>
+          <li>Insertá una nueva hoja (con el botón <code>+</code> de la barra de pestañas o Inicio → Insertar → <em>Insertar hoja</em>) y llamala <code>Comercio</code>.</li>
+          <li>En <code>Comercio</code>, cargá una tabla de <em>Exportaciones</em> e <em>Importaciones</em> por año (datos de práctica) y calculá el <strong>Saldo</strong> (exportaciones menos importaciones).</li>
+          <li>Guardá como <code>Ejercicio 35 - Delitos - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 04 -->
+<section class="block" id="pegado">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Pegado especial y trabajo con hojas</h2>
+  </div>
+  <div class="prose">
+    <p>Cuando copiás una celda con una fórmula y la pegás en otra hoja o libro, la fórmula se vuelve a calcular con referencias nuevas, y puede dar un error o un valor distinto. Para controlar <em>qué</em> se pega existe el <strong>Pegado especial</strong>.</p>
+    <p>Copiá con <code>Ctrl+C</code>, y después en Inicio → <svg class="tool-icon"><use href="#ti-paste"></use></svg> <strong>Pegar</strong> (la flecha de abajo) → <strong>Pegado especial</strong>, o usá <code>Ctrl+Alt+V</code>.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Opción</th><th>Qué pega</th><th>Cuándo conviene</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Valores</strong></td><td>Solo el resultado, sin la fórmula.</td><td>Cuando vas a mover o enviar datos y no querés que cambien ni dependan del original.</td></tr>
+          <tr><td><strong>Fórmulas</strong></td><td>La fórmula, sin el formato.</td><td>Reusar el cálculo en otra zona con el formato de destino.</td></tr>
+          <tr><td><strong>Formatos</strong></td><td>Solo el aspecto (colores, bordes, número).</td><td>Copiar el estilo de una tabla a otra.</td></tr>
+          <tr><td><strong>Transponer</strong></td><td>Intercambia filas por columnas.</td><td>Cuando los datos están girados respecto de lo que necesitás.</td></tr>
+          <tr><td><strong>Vincular</strong></td><td>Pega una referencia a la celda original.</td><td>Que el destino se actualice cuando cambie el origen.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Referenciar y copiar hojas</h3>
+    <p>Una fórmula puede apuntar a otra hoja con la sintaxis <code>=Hoja2!B5</code> (si el nombre tiene espacios, va entre apóstrofes: <code>='Hoja ventas'!B5</code>). Para copiar una hoja completa, mantené <code>Ctrl</code> y arrastrá la pestaña, o clic derecho sobre la pestaña → <strong>Mover o copiar</strong> (tildando <em>Crear una copia</em>).</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Valores para congelar</p>
+      <p>Para pasar un resultado a un mail o a otro libro sin que cambie al actualizarse, pegá como <strong>valores</strong>. Si después vas a necesitar el cálculo, guardá antes el original.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 09</span>
+        <h3>Ejercicio 36: Exportaciones, pegado especial</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En la <code>Hoja1</code> armá esta tabla de exportaciones por jurisdicción (en millones de US$, datos de práctica). Las filas de <em>región</em> son la suma de sus provincias, y la última fila es el <em>promedio nacional</em>: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Jurisdicción</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>Promedio</th></tr><tr><td>Región Pampeana</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Buenos Aires</td><td>900</td><td>980</td><td>1010</td><td>1100</td><td></td></tr><tr><td>Córdoba</td><td>620</td><td>700</td><td>710</td><td>760</td><td></td></tr><tr><td>Santa Fe</td><td>540</td><td>590</td><td>615</td><td>640</td><td></td></tr><tr><td>Región Patagonia</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Chubut</td><td>310</td><td>350</td><td>340</td><td>380</td><td></td></tr><tr><td>Neuquén</td><td>420</td><td>470</td><td>510</td><td>560</td><td></td></tr><tr><td>Santa Cruz</td><td>250</td><td>270</td><td>285</td><td>300</td><td></td></tr><tr><td>Región NOA</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Salta</td><td>180</td><td>210</td><td>205</td><td>230</td><td></td></tr><tr><td>Tucumán</td><td>150</td><td>165</td><td>170</td><td>180</td><td></td></tr><tr><td>Jujuy</td><td>90</td><td>100</td><td>105</td><td>115</td><td></td></tr><tr><td>Promedio nacional</td><td></td><td></td><td></td><td></td><td></td></tr></table></li>
+          <li>Calculá la columna <em>Promedio</em> con <code>=PROMEDIO</code> y copiá la tabla completa de la <code>Hoja1</code>.</li>
+          <li>En la <code>Hoja2</code>, pegala con <strong>Pegado especial → Valores</strong>. Eliminá las filas de las regiones y ordená alfabéticamente por provincia.</li>
+          <li>En una columna nueva, evaluá con <strong>SI</strong> si el promedio de cada provincia superó al promedio nacional: <code>=SI(F2&gt;$F$11;&quot;Superó el promedio&quot;;&quot;No superó el promedio&quot;)</code> (ajustá la fila según la ubicación del promedio nacional).</li>
+          <li>En la <code>Hoja3</code>, creá un gráfico combinado con las exportaciones de cada región.</li>
+          <li>Renombrá las hojas como <code>Regiones</code>, <code>Provincias</code> y <code>Gráficos</code>.</li>
+          <li>Guardá como <code>Ejercicio 36 - Exportaciones - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 05 -->
+<section class="block" id="impresion">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Preparar la planilla para imprimir</h2>
+  </div>
+  <div class="prose">
+    <p>Una planilla que se ve bien en pantalla puede imprimirse partida en seis hojas, con una columna suelta en la última. Antes de imprimir conviene configurar la página. Todo está en la pestaña <strong>Diseño de página</strong>.</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Qué querés controlar</th><th>Herramienta</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td>Dirección de la hoja</td><td><svg class="tool-icon"><use href="#ti-orientation"></use></svg> Orientación</td><td>Vertical para listas largas; horizontal para tablas anchas.</td></tr>
+          <tr><td>Tamaño de papel</td><td><svg class="tool-icon"><use href="#ti-paper-size"></use></svg> Tamaño</td><td>A4 en la mayoría de los casos.</td></tr>
+          <tr><td>Márgenes</td><td><svg class="tool-icon"><use href="#ti-margins"></use></svg> Márgenes</td><td>Normal, estrecho o personalizado. En <em>Márgenes personalizados</em> podés <strong>centrar en la página</strong> horizontal y verticalmente.</td></tr>
+          <tr><td>Qué se imprime</td><td>Área de impresión</td><td>Seleccioná el rango y elegí <em>Establecer área de impresión</em>.</td></tr>
+          <tr><td>Títulos en cada hoja</td><td>Imprimir títulos</td><td>En <em>Repetir filas en extremo superior</em> escribí <code>$1:$1</code> para que el encabezado salga en todas las páginas.</td></tr>
+          <tr><td>Dónde corta cada hoja</td><td>Saltos de página</td><td>Seleccioná la fila (o columna) donde querés que empiece la hoja nueva y usá Insertar salto de página. Se ve como una línea en la Vista previa de salto de página (pestaña Vista). Para sacarlo, <em>Quitar salto de página</em>.</td></tr>
+          <tr><td>Que entre en pocas hojas</td><td>Ajustar a</td><td>En <em>Ancho</em> elegí 1 página y dejá <em>Alto</em> en automático.</td></tr>
+          <tr><td>Encabezado y pie</td><td><svg class="tool-icon"><use href="#ti-header"></use></svg> <svg class="tool-icon"><use href="#ti-footer"></use></svg> Encabezado y pie</td><td>Insertá una imagen (un logo), el nombre del archivo, la fecha o el número de página con <code>&amp;[Página]</code> de <code>&amp;[Páginas]</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Antes de imprimir, mirá siempre la <strong>vista preliminar</strong> (Archivo → Imprimir, o <code>Ctrl+P</code>). Con la <strong>Vista Diseño de página</strong> (pestaña Vista) ves los límites de cada hoja mientras trabajás.</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Gráficos cortados</p>
+      <p>Si tu tabla tiene un gráfico, verificá en la vista preliminar que no quede cortado entre dos páginas: ajustá la escala o movelo antes de imprimir.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 10</span>
+        <h3>Ejercicio 37: Vista preliminar y configurar página</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Cargá en una hoja el listado de un censo de práctica: unas cuarenta filas con <code>Provincia | Población | Hogares | Viviendas | Superficie</code>.</li>
+          <li>Configurá la hoja en <strong>A4 horizontal</strong> y marcá <strong>centrar en la página</strong> (horizontal y vertical) desde la solapa Márgenes del cuadro Configurar página.</li>
+          <li>Personalizá el <strong>encabezado</strong> insertando una imagen (por ejemplo, un logo) y el <strong>pie de página</strong> con numeración automática (<em>Página 1 de 2</em>).</li>
+          <li>Configurá <em>Repetir filas en extremo superior</em> con <code>$1:$1</code>.</li>
+          <li>Revisá la vista preliminar y guardá como <code>Ejercicio 37 - Censo - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 11</span>
+        <h3>Práctica: saltos de página</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En la hoja del censo, insertá un <strong>salto de página</strong> antes de la fila 21, mirá el resultado en la <em>Vista previa de salto de página</em> y después quitalo.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 06 -->
+<section class="block" id="colaboracion">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Trabajo colaborativo con OneDrive</h2>
+  </div>
+  <div class="prose">
+    
+
+    <p>Con Excel y <strong>OneDrive</strong> podés guardar un libro en la nube y editarlo <strong>entre varias personas a la vez</strong>. Cada cambio se guarda y se ve en tiempo real, con el cursor de colores de cada colaborador. Así no existen versiones sueltas con nombres como <em>final_v2_ahora_sí</em>.</p>
+    <div class="tools-container">
+      <div class="app-row">
+        <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img class="row-icon" src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+          <div class="row-text">
+            <span class="row-name">Excel</span>
+            <span class="row-domain">office.com</span>
+          </div>
+        </a>
+        <div class="tags">
+          <span class="pill pill-freemium">Freemium</span>
+          <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+        </div>
+      </div>
+    </div>
+    <div class="tools-container">
+      <div class="app-row">
+        <a class="app-row-link" href="https://onedrive.live.com" target="_blank" rel="noopener">
+          <img class="row-icon" src="../img/apps/Microsoft%20-%20OneDrive.png" alt="OneDrive">
+          <div class="row-text">
+            <span class="row-name">OneDrive</span>
+            <span class="row-domain">onedrive.live.com</span>
+          </div>
+        </a>
+        <div class="tags">
+          <span class="pill pill-freemium">Freemium</span>
+          <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+        </div>
+      </div>
+    </div>
+    <h3>Compartir un libro</h3>
+    <ol>
+      <li>Guardá el libro en OneDrive (Archivo → <strong>Guardar como</strong> → OneDrive).</li>
+      <li>Hacé clic en el botón <strong>Compartir</strong> <svg class="tool-icon"><use href="#ti-share"></use></svg> (arriba a la derecha).</li>
+      <li>Escribí los mails de las personas, o generá un vínculo.</li>
+      <li>Elegí el permiso: <strong>Puede editar</strong> o <strong>Puede ver</strong>.</li>
+    </ol>
+    <h3>Comentarios y control de cambios</h3>
+    <p>Para dejar una observación sin tocar el dato, hacé clic derecho sobre la celda → <strong>Nuevo comentario</strong>, y mencioná a una persona con <code>@</code>. El <strong>Historial de versiones</strong> (Archivo → Información) permite volver a una versión anterior si alguien rompió algo.</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Permisos</p>
+      <p>Antes de compartir con permiso de edición, pensá quién puede tocar qué. Una celda de fórmula borrada por error afecta a todos. Compartí con <em>Puede ver</em> a quien solo necesita consultar.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 12</span>
+        <h3>Ejercicio 38: Ejercicio colaborativo</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Formen grupos de 5 personas. Una crea el libro en OneDrive y lo comparte con las demás, con permiso para editar.</li>
+          <li>Armen una tabla comparativa con los precios de la canasta básica en 5 mercados distintos: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Producto</th><th>Mercado 1</th><th>Mercado 2</th><th>Mercado 3</th><th>Mercado 4</th><th>Mercado 5</th><th>Promedio</th></tr><tr><td>Asado de novillito 1 kg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Pan 1 kg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Leche entera 1 L</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Docena de huevos</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Yerba mate 1 kg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Total</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></li>
+          <li>Cada integrante carga los precios de un mercado. Calculen el <em>Promedio</em> de cada producto y los <em>Totales</em>.</li>
+          <li>Apliquen <strong>formato condicional</strong> en verde para los valores que están <strong>por debajo del promedio</strong>.</li>
+          <li>Inserten un <strong>gráfico comparativo</strong> de los precios.</li>
+          <li>Dejen un comentario con mención (<code>@</code>) en un precio que quieran discutir y revisen el historial de versiones.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 07 -->
+<section class="block" id="integradores">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Ejercicios integradores</h2>
+  </div>
+  <div class="prose">
+    <p>Los dos ejercicios finales combinan lo que aprendiste a lo largo de las cuatro clases: fórmulas, funciones, formato condicional, ordenamiento, gráficos y hojas. Cada resultado tiene que salir de una fórmula y no de un número escrito a mano.</p>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 13</span>
+        <h3>Ejercicio 39: Cooperativa de farmacia</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En la <code>Hoja1</code>, llamada <code>Costo</code>, cargá y formateá esta tabla de práctica con droguería, presentación y costo: <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Producto</th><th>Droguería</th><th>Presentación</th><th>Costo</th></tr><tr><td>Ibuprofeno 400 mg</td><td>Droguería Sur</td><td>x 20</td><td>2400</td></tr><tr><td>Paracetamol 500 mg</td><td>Droguería Sur</td><td>x 16</td><td>1300</td></tr><tr><td>Amoxicilina 500 mg</td><td>Droguería Norte</td><td>x 12</td><td>5200</td></tr><tr><td>Omeprazol 20 mg</td><td>Droguería Norte</td><td>x 14</td><td>3100</td></tr><tr><td>Loratadina 10 mg</td><td>Droguería Sur</td><td>x 10</td><td>1900</td></tr><tr><td>Diclofenac 50 mg</td><td>Droguería Norte</td><td>x 20</td><td>2700</td></tr><tr><td>Ibuprofeno 400 mg</td><td>Droguería Norte</td><td>x 10</td><td>1450</td></tr><tr><td>Paracetamol 500 mg</td><td>Droguería Norte</td><td>x 8</td><td>800</td></tr></table></li>
+          <li>En la <code>Hoja2</code>, llamada <code>Lista de precios</code>, calculá: <em>Precio de lista</em> = costo por 1,473; <em>P.A.M.I.</em> = precio de lista por (1 - 0,326); <em>I.O.M.A.</em> = precio de lista por (1 - 0,189); <em>Tarjetas de crédito</em> = precio de lista por 1,10. Poné los coeficientes en celdas aparte y fijalos con <code>$</code>.</li>
+          <li>Ordená la tabla de forma ascendente por <em>Producto</em>, <em>Presentación</em> y <em>Precio</em>. Calculá el <strong>precio máximo</strong> y el <strong>precio mínimo</strong> con funciones.</li>
+          <li>En la <code>Hoja3</code>, llamada <code>Gráficos</code>, armá un gráfico de columnas con tres medicamentos seleccionados.</li>
+          <li>Guardá como <code>Ejercicio 39 - Cooperativa de Farmacia - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 14</span>
+        <h3>Ejercicio 40: Estadísticas de alumnos</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>En la <code>Hoja1</code>, cargá esta tabla de práctica (los números son inventados): <table class="tbl-activity" style="margin-top:0.5rem"><tr><th>Universidad</th><th>Nuevos inscriptos</th><th>Reinscriptos</th><th>Egresados</th><th>Profesores</th><th>Auxiliares</th></tr><tr><td>Univ. del Litoral Norte</td><td>18200</td><td>41500</td><td>5200</td><td>2100</td><td>3900</td></tr><tr><td>Univ. de Cuyo Sur</td><td>9800</td><td>26100</td><td>2900</td><td>1500</td><td>2600</td></tr><tr><td>Univ. Metropolitana</td><td>21400</td><td>52800</td><td>6100</td><td>2600</td><td>4700</td></tr><tr><td>Univ. de la Costa</td><td>4300</td><td>11200</td><td>1200</td><td>700</td><td>1100</td></tr><tr><td>UNQ (datos de práctica)</td><td>6900</td><td>17600</td><td>1900</td><td>950</td><td>1500</td></tr><tr><td>Univ. del Oeste</td><td>3100</td><td>7400</td><td>800</td><td>480</td><td>760</td></tr><tr><td>Univ. Patagónica</td><td>2600</td><td>6300</td><td>700</td><td>420</td><td>610</td></tr><tr><td>Univ. Central</td><td>15700</td><td>36900</td><td>4300</td><td>1900</td><td>3400</td></tr></table></li>
+          <li>Calculá: <em>Total alumnos</em> = nuevos inscriptos + reinscriptos; <em>Total docentes</em> = profesores + auxiliares; <em>Tasa docentes/alumnos</em> = total docentes / total alumnos; <em>% Egresados</em> = egresados / total alumnos.</li>
+          <li>Calculá <em>Tamaño de la universidad</em> con <code>=SI(total_alumnos&gt;40000;&quot;Universidades grandes&quot;;&quot;Chicas y medianas&quot;)</code>.</li>
+          <li>Aplicá <strong>formato condicional</strong> para resaltar en rojo las <em>Universidades grandes</em>.</li>
+          <li>Calculá los <strong>totales generales</strong>, los <strong>promedios</strong>, los <strong>máximos</strong> y los <strong>mínimos</strong>.</li>
+          <li>Ordená la tabla por cantidad de alumnos, de forma ascendente.</li>
+          <li>En la <code>Hoja2</code>, llamada <code>Gráficos</code>, armá: un gráfico circular de alumnos de la UNQ (nuevos vs. reinscriptos), un gráfico de docentes de la UNQ (profesores vs. auxiliares), un gráfico de la tasa docentes/alumnos de las primeras 5 universidades y un gráfico combinado de nuevos inscriptos y reinscriptos de las primeras 5 universidades.</li>
+          <li>Guardá como <code>Ejercicio 40 - tu apellido.xlsx</code>.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Cerraste el módulo con las herramientas que más se usan en el trabajo real: gráficos que comunican, planillas listas para imprimir y libros que se editan entre varias personas. Con las cuatro clases, podés armar desde una planilla de gastos hasta un tablero de seguimiento completo.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-1" aria-label="Marcar como hecho"></td><td><label for="chk-x4-1">Elegí el tipo de gráfico según lo que quería mostrar y justifiqué la decisión.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-2" aria-label="Marcar como hecho"></td><td><label for="chk-x4-2">Armé un gráfico de columnas, lo cambié a líneas y corregí series y etiquetas del eje (Ejercicio 31).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-3" aria-label="Marcar como hecho"></td><td><label for="chk-x4-3">Armé un gráfico circular respetando sus condiciones (Ejercicio 32).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-4" aria-label="Marcar como hecho"></td><td><label for="chk-x4-4">Armé un gráfico combinado y seleccioné datos no contiguos con la tecla Ctrl (Ejercicios 33 y 34).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-5" aria-label="Marcar como hecho"></td><td><label for="chk-x4-5">Grafiqué con distintos tipos de gráfico y agregué una hoja nueva con un saldo calculado (Ejercicio 35).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-6" aria-label="Marcar como hecho"></td><td><label for="chk-x4-6">Usé el pegado especial, referencias entre hojas y SI para comparar con el promedio (Ejercicio 36).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-7" aria-label="Marcar como hecho"></td><td><label for="chk-x4-7">Configuré la impresión con orientación, centrado, encabezado, pie y títulos repetidos (Ejercicio 37).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-8" aria-label="Marcar como hecho"></td><td><label for="chk-x4-8">Trabajé en un libro compartido en OneDrive con formato condicional y un gráfico comparativo (Ejercicio 38).</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-x4-9" aria-label="Marcar como hecho"></td><td><label for="chk-x4-9">Resolví los ejercicios integradores combinando fórmulas, SI, ordenamiento y gráficos (Ejercicios 39 y 40).</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: armo planillas con fórmulas y funciones, las visualizo con gráficos, las preparo para imprimir y las comparto en la nube para trabajar en equipo.</p>
+    </div>
+
+    <h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
+    <div class="qr-row qr-t-verde">
+      <div class="qr-row-label">Excel</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Pantalla y movimiento</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cuadro de nombres: escribí una celda y <code>Enter</code> para saltar a ella</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Primera celda: <code>Ctrl+Inicio</code> (Mac: <code>Ctrl+Fn+←</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Última celda con datos: <code>Ctrl+Fin</code> (Mac: <code>Ctrl+Fn+→</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Borde del bloque de datos: <code>Ctrl+Flecha</code> (Mac: <code>⌘+Flecha</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rango: primera y última celda con dos puntos, por ejemplo <code>A2:A10</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Cargar y corregir</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Confirmar: <code>Enter</code>, <code>Tab</code> o <code>✓</code>. Cancelar: <code>Esc</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar una celda: <code>F2</code> o doble clic (Mac: <code>Ctrl+U</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Deshacer: <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Un número alineado a la izquierda es texto: revisá la coma decimal</span></div>
+          </div>
+          <div class="qr-tip"><code>#####</code> significa columna angosta, no error de cálculo.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Hojas y archivo</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Renombrar hoja: doble clic en la pestaña (máximo 31 caracteres)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copiar hoja: <code>Ctrl</code> + arrastrar la pestaña (Mac: <code>Opción</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Guardar: Archivo → Guardar como, formato <code>.xlsx</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Formato de celdas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Formato de celdas: <code>Ctrl+1</code> (Mac: <code>⌘+1</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bordes: primero color, después estilo, por último ubicación</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Formato personalizado con unidad: <code>0&quot;&nbsp;m&quot;</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinar y centrar solo para títulos, nunca dentro de los datos</span></div>
+          </div>
+          <div class="qr-tip">El formato <code>%</code> multiplica por 100 lo que ya está escrito.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Series y orden</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Controlador de relleno: cuadradito de la esquina de la celda activa</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Series con control: Inicio → Rellenar → Series</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar: Datos → Ordenar, con <em>Mis datos tienen encabezados</em></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar siempre la tabla completa, nunca una sola columna</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Buscar: <code>Ctrl+B</code> (Mac: <code>⌘+F</code>). Reemplazar: <code>Ctrl+L</code> (Mac: <code>Control+H</code>)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y operadores</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Toda fórmula empieza con <code>=</code> y apunta a celdas, no a valores</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Operadores: <code>+  -  *  /  %  ^</code>. Texto: <code>&amp;</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autosuma: <code>Alt+=</code> (Mac: <code>⌘+Shift+T</code>). Verificá el rango propuesto</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otra hoja: <code>=Hoja1!C4</code> (con espacios: <code>='Mi hoja'!C4</code>)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Referencias</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Relativa: <code>B2</code>. Absoluta: <code>$B$2</code>. Mixtas: <code>$B2</code> y <code>B$2</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar tipo de referencia: <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Porcentaje del total: <code>=B2/$B$7</code> con formato %</span></div>
+          </div>
+          <div class="qr-tip">Si al arrastrar aparece <code>#¡DIV/0!</code>, falta fijar una referencia.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Porcentajes</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">El 16% de B2: <code>=B2*16%</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Aumentar 35%: <code>=B2*1,35</code>. Descontar 15%: <code>=B2*0,85</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Qué porcentaje es A de B: <code>=A2/B2</code> con formato %</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones básicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Estructura: <code>=NOMBRE(arg1; arg2)</code>. Rango continuo <code>A1:A8</code>, celdas sueltas <code>A1;A8</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code> · <code>=PROMEDIO(rango)</code> · <code>=MAX(rango)</code> · <code>=MIN(rango)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> (números) · <code>=CONTARA(rango)</code> (no vacías)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=POTENCIA(base; exponente)</code> igual a <code>^</code> · <code>=RAIZ(número)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Asistente: botón <code>fx</code> de la barra de fórmulas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Errores comunes</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>#####</code> columna angosta · <code>#¡DIV/0!</code> división por cero o celda vacía</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>#¡VALOR!</code> tipo de dato incorrecto · <code>#¿NOMBRE?</code> función mal escrita</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>#¡REF!</code> referencia que ya no existe · <code>#N/A</code> valor no disponible</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Formato condicional</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Inicio → Formato condicional → Resaltar reglas / Nueva regla</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Varios tramos: una regla por cada tramo sobre el mismo rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Administrar reglas para editar o borrar</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones condicionales</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SI(prueba; si_verdadero; si_falso)</code>: los textos van entre comillas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR.SI(rango; criterio)</code>: <code>&quot;&gt;=25&quot;</code> o <code>&quot;Femenino&quot;</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMAR.SI(rango; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=Y(cond1; cond2)</code>: todas se cumplen · <code>=O(cond1; cond2)</code>: al menos una</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Anidar: <code>=SI(c1; v1; SI(c2; v2; v3))</code>. Un SI abierto = un paréntesis a cerrar</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Operadores de comparación: <code>=  &lt;&gt;  &lt;  &lt;=  &gt;  &gt;=</code></span></div>
+          </div>
+          <div class="qr-tip">Para armar la prueba lógica: ¿de qué depende? ¿dónde está el dato? ¿qué tiene que valer?</div>
+        </div>
+      </div>
+    </div><div class="qr-row qr-t-verde">
+      <div class="qr-row-label">Excel</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Validación y nombres</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Datos → Validación de datos → Permitir: Lista</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Origen: un rango, un nombre (<code>=mis_opciones</code>) o una lista con <code>;</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Nombrar un rango: escribirlo en el Cuadro de nombres. Administrador: <code>Ctrl+F3</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Filtros y subtotales</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Activar filtros: <code>Ctrl+Shift+L</code> (Mac: <code>⌘+Shift+F</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Subtotal: Datos → Subtotal, con la tabla <strong>ordenada</strong> por el grupo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Filas azules = hay un filtro activo</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Búsqueda</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=BUSCARV(valor; matriz; columna; FALSO)</code>: el valor buscado va en la 1ª columna de la matriz</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fijar la matriz con <code>$</code> para copiar la fórmula</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>#N/A</code> = el valor no está en la primera columna</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=BUSCARX(valor; dónde_buscar; qué_traer)</code>: Excel 2021 y Microsoft 365</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fechas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Restar fechas da días: cambiar el formato del resultado a General</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=HOY()</code> se actualiza sola; <code>=AHORA()</code> suma la hora</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fecha fija de hoy: <code>Ctrl+;</code> (Mac: <code>Control+;</code>)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Gráficos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Comparar: columnas o barras. Evolución: líneas. Partes de un total: circular (una serie, hasta 7 categorías, sin negativos)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Seleccionar los datos <strong>con encabezados</strong> y después Insertar → Gráficos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Se corrige en <strong>Seleccionar datos</strong> y <strong>Cambiar fila/columna</strong></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Filtros de gráfico</strong> (embudo): oculta series y categorías sin borrar datos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinado: cambiar el tipo de una serie y tildar <strong>Eje secundario</strong></span></div>
+          </div>
+          <div class="qr-tip">Un gráfico claro tiene título específico y ejes rotulados.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Pegado especial</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Ctrl+Alt+V</code>: valores, fórmulas, formatos, transponer, vincular</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otra hoja: <code>=Hoja2!B5</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copiar una hoja: <code>Ctrl</code> + arrastrar la pestaña</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Impresión</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Diseño de página: orientación, márgenes, área de impresión</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Repetir filas: <code>$1:$1</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ajustar a 1 página de ancho</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Salto de página: seleccionar la fila + Insertar salto de página (se ve en Vista → Vista previa de salto de página)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Pie con <code>&amp;[Página]</code>. Vista previa: <code>Ctrl+P</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Colaboración</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Guardar en OneDrive y usar <strong>Compartir</strong></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Permisos: Puede editar / Puede ver</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Comentarios con <code>@</code> e historial de versiones</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Filtros de gráfico</span><p class="gloss-def">Botón del gráfico que permite mostrar u ocultar series y categorías sin borrarlas de la tabla.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Salto de página</span><p class="gloss-def">Marca que indica dónde termina una hoja impresa y empieza la siguiente.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Serie de datos</span><p class="gloss-def">Conjunto de valores que se dibuja en un gráfico, normalmente una columna o una fila de la tabla.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Categoría</span><p class="gloss-def">Rótulo que identifica cada dato de una serie, por ejemplo un mes o una sucursal.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico circular</span><p class="gloss-def">Gráfico que muestra cómo se reparte un total entre partes. Admite una sola serie.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico de dispersión</span><p class="gloss-def">Gráfico que ubica puntos según dos valores numéricos, para ver la relación entre variables.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Eje secundario</span><p class="gloss-def">Segunda escala vertical que permite graficar en un mismo gráfico series con unidades muy distintas.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico combinado</span><p class="gloss-def">Gráfico que mezcla dos tipos, por ejemplo columnas y líneas.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Leyenda</span><p class="gloss-def">Referencia que indica qué color o marca corresponde a cada serie.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Pegado especial</span><p class="gloss-def">Opción para pegar solo valores, fórmulas, formatos u otros aspectos del contenido copiado.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Transponer</span><p class="gloss-def">Intercambiar las filas por las columnas de un rango.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Área de impresión</span><p class="gloss-def">Rango de la hoja que se va a imprimir.</p></div>
+      <div class="gloss-item"><span class="gloss-term">OneDrive</span><p class="gloss-def">Servicio de almacenamiento en la nube de Microsoft que permite compartir y editar archivos en simultáneo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Historial de versiones</span><p class="gloss-def">Registro de las versiones guardadas de un libro, que permite recuperar una anterior.</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Excel y Hoja de Cálculo de Google</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
+      <li>Sánchez, C. <em>Planilla de cálculo: Microsoft Excel 2007</em>. Guía de Informática, material de cátedra.</li>
+      <li>Ceballos, M. <em>Módulo sobre herramientas de Excel</em>. Informática para Diplomatura y Enfermería 1, setiembre de 2019.</li>
+      <li>Material de cátedra. <em>Tutorial de funciones en Excel 2007</em> y <em>Tutorial de gráficos en Excel 2007</em>, para Diplomatura.</li>
+      <li>Microsoft. <em>Soporte de Microsoft Excel</em>. <a href="https://support.microsoft.com/es-es/excel" target="_blank" rel="noopener"><code>support.microsoft.com/es-es/excel</code></a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+<script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

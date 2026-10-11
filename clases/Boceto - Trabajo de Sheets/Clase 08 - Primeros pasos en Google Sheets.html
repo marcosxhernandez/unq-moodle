@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 08 - Primeros pasos en Google Sheets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../../css/guia-estilo.css">
+<style>
+  /* Acento: Planilla de cálculo = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+
+  /* Mini planilla ilustrativa (reemplaza capturas): namespace xl-*, no choca con guia-estilo.css */
+  .xl{ margin:1rem 0 1.2rem; break-inside:avoid-page; }
+  .xl-box{ display:inline-block; max-width:100%; border:1px solid #cfcdd6; border-radius:6px; background:#fff; overflow:hidden; }
+  .xl-fbar{ display:flex; align-items:center; gap:0; border-bottom:1px solid #cfcdd6; background:#fafafa; font-family:var(--sans); font-size:.8rem; }
+  .xl-name{ min-width:3.6rem; padding:4px 10px; border-right:1px solid #cfcdd6; font-weight:600; color:#3b3a45; text-align:center; }
+  .xl-fx{ padding:4px 9px; border-right:1px solid #cfcdd6; font-family:Georgia, serif; font-style:italic; font-weight:700; color:#6b6a76; }
+  .xl-fval{ padding:4px 12px; font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.78rem; color:#1f1e26; }
+  table.xl-grid{ border-collapse:collapse; margin:0; width:auto; font-family:var(--sans); font-size:.8rem; background:#fff; border:0; }
+  table.xl-grid th{ background:#f1f1f4; color:#6b6a76; font-weight:500; border:1px solid #d9d8de; padding:2px 10px; text-align:center; font-size:.7rem; text-transform:none; letter-spacing:0; }
+  table.xl-grid th.xl-rn{ width:1.8rem; padding:2px 6px; }
+  table.xl-grid td{ border:1px solid #e3e2e8; padding:3px 10px; min-width:4.8rem; height:1.45rem; white-space:nowrap; color:#1f1e26; background:#fff; text-align:left; vertical-align:middle; }
+  table.xl-grid td.n{ text-align:right; }
+  table.xl-grid td.c{ text-align:center; }
+  table.xl-grid td.h{ background:var(--acento-tint); font-weight:700; text-align:center; color:var(--acento-deep); white-space:normal; }
+  table.tbl-activity th{ text-align:left; }
+  table.xl-grid td.t{ background:var(--acento); color:#fff; font-weight:700; text-align:center; }
+  table.xl-grid td.sel{ outline:2px solid var(--acento); outline-offset:-2px; }
+  table.xl-grid td.hl{ background:#fff3c4; }
+  table.xl-grid td.bad{ background:#fde4e8; color:#8a1130; }
+  table.xl-grid td.good{ background:#dff3e6; color:#145c28; }
+  table.xl-grid td.mid{ background:#dbe8fb; color:#1f3f7d; }
+  table.xl-grid td.b{ font-weight:700; }
+  table.xl-grid td.m{ font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.74rem; }
+  table.xl-grid td.e{ background:#fafafa; }
+  .xl-cap{ margin:.35rem 0 0; font-size:.82rem; color:var(--muted); line-height:1.45; }
+  @media print{
+    .xl{ margin:8pt 0 9pt; }
+    .xl-fbar{ font-size:7.4pt; }
+    table.xl-grid{ font-size:7.6pt; }
+    table.xl-grid th{ font-size:6.6pt; padding:1pt 6pt; }
+    table.xl-grid td{ padding:2pt 6pt; min-width:17mm; height:auto; }
+    table.xl-grid td.m{ font-size:7pt; }
+    .xl-cap{ font-size:7.8pt; }
+    .qr-row{ break-inside:auto !important; }
+    .qr-cell{ break-inside:avoid; }
+  }
+
+  @page{
+    @top-right{
+      content:"Clase 08 · Primeros pasos en Sheets";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-bold" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="16"  fill="currentColor">N</text></symbol>
+<symbol id="ti-italic" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="16" font-style="italic" fill="currentColor">K</text></symbol>
+<symbol id="ti-underline" viewBox="0 0 24 24"><text x="12" y="17.0" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="14"  fill="currentColor">S</text><line x1="6" y1="20" x2="18" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-align-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="10.5" x2="14" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="4" y1="19.5" x2="12" y2="19.5"/></g></symbol>
+<symbol id="ti-align-center" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="10.5" x2="17" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="8" y1="19.5" x2="16" y2="19.5"/></g></symbol>
+<symbol id="ti-align-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="10" y1="10.5" x2="20" y2="10.5"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="12" y1="19.5" x2="20" y2="19.5"/></g></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke-width="1.3"/><line x1="12" y1="12" x2="12" y2="19.5" stroke-width="1.3"/></g></symbol>
+<symbol id="ti-fill-color" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L11 6 L17 12 L11 18 Z"/><path d="M19 14.5 C19.8 15.8 20.2 16.4 20.2 17 A1.2 1.2 0 0 1 17.8 17 C17.8 16.4 18.2 15.8 19 14.5 Z" fill="currentColor" stroke-width="1"/></g><line x1="4" y1="21" x2="20" y2="21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-font-color" viewBox="0 0 24 24"><text x="12" y="17.4" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="15"  fill="currentColor">A</text><line x1="5" y1="20.5" x2="19" y2="20.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-borders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1"/><line x1="12" y1="4" x2="12" y2="20" stroke-dasharray="1.6 2.2"/><line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="1.6 2.2"/></g></symbol>
+<symbol id="ti-wrap-cell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><path d="M4 12 H16.5 A2.5 2.5 0 0 1 16.5 17 H11"/><path d="M13 14.6 L10.6 17 L13 19.4"/></g></symbol>
+<symbol id="ti-sigma" viewBox="0 0 24 24"><text x="12" y="18.1" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="17"  fill="currentColor">Σ</text></symbol>
+<symbol id="ti-fx" viewBox="0 0 24 24"><text x="12" y="16.7" text-anchor="middle" font-family="Georgia, serif" font-weight="600" font-size="13" font-style="italic" fill="currentColor">fx</text></symbol>
+<symbol id="ti-percent" viewBox="0 0 24 24"><text x="12" y="17.8" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="16"  fill="currentColor">%</text></symbol>
+<symbol id="ti-money" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.3" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="12"  fill="currentColor">$</text></symbol>
+<symbol id="ti-sort" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="12" y2="6"/><line x1="4" y1="11" x2="9.5" y2="11"/><line x1="4" y1="16" x2="7" y2="16"/><line x1="17" y1="5" x2="17" y2="19"/><path d="M13.5 15.5 L17 19 L20.5 15.5"/></g></symbol>
+<symbol id="ti-filter" viewBox="0 0 24 24"><path d="M4 5 H20 L14 12.5 V19 L10 17 V12.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-chart-col" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="12" width="4" height="7.5"/><rect x="10" y="6" width="4" height="13.5"/><rect x="15.5" y="9.5" width="4" height="10"/></g></symbol>
+<symbol id="ti-chart-pie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 A8 8 0 1 0 20 12 H12 Z"/><path d="M14.5 3.7 A8 8 0 0 1 20.3 9.5 H14.5 Z"/></g></symbol>
+<symbol id="ti-chart-line" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5,17 8.5,11 13,14 20.5,5.5"/></g><circle cx="3.5" cy="17" r="1.3" fill="currentColor"/><circle cx="8.5" cy="11" r="1.3" fill="currentColor"/><circle cx="13" cy="14" r="1.3" fill="currentColor"/><circle cx="20.5" cy="5.5" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5"/></g><circle cx="8.5" cy="9.5" r="1.6" fill="currentColor"/></symbol>
+<symbol id="ti-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="12" rx="1.5"/><path d="M15.5 8.5 V5.5 A1.5 1.5 0 0 0 14 4 H5.5 A1.5 1.5 0 0 0 4 5.5 V14.5 A1.5 1.5 0 0 0 5.5 16 H8.5"/></g></symbol>
+<symbol id="ti-cut" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="17" r="2.6"/><circle cx="17.5" cy="17" r="2.6"/><line x1="8.3" y1="15" x2="17" y2="4"/><line x1="15.7" y1="15" x2="7" y2="4"/></g></symbol>
+<symbol id="ti-paste" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="1.8"/><rect x="9" y="2.5" width="6" height="3.6" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="14" y2="15"/></g></symbol>
+<symbol id="ti-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8 H15 A4.5 4.5 0 0 1 15 17 H8"/><path d="M11 4.8 L7.8 8 L11 11.2"/></g></symbol>
+<symbol id="ti-save" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 4.5 H16.5 L19.5 7.5 V19.5 H4.5 Z"/><rect x="8" y="4.5" width="7" height="5"/><rect x="7.5" y="13" width="9" height="6.5"/></g></symbol>
+<symbol id="ti-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15 V4"/><path d="M8.2 7.6 L12 3.8 L15.8 7.6"/><path d="M6 11 H5 A1.5 1.5 0 0 0 3.5 12.5 V19 A1.5 1.5 0 0 0 5 20.5 H19 A1.5 1.5 0 0 0 20.5 19 V12.5 A1.5 1.5 0 0 0 19 11 H18"/></g></symbol>
+<symbol id="ti-table" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="3.5" y1="14.5" x2="20.5" y2="14.5"/><line x1="9.2" y1="4.5" x2="9.2" y2="19.5"/><line x1="14.8" y1="4.5" x2="14.8" y2="19.5"/></g></symbol>
+<symbol id="ti-cf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4"/></g><rect x="5" y="6" width="6" height="5" fill="currentColor" opacity=".85"/><rect x="13" y="13" width="6" height="5" fill="currentColor" opacity=".45"/></symbol>
+<symbol id="ti-validate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6.5" width="17" height="11" rx="1.8"/><path d="M14.5 10.8 L16.5 13 L18.5 10.8"/><line x1="6.5" y1="12" x2="11.5" y2="12"/></g></symbol>
+<symbol id="ti-orientation" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="7" width="11" height="14" rx="1.4"/><path d="M13 3.7 A6.5 6.5 0 0 1 19.8 9"/><path d="M19.8 4.6 V9 H15.4"/></g></symbol>
+<symbol id="ti-paper-size" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3.5" width="10" height="17" rx="1.4"/><path d="M3.5 8 V16 M2 9.5 L3.5 8 L5 9.5 M2 14.5 L3.5 16 L5 14.5"/></g></symbol>
+<symbol id="ti-margins" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.4"/><rect x="8" y="6.5" width="8" height="11" stroke-dasharray="2 2"/></g></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/></g><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/></g><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17.4" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15"  fill="currentColor">#</text></symbol>
+<symbol id="ti-handle" viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="currentColor"/></symbol>
+</defs></svg>
+
+<section class="cover-page" data-num="01">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 08 · Planilla de cálculo</span>
+    <h1 class="cover-title">Primeros pasos en Google Sheets</h1>
+    <p class="cover-subtitle">Importar una encuesta, limpiar los datos, dar formato y ordenar</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Esta clase te da el piso para todo lo que viene: reconocer la pantalla de Google Sheets, importar una encuesta como la que responden los ingresantes, detectar qué está mal en los datos y corregirlo sin perder el original, darle a la planilla una presentación prolija y ordenarla sin romper los registros. Todo se hace sobre el mismo caso, <strong>Retrato del curso</strong>, que vas a ir ampliando clase a clase. Cada herramienta nueva trae un micro ejercicio corto con una muestra chica, y la clase cierra con un <strong>pedido</strong> sobre los datos reales: ese pedido es lo que entregás.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+<li><a href="#conocer"><span class="toc-num">01</span><span class="toc-text">Conocer Google Sheets y el caso del curso</span></a></li>
+<li><a href="#importar"><span class="toc-num">02</span><span class="toc-text">Importar datos y entender la tabla</span></a></li>
+<li><a href="#hojas"><span class="toc-num">03</span><span class="toc-text">Hojas: el original no se toca</span></a></li>
+<li><a href="#limpiar"><span class="toc-num">04</span><span class="toc-text">Limpiar los datos sin romper la tabla</span></a></li>
+<li><a href="#formato"><span class="toc-num">05</span><span class="toc-text">Formato: número, encabezado y presentación</span></a></li>
+<li><a href="#series"><span class="toc-num">06</span><span class="toc-text">Series y orden</span></a></li>
+<li><a href="#guardar"><span class="toc-num">07</span><span class="toc-text">Guardar, compartir y llevar a Excel</span></a></li>
+<li><a href="#pedido"><span class="toc-num">08</span><span class="toc-text">El pedido de la clase</span></a></li>
+<li><a href="#resumen"><span class="toc-num">09</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="block" id="conocer">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Conocer Google Sheets y el caso del curso</h2>
+  </div>
+  <div class="prose">
+<p>Una <strong>planilla de cálculo</strong> es un programa donde los datos se ordenan en filas y columnas y donde se pueden escribir fórmulas que calculan a partir de esos datos. Si cambiás un dato, los resultados se actualizan solos. Esa es la diferencia con una tabla de Word: acá los datos están vivos.</p>
+<div class="tools-container">
+  <div class="app-row">
+    <a class="app-row-link" href="https://sheets.google.com" target="_blank" rel="noopener">
+      <img class="row-icon" src="../../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+      <div class="row-text"><span class="row-name">Google Sheets</span><span class="row-domain">sheets.google.com</span></div>
+    </a>
+    <div class="tags"><span class="pill pill-free">Gratis</span></div>
+  </div>
+</div>
+<p>Vas a trabajar en <strong>Google Sheets</strong>, que corre en el navegador, guarda cada cambio solo en tu Drive y permite que varias personas editen el mismo archivo a la vez. No hay botón de guardar. Todo lo que aprendas se traslada a Excel casi sin cambios, y al final de esta guía vas a ver cómo se baja un archivo a <code>.xlsx</code>.</p>
+<h3>El caso que vas a construir: Retrato del curso</h3>
+<p>Durante estas clases vas a trabajar con un único archivo y un único caso. Cada cuatrimestre, la universidad le hace una encuesta a los ingresantes: qué estudian, si trabajan, cuánto tardan en llegar, cuánto usan el celular y la inteligencia artificial. Con esas respuestas se arma un <strong>retrato del curso</strong>. Vos vas a recibir el listado de respuestas tal como sale del formulario, con los defectos que tiene cualquier dato real, y lo vas a convertir paso a paso en un informe prolijo.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Datos simulados</p>
+  <p>Las 120 respuestas de este caso son inventadas, pero siguen el espíritu de la encuesta real que responden los ingresantes: edades, carreras, trabajo, uso del celular. Así podés trabajar con datos que se parecen a los tuyos sin exponer a nadie.</p>
+</div>
+<h3>La pantalla de Google Sheets</h3>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Elemento</th><th>Dónde está</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+<tr><td><strong>Nombre del archivo</strong></td><td>Arriba a la izquierda</td><td>Mientras no lo cambies se llama <em>Hoja de cálculo sin título</em>. Hacé clic y escribí el nombre.</td></tr>
+<tr><td><strong>Menús</strong></td><td>Debajo del nombre</td><td>Archivo, Editar, Ver, Insertar, Formato, Datos, Herramientas, Extensiones y Ayuda. Casi todo lo de esta clase está en Archivo, Formato y Datos.</td></tr>
+<tr><td><strong>Barra de herramientas</strong></td><td>Debajo de los menús</td><td>Atajos a lo más usado: deshacer, formato de número, negrita, color de relleno, bordes, combinar celdas.</td></tr>
+<tr><td><strong>Cuadro de nombre</strong></td><td>A la izquierda de la barra de fórmulas</td><td>Muestra qué celda está activa. Si escribís <code>D25</code> y apretás <code>Enter</code>, saltás a esa celda.</td></tr>
+<tr><td><strong>Barra de fórmulas</strong></td><td>A la derecha del cuadro de nombre</td><td>Muestra el contenido real de la celda activa: el dato o la fórmula que lo calcula.</td></tr>
+<tr><td><strong>Cuadrícula</strong></td><td>El centro de la pantalla</td><td>Letras arriba (columnas) y números a la izquierda (filas).</td></tr>
+<tr><td><strong>Pestañas de hoja</strong></td><td>Parte inferior</td><td>Una pestaña por hoja. El signo <code>+</code> agrega una hoja nueva.</td></tr>
+    </tbody>
+  </table>
+</div>
+<img class="screenshot" src="../../img/08-01-captura-sheets-interfaz.png" alt="Google Sheets con una hoja en blanco: nombre del archivo, menús, barra de herramientas, cuadro de nombre con A1, barra de fórmulas, cuadrícula y la pestaña Hoja 1">
+<p class="screenshot-caption">Un archivo nuevo en Google Sheets. Tu pantalla puede tener algún botón distinto según tu cuenta, pero la distribución es esta.</p>
+<h3>Archivo, hoja, celda y rango</h3>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Concepto</th><th>Qué es</th></tr></thead>
+    <tbody>
+<tr><td><strong>Archivo</strong></td><td>El documento completo, guardado en tu Drive. Puede tener muchas hojas. En Excel se llama <em>libro</em>.</td></tr>
+<tr><td><strong>Hoja</strong></td><td>Cada pestaña del archivo. Una hoja nueva trae 1.000 filas y 26 columnas, y podés agregar más.</td></tr>
+<tr><td><strong>Celda</strong></td><td>La intersección de una columna y una fila. Se nombra con la letra y el número: <code>B2</code> es la columna B, fila 2.</td></tr>
+<tr><td><strong>Celda activa</strong></td><td>La celda donde vas a escribir. Tiene un borde azul y solo puede haber una.</td></tr>
+<tr><td><strong>Rango</strong></td><td>Un conjunto de celdas contiguas, nombrado con la primera y la última separadas por dos puntos: <code>A2:A10</code> o <code>B2:D5</code>.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="xl"><div class="xl-box">
+<div class="xl-fbar"><span class="xl-name">B2:B4</span><span class="xl-fx">fx</span><span class="xl-fval">19</span></div>
+<table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+<tr><th class="xl-rn">1</th><td>Nombre</td><td>Edad</td><td>Trabaja</td><td>Gasto</td></tr>
+<tr><th class="xl-rn">2</th><td>Ana</td><td class="n sel">19</td><td>No</td><td class="n">66000</td></tr>
+<tr><th class="xl-rn">3</th><td>Luis</td><td class="n sel">42</td><td>Sí</td><td class="n">157000</td></tr>
+<tr><th class="xl-rn">4</th><td>Eva</td><td class="n sel">28</td><td>Sí</td><td class="n">75000</td></tr>
+</tbody></table></div>
+<p class="xl-cap">El rango <code>B2:B4</code> tiene tres celdas. Al seleccionarlo, el cuadro de nombre muestra su nombre y los encabezados de columna y fila cambian de color.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 01 · 8 min</span>
+    <h3>Tu primera tabla</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Entrá a <code>sheets.google.com</code> con tu cuenta y creá una <strong>hoja de cálculo en blanco</strong>. Nombrala <code>Retrato del curso - TuApellido</code>: es el archivo que vas a usar en las cuatro clases.</li>
+  <li>Abrí <strong>Archivo → Configuración</strong> y revisá que la <strong>Configuración regional</strong> diga <em>Argentina</em>. De eso dependen el formato de fecha, la coma decimal y el separador de las fórmulas.</li>
+  <li>Renombrá la hoja como <code>PRACTICA</code> y tipeá la tabla de arriba (Nombre, Edad, Trabaja, Gasto, con Ana, Luis y Eva). Usá <code>Tab</code> para pasar a la derecha y <code>Enter</code> para bajar.</li>
+  <li>Escribí <code>D25</code> en el cuadro de nombre y apretá <code>Enter</code>. Volvé a <code>A1</code> con <code>Ctrl+Inicio</code> (Mac: <code>⌘+Fn+←</code>). Seleccioná <code>B2:B4</code> y leé el cuadro de nombre.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="importar">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Importar datos y entender la tabla</h2>
+  </div>
+  <div class="prose">
+<p>Los datos no se tipean: llegan de otro lugar. En la vida real, una encuesta se arma con un formulario (por ejemplo Google Forms) y cada respuesta cae como una fila en una hoja. Acá vas a importar el resultado ya exportado como archivo de texto, un <code>.csv</code>, que es el formato universal para mover datos entre programas.</p>
+<h3>Una tabla de datos tiene reglas</h3>
+<p>Para que una planilla funcione como base de datos, los datos tienen que estar ordenados de una manera concreta. Si respetás estas reglas desde el principio, todo lo que viene después se simplifica.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Regla</th><th>Por qué</th></tr></thead>
+    <tbody>
+<tr><td><strong>Una fila por registro</strong></td><td>Cada fila es una respuesta de una persona. Nada de filas de subtotales ni filas vacías en el medio.</td></tr>
+<tr><td><strong>Una columna por campo</strong></td><td>Cada columna guarda una sola cosa: la edad, la carrera, el gasto. Nunca dos datos en la misma columna.</td></tr>
+<tr><td><strong>Encabezado en la fila 1</strong></td><td>Un nombre corto y único por columna, sin celdas combinadas.</td></tr>
+<tr><td><strong>Un solo tipo de dato por columna</strong></td><td>O todo números, o todo fechas, o todo texto. Mezclar <code>19</code> con <code>19 años</code> rompe los cálculos.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Texto a la izquierda, números a la derecha</h3>
+<p>Sheets alinea los datos según su tipo: el texto se pega a la izquierda y los números y las fechas a la derecha. Eso sirve como diagnóstico. En la planilla de abajo, la edad de Eva quedó a la izquierda: Sheets la leyó como texto y no la va a poder sumar ni promediar.</p>
+<div class="xl"><div class="xl-box">
+<div class="xl-fbar"><span class="xl-name">C2</span><span class="xl-fx">fx</span><span class="xl-fval">21 años</span></div>
+<table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+<tr><th class="xl-rn">1</th><td>ID</td><td>Fecha</td><td>Edad</td><td>Gasto</td></tr>
+<tr><th class="xl-rn">2</th><td class="n">21</td><td class="n">21/08/2026</td><td class="bad">21 años</td><td class="n">71000</td></tr>
+<tr><th class="xl-rn">3</th><td class="n">22</td><td class="n">04/08/2026</td><td class="n">25</td><td class="n">125000</td></tr>
+<tr><th class="xl-rn">4</th><td class="n">72</td><td class="n">18/08/2026</td><td class="n">21</td><td class="bad">30000 pesos</td></tr>
+</tbody></table></div>
+<p class="xl-cap">Los datos que quedaron alineados a la izquierda (en rojo) son texto: <code>21 años</code> no es un número.</p>
+</div>
+<img class="screenshot" src="../../img/08-06-captura-sheets-importar-archivo.png" alt="Selector de archivos de Archivo, Importar con el CSV de la encuesta seleccionado">
+<p class="screenshot-caption">Archivo → Importar: elegí el archivo <code>Encuesta_ingresantes_2026.csv</code>. Si lo tenés en tu computadora, usá la pestaña <em>Subir</em> y arrastralo.</p>
+<img class="screenshot" src="../../img/08-07-captura-sheets-importar-opciones.png" alt="Cuadro Importar archivo con ubicación de importación y tipo de separador">
+<p class="screenshot-caption">El cuadro de importación: <em>Ubicación de importación</em> (<em>Insertar nuevas hojas</em>), <em>Tipo de separador</em> y <em>Convertir texto en números, fechas y fórmulas</em> tildado.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 El separador</p>
+  <p>El archivo separa las columnas con punto y coma (<code>;</code>) y no con coma, porque en Argentina la coma es el decimal. Sheets suele detectarlo solo (<em>Detectar automáticamente</em>). Si al importar ves todo el contenido amontonado en la columna A, no lo detectó: elegí <em>Personalizado</em> y escribí <code>;</code>.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 02 · 10 min</span>
+    <h3>Importar la muestra y buscar defectos</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Descargá <code>Practica_encuesta_mini.csv</code> del aula virtual: es una muestra de 11 respuestas.</li>
+  <li>Abrí <strong>Archivo → Importar → Subir</strong> y elegí el archivo. En <em>Ubicación de importación</em> elegí <strong>Insertar hoja(s) nueva(s)</strong>, en <em>Tipo de separador</em> <strong>Personalizado</strong> con <code>;</code>, y dejá tildada la conversión de texto en números y fechas. Renombrá la hoja nueva como <code>MINI</code>.</li>
+  <li>Con <code>Ctrl+↓</code> (Mac: <code>⌘+↓</code>) viajá hasta la última fila. Tendría que ser la <strong>12</strong> (11 respuestas más el encabezado).</li>
+  <li>Recorré las columnas mirando la alineación y anotá, <strong>sin corregir todavía</strong>, los cinco defectos que encuentres: un texto pegado a un número, otro texto pegado a un número, espacios de más, una celda vacía y una fila repetida.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="hojas">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Hojas: el original no se toca</h2>
+  </div>
+  <div class="prose">
+<p>Un archivo puede tener muchas hojas, y usarlas bien es una cuestión de orden. La regla de oro del trabajo con datos: <strong>el dato original no se toca</strong>. Se guarda tal como llegó y se trabaja sobre una copia. Si te equivocás, siempre podés volver al original.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Para...</th><th>Hacé esto</th></tr></thead>
+    <tbody>
+<tr><td>Renombrar una hoja</td><td>Doble clic en la pestaña, o clic en la flecha de la pestaña → <em>Cambiar nombre</em></td></tr>
+<tr><td>Cambiarle el color</td><td>Flecha de la pestaña → <em>Cambiar color</em></td></tr>
+<tr><td>Duplicar una hoja</td><td>Flecha de la pestaña → <em>Duplicar</em></td></tr>
+<tr><td>Mover una hoja de lugar</td><td>Arrastrar la pestaña, o flecha de la pestaña → <em>Mover a la derecha</em> / <em>a la izquierda</em></td></tr>
+<tr><td>Ocultar una hoja</td><td>Flecha de la pestaña → <em>Ocultar hoja</em> (se recupera desde <em>Ver → Hojas ocultas</em>)</td></tr>
+<tr><td>Eliminar una hoja</td><td>Flecha de la pestaña → <em>Eliminar</em>. Pide confirmación, pero después de guardar no hay vuelta atrás salvo el historial.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Nombres de hoja</p>
+  <p>Elegí nombres cortos, sin espacios ni tildes si podés (<code>CRUDO</code>, <code>DATOS</code>, <code>CARRERAS</code>). Un nombre simple es más fácil de escribir y de leer.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 03 · 6 min</span>
+    <h3>El original no se toca</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Renombrá <code>MINI</code> como <code>MINI_CRUDO</code> y pintala de rojo.</li>
+  <li>Duplicala, renombrá la copia como <code>MINI_DATOS</code> y pintala de verde. De acá en adelante trabajás solo en <code>MINI_DATOS</code>.</li>
+  <li>Movela con la flecha de la pestaña para que quede a la izquierda de <code>MINI_CRUDO</code>.</li>
+  <li>Ocultá la hoja <code>PRACTICA</code> y recuperala desde <strong>Ver → Hojas ocultas</strong>.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="limpiar">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Limpiar los datos sin romper la tabla</h2>
+  </div>
+  <div class="prose">
+<p>Todo dato real viene con defectos. Limpiar no es borrar lo que molesta: es <strong>decidir</strong> qué se corrige, qué se deja y qué se descarta, y hacerlo con herramientas que no rompan el resto de la tabla. Estos son los cinco defectos que tiene la encuesta y la herramienta para cada uno.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Defecto</th><th>Cómo se ve</th><th>Qué hacés</th></tr></thead>
+    <tbody>
+<tr><td>Texto pegado a un número</td><td><code>21 años</code> en Edad, <code>114000 pesos</code> en Gasto</td><td><strong>Buscar y reemplazar</strong>: cambiás <code> años</code> y <code> pesos</code> por nada</td></tr>
+<tr><td>Espacios de más</td><td><code>␣␣Contador Público</code> o <code>Licenciatura en Biotecnología␣␣</code></td><td><strong>Recortar espacios en blanco</strong></td></tr>
+<tr><td>Filas repetidas</td><td>La misma respuesta cargada dos veces, con el mismo ID</td><td><strong>Quitar duplicados</strong></td></tr>
+<tr><td>Mayúsculas mezcladas</td><td><code>LICENCIATURA EN EDUCACIÓN</code> junto a <code>Licenciatura en Educación</code></td><td><strong>Nada</strong>: es una decisión, mirá abajo</td></tr>
+<tr><td>Celdas vacías</td><td>Viaje_min sin dato en 5 respuestas</td><td><strong>Nada</strong>: es una decisión, mirá abajo</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Buscar y reemplazar</h3>
+<p>Se abre con <code>Ctrl+H</code> (Mac: <code>⌘+Mayús+H</code>) o desde <strong>Editar → Buscar y reemplazar</strong>. Escribís lo que buscás, lo que lo reemplaza, y elegís <em>dónde</em> buscar. Ese último campo es el que más importa.</p>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Elegí bien dónde reemplazar</p>
+  <p>En <em>Buscar</em> hay una opción <strong>Todas las hojas</strong>. Si la dejás elegida, vas a modificar también <code>CRUDO</code> y perdés el original. Elegí siempre <strong>Esta hoja</strong>, y antes de apretar <em>Reemplazar todo</em> fijate que estés parado en <code>DATOS</code>.</p>
+</div>
+<img class="screenshot" src="../../img/08-08-captura-sheets-buscar-reemplazar.png" alt="Cuadro Buscar y reemplazar con la palabra años en Buscar y Esta hoja elegido">
+<p class="screenshot-caption"><strong>Editar → Buscar y reemplazar</strong>: el texto a buscar, el campo <em>Reemplazar por</em> vacío, <em>Esta hoja</em> en la lista <em>Buscar</em> y el botón <em>Reemplazar todo</em>.</p>
+<h3>Recortar espacios y quitar duplicados</h3>
+<p>Las dos herramientas están en <strong>Datos → Limpieza de datos</strong>. <em>Recortar espacios en blanco</em> trabaja sobre las celdas que tengas seleccionadas: borra los espacios del principio y del final de cada una. <em>Quitar duplicados</em> analiza el rango seleccionado, y si marcás que tus datos tienen fila de encabezado, no la toca.</p>
+<img class="screenshot" src="../../img/08-09-captura-sheets-limpieza-datos.png" alt="Menú Datos, Limpieza de datos desplegado con Recortar espacios en blanco y Quitar duplicados">
+<p class="screenshot-caption"><strong>Datos → Limpieza de datos</strong> con <em>Quitar duplicados</em> y <em>Recortar espacios en blanco</em>. La primera opción, <em>Sugerencias de borrado</em>, es un asistente que propone arreglos solo.</p>
+<h3>Las dos decisiones</h3>
+<p><strong>Mayúsculas:</strong> dejalas como están. Para una planilla, <code>LICENCIATURA EN EDUCACIÓN</code> y <code>Licenciatura en Educación</code> son el mismo texto cuando se comparan o se ordenan. En cambio, los espacios de más sí hacen que dos textos parezcan distintos, por eso hay que recortarlos.</p>
+<p><strong>Vacíos:</strong> dejalos vacíos. Escribir un <code>0</code> en Viaje_min sería inventar un dato: nadie tarda cero minutos en llegar. Una celda vacía dice la verdad (&quot;no sé&quot;) y los cálculos de promedio la ignoran.</p>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 04 · 12 min</span>
+    <h3>Limpiar la muestra</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Parate en <code>MINI_DATOS</code>. Seleccioná la columna <code>D</code> (Edad) y usá <strong>Editar → Buscar y reemplazar</strong> (<code>Ctrl+H</code>): buscá <code>␣años</code> (un espacio y la palabra), reemplazá por nada, <em>Esta hoja</em>, <em>Reemplazar todo</em>. Tendría que informar 1 reemplazo.</li>
+  <li>Repetí en la columna <code>K</code> con <code>␣pesos</code>. Tendría que informar 1 reemplazo. Revisá que ambos datos quedaron alineados a la derecha.</li>
+  <li>Seleccioná la columna <code>C</code> y aplicá <strong>Datos → Limpieza de datos → Recortar espacios en blanco</strong>.</li>
+  <li>Seleccioná todo el rango de datos, abrí <strong>Datos → Limpieza de datos → Quitar duplicados</strong> y tildá <em>Los datos tienen una fila de encabezado</em>. Tendría que informar que se quitó <strong>1 fila</strong>.</li>
+  <li>Control: seleccioná la columna <code>D</code> y mirá abajo a la derecha, donde Sheets muestra la suma de lo seleccionado. Tendría que decir <strong>260</strong>. En la columna <code>K</code> tendría que decir <strong>1.050.000</strong>. Si dan menos, alguna celda sigue siendo texto: repará la alineación.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="formato">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Formato: número, encabezado y presentación</h2>
+  </div>
+  <div class="prose">
+<p>El <strong>formato</strong> cambia cómo se ve un dato sin cambiar el dato. Un <code>66000</code> con formato de moneda se ve <code>$ 66.000,00</code>, pero sigue siendo el número 66000. Se aplica sobre lo que tengas seleccionado.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Botón</th><th>Qué hace</th><th>Dónde</th></tr></thead>
+    <tbody>
+<tr><td><svg class="tool-icon"><use href="#ti-money"></use></svg></td><td>Formato de moneda</td><td>Barra de herramientas, o <em>Formato → Número → Moneda</em></td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-percent"></use></svg></td><td>Formato de porcentaje: multiplica por 100 lo que ya está escrito</td><td>Barra de herramientas</td></tr>
+<tr><td><code>123</code></td><td>Menú de más formatos: fecha, hora, número con decimales, texto plano</td><td>Barra de herramientas</td></tr>
+<tr><td><strong>B</strong> <em>I</em></td><td>Negrita, cursiva, subrayado, tachado</td><td>Barra de herramientas, <code>Ctrl+B</code> / <code>Ctrl+I</code> / <code>Ctrl+U</code></td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-fill-color"></use></svg></td><td>Color de relleno y de texto</td><td>Barra de herramientas</td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-borders"></use></svg></td><td>Bordes: primero color y estilo, después ubicación</td><td>Barra de herramientas</td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg></td><td>Combinar celdas: solo para títulos, nunca dentro de los datos</td><td>Barra de herramientas, o <em>Formato → Combinar celdas</em></td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-wrap-cell"></use></svg></td><td>Ajustar texto: el texto largo baja a otra línea en vez de desbordar</td><td><em>Formato → Ajuste de texto</em></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Ancho de columnas e inmovilizar el encabezado</h3>
+<p>Para ajustar una columna al contenido, hacé <strong>doble clic en el borde derecho de su letra</strong>. Con <strong>Ver → Inmovilizar → 1 fila</strong> la fila de encabezado queda fija arriba cuando bajás por las 120 respuestas: nunca te olvidás qué columna estás mirando.</p>
+<h3>Una portada con imagen</h3>
+<p>La hoja <code>LEEME</code> es la portada del archivo: el título, qué contiene y quién lo hizo. Para ponerle una imagen, usá <strong>Insertar → Imagen → Insertar imagen sobre las celdas</strong> y elegí un archivo o pegá un enlace. Una imagen flotante se puede mover y agrandar, pero no forma parte de ninguna celda. Si la querés dentro de una celda, usá <strong>Imagen en la celda</strong>.</p>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 05 · 10 min</span>
+    <h3>Presentar la muestra</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>En <code>MINI_DATOS</code>, seleccioná la fila 1 y aplicá negrita, un relleno verde claro y borde inferior.</li>
+  <li>Inmovilizá la fila 1 con <strong>Ver → Inmovilizar → 1 fila</strong>.</li>
+  <li>Dale a la columna <code>K</code> formato de <strong>moneda</strong> y comprobá en el menú <code>123</code> que la columna <code>B</code> tenga formato de <em>fecha</em>.</li>
+  <li>Ajustá el ancho de todas las columnas con <code>Ctrl+A</code> y doble clic en un borde entre letras.</li>
+  <li>Repaso: seleccioná la columna <code>K</code> y volvé a mirar la suma de abajo. ¿Cambió con el formato? (No tiene que cambiar: el formato no toca el dato.)</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="series">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Series y orden</h2>
+  </div>
+  <div class="prose">
+<h3>Series con el controlador de relleno</h3>
+<p>Cuando seleccionás una celda, en su esquina inferior derecha aparece un cuadradito: es el <strong>controlador de relleno</strong>. Al arrastrarlo, Sheets completa solo la <em>serie</em> que reconoce a partir de lo que ya escribiste.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Escribís</th><th>Arrastrás y obtenés</th></tr></thead>
+    <tbody>
+<tr><td><code>Lunes</code></td><td>Martes, Miércoles, Jueves... (los días de la semana, en ciclo)</td></tr>
+<tr><td><code>1</code> y <code>2</code> en dos celdas seguidas, ambas seleccionadas</td><td>3, 4, 5... (Sheets detecta la diferencia entre las dos)</td></tr>
+<tr><td><code>01/09/2026</code></td><td>02/09/2026, 03/09/2026... (un día por celda)</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>También podés hacer doble clic en el controlador para que la serie se extienda hasta donde llegan los datos de la columna de al lado.</p>
+<h3>Ordenar una tabla</h3>
+<p>Ordenar reacomoda las <strong>filas completas</strong> según los valores de una columna. Para ordenar por varios criterios, seleccioná todo el rango de datos y andá a <strong>Datos → Ordenar intervalo → Opciones avanzadas de ordenación de intervalos</strong>. Ahí tildás <em>Los datos tienen una fila de encabezado</em>, elegís la primera columna y su sentido (A→Z o Z→A) y agregás otra columna con <em>Añadir otra columna para ordenar</em>.</p>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Ordenar siempre la tabla completa</p>
+  <p>Si ordenás una sola columna, esa columna se reacomoda y las demás se quedan en su lugar: cada respuesta termina con la edad y el gasto de otra persona. Por eso se selecciona <strong>todo el rango</strong> y no una columna suelta. Si te equivocás, deshacé enseguida con <code>Ctrl+Z</code>.</p>
+</div>
+<img class="screenshot" src="../../img/08-10-captura-sheets-ordenar-intervalo.png" alt="Cuadro Ordenar intervalo con dos criterios, Carrera de A a Z y Gasto_mensual de Z a A">
+<p class="screenshot-caption">El cuadro de ordenación avanzada con dos criterios: <em>Ordenar por</em> Carrera de A a Z y <em>luego por</em> Gasto_mensual de Z a A, con la fila de encabezado tildada.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Para eso sirve la columna ID</p>
+  <p>La columna <code>ID</code> numera las respuestas en el orden en que llegaron. Si ordenás por otros criterios y querés volver al orden original, alcanza con ordenar por <code>ID</code> de menor a mayor. Una tabla sin columna de identificación no tiene vuelta atrás.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 06 · 10 min</span>
+    <h3>Series y orden</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá una hoja <code>ESCALAS</code>. En <code>A1</code> escribí <code>Nivel</code>, en <code>A2</code> y <code>A3</code> los números <code>1</code> y <code>2</code>. Seleccionalas juntas y arrastrá el controlador hasta el <strong>5</strong>.</li>
+  <li>En <code>B1</code> escribí <code>Día</code>, en <code>B2</code> <code>Lunes</code> y completá la serie hasta <code>Domingo</code>. En <code>C1</code> escribí <code>Semana</code>, en <code>C2</code> <code>03/08/2026</code> y en <code>C3</code> <code>10/08/2026</code>, y completá hasta el <code>31/08/2026</code>: un lunes por celda.</li>
+  <li>En <code>MINI_DATOS</code>, ordená la tabla completa por <strong>Carrera de A a Z</strong> y, dentro de cada carrera, por <strong>Gasto_mensual de mayor a menor</strong>. ¿Qué carrera quedó primera?</li>
+  <li>Volvé al orden original ordenando por <code>ID</code>. La fila 2 tiene que ser de nuevo la respuesta 1.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="guardar">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Guardar, compartir y llevar a Excel</h2>
+  </div>
+  <div class="prose">
+<p>Sheets guarda solo, pero eso no quiere decir que el archivo esté ordenado. Hay tres hábitos para cerrar cualquier trabajo con planillas: darle un nombre que se entienda, guardar una copia con fecha antes de seguir y compartirlo con el permiso correcto.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Hábito</th><th>Cómo se hace</th></tr></thead>
+    <tbody>
+<tr><td>Nombre de archivo claro</td><td>Fecha, materia, clase y versión: <code>AAAA-MM-DD_Informatica_Clase08_V01</code>. Ordenado por fecha, siempre sabés cuál es el último.</td></tr>
+<tr><td>Copia antes de seguir</td><td><strong>Archivo → Hacer una copia</strong>. La copia queda en tu Drive como un archivo aparte, congelado en el estado en que la hiciste.</td></tr>
+<tr><td>Compartir con el permiso justo</td><td>Botón <strong>Compartir</strong> arriba a la derecha. <em>Lector</em> solo mira, <em>Comentador</em> mira y comenta, <em>Editor</em> modifica. Al docente se le da el permiso que pide la consigna.</td></tr>
+<tr><td>Llevarlo a Excel</td><td><strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong>. El archivo baja a tu compu y se abre en Excel con las hojas, los datos y los formatos.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Una copia por clase</p>
+  <p>Vas a seguir construyendo sobre el mismo archivo. Al terminar cada clase, hacé una copia con el nombre de esa clase y entregá <strong>la copia</strong>. Así el archivo de trabajo sigue avanzando y vos conservás una foto de lo que lograste en cada encuentro.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 07 · 6 min</span>
+    <h3>Copia, permisos y Excel</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Hacé <strong>Archivo → Hacer una copia</strong> y nombrala <code>PRUEBA_Copia</code>. Abrila y comprobá que es un archivo aparte, con todas las hojas.</li>
+  <li>En esa copia, abrí <strong>Compartir</strong> y mirá los tres roles posibles (Lector, Comentador, Editor). No compartas todavía con nadie.</li>
+  <li>Bajá <code>MINI_DATOS</code> con <strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong> y abrilo en Excel si lo tenés. Comprobá que la moneda y la fecha se conservaron. Después podés borrar la copia de prueba.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="pedido">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">El pedido de la clase</h2>
+  </div>
+  <div class="prose">
+<p>Ya practicaste todas las técnicas sobre una muestra de 11 filas, donde cada error se ve a simple vista. Ahora hacés lo mismo con los datos reales, que son 120 respuestas. Este es el trabajo que se entrega: <strong>un solo archivo</strong> que sirve también para dar el presente.</p>
+<div class="callout" data-type="action">
+  <p class="callout-label">📌 El pedido de Secretaría Académica</p>
+  <p>Necesitamos la encuesta de ingresantes cargada, limpia y presentable, con el original a salvo y una portada que explique qué hay en el archivo. Cuando termines, compartila con la cátedra.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Pedido de la clase</span>
+    <h3>La encuesta de ingresantes, lista para usar</h3>
+  </div>
+  <div class="prose">
+<p>Trabajá en el archivo <em>Retrato del curso</em>, que ya tiene las hojas de práctica. Estos son los pasos y los controles para saber si están bien.</p>
+<ol>
+  <li>Descargá <code>Encuesta_ingresantes_2026.csv</code> e importalo a una hoja nueva (separador <code>;</code>). Renombrala <code>CRUDO</code> y pintala de rojo. La última fila con datos tiene que ser la <strong>124</strong>.</li>
+  <li>Duplicá <code>CRUDO</code>, llamá <code>DATOS</code> a la copia y pintala de verde. Creá una hoja <code>LEEME</code>, pintala de gris y ponela al principio.</li>
+  <li>Limpiá <code>DATOS</code>: reemplazá <code>␣años</code> en la columna <code>D</code> (4 reemplazos) y <code>␣pesos</code> en la <code>K</code> (4 reemplazos), recortá los espacios de la columna <code>C</code> y quitá los duplicados (<strong>3 filas</strong>). Controles: última fila con datos <strong>121</strong>, suma de Edad <strong>2.909</strong>, suma de Gasto_mensual <strong>15.242.000</strong>.</li>
+  <li>Dale a <code>DATOS</code> el mismo formato que a la muestra: encabezado destacado, fila 1 inmovilizada, moneda, fecha y ancho de columnas.</li>
+  <li>En <code>LEEME</code>, escribí el título <em>Retrato del curso 2026</em> en <code>A1</code>, combiná y centrá <code>A1:E1</code> y dale tamaño 18. Debajo agregá tu nombre, la fecha, qué contiene cada hoja, <strong>los defectos que encontraste y qué decidiste hacer con cada uno</strong> (y por qué dejaste los vacíos y las mayúsculas). Insertá una imagen a la derecha del título.</li>
+  <li>Ordená <code>DATOS</code> por <strong>Carrera de A a Z</strong> y luego por <strong>Gasto_mensual de mayor a menor</strong>. En <code>LEEME</code> anotá cuál es la primera carrera y el mayor gasto de esa carrera (<em>Contador Público</em>, $ 220.000). Volvé al orden original por <code>ID</code>.</li>
+  <li>Ocultá las hojas de práctica (<code>PRACTICA</code>, <code>MINI_CRUDO</code>, <code>MINI_DATOS</code>, <code>ESCALAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> y nombrala <code>AAAA-MM-DD_Informatica_Clase08_V01</code>.</li>
+  <li>En la copia, hacé clic en <strong>Compartir</strong>, agregá a <code>marcos.hernandez@unq.edu.ar</code> con permiso de <strong>Comentador</strong>, copiá el enlace y subilo al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+</ol>
+  </div>
+</div>
+  </div>
+</section>
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">09</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+<p>Pasaste de una cuadrícula vacía a una base de datos limpia y presentable. Importaste 123 respuestas, separaste el original del trabajo, corregiste textos pegados a números, recortaste espacios y quitaste filas repetidas, decidiste qué dejar como estaba, le diste formato a la tabla y aprendiste a ordenarla sin desarmar los registros.</p>
+<h3 id="actividades">Actividades</h3>
+<div class="table-wrap">
+  <table class="check-table">
+    <tbody>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-1" aria-label="Marcar como hecho"></td><td><label for="chk-s8-1">Hice el micro ejercicio de la primera tabla: archivo creado, configuración regional revisada, cuadro de nombre y rangos.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-2" aria-label="Marcar como hecho"></td><td><label for="chk-s8-2">Importé la muestra y encontré los cinco defectos sin corregir nada.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-3" aria-label="Marcar como hecho"></td><td><label for="chk-s8-3">Separé el original del trabajo: <code>MINI_CRUDO</code> y <code>MINI_DATOS</code>.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-4" aria-label="Marcar como hecho"></td><td><label for="chk-s8-4">Limpié la muestra y mis sumas de control dieron 260 y 1.050.000.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-5" aria-label="Marcar como hecho"></td><td><label for="chk-s8-5">Presenté la muestra con formato de encabezado, moneda y fecha, y con la fila 1 inmovilizada.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-6" aria-label="Marcar como hecho"></td><td><label for="chk-s8-6">Completé series con el controlador de relleno y ordené por dos criterios volviendo al orden original por ID.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s8-7" aria-label="Marcar como hecho"></td><td><label for="chk-s8-7">Entregué el pedido: la encuesta real importada, limpia (120 respuestas), formateada, con portada y compartida con la cátedra.</label></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="linkedin">
+  <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+  <p><strong>Google Sheets.</strong> Cómo la justificás: importo datos de fuentes externas (CSV, formularios), los limpio sin alterar el original (buscar y reemplazar, recorte de espacios, eliminación de duplicados), los estructuro como tabla con formato numérico correcto y los ordeno y comparto con permisos adecuados.</p>
+</div>
+<h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
+<div class="qr-row qr-t-verde">
+<div class="qr-row-label">Sheets</div>
+<div class="qr-row-cols">
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Pantalla y movimiento</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cuadro de nombre: escribí una celda y <code>Enter</code> para saltar</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Primera celda: <code>Ctrl+Inicio</code> (Mac: <code>⌘+Fn+←</code>)</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Borde del bloque de datos: <code>Ctrl+Flecha</code> (Mac: <code>⌘+Flecha</code>)</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rango: primera y última celda con dos puntos, por ejemplo <code>A2:A10</code></span></div>
+</div>
+<div class="qr-tip">Un número alineado a la izquierda es texto.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Importar y hojas</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Importar: <strong>Archivo → Importar → Subir</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Separador del CSV argentino: <code>;</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Hoja: doble clic para renombrar, flecha para duplicar, mover o ocultar</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">El original (<code>CRUDO</code>) no se toca</span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Limpiar</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Buscar y reemplazar: <code>Ctrl+H</code> (Mac: <code>⌘+Mayús+H</code>), siempre en <em>Esta hoja</em></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Datos → Limpieza de datos</strong>: recortar espacios y quitar duplicados</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Vacío no es cero: no inventes datos</span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Formato</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Moneda, porcentaje y más formatos: botones de la barra de herramientas</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Inmovilizar: <strong>Ver → Inmovilizar → 1 fila</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ancho de columna: doble clic en el borde derecho de la letra</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinar solo en títulos, nunca dentro de los datos</span></div>
+</div>
+<div class="qr-tip">El formato <code>%</code> multiplica por 100 lo que ya está escrito.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Series, orden y cierre</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Controlador de relleno: cuadradito de la esquina de la celda activa</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar: <strong>Datos → Ordenar intervalo</strong>, con fila de encabezado</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar siempre la tabla completa, nunca una sola columna</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copia: <strong>Archivo → Hacer una copia</strong>. Excel: <strong>Archivo → Descargar → .xlsx</strong></span></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="glosario">Glosario</h3>
+<div class="glossary">
+<div class="gloss-item"><span class="gloss-term">Archivo</span><p class="gloss-def">Documento completo de Google Sheets, guardado en Drive, con una o muchas hojas. En Excel se llama libro.</p></div>
+<div class="gloss-item"><span class="gloss-term">Hoja</span><p class="gloss-def">Cada pestaña del archivo: una cuadrícula de filas y columnas donde se cargan los datos.</p></div>
+<div class="gloss-item"><span class="gloss-term">Celda</span><p class="gloss-def">Unidad básica de la hoja, identificada por la letra de su columna y el número de su fila, por ejemplo <code>B2</code>.</p></div>
+<div class="gloss-item"><span class="gloss-term">Rango</span><p class="gloss-def">Conjunto de celdas contiguas, nombrado con la primera y la última separadas por dos puntos, por ejemplo <code>A2:A10</code>.</p></div>
+<div class="gloss-item"><span class="gloss-term">Registro y campo</span><p class="gloss-def">Un registro es una fila (una respuesta de una persona). Un campo es una columna (un dato: la edad, la carrera).</p></div>
+<div class="gloss-item"><span class="gloss-term">CSV</span><p class="gloss-def">Archivo de texto plano donde cada línea es una fila y los datos se separan con un carácter, en este caso el punto y coma.</p></div>
+<div class="gloss-item"><span class="gloss-term">Datos crudos</span><p class="gloss-def">Los datos tal como llegaron de la fuente, sin ninguna corrección. Se conservan intactos.</p></div>
+<div class="gloss-item"><span class="gloss-term">Limpieza de datos</span><p class="gloss-def">Corregir defectos de una tabla (textos mezclados, espacios, duplicados) sin alterar el original.</p></div>
+<div class="gloss-item"><span class="gloss-term">Formato de celdas</span><p class="gloss-def">Propiedades visuales (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterarlo.</p></div>
+<div class="gloss-item"><span class="gloss-term">Controlador de relleno</span><p class="gloss-def">Cuadrado en la esquina de la celda activa que, al arrastrarlo, copia contenido o completa series.</p></div>
+<div class="gloss-item"><span class="gloss-term">Ordenar</span><p class="gloss-def">Reacomodar las filas de una tabla según los valores de una o más columnas.</p></div>
+<div class="gloss-item"><span class="gloss-term">Permiso de edición</span><p class="gloss-def">Nivel de acceso a un archivo compartido: lector, comentador o editor.</p></div>
+</div>
+<h3 id="fuentes">Fuentes</h3>
+<ul class="sources">
+  <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Excel y Hoja de Cálculo de Google</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
+  <li>Google. <em>Ayuda del Editor de Documentos de Google: Hojas de cálculo</em>. <a href="https://support.google.com/docs/topic/9054603" target="_blank" rel="noopener"><code>support.google.com/docs</code></a></li>
+  <li>Material de cátedra. <em>Guía de Excel: Primeros pasos y formato de celdas</em>, Clase 08, Informática 2026.</li>
+</ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+<script defer src="../../js/guia-nav.js"></script>
+<script defer src="../../js/guia-print.js"></script>
+</body>
+</html>

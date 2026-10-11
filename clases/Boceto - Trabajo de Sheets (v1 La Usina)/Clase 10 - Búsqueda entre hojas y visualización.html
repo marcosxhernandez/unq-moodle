@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 10 - Búsqueda entre hojas y visualización</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../../css/guia-estilo.css">
+<style>
+  /* Acento de clase, Planilla de cálculo (Clase 10) = verde */
+  :root{
+    --acento:var(--verde);
+    --acento-deep:var(--verde-deep);
+    --acento-tint:var(--verde-tint);
+    --acento-soft:var(--verde-soft);
+  }
+  @page{
+    @top-right{
+      content:"Clase 10 · Planilla de cálculo";
+      color:#145c28;
+    }
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ti-styles" viewBox="0 0 24 24"><rect x="3" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="8.5" y="11.3" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="7" fill="currentColor">Aa</text><rect x="14.5" y="8" width="7" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="18" y="15.5" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="5.5" fill="currentColor">Aa</text></symbol>
+<symbol id="ti-transition" viewBox="0 0 24 24"><rect x="2.5" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="6" width="8.5" height="12" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.2 2"/><path d="M11 12 H13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 9.8 L14.6 12 L12.4 14.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-animation" viewBox="0 0 24 24"><path d="M13.5 3.5 L15.3 8.6 L20.5 8.8 L16.4 12.2 L17.8 17.3 L13.5 14.3 L9.2 17.3 L10.6 12.2 L6.5 8.8 L11.7 8.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10.5 H5.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.6 14 L5.4 13.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+<symbol id="ti-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="14.8" y1="14.8" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-shield-check" viewBox="0 0 24 24"><path d="M12 3 L19 6 V11 C19 16 16 19.5 12 21 C8 19.5 5 16 5 11 V6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12 L11 14.2 L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="ti-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="9.5" y1="2" x2="9.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="2" x2="14.5" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.5" y1="17" x2="9.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.5" y1="17" x2="14.5" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9.5" x2="7" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="14.5" x2="7" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9.5" x2="22" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="14.5" x2="22" y2="14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor"/></symbol>
+<symbol id="ti-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="9" y="2.5" width="6" height="3.4" rx="1" fill="currentColor"/><line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="14.5" x2="16" y2="14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="18" x2="13" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-quote" viewBox="0 0 24 24"><path d="M6 8 C6 8 4 9.5 4 12.5 C4 14.5 5.3 16 7 16 C8.4 16 9.5 14.9 9.5 13.5 C9.5 12.1 8.4 11 7 11 C6.7 11 6.4 11.1 6.1 11.2 C6.4 9.7 7.5 8.5 9 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 8 C14.5 8 12.5 9.5 12.5 12.5 C12.5 14.5 13.8 16 15.5 16 C16.9 16 18 14.9 18 13.5 C18 12.1 16.9 11 15.5 11 C15.2 11 14.9 11.1 14.6 11.2 C14.9 9.7 16 8.5 17.5 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-trophy" viewBox="0 0 24 24"><path d="M7 4 H17 V8 A5 5 0 0 1 7 8 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 5 H4 V7 A3 3 0 0 0 7 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M17 5 H20 V7 A3 3 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="13" x2="12" y2="17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 20.5 H16 M9 17.5 H15 L15.5 20.5 H8.5 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-new-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><line x1="9" y1="15" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="12" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="ti-page" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="8" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="ti-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5.5" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="8.5" y1="9.5" x2="8.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="11.5" y1="9.5" x2="11.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="14.5" y1="9.5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="17.5" y1="9.5" x2="17.5" y2="9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+<symbol id="ti-palette" viewBox="0 0 24 24"><path d="M12 3 C6.5 3 2 6.8 2 11.5 C2 15 4.5 16 6.5 16 H8 A2 2 0 0 1 10 18 V19 C10 20.5 11.2 21.5 12.8 21.2 C18 20.2 22 16.3 22 11.5 C22 6.8 17.5 3 12 3 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7.5" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="10" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ti-merge-cells" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="12" x2="20.5" y2="12" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="12" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="ti-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.7" fill="currentColor"/><path d="M4.5 17.5 L9.5 12.5 L13 16 L16 12.5 L19.5 16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-link" viewBox="0 0 24 24"><path d="M9.5 14.5 L14.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M11 7 L13.5 4.5 A4 4 0 0 1 19.5 10.5 L17 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17 L10.5 19.5 A4 4 0 0 1 4.5 13.5 L7 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="ti-comment" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 15.5 L8 19.5 L12.5 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+<symbol id="ti-columns" viewBox="0 0 24 24"><rect x="3.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14.5" y="4" width="6" height="16" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-mail-merge" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7 L12 13.5 L20.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-toc" viewBox="0 0 24 24"><line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="6" r="1" fill="currentColor"/><line x1="4" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="12" r="1" fill="currentColor"/><line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="18" r="1" fill="currentColor"/></symbol>
+<symbol id="ti-refresh" viewBox="0 0 24 24"><path d="M5 6.5 A9 9 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.5 3.5 L19.5 9 L14 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17.5 A9 9 0 0 1 4.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.5 21 L4.5 15 L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-wrap-text" viewBox="0 0 24 24"><rect x="9" y="9" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="12.5" x2="8" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12.5" x2="21" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="19.5" x2="21" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-bookmark" viewBox="0 0 24 24"><path d="M6 3.5 H18 V21 L12 16.5 L6 21 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="ti-header" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="8.5" x2="20" y2="8.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-footer" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
+<symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15" fill="currentColor">#</text></symbol>
+<symbol id="ti-suggest" viewBox="0 0 24 24"><path d="M4 17.5 L5 20 L7.5 19 L18 8.5 A1.8 1.8 0 0 0 15.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><line x1="14" y1="7.5" x2="16.5" y2="10" stroke="currentColor" stroke-width="1.7"/></symbol>
+<symbol id="ti-page-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M9.5 9.7 L12 12.2 L9.5 14.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-section-break" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="8" y1="15" x2="16" y2="15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+<symbol id="ti-recipients" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 18 A4.5 4.5 0 0 1 12.5 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="15" y1="15" x2="21" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="ti-merge-field" viewBox="0 0 24 24"><path d="M9 6 L4 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 L20 12 L15 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ti-arc" viewBox="0 0 24 24"><path d="M3 17 C7 17 8 6 12 6 C16 6 15 12 21 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="3" cy="17" r="1.4" fill="currentColor"/><circle cx="12" cy="6" r="1.4" fill="currentColor"/><circle cx="21" cy="10" r="1.4" fill="currentColor"/></symbol>
+</defs></svg>
+
+<section class="cover-page" data-num="10">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 10 · Planilla de cálculo</span>
+    <h1 class="cover-title">Búsqueda entre hojas y visualización</h1>
+    <p class="cover-subtitle">Cruce de datos con BUSCARV y BUSCARX, fechas y gráficos</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Hasta acá el archivo vivía en una hoja y cada fila cargaba su propio arancel, aunque alguien lo hubiera corregido mal a mano. Funciona con ocho registros, pero no escala: con cientos, cada cambio obliga a revisar fila por fila sin ninguna garantía de no saltearse una. Hoy la información de referencia se muda a su propia hoja, donde vive una sola vez, y se trae con una fórmula en el momento en que hace falta; así organizan sus datos las bases de datos reales. Se suman las fechas para responder cuánto tiempo pasó entre dos hechos. Y una vez que el cruce está hecho, hay que poder mostrarlo: elegir el gráfico que responde la pregunta, no el que la planilla sugiere por defecto.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+    <li><a href="#varias-hojas"><span class="toc-num">01</span><span class="toc-text">Por qué separar datos en varias hojas</span></a></li>
+    <li><a href="#encargo"><span class="toc-num">02</span><span class="toc-text">El encargo de esta semana</span></a></li>
+    <li><a href="#buscarv"><span class="toc-num">03</span><span class="toc-text">BUSCARV</span></a></li>
+    <li><a href="#buscarx"><span class="toc-num">04</span><span class="toc-text">BUSCARX</span></a></li>
+    <li><a href="#fechas"><span class="toc-num">05</span><span class="toc-text">Fechas: contar días y comparar</span></a></li>
+    <li><a href="#graficos"><span class="toc-num">06</span><span class="toc-text">Gráficos con propósito</span></a></li>
+    <li><a href="#cierre"><span class="toc-num">07</span><span class="toc-text">Cerrar el encargo y replicarlo en Excel</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section class="block" id="varias-hojas">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Por qué separar datos en varias hojas</h2>
+  </div>
+  <div class="prose">
+    <p>En tu archivo, el arancel está escrito en cada fila. Si en agosto sube un 20%, hay que tocar una celda por cada inscripción que lo usa, y no queda ningún registro de si te olvidaste alguna. Ya viste una consecuencia: aranceles en cero y negativos que alguien cargó o corrigió a mano.</p>
+    <h3>De dónde venimos</h3>
+    <p>En las clases anteriores armaste el archivo de La Usina: la hoja <code>DATOS</code> con las 336 inscripciones, sus importes y una columna <code>situacion</code> que clasifica sola (Válida, No cuenta, Revisar, Duplicada); un panel <code>RESUMEN</code> con los tres números del total y los subtotales por sede y por taller; una hoja <code>PARAMETROS</code>, una hoja <code>LISTAS</code> que alimenta las validaciones y un <code>LEEME</code>. Hoy ese archivo suma dos hojas más y deja de repetir información. Hacé una copia con <strong>Archivo → Hacer una copia</strong> y nombrala <code>2026-XX-XX_Informatica_Clase10_V01</code>.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: Si no tenés el archivo a mano</p>
+      <p>Si no tenés el archivo a mano, el punto de partida es el de la Clase 09: <code>DATOS</code> con las columnas <code>A</code> a <code>Q</code> (de <code>id_inscripcion</code> a <code>cuenta</code>, con <code>situacion</code> en la <code>O</code> y <code>importe_valido</code> en la <code>P</code>). También podés trabajar con una tabla propia de al menos ocho filas que tenga una columna de categoría repetida: todo lo de hoy funciona igual.</p>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Todo lo de hoy asume que podés fijar una referencia con <code>$</code> sin pensarlo. <code>BUSCARV</code> y <code>BUSCARX</code> casi siempre necesitan una referencia absoluta para funcionar bien, y el error que produce olvidarla es silencioso: la fórmula devuelve resultados, solo que equivocados.</p>
+    </div>
+    <h3>El dato vive una sola vez</h3>
+    <p>Amontonar todo en una hoja hace que la información se repita y sea difícil de mantener: si cambia un arancel, tendrías que corregirlo en todas las filas donde aparece. Peor: si corregís nueve de diez, el archivo sigue calculando y nadie se entera.</p>
+    <p>La alternativa es separar la información en tablas más chicas, cada una en su propia hoja, y conectarlas con una fórmula en el momento en que se necesitan juntas. La información vive una sola vez, en un solo lugar, y se busca cuando hace falta, no se copia.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Antes de armar cualquier planilla con varias hojas, preguntate: "¿este dato puede cambiar en el tiempo y se repite en muchas filas (un arancel, el nombre de un docente, un cupo)?" Si la respuesta es sí, ese dato tiene que vivir en una hoja de referencia, no copiado y pegado en todos lados.</p>
+    </div>
+    <h3>Trabajar con varias hojas</h3>
+    <ul>
+      <li>Para crear una hoja nueva, hacé clic en el signo <strong>+</strong> en la parte inferior izquierda.</li>
+      <li>Para renombrarla, doble clic sobre su pestaña.</li>
+      <li>Para referenciar una celda de <strong>otra hoja</strong>, la sintaxis es <code>NombreDeHoja!Celda</code>. Por ejemplo, <code>=TALLERES!B2</code> trae el contenido de la celda B2 de la hoja <code>TALLERES</code>.</li>
+      <li>Para traer una hoja de otro archivo, <strong>Archivo → Importar → Subir</strong>, y elegir "Insertar hoja(s) nueva(s)". Funciona con archivos de Excel (<code>.xlsx</code>), cada hoja del libro se convierte en una hoja nueva.</li>
+    </ul>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si el nombre de la hoja tiene espacios o tildes, hay que encerrarlo entre comillas simples: <code>='Lista de Talleres'!B2</code>. La planilla suele agregarlas automáticamente cuando hacés clic en la celda de otra hoja en lugar de escribir la fórmula a mano, por eso, siempre que se pueda, es más seguro clickear que tipear. Y mejor todavía: nombrá las hojas sin espacios ni tildes desde el principio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="block" id="encargo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">El encargo de esta semana</h2>
+  </div>
+  <div class="prose">
+    <p>El panel funcionó, y los números reconcilian casi todos. Ahora llega un pedido de otro tipo: ya no son datos que sobran o están mal escritos, sino información que <strong>falta</strong> en tu archivo y que existe en otro lado.</p>
+    <div class="tools-container">
+      <a class="app-row" href="https://sheets.google.com" target="_blank" rel="noopener">
+        <img class="row-icon" src="../../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+        <div class="row-text">
+          <span class="row-name">Google Sheets</span>
+          <span class="row-domain">sheets.google.com</span>
+        </div>
+        <span class="pill pill-free">Gratis</span>
+      </a>
+    </div>
+    <div class="brief">
+      <span class="brief-kind">Correo electrónico</span>
+      <div class="brief-meta">
+        <div><span class="brief-meta-k">De</span><span class="brief-meta-v">Coordinación · Centro Cultural La Usina</span></div>
+        <div><span class="brief-meta-k">Para</span><span class="brief-meta-v">vos</span></div>
+        <div><span class="brief-meta-k">Asunto</span><span class="brief-meta-v">Aranceles oficiales, y algo para mostrar en la reunión</span></div>
+      </div>
+      <div class="brief-body">
+        <p>Dos cosas.</p>
+        <p>La primera: los aranceles de las inscripciones los cargó cada uno a mano y algunos quedaron mal, ya viste los negativos y los ceros. Los valores oficiales están en el catálogo de talleres, que además tiene datos que hoy no están en tu archivo y me sirven: el cupo de cada taller y quién lo dicta. Necesito que la planilla vaya a buscar sola el arancel oficial, que me avise cuando una inscripción no coincide, y que la sede vacía se complete con la del catálogo. Te paso también la nómina de docentes, con la fecha de alta de cada uno.</p>
+        <p>Y una pregunta puntual: de los pendientes, ¿cuántos llevan más de 30 días sin confirmarse al cierre del 5 de junio? Y ¿hay inscripciones anteriores al alta del docente del taller? Serigrafía arrancó recién en mayo.</p>
+        <p>La segunda: el jueves tengo reunión y no voy a llevar una planilla. Necesito un gráfico. Uno solo, que se entienda sin que yo lo explique.</p>
+        <p>Gracias.</p>
+      </div>
+    </div>
+    <h3>Qué te está pidiendo realmente</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Lo que dice el pedido</th><th>Lo que hay que hacer</th><th>Herramienta de esta clase</th></tr></thead>
+        <tbody>
+          <tr><td>"Los valores oficiales en un solo lugar"</td><td>Mudar el dato de referencia a su propia hoja, con una fila por taller</td><td>Hoja aparte + referencia <code>Hoja!Celda</code></td></tr>
+          <tr><td>"Que la planilla vaya a buscarlos sola"</td><td>Traer el valor a cada fila según su taller, sin copiar y pegar</td><td><code>BUSCARV</code> / <code>BUSCARX</code></td></tr>
+          <tr><td>"Datos que hoy no están en tu archivo"</td><td>Enriquecer cada inscripción con atributos que solo existen en la tabla de referencia</td><td>Varias búsquedas sobre la misma tabla</td></tr>
+          <tr><td>"Que me avise cuando no coincide"</td><td>Prever el caso "no encontrado" en vez de dejar un error a la vista</td><td><code>SIERROR</code> / argumento propio de <code>BUSCARX</code></td></tr>
+          <tr><td>"Cuántos días llevan sin confirmarse" y "anteriores al alta"</td><td>Calcular con fechas y comparar una fecha contra otra</td><td><code>HOY</code>, <code>DIAS</code>, <code>MES</code>, restas de fechas</td></tr>
+          <tr><td>"Un gráfico que se entienda sin que yo lo explique"</td><td>Elegir el tipo según la pregunta y titular con la conclusión</td><td>Editor de gráficos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Las tablas de referencia de La Usina</h3>
+    <p>Son dos archivos de Excel, cada uno con una hoja. Descargalos y vas a importarlos en la primera actividad: <a href="https://marcosxhernandez.github.io/unq-moodle/archivos/Catalogo_talleres_2026.xlsx" target="_blank" rel="noopener">Catalogo_talleres_2026.xlsx</a> (hoja <code>TALLERES</code>) y <a href="https://marcosxhernandez.github.io/unq-moodle/archivos/Docentes_LaUsina_2026.xlsx" target="_blank" rel="noopener">Docentes_LaUsina_2026.xlsx</a> (hoja <code>DOCENTES</code>).</p>
+    <p><strong>TALLERES</strong>, el catálogo vigente:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>taller</th><th>docente</th><th>sede</th><th>cupo</th><th>arancel_base</th></tr></thead>
+        <tbody>
+          <tr><td>Cerámica</td><td>Valeria Núñez</td><td>Sede Centro</td><td>18</td><td>14000</td></tr>
+          <tr><td>Guitarra</td><td>Emiliano Pais</td><td>Sede Centro</td><td>12</td><td>12000</td></tr>
+          <tr><td>Fotografía analógica</td><td>Rocío Beltrán</td><td>Sede Norte</td><td>15</td><td>16000</td></tr>
+          <tr><td>Yoga</td><td>Marina Suárez</td><td>Sede Sur</td><td>20</td><td>10000</td></tr>
+          <tr><td>Huerta orgánica</td><td>Tomás Leiva</td><td>Sede Norte</td><td>16</td><td>9000</td></tr>
+          <tr><td>Serigrafía</td><td>Julieta Campos</td><td>Sede Centro</td><td>14</td><td>15000</td></tr>
+          <tr><td>Percusión</td><td>Braian Ortiz</td><td>Sede Sur</td><td>18</td><td>11000</td></tr>
+          <tr><td>Costura creativa</td><td>Noelia Ferreyra</td><td>Sede Norte</td><td>15</td><td>13000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>DOCENTES</strong>, la nómina:</p>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>docente</th><th>taller</th><th>fecha_alta</th><th>contacto</th></tr></thead>
+        <tbody>
+          <tr><td>Valeria Núñez</td><td>Cerámica</td><td>2024-03-01</td><td>valeria.núñez@lausina.org.ar</td></tr>
+          <tr><td>Emiliano Pais</td><td>Guitarra</td><td>2023-08-15</td><td>emiliano.pais@lausina.org.ar</td></tr>
+          <tr><td>Rocío Beltrán</td><td>Fotografía analógica</td><td>2025-02-10</td><td>rocío.beltrán@lausina.org.ar</td></tr>
+          <tr><td>Marina Suárez</td><td>Yoga</td><td>2022-11-01</td><td>marina.suárez@lausina.org.ar</td></tr>
+          <tr><td>Tomás Leiva</td><td>Huerta orgánica</td><td>2024-06-01</td><td>tomás.leiva@lausina.org.ar</td></tr>
+          <tr><td>Julieta Campos</td><td>Serigrafía</td><td>2026-05-04</td><td>julieta.campos@lausina.org.ar</td></tr>
+          <tr><td>Braian Ortiz</td><td>Percusión</td><td>2023-03-20</td><td>braian.ortiz@lausina.org.ar</td></tr>
+          <tr><td>Noelia Ferreyra</td><td>Costura creativa</td><td>2024-09-12</td><td>noelia.ferreyra@lausina.org.ar</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: Lo que no aparece también cuenta</p>
+      <p>Fijate que hay un taller de más en el catálogo: <strong>Percusión</strong> existe, pero no tuvo ninguna inscripción. Eso también es información, y sale de la tabla de referencia: nadie la había pedido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="block" id="buscarv">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">BUSCARV</h2>
+  </div>
+  <div class="prose">
+    <p>Tenés en cada fila el nombre de un taller y, en otra hoja, una tabla con todos los talleres y sus datos. <code>BUSCARV</code> (búsqueda vertical) es la función que le pide a la planilla "buscá este taller y traeme el valor que está cinco columnas más a la derecha": busca un valor en la primera columna de un rango y devuelve el valor de otra columna de esa misma fila.</p>
+    <h3>Sintaxis</h3>
+    <div class="code-block">=BUSCARV(valor_buscado; rango; índice; [ordenado])</div>
+    <ul>
+      <li><code>valor_buscado</code>: el dato que querés encontrar (por ejemplo, el taller de la inscripción).</li>
+      <li><code>rango</code>: el rango donde buscar. La columna con el valor a buscar tiene que ser la <strong>primera</strong> columna de ese rango.</li>
+      <li><code>índice</code>: el número de columna (contando desde 1, dentro del rango) de donde se trae el resultado.</li>
+      <li><code>ordenado</code>: <code>FALSO</code> para una coincidencia exacta (lo que vas a usar casi siempre); <code>VERDADERO</code> para una coincidencia aproximada, que requiere que la tabla esté ordenada.</li>
+    </ul>
+    <p>Con el taller en la columna <code>A</code> de la hoja <code>TALLERES</code> y el arancel base en la columna <code>E</code> (la quinta):</p>
+    <div class="code-block">=BUSCARV(D2; TALLERES!$A$2:$E$9; 5; FALSO)</div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención: La referencia al rango debe ser absoluta</p>
+      <p>Si copiás esta fórmula hacia abajo sin fijar el rango con <code>$</code>, la planilla va a desplazar el rango de búsqueda fila por fila y en algún momento te vas a "salir" de la tabla de referencia. El <code>valor_buscado</code> (<code>D2</code>) sí debe quedar relativo: cada fila busca lo suyo. Es el error número uno con esta función, y no siempre avisa: a veces devuelve un número, del registro equivocado.</p>
+    </div>
+    <h3>Las dos limitaciones de BUSCARV</h3>
+    <ul>
+      <li>Solo busca <strong>hacia la derecha</strong>: la columna de resultado tiene que estar a la derecha de la columna de búsqueda dentro del rango.</li>
+      <li>La columna de búsqueda tiene que ser la <strong>primera</strong> del rango seleccionado: no se puede buscar por una columna que está en el medio o al final.</li>
+    </ul>
+    <p>Estas dos limitaciones son la razón por la que existe <code>BUSCARX</code>.</p>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 01</span>
+        <h3>Traer el arancel oficial desde su propia hoja</h3>
+      </div>
+      <div class="prose">
+        <p>Antes de tocar tu archivo, dos tablas chiquitas para aislar la mecánica.</p>
+        <ol>
+          <li>En una hoja nueva llamada <code>Productos</code>, cargá cuatro filas: <code>P001</code> Cuaderno Papelería 850 · <code>P002</code> Mochila Accesorios 15000 · <code>P003</code> Resma A4 Papelería 4200 · <code>P004</code> Cartuchera Accesorios 6500. En otra hoja llamada <code>Pedidos</code>, cargá tres filas con código y cantidad: <code>P002</code> 2 · <code>P001</code> 10 · <code>P004</code> 1.</li>
+          <li>En <code>Pedidos</code>, traé el nombre y el precio con <code>BUSCARV</code>, y agregá una columna "Total" (cantidad × precio). Deberías obtener 30.000, 8.500 y 6.500. Cambiá el precio del Cuaderno en <code>Productos</code> y confirmá que el total de <code>Pedidos</code> se actualiza solo: eso es lo que no pasaba cuando el precio estaba copiado en cada fila.</li>
+          <li>Importá las dos tablas de La Usina a tu archivo: <strong>Archivo → Importar → Subir</strong>, "Insertar hoja(s) nueva(s)", una vez por cada archivo. Tienen que quedar las hojas <code>TALLERES</code> y <code>DOCENTES</code> (si Sheets les puso otro nombre, renombralas).</li>
+          <li>En <code>DATOS</code>, agregá una columna <code>arancel_oficial</code> (la <code>R</code>) que traiga con <code>BUSCARV</code> el arancel base desde <code>TALLERES</code>, buscando por el taller de cada fila. Rango absoluto, valor buscado relativo, coincidencia exacta. Vas a ver <code>#N/A</code> en <strong>4</strong> filas: son los talleres escritos como <code>Foto analogica</code> y <code>Ceramica Avanzada</code>, que no existen en el catálogo.
+            <div class="screenshot-todo">
+              <span class="screenshot-todo-label">📷 Captura pendiente</span>
+              <span class="screenshot-todo-desc">Barra de fórmulas de Google Sheets con la celda R2 de DATOS activa, mostrando la fórmula BUSCARV completa (con el rango de TALLERES fijado con $) y el resultado ya calculado en la celda.</span>
+            </div>
+          </li>
+          <li>Envolvé la fórmula con <code>SIERROR</code> para que muestre "Taller no encontrado" en lugar del error: <code>=SIERROR(BUSCARV(D2; TALLERES!$A$2:$E$9; 5; FALSO); "Taller no encontrado")</code>. Contá con <code>CONTAR.SI</code> cuántas filas dicen eso: tienen que ser <strong>4</strong>. Un <code>#N/A</code> en pantalla le dice a quien abre el archivo que está roto; un "Taller no encontrado" le dice qué hacer.</li>
+          <li>Agregá una columna <code>control_arancel</code> (la <code>S</code>) que compare el arancel cargado con el oficial: <code>=SI(R2="Taller no encontrado"; "Sin dato"; SI(H2=R2; "Ok"; "Difiere"))</code>. Con <code>CONTAR.SI</code>, contá las filas "Difiere": tienen que ser <strong>11</strong>, exactamente las filas que la regla roja de la Clase 08 había marcado (aranceles en cero y negativos). Acá quedó probado que eran aranceles mal cargados y no aranceles distintos de verdad.</li>
+          <li>Agregá una columna <code>sede_ok</code> (la <code>T</code>) que complete la sede vacía con la del catálogo: <code>=SI(E2=""; SIERROR(BUSCARV(D2; TALLERES!$A$2:$E$9; 3; FALSO); "Sin sede"); E2)</code>. Después cambiá los subtotales por sede de <code>RESUMEN</code> para que miren <code>sede_ok</code> en lugar de <code>sede</code>. Ahora <strong>sí</strong> cierran: Sede Centro <strong>$1.384.300</strong> (120), Sede Norte <strong>$915.500</strong> (83) y Sede Sur <strong>$397.000</strong> (45), y la línea "Sin sede" da $0.
+          </li>
+          <li>Probá el efecto: subí un 20% el arancel de Yoga en <code>TALLERES</code> y mirá cómo <code>arancel_oficial</code> y <code>control_arancel</code> reaccionan. Después devolvelo a su valor.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Google Sheets.</strong> Cómo la justificás: conecto tablas alojadas en hojas distintas con funciones de búsqueda, manteniendo cada dato de referencia en una única fuente de verdad en lugar de duplicarlo fila por fila, y controlo el caso de valor no encontrado en vez de dejar un error a la vista.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="block" id="buscarx">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">BUSCARX</h2>
+  </div>
+  <div class="prose">
+    <p><code>BUSCARX</code> es la evolución de <code>BUSCARV</code> (y también reemplaza a <code>BUSCARH</code>, su equivalente horizontal). Resuelve las dos limitaciones que viste recién.</p>
+    <h3>Sintaxis</h3>
+    <div class="code-block">=BUSCARX(valor_buscado; matriz_buscada; matriz_devuelta; [si_no_hay_valor])</div>
+    <ul>
+      <li><code>valor_buscado</code>: igual que en <code>BUSCARV</code>.</li>
+      <li><code>matriz_buscada</code>: el rango (una sola columna o fila) donde está el valor a buscar. No tiene que ser la primera columna de nada.</li>
+      <li><code>matriz_devuelta</code>: el rango de donde se trae el resultado, puede estar a la izquierda o a la derecha de la matriz buscada.</li>
+      <li><code>si_no_hay_valor</code>: qué mostrar si no encuentra el valor. Reemplaza la necesidad de envolver la fórmula con <code>SIERROR</code>.</li>
+    </ul>
+    <p>El docente del taller de cada inscripción, resuelto con <code>BUSCARX</code>:</p>
+    <div class="code-block">=BUSCARX(D2; TALLERES!$A$2:$A$9; TALLERES!$B$2:$B$9; "Taller no encontrado")</div>
+    <h3>BUSCARV frente a BUSCARX</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th></th><th><code>BUSCARV</code></th><th><code>BUSCARX</code></th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dirección de búsqueda</strong></td><td>Solo hacia la derecha</td><td>Cualquier dirección</td></tr>
+          <tr><td><strong>Posición de la columna de búsqueda</strong></td><td>Debe ser la primera del rango</td><td>Puede estar en cualquier posición</td></tr>
+          <tr><td><strong>Si se insertan columnas</strong></td><td>El índice numérico queda desfasado y devuelve otra columna, sin avisar</td><td>Apunta a rangos, no a números de posición: no se desfasa</td></tr>
+          <tr><td><strong>Manejo de errores</strong></td><td>Requiere <code>SIERROR</code> aparte</td><td>Tiene un argumento propio para el valor de error</td></tr>
+          <tr><td><strong>Disponibilidad</strong></td><td>Función clásica, en todas las versiones</td><td>Más moderna; en Excel requiere una versión reciente (Microsoft 365)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p><code>BUSCARX</code> es más flexible y más prolija, pero <code>BUSCARV</code> sigue siendo la que más vas a encontrar en planillas hechas por otras personas, sobre todo en Excel de escritorio. Conviene manejar las dos: una para escribir, la otra para poder leer y arreglar lo que ya existe.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 02</span>
+        <h3>El docente y el cupo de cada taller</h3>
+      </div>
+      <div class="prose">
+        <p>Antes de tocar tu archivo, la misma búsqueda de la actividad anterior, pero más corta.</p>
+        <ol>
+          <li>Sobre las hojas <code>Productos</code> y <code>Pedidos</code> de la Actividad 01, traé la categoría del producto con <code>BUSCARX</code> en lugar de <code>BUSCARV</code>, usando <code>si_no_hay_valor</code> con el texto "Revisar código". Agregá una fila en <code>Pedidos</code> con el código <code>P999</code>: confirmá que <code>BUSCARX</code> muestra el texto de reemplazo mientras que el <code>BUSCARV</code> de al lado muestra <code>#N/A</code>.</li>
+          <li>En <code>Productos</code>, insertá una columna nueva entre "Nombre" y "Categoría". Mirá qué le pasa al <code>BUSCARV</code> (se desfasa y trae otra columna, sin avisar) y qué le pasa al <code>BUSCARX</code> (nada, sigue apuntando a la misma). Esa diferencia es la razón práctica más fuerte para preferir <code>BUSCARX</code>. Sacá la columna que insertaste antes de seguir.</li>
+          <li>Buscar hacia la izquierda: en <code>Productos</code>, movés la columna del precio para que quede a la izquierda del código. Intentá traer el precio con <code>BUSCARV</code> y confirmá que no hay forma sin reorganizar la tabla. Resolvé el mismo caso con <code>BUSCARX</code>. Devolvé la tabla a su orden original.</li>
+          <li>En <code>DATOS</code>, agregá una columna <code>docente</code> (la <code>U</code>) con <code>BUSCARX</code> sobre <code>TALLERES</code>, como en el ejemplo de arriba. Tiene que dar "Taller no encontrado" en las mismas <strong>4</strong> filas de antes.</li>
+          <li>Armá en <code>RESUMEN</code> una tabla "Ocupación por taller", a partir de la celda <code>A40</code>, con una fila por taller (los nombres desde <code>LISTAS</code>): el <strong>cupo</strong> traído con <code>BUSCARX</code> desde <code>TALLERES</code>, las inscripciones válidas (el <code>SUMAR.SI</code> de <code>cuenta</code> que ya tenés), y una columna nueva <code>inscripciones_por_cupo</code>: válidas ÷ cupo, con un decimal. Mide cuántas veces se llenó el cupo durante el cuatrimestre.
+          </li>
+          <li>Agregá una columna "Participación en el total": el importe válido de cada taller dividido por el total real, con formato de porcentaje (Formato &gt; Número &gt; Porcentaje). Tienen que sumar 100%, con la salvedad de los talleres no reconocidos.</li>
+          <li>Aplicá formato condicional sobre <code>inscripciones_por_cupo</code>: rojo si es menor que 1,5 y verde si es mayor que 3. Tienen que quedar <strong>Percusión</strong> (0) en rojo y <strong>Cerámica</strong> (3,4) en verde.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: cruzo información entre tablas con BUSCARV y BUSCARX, con manejo explícito del caso "no encontrado", y construyo indicadores de desempeño comparando el valor real de cada registro contra su valor de referencia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="block" id="fechas">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Fechas: contar días y comparar</h2>
+  </div>
+  <div class="prose">
+    <p>El correo pregunta cuántos días llevan sin confirmarse los pendientes y si hay inscripciones anteriores al alta de un docente. Las dos preguntas se responden con fechas. Para la planilla, una fecha es un <strong>número</strong>: la cantidad de días transcurridos desde una fecha de origen. Por eso se pueden restar, comparar y ordenar, y por eso una fecha escrita como texto (que parece una fecha pero no lo es) no sirve para calcular.</p>
+    <h3>Las funciones de fecha</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Necesitás</th><th>Fórmula</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>La fecha de hoy</td><td><code>=HOY()</code></td><td>Cambia sola cada día que abrís el archivo</td></tr>
+          <tr><td>Los días entre dos fechas</td><td><code>=DIAS(fecha_fin; fecha_inicio)</code> o la resta <code>=fecha_fin-fecha_inicio</code></td><td><code>=DIAS(B1; A1)</code></td></tr>
+          <tr><td>El día, el mes o el año de una fecha</td><td><code>=DIA(f)</code>, <code>=MES(f)</code>, <code>=AÑO(f)</code></td><td><code>=MES(A1)</code> da 5 para el 14/05/2026</td></tr>
+          <tr><td>Convertir un texto a fecha</td><td><code>=FECHANUMERO("2026-05-04")</code></td><td>Sirve cuando la fecha llegó como texto</td></tr>
+          <tr><td>Saber si una celda es un número (o una fecha)</td><td><code>=ESNUMERO(celda)</code></td><td>Verdadero o falso</td></tr>
+          <tr><td>Sumar días a una fecha</td><td><code>=A1+30</code></td><td>Treinta días después de A1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p><code>HOY()</code> cambia todos los días. Si el informe tiene que reflejar la situación a una fecha fija (como el cierre del 5 de junio), no uses <code>HOY()</code>: guardá esa fecha en una celda de <code>PARAMETROS</code> y apuntá a ella. Si no, el mismo archivo da números distintos cada vez que se abre.</p>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Para ver si una celda tiene una fecha real o un texto que lo parece, mirá la alineación: las fechas, como todos los números, quedan a la derecha. Y con <code>Formato &gt; Número &gt; Número</code> una fecha real se transforma en un número como 46173; un texto no cambia.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 03</span>
+        <h3>Pendientes viejas y docentes recién llegados</h3>
+      </div>
+      <div class="prose">
+        <p>Antes de tocar tu archivo, practicá las funciones en una celda aparte.</p>
+        <ol>
+          <li>En una hoja descartable, escribí <code>=HOY()</code> y mirá el resultado. En otras dos celdas escribí las fechas <code>01/03/2026</code> y <code>05/06/2026</code>, restalas (<code>=B2-A2</code>) y comprobá que <code>DIAS</code> da lo mismo (96). Probá <code>DIA</code>, <code>MES</code> y <code>AÑO</code> sobre una de ellas.</li>
+          <li>En <code>PARAMETROS</code>, agregá en <code>A4</code> el texto <code>Fecha de corte</code> y en <code>B4</code> la fecha <code>05/06/2026</code> (con formato de fecha).</li>
+          <li>En <code>DATOS</code>, agregá la columna <code>fecha_ok</code> (la <code>V</code>) con <code>=SI(ESNUMERO(C2); C2; FECHANUMERO(C2))</code>, que usa la fecha tal cual si ya es un número y la convierte si llegó como texto. Después, con <code>CONTAR</code>, confirmá que <code>fecha_ok</code> tiene <strong>336</strong> valores.
+          </li>
+          <li>Agregá <code>mes</code> (la <code>W</code>) con <code>=MES(V2)</code> y <code>dias_a_corte</code> (la <code>X</code>) con <code>=PARAMETROS!$B$4-V2</code>: cuántos días pasaron entre la inscripción y el cierre.</li>
+          <li>Agregá <code>seguimiento</code> (la <code>AA</code>) con <code>=SI(Y(O2&lt;&gt;"Duplicada"; J2="Pendiente"; X2&gt;30); "Llamar"; "")</code>. Es el pedido del correo: pendientes que llevan más de 30 días sin confirmarse. Con <code>CONTAR.SI</code>, contalas: tienen que ser <strong>34</strong>.</li>
+          <li>La fecha de alta del docente viene de la hoja <code>DOCENTES</code>, y ahí llegó como texto (quedó alineada a la izquierda; si te quedó a la derecha, ya es fecha y no necesitás convertirla). Agregá <code>alta_docente</code> (la <code>Y</code>) con <code>=SIERROR(FECHANUMERO(BUSCARX(U2; DOCENTES!$A$2:$A$9; DOCENTES!$C$2:$C$9)); "")</code>: busca el docente de la fila y convierte su fecha de alta. Aplicale formato de fecha a la columna.
+          </li>
+          <li>Agregá <code>control_alta</code> (la <code>Z</code>) con <code>=SI(Y(Y2&lt;&gt;""; V2&lt;Y2); "Antes del alta"; "Ok")</code>. Con <code>CONTAR.SI</code>, contá las filas "Antes del alta": tienen que ser <strong>29</strong>, todas de Serigrafía (la docente Julieta Campos tiene alta el 04/05/2026). No es necesariamente un error: puede ser una preinscripción. Es lo que la coordinación tiene que decidir, y vos le entregás el dato.</li>
+          <li>En <code>RESUMEN</code>, armá una tabla "Evolución mensual" con los meses 3, 4, 5 y 6, y el importe válido de cada uno con <code>SUMAR.SI</code> sobre <code>mes</code> y <code>importe_valido</code>: marzo <strong>$745.000</strong>, abril <strong>$881.800</strong>, mayo <strong>$877.600</strong> y junio <strong>$192.400</strong> (junio es parcial: el archivo llega hasta el 5).
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="block" id="graficos">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">Gráficos con propósito</h2>
+  </div>
+  <div class="prose">
+    <p>La coordinación pidió "un gráfico que se entienda sin que yo lo explique". Con los datos que ya tenés podrías hacer cinco gráficos distintos, y solo uno responde la pregunta que esa persona va a tener que contestar en la reunión. El gráfico que elegís es una herramienta de comunicación: tiene que responder al tipo de pregunta que el dato está contestando.</p>
+    <h3>Cómo elegir el tipo de gráfico</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Tu pregunta es...</th><th>Usá...</th></tr></thead>
+        <tbody>
+          <tr><td>"¿Cómo se compara este valor contra otros de la misma categoría?"</td><td>Gráfico de barras o columnas</td></tr>
+          <tr><td>"¿Cómo cambió este valor a lo largo del tiempo?"</td><td>Gráfico de líneas</td></tr>
+          <tr><td>"¿Qué porcentaje representa cada parte de un total?"</td><td>Gráfico circular (torta) o de anillo</td></tr>
+          <tr><td>"¿Hay relación entre dos variables numéricas?"</td><td>Gráfico de dispersión</td></tr>
+          <tr><td>"¿Cómo se comparan dos magnitudes distintas sobre el mismo eje?"</td><td>Gráfico combinado (columnas + líneas)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>El gráfico circular pierde sentido con más de cinco o seis categorías: se vuelve un mosaico de porciones diminutas e ilegibles. Si tenés muchas categorías, un gráfico de barras casi siempre comunica mejor. Y si las porciones son parecidas entre sí, el circular es directamente la peor opción: el ojo humano compara mal ángulos, y bien longitudes.</p>
+    </div>
+    <h3>Cómo insertarlo</h3>
+    <ol>
+      <li>Seleccioná los datos que querés graficar, incluidos los encabezados.</li>
+      <li>Andá a <strong>Insertar &gt; Gráfico</strong>. La planilla sugiere un tipo automáticamente, no siempre es el más adecuado para lo que querés comunicar.</li>
+      <li>En el <strong>Editor de gráficos</strong>, pestaña "Configuración", cambiá el tipo si hace falta y revisá el rango de datos y las series.</li>
+      <li>En la pestaña "Personalizar", ajustá el título del gráfico, los títulos de los ejes, la leyenda, los colores y las etiquetas de datos.</li>
+    </ol>
+    <img class="screenshot" src="../../img/10-02-captura-editor-graficos.png" alt="Editor de gráficos de Google Sheets con las pestañas Configuración y Personalizar, tipo Gráfico de columnas, intervalo de datos, eje X y serie">
+    <p class="screenshot-caption">El Editor de gráficos: pestañas Configuración y Personalizar, tipo de gráfico, intervalo de datos, eje X y series.</p>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo: El título hace la mitad del trabajo</p>
+      <p>Un buen título responde a la pregunta que el gráfico contesta, no describe los ejes. "Importe por taller" describe los ejes. "Cerámica concentra más de una cuarta parte de la facturación" cuenta lo que el gráfico muestra, y es lo que la coordinación va a repetir en la reunión.</p>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 04</span>
+        <h3>El gráfico de la reunión</h3>
+      </div>
+      <div class="prose">
+        <p>Antes de tocar tu archivo, el mismo dato en dos gráficos distintos.</p>
+        <ol>
+          <li>Con los totales por producto de la Actividad 01, insertá un gráfico circular y después uno de barras con los mismos datos. Miralos uno al lado del otro treinta segundos: ¿en cuál te resulta más fácil decir cuál es el segundo más grande? Escribí un título para el que hayas elegido, con forma de afirmación y no de rótulo.</li>
+          <li>Copiá la tabla de importes por taller de <code>RESUMEN</code> y pegala como <strong>solo valores</strong> (<code>Ctrl+Shift+V</code>) en una hoja nueva <code>GRAFICOS</code>. Ordenala de mayor a menor con Datos &gt; Ordenar rango. Un gráfico de comparación sin ordenar obliga a quien lo mira a hacer el trabajo de ordenar mentalmente.</li>
+          <li>Insertá un gráfico de <strong>barras</strong> con los ocho talleres. Escribí un título que sea una afirmación sobre tus datos (mirá la participación antes de escribirlo: hay un taller que concentra bastante más que los demás). Sacá la leyenda si el gráfico tiene una sola serie y etiquetá los valores directamente sobre las barras.</li>
+          <li>Verificá que los números del gráfico coincidan con los del panel. Un gráfico que no reconcilia con la tabla de al lado destruye la confianza en las dos cosas.</li>
+          <li>Con la tabla "Evolución mensual", insertá un gráfico de <strong>líneas</strong>. Escribí un título que cuente lo que pasa de marzo a mayo, y aclarar que junio es parcial.</li>
+          <li>Con el importe por medio de pago (un <code>SUMAR.SI</code> sobre <code>medio_pago</code> e <code>importe_valido</code>: Efectivo <strong>$1.046.500</strong>, Tarjeta <strong>$906.800</strong>, Transferencia <strong>$743.500</strong>), insertá un gráfico <strong>circular</strong>. Son tres partes de un total: acá sí conviene.</li>
+          <li>Variante, dos ejes: armá una tabla con cada taller en filas y dos columnas, el importe válido y <code>inscripciones_por_cupo</code>. Insertá un gráfico combinado: el importe en columnas sobre el eje izquierdo, la otra serie en líneas sobre el eje derecho. Las magnitudes son incomparables y mezclarlas en un solo eje haría el gráfico ilegible.
+            <div class="screenshot-todo">
+              <span class="screenshot-todo-label">📷 Captura pendiente</span>
+              <span class="screenshot-todo-desc">Editor de gráficos de Google Sheets con un gráfico combinado (columnas + líneas) configurado, pestaña Configuración mostrando la segunda serie asignada al eje derecho.</span>
+            </div>
+          </li>
+          <li>Escribí un título que comunique la relación entre las dos series de la variante: ¿el taller que más factura es también el que más veces llena su cupo, o no?</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Visualización de datos (Data Visualization).</strong> Cómo la justificás: elijo el tipo de gráfico según la pregunta que necesito responder (comparación, evolución, composición o correlación), ordeno las series para facilitar la lectura, uso un eje secundario cuando comparo magnitudes distintas y titulo cada visualización con la conclusión que comunica, no con el nombre de los ejes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="block" id="cierre">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Cerrar el encargo y replicarlo en Excel</h2>
+  </div>
+  <div class="prose">
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05 · Parte A</span>
+        <h3>Dejar el archivo entregable</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Actualizá el <code>LEEME</code>: agregá que los aranceles oficiales y los cupos viven en <code>TALLERES</code> y las altas de docentes en <code>DOCENTES</code>, que no deben modificarse en <code>DATOS</code>, qué significan las columnas nuevas (<code>arancel_oficial</code>, <code>control_arancel</code>, <code>sede_ok</code>, <code>docente</code>, <code>fecha_ok</code>, <code>mes</code>, <code>dias_a_corte</code>, <code>alta_docente</code>, <code>control_alta</code>, <code>seguimiento</code>) y cómo se lee <code>inscripciones_por_cupo</code>.</li>
+          <li>Verificá que ninguna celda muestre <code>#N/A</code> ni <code>#¡REF!</code> (las búsquedas que no encuentran muestran un texto), que los subtotales por sede cierren y que el gráfico reconcilia con el panel.</li>
+          <li>Contestá el correo en cuatro renglones: cuántas inscripciones difieren del arancel oficial (11), cuántos pendientes llevan más de 30 días (34), qué hay de las inscripciones anteriores al alta de la docente de Serigrafía (29), qué dice el gráfico, y cuál es el taller del catálogo que no tuvo movimiento (Percusión). Ese dato salió de la tabla de referencia y nadie lo había pedido, pero es exactamente lo que hace útil un informe.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="callout" data-type="action">
+      <p class="callout-label">📤 Entrega de la clase</p>
+      <p>Subí a Moodle el <strong>enlace</strong> de tu planilla con acceso de lectura habilitado, nombrada <code>2026-XX-XX_Informatica_Clase10_V01</code>. Antes de entregar, cambiá un valor en <code>TALLERES</code> y confirmá que el efecto llega hasta el gráfico: si algún número quedó quieto, hay un dato copiado a mano en el camino.</p>
+    </div>
+
+    <div class="tools-container">
+      <div class="app-row">
+        <a class="app-row-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">
+          <img class="row-icon" src="../../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel">
+          <div class="row-text">
+            <span class="row-name">Excel</span>
+            <span class="row-domain">office.com</span>
+          </div>
+        </a>
+        <div class="tags">
+          <span class="pill pill-freemium">Freemium</span>
+          <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
+        </div>
+      </div>
+    </div>
+    <div class="activity">
+      <div class="activity-head">
+        <span class="activity-eyebrow">Actividad 05 · Parte B</span>
+        <h3>La misma planilla, en Excel</h3>
+      </div>
+      <div class="prose">
+        <ol>
+          <li>Descargá tu planilla como <code>.xlsx</code> (<strong>Archivo → Descargar → Microsoft Excel</strong>) y abrila en Excel.</li>
+          <li>Verificá las búsquedas: las columnas con <code>BUSCARV</code> y <code>BUSCARX</code> tienen que dar los mismos resultados. Si tu Excel no tiene <code>BUSCARX</code>, reemplazalas por <code>BUSCARV</code> + <code>SIERROR</code>.</li>
+          <li>Revisá cómo quedó el gráfico: en Excel, clic sobre el gráfico → pestaña Diseño de gráfico. Cambiá el título y el estilo.</li>
+          <li>Armá en Excel el gráfico combinado con eje secundario: clic derecho sobre la serie → Dar formato a serie de datos → Eje secundario.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Qué revisar</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td>Referencia entre hojas</td><td>En Excel es igual: <code>NombreHoja!Celda</code>, con comillas simples si el nombre tiene espacios</td></tr>
+          <tr><td><code>BUSCARX</code> en Excel</td><td>Disponible en Microsoft 365 y versiones recientes; en versiones más viejas solo existe <code>BUSCARV</code></td></tr>
+          <tr><td>Fechas</td><td>Excel y Sheets cuentan los días desde fechas de origen distintas, pero eso no afecta a las restas ni a <code>DIAS</code>. <code>HOY</code>, <code>MES</code>, <code>AÑO</code> y <code>FECHANUMERO</code> se llaman igual en español</td></tr>
+          <tr><td>Insertar gráfico</td><td>Pestaña Insertar &gt; Gráficos recomendados, o elegir el tipo directamente</td></tr>
+          <tr><td>Editar título y ejes</td><td>Clic sobre el gráfico &gt; Diseño de gráfico, o el botón <strong>+</strong> al lado del gráfico seleccionado</td></tr>
+          <tr><td>Eje secundario</td><td>Clic derecho sobre la serie &gt; Dar formato a serie de datos &gt; Eje secundario</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Si tu Excel es una versión más vieja y no tiene <code>BUSCARX</code>, resolvé ese paso con <code>BUSCARV</code> + <code>SIERROR</code>. Es la razón por la que conviene dominar las dos funciones, no solo la más nueva: no siempre elegís vos con qué versión trabajás.</p>
+    </div>
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Consejo</p>
+      <p>Mirá tu gráfico con ojos de alguien que nunca vio tus datos. Si no podés explicar en una frase qué te está diciendo, probablemente el tipo elegido no es el correcto para esa pregunta, o todavía no sabés cuál es la pregunta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+    <p>Pasaste de un archivo que repetía datos en cada fila a uno que los busca donde viven: el arancel oficial, el cupo, el docente y su fecha de alta se traen desde su propia hoja, sin copiar y sin dejar errores a la vista. Calculaste con fechas para responder cuántos días lleva una pendiente y si hay inscripciones previas al alta, y elegiste el gráfico que responde la pregunta de la reunión en lugar del que la planilla sugiere.</p>
+
+    <h3 id="actividades">Actividades</h3>
+    <div class="table-wrap">
+      <table class="check-table">
+        <tbody>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-1" aria-label="Marcar como hecho"></td><td><label for="chk-10-1">Hice una copia de mi archivo de la Clase 09 con el nombre <code>2026-XX-XX_Informatica_Clase10_V01</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-2" aria-label="Marcar como hecho"></td><td><label for="chk-10-2">Importé <code>TALLERES</code> y <code>DOCENTES</code> como hojas del mismo archivo y entiendo por qué el dato de referencia vive una sola vez.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-3" aria-label="Marcar como hecho"></td><td><label for="chk-10-3">Traje el arancel oficial con <code>BUSCARV</code>, rango absoluto y coincidencia exacta, y envolví la fórmula con <code>SIERROR</code>.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-4" aria-label="Marcar como hecho"></td><td><label for="chk-10-4">Armé <code>control_arancel</code> y comprobé que las 11 filas que difieren son las mismas que marcó el formato condicional de la Clase 08.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-5" aria-label="Marcar como hecho"></td><td><label for="chk-10-5">Completé la sede vacía con la del catálogo y mis subtotales por sede ahora cierran contra el total real.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-6" aria-label="Marcar como hecho"></td><td><label for="chk-10-6">Traje docente y cupo con <code>BUSCARX</code> y armé <code>inscripciones_por_cupo</code> con formato condicional.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-7" aria-label="Marcar como hecho"></td><td><label for="chk-10-7">Guardé la fecha de corte en <code>PARAMETROS</code> y calculé <code>dias_a_corte</code>, <code>mes</code>, <code>seguimiento</code> y <code>control_alta</code> con fechas.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-8" aria-label="Marcar como hecho"></td><td><label for="chk-10-8">Elegí el tipo de gráfico según la pregunta, ordené las barras y titulé cada gráfico con una afirmación.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-9" aria-label="Marcar como hecho"></td><td><label for="chk-10-9">Verifiqué que el gráfico reconcilia con el panel y que no queda ningún <code>#N/A</code> a la vista. Entregué en Moodle el enlace con el <code>LEEME</code> actualizado.</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-10-10" aria-label="Marcar como hecho"></td><td><label for="chk-10-10">Comprobé las búsquedas y el gráfico combinado en Excel.</label></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Google Sheets.</strong> Cómo la justificás: conecto tablas alojadas en hojas distintas con funciones de búsqueda, mantengo cada dato de referencia en una única fuente de verdad, calculo con fechas y elijo el tipo de gráfico según la pregunta que necesito responder.</p>
+    </div>
+
+    <div class="callout" data-type="linkedin">
+      <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+      <p><strong>Microsoft Excel.</strong> Cómo la justificás: cruzo información entre tablas con BUSCARV y BUSCARX, con manejo explícito del caso "no encontrado", y replico gráficos con eje secundario.</p>
+    </div>
+
+    <h3 id="referencia-rapida">Referencia rápida</h3>
+
+    <div class="qr-row qr-t-verde">
+      <div class="qr-row-label">Planilla de cálculo</div>
+      <div class="qr-row-cols">
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Archivo y hojas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Crear una planilla: <code>sheets.new</code> en la barra del navegador</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Renombrar una hoja: doble clic sobre la pestaña</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Duplicar o copiar una hoja: clic derecho sobre la pestaña</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar o eliminar fila o columna: clic derecho sobre el número o la letra</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Configuración regional: Archivo &gt; Configuración &gt; Configuración regional</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Formato de celdas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Número, alineación, fuente, bordes y relleno: barra de herramientas o menú Formato</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">En Excel: <code>Ctrl+1</code> (Mac: <code>⌘+1</code>) abre el cuadro Formato de celdas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ajustar el ancho: arrastrar el límite entre dos letras de columna</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Texto a la izquierda, números a la derecha: si un número queda a la izquierda, es texto</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Edición</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copiar / cortar / pegar: <code>Ctrl+C</code> / <code>Ctrl+X</code> / <code>Ctrl+V</code> (Mac: <code>⌘+C</code> / <code>⌘+X</code> / <code>⌘+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Pegar solo valores: <code>Ctrl+Shift+V</code> (Mac: <code>⌘+Shift+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Pegar solo formato: <code>Ctrl+Alt+V</code> (Mac: <code>⌘+Option+V</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otras opciones de pegado: Edición &gt; Pegado especial</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rellenar hacia abajo / derecha: <code>Ctrl+D</code> / <code>Ctrl+R</code> (Mac: <code>⌘+D</code> / <code>⌘+R</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Serie: arrastrar el controlador de relleno; doble clic = hasta el final de los datos vecinos</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Buscar y reemplazar: <code>Ctrl+H</code> (Mac: <code>⌘+Shift+H</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ordenar: Datos &gt; Ordenar rango</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Imagen: Insertar &gt; Imagen &gt; Insertar imagen en celda o sobre celdas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas y referencias</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Iniciar una fórmula: <code>=</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternar relativa / absoluta / mixta: <code>F4</code> (Mac: <code>⌘+T</code> o <code>Fn+F4</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otra hoja: <code>=NombreDeHoja!A1</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editar la celda seleccionada: <code>F2</code> (Mac: doble clic)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Operadores aritméticos</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">+</span><span class="qr-fdesc">Suma</span></div>
+            <div class="qr-frow"><span class="qr-fletter">-</span><span class="qr-fdesc">Resta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">*</span><span class="qr-fdesc">Multiplicación</span></div>
+            <div class="qr-frow"><span class="qr-fletter">/</span><span class="qr-fdesc">División</span></div>
+            <div class="qr-frow"><span class="qr-fletter">^</span><span class="qr-fdesc">Potencia</span></div>
+            <div class="qr-frow"><span class="qr-fletter">%</span><span class="qr-fdesc">Porcentaje</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones esenciales</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=SUMA(rango)</code>: suma total</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=PROMEDIO(rango)</code>: media aritmética</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=CONTAR(rango)</code> / <code>=CONTARA(rango)</code>: celdas numéricas / no vacías</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=MAX(rango)</code> / <code>=MIN(rango)</code>: valor más alto / más bajo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=POTENCIA(base;exp)</code> / <code>=RAIZ(número)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Autosuma: ícono Σ de la barra de herramientas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Selección y formato condicional</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Columna / fila entera: <code>Ctrl+Espacio</code> / <code>Shift+Espacio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ir al borde de los datos: <code>Ctrl+flecha</code> (Mac: <code>⌘+flecha</code>)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir Formato condicional: Formato &gt; Formato condicional</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Reglas: escala de color, un solo color o fórmula personalizada</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Versiones y listas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copia del archivo para la clase nueva: Archivo &gt; Hacer una copia</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Datos con rango que crece al copiar: <code>$A$2:A2</code> (la segunda referencia es relativa)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Funciones lógicas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional simple: <code>=SI(condición; si_verdadero; si_falso)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Condicional anidado: <code>=SI(cond1; val1; SI(cond2; val2; val3))</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Todas deben cumplirse: <code>=Y(cond1; cond2)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Basta con que se cumpla una: <code>=O(cond1; cond2)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">El texto va entre comillas dobles: <code>"Válida"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">La comparación <code>=</code> no distingue mayúsculas de minúsculas, pero sí los espacios</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Operadores de comparación</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">=</span><span class="qr-fdesc">Igual a</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;</span><span class="qr-fdesc">Mayor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;</span><span class="qr-fdesc">Menor que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&gt;=</span><span class="qr-fdesc">Mayor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;=</span><span class="qr-fdesc">Menor o igual que</span></div>
+            <div class="qr-frow"><span class="qr-fletter">&lt;&gt;</span><span class="qr-fdesc">Distinto de</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">SUMAR.SI y CONTAR.SI</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Suma condicional: <code>=SUMAR.SI(rango_criterio; criterio; rango_suma)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Conteo condicional: <code>=CONTAR.SI(rango; criterio)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio con operador, siempre entre comillas: <code>"&gt;50"</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Criterio desde una celda: <code>=SUMAR.SI($E$2:$E$1000; A15; $P$2:$P$1000)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Validación de datos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Abrir: Datos &gt; Validación de datos &gt; Añadir regla</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones desde celdas: Criterios &gt; Menú desplegable (de un intervalo)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Opciones escritas a mano: Criterios &gt; Menú desplegable</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Bloquear lo inválido: "Rechazar los datos introducidos". Solo avisar: "Mostrar una advertencia"</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Búsqueda entre hojas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Otra hoja: <code>=NombreDeHoja!A1</code>. Con espacios o tildes en el nombre: <code>='Nombre de hoja'!A1</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda vertical: <code>=BUSCARV(valor; rango; índice; FALSO)</code>. El rango, con <code>$</code>: el valor buscado, relativo</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Búsqueda flexible: <code>=BUSCARX(valor; col_buscada; col_devuelta; "no encontrado")</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Controlar errores: <code>=SIERROR(fórmula; "texto alternativo")</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Fechas</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Una fecha es un número: se pueden restar. Formato: Formato &gt; Número &gt; Fecha</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fecha de hoy (cambia sola cada día): <code>=HOY()</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Días entre dos fechas: <code>=DIAS(fin; inicio)</code>, o la resta <code>=fin-inicio</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Partes de una fecha: <code>=DIA(f)</code>, <code>=MES(f)</code>, <code>=AÑO(f)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Texto a fecha: <code>=FECHANUMERO("2026-05-04")</code>. ¿Es número o texto?: <code>=ESNUMERO(celda)</code></span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Gráficos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Insertar: seleccionar los datos con encabezados &gt; Insertar &gt; Gráfico</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Editor de gráficos: pestaña Configuración (tipo, rango, series) y pestaña Personalizar (título, ejes, leyenda, etiquetas)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Comparar categorías: barras o columnas. Evolución en el tiempo: líneas</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Partes de un total (hasta 5 o 6): circular. Dos magnitudes distintas: combinado con eje derecho</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">El título afirma la conclusión; no describe los ejes</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">🔤 Equivalencias con Excel en inglés</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMA</code>: <code>SUM</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>PROMEDIO</code>: <code>AVERAGE</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR</code>: <code>COUNT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTARA</code>: <code>COUNTA</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>POTENCIA</code>: <code>POWER</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>RAIZ</code>: <code>SQRT</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SI</code>: <code>IF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Y</code>: <code>AND</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>O</code>: <code>OR</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUMAR.SI</code>: <code>SUMIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>CONTAR.SI</code>: <code>COUNTIF</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Validación de datos</code>: <code>Data Validation</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARV</code>: <code>VLOOKUP</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>BUSCARX</code>: <code>XLOOKUP</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SIERROR</code>: <code>IFERROR</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>HOY</code>: <code>TODAY</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>DIAS</code>: <code>DAYS</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>DIA / MES / AÑO</code>: <code>DAY / MONTH / YEAR</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>FECHANUMERO</code>: <code>DATEVALUE</code></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="glosario">Glosario</h3>
+    <div class="glossary">
+      <div class="gloss-item"><span class="gloss-term">Hoja de referencia</span><p class="gloss-def">Hoja que guarda una sola vez los datos que otras hojas necesitan (aranceles, cupos, fechas de alta), para que no se copien fila por fila.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Referencia entre hojas</span><p class="gloss-def">Referencia a una celda de otra hoja del mismo libro, con la sintaxis <code>NombreDeHoja!Celda</code>. Con espacios en el nombre, va entre comillas simples.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>BUSCARV</code></span><p class="gloss-def">Busca un valor en la primera columna de un rango y devuelve el de otra columna de la misma fila: <code>=BUSCARV(valor; rango; índice; FALSO)</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>BUSCARX</code></span><p class="gloss-def">Búsqueda que no depende de la posición de las columnas y tiene un argumento propio para el caso "no encontrado".</p></div>
+      <div class="gloss-item"><span class="gloss-term">Coincidencia exacta</span><p class="gloss-def">Modo de búsqueda (<code>FALSO</code> en <code>BUSCARV</code>) que solo acepta el valor idéntico; es el que se usa casi siempre.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>SIERROR</code></span><p class="gloss-def">Devuelve un texto o valor alternativo cuando la fórmula que envuelve produce un error: <code>=SIERROR(fórmula; "texto")</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Fuente única de verdad</span><p class="gloss-def">Principio de que cada dato vive en un solo lugar, y las demás hojas lo consultan en vez de copiarlo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Fecha</span><p class="gloss-def">Para la planilla, un número: los días transcurridos desde una fecha de origen. Por eso se pueden restar y comparar.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>HOY</code></span><p class="gloss-def">Devuelve la fecha del día; cambia sola cada vez que se abre el archivo.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>DIAS</code></span><p class="gloss-def">Devuelve la cantidad de días entre dos fechas: <code>=DIAS(fecha_fin; fecha_inicio)</code>.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>DIA</code> / <code>MES</code> / <code>AÑO</code></span><p class="gloss-def">Devuelven el día, el mes o el año de una fecha.</p></div>
+      <div class="gloss-item"><span class="gloss-term"><code>FECHANUMERO</code></span><p class="gloss-def">Convierte un texto con aspecto de fecha en una fecha real.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Gráfico combinado</span><p class="gloss-def">Gráfico que mezcla dos tipos (columnas y líneas) para comparar magnitudes distintas, con un eje secundario.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Editor de gráficos</span><p class="gloss-def">Panel de Sheets con las pestañas Configuración (tipo y datos) y Personalizar (título, ejes, leyenda, colores).</p></div>
+    </div>
+
+    <h3 id="fuentes">Fuentes</h3>
+    <ul class="sources">
+      <li>Google. *Función BUSCARV*. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3093318</code></li>
+      <li>Google. *Función BUSCARX*. <code>support.google.com/docs/answer/12013562</code></li>
+      <li>Google. *Lista de funciones de Google Sheets* (fechas y horas). <code>support.google.com/docs/table/25273</code></li>
+      <li>Google. *Añadir y editar un gráfico*. <code>support.google.com/docs/answer/63824</code></li>
+      <li>Microsoft. *Función BUSCARX*. Soporte de Microsoft. <code>support.microsoft.com/es-es/office</code></li>
+      <li>Cairo, A. *The Functional Art: An Introduction to Information Graphics and Visualization*. New Riders, 2013. Criterio de selección de tipo de gráfico según la pregunta.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+
+<script defer src="../../js/guia-print.js"></script>
+
+</body>
+</html>

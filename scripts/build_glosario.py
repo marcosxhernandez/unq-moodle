@@ -14,6 +14,14 @@ ACENTOS = {  # manual 2.5
     '06': '#e8a317', '08': '#1e8e3e', '09': '#1e8e3e', '10': '#1e8e3e', '11': '#1e8e3e',
     '13': '#673ab7', '14': '#673ab7', '15': '#673ab7'}
 
+UNIDADES = [  # manual 2.5: unidades temáticas del programa (Evaluación no tiene glosario)
+    ('herramientas', 'Herramientas digitales', ['01']),
+    ('procesador', 'Procesador de texto', ['02', '03', '04', '05']),
+    ('presentaciones', 'Presentaciones', ['06']),
+    ('planilla', 'Planilla de cálculo', ['08', '09', '10', '11']),
+    ('datos', 'Gestión de datos e IA', ['13', '14', '15'])]
+UNIDAD_DE = {n: u[0] for u in UNIDADES for n in u[2]}
+
 def mix_white(h, pct): r, g, b = [int(h[i:i+2], 16) for i in (1, 3, 5)]; return '#%02x%02x%02x' % tuple(round(c*pct + 255*(1-pct)) for c in (r, g, b))
 def darken(h, pct=0.65): r, g, b = [int(h[i:i+2], 16) for i in (1, 3, 5)]; return '#%02x%02x%02x' % tuple(round(c*pct) for c in (r, g, b))
 def norm(s): return re.sub(r'\s+', ' ', unicodedata.normalize('NFD', s).encode('ascii', 'ignore').decode().lower()).strip()
@@ -78,7 +86,7 @@ for f in sorted((ROOT / 'clases').glob('Clase [0-9][0-9] - *.html')):
             f.write_text(raw, encoding='utf-8'); p.items = [it for it in p.items if it['term'].strip() not in orf]
     m = re.match(r'^Clase\s*\d+\s*[-–]\s*(.*)$', p.title.split('·')[0].strip()); titulo = m.group(1) if m else f.stem[11:]
     ac = ACENTOS.get(num, '#8d8b9c')
-    clases.append({'num': num, 'titulo': titulo, 'archivo': f.name, 'acento': ac, 'deep': darken(ac), 'tint': mix_white(ac, .14)})
+    clases.append({'num': num, 'unidad': UNIDAD_DE.get(num, ''), 'titulo': titulo, 'archivo': f.name, 'acento': ac, 'deep': darken(ac), 'tint': mix_white(ac, .14)})
     for it in p.items:
         raw = it['term'].strip(); main = re.sub(r'\s*\([^)]*\)\s*$', '', raw)
         html = it['html'].strip(); key = norm(main)
@@ -90,7 +98,11 @@ out = []
 for key, t in sorted(terms.items(), key=lambda kv: kv[0]):
     vs = list(t['variants'].values())
     out.append({'term': t['term'], 'variants': vs, 'divergente': len(vs) > 1})
-data = {'clases': clases, 'terms': out}
+unidades = []
+for uid, nombre, nums in UNIDADES:
+    pres = [c for c in clases if c['num'] in nums]
+    if pres: unidades.append({'id': uid, 'nombre': nombre, 'clases': [c['num'] for c in pres], 'acento': pres[0]['acento'], 'deep': pres[0]['deep'], 'tint': pres[0]['tint']})
+data = {'unidades': unidades, 'clases': clases, 'terms': out}
 (ROOT / 'glosario.json').write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
 
 page = ROOT / 'glosario.html'

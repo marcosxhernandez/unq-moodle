@@ -2832,3 +2832,173 @@ a.pill-student:hover{ text-decoration:underline; }
 @media print{
   .gnav, .gbar, .gtoggle{ display:none !important; }
 }
+
+/* ==========================================================================
+   Glosario en contexto (.gh-term, .gh-card, .gh-sheet) — oct. 2026
+   Lo arma js/guia-glosario.js desde los .gloss-item de la propia clase: marca
+   la primera aparición de cada término por sección. Escritorio (mouse): tarjeta
+   flotante; táctil: hoja inferior. Solo pantalla, en papel se apaga (último
+   bloque). Texto de la tarjeta en --acento-deep (el amber de Clase 06 no pasa
+   AA como texto); el color de clase queda en el filete y el subrayado.
+   ========================================================================== */
+.gh-term{
+  cursor:help; border-radius:2px; outline:none;
+  text-decoration:underline dotted var(--acento); text-decoration-thickness:1.5px; text-underline-offset:3px;
+  -webkit-tap-highlight-color:transparent;
+  transition:background-color .15s;
+}
+@media (hover:hover){ .gh-term:hover{ background:var(--acento-tint); text-decoration-style:solid; } }
+.gh-term:focus-visible{ background:var(--acento-tint); text-decoration-style:solid; box-shadow:0 0 0 2px var(--acento); }
+
+.gh-card{
+  position:fixed; z-index:75; left:0; top:0; width:320px; padding:12px 14px 11px;
+  background:#fff; border:1px solid var(--line-strong); border-top:3px solid var(--acento); border-radius:var(--radius);
+  box-shadow:0 12px 30px rgba(21,20,27,.16);
+  font:400 .88rem/1.5 var(--sans); color:var(--ink-soft);
+  opacity:0; visibility:hidden; transform:translateY(4px); transition:opacity .15s, transform .15s, visibility 0s .15s;
+}
+.gh-card.is-below{ transform:translateY(-4px); }
+.gh-card.on{ opacity:1; visibility:visible; transform:none; transition:opacity .15s, transform .15s; }
+.gh-card::after{
+  content:""; position:absolute; left:var(--gh-ax,50%); top:100%; width:10px; height:10px; background:#fff;
+  border-right:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong);
+  transform:translate(-50%,-5px) rotate(45deg);
+}
+.gh-card.is-below::after{ top:0; border:0; border-left:1px solid var(--line-strong); border-top:1px solid var(--line-strong); transform:translate(-50%,-6px) rotate(45deg); }
+.gh-card-t{ display:block; font-family:var(--serif-display); font-style:italic; font-weight:560; font-size:1rem; color:var(--acento-deep); margin-bottom:2px; }
+.gh-card-d{ margin:0; }
+.gh-link{ display:inline-block; margin-top:8px; font:600 .78rem/1.3 var(--sans); color:var(--acento-deep); text-decoration:none; padding:2px 0; }
+.gh-link:hover{ text-decoration:underline; }
+.gh-link:focus-visible, .gh-close:focus-visible, .gh-back:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; border-radius:2px; }
+
+.gh-scrim{ position:fixed; inset:0; z-index:76; background:rgba(21,20,27,.28); opacity:0; pointer-events:none; transition:opacity .2s; }
+.gh-scrim.open{ opacity:1; pointer-events:auto; }
+.gh-sheet{
+  position:fixed; z-index:77; left:0; right:0; bottom:0; max-height:55vh; overflow:auto;
+  background:#fff; border-top:3px solid var(--acento); border-radius:14px 14px 0 0;
+  box-shadow:0 -10px 30px rgba(21,20,27,.2); padding:12px 20px calc(18px + env(safe-area-inset-bottom));
+  font:400 .95rem/1.55 var(--sans); color:var(--ink-soft);
+  transform:translateY(105%); visibility:hidden; transition:transform .24s cubic-bezier(.2,.8,.2,1), visibility 0s .24s;
+}
+.gh-sheet.open{ transform:none; visibility:visible; transition:transform .24s cubic-bezier(.2,.8,.2,1); }
+.gh-sheet .gh-card-t{ font-size:1.2rem; }
+.gh-grip{ width:38px; height:4px; border-radius:2px; background:var(--line-strong); margin:0 auto 10px; }
+.gh-row{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
+.gh-sheet .gh-link{ font-size:.88rem; padding:10px 0; }
+.gh-close{ border:0; background:var(--acento-tint); color:var(--acento-deep); font:600 .88rem var(--sans); padding:10px 16px; border-radius:var(--radius-sm); cursor:pointer; min-height:44px; }
+
+/* Llegada al glosario: la fila se resalta un momento y ofrece volver */
+.gloss-item{ scroll-margin-top:90px; }
+.gloss-item.gh-flash{ background:var(--acento-tint); box-shadow:-10px 0 0 var(--acento-tint), 10px 0 0 var(--acento-tint); transition:background-color 1.2s; }
+.gh-back{ display:inline-block; margin-left:.7em; font:600 .78rem var(--sans); color:var(--acento-deep); text-decoration:none; white-space:nowrap; }
+.gh-back:hover{ text-decoration:underline; }
+
+@media (prefers-reduced-motion:reduce){
+  .gh-card, .gh-sheet, .gh-scrim, .gh-term, .gloss-item.gh-flash{ transition:none !important; }
+}
+
+/* En papel no existe: el PDF sale igual que antes. */
+@media print{
+  .gh-card, .gh-scrim, .gh-sheet, .gh-back{ display:none !important; }
+  .gh-term{ text-decoration:none !important; background:none !important; box-shadow:none !important; cursor:auto; }
+  .gloss-item.gh-flash{ background:none; box-shadow:none; }
+}
+
+/* ---- Glosario en contexto, v2 (oct. 2026): "Ver también" y marca de papel ---- */
+.gh-sheet:focus{ outline:none; }
+.gh-rel{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:9px; }
+.gh-rel-l{ font:600 .7rem/1 var(--sans); letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-right:2px; }
+.gh-chip{
+  border:0; background:var(--acento-tint); color:var(--acento-deep); font:600 .76rem/1.2 var(--sans);
+  padding:4px 9px; border-radius:999px; cursor:pointer;
+}
+.gh-chip:hover{ background:var(--acento-soft); }
+.gh-chip:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+.gh-sheet .gh-chip{ font-size:.85rem; padding:8px 13px; }
+.gh-print-note{ display:none; }
+@media print{
+  /* Paridad con la web: el ° marca la primera aparición y remite al Glosario del final */
+  .gh-term::after{ content:"\00B0"; font:600 .8em/0 var(--sans); color:var(--acento-deep); vertical-align:super; margin-left:.04em; }
+  .gh-print-note{ display:block; margin:.3em 0 .1em; font:400 .8em/1.3 var(--sans); color:var(--ink-soft); }
+  .gh-rel{ display:none !important; }
+}
+
+/* ==========================================================================
+   Continuidad (js/guia-continuidad.js) — oct. 2026
+   "Seguir donde dejaste" (aviso al reabrir la clase) y búsqueda Ctrl/⌘+K
+   sobre títulos y glosario de la clase. Solo pantalla.
+   ========================================================================== */
+.gs-open{
+  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:8px; width:100%;
+  margin-bottom:12px; padding:8px 10px; background:#fff; border:1px solid var(--g-line); border-radius:6px;
+  font:500 12.5px/1 var(--sans); color:var(--g-muted);
+}
+.gs-open:hover{ border-color:var(--acento); color:var(--ink); }
+.gs-open:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+.gs-open svg{ width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; flex:none; }
+.gs-open span{ flex:1; }
+.gs-open kbd{ font:600 10.5px/1 var(--sans); padding:3px 5px; border:1px solid var(--g-line); border-radius:3px; background:var(--g-bg); color:var(--g-muted); }
+.gs-fab{
+  display:none; position:fixed; z-index:58; left:16px; bottom:16px; width:44px; height:44px; border-radius:50%;
+  align-items:center; justify-content:center; background:#fff; border:1px solid var(--line-strong); cursor:pointer;
+  box-shadow:0 4px 14px rgba(21,20,27,.14); padding:0;
+}
+.gs-fab svg{ width:18px; height:18px; stroke:var(--acento-deep); fill:none; stroke-width:2; }
+@media (max-width:1099px){ .gs-fab{ display:flex; } }
+
+.gs-scrim{ position:fixed; inset:0; z-index:90; background:rgba(21,20,27,.35); display:none; }
+.gs-scrim.open{ display:block; }
+.gs-box{
+  position:fixed; z-index:91; left:50%; top:12vh; transform:translateX(-50%); width:min(560px,calc(100vw - 24px));
+  background:#fff; border:1px solid var(--line-strong); border-top:3px solid var(--acento); border-radius:var(--radius-lg);
+  box-shadow:0 20px 50px rgba(21,20,27,.28); display:none; overflow:hidden;
+}
+.gs-box.open{ display:block; }
+.gs-in{ display:block; width:100%; border:0; border-bottom:1px solid var(--line); padding:15px 18px; font:500 1rem var(--sans); color:var(--ink); outline:none; }
+.gs-list{ list-style:none; margin:0; padding:6px; max-height:min(52vh,420px); overflow:auto; }
+.gs-item{ display:flex; gap:10px; align-items:baseline; padding:9px 12px; border-radius:var(--radius); cursor:pointer; font:400 .92rem/1.4 var(--sans); color:var(--ink); }
+.gs-item[aria-selected="true"], .gs-item:hover{ background:var(--acento-tint); }
+.gs-tag{ flex:none; font:700 .64rem/1 var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--acento-deep); min-width:62px; }
+.gs-sub{ display:block; color:var(--ink-soft); font-size:.8rem; }
+.gs-empty{ padding:16px 18px; color:var(--ink-soft); font:400 .9rem var(--sans); }
+.gs-hint{ padding:8px 16px; border-top:1px solid var(--line); background:#fafafc; color:var(--muted); font:500 .72rem var(--sans); }
+
+.gs-resume{
+  position:fixed; z-index:74; top:16px; right:16px; width:min(340px,calc(100vw - 24px)); background:#fff;
+  border:1px solid var(--line-strong); border-left:3px solid var(--acento); border-radius:var(--radius);
+  box-shadow:0 10px 28px rgba(21,20,27,.16); padding:12px 14px; font:400 .86rem/1.45 var(--sans); color:var(--ink-soft);
+  animation:gs-in .25s ease;
+}
+@keyframes gs-in{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:none; } }
+.gs-resume b{ display:block; color:var(--ink); font-weight:600; margin:1px 0 8px; }
+.gs-resume-row{ display:flex; gap:8px; }
+.gs-resume button{ border:0; border-radius:var(--radius-sm); cursor:pointer; font:600 .8rem var(--sans); padding:8px 12px; min-height:36px; }
+.gs-resume .go{ background:var(--acento-deep); color:#fff; }
+.gs-resume .no{ background:var(--acento-tint); color:var(--acento-deep); }
+.gs-resume button:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+@media (max-width:1099px){ .gs-resume{ top:58px; } }
+@media (prefers-reduced-motion:reduce){ .gs-resume{ animation:none; } }
+@media print{ .gs-open, .gs-fab, .gs-scrim, .gs-box, .gs-resume{ display:none !important; } }
+
+/* ---- Ajustes de celular y íconos de app en el glosario (oct. 2026) ---- */
+.gh-head{ display:flex; align-items:center; gap:9px; margin-bottom:2px; }
+.gh-head .gh-card-t{ margin:0; }
+.gh-ic{ width:28px; height:28px; flex:none; border-radius:22%; background:#fff; border:1px solid var(--line); object-fit:cover; }
+.gh-ic[hidden]{ display:none; }
+.gh-sheet .gh-ic{ width:34px; height:34px; }
+@media print{ .gh-ic{ display:none !important; } }
+
+/* Celular: sin justificado (en columna angosta deja huecos grandes) y sin botón "Guardar PDF" (exportar PDF es de escritorio) */
+@media screen and (max-width:700px){
+  .prose > p:not(.screenshot-caption):not(.tool-urls),
+  .callout p:not(.callout-label){ text-align:left; }
+  .pdf-fab, .pdf-sheet-overlay{ display:none !important; }
+}
+
+/* Leyenda del glosario en el pie del menú (opción B, oct. 2026) */
+.gs-leg{ align-items:flex-start; gap:8px; line-height:1.35; }
+.gs-sample{ flex:none; border-bottom:1.5px dotted var(--acento); padding-bottom:1px; color:var(--ink-soft); }
+.gs-link{ display:inline-block; margin-top:10px; font:600 12px/1.2 var(--sans); color:var(--acento-deep); text-decoration:none; }
+.gs-link:hover{ text-decoration:underline; }
+.gs-link:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:4px; }
+@media print{ .gs-leg, .gs-link{ display:none !important; } }

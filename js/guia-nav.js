@@ -26,7 +26,8 @@
 
   /* ---- Un único desplazamiento animado para TODO: links del menú, "Volver arriba", título del panel,
           links internos de la página y el seguimiento del propio menú. Misma curva, misma lógica. ---- */
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Desde oct. 2026 el desplazamiento se anima SIEMPRE, incluso con "Reducir movimiento" activado en el sistema:
+     antes ese ajuste (común en Mac) hacía saltar directo y parecía que la animación no funcionaba. */
   function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
   function glide(el,target,opt){
     opt=opt||{}; var isWin=(el===window), box=isWin?document.documentElement:el;
@@ -35,8 +36,7 @@
     if(box.__glide){cancelAnimationFrame(box.__glide.raf);box.__glide=null;}
     if(Math.abs(dist)<2) return;
     function put(y){ if(isWin) window.scrollTo(0,y); else el.scrollTop=y; }
-    if(reduce){put(target);return;}
-    var dur=opt.dur||Math.min(1200,Math.max(450,400+Math.sqrt(Math.abs(dist))*14)), t0=null, prev=box.style.scrollBehavior;
+    var dur=opt.dur||Math.min(1800,Math.max(650,600+Math.sqrt(Math.abs(dist))*12)), t0=null, prev=box.style.scrollBehavior;
     box.style.scrollBehavior='auto';
     var st={raf:0}; box.__glide=st;
     function stop(){ if(box.__glide===st){cancelAnimationFrame(st.raf);box.__glide=null;} box.style.scrollBehavior=prev; if(isWin){removeEventListener('wheel',stop);removeEventListener('touchstart',stop);removeEventListener('keydown',stop);removeEventListener('mousedown',stop);} }

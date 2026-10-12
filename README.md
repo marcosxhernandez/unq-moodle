@@ -52,8 +52,6 @@ unq-moodle/
 ├── scripts/
 │   ├── build_entregas_json.py   ← entregas.csv → entregas.json
 │   ├── build_cronograma_json.py ← genera moodle/cronograma.json
-│   ├── gen_dataset.py           ← genera los datasets de archivos/, semilla fija
-│   └── verificar_dataset.py     ← chequea un dataset contra sus cifras de control
 ├── clases/
 │   ├── Clase NN - Título.html                                      ← Guía Visual, una por clase
 │   ├── Clase 00 - Programa Regulares - Informática 2025-2026.html  ← documento de materia, no de clase

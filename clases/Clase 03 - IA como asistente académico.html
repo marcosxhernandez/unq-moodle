@@ -101,7 +101,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Pedile a un chat de IA genérico tres fuentes académicas sobre cualquier tema: es probable que al menos una sea inventada. Esa es la trampa de hoy, y hay dos formas de resolverla: <strong>RAG abierto</strong> busca con respaldo en toda la web y cita cada afirmación (Perplexity); <strong>RAG cerrado</strong> solo responde con los documentos que vos le diste (Gemini Notebook). Mismo problema, que la IA no invente la fuente, dos arquitecturas distintas.</p>
+  <p class="toc-intro">Pedile a un chat de IA genérico tres fuentes académicas sobre cualquier tema: es probable que al menos una sea inventada. Esa es la trampa de hoy, y la técnica que la resuelve se llama <strong>RAG</strong>: antes de responder, la IA busca información y redacta apoyándose en lo que encontró, en vez de apoyarse en su memoria. Tiene dos variantes según dónde busque: <strong>RAG abierto</strong> busca en toda la web y cita cada afirmación (Perplexity); <strong>RAG cerrado</strong> busca solo en los documentos que vos le diste (Gemini Notebook). Mismo problema, que la IA no invente la fuente, dos formas de resolverlo.</p>
   <span class="toc-label">Contenido</span>
   <ol>
     <li><a href="#rag-abierto"><span class="toc-num">01</span><span class="toc-text">RAG abierto: buscar con respaldo en toda la web (Perplexity)</span></a></li>
@@ -127,7 +127,34 @@
     <p>Recién viste una demo en vivo: un chat de IA genérico armó tres fuentes académicas sobre un tema cualquiera, y al menos una cita no existía o no decía lo que el modelo afirmaba. No fue un accidente, es cómo funciona un LLM genérico. Todo lo que sigue responde a la misma pregunta: cómo buscar con IA sin ese riesgo, y cómo dejar el rastro para que cualquiera pueda verificarlo.</p>
 
     <h3>La diferencia que importa</h3>
-    <p>Un LLM genera texto a partir de su entrenamiento: predice qué palabra viene después, basándose en miles de millones de textos que procesó meses o años atrás. No busca, no verifica, no sabe si lo que dice es verdad. Perplexity (<code>perplexity.ai</code>) funciona distinto: busca en internet en tiempo real y cita cada afirmación con la fuente de donde la sacó. Podés hacer clic en el número y verificar.</p>
+    <p>Un LLM genera texto a partir de su entrenamiento: predice qué palabra viene después, basándose en miles de millones de textos que procesó meses o años atrás. No busca, no verifica, no sabe si lo que dice es verdad.</p>
+
+    <h3>Qué es RAG: buscar primero, responder después</h3>
+    <p>RAG son las siglas de <em>Retrieval-Augmented Generation</em>, en castellano, generación aumentada por recuperación. Es una técnica que le agrega un paso previo a un LLM: antes de redactar la respuesta, el sistema busca textos reales sobre tu pregunta y se los pone delante al modelo. La respuesta deja de salir de lo que el modelo "recuerda" y pasa a salir de esos textos, y por eso puede decirte de cuál sacó cada dato.</p>
+
+    <div class="callout" data-type="format">
+      <p class="callout-label">📙 Paso a paso: qué pasa cuando le hacés una pregunta a un sistema RAG</p>
+      <ol>
+        <li><strong>Preguntás.</strong> Por ejemplo: "¿Qué efectos tiene el trabajo remoto sobre la productividad?"</li>
+        <li><strong>Recupera</strong> (<em>retrieval</em>). El sistema busca en una colección de textos los pasajes que más se parecen a tu pregunta, por significado y no solo por palabras exactas, y se queda con unos pocos.</li>
+        <li><strong>Aumenta</strong> (<em>augmented</em>). Pega esos pasajes junto a tu pregunta y le da al modelo una consigna del tipo: "respondé a partir de este material".</li>
+        <li><strong>Genera</strong> (<em>generation</em>). El LLM redacta la respuesta apoyándose en esos pasajes. Como sabe de cuál salió cada dato, puede marcarlo con una cita: el número o el chip en el que después hacés clic para verificar.</li>
+      </ol>
+    </div>
+
+    <p>Todos los sistemas RAG hacen estos mismos cuatro pasos. Lo único que cambia entre uno y otro es <strong>dónde busca el paso 2</strong>. En esta clase usamos dos nombres para distinguirlos:</p>
+    <ul>
+      <li><strong>RAG abierto:</strong> busca en toda la web, en el momento en que preguntás. Es lo que hace Perplexity.</li>
+      <li><strong>RAG cerrado:</strong> busca solo dentro de los documentos que vos cargaste. Es lo que hace Gemini Notebook.</li>
+    </ul>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>La analogía del examen: un LLM genérico rinde a libro cerrado, solo con lo que recuerda del entrenamiento. Un sistema RAG rinde a libro abierto: antes de escribir, consulta material. El RAG abierto tiene toda una biblioteca a mano; el RAG cerrado, solo los apuntes que le llevaste. En los dos casos, comprobar que el libro realmente diga lo que la respuesta afirma sigue siendo tu trabajo.</p>
+    </div>
+
+    <h3>Perplexity frente a un LLM genérico</h3>
+    <p>Perplexity (<code>perplexity.ai</code>) aplica RAG abierto: busca en internet en tiempo real y cita cada afirmación con la fuente de donde la sacó. Podés hacer clic en el número y verificar.</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
@@ -319,13 +346,8 @@
       </table>
     </div>
 
-    <h3>Por qué funciona así: RAG en dos líneas</h3>
-    <p>Gemini Notebook usa una arquitectura llamada RAG (<em>Retrieval-Augmented Generation</em>). La lógica es simple: cuando le hacés una pregunta, el sistema no improvisa desde su entrenamiento. Primero busca en tus documentos los fragmentos más relevantes, los junta con tu pregunta y recién entonces genera la respuesta, usando solo esa información.</p>
-
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Idea clave</p>
-      <p>La analogía del examen: un LLM genérico trabaja a libro cerrado, depende de lo que "recuerda" del entrenamiento. Gemini Notebook trabaja a libro abierto: tiene tus documentos frente a los ojos y los consulta antes de responder.</p>
-    </div>
+    <h3>Cómo aplica RAG acá</h3>
+    <p>Es el mismo proceso de cuatro pasos que viste con Perplexity, con una sola diferencia: el paso 2 (recuperar) busca únicamente dentro de las fuentes de tu cuaderno. Cuando preguntás, Gemini Notebook rastrea tus documentos, separa los pasajes que más se parecen a la pregunta, los junta con ella y recién ahí el modelo redacta la respuesta. Por eso cada respuesta trae chips de cita que llevan al pasaje exacto, y por eso no puede "saber" nada que no esté en tus fuentes.</p>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Advertencia</p>
@@ -567,14 +589,14 @@
       <div class="gloss-item"><span class="gloss-term">Arena Leaderboard</span><p class="gloss-def">Ranking de modelos de IA por votos humanos a ciegas, con puntaje Elo separado por categoría de tarea (Text, Document, Search, WebDev, entre otras). Antes conocido como LMArena o Chatbot Arena.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita en el texto</span><p class="gloss-def">Mención breve de la fuente dentro del párrafo: (Apellido, año) para paráfrasis, (Apellido, año, p. XX) para cita textual.</p></div>
       <div class="gloss-item"><span class="gloss-term">Cita textual</span><p class="gloss-def">Reproducción exacta de las palabras del autor, entre comillas, con número de página. Se usa poco: la paráfrasis con cita es lo que se espera.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse, no genera una respuesta directa desde la web.</p></div>
+      <div class="gloss-item" data-icon="Google - Gemini Notebook.png"><span class="gloss-term">Discover Sources</span><p class="gloss-def">Función de Gemini Notebook que sugiere documentos nuevos a partir de un tema descrito. Los documentos se suman al cuaderno como fuente antes de poder usarse, no genera una respuesta directa desde la web.</p></div>
       <div class="gloss-item"><span class="gloss-term">DOI</span><p class="gloss-def"><em>Digital Object Identifier</em>. Identificador permanente de artículos de revistas científicas. Va al final de la cita APA en lugar de la URL cuando está disponible.</p></div>
       <div class="gloss-item"><span class="gloss-term">Nota al pie</span><p class="gloss-def">Información complementaria al pie de la página: aclaraciones, referencias secundarias, datos de contexto. No reemplaza a la cita APA.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG cerrado. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
+      <div class="gloss-item" data-icon="Google - Gemini Notebook.png"><span class="gloss-term">Gemini Notebook</span><p class="gloss-def">Herramienta de Google basada en RAG cerrado. Responde solo con las fuentes de tu cuaderno, incluidas las que sumaste con Discover Sources.</p></div>
       <div class="gloss-item"><span class="gloss-term">Plagio</span><p class="gloss-def">Usar ideas o palabras de otra persona sin citar la fuente. Tiene derechos de autor automáticos desde su creación, sin necesidad de registro.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA basado en RAG abierto: busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
+      <div class="gloss-item" data-icon="Perplexity - Perplexity.png"><span class="gloss-term">Perplexity</span><p class="gloss-def">Motor de búsqueda con IA basado en RAG abierto: busca en internet en tiempo real y cita cada afirmación con la fuente. El resultado es una respuesta con links verificables.</p></div>
       <div class="gloss-item"><span class="gloss-term">Prompt chaining</span><p class="gloss-def">Técnica de encadenar prompts: la respuesta de uno se usa como punto de partida del siguiente. Sirve para tareas complejas que no se resuelven bien con una sola instrucción.</p></div>
-      <div class="gloss-item"><span class="gloss-term">RAG</span><p class="gloss-def"><em>Retrieval-Augmented Generation</em>. La IA primero recupera fragmentos relevantes antes de generar la respuesta, en vez de improvisar desde su entrenamiento. RAG abierto recupera de toda la web (Perplexity); RAG cerrado recupera solo de los documentos que vos cargaste (Gemini Notebook).</p></div>
+      <div class="gloss-item"><span class="gloss-term">RAG</span><p class="gloss-def"><em>Retrieval-Augmented Generation</em> (generación aumentada por recuperación). Técnica en tres pasos: la IA recupera de una colección de textos los pasajes que se parecen a tu pregunta, los suma a la consigna y recién entonces redacta la respuesta apoyándose en ellos, en vez de en su memoria. Por eso puede citar de dónde sacó cada dato. RAG abierto recupera de toda la web (Perplexity); RAG cerrado recupera solo de los documentos que vos cargaste (Gemini Notebook).</p></div>
     </div>
 
     <h3 id="fuentes">Fuentes</h3>
@@ -598,6 +620,8 @@
 
 
 <script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-glosario.js"></script>
+<script defer src="../js/guia-continuidad.js"></script>
 <script defer src="../js/guia-print.js"></script>
 
 </body>

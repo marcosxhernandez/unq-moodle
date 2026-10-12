@@ -54,6 +54,15 @@
     .qr-cell{ break-inside:avoid; }
   }
 
+  /* Botón de descarga directa (solo pantalla): namespace dl-file, no choca con guia-estilo.css */
+  .dl-file{ display:inline-flex; align-items:center; gap:5px; margin:0 2px; padding:1px 9px 1px 7px; vertical-align:baseline;
+    font-family:var(--sans); font-size:.78rem; font-weight:600; line-height:1.5; color:var(--acento-deep); text-decoration:none;
+    background:var(--acento-tint); border:1px solid var(--acento); border-radius:var(--radius-sm); }
+  .dl-file svg{ width:14px; height:14px; flex:none; }
+  .dl-file:hover{ background:var(--acento-soft); }
+  .dl-file:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  @media print{ .dl-file{ display:none !important; } }
+
   @page{
     @top-right{
       content:"Clase 08 · Primeros pasos en Sheets";
@@ -126,7 +135,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Esta clase te da el piso para todo lo que viene: reconocer la pantalla de Google Sheets, importar una encuesta como la que responden los ingresantes, detectar qué está mal en los datos y corregirlo sin perder el original, darle a la planilla una presentación prolija y ordenarla sin romper los registros. Todo se hace sobre el mismo caso, <strong>Retrato del curso</strong>, que vas a ir ampliando clase a clase. Cada herramienta nueva trae un micro ejercicio corto con una muestra chica, y la clase cierra con un <strong>pedido</strong> sobre los datos reales: ese pedido es lo que entregás.</p>
+  <p class="toc-intro">Esta clase cubre cómo importar una encuesta, detectar sus defectos, corregirlos sin perder el original, darle formato y ordenarla.</p>
   <span class="toc-label">Contenido</span>
   <ol>
 <li><a href="#conocer"><span class="toc-num">01</span><span class="toc-text">Conocer Google Sheets y el caso del curso</span></a></li>
@@ -149,7 +158,7 @@
     <h2 class="block-title">Conocer Google Sheets y el caso del curso</h2>
   </div>
   <div class="prose">
-<p>Una <strong>planilla de cálculo</strong> es un programa donde los datos se ordenan en filas y columnas y donde se pueden escribir fórmulas que calculan a partir de esos datos. Si cambiás un dato, los resultados se actualizan solos. Esa es la diferencia con una tabla de Word: acá los datos están vivos.</p>
+<p>Una <strong>planilla de cálculo</strong> es un programa donde los datos se ordenan en filas y columnas y donde se pueden escribir fórmulas que calculan a partir de esos datos. Si cambiás un dato, los resultados se actualizan solos.</p>
 <div class="tools-container">
   <div class="app-row">
     <a class="app-row-link" href="https://sheets.google.com" target="_blank" rel="noopener">
@@ -159,9 +168,9 @@
     <div class="tags"><span class="pill pill-free">Gratis</span></div>
   </div>
 </div>
-<p>Vas a trabajar en <strong>Google Sheets</strong>, que corre en el navegador, guarda cada cambio solo en tu Drive y permite que varias personas editen el mismo archivo a la vez. No hay botón de guardar. Todo lo que aprendas se traslada a Excel casi sin cambios, y al final de esta guía vas a ver cómo se baja un archivo a <code>.xlsx</code>.</p>
+<p>Vas a trabajar en <strong>Google Sheets</strong>, que corre en el navegador, guarda cada cambio solo en tu Drive y permite que varias personas editen el mismo archivo a la vez. No hay botón de guardar. Lo que aprendas acá sirve también en Excel.</p>
 <h3>El caso que vas a construir: Retrato del curso</h3>
-<p>Durante estas clases vas a trabajar con un único archivo y un único caso. Cada cuatrimestre, la universidad le hace una encuesta a los ingresantes: qué estudian, si trabajan, cuánto tardan en llegar, cuánto usan el celular y la inteligencia artificial. Con esas respuestas se arma un <strong>retrato del curso</strong>. Vos vas a recibir el listado de respuestas tal como sale del formulario, con los defectos que tiene cualquier dato real, y lo vas a convertir paso a paso en un informe prolijo.</p>
+<p>El caso es una encuesta que la universidad hace cada cuatrimestre a los ingresantes: qué estudian, si trabajan, cuánto tardan en llegar, cuánto usan el celular y la inteligencia artificial. Recibís el listado tal como sale del formulario, con los defectos de cualquier dato real.</p>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Datos simulados</p>
   <p>Las 120 respuestas de este caso son inventadas, pero siguen el espíritu de la encuesta real que responden los ingresantes: edades, carreras, trabajo, uso del celular. Así podés trabajar con datos que se parecen a los tuyos sin exponer a nadie.</p>
@@ -213,10 +222,12 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Entrá a <code>sheets.google.com</code> con tu cuenta y creá una <strong>hoja de cálculo en blanco</strong>. Nombrala <code>Retrato del curso - TuApellido</code>: es el archivo que vas a usar en las cuatro clases.</li>
+  <li>Entrá a <a href="https://sheets.google.com" target="_blank" rel="noopener"><code>sheets.google.com</code></a> con tu cuenta y creá una <strong>hoja de cálculo en blanco</strong>. Nombrala <code>Retrato del curso - TuApellido</code>.</li>
   <li>Abrí <strong>Archivo → Configuración</strong> y revisá que la <strong>Configuración regional</strong> diga <em>Argentina</em>. De eso dependen el formato de fecha, la coma decimal y el separador de las fórmulas.</li>
   <li>Renombrá la hoja como <code>PRACTICA</code> y tipeá la tabla de arriba (Nombre, Edad, Trabaja, Gasto, con Ana, Luis y Eva). Usá <code>Tab</code> para pasar a la derecha y <code>Enter</code> para bajar.</li>
-  <li>Escribí <code>D25</code> en el cuadro de nombre y apretá <code>Enter</code>. Volvé a <code>A1</code> con <code>Ctrl+Inicio</code> (Mac: <code>⌘+Fn+←</code>). Seleccioná <code>B2:B4</code> y leé el cuadro de nombre.</li>
+  <li>Saltá a una celda lejana: hacé clic en el <strong>cuadro de nombre</strong> (el recuadro de arriba a la izquierda, junto a la barra de fórmulas, que muestra la celda activa), escribí <code>D25</code> y apretá <code>Enter</code>. La celda activa pasa a ser <code>D25</code> y el cuadro de nombre dice <code>D25</code>.</li>
+  <li>Volvé al principio con <code>Ctrl+Inicio</code> (Mac: <code>⌘+Fn+←</code>). La celda activa tiene que ser de nuevo <code>A1</code>.</li>
+  <li>Seleccioná un rango: hacé clic en <code>B2</code> y, sin soltar, arrastrá hasta <code>B4</code> (o clic en <code>B2</code> y después <code>Mayús</code> + clic en <code>B4</code>). Las tres edades quedan marcadas y el cuadro de nombre muestra <code>B2:B4</code>.</li>
 </ol>
   </div>
 </div>
@@ -230,7 +241,7 @@
   <div class="prose">
 <p>Los datos no se tipean: llegan de otro lugar. En la vida real, una encuesta se arma con un formulario (por ejemplo Google Forms) y cada respuesta cae como una fila en una hoja. Acá vas a importar el resultado ya exportado como archivo de texto, un <code>.csv</code>, que es el formato universal para mover datos entre programas.</p>
 <h3>Una tabla de datos tiene reglas</h3>
-<p>Para que una planilla funcione como base de datos, los datos tienen que estar ordenados de una manera concreta. Si respetás estas reglas desde el principio, todo lo que viene después se simplifica.</p>
+<p>Para que una planilla funcione como base de datos, los datos tienen que estar ordenados de una manera concreta.</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Regla</th><th>Por qué</th></tr></thead>
@@ -269,7 +280,7 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Descargá <code>Practica_encuesta_mini.csv</code> del aula virtual: es una muestra de 11 respuestas.</li>
+  <li>Descargá <code>Practica_encuesta_mini.csv</code> <a class="dl-file" href="../../archivos/Practica_encuesta_mini.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a>: es una muestra de 11 respuestas.</li>
   <li>Abrí <strong>Archivo → Importar → Subir</strong> y elegí el archivo. En <em>Ubicación de importación</em> elegí <strong>Insertar hoja(s) nueva(s)</strong>, en <em>Tipo de separador</em> <strong>Personalizado</strong> con <code>;</code>, y dejá tildada la conversión de texto en números y fechas. Renombrá la hoja nueva como <code>MINI</code>.</li>
   <li>Con <code>Ctrl+↓</code> (Mac: <code>⌘+↓</code>) viajá hasta la última fila. Tendría que ser la <strong>12</strong> (11 respuestas más el encabezado).</li>
   <li>Recorré las columnas mirando la alineación y anotá, <strong>sin corregir todavía</strong>, los cinco defectos que encuentres: un texto pegado a un número, otro texto pegado a un número, espacios de más, una celda vacía y una fila repetida.</li>
@@ -284,7 +295,7 @@
     <h2 class="block-title">Hojas: el original no se toca</h2>
   </div>
   <div class="prose">
-<p>Un archivo puede tener muchas hojas, y usarlas bien es una cuestión de orden. La regla de oro del trabajo con datos: <strong>el dato original no se toca</strong>. Se guarda tal como llegó y se trabaja sobre una copia. Si te equivocás, siempre podés volver al original.</p>
+<p><strong>El dato original no se toca</strong>: se guarda tal como llegó y se trabaja sobre una copia. Si te equivocás, siempre podés volver al original.</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Para...</th><th>Hacé esto</th></tr></thead>
@@ -324,7 +335,7 @@
     <h2 class="block-title">Limpiar los datos sin romper la tabla</h2>
   </div>
   <div class="prose">
-<p>Todo dato real viene con defectos. Limpiar no es borrar lo que molesta: es <strong>decidir</strong> qué se corrige, qué se deja y qué se descarta, y hacerlo con herramientas que no rompan el resto de la tabla. Estos son los cinco defectos que tiene la encuesta y la herramienta para cada uno.</p>
+<p>Limpiar es <strong>decidir</strong> qué se corrige, qué se deja y qué se descarta, sin romper el resto de la tabla. La encuesta tiene cinco defectos, cada uno con su herramienta:</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Defecto</th><th>Cómo se ve</th><th>Qué hacés</th></tr></thead>
@@ -465,7 +476,7 @@
     <h2 class="block-title">Guardar, compartir y llevar a Excel</h2>
   </div>
   <div class="prose">
-<p>Sheets guarda solo, pero eso no quiere decir que el archivo esté ordenado. Hay tres hábitos para cerrar cualquier trabajo con planillas: darle un nombre que se entienda, guardar una copia con fecha antes de seguir y compartirlo con el permiso correcto.</p>
+<p>Tres hábitos para cerrar un trabajo con planillas: un nombre de archivo claro, una copia antes de seguir y el permiso justo al compartir. Además, el archivo se puede bajar a Excel.</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Hábito</th><th>Cómo se hace</th></tr></thead>
@@ -479,7 +490,7 @@
 </div>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Una copia por clase</p>
-  <p>Vas a seguir construyendo sobre el mismo archivo. Al terminar cada clase, hacé una copia con el nombre de esa clase y entregá <strong>la copia</strong>. Así el archivo de trabajo sigue avanzando y vos conservás una foto de lo que lograste en cada encuentro.</p>
+  <p>Al terminar la clase, hacé una copia con el nombre de esa clase y entregá <strong>la copia</strong>. El archivo de trabajo queda intacto.</p>
 </div>
 <div class="activity">
   <div class="activity-head">
@@ -515,7 +526,7 @@
   <div class="prose">
 <p>Trabajá en el archivo <em>Retrato del curso</em>, que ya tiene las hojas de práctica. Estos son los pasos y los controles para saber si están bien.</p>
 <ol>
-  <li>Descargá <code>Encuesta_ingresantes_2026.csv</code> e importalo a una hoja nueva (separador <code>;</code>). Renombrala <code>CRUDO</code> y pintala de rojo. La última fila con datos tiene que ser la <strong>124</strong>.</li>
+  <li>Descargá <code>Encuesta_ingresantes_2026.csv</code> <a class="dl-file" href="../../archivos/Encuesta_ingresantes_2026.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> e importalo a una hoja nueva (separador <code>;</code>). Renombrala <code>CRUDO</code> y pintala de rojo. La última fila con datos tiene que ser la <strong>124</strong>.</li>
   <li>Duplicá <code>CRUDO</code>, llamá <code>DATOS</code> a la copia y pintala de verde. Creá una hoja <code>LEEME</code>, pintala de gris y ponela al principio.</li>
   <li>Limpiá <code>DATOS</code>: reemplazá <code>␣años</code> en la columna <code>D</code> (4 reemplazos) y <code>␣pesos</code> en la <code>K</code> (4 reemplazos), recortá los espacios de la columna <code>C</code> y quitá los duplicados (<strong>3 filas</strong>). Controles: última fila con datos <strong>121</strong>, suma de Edad <strong>2.909</strong>, suma de Gasto_mensual <strong>15.242.000</strong>.</li>
   <li>Dale a <code>DATOS</code> el mismo formato que a la muestra: encabezado destacado, fila 1 inmovilizada, moneda, fecha y ancho de columnas.</li>
@@ -534,7 +545,7 @@
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-<p>Pasaste de una cuadrícula vacía a una base de datos limpia y presentable. Importaste 123 respuestas, separaste el original del trabajo, corregiste textos pegados a números, recortaste espacios y quitaste filas repetidas, decidiste qué dejar como estaba, le diste formato a la tabla y aprendiste a ordenarla sin desarmar los registros.</p>
+<p>Importaste 123 respuestas, separaste el original del trabajo, corregiste textos pegados a números, recortaste espacios, quitaste filas repetidas, decidiste qué dejar como estaba, diste formato a la tabla y la ordenaste sin desarmar los registros.</p>
 <h3 id="actividades">Actividades</h3>
 <div class="table-wrap">
   <table class="check-table">

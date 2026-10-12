@@ -256,6 +256,7 @@
 
   /* ---------- 4. Salto al glosario: resalta la fila y deja "Volver al texto" ---------- */
   function jump(itemId,fromId){
+    if(document.body.classList.contains('gkit-on')&&window.guiaKit){ window.guiaKit.openGlossary(itemId,fromId); return; }   /* con el Kit, el glosario es una pestaña */
     var it=document.getElementById(itemId); if(!it) return;
     [].forEach.call(document.querySelectorAll('.gh-back'),function(b){b.remove();});
     [].forEach.call(document.querySelectorAll('.gh-flash'),function(b){b.classList.remove('gh-flash');});
@@ -264,5 +265,6 @@
   }
   /* Para otros scripts (búsqueda Ctrl+K): ir a un término del glosario con el mismo resaltado */
   window.guiaGlosario={ jump:function(itemId){ var it=document.getElementById(itemId); if(!it) return;
+    if(document.body.classList.contains('gkit-on')&&window.guiaKit){ jump(itemId,null); return; }
     it.scrollIntoView({behavior:'smooth',block:'center'}); jump(itemId,null); } };
 })();

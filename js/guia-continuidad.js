@@ -19,7 +19,8 @@
   'use strict';
   if(window.__guiaCont) return; window.__guiaCont=true;
   var cs=document.currentScript, GL=cs&&cs.src?cs.src.replace(/js\/guia-continuidad\.js(\?.*)?$/,'glosario.html'):'';
-  var heads=[].slice.call(document.querySelectorAll('section.block h2, section.block h3, section.block h4'));
+  var kitOn=document.body.classList.contains('gkit-on');   /* con el Kit, el Resumen vive en el cajón, no en el texto */
+  var heads=[].slice.call(document.querySelectorAll('section.block h2, section.block h3, section.block h4')).filter(function(h){ return !(kitOn&&h.closest('#resumen')); });
   if(!heads.length) return;
   function txt(el){ return el.textContent.replace(/\s+/g,' ').trim(); }
   function norm(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); }
@@ -148,7 +149,7 @@
       b.addEventListener('click',openS); foot.insertBefore(b,foot.firstChild);
     }
     /* Leyenda del glosario + acceso al glosario de todo el curso (solo si la clase tiene términos marcados) */
-    if(foot&&!foot.querySelector('.gs-leg')&&document.querySelector('.gh-term')){
+    if(foot&&!kitOn&&!foot.querySelector('.gs-leg')&&document.querySelector('.gh-term')){
       var l=document.createElement('div'); l.className='gnav-legend gs-leg';
       l.innerHTML='<span class="gs-sample">Término</span><span>Pasá el mouse para ver qué significa</span>'; foot.appendChild(l);
       if(GL){ var a=document.createElement('a'); a.className='gs-link'; a.href=GL; a.target='_blank'; a.rel='noopener'; a.textContent='Glosario de todo el curso →'; foot.appendChild(a); }

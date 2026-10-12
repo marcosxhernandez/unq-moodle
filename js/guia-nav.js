@@ -20,7 +20,8 @@
 (function(){
   'use strict';
   if(window.__guiaNav) return; window.__guiaNav=true;
-  var secs=[].slice.call(document.querySelectorAll('section.block'));
+  var kitOn=document.body.classList.contains('gkit-on');   /* guia-kit.js oculta el Resumen en pantalla */
+  var secs=[].slice.call(document.querySelectorAll('section.block')).filter(function(s){ return !(kitOn&&s.id==='resumen'); });
   var body=document.body, m=/^(Clase\s*\d+)\s*[-–]\s*(.*)$/.exec(document.title)||[0,'Guía visual',document.title];
   function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
 
@@ -85,9 +86,9 @@
       (g.kids.length?'<ul class="kids">'+g.kids.map(li).join('')+'</ul>':'')+'</li>';}).join('')+'</ol></div>';
   var ICON='<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></svg>';
   var aside=document.createElement('aside'); aside.className='gnav'; aside.setAttribute('aria-label','Contenido de la clase');
-  aside.innerHTML='<div class="gnav-head"><button type="button" class="gnav-brand" title="Ir al inicio"><span class="gnav-kicker">'+esc(m[1])+'</span><span class="gnav-title">'+esc(m[2])+'</span></button><button type="button" class="gnav-hide" aria-label="Ocultar el menú" title="Ocultar el menú">'+ICON+'</button></div>'+
+  aside.innerHTML='<div class="gnav-head"><div class="gnav-headrow"><button type="button" class="gnav-brand" title="Ir al inicio"><span class="gnav-kicker">'+esc(m[1])+'</span><span class="gnav-title">'+esc(m[2])+'</span></button><button type="button" class="gnav-hide" aria-label="Ocultar el menú" title="Ocultar el menú">'+ICON+'</button></div><div class="gnav-prog"><div class="gnav-bar"><i></i></div><span class="gnav-pct">0%</span></div></div>'+
     '<div class="gnav-scroll"><nav>'+tree+'</nav></div>'+
-    '<div class="gnav-foot"><div class="gnav-bar"><i></i></div><div class="gnav-meta"><span class="gnav-pct">0% leído</span><button type="button" class="gnav-top">Volver arriba ↑</button></div>'+(entries.some(function(e){return e.act;})?'<div class="gnav-legend"><i></i>Actividad</div>':'')+'</div>';
+    '<div class="gnav-foot"><div class="gnav-meta"><button type="button" class="gnav-top">Volver arriba ↑</button></div>'+(entries.some(function(e){return e.act;})?'<div class="gnav-legend"><i></i>Actividad</div>':'')+'</div>';
   body.appendChild(aside); body.classList.add('has-gnav');
   var bar=document.createElement('div'); bar.className='gbar';
   bar.innerHTML='<button type="button" aria-expanded="false"><span class="gbar-num"></span><span class="gbar-text">Contenido</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><span class="gbar-progress"></span>';
@@ -126,7 +127,7 @@
       bar.querySelector('.gbar-num').textContent=num; bar.querySelector('.gbar-text').textContent=cur?cur.text:'Contenido';
     }
     aside.querySelector('.gnav-bar i').style.width=(p*100)+'%';
-    aside.querySelector('.gnav-pct').textContent=Math.round(p*100)+'% leído';
+    aside.querySelector('.gnav-pct').textContent=Math.round(p*100)+'%';
     bar.querySelector('.gbar-progress').style.width=(p*100)+'%';
   }
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update);}},{passive:true});

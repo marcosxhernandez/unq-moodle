@@ -1698,9 +1698,10 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   padding:6px 11px; border-radius:999px; white-space:nowrap;
   text-decoration:none; display:inline-block;
 }
-.pill-free{ background:rgba(0,113,227,.1); color:#0071e3; }
-.pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
-.pill-paid{ background:var(--ink); color:#fff; }
+.pill-free, .pill.pill-free{ background:rgba(0,113,227,.1); color:#0071e3; }
+/* ".pill.pill-x" (2 clases) gana a un ".pill" suelto declarado en el <style> de una clase, que pintaba todo de azul */
+.pill-freemium, .pill.pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
+.pill-paid, .pill.pill-paid{ background:var(--ink); color:#fff; }
 .pill-student{ background:#fbf1dd; color:#8a5a00; }
 a.pill-student:hover{ text-decoration:underline; }
 /* Segundo pill (descuento estudiantil) al lado del principal, apilado
@@ -2745,7 +2746,7 @@ a.pill-student:hover{ text-decoration:underline; }
   .gnav-title{ display:block; font-family:var(--serif-display); font-weight:520; font-size:20px; line-height:1.15; color:var(--ink); letter-spacing:-.01em; }
   .gnav-bar{ height:4px; border-radius:4px; background:var(--g-line-soft); overflow:hidden; }
   .gnav-bar i{ display:block; height:100%; width:0; background:var(--acento); border-radius:4px; transition:width .15s linear; }
-  .gnav-meta{ display:flex; justify-content:space-between; align-items:center; margin-top:9px; font:500 12px/1 var(--sans); color:var(--g-muted); font-variant-numeric:tabular-nums; }
+  .gnav-meta{ display:flex; justify-content:space-between; align-items:center; margin-top:0; font:500 12px/1 var(--sans); color:var(--g-muted); font-variant-numeric:tabular-nums; }
   .gnav-meta button{ all:unset; cursor:pointer; color:var(--acento-deep); font-weight:600; }
   .gnav-meta button:hover{ text-decoration:underline; }
   .gnav-meta button:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:4px; }
@@ -2786,7 +2787,11 @@ a.pill-student:hover{ text-decoration:underline; }
 
   .gnav{ display:flex; flex-direction:column; position:fixed; z-index:40; top:0; bottom:0; left:0; width:304px; background:var(--g-bg); border-right:1px solid var(--g-line); transition:transform .3s cubic-bezier(.2,.8,.2,1); }
   .nav-collapsed .gnav{ transform:translateX(-100%); }
-  .gnav-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; padding:24px 14px 16px 20px; border-bottom:1px solid var(--g-line); }
+  .gnav-head{ display:flex; flex-direction:column; gap:14px; padding:24px 14px 16px 20px; border-bottom:1px solid var(--g-line); }
+  .gnav-headrow{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+  .gnav-prog{ display:flex; align-items:center; gap:10px; padding-right:6px; }
+  .gnav-prog .gnav-bar{ flex:1; }
+  .gnav-pct{ font:600 12px/1 var(--sans); color:var(--ink-soft,#55526a); font-variant-numeric:tabular-nums; }
   .gnav-brand{ all:unset; cursor:pointer; display:block; }
   .gnav-brand:focus-visible{ outline:2px solid var(--acento); outline-offset:4px; border-radius:4px; }
   .gnav-hide,.gtoggle{ all:unset; cursor:pointer; display:grid; place-items:center; flex:none; width:34px; height:34px; border-radius:9px; color:var(--g-muted); transition:background .15s, color .15s; }
@@ -3002,3 +3007,197 @@ a.pill-student:hover{ text-decoration:underline; }
 .gs-link:hover{ text-decoration:underline; }
 .gs-link:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:4px; }
 @media print{ .gs-leg, .gs-link{ display:none !important; } }
+
+/* ==========================================================================
+   GUIA-KIT · Resumen de la clase como Kit (pantalla) y Herramientas (papel)
+   Un solo contenido: en papel se imprime la sección completa; en pantalla
+   js/guia-kit.js la oculta (body.gkit-on) y la ofrece como pestañas.
+   Todo namespaced gkit-* / kit-tool*.
+   ========================================================================== */
+
+/* ---- Herramientas (sección del Resumen, vale para papel y para el cajón) ---- */
+.kit-card{
+  background:#ffffff; border-radius:18px; overflow:hidden; margin:.4em 0 1.3em; break-inside:avoid;
+  box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12);
+}
+.kit-tool{ display:flex; align-items:center; gap:14px; padding:12px 16px; border-bottom:1px solid var(--line); }
+.kit-tool:last-child{ border-bottom:0; }
+.kit-tool-link{ display:flex; flex:1; min-width:0; align-items:center; gap:14px; color:inherit; text-decoration:none; }
+.kit-tool-link:hover .kit-tool-name{ color:var(--acento-deep); }
+.kit-tool-link:focus-visible{ outline:2px solid var(--acento); outline-offset:3px; border-radius:8px; }
+.kit-tool-icon{ width:56px; height:56px; flex:none; object-fit:contain; border-radius:14px; box-shadow:0 1px 2px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06); }
+.kit-tool-text{ flex:1; min-width:0; display:flex; flex-direction:column; gap:1px; }
+.kit-tool-name{ font:600 .92rem/1.3 var(--sans); color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.kit-tool-domain{ font:.74rem ui-monospace,'SF Mono',Menlo,Consolas,monospace; color:var(--muted,#6e6e73); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.kit-tool-tags{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex:none; }
+
+@media screen{
+  body.gkit-on #resumen{ display:none; }
+  body.gkit-on .toc a[href="#resumen"]{ display:none; }
+  body.gkit-on .toc li:has(> a[href="#resumen"]){ display:none; }
+  body.gkit-gh-off .gh-term{ border-bottom:0 !important; background:none !important; color:inherit !important; text-decoration:none !important; pointer-events:none; cursor:text; }
+}
+@media print{
+  .gkit-bar, .gkit-drawer, .gkit-scrim{ display:none !important; }
+  .kit-card{ box-shadow:none; border:1px solid var(--line); border-radius:10px; }
+  .kit-tool{ gap:9px; padding:6px 9px; break-inside:avoid-page; }
+  .kit-tool-link{ gap:9px; }
+  .kit-tool-icon{ width:34px; height:34px; border-radius:9px; box-shadow:none; border:1px solid var(--line); }
+  .kit-tool-name{ font-size:.78rem; }
+  .kit-tool-domain{ font-size:.66rem; }
+  .kit-tool-tags{ gap:4px; }
+  .kit-card a[href]::after, .kit-card a[href]::before{ content:none !important; }
+}
+
+/* ---- Barra de pestañas + cajón (solo pantalla) ---- */
+@media screen{
+  .gkit-bar{
+    position:fixed; z-index:72; top:0; right:0; bottom:0; width:84px; box-sizing:border-box;
+    display:flex; flex-direction:column; gap:4px; padding:14px 6px 96px;
+    background:var(--paper); border-left:1px solid var(--line); font-family:var(--sans);
+  }
+  .gkit-tab{
+    position:relative; display:flex; flex-direction:column; align-items:center; gap:5px;
+    padding:10px 4px; border:0; border-radius:10px; background:none; cursor:pointer;
+    font:600 .66rem/1.1 var(--sans); color:var(--ink-soft,#55526a); text-align:center;
+  }
+  .gkit-tab svg{ width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .gkit-tab:hover{ background:var(--acento-tint); color:var(--acento-deep); }
+  .gkit-tab.on{ background:var(--acento-tint); color:var(--acento-deep); }
+  .gkit-tab:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  .gkit-badge{ position:absolute; top:4px; right:10px; min-width:16px; padding:1px 4px; border-radius:999px; background:var(--acento); color:#fff; font:700 .6rem/1.3 var(--sans); font-style:normal; text-align:center; }
+  body.gkit-on .pdf-fab{
+    right:6px; bottom:12px; width:72px; box-sizing:border-box; z-index:73; flex-direction:column; gap:4px;
+    padding:8px 4px; border-radius:12px; box-shadow:none; text-align:center; align-items:center;
+  }
+  body.gkit-on .pdf-fab:hover{ transform:none; box-shadow:none; }
+  body.gkit-on .pdf-fab-text{ align-items:center; }
+  body.gkit-on .pdf-fab-title{ font-size:10px; }
+  body.gkit-on .pdf-fab-sub{ display:none; }
+
+  .gkit-drawer{
+    position:fixed; z-index:70; top:0; bottom:0; right:84px; width:360px; max-width:calc(100vw - 84px);
+    display:flex; flex-direction:column; box-sizing:border-box; background:var(--paper);
+    border-left:1px solid var(--line); box-shadow:-12px 0 32px -12px rgba(21,20,27,.18);
+    transform:translateX(calc(100% + 100px)); visibility:hidden; transition:transform .22s ease, visibility 0s .22s;
+    font-family:var(--sans);
+  }
+  .gkit-drawer.open{ transform:none; visibility:visible; transition:transform .22s ease; }
+  .gkit-head{ display:flex; align-items:center; gap:8px; padding:14px 16px; border-bottom:1px solid var(--line); }
+  .gkit-title{ flex:1; margin:0; font:540 1.15rem/1.2 var(--serif-display,serif); color:var(--ink); border:0; padding:0; }
+  .gkit-close{ border:0; background:none; font-size:1.6rem; line-height:1; cursor:pointer; color:var(--muted,#6e6e73); padding:2px 8px; border-radius:6px; }
+  .gkit-close:hover{ background:var(--acento-tint); }
+  .gkit-pdf{ display:none; }
+  .gkit-body{ flex:1; overflow-y:auto; padding:14px 16px 28px; font-size:.88rem; line-height:1.5; }
+  .gkit-panel > :first-child{ margin-top:0; }
+  .gkit-scrim{ display:none; }
+  .gkit-panel-herramientas{ background:#f5f5f7; margin:-14px -16px -28px; padding:14px 16px 28px; min-height:calc(100% + 42px); box-sizing:border-box; }
+  .gkit-drawer .kit-tool{ padding:10px 12px; gap:12px; }
+  .gkit-drawer .kit-tool-icon{ width:48px; height:48px; }
+  .gkit-drawer .table-wrap{ overflow-x:visible; }
+  .gkit-drawer h4{ margin:0; }
+
+  /* Actividades */
+  .gkit-sum{ font-size:.82rem; color:var(--ink-soft,#55526a); margin-bottom:12px; }
+  .gkit-sum b{ color:var(--ink); }
+  .gkit-bar-track{ display:block; height:5px; margin-top:6px; border-radius:3px; background:var(--acento-tint); overflow:hidden; }
+  .gkit-bar-track i{ display:block; height:100%; background:var(--acento); transition:width .25s ease; }
+  .gkit-unit{ border:1px solid var(--line); border-radius:var(--radius-sm,8px); margin-bottom:10px; padding:0 12px 6px; }
+  .gkit-unit > h4{ display:flex; align-items:center; gap:8px; padding:11px 0 8px; cursor:pointer; font:600 .86rem/1.3 var(--sans); color:var(--ink); }
+  .gkit-unit > h4::before{ content:'▾'; color:var(--acento); font-size:.8rem; transition:transform .15s; }
+  .gkit-unit.closed > h4::before{ transform:rotate(-90deg); }
+  .gkit-unit.closed > :not(h4){ display:none; }
+  .gkit-count{ margin-left:auto; font:600 .7rem var(--sans); color:var(--acento-deep); background:var(--acento-tint); padding:2px 8px; border-radius:999px; white-space:nowrap; }
+  .gkit-unit.done .gkit-count{ background:#e9f7f0; color:#0f7a5c; }
+  .gkit-goal{ display:flex; flex-direction:column; gap:4px; margin:-2px 0 8px; font-size:.8rem; color:var(--ink-soft,#55526a); }
+  .gkit-go{ font-weight:600; color:var(--acento-deep); text-decoration:none; }
+  .gkit-go:hover{ text-decoration:underline; }
+
+  /* Herramientas */
+  .gkit-filters{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 14px; }
+  .gkit-chip{ border:1px solid var(--line-strong,#d3d0e0); background:var(--paper); border-radius:999px; padding:6px 12px; font:600 .75rem var(--sans); color:var(--ink-soft,#55526a); cursor:pointer; }
+  .gkit-chip[aria-pressed="true"]{ background:var(--acento); border-color:var(--acento); color:#fff; }
+  .gkit-chip:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+
+  /* Glosario */
+  .gkit-gtools{ display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+  .gkit-find{ width:100%; box-sizing:border-box; padding:9px 12px; border:1px solid var(--line-strong,#d3d0e0); border-radius:8px; font:inherit; }
+  .gkit-find:focus-visible{ outline:2px solid var(--acento); outline-offset:1px; }
+  .gkit-switch{ display:flex; align-items:center; gap:8px; font-size:.82rem; cursor:pointer; }
+  .gkit-switch input{ width:16px; height:16px; accent-color:var(--acento); }
+  .gkit-legend{ margin:0; font-size:.78rem; color:var(--muted,#6e6e73); }
+  .gkit-gl{ font-weight:600; font-size:.82rem; color:var(--acento-deep); text-decoration:none; }
+  .gkit-gl:hover{ text-decoration:underline; }
+  .gkit-drawer .gloss-item[hidden]{ display:none; }
+  .gkit-drawer .glossary{ display:block; column-count:1; }
+
+  body.gkit-on{ padding-right:84px; }
+}
+
+/* ---- Móvil / tablet: dock inferior + hoja ---- */
+@media screen and (max-width:1099px){
+  body.gkit-on{ padding-right:0; padding-bottom:64px; }
+  .gkit-bar{ top:auto; left:0; width:auto; height:60px; flex-direction:row; padding:4px 6px; gap:2px; border-left:0; border-top:1px solid var(--line); justify-content:space-around; }
+  .gkit-tab{ flex:1; padding:6px 2px; gap:3px; font-size:.6rem; }
+  .gkit-tab svg{ width:20px; height:20px; }
+  .gkit-badge{ right:calc(50% - 22px); top:2px; }
+  body.gkit-on .pdf-fab{ display:none; }
+  .gkit-pdf{ display:inline-flex; border:1px solid var(--line-strong,#d3d0e0); background:var(--paper); border-radius:999px; padding:6px 12px; font:600 .72rem var(--sans); cursor:pointer; color:var(--ink); }
+  .gkit-drawer{ top:auto; left:0; right:0; bottom:60px; width:auto; max-width:none; max-height:78vh; border-left:0; border-top:1px solid var(--line); border-radius:16px 16px 0 0; transform:translateY(calc(100% + 80px)); box-shadow:0 -12px 32px -12px rgba(21,20,27,.22); }
+  .gkit-drawer.open{ transform:none; }
+  .gkit-scrim{ display:block; position:fixed; z-index:69; inset:0; bottom:60px; background:rgba(21,20,27,.32); opacity:0; pointer-events:none; transition:opacity .2s; }
+  .gkit-scrim.on{ opacity:1; pointer-events:auto; }
+  .gs-fab{ bottom:76px; }
+  .gh-toast, .gs-resume{ bottom:76px; }
+}
+
+/* ---- Kit v2 (oct. 2026): en escritorio la barra va ARRIBA, el índice sigue abierto a la izquierda ---- */
+.gkit-brand, .gkit-search, .gkit-sep, .gkit-pdf-top, .gkit-prog, .gkit-side{ display:none; }
+.gkit-tabs{ display:contents; }
+@media screen and (min-width:1100px){
+  body.gkit-on{ padding-right:0; padding-top:58px; }
+  .gkit-bar{
+    top:0; left:0; right:0; bottom:auto; width:auto; height:56px; flex-direction:row; align-items:center; gap:16px;
+    padding:0 24px; border-left:0; border-bottom:1px solid var(--line); justify-content:flex-start;
+  }
+  .gkit-brand{ display:flex; flex-direction:column; flex:1; min-width:0; line-height:1.15; }
+  .gkit-kicker{ font:700 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--acento); }
+  .gkit-btitle{ font:540 17px var(--serif-display,serif); color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .gkit-search{
+    all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:10px; width:360px; height:36px; padding:0 14px;
+    border:1px solid var(--line-strong,#d3d0e0); border-radius:999px; background:#faf9fd; font:400 13.5px var(--sans); color:var(--g-muted,#6b6878);
+  }
+  .gkit-search:hover{ border-color:var(--acento-soft); }
+  .gkit-search:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  .gkit-search svg{ width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; flex:none; }
+  .gkit-search span{ flex:1; }
+  .gkit-search kbd{ font:600 11px/1 var(--sans); padding:3px 6px; border:1px solid var(--line-strong,#d3d0e0); border-radius:4px; background:#fff; }
+  .gkit-tabs{ display:flex; flex:1; align-items:center; justify-content:flex-end; gap:2px; }
+  .gkit-tab{ flex-direction:row; justify-content:center; width:40px; height:40px; padding:0; border-radius:8px; }
+  .gkit-tab span{ display:none; }
+  .gkit-badge{ top:3px; right:1px; }
+  .gkit-sep{ display:block; width:1px; height:22px; background:var(--line); margin:0 8px; }
+  .gkit-pdf-top{ display:block; height:36px; padding:0 14px; border:1px solid var(--line-strong,#d3d0e0); background:#fff; border-radius:8px; cursor:pointer; font:600 13px var(--sans); color:var(--ink-soft,#33314a); }
+  .gkit-pdf-top:hover{ border-color:var(--acento-soft); }
+  body.gkit-on .pdf-fab{ display:none; }
+  .gkit-drawer{
+    top:64px; bottom:auto; right:24px; width:400px; max-width:calc(100vw - 48px); max-height:calc(100vh - 88px);
+    border:1px solid var(--line-strong,#d3d0e0); border-radius:12px; box-shadow:0 12px 40px rgba(21,20,27,.16);
+    transform:translateY(-8px); opacity:0; transition:transform .18s ease, opacity .18s ease, visibility 0s .18s;
+  }
+  .gkit-drawer.open{ transform:none; opacity:1; transition:transform .18s ease, opacity .18s ease; }
+  .gnav{ top:58px; }
+  .gtoggle{ top:74px; }
+  body.gkit-on section.block, body.gkit-on section.block h3, body.gkit-on section.block h4{ scroll-margin-top:84px; }
+  body.gkit-on .gnav-brand{ display:none; }
+  body.gkit-on .gnav-foot .gs-open{ display:none; }   /* el buscador vive en la barra superior (su clic dispara este botón) */
+  /* Sin encabezado propio en el índice: la marca y el botón de ocultar viven en la barra superior; el avance es la vía + la línea de la barra (opción A) */
+  body.gkit-on .gnav-head, body.gkit-on .gtoggle{ display:none; }
+  .gkit-side{ all:unset; cursor:pointer; flex:none; width:36px; height:36px; margin:0 -8px 0 -8px; border-radius:8px; display:grid; place-items:center; color:var(--g-muted,#6b6878); }
+  .gkit-side:hover{ background:rgba(21,20,27,.07); color:var(--ink); }
+  .gkit-side:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  .gkit-side svg{ width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .gkit-side{ display:grid; }
+  .gkit-prog{ display:block; position:absolute; left:0; right:0; bottom:-1px; height:2px; }
+  .gkit-prog i{ display:block; height:2px; width:0; background:var(--acento); }
+}

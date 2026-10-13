@@ -164,7 +164,7 @@
   /* ---- 4. Herramientas: filtros ---- */
   var ph=panels['herramientas'];
   if(ph){
-    var tools=[].slice.call(ph.querySelectorAll('.kit-tool'));
+    var tools=[].slice.call(ph.querySelectorAll('.kit-tool:not(.kit-file)'));
     tabBtns['herramientas'].insertAdjacentHTML('beforeend','<em class="gkit-badge">'+tools.length+'</em>');
     var HL=''; var cs0=document.currentScript; if(cs0&&cs0.src) HL=cs0.src.replace(/js\/guia-kit\.js(\?.*)?$/,'herramientas.html');
     if(HL){ var ah=el('a','gkit-gl','Todas las herramientas del curso →'); ah.href=HL; ah.target='_blank'; ah.rel='noopener'; ah.style.display='inline-block'; ah.style.margin='4px 0 14px';

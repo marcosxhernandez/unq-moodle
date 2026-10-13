@@ -3336,3 +3336,6 @@ a.pill-student:hover{ text-decoration:underline; }
 .gkit-drawer .callout .callout-label{ font-size:11px; letter-spacing:.06em; margin-bottom:6px; }
 .gkit-drawer .callout img{ width:22px; height:22px; }
 .gkit-drawer .gkit-flat + .callout, .gkit-drawer .gkit-flat ~ .callout{ margin-top:14px; }
+
+/* Archivos descargables dentro de Herramientas (kit-file): el nombre largo baja de línea en vez de cortarse (oct. 2026) */
+.kit-file .kit-tool-name, .kit-file .kit-tool-domain{ white-space:normal; overflow-wrap:anywhere; }

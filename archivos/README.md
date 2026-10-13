@@ -60,7 +60,7 @@ Generador: `scripts/gen_dataset_encuesta.py` (semilla 20260609). No editar los C
 
 - DEyA: gasto promedio con trabajo $ 144.694 y sin trabajo $ 102.000 (en DEyA); proyección a 12 meses con la inflación de PARAMETROS.
 - CS: trabaja y viaja más de 60 min: 13 (DEyA), 7 (CS), 7 (CyT), 2 (EUdA), 29 en total.
-- CyT: correlación entre Horas_celular y Horas_estudio -0,165 (casi nula). Promedio de horas de estudio por Dominio_Excel: 1: 7,71; 2: 6,62; 3: 7,06; 4: 6,53; 5: 6,67.
+- CyT: correlación entre Horas_celular y Horas_estudio -0,165 (casi nula). Promedio de horas de estudio por grupo de uso de celular (Bajo hasta 3 h, Medio 4 a 6, Alto 7 o más), con las 120 respuestas: Bajo 8,00 (21 personas), Medio 6,97 (76), Alto 6,09 (23); solo con CyT: Bajo 6,25 (4), Medio 6,82 (17), Alto 6,25 (4).
 - EUdA: uso de IA por nivel de Excel con `CONTAR.SI.CONJUNTO`; la consigna es de comunicación, no tiene cifra única.
 
 ### Reproducibilidad

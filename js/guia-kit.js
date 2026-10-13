@@ -28,16 +28,19 @@
   var known={}; TABS.forEach(function(t){ known[t.id]=t; });
 
   /* ---- 1. Leer las partes del Resumen. Si hay algo desconocido, no hacemos nada. ---- */
-  var parts={}, order=[], cur=null;
+  var parts={}, order=[], cur=null, lead=[], bad=false;
   [].slice.call(prose.children).forEach(function(n){
+    if(bad) return;
     if(n.tagName==='H3'){
-      if(!known[n.id]||parts[n.id]){ parts=null; return; }
-      if(!parts) return;
+      if(!known[n.id]||parts[n.id]){ bad=true; return; }
       cur=n.id; parts[cur]={h:n,nodes:[]}; order.push(cur); return;
     }
-    if(parts&&cur) parts[cur].nodes.push(n);
-    else if(parts&&n.nodeType===1) parts=null;           /* contenido suelto antes del primer h3 */
+    if(cur) parts[cur].nodes.push(n);
+    else if(n.nodeType===1&&n.tagName==='P') lead.push(n);   /* frase del objetivo antes del primer h3 (clases 02-15): se suma a Actividades */
+    else if(n.nodeType===1) bad=true;                        /* cualquier otro contenido suelto: no tocamos nada */
   });
+  if(bad||!order.length) parts=null;
+  else if(lead.length){ if(parts['actividades']) parts['actividades'].nodes=lead.concat(parts['actividades'].nodes); else parts=null; }
   if(!parts||!order.length) return;
 
   function store(op,k,v){ try{ if(op==='get') return localStorage.getItem(k); if(op==='set') localStorage.setItem(k,v); }catch(e){} return null; }
@@ -113,6 +116,8 @@
       h.parentNode.insertBefore(u,h); u.appendChild(h);
       while(n&&n.tagName!=='H4'){ var nx=n.nextElementSibling; u.appendChild(n); n=nx; }
       h.setAttribute('role','button'); h.tabIndex=0; h.setAttribute('aria-expanded','true');
+      var um=/^Unidad\s*(\d+)\s*[·\-–:]\s*(.+)$/.exec(txt(h));
+      if(um){ h.textContent=''; h.appendChild(el('span','gkit-num',um[1])); h.appendChild(el('span','gkit-ut',um[2].replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}))); h.lastChild.textContent=um[2]; }
       var cnt=el('span','gkit-count',''); h.appendChild(cnt);
       var goal=h.getAttribute('data-goal'), href=h.getAttribute('data-href');
       if(goal||href){
@@ -126,9 +131,19 @@
       h.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); tog(); } });
       units.push({u:u,cnt:cnt});
     });
+    /* Clases sin unidades (sin h4): toda la lista de verificación va en una sola tarjeta */
+    if(!units.length){
+      var flat=el('div','gkit-unit gkit-flat'), fn=sum.nextSibling;
+      pa.insertBefore(flat,fn);
+      while(fn){ var fx=fn.nextSibling; if(fn!==flat&&fn.nodeType===1&&(fn.classList.contains('table-wrap')||fn.tagName==='TABLE')) flat.appendChild(fn); fn=fx; }   /* solo las tablas de casillas; callouts y demás quedan debajo, fuera de la tarjeta */
+      units.push({u:flat,cnt:el('span','','')});
+    }
     function recount(){
       var done=0; boxes.forEach(function(b){ if(b.checked) done++; });
-      sum.innerHTML='<b>'+done+' de '+boxes.length+'</b> actividades hechas<span class="gkit-bar-track"><i style="width:'+(boxes.length?Math.round(done*100/boxes.length):0)+'%"></i></span>';
+      var pct=boxes.length?Math.round(done*100/boxes.length):0;
+      sum.classList.toggle('all',boxes.length>0&&done===boxes.length);
+      var all=boxes.length>0&&done===boxes.length;
+      sum.innerHTML='<span class="gkit-big">'+done+'<small>/'+boxes.length+'</small></span><span class="gkit-sumtxt">'+(all?'¡Todo listo! Completaste la clase.':'actividades hechas')+'</span><span class="gkit-bar-track"><i style="width:'+pct+'%"></i></span>';
       units.forEach(function(x){
         var bs=x.u.querySelectorAll('input.checkbox'), d=0; [].forEach.call(bs,function(b){ if(b.checked) d++; });
         x.cnt.textContent=d+' de '+bs.length; x.u.classList.toggle('done',bs.length>0&&d===bs.length);
@@ -182,20 +197,21 @@
     active=id;
     webOrder.forEach(function(k){ panels[k].hidden=(k!==id); tabBtns[k].setAttribute('aria-expanded',k===id?'true':'false'); tabBtns[k].classList.toggle('on',k===id); });
     title.textContent=panels[id].dataset.title;
-    drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('on');
+    drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('on'); document.body.classList.add('gkit-open');
     body.scrollTop=0;
   }
   function close(){
-    drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('on');
+    drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('on'); document.body.classList.remove('gkit-open');
     webOrder.forEach(function(k){ tabBtns[k].classList.remove('on'); tabBtns[k].setAttribute('aria-expanded','false'); });
     active=null;
     if(lastFocus&&lastFocus.focus){ try{ lastFocus.focus({preventScroll:true}); }catch(e){} }
   }
   closeBtn.addEventListener('click',close);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&drawer.classList.contains('open')){ close(); } });
-  /* clic fuera del cajón y de la barra: lo cierra (en escritorio no hay velo) */
+  /* clic fuera del cajón y de la barra: lo cierra (solo móvil/tablet; en escritorio el panel está acoplado) */
   document.addEventListener('mousedown',function(e){
     if(!drawer.classList.contains('open')) return;
+    if(!window.matchMedia('(max-width:1099px)').matches) return;   /* escritorio: panel acoplado, se queda abierto mientras se lee */
     if(drawer.contains(e.target)||bar.contains(e.target)||(e.target.closest&&(e.target.closest('.pdf-fab')||e.target.closest('.gh-card')||e.target.closest('.gs-box')||e.target.closest('.gh-sheet')))) return;
     close();
   });

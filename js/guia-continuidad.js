@@ -66,7 +66,7 @@
     if(tag==='H2'){ secTitle=t; entries.push({kind:'Sección',title:t,sub:'',el:h,rank:0}); }
     else entries.push({kind:tag==='H3'?'Tema':'Subtema',title:t,sub:secTitle,el:h,rank:1});
   });
-  [].forEach.call(document.querySelectorAll('.glossary .gloss-item'),function(it,i){
+  [].forEach.call([].filter.call(document.querySelectorAll('.glossary .gloss-item'),function(it){ return !it.closest('.gkit-drawer'); }),function(it,i){
     var t=it.querySelector('.gloss-term'), d=it.querySelector('.gloss-def'); if(!t||!d) return;
     if(!it.id) it.id='gh-item-'+i;
     entries.push({kind:'Glosario',title:txt(t),sub:txt(d),id:it.id,el:it,rank:2,hay:norm(txt(t)+' '+txt(d))});

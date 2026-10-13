@@ -117,8 +117,8 @@
   {
    "num": "08",
    "unidad": "planilla",
-   "titulo": "Primeros pasos y formato de celdas",
-   "archivo": "Clase 08 - Primeros pasos y formato de celdas.html",
+   "titulo": "Primeros pasos en Google Sheets",
+   "archivo": "Clase 08 - Primeros pasos en Google Sheets.html",
    "acento": "#1e8e3e",
    "deep": "#145c28",
    "tint": "#dfefe4"
@@ -126,8 +126,8 @@
   {
    "num": "09",
    "unidad": "planilla",
-   "titulo": "Fórmulas y funciones básicas",
-   "archivo": "Clase 09 - Fórmulas y funciones básicas.html",
+   "titulo": "Fórmulas y funciones para describir los datos",
+   "archivo": "Clase 09 - Fórmulas y funciones para describir los datos.html",
    "acento": "#1e8e3e",
    "deep": "#145c28",
    "tint": "#dfefe4"
@@ -135,8 +135,8 @@
   {
    "num": "10",
    "unidad": "planilla",
-   "titulo": "Funciones condicionales y trabajo con datos",
-   "archivo": "Clase 10 - Funciones condicionales y trabajo con datos.html",
+   "titulo": "Decisiones y preguntas a los datos",
+   "archivo": "Clase 10 - Decisiones y preguntas a los datos.html",
    "acento": "#1e8e3e",
    "deep": "#145c28",
    "tint": "#dfefe4"
@@ -144,8 +144,8 @@
   {
    "num": "11",
    "unidad": "planilla",
-   "titulo": "Gráficos, impresión y trabajo colaborativo",
-   "archivo": "Clase 11 - Gráficos, impresión y trabajo colaborativo.html",
+   "titulo": "Del dato al informe",
+   "archivo": "Clase 11 - Del dato al informe.html",
    "acento": "#1e8e3e",
    "deep": "#145c28",
    "tint": "#dfefe4"
@@ -286,6 +286,20 @@
    "divergente": false
   },
   {
+   "term": "Archivo",
+   "variants": [
+    {
+     "def": "Documento completo de Google Sheets, guardado en Drive, con una o muchas hojas. En Excel se llama libro.",
+     "label": "Archivo",
+     "clases": [
+      "08"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Arco narrativo",
    "variants": [
     {
@@ -303,7 +317,7 @@
    "term": "Área de impresión",
    "variants": [
     {
-     "def": "Rango de la hoja que se va a imprimir.",
+     "def": "La parte de la hoja que sale al imprimir, por ejemplo las celdas seleccionadas.",
      "label": "Área de impresión",
      "clases": [
       "11"
@@ -331,7 +345,7 @@
    "term": "Argumento",
    "variants": [
     {
-     "def": "Cada uno de los valores, celdas o rangos que una función recibe entre paréntesis.",
+     "def": "Cada dato que necesita una función. Se separan con punto y coma.",
      "label": "Argumento",
      "clases": [
       "09"
@@ -342,13 +356,13 @@
    "divergente": false
   },
   {
-   "term": "Asistente de funciones",
+   "term": "Auditoría",
    "variants": [
     {
-     "def": "Ventana que ayuda a elegir una función y a completar sus argumentos; se abre con el botón <code>fx</code>.",
-     "label": "Asistente de funciones",
+     "def": "Revisar con un control independiente que un resultado, propio o de una IA, sea correcto.",
+     "label": "Auditoría",
      "clases": [
-      "09"
+      "11"
      ],
      "icon": ""
     }
@@ -387,24 +401,10 @@
    "term": "Autosuma",
    "variants": [
     {
-     "def": "Botón <code>Σ</code> que inserta la función SUMA proponiendo el rango contiguo más cercano.",
+     "def": "Botón Σ que inserta una función de resumen adivinando el rango.",
      "label": "Autosuma",
      "clases": [
       "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Barra de fórmulas",
-   "variants": [
-    {
-     "def": "Franja que muestra el contenido real de la celda activa, sea un dato o una fórmula.",
-     "label": "Barra de fórmulas",
-     "clases": [
-      "08"
      ],
      "icon": ""
     }
@@ -419,20 +419,6 @@
      "label": "Base de datos",
      "clases": [
       "13"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Buscar y reemplazar",
-   "variants": [
-    {
-     "def": "Herramienta que encuentra un dato en toda la hoja y, si se quiere, lo cambia por otro en una o en todas las coincidencias.",
-     "label": "Buscar y reemplazar",
-     "clases": [
-      "08"
      ],
      "icon": ""
     }
@@ -496,39 +482,11 @@
    "divergente": false
   },
   {
-   "term": "Categoría",
-   "variants": [
-    {
-     "def": "Rótulo que identifica cada dato de una serie, por ejemplo un mes o una sucursal.",
-     "label": "Categoría",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Celda",
    "variants": [
     {
-     "def": "Unidad básica de la hoja, identificada por la intersección de una columna (letra) y una fila (número), por ejemplo <code>B2</code>.",
+     "def": "Unidad básica de la hoja, identificada por la letra de su columna y el número de su fila, por ejemplo <code>B2</code>.",
      "label": "Celda",
-     "clases": [
-      "08"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Celda activa",
-   "variants": [
-    {
-     "def": "La celda donde se escribe o se pega en este momento. Se reconoce por su borde grueso y solo hay una.",
-     "label": "Celda activa",
      "clases": [
       "08"
      ],
@@ -608,6 +566,20 @@
    "divergente": false
   },
   {
+   "term": "Coincidencia exacta",
+   "variants": [
+    {
+     "def": "Opción <code>FALSO</code> de BUSCARV: solo acepta valores idénticos al buscado.",
+     "label": "Coincidencia exacta",
+     "clases": [
+      "10"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Columnas de texto",
    "variants": [
     {
@@ -650,10 +622,24 @@
    "divergente": false
   },
   {
+   "term": "Condición",
+   "variants": [
+    {
+     "def": "Comparación que da verdadero o falso, como <code>F2&lt;5</code>.",
+     "label": "Condición",
+     "clases": [
+      "10"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Conector",
    "variants": [
     {
-     "def": "Función Y u O que combina varias condiciones dentro de la prueba lógica de un SI.",
+     "def": "El signo <code>&amp;</code>, que une un texto con el contenido de una celda.",
      "label": "Conector",
      "clases": [
       "10"
@@ -664,27 +650,13 @@
    "divergente": false
   },
   {
-   "term": "CONTAR / CONTARA",
+   "term": "CONTAR.SI.CONJUNTO",
    "variants": [
     {
-     "def": "Funciones que cuentan las celdas con números, o las celdas no vacías, de un rango.",
-     "label": "CONTAR / CONTARA",
+     "def": "Función que cuenta las filas que cumplen dos o más condiciones a la vez.",
+     "label": "CONTAR.SI.CONJUNTO",
      "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "CONTAR.SI",
-   "variants": [
-    {
-     "def": "Función que cuenta las celdas de un rango que cumplen un criterio.",
-     "label": "CONTAR.SI",
-     "clases": [
-      "10"
+      "11"
      ],
      "icon": ""
     }
@@ -709,7 +681,7 @@
    "term": "Controlador de relleno",
    "variants": [
     {
-     "def": "Cuadrado en la esquina inferior derecha de la celda activa que, al arrastrarlo, copia contenido o completa series.",
+     "def": "Cuadrado en la esquina de la celda activa que, al arrastrarlo, copia contenido o completa series.",
      "label": "Controlador de relleno",
      "clases": [
       "08"
@@ -765,7 +737,7 @@
    "term": "Criterio",
    "variants": [
     {
-     "def": "Condición que tiene que cumplir una celda para ser contada o sumada, por ejemplo <code>\"Femenino\"</code> o <code>\">=25\"</code>.",
+     "def": "La condición que usan funciones como CONTAR.SI para decidir qué filas cuentan.",
      "label": "Criterio",
      "clases": [
       "10"
@@ -779,6 +751,14 @@
    "term": "CSV",
    "variants": [
     {
+     "def": "Archivo de texto plano donde cada línea es una fila y los datos se separan con un carácter, en este caso el punto y coma.",
+     "label": "CSV",
+     "clases": [
+      "08"
+     ],
+     "icon": ""
+    },
+    {
      "def": "Formato de texto plano para intercambiar tablas entre programas, donde cada línea es un registro y los valores van separados por comas.",
      "label": "CSV",
      "clases": [
@@ -787,21 +767,7 @@
      "icon": ""
     }
    ],
-   "divergente": false
-  },
-  {
-   "term": "Cuadro de nombres",
-   "variants": [
-    {
-     "def": "Casilla a la izquierda de la barra de fórmulas que indica la celda activa y permite saltar a otra celda escribiendo su nombre.",
-     "label": "Cuadro de nombres",
-     "clases": [
-      "08"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
+   "divergente": true
   },
   {
    "term": "Dark web",
@@ -825,6 +791,20 @@
      "label": "Dato",
      "clases": [
       "13"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Datos crudos",
+   "variants": [
+    {
+     "def": "Los datos tal como llegaron de la fuente, sin ninguna corrección. Se conservan intactos.",
+     "label": "Datos crudos",
+     "clases": [
+      "08"
      ],
      "icon": ""
     }
@@ -902,11 +882,11 @@
    "divergente": false
   },
   {
-   "term": "Eje secundario",
+   "term": "Eje X",
    "variants": [
     {
-     "def": "Segunda escala vertical que permite graficar en un mismo gráfico series con unidades muy distintas.",
-     "label": "Eje secundario",
+     "def": "El eje horizontal de un gráfico, que suele llevar las categorías.",
+     "label": "Eje X",
      "clases": [
       "11"
      ],
@@ -923,6 +903,20 @@
      "label": "Encabezado de grupo",
      "clases": [
       "04"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Error de fórmula",
+   "variants": [
+    {
+     "def": "Mensaje que empieza con <code>#</code> y que indica por qué una fórmula no pudo calcular.",
+     "label": "Error de fórmula",
+     "clases": [
+      "09"
      ],
      "icon": ""
     }
@@ -989,7 +983,7 @@
    "term": "Filtro",
    "variants": [
     {
-     "def": "Herramienta que muestra solo las filas que cumplen una condición y oculta temporalmente el resto, sin borrar datos.",
+     "def": "Herramienta que oculta las filas que no cumplen una condición sin borrarlas.",
      "label": "Filtro",
      "clases": [
       "10"
@@ -1008,24 +1002,10 @@
    "divergente": true
   },
   {
-   "term": "Filtros de gráfico",
-   "variants": [
-    {
-     "def": "Botón del gráfico que permite mostrar u ocultar series y categorías sin borrarlas de la tabla.",
-     "label": "Filtros de gráfico",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Formato condicional",
    "variants": [
     {
-     "def": "Conjunto de reglas que aplican un formato visual automático a las celdas que cumplen una condición, sin alterar el dato.",
+     "def": "Regla que cambia el aspecto de una celda cuando se cumple una condición.",
      "label": "Formato condicional",
      "clases": [
       "09"
@@ -1053,22 +1033,8 @@
    "term": "Formato de celdas",
    "variants": [
     {
-     "def": "Conjunto de propiedades visuales (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterarlo.",
+     "def": "Propiedades visuales (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterarlo.",
      "label": "Formato de celdas",
-     "clases": [
-      "08"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Formato personalizado",
-   "variants": [
-    {
-     "def": "Formato de número armado a medida, como <code>0\" m\"</code>, que agrega texto al mostrar el valor sin convertirlo en texto.",
-     "label": "Formato personalizado",
      "clases": [
       "08"
      ],
@@ -1081,7 +1047,7 @@
    "term": "Fórmula",
    "variants": [
     {
-     "def": "Expresión que empieza con <code>=</code> y relaciona valores o celdas para producir un resultado.",
+     "def": "Instrucción que empieza con <code>=</code> y calcula un resultado a partir de números y referencias a celdas.",
      "label": "Fórmula",
      "clases": [
       "09"
@@ -1124,24 +1090,10 @@
    "term": "Función",
    "variants": [
     {
-     "def": "Fórmula predefinida que recibe argumentos y devuelve un resultado, con la forma <code>=NOMBRE(argumentos)</code>.",
+     "def": "Fórmula ya armada que trae Sheets, escrita con un nombre y argumentos entre paréntesis, como <code>PROMEDIO(D2:D121)</code>.",
      "label": "Función",
      "clases": [
       "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Función anidada",
-   "variants": [
-    {
-     "def": "Función que se usa como argumento de otra, por ejemplo un SI dentro de otro SI.",
-     "label": "Función anidada",
-     "clases": [
-      "10"
      ],
      "icon": ""
     }
@@ -1177,39 +1129,11 @@
    "divergente": false
   },
   {
-   "term": "Gráfico circular",
+   "term": "Gráfico",
    "variants": [
     {
-     "def": "Gráfico que muestra cómo se reparte un total entre partes. Admite una sola serie.",
-     "label": "Gráfico circular",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Gráfico combinado",
-   "variants": [
-    {
-     "def": "Gráfico que mezcla dos tipos, por ejemplo columnas y líneas.",
-     "label": "Gráfico combinado",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Gráfico de dispersión",
-   "variants": [
-    {
-     "def": "Gráfico que ubica puntos según dos valores numéricos, para ver la relación entre variables.",
-     "label": "Gráfico de dispersión",
+     "def": "Representación visual de una tabla de datos, elegida según la pregunta que se quiere responder.",
+     "label": "Gráfico",
      "clases": [
       "11"
      ],
@@ -1244,7 +1168,7 @@
      "icon": ""
     },
     {
-     "def": "Registro de las versiones guardadas de un libro, que permite recuperar una anterior.",
+     "def": "Registro de los cambios del archivo y de quién los hizo, que permite volver atrás.",
      "label": "Historial de versiones",
      "clases": [
       "11"
@@ -1258,7 +1182,7 @@
    "term": "Hoja",
    "variants": [
     {
-     "def": "Cada una de las pestañas de un libro. Es una cuadrícula de filas y columnas donde se cargan los datos.",
+     "def": "Cada pestaña del archivo: una cuadrícula de filas y columnas donde se cargan los datos.",
      "label": "Hoja",
      "clases": [
       "08"
@@ -1272,7 +1196,7 @@
    "term": "HOY",
    "variants": [
     {
-     "def": "Función sin argumentos que devuelve la fecha actual y se actualiza cada vez que se abre el archivo.",
+     "def": "Función que devuelve la fecha actual y se actualiza sola.",
      "label": "HOY",
      "clases": [
       "10"
@@ -1353,6 +1277,20 @@
    "divergente": false
   },
   {
+   "term": "Interoperabilidad",
+   "variants": [
+    {
+     "def": "Capacidad de un archivo de funcionar en programas distintos, por ejemplo pasar de Sheets a Excel.",
+     "label": "Interoperabilidad",
+     "clases": [
+      "11"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Jerarquía visual",
    "variants": [
     {
@@ -1381,41 +1319,13 @@
    "divergente": false
   },
   {
-   "term": "Leyenda",
+   "term": "Limpieza de datos",
    "variants": [
     {
-     "def": "Referencia que indica qué color o marca corresponde a cada serie.",
-     "label": "Leyenda",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Libro",
-   "variants": [
-    {
-     "def": "Archivo de Excel, con extensión <code>.xlsx</code>. Puede contener una o muchas hojas.",
-     "label": "Libro",
+     "def": "Corregir defectos de una tabla (textos mezclados, espacios, duplicados) sin alterar el original.",
+     "label": "Limpieza de datos",
      "clases": [
       "08"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Lista desplegable",
-   "variants": [
-    {
-     "def": "Celda que muestra una flecha y solo permite elegir entre opciones predefinidas.",
-     "label": "Lista desplegable",
-     "clases": [
-      "10"
      ],
      "icon": ""
     }
@@ -1467,48 +1377,6 @@
      "label": "Marcador",
      "clases": [
       "04"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Matriz de búsqueda",
-   "variants": [
-    {
-     "def": "La tabla completa donde BUSCARV busca, que conviene fijar con referencias absolutas.",
-     "label": "Matriz de búsqueda",
-     "clases": [
-      "10"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "MAX / MIN",
-   "variants": [
-    {
-     "def": "Funciones que devuelven el valor más alto o el más bajo de un rango.",
-     "label": "MAX / MIN",
-     "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Mensaje de error",
-   "variants": [
-    {
-     "def": "Texto que empieza con <code>#</code> y que Excel muestra cuando no puede resolver una fórmula, por ejemplo <code>#¡DIV/0!</code>.",
-     "label": "Mensaje de error",
-     "clases": [
-      "09"
      ],
      "icon": ""
     }
@@ -1572,52 +1440,10 @@
    "divergente": false
   },
   {
-   "term": "Número de serie",
-   "variants": [
-    {
-     "def": "Número con el que Excel guarda internamente una fecha: los días transcurridos desde el 1 de enero de 1900.",
-     "label": "Número de serie",
-     "clases": [
-      "10"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "OneDrive",
-   "variants": [
-    {
-     "def": "Servicio de almacenamiento en la nube de Microsoft que permite compartir y editar archivos en simultáneo.",
-     "label": "OneDrive",
-     "clases": [
-      "11"
-     ],
-     "icon": "Microsoft - OneDrive.png"
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Operador",
-   "variants": [
-    {
-     "def": "Símbolo que indica la operación de una fórmula: aritmético (<code>+ - * / % ^</code>), de comparación (<code>= &lt;> > &lt;</code>) o de texto (<code>&amp;</code>).",
-     "label": "Operador",
-     "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Ordenar",
    "variants": [
     {
-     "def": "Reacomodar las filas de una tabla según los valores de una o más columnas, de menor a mayor o de mayor a menor.",
+     "def": "Reacomodar las filas de una tabla según los valores de una o más columnas.",
      "label": "Ordenar",
      "clases": [
       "08"
@@ -1656,13 +1482,27 @@
    "divergente": false
   },
   {
+   "term": "Parámetro",
+   "variants": [
+    {
+     "def": "Dato que se guarda en una celda propia para que muchas fórmulas lo lean y se pueda cambiar en un solo lugar.",
+     "label": "Parámetro",
+     "clases": [
+      "09"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Pegado especial",
    "variants": [
     {
-     "def": "Opción para pegar solo valores, fórmulas, formatos u otros aspectos del contenido copiado.",
+     "def": "Pegar solo una parte de lo copiado: los valores, el formato o la fórmula.",
      "label": "Pegado especial",
      "clases": [
-      "11"
+      "09"
      ],
      "icon": ""
     }
@@ -1682,6 +1522,28 @@
     }
    ],
    "divergente": false
+  },
+  {
+   "term": "Permiso de edición",
+   "variants": [
+    {
+     "def": "Nivel de acceso a un archivo compartido: lector, comentador o editor.",
+     "label": "Permiso de edición",
+     "clases": [
+      "08"
+     ],
+     "icon": ""
+    },
+    {
+     "def": "Rol que define qué puede hacer cada persona con un archivo compartido.",
+     "label": "Permiso de edición",
+     "clases": [
+      "11"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": true
   },
   {
    "term": "Perplexity",
@@ -1726,34 +1588,6 @@
    "divergente": false
   },
   {
-   "term": "POTENCIA / RAIZ",
-   "variants": [
-    {
-     "def": "Funciones matemáticas: POTENCIA eleva un número a un exponente y RAIZ calcula su raíz cuadrada.",
-     "label": "POTENCIA / RAIZ",
-     "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "PROMEDIO",
-   "variants": [
-    {
-     "def": "Función que devuelve la media aritmética de los números de un rango.",
-     "label": "PROMEDIO",
-     "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Prompt",
    "variants": [
     {
@@ -1775,20 +1609,6 @@
      "label": "Prompt chaining",
      "clases": [
       "03"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "Prueba lógica",
-   "variants": [
-    {
-     "def": "Condición que Excel evalúa y que da como resultado VERDADERO o FALSO, por ejemplo <code>B2>=65</code>.",
-     "label": "Prueba lógica",
-     "clases": [
-      "10"
      ],
      "icon": ""
     }
@@ -1841,7 +1661,7 @@
    "term": "Rango con nombre",
    "variants": [
     {
-     "def": "Rango al que se le asigna un nombre propio, sin espacios, para usarlo en validaciones y fórmulas.",
+     "def": "Nombre propio que se le da a un rango para usarlo en fórmulas en vez de sus coordenadas.",
      "label": "Rango con nombre",
      "clases": [
       "10"
@@ -1852,13 +1672,27 @@
    "divergente": false
   },
   {
-   "term": "Rango suma",
+   "term": "Rango no contiguo",
    "variants": [
     {
-     "def": "En SUMAR.SI, la columna que contiene los valores que se suman, distinta de la columna donde está el criterio.",
-     "label": "Rango suma",
+     "def": "Selección de celdas que no están una al lado de la otra.",
+     "label": "Rango no contiguo",
      "clases": [
-      "10"
+      "11"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Referencia",
+   "variants": [
+    {
+     "def": "Indicación de qué celda o rango usa una fórmula, como <code>G2</code> o <code>DATOS!D2:D121</code>.",
+     "label": "Referencia",
+     "clases": [
+      "09"
      ],
      "icon": ""
     }
@@ -1869,7 +1703,7 @@
    "term": "Referencia absoluta",
    "variants": [
     {
-     "def": "Referencia que no cambia al copiar la fórmula, indicada con <code>$</code> antes de la columna y la fila, por ejemplo <code>$B$2</code>.",
+     "def": "Referencia con <code>$</code> que no se mueve al copiar, como <code>$B$3</code>.",
      "label": "Referencia absoluta",
      "clases": [
       "09"
@@ -1883,7 +1717,7 @@
    "term": "Referencia mixta",
    "variants": [
     {
-     "def": "Referencia que fija solo la columna (<code>$B2</code>) o solo la fila (<code>B$2</code>).",
+     "def": "Referencia que fija solo la columna o solo la fila, como <code>$B3</code> o <code>B$3</code>.",
      "label": "Referencia mixta",
      "clases": [
       "09"
@@ -1897,7 +1731,7 @@
    "term": "Referencia relativa",
    "variants": [
     {
-     "def": "Referencia a una celda que se ajusta al copiar la fórmula. Es el comportamiento por defecto, por ejemplo <code>B2</code>.",
+     "def": "Referencia que se mueve cuando la fórmula se copia a otra celda.",
      "label": "Referencia relativa",
      "clases": [
       "09"
@@ -1915,6 +1749,20 @@
      "label": "Registro",
      "clases": [
       "13"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Registro y campo",
+   "variants": [
+    {
+     "def": "Un registro es una fila (una respuesta de una persona). Un campo es una columna (un dato: la edad, la carrera).",
+     "label": "Registro y campo",
+     "clases": [
+      "08"
      ],
      "icon": ""
     }
@@ -1964,20 +1812,6 @@
    "divergente": false
   },
   {
-   "term": "Salto de página",
-   "variants": [
-    {
-     "def": "Marca que indica dónde termina una hoja impresa y empieza la siguiente.",
-     "label": "Salto de página",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Salto de sección",
    "variants": [
     {
@@ -2006,13 +1840,13 @@
    "divergente": false
   },
   {
-   "term": "Serie",
+   "term": "Selector",
    "variants": [
     {
-     "def": "Secuencia que Excel completa solo a partir de uno o dos valores iniciales: días, meses, números con un intervalo o fechas.",
-     "label": "Serie",
+     "def": "Celda con menú desplegable de la que dependen las fórmulas de un tablero.",
+     "label": "Selector",
      "clases": [
-      "08"
+      "11"
      ],
      "icon": ""
     }
@@ -2020,11 +1854,11 @@
    "divergente": false
   },
   {
-   "term": "Serie de datos",
+   "term": "Serie",
    "variants": [
     {
-     "def": "Conjunto de valores que se dibuja en un gráfico, normalmente una columna o una fila de la tabla.",
-     "label": "Serie de datos",
+     "def": "Cada conjunto de valores que se dibuja en un gráfico, por ejemplo una columna de la tabla.",
+     "label": "Serie",
      "clases": [
       "11"
      ],
@@ -2062,11 +1896,11 @@
    "divergente": false
   },
   {
-   "term": "SI",
+   "term": "SI anidado",
    "variants": [
     {
-     "def": "Función que devuelve un valor si una condición es verdadera y otro si es falsa: <code>=SI(prueba; si_verdadero; si_falso)</code>.",
-     "label": "SI",
+     "def": "Un <code>SI</code> colocado dentro de otro para resolver más de dos resultados.",
+     "label": "SI anidado",
      "clases": [
       "10"
      ],
@@ -2104,39 +1938,11 @@
    "divergente": false
   },
   {
-   "term": "Subtotal",
+   "term": "SUBTOTAL",
    "variants": [
     {
-     "def": "Herramienta que inserta filas con un cálculo cada vez que cambia el valor de una columna; requiere la tabla ordenada.",
-     "label": "Subtotal",
-     "clases": [
-      "10"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "SUMA",
-   "variants": [
-    {
-     "def": "Función que devuelve la suma de los valores de un rango.",
-     "label": "SUMA",
-     "clases": [
-      "09"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
-   "term": "SUMAR.SI",
-   "variants": [
-    {
-     "def": "Función que suma los valores de un rango, solo en las filas donde otra columna cumple un criterio.",
-     "label": "SUMAR.SI",
+     "def": "Función que calcula una operación solo sobre las filas visibles de un rango filtrado.",
+     "label": "SUBTOTAL",
      "clases": [
       "10"
      ],
@@ -2163,6 +1969,14 @@
    "term": "Tablero",
    "variants": [
     {
+     "def": "Hoja diseñada para mostrar de un vistazo indicadores y gráficos, sin recorrer filas de datos.",
+     "label": "Tablero",
+     "clases": [
+      "11"
+     ],
+     "icon": ""
+    },
+    {
      "def": "Hoja de consulta que reúne tabla, gráfico y números clave, pensada para que alguien la lea de un vistazo sin editar el archivo.",
      "label": "Tablero",
      "clases": [
@@ -2171,7 +1985,7 @@
      "icon": ""
     }
    ],
-   "divergente": false
+   "divergente": true
   },
   {
    "term": "Tipo de dato",
@@ -2202,24 +2016,10 @@
    "divergente": false
   },
   {
-   "term": "Transponer",
-   "variants": [
-    {
-     "def": "Intercambiar las filas por las columnas de un rango.",
-     "label": "Transponer",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Validación de datos",
    "variants": [
     {
-     "def": "Regla que restringe lo que se puede escribir en una celda, por ejemplo con una lista de opciones.",
+     "def": "Regla que limita qué se puede escribir en una celda.",
      "label": "Validación de datos",
      "clases": [
       "10"
@@ -2276,6 +2076,14 @@
    "term": "Vista de filtro",
    "variants": [
     {
+     "def": "Filtro personal que no cambia lo que ven las demás personas que tienen el archivo abierto.",
+     "label": "Vista de filtro",
+     "clases": [
+      "10"
+     ],
+     "icon": ""
+    },
+    {
      "def": "Filtro personal que no afecta lo que ven otras personas que tienen la misma hoja abierta.",
      "label": "Vista de filtro",
      "clases": [
@@ -2284,7 +2092,7 @@
      "icon": ""
     }
    ],
-   "divergente": false
+   "divergente": true
   }
  ]
 }

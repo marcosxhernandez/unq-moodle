@@ -18,10 +18,10 @@ Este repo se sube a GitHub y se sirve con **GitHub Pages**: las Guías Visuales 
 | 05 | Maquetación de alta precisión | ✅ | ✅ | Confirmado (dictada) — recuperatorio el 22/09, después de la Clase 06 |
 | 06 | Presentaciones con IA | ✅ | ✅ | Confirmado (dictada el 15/09) |
 | 07 | 1° Parcial | — | ✅ | Fragmento Moodle completo (sin Guía Visual — `clases/Clase 07 - Examen...` es carpeta de material/consignas, no se publica) |
-| 08 | Primeros pasos y formato de celdas | ✅ | ✅ | A confirmar |
-| 09 | Fórmulas y funciones básicas | ✅ | ✅ | A confirmar |
-| 10 | Funciones condicionales y trabajo con datos | ✅ | ✅ | A confirmar |
-| 11 | Gráficos, impresión y trabajo colaborativo | ✅ | ✅ | A confirmar |
+| 08 | Primeros pasos en Google Sheets | ✅ | ✅ | A confirmar |
+| 09 | Fórmulas y funciones para describir los datos | ✅ | ✅ | A confirmar |
+| 10 | Decisiones y preguntas a los datos | ✅ | ✅ | A confirmar |
+| 11 | Del dato al informe | ✅ | ✅ | A confirmar |
 | 12 | 2° Parcial | — | ✅ | A confirmar (sin Guía Visual — `clases/Clase 12 - Examen...` es carpeta vacía) |
 | 13 | Cómo piensan las bases de datos | ✅ | ✅ | A confirmar |
 | 14 | Del formulario a la base de datos | ✅ | ✅ | A confirmar |
@@ -29,7 +29,7 @@ Este repo se sube a GitHub y se sirve con **GitHub Pages**: las Guías Visuales 
 | 16 | 3° Parcial | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 | 17 | Recuperatorio | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 
-Clases 08-11 (oct. 2026): son las 4 guías de Excel del módulo anterior, renombradas. Las versiones de Sheets (caso "Retrato del curso", reescritas desde cero en oct. 2026) quedaron como boceto en `clases/Boceto - Trabajo de Sheets/` y `moodle/Boceto - Trabajo de Sheets/`, sin publicar en ningún índice. La primera versión (caso La Usina) se conserva en las carpetas `Boceto - Trabajo de Sheets (v1 La Usina)`.
+Clases 08-11 (12 oct. 2026): son las 4 guías de Google Sheets (caso "Retrato del curso"). Las de Excel quedaron archivadas en `clases/Archivo - Trabajo de Excel/` y `moodle/Archivo - Trabajo de Excel/`, sin publicar en ningún índice. La primera versión de Sheets (caso La Usina) se conserva en las carpetas `Boceto - Trabajo de Sheets (v1 La Usina)`.
 
 Feriado y Paro docente son comodines reutilizables (`moodle/Comodín - Feriado.html`, `Comodín - Paro docente.html`), sin número de clase fijo — no ocupan un slot propio en esta tabla.
 

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Cuadernillo docente – Clases 08-11</title>
+<title>Cuadernillo docente – Sheets – Clases 08-11</title>
 <style>
   @page { size: A4; margin: 14mm 12mm; }
   * { box-sizing: border-box; }
@@ -66,372 +66,406 @@
 <body>
 
 <h1>Cuadernillo docente</h1>
-<p class="subtitle">Clases 08 a 11 · Planilla de cálculo (Excel) · Informática, UNQ 2026</p>
-<p class="note">Versión docente del contenido teórico de cada clase de Excel, sin la sección de Actividades (esa vive en "Guía de actividades docente", documento aparte). Incluye un ejercicio guiado único, pensado para proyectar en la pantalla del aula. Corresponde a la versión de Excel que se dicta este cuatrimestre; la versión de Sheets (Boceto) no está cubierta.</p>
+<p class="subtitle">Clases 08 a 11 · Planilla de cálculo (Google Sheets) · Informática, UNQ 2026</p>
+<p class="note">Versión docente del contenido teórico de cada clase, sin la sección de Actividades (esa vive en "Guía de actividades docente", documento aparte). Incluye un ejercicio guiado único, pensado para proyectar en la pantalla del aula.</p>
 <div class="hoja-ruta">
 <h2>El ejercicio guiado, hoja de ruta</h2>
-<p class="tema"><b>Tema elegido:</b> el kiosco del centro de estudiantes (qué se vende, cuánto deja y qué hay que reponer), cercano a cualquier carrera y con datos chicos. Un solo libro que crece clase a clase, proyectado en paralelo a que cada alumno resuelve las consignas de la Guía Visual (que traen sus propios datos): <code>[DEMO] Kiosco</code>. Datos de práctica, inventados.</p>
+<p class="tema"><b>Tema elegido:</b> el propio caso del módulo, <b>Retrato del curso</b>. Un solo archivo que crece clase a clase, proyectado en paralelo a que cada alumno resuelve las consignas de la Guía Visual: <code>[DEMO] Retrato del curso</code>. En la Clase 08 se parte de la muestra de 11 filas, que trae cada defecto una sola vez y por eso permite verlos todos a simple vista (así llega del formulario; <code>␣</code> marca un espacio de más; se omiten las columnas Fecha, Horas_celular, Uso_IA y Dominio_Excel):</p>
 <table>
-<tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Costo</th><th>Precio</th><th>Unidades vendidas</th></tr>
-<tr><td>100</td><td>Alfajor triple</td><td>Golosinas</td><td>$ 600</td><td>$ 900</td><td>120</td></tr>
-<tr><td>110</td><td>Chicle</td><td>Golosinas</td><td>$ 150</td><td>$ 250</td><td>200</td></tr>
-<tr><td>120</td><td>Agua 500 ml</td><td>Bebidas</td><td>$ 500</td><td>$ 900</td><td>90</td></tr>
-<tr><td>130</td><td>Gaseosa 500 ml</td><td>Bebidas</td><td>$ 800</td><td>$ 1.300</td><td>70</td></tr>
-<tr><td>140</td><td>Mate cocido</td><td>Bebidas</td><td>$ 300</td><td>$ 600</td><td>40</td></tr>
-<tr><td>150</td><td>Tostado</td><td>Comidas</td><td>$ 1.500</td><td>$ 2.500</td><td>35</td></tr>
-<tr><td>160</td><td>Medialuna</td><td>Comidas</td><td>$ 400</td><td>$ 700</td><td>110</td></tr>
-<tr><td>170</td><td>Galletitas</td><td>Golosinas</td><td>$ 700</td><td>$ 1.100</td><td>60</td></tr>
+<tr><th>ID</th><th>Carrera</th><th>Edad</th><th>Trabaja</th><th>Estudio (h)</th><th>Viaje (min)</th><th>Gasto</th></tr>
+<tr><td>1</td><td>Licenciatura en Comercio Internacional</td><td>19</td><td>No</td><td>16</td><td>87</td><td>66000</td></tr>
+<tr><td>2</td><td>Licenciatura en Artes Electrónicas</td><td>42</td><td>Sí</td><td>7</td><td>57</td><td>157000</td></tr>
+<tr><td>3</td><td>Tecnicatura en Programación Informática</td><td>42</td><td>No</td><td>6</td><td>10</td><td>67000</td></tr>
+<tr><td>4</td><td>Contador Público</td><td>28</td><td>Sí</td><td>4</td><td>85</td><td>75000</td></tr>
+<tr><td>5</td><td>Licenciatura en Comercio Internacional</td><td>20</td><td>Sí</td><td>4</td><td>46</td><td>114000 pesos</td></tr>
+<tr><td>6</td><td>Licenciatura en Administración</td><td>22</td><td>Sí</td><td>11</td><td>106</td><td>180000</td></tr>
+<tr><td>12</td><td>Contador Público</td><td>19</td><td>Sí</td><td>2</td><td>(vacío)</td><td>105000</td></tr>
+<tr><td>21</td><td>Licenciatura en Comunicación Social</td><td>21 años</td><td>No</td><td>5</td><td>90</td><td>71000</td></tr>
+<tr><td>22</td><td>␣␣Contador Público</td><td>25</td><td>Sí</td><td>7</td><td>60</td><td>125000</td></tr>
+<tr><td>35</td><td>␣Licenciatura en Administración␣</td><td>22</td><td>No</td><td>6</td><td>19</td><td>90000</td></tr>
+<tr><td>22</td><td>␣␣Contador Público</td><td>25</td><td>Sí</td><td>7</td><td>60</td><td>125000</td></tr>
 </table>
+<p class="tema">Resultados de referencia de la muestra limpia: 10 filas (se quita 1 repetida); suma de Edad 260; suma de Gasto_mensual 1.050.000; la primera carrera al ordenar por Carrera de A a Z y Gasto de mayor a menor es Contador Público ($ 125.000).</p>
 <table>
 <tr><th>Clase</th><th>Qué se hace en vivo, proyectado</th><th>Resultado visible al final</th></tr>
-<tr><td>08</td><td>Cargar la tabla desde cero en una hoja renombrada <code>Productos</code>. Tipear a propósito un precio con punto (<code>897.50</code>), mostrar que queda a la izquierda y corregirlo con <code>F2</code>. Códigos de 10 en 10 con el controlador de relleno, formato Moneda, encabezado con relleno y bordes, título combinado sobre la tabla. Ordenar por Categoría y por Producto seleccionando la tabla completa. Guardar como <code>.xlsx</code>.</td><td>Tabla ordenada y con presentación prolija, lista para calcular.</td></tr>
-<tr><td>09</td><td>Columna Ventas = Precio por Unidades, escrita una vez y arrastrada. Total con Autosuma, mostrando el recuadro punteado antes del <code>Enter</code>. Porcentaje del total, primero sin <code>$</code> (aparece <code>#¡DIV/0!</code>) y después con el total fijo. PROMEDIO, MAX y MIN de los precios. Formato condicional en Unidades vendidas con tres tramos.</td><td>Ventas por producto, total y porcentaje de cada uno.</td></tr>
-<tr><td>10</td><td>Columna Estado con SI: si las unidades vendidas son menos de 50, "Pedir reposición"; si no, "Stock OK". CONTAR.SI y SUMAR.SI por categoría. Lista desplegable de Categoría con un rango con nombre. Subtotal de ventas por categoría (ordenando antes). BUSCARV del precio de un producto elegido por código. <code>=HOY()</code> para la fecha del informe. Filtro de Bebidas.</td><td>Resumen por categoría y un buscador de precios.</td></tr>
-<tr><td>11</td><td>Gráfico circular de ventas por categoría (cumple las reglas: una serie, tres categorías, partes de un total). Gráfico combinado: Unidades vendidas en columnas y Precio en línea con eje secundario y ejes rotulados. Pegado especial como valores en una hoja <code>Informe</code>. A4 horizontal, encabezado repetido y vista preliminar. Compartir por OneDrive con permiso Puede ver.</td><td>Informe con gráficos, listo para imprimir o compartir.</td></tr>
+<tr><td>08</td><td>Importar la muestra <code>Practica_encuesta_mini.csv</code> (separador <code>;</code>), mostrar los cinco defectos por la alineación, duplicar la hoja (<code>MINI_CRUDO</code>, <code>MINI_DATOS</code>) y limpiar con Buscar y reemplazar, Recortar espacios y Quitar duplicados, mostrando el aviso de cada herramienta. Dar formato, completar series con el controlador de relleno, ordenar por dos criterios y volver por <code>ID</code>.</td><td>Muestra limpia y presentable, con las sumas de control (260 y 1.050.000).</td></tr>
+<tr><td>09</td><td>Sobre las primeras 8 filas: <code>Cel_semana</code> con <code>=G2*7</code> copiada, indicadores con <code>PROMEDIO</code>, <code>MAX</code>, <code>MIN</code>, <code>CONTAR</code> y <code>CONTARA</code> (por qué <code>CONTAR</code> sobre las carreras da 0), provocar <code>#DIV/0!</code>, <code>#VALUE!</code> y <code>#NAME?</code>, hoja <code>PARAMETROS</code> con 40% anual y 2,84% mensual, tabla de escenarios con una sola fórmula mixta y formato condicional de fila entera.</td><td>Indicadores, proyección y escenarios, con cada cifra comprobable a mano.</td></tr>
+<tr><td>10</td><td><code>SI</code> anidado con <code>Y</code> y <code>O</code>, <code>CONTAR.SI</code> con un umbral atado a una celda (<code>"&gt;"&amp;B14</code>), <code>BUSCARV</code> al catálogo (y el espacio al final que produce <code>#N/A</code>), validación y selector de departamento, <code>HOY()</code> y filtros con <code>SUBTOTAL</code>.</td><td>Tabla clasificada, con departamento y un selector que cambia los conteos.</td></tr>
+<tr><td>11</td><td>Gráfico de columnas del uso de IA, <code>TABLERO_P</code> con selector (DEyA, CyT, EUdA y CS para mostrar el <code>#DIV/0!</code>), imprimir en una página, un comentario con <code>@</code> y una consulta a la IA verificada contra una cifra de control.</td><td>Tablero de una página, impreso y comentado.</td></tr>
 </table>
-<p class="tema">Resultados de referencia: ventas totales $584.500; por categoría, Golosinas $224.000 (38,3%) · Bebidas $196.000 (33,5%) · Comidas $164.500 (28,1%); precio promedio $1.031,25; precio máximo $2.500 (Tostado) y mínimo $250 (Chicle); a reponer (menos de 50 unidades): Mate cocido y Tostado.</p>
-<p class="tema"><b>Nota:</b> si el tiempo aprieta, en las Clases 10 y 11 alcanza con mostrar el libro ya armado y explicar los 2 o 3 pasos clave de cada herramienta. Lo importante es que se vea la continuidad: la misma tabla que se cargó en la Clase 08 termina siendo un informe.</p>
+<p class="tema">Primeras 8 respuestas (Clases 09 a 11): Edad promedio 26,75; Gasto suma $ 848.000, promedio $ 106.000, máximo $ 180.000, mínimo $ 53.000; Viaje promedio 62,5; trabajan 5; Riesgo_carga con Atención 2; IA frecuente 5; Nivel_Excel 6 Inicial y 2 Intermedio; fechas del 11/08/2026 al 23/08/2026 (12 días). Por departamento: DEyA 5 (gasto promedio $ 114.200, 80% trabaja), CyT 2 ($ 60.000, 0%), EUdA 1 ($ 157.000, 100%), CS 0.</p>
+<p class="tema">Las 120 respuestas limpias: Edad promedio 24,24; Gasto promedio $ 127.016,67; Viaje promedio 55,48 (115 con dato); trabajan 73 (60,83%); Nivel_Excel 65 Inicial, 49 Intermedio y 6 Avanzado; Atención 27; IA frecuente 65.</p>
+<p class="tema"><b>Nota:</b> si el tiempo aprieta, en las Clases 10 y 11 alcanza con mostrar el archivo ya armado y explicar los 2 o 3 pasos clave de cada herramienta. Lo importante es que se vea la continuidad: la misma encuesta que se importó en la Clase 08 termina siendo un tablero. Los datos son simulados.</p>
 </div>
 <div class="clase">
-  <div class="clase-header"><span class="clase-num">08</span><span class="clase-title">Primeros pasos y formato de celdas</span></div>
-  <p class="intro">Objetivo: que el alumno reconozca la pantalla de Excel, cargue datos sin que el programa los malinterprete, organice el libro en hojas con nombre, lo guarde con un nombre claro y le dé una presentación prolija (formato, series y orden).</p>
-<h3>Conocer Excel</h3>
-<p>Excel es una planilla de cálculo: los datos se ordenan en filas y columnas y las fórmulas se recalculan solas cuando cambia un dato. Se trabaja en la versión de escritorio. La versión para navegador es gratuita con cuenta Microsoft, pero tiene menos funciones; la de escritorio requiere licencia y tiene descuento para estudiantes (50%, sello en la Guía Visual).</p>
+  <div class="clase-header"><span class="clase-num">08</span><span class="clase-title">Primeros pasos en Google Sheets</span></div>
+  <p class="intro">Importar una encuesta, separar el original del trabajo, limpiar, dar formato, ordenar y entregar una copia compartida.</p>
+<h3>Conocer Google Sheets y el caso del curso</h3>
+<p>Sheets corre en el navegador (<code>sheets.google.com</code>), guarda cada cambio solo en el Drive y permite que varias personas editen el mismo archivo a la vez. No hay botón de guardar. Todo el módulo gira en torno a un solo caso, <b>Retrato del curso</b>: una encuesta que la universidad hace a los ingresantes (carrera, trabajo, viaje, celular, IA). Las 120 respuestas son inventadas y vienen con los defectos de cualquier dato real.</p>
 <table>
 <tr><th>Elemento</th><th>Dónde está</th><th>Para qué sirve</th></tr>
-<tr><td>Barra de título</td><td>Arriba, al centro</td><td>Nombre del libro. Sin guardar se llama <code>Libro1</code>.</td></tr>
-<tr><td>Cinta de opciones</td><td>Debajo de la barra de título</td><td>Comandos en pestañas: Inicio, Insertar, Disposición de página, Fórmulas, Datos, Revisar, Vista.</td></tr>
-<tr><td>Cuadro de nombres</td><td>A la izquierda de la barra de fórmulas</td><td>Indica la celda activa y permite saltar a otra escribiendo su nombre.</td></tr>
-<tr><td>Barra de fórmulas</td><td>A la derecha del cuadro de nombres</td><td>Contenido real de la celda activa (si hay fórmula, la celda muestra el resultado).</td></tr>
-<tr><td>Área de trabajo</td><td>Centro</td><td>Cuadrícula de celdas: letras arriba (columnas), números a la izquierda (filas).</td></tr>
-<tr><td>Etiquetas de hoja</td><td>Parte inferior</td><td>Una pestaña por hoja; el <code>+</code> agrega una hoja.</td></tr>
+<tr><td>Nombre del archivo</td><td>Arriba a la izquierda</td><td>Mientras no se cambia se llama <code>Hoja de cálculo sin título</code>.</td></tr>
+<tr><td>Menús</td><td>Debajo del nombre</td><td>Casi todo lo de la clase está en Archivo, Formato y Datos.</td></tr>
+<tr><td>Barra de herramientas</td><td>Debajo de los menús</td><td>Deshacer, formato de número, negrita, relleno, bordes, combinar celdas.</td></tr>
+<tr><td>Cuadro de nombre</td><td>A la izquierda de la barra de fórmulas</td><td>Muestra la celda activa. Escribir <code>D25</code> y <code>Enter</code> salta a esa celda.</td></tr>
+<tr><td>Barra de fórmulas</td><td>A la derecha del cuadro de nombre</td><td>Contenido real de la celda activa: el dato o la fórmula.</td></tr>
+<tr><td>Cuadrícula</td><td>Centro</td><td>Letras arriba (columnas), números a la izquierda (filas).</td></tr>
+<tr><td>Pestañas de hoja</td><td>Parte inferior</td><td>Una por hoja; el <code>+</code> agrega una. Una hoja nueva trae 1.000 filas y 26 columnas.</td></tr>
 </table>
 <table>
 <tr><th>Concepto</th><th>Qué es</th></tr>
-<tr><td>Libro</td><td>El archivo (<code>.xlsx</code>). Contiene una o muchas hojas.</td></tr>
-<tr><td>Hoja</td><td>Cada pestaña. 16.384 columnas (hasta <code>XFD</code>) y 1.048.576 filas.</td></tr>
+<tr><td>Archivo</td><td>El documento completo, guardado en Drive. En Excel se llama libro.</td></tr>
+<tr><td>Hoja</td><td>Cada pestaña del archivo.</td></tr>
 <tr><td>Celda</td><td>Intersección de columna y fila: <code>B2</code>.</td></tr>
-<tr><td>Celda activa</td><td>La de borde grueso; solo hay una.</td></tr>
+<tr><td>Celda activa</td><td>La del borde azul; solo hay una.</td></tr>
 <tr><td>Rango</td><td>Celdas contiguas, primera y última con dos puntos: <code>A2:A10</code>, <code>B2:D5</code>.</td></tr>
 </table>
 <table>
 <tr><th>Para ir a...</th><th>Windows</th><th>Mac</th></tr>
 <tr><td>Celda de al lado</td><td>Flechas, <code>Tab</code> (derecha), <code>Enter</code> (abajo)</td><td>Igual</td></tr>
+<tr><td>Una celda cualquiera</td><td>Escribirla en el cuadro de nombre + <code>Enter</code></td><td>Igual</td></tr>
+<tr><td>Celda <code>A1</code></td><td><code>Ctrl+Inicio</code></td><td><code>⌘+Fn+←</code></td></tr>
 <tr><td>Borde del bloque de datos</td><td><code>Ctrl+Flecha</code></td><td><code>⌘+Flecha</code></td></tr>
-<tr><td>Celda <code>A1</code></td><td><code>Ctrl+Inicio</code></td><td><code>Ctrl+Fn+←</code></td></tr>
-<tr><td>Última celda con datos</td><td><code>Ctrl+Fin</code></td><td><code>Ctrl+Fn+→</code></td></tr>
-<tr><td>Una celda cualquiera</td><td>Escribirla en el Cuadro de nombres + <code>Enter</code></td><td>Igual</td></tr>
+<tr><td>Seleccionar un rango</td><td>Clic y arrastrar, o clic + <code>Mayús</code> + clic</td><td>Igual</td></tr>
+<tr><td>Seleccionar toda la hoja</td><td><code>Ctrl+A</code></td><td><code>⌘+A</code></td></tr>
+<tr><td>Deshacer</td><td><code>Ctrl+Z</code></td><td><code>⌘+Z</code></td></tr>
 </table>
-<h3>Cargar y corregir datos</h3>
-<p>Mientras la celda está en edición el dato no está cargado y la cinta queda deshabilitada. Confirmar: <code>Enter</code> (baja), <code>Tab</code> (derecha) o la tilde <code>✓</code>; cancelar: <code>Esc</code> o <code>✗</code>.</p>
-<p><b>Diagnóstico de tipo:</b> el texto se alinea a la izquierda y los números a la derecha. Un número alineado a la izquierda es texto. Con configuración regional de Argentina el decimal es la <b>coma</b>: <code>2.3</code> queda como texto (o a veces como fecha) y no se puede sumar.</p>
+<p><b>Configuración regional:</b> antes de escribir nada, Archivo → Configuración tiene que decir Argentina. De eso dependen la coma decimal, el formato de fecha y el separador de argumentos (<code>;</code>).</p>
+<h3>Importar datos y entender la tabla</h3>
+<p>Los datos no se tipean: llegan de otro lugar (un formulario, un sistema) como un <code>.csv</code>. Se importan con Archivo → Importar → Subir. El archivo del caso separa columnas con <b>punto y coma</b> porque en Argentina la coma es el decimal. Si al importar todo queda amontonado en la columna A, elegir separador Personalizado y escribir <code>;</code>.</p>
 <table>
-<tr><th>Si querés...</th><th>Hacé esto</th></tr>
-<tr><td>Reemplazar todo el contenido</td><td>Seleccionar la celda y escribir encima</td></tr>
-<tr><td>Vaciar la celda</td><td><code>Supr</code></td></tr>
-<tr><td>Cambiar solo una parte</td><td>Doble clic, <code>F2</code> (Mac: <code>Ctrl+U</code>) o desde la barra de fórmulas</td></tr>
-<tr><td>Deshacer</td><td><code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>)</td></tr>
-<tr><td>Borrar solo formato o solo contenido</td><td>Inicio → Borrar (la goma)</td></tr>
+<tr><th>Regla de la tabla de datos</th><th>Por qué</th></tr>
+<tr><td>Una fila por registro</td><td>Cada fila es una respuesta. Sin subtotales ni filas vacías en el medio.</td></tr>
+<tr><td>Una columna por campo</td><td>Cada columna guarda una sola cosa. Nunca dos datos en la misma.</td></tr>
+<tr><td>Encabezado en la fila 1</td><td>Nombre corto y único por columna, sin celdas combinadas.</td></tr>
+<tr><td>Un solo tipo por columna</td><td>O todo números, o todo fechas, o todo texto. <code>21 años</code> rompe los cálculos.</td></tr>
 </table>
-<p><code>#####</code> no es un error de cálculo: el dato no entra en el ancho de la columna.</p>
-<h3>Hojas y libros</h3>
-<p>Nombre de hoja: hasta 31 caracteres, sin repetir dentro del libro, sin <code>: \ / ? * [ ]</code>.</p>
+<p><b>Diagnóstico de tipo:</b> el texto se alinea a la izquierda y los números y las fechas a la derecha. Un número alineado a la izquierda es texto y no se puede sumar ni promediar.</p>
+<h3>Hojas: el original no se toca</h3>
+<p>Regla de la clase: el dato original se guarda tal como llegó (<code>CRUDO</code>) y se trabaja sobre una copia (<code>DATOS</code>). Si algo sale mal, siempre se vuelve al original.</p>
 <table>
-<tr><th>Acción</th><th>Cómo</th></tr>
-<tr><td>Cambiar nombre</td><td>Doble clic en la pestaña, o clic derecho → Cambiar nombre</td></tr>
-<tr><td>Mover</td><td>Arrastrar la pestaña</td></tr>
-<tr><td>Copiar</td><td><code>Ctrl</code> + arrastrar (Mac: <code>Opción</code>), o clic derecho → Mover o copiar → Crear una copia</td></tr>
-<tr><td>Eliminar</td><td>Clic derecho → Eliminar. <b>No se puede deshacer con <code>Ctrl+Z</code>.</b></td></tr>
-<tr><td>Color de pestaña</td><td>Clic derecho → Color de pestaña</td></tr>
+<tr><th>Para...</th><th>Hacer esto</th></tr>
+<tr><td>Renombrar una hoja</td><td>Doble clic en la pestaña, o flecha de la pestaña → Cambiar nombre</td></tr>
+<tr><td>Cambiarle el color</td><td>Flecha de la pestaña → Cambiar color</td></tr>
+<tr><td>Duplicar</td><td>Flecha de la pestaña → Duplicar</td></tr>
+<tr><td>Mover</td><td>Arrastrar la pestaña, o flecha → Mover a la derecha / izquierda</td></tr>
+<tr><td>Ocultar</td><td>Flecha → Ocultar hoja (se recupera desde Ver → Hojas ocultas)</td></tr>
+<tr><td>Eliminar</td><td>Flecha → Eliminar. Pide confirmación; después de guardar solo queda el historial.</td></tr>
 </table>
-<p><b>Guardar:</b> Archivo → Guardar como. Guarda todo el libro, no solo la hoja activa. Formatos: <code>.xlsx</code> (por defecto), <code>.csv</code> (texto plano, una sola hoja, sin formato) y PDF (para compartir sin editar). En OneDrive aparece el interruptor Autoguardado, pero igual conviene nombrar el archivo desde el principio.</p>
-<h3>Formato de celdas</h3>
-<p>El formato cambia cómo se ve el dato, no el dato. Se abre con <code>Ctrl+1</code> (Mac: <code>⌘+1</code>) o clic derecho → Formato de celdas. Seis solapas: Número, Alineación, Fuente, Bordes, Relleno y Proteger.</p>
+<p>Nombres de hoja cortos y sin espacios ni tildes si se puede (<code>CRUDO</code>, <code>DATOS</code>, <code>CARRERAS</code>).</p>
+<h3>Limpiar los datos sin romper la tabla</h3>
 <table>
-<tr><th>Formato de número</th><th>Qué hace</th></tr>
-<tr><td>General</td><td>Muestra lo que se escribió.</td></tr>
-<tr><td>Número</td><td>Fija decimales y separador de miles.</td></tr>
-<tr><td>Moneda / Contabilidad</td><td>Agrega <code>$</code>; Contabilidad alinea los símbolos en columna.</td></tr>
-<tr><td>Fecha / Hora</td><td>Distintos aspectos de una fecha u hora.</td></tr>
-<tr><td>Porcentaje</td><td>Muestra como <code>%</code>. <b>Multiplica por 100</b> lo que ya está escrito: un <code>25</code> pasa a <code>2500%</code>. Aplicar el formato primero y escribir el número después.</td></tr>
-<tr><td>Texto</td><td>Trata el contenido como texto aunque sean números (códigos, teléfonos).</td></tr>
-<tr><td>Personalizada</td><td>Formato propio. <code>0" m"</code> muestra 5 m pero la celda sigue valiendo <code>5</code> y se puede sumar.</td></tr>
+<tr><th>Defecto</th><th>Cómo se ve</th><th>Qué se hace</th></tr>
+<tr><td>Texto pegado a un número</td><td><code>21 años</code> en Edad, <code>114000 pesos</code> en Gasto</td><td>Buscar y reemplazar: cambiar <code>años</code> y <code>pesos</code> por nada</td></tr>
+<tr><td>Espacios de más</td><td>Espacios al principio o al final de la carrera</td><td>Datos → Limpieza de datos → Recortar espacios en blanco</td></tr>
+<tr><td>Filas repetidas</td><td>La misma respuesta cargada dos veces, con el mismo ID</td><td>Datos → Limpieza de datos → Quitar duplicados (con fila de encabezado tildada)</td></tr>
+<tr><td>Mayúsculas mezcladas</td><td><code>LICENCIATURA EN ADMINISTRACIÓN</code> junto a <code>Licenciatura en Administración</code></td><td>Nada: es una decisión (para comparar y ordenar son el mismo texto)</td></tr>
+<tr><td>Celdas vacías</td><td><code>Viaje_min</code> sin dato en 5 respuestas</td><td>Nada: es una decisión (vacío no es cero; el promedio las ignora)</td></tr>
 </table>
-<p><b>Alineación:</b> horizontal, vertical, ajustar texto, reducir hasta ajustar, orientación y Combinar y centrar. Combinar solo para títulos; dentro de la zona de datos impide ordenar y filtrar bien.</p>
-<p><b>Bordes:</b> siempre en este orden dentro de la solapa: color, estilo, ubicación. <b>Proteger</b> (Bloqueada/Oculta) solo tiene efecto después de Revisar → Proteger hoja.</p>
-<h3>Filas, columnas, series y orden</h3>
-<p>Ancho y alto: arrastrar la línea que separa los encabezados; doble clic autoajusta. Insertar o eliminar: clic derecho sobre la letra o el número (la fila nueva aparece arriba, la columna nueva a la izquierda).</p>
 <table>
-<tr><th>Escribís...</th><th>Arrastrando el controlador de relleno obtenés</th></tr>
-<tr><td><code>Lunes</code></td><td>Martes, miércoles, jueves...</td></tr>
-<tr><td><code>Enero</code></td><td>Febrero, marzo, abril...</td></tr>
-<tr><td><code>5</code> y <code>10</code> (seleccionando las dos)</td><td>15, 20, 25... (repite el intervalo)</td></tr>
-<tr><td><code>07/08/2026</code> y <code>14/08/2026</code> (seleccionando las dos)</td><td>Una fecha cada siete días</td></tr>
-<tr><td>Un número o texto suelto</td><td>Se copia igual</td></tr>
+<tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Buscar y reemplazar</td><td><code>Ctrl+H</code></td><td><code>⌘+Mayús+H</code></td></tr>
+<tr><td>Negrita, cursiva, subrayado</td><td><code>Ctrl+B</code>, <code>Ctrl+I</code>, <code>Ctrl+U</code></td><td><code>⌘+B</code>, <code>⌘+I</code>, <code>⌘+U</code></td></tr>
 </table>
-<p>Doble clic sobre el controlador rellena hacia abajo hasta donde llegan los datos vecinos. Con más control: Inicio → Rellenar → Series (tipo lineal, geométrica, cronológica o autorrellenar; unidad día, <b>día laborable</b>, mes o año; incremento y límite).</p>
-<p><b>Ordenar:</b> Datos → Ordenar, con Mis datos tienen encabezados; Agregar nivel suma criterios. El segundo criterio solo actúa cuando el primero se repite. <b>Siempre la tabla completa</b>: ordenar una sola columna seleccionada a mano deja cada dato pegado a la persona equivocada.</p>
-<p><b>Buscar y reemplazar:</b> <code>Ctrl+B</code> / <code>Ctrl+L</code> (Mac: <code>⌘+F</code> / <code>Control+H</code>). Probar antes con Buscar todos: Reemplazar todos cambia también dentro de otras palabras (sol por luz modifica Solana).</p>
-<h3>Ilustraciones</h3>
-<p>Insertar → Ilustraciones: Imágenes, Formas, Íconos y SmartArt. Con la imagen seleccionada aparece Formato de imagen (recortar, tamaño, brillo y contraste, estilos y texto alternativo para lector de pantalla).</p>
+<p><b>Lo que más importa de Buscar y reemplazar:</b> el campo de dónde buscar. Tiene que decir <b>Esta hoja</b>. Si queda en Todas las hojas se modifica también <code>CRUDO</code> y se pierde el original. Antes de Reemplazar todo, mirar que la hoja activa sea <code>DATOS</code>.</p>
+<h3>Formato: número, encabezado y presentación</h3>
+<p>El formato cambia cómo se ve un dato, no el dato: un <code>66000</code> con formato de moneda se ve <code>$ 66.000,00</code> pero sigue siendo 66000. Por eso la suma de abajo a la derecha no cambia al dar formato.</p>
+<ul><li>Moneda, porcentaje (multiplica por 100 lo ya escrito) y más formatos (fecha, hora, decimales) en la barra de herramientas y el menú <code>123</code>.</li><li>Combinar solo el título de la portada, nunca en la tabla de datos (ni en los encabezados).</li><li>Ancho de columna: doble clic en el borde derecho de la letra. Inmovilizar el encabezado: Ver → Inmovilizar → 1 fila.</li><li>La hoja <code>LEEME</code> es la portada del archivo: título, qué contiene, quién lo hizo. La imagen se inserta con Insertar → Imagen → Insertar imagen sobre las celdas.</li></ul>
+<h3>Series y orden</h3>
+<p>El <b>controlador de relleno</b> (cuadradito de la esquina de la celda activa) completa series: días de la semana en ciclo, números con la diferencia entre dos celdas dadas, fechas de un día por celda. Doble clic lo extiende hasta donde llegan los datos de la columna vecina.</p>
+<p><b>Ordenar siempre la tabla completa.</b> Si se ordena una sola columna, las demás se quedan en su lugar y cada respuesta termina con la edad y el gasto de otra persona. Para varios criterios: Datos → Ordenar intervalo → Opciones avanzadas, con la fila de encabezado tildada. La columna <code>ID</code> permite volver al orden original en cualquier momento.</p>
+<h3>Guardar, compartir y llevar a Excel</h3>
+<table>
+<tr><th>Hábito</th><th>Cómo se hace</th></tr>
+<tr><td>Copia antes de seguir</td><td>Archivo → Hacer una copia. La copia queda congelada en ese estado.</td></tr>
+<tr><td>Permiso justo</td><td>Botón Compartir. Lector mira, Comentador mira y comenta, Editor modifica. Conviene dar siempre el más chico que alcance.</td></tr>
+<tr><td>Llevarlo a Excel</td><td>Archivo → Descargar → Microsoft Excel (.xlsx)</td></tr>
+</table>
+<p>El nombre de archivo claro, la copia por clase que se entrega y el permiso de Comentador para el docente se tratan en el pedido de la clase (<code>Clase 08 - Apellido - AAAA-MM-DD</code>).</p>
 <p class="glosario-title">Glosario</p>
 <table>
-<tr><td><b>Libro</b></td><td>Archivo de Excel, con extensión <code>.xlsx</code>. Puede contener una o muchas hojas.</td></tr>
-<tr><td><b>Hoja</b></td><td>Cada una de las pestañas de un libro. Es una cuadrícula de filas y columnas donde se cargan los datos.</td></tr>
-<tr><td><b>Celda</b></td><td>Unidad básica de la hoja, identificada por la intersección de una columna (letra) y una fila (número), por ejemplo <code>B2</code>.</td></tr>
-<tr><td><b>Celda activa</b></td><td>La celda donde se escribe o se pega en este momento. Se reconoce por su borde grueso y solo hay una.</td></tr>
+<tr><td><b>Archivo</b></td><td>Documento completo de Google Sheets, guardado en Drive, con una o muchas hojas. En Excel se llama libro.</td></tr>
+<tr><td><b>Hoja</b></td><td>Cada pestaña del archivo: una cuadrícula de filas y columnas donde se cargan los datos.</td></tr>
+<tr><td><b>Celda</b></td><td>Unidad básica de la hoja, identificada por la letra de su columna y el número de su fila, por ejemplo <code>B2</code>.</td></tr>
 <tr><td><b>Rango</b></td><td>Conjunto de celdas contiguas, nombrado con la primera y la última separadas por dos puntos, por ejemplo <code>A2:A10</code>.</td></tr>
-<tr><td><b>Cuadro de nombres</b></td><td>Casilla a la izquierda de la barra de fórmulas que indica la celda activa y permite saltar a otra celda escribiendo su nombre.</td></tr>
-<tr><td><b>Barra de fórmulas</b></td><td>Franja que muestra el contenido real de la celda activa, sea un dato o una fórmula.</td></tr>
-<tr><td><b>Formato de celdas</b></td><td>Conjunto de propiedades visuales (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterarlo.</td></tr>
-<tr><td><b>Formato personalizado</b></td><td>Formato de número armado a medida, como <code>0" m"</code>, que agrega texto al mostrar el valor sin convertirlo en texto.</td></tr>
-<tr><td><b>Controlador de relleno</b></td><td>Cuadrado en la esquina inferior derecha de la celda activa que, al arrastrarlo, copia contenido o completa series.</td></tr>
-<tr><td><b>Serie</b></td><td>Secuencia que Excel completa solo a partir de uno o dos valores iniciales: días, meses, números con un intervalo o fechas.</td></tr>
-<tr><td><b>Buscar y reemplazar</b></td><td>Herramienta que encuentra un dato en toda la hoja y, si se quiere, lo cambia por otro en una o en todas las coincidencias.</td></tr>
-<tr><td><b>Ordenar</b></td><td>Reacomodar las filas de una tabla según los valores de una o más columnas, de menor a mayor o de mayor a menor.</td></tr>
+<tr><td><b>Registro y campo</b></td><td>Un registro es una fila (una respuesta de una persona). Un campo es una columna (un dato: la edad, la carrera).</td></tr>
+<tr><td><b>CSV</b></td><td>Archivo de texto plano donde cada línea es una fila y los datos se separan con un carácter, en este caso el punto y coma.</td></tr>
+<tr><td><b>Datos crudos</b></td><td>Los datos tal como llegaron de la fuente, sin ninguna corrección. Se conservan intactos.</td></tr>
+<tr><td><b>Limpieza de datos</b></td><td>Corregir defectos de una tabla (textos mezclados, espacios, duplicados) sin alterar el original.</td></tr>
+<tr><td><b>Formato de celdas</b></td><td>Propiedades visuales (número, alineación, fuente, bordes, relleno) que cambian cómo se ve un dato sin alterarlo.</td></tr>
+<tr><td><b>Controlador de relleno</b></td><td>Cuadrado en la esquina de la celda activa que, al arrastrarlo, copia contenido o completa series.</td></tr>
+<tr><td><b>Ordenar</b></td><td>Reacomodar las filas de una tabla según los valores de una o más columnas.</td></tr>
+<tr><td><b>Permiso de edición</b></td><td>Nivel de acceso a un archivo compartido: lector, comentador o editor.</td></tr>
 </table>
 </div>
 <div class="clase">
-  <div class="clase-header"><span class="clase-num">09</span><span class="clase-title">Fórmulas y funciones básicas</span></div>
-  <p class="intro">Objetivo: que la planilla calcule sola. El alumno escribe fórmulas que apuntan a celdas, las copia, decide cuándo una referencia tiene que quedarse fija, usa las funciones más comunes, lee los mensajes de error y pinta celdas según su valor.</p>
+  <div class="clase-header"><span class="clase-num">09</span><span class="clase-title">Fórmulas y funciones para describir los datos</span></div>
+  <p class="intro">Operadores, funciones básicas, errores, porcentajes y potencias, referencias fijas y formato condicional sobre las 120 respuestas.</p>
 <h3>Qué es una fórmula</h3>
-<p>Siempre empieza con <code>=</code>. En la celda se ve el resultado; en la barra de fórmulas, la fórmula. <b>Regla de oro:</b> apuntar a celdas, nunca a los valores de hoy. <code>=2500+4800+1200</code> queda congelada; <code>=B2+B3+B4</code> se recalcula sola. Pasos: clic en la celda, <code>=</code>, clic en las celdas con el operador entre medio, <code>Enter</code>.</p>
+<p>Una fórmula empieza con <code>=</code> y le dice a la celda qué operación hacer: la celda muestra el resultado y la barra de fórmulas guarda la instrucción. Lo valioso es que apunta a <b>celdas, no a números</b>: si cambia el dato, el resultado se actualiza solo.</p>
 <table>
-<tr><th>Tipo</th><th>Operador</th><th>Ejemplo</th><th>Qué hace</th></tr>
-<tr><td>Aritmético</td><td><code>+</code> <code>-</code> <code>*</code> <code>/</code></td><td><code>=A1*A2</code></td><td>Suma, resta, multiplica, divide</td></tr>
-<tr><td>Aritmético</td><td><code>%</code></td><td><code>=A1*16%</code></td><td>Calcula un porcentaje</td></tr>
-<tr><td>Aritmético</td><td><code>^</code></td><td><code>=2^3</code></td><td>Potencia (8)</td></tr>
-<tr><td>Comparación</td><td><code>= &lt;&gt; &gt; &lt; &gt;= &lt;=</code></td><td><code>=A1&gt;=65</code></td><td>Devuelve VERDADERO o FALSO</td></tr>
-<tr><td>Texto</td><td><code>&amp;</code></td><td><code>=A1&amp;" "&amp;B1</code></td><td>Une textos</td></tr>
+<tr><th>Operador</th><th>Operación</th><th>Ejemplo</th></tr>
+<tr><td><code>+</code> <code>-</code></td><td>Suma, resta</td><td><code>=B2+B3</code></td></tr>
+<tr><td><code>*</code> <code>/</code></td><td>Multiplicación, división</td><td><code>=G2*7</code>, <code>=K2/30</code></td></tr>
+<tr><td><code>^</code></td><td>Potencia</td><td><code>=B2^2</code></td></tr>
+<tr><td><code>( )</code></td><td>Lo de adentro se calcula primero</td><td><code>=(B2+B3)/2</code></td></tr>
 </table>
-<p>Orden de las operaciones: paréntesis, potencias, multiplicación y división, suma y resta. <code>=(C1+C5)*A2</code> suma primero; <code>=C1+C5*A2</code> multiplica primero.</p>
-<h3>Copiar fórmulas y Autosuma</h3>
-<p>Se escribe una vez y se arrastra el controlador de relleno: Excel adapta las referencias a cada fila (<code>=A2*B2</code> pasa a <code>=A3*B3</code>). Doble clic copia hasta donde llegan los datos vecinos.</p>
-<p><b>Autosuma</b> (Inicio → Edición, o Fórmulas): se ubica el cursor justo debajo o a la derecha de los números, <code>Alt+=</code> (Mac: <code>⌘+Shift+T</code>). Excel propone un rango con recuadro punteado: <b>verificarlo antes de <code>Enter</code></b>, porque una celda vacía o un texto en el medio lo acortan.</p>
-<h3>Fórmulas entre hojas, errores y formatos</h3>
-<p>Otra hoja: <code>=Hoja1!C4</code>; con espacios en el nombre, entre apóstrofes: <code>='Lista del súper'!B11</code>. No hace falta tipearlo: <code>=</code>, clic en la pestaña, clic en la celda, <code>Enter</code>.</p>
+<p>Orden de las operaciones: paréntesis, potencias, multiplicación y división, suma y resta. <code>=2+3*4</code> da 14 y <code>=(2+3)*4</code> da 20. Ante la duda, paréntesis.</p>
+<p><b>Copiar una fórmula:</b> se escribe en la primera fila y se arrastra el controlador de relleno, o doble clic para llegar hasta donde llegan los datos vecinos. Sheets ajusta las referencias (<code>=G2*7</code> pasa a <code>=G3*7</code>).</p>
 <table>
-<tr><th>Mensaje</th><th>Qué significa</th></tr>
-<tr><td><code>#####</code></td><td>Columna angosta (o fecha/hora negativa).</td></tr>
-<tr><td><code>#¡VALOR!</code></td><td>Argumento de tipo incorrecto (ej. sumar un texto).</td></tr>
-<tr><td><code>#¡DIV/0!</code></td><td>División por cero o por celda vacía.</td></tr>
-<tr><td><code>#¿NOMBRE?</code></td><td>Excel no reconoce el texto (función mal escrita).</td></tr>
-<tr><td><code>#N/A</code></td><td>Valor no disponible para la función.</td></tr>
-<tr><td><code>#¡REF!</code></td><td>Referencia inválida (se eliminó la celda a la que apuntaba).</td></tr>
-<tr><td><code>#¡NUM!</code></td><td>Valor numérico no válido.</td></tr>
-<tr><td><code>#¡NULO!</code></td><td>Intersección de dos áreas que no se cruzan.</td></tr>
+<tr><th>Pegado especial</th><th>Qué pega</th><th>Cuándo</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Solo valores</td><td>El resultado, sin la fórmula</td><td>Para congelar un resultado</td><td><code>Ctrl+Mayús+V</code></td><td><code>⌘+Mayús+V</code></td></tr>
+<tr><td>Solo formato</td><td>El aspecto, sin el contenido</td><td>Repetir un estilo</td><td>Editar → Pegado especial</td><td>Igual</td></tr>
+<tr><td>Solo fórmula</td><td>La fórmula, sin el formato</td><td>Copiar el cálculo y conservar el aspecto de destino</td><td>Editar → Pegado especial</td><td>Igual</td></tr>
+<tr><td>Transpuesto</td><td>Filas pasan a columnas</td><td>Girar una tabla</td><td>Editar → Pegado especial</td><td>Igual</td></tr>
 </table>
-<p>El triángulo verde en la esquina de una celda es una advertencia: si la fórmula está bien, Omitir error lo saca.</p>
-<h3>Porcentajes y regla de tres</h3>
+<h3>Funciones</h3>
+<p>Una función es una fórmula ya armada: un nombre y, entre paréntesis, sus argumentos. En Argentina los argumentos se separan con <b>punto y coma</b>: <code>=PROMEDIO(D2:D121)</code>, <code>=BUSCARV(...;...;...;...)</code>.</p>
 <table>
-<tr><th>Lo que querés</th><th>Fórmula (valor en B2)</th></tr>
-<tr><td>El 16% de un valor</td><td><code>=B2*16%</code> o <code>=B2*16/100</code></td></tr>
-<tr><td>Aumentar 35%</td><td><code>=B2+B2*35%</code> o <code>=B2*1,35</code></td></tr>
-<tr><td>Descontar 15%</td><td><code>=B2-B2*15%</code> o <code>=B2*0,85</code></td></tr>
-<tr><td>Qué porcentaje es una cantidad del total</td><td><code>=B2/B7</code> con formato Porcentaje</td></tr>
+<tr><th>Función</th><th>Qué hace</th></tr>
+<tr><td><code>SUMA</code></td><td>Suma los números del rango</td></tr>
+<tr><td><code>PROMEDIO</code></td><td>Promedia los números del rango (ignora las celdas vacías)</td></tr>
+<tr><td><code>MAX</code>, <code>MIN</code></td><td>Mayor y menor valor</td></tr>
+<tr><td><code>CONTAR</code></td><td>Cuenta las celdas con un <b>número</b></td></tr>
+<tr><td><code>CONTARA</code></td><td>Cuenta las celdas con <b>cualquier cosa</b> (número o texto)</td></tr>
 </table>
-<p>Con formato Porcentaje no hay que multiplicar por 100: el formato ya lo hace y agrega el <code>%</code>.</p>
+<ul><li>Autosuma: botón <code>Σ</code>. Sheets adivina el rango: revisar siempre antes de confirmar.</li><li>Otra hoja: <code>=PROMEDIO(DATOS!D2:D121)</code>. Si se hace clic en la otra hoja mientras se escribe, Sheets arma la referencia.</li><li><code>CONTAR</code> y <code>CONTARA</code> sirven para detectar problemas: sobre Carrera, <code>CONTARA</code> da 120 y <code>CONTAR</code> da 0. Sobre Viaje_min, las dos dan 115 (5 vacíos).</li><li><b>Vacío no es cero:</b> el promedio de Viaje_min es 55,48 sobre 115 respuestas. Si en la limpieza se hubieran cargado 0 en los 5 vacíos, bajaría a 53,17, un número razonable pero falso.</li></ul>
+<h3>Errores: leer lo que dice la planilla</h3>
+<table>
+<tr><th>Error</th><th>Qué significa</th><th>Cómo se provoca en clase</th></tr>
+<tr><td><code>#DIV/0!</code></td><td>Se dividió por cero o por una celda vacía</td><td><code>=K2/0</code></td></tr>
+<tr><td><code>#VALUE!</code></td><td>Se esperaba un número y había un texto</td><td><code>=C2+1</code></td></tr>
+<tr><td><code>#NAME?</code></td><td>Nombre de función no reconocido</td><td><code>=PROMEDI(D2:D121)</code></td></tr>
+<tr><td><code>#REF!</code></td><td>La referencia apunta a algo que ya no existe</td><td>Eliminar una hoja o columna que una fórmula usaba</td></tr>
+<tr><td><code>#N/A</code></td><td>Un dato buscado no está disponible</td><td>Al buscar algo que no está en una tabla (se ve en la Clase 10)</td></tr>
+</table>
+<p>Ver las fórmulas en vez de los resultados: Ver → Mostrar → Fórmulas (<code>Ctrl+`</code>; en Mac <code>Control+`</code>). Con doble clic en una celda con fórmula, Sheets colorea las celdas de las que depende.</p>
+<h3>Porcentajes, potencias y parámetros</h3>
+<table>
+<tr><th>Quiero saber...</th><th>Fórmula</th><th>Ejemplo</th></tr>
+<tr><td>Qué porcentaje es una parte del total</td><td><code>=parte/total</code></td><td><code>=(B3-B4)/B3</code> da 4,17%</td></tr>
+<tr><td>El X% de un valor</td><td><code>=valor*porcentaje</code></td><td><code>=K2*10%</code></td></tr>
+<tr><td>Cuánto queda tras aumentar un X%</td><td><code>=valor*(1+porcentaje)</code></td><td><code>=K2*(1+3%)</code></td></tr>
+<tr><td>De cuánto fue la variación</td><td><code>=(nuevo-viejo)/viejo</code></td><td>De 100.000 a 115.000 da 15%</td></tr>
+<tr><td>Crecimiento compuesto</td><td><code>=valor*POTENCIA(1+%;períodos)</code></td><td><code>=K2*POTENCIA(1+3%;6)</code></td></tr>
+<tr><td>Tasa anual a mensual equivalente</td><td><code>=POTENCIA(1+anual;1/12)-1</code></td><td>40% anual da 2,84% mensual, no 40/12 = 3,33%</td></tr>
+</table>
+<p><b>El formato <code>%</code> multiplica por 100 lo que ya está escrito:</b> si ya está <code>0,03</code> se ve 3%, pero si se escribe <code>3</code> y después se aplica el formato, se ve 300%. Primero el dato, después el formato.</p>
+<p><b>Hoja <code>PARAMETROS</code>:</b> los números que van a cambiar (inflación, meses) viven en celdas de una hoja aparte y las fórmulas apuntan ahí. Para probar otro escenario se cambia una sola celda. Convención de la guía: celdas amarillas son datos que se cambian a mano, la verde es una fórmula.</p>
 <h3>Referencias relativas, absolutas y mixtas</h3>
 <table>
-<tr><th>Se escribe</th><th>Tipo</th><th>Al copiar</th></tr>
-<tr><td><code>B2</code></td><td>Relativa</td><td>Cambian columna y fila</td></tr>
-<tr><td><code>$B$2</code></td><td>Absoluta</td><td>No cambia nada</td></tr>
-<tr><td><code>$B2</code></td><td>Mixta</td><td>Fija la columna, cambia la fila</td></tr>
-<tr><td><code>B$2</code></td><td>Mixta</td><td>Fija la fila, cambia la columna</td></tr>
+<tr><th>Tipo</th><th>Se escribe</th><th>Al copiar la fórmula</th></tr>
+<tr><td>Relativa</td><td><code>B3</code></td><td>Se mueve en filas y columnas</td></tr>
+<tr><td>Absoluta</td><td><code>$B$3</code></td><td>No se mueve nunca</td></tr>
+<tr><td>Mixta</td><td><code>$B3</code> o <code>B$3</code></td><td>Fija la columna o fija la fila; la otra parte se mueve</td></tr>
 </table>
-<p><code>F4</code> dentro de la fórmula alterna los cuatro tipos (Mac: <code>⌘+T</code> o <code>Fn+F4</code>). <b>Error típico:</b> <code>=B2/B7</code> arrastrada se vuelve <code>=B3/B8</code> y da <code>#¡DIV/0!</code>; se arregla con <code>=B2/$B$7</code> antes de arrastrar. Uso frecuente de la celda fija: la cotización de una divisa.</p>
-<h3>Funciones básicas</h3>
-<p>Una función es una fórmula armada que recibe argumentos: <code>=NOMBRE(argumento1; argumento2; ...)</code>. Dos puntos <code>:</code> = rango continuo (<code>A1:A8</code>); punto y coma <code>;</code> = celdas sueltas o separador de argumentos (si el equipo muestra comas, es la configuración regional). Se inserta con el botón <code>fx</code> o escribiendo; <b>el rango que propone el asistente puede no ser el correcto</b>.</p>
 <table>
-<tr><th>Función</th><th>Se escribe</th><th>Devuelve</th></tr>
-<tr><td>SUMA</td><td><code>=SUMA(B2:B8)</code></td><td>Suma del rango</td></tr>
-<tr><td>CONTAR</td><td><code>=CONTAR(B2:B8)</code></td><td>Cantidad de celdas con números</td></tr>
-<tr><td>CONTARA</td><td><code>=CONTARA(A2:A8)</code></td><td>Cantidad de celdas no vacías</td></tr>
-<tr><td>PROMEDIO</td><td><code>=PROMEDIO(B2:B8)</code></td><td>Media aritmética</td></tr>
-<tr><td>MAX / MIN</td><td><code>=MAX(C2:C8)</code> / <code>=MIN(C2:C8)</code></td><td>Valor más alto / más bajo</td></tr>
-<tr><td>POTENCIA</td><td><code>=POTENCIA(A2;3)</code></td><td>Igual a <code>=A2^3</code></td></tr>
-<tr><td>RAIZ</td><td><code>=RAIZ(A2)</code></td><td>Raíz cuadrada; <code>#¡NUM!</code> si es negativo</td></tr>
+<tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Rotar entre <code>B3</code>, <code>$B$3</code>, <code>B$3</code> y <code>$B3</code></td><td><code>F4</code> (con la referencia seleccionada en la fórmula)</td><td><code>F4</code>; si no responde, <code>⌘+T</code></td></tr>
 </table>
-<p>Las estadísticas devuelven un número, no quién lo tiene: <code>=MIN</code> dice cuál es el sueldo más bajo, no de quién. Para traer el nombre hace falta una función de búsqueda.</p>
+<p>Es el error más común con planillas: copiar una fórmula que apunta a un parámetro sin fijarlo. La <b>tabla de escenarios</b> (<code>=$K$11*POTENCIA(1+B$20;$A21)</code>) muestra las tres a la vez: una sola fórmula, copiada a toda la tabla.</p>
 <h3>Formato condicional</h3>
-<p>Pinta solo las celdas que cumplen una regla, sin modificar el dato: si el valor cambia, el color se actualiza solo. Inicio → Formato condicional: Resaltar reglas de celdas, Reglas superiores e inferiores, Barras de datos / Escalas de color / Conjuntos de íconos, Nueva regla, Administrar o Borrar reglas.</p>
-<p>Varios tramos (ej. 5 o menos rojo, 6 a 25 celeste, más de 25 verde) = <b>una regla por tramo</b> sobre el mismo rango. Se aplica a los datos, sin incluir las filas o columnas de totales.</p>
+<p>Cambia el aspecto de una celda cuando se cumple una condición, para que lo importante salte a la vista. Se abre desde Formato → Formato condicional, con dos pestañas: <b>Un color</b> (pinta lo que cumple una regla) y <b>Escala de colores</b> (degrada del mínimo al máximo).</p>
+<p>Para pintar <b>toda la fila</b> según una columna: "La fórmula personalizada es" con referencia mixta, rango <code>A2:K121</code> y fórmula <code>=$E2="Sí"</code>. El <code>$</code> fija la columna <code>E</code> y el <code>2</code> queda libre para evaluarse fila por fila. Es la misma lógica de referencia mixta de la tabla de escenarios.</p>
+<h3>Pegar solo valores: sacar una foto</h3>
+<p>El archivo cambia cada vez que cambia un parámetro. Para guardar el resultado en un momento dado se copia y se pega con Pegado especial → Solo valores: la barra de fórmulas muestra un número, no una fórmula, y no cambia más.</p>
 <p class="glosario-title">Glosario</p>
 <table>
-<tr><td><b>POTENCIA / RAIZ</b></td><td>Funciones matemáticas: POTENCIA eleva un número a un exponente y RAIZ calcula su raíz cuadrada.</td></tr>
-<tr><td><b>Fórmula</b></td><td>Expresión que empieza con <code>=</code> y relaciona valores o celdas para producir un resultado.</td></tr>
-<tr><td><b>Operador</b></td><td>Símbolo que indica la operación de una fórmula: aritmético (<code>+ - * / % ^</code>), de comparación (<code>= &lt;&gt; &gt; &lt;</code>) o de texto (<code>&amp;</code>).</td></tr>
-<tr><td><b>Referencia relativa</b></td><td>Referencia a una celda que se ajusta al copiar la fórmula. Es el comportamiento por defecto, por ejemplo <code>B2</code>.</td></tr>
-<tr><td><b>Referencia absoluta</b></td><td>Referencia que no cambia al copiar la fórmula, indicada con <code>$</code> antes de la columna y la fila, por ejemplo <code>$B$2</code>.</td></tr>
-<tr><td><b>Referencia mixta</b></td><td>Referencia que fija solo la columna (<code>$B2</code>) o solo la fila (<code>B$2</code>).</td></tr>
-<tr><td><b>Autosuma</b></td><td>Botón <code>Σ</code> que inserta la función SUMA proponiendo el rango contiguo más cercano.</td></tr>
-<tr><td><b>Función</b></td><td>Fórmula predefinida que recibe argumentos y devuelve un resultado, con la forma <code>=NOMBRE(argumentos)</code>.</td></tr>
-<tr><td><b>Argumento</b></td><td>Cada uno de los valores, celdas o rangos que una función recibe entre paréntesis.</td></tr>
-<tr><td><b>Asistente de funciones</b></td><td>Ventana que ayuda a elegir una función y a completar sus argumentos; se abre con el botón <code>fx</code>.</td></tr>
-<tr><td><b>SUMA</b></td><td>Función que devuelve la suma de los valores de un rango.</td></tr>
-<tr><td><b>PROMEDIO</b></td><td>Función que devuelve la media aritmética de los números de un rango.</td></tr>
-<tr><td><b>MAX / MIN</b></td><td>Funciones que devuelven el valor más alto o el más bajo de un rango.</td></tr>
-<tr><td><b>CONTAR / CONTARA</b></td><td>Funciones que cuentan las celdas con números, o las celdas no vacías, de un rango.</td></tr>
-<tr><td><b>Formato condicional</b></td><td>Conjunto de reglas que aplican un formato visual automático a las celdas que cumplen una condición, sin alterar el dato.</td></tr>
-<tr><td><b>Mensaje de error</b></td><td>Texto que empieza con <code>#</code> y que Excel muestra cuando no puede resolver una fórmula, por ejemplo <code>#¡DIV/0!</code>.</td></tr>
+<tr><td><b>Fórmula</b></td><td>Instrucción que empieza con <code>=</code> y calcula un resultado a partir de números y referencias a celdas.</td></tr>
+<tr><td><b>Función</b></td><td>Fórmula ya armada que trae Sheets, escrita con un nombre y argumentos entre paréntesis, como <code>PROMEDIO(D2:D121)</code>.</td></tr>
+<tr><td><b>Argumento</b></td><td>Cada dato que necesita una función. Se separan con punto y coma.</td></tr>
+<tr><td><b>Referencia</b></td><td>Indicación de qué celda o rango usa una fórmula, como <code>G2</code> o <code>DATOS!D2:D121</code>.</td></tr>
+<tr><td><b>Referencia relativa</b></td><td>Referencia que se mueve cuando la fórmula se copia a otra celda.</td></tr>
+<tr><td><b>Referencia absoluta</b></td><td>Referencia con <code>$</code> que no se mueve al copiar, como <code>$B$3</code>.</td></tr>
+<tr><td><b>Referencia mixta</b></td><td>Referencia que fija solo la columna o solo la fila, como <code>$B3</code> o <code>B$3</code>.</td></tr>
+<tr><td><b>Error de fórmula</b></td><td>Mensaje que empieza con <code>#</code> y que indica por qué una fórmula no pudo calcular.</td></tr>
+<tr><td><b>Parámetro</b></td><td>Dato que se guarda en una celda propia para que muchas fórmulas lo lean y se pueda cambiar en un solo lugar.</td></tr>
+<tr><td><b>Formato condicional</b></td><td>Regla que cambia el aspecto de una celda cuando se cumple una condición.</td></tr>
+<tr><td><b>Pegado especial</b></td><td>Pegar solo una parte de lo copiado: los valores, el formato o la fórmula.</td></tr>
+<tr><td><b>Autosuma</b></td><td>Botón Σ que inserta una función de resumen adivinando el rango.</td></tr>
 </table>
 </div>
 <div class="clase">
-  <div class="clase-header"><span class="clase-num">10</span><span class="clase-title">Funciones condicionales y trabajo con datos</span></div>
-  <p class="intro">Objetivo: pasar de una planilla que calcula a una que decide y gestiona información. El alumno usa SI (con Y, O y anidadas), cuenta y suma por condición, controla lo que se carga con validación, resume con subtotales, busca datos con BUSCARV, calcula con fechas y filtra.</p>
-<h3>La función SI</h3>
-<p><code>=SI(prueba_lógica; valor_si_verdadero; valor_si_falso)</code>. La prueba lógica siempre se apoya en una celda de la tabla. Para armarla sin trabarse, tres preguntas en orden: <b>¿de qué depende?, ¿dónde está ese dato?, ¿qué tiene que valer?</b></p>
+  <div class="clase-header"><span class="clase-num">10</span><span class="clase-title">Decisiones y preguntas a los datos</span></div>
+  <p class="intro">Clasificar con SI, contar y promediar por condición, cruzar tablas con BUSCARV, proteger la carga, trabajar con fechas y consultar subconjuntos con filtros.</p>
+<h3>SI, Y, O: que la planilla decida</h3>
+<p><code>=SI(condición; valor_si_verdadero; valor_si_falso)</code>. La condición es una comparación que da verdadero o falso; el texto devuelto va <b>entre comillas</b> (sin comillas, Sheets busca una función con ese nombre y devuelve <code>#NAME?</code>).</p>
 <table>
-<tr><th>Operador</th><th>Se usa para</th></tr>
-<tr><td><code>=</code></td><td>Coincidencia exacta (texto o número)</td></tr>
-<tr><td><code>&lt;&gt;</code></td><td>Distinto</td></tr>
-<tr><td><code>&lt;</code> <code>&lt;=</code></td><td>Menor / menor o igual</td></tr>
-<tr><td><code>&gt;</code> <code>&gt;=</code></td><td>Mayor / mayor o igual</td></tr>
+<tr><th>Comparador</th><th>Significa</th></tr>
+<tr><td><code>=</code></td><td>Igual a</td></tr>
+<tr><td><code>&lt;&gt;</code></td><td>Distinto de</td></tr>
+<tr><td><code>&gt;</code> <code>&lt;</code></td><td>Mayor que, menor que</td></tr>
+<tr><td><code>&gt;=</code> <code>&lt;=</code></td><td>Mayor o igual, menor o igual</td></tr>
 </table>
-<p>Los <b>textos</b> van entre comillas dobles (<code>"Aprobado"</code>), los números sin comillas y sin <code>$</code>. El criterio de texto tiene que estar igual que en la tabla: una letra de más, un espacio al final o una tilde distinta (<code>Si</code> vs <code>Sí</code>) hace fallar la comparación; mayúsculas y minúsculas no importan. El valor puede ser un cálculo: <code>=SI(B2&gt;500;B2*10%;B2*5%)</code>. Asistente: botón <code>fx</code>, categoría Lógicas.</p>
-<h3>Conectores Y y O, y funciones anidadas</h3>
+<p><b>Anidar:</b> para más de dos resultados se pone un <code>SI</code> dentro del valor falso del primero. Se lee de adentro hacia afuera: <code>=SI(J2&lt;=2;"Inicial";SI(J2&lt;=4;"Intermedio";"Avanzado"))</code>.</p>
 <table>
-<tr><th>Conector</th><th>Se escribe</th><th>Da VERDADERO cuando...</th></tr>
-<tr><td>Y</td><td><code>=Y(B2&gt;=18;C2="Si")</code></td><td>todas las condiciones se cumplen</td></tr>
-<tr><td>O</td><td><code>=O(B2&lt;18;B2&gt;=65)</code></td><td>al menos una se cumple</td></tr>
+<tr><th>Función</th><th>Verdadero cuando...</th><th>Ejemplo del caso</th></tr>
+<tr><td><code>Y(c1;c2)</code></td><td>Se cumplen las dos</td><td><code>=SI(Y(E2="Sí";F2&lt;5);"Atención";"Ok")</code></td></tr>
+<tr><td><code>O(c1;c2)</code></td><td>Se cumple al menos una</td><td><code>=SI(O(I2="Seguido";I2="Todos los días");"Frecuente";"Ocasional")</code></td></tr>
 </table>
-<p>Dentro de un SI: <code>=SI(Y(B2&gt;=5;C2="Presentismo");1000;0)</code>. <b>Anidar</b> es poner una función como argumento de otra; lo común es un SI dentro de otro para más de dos resultados: <code>=SI(B3&gt;=7;"Promociona";SI(B3&gt;=4;"Regular";"Libre"))</code>. Cada SI abierto cierra su paréntesis al final. Ayuda dibujar antes el árbol de decisión y armar la fórmula de afuera hacia adentro, probando un valor de cada tramo.</p>
-<h3>CONTAR.SI y SUMAR.SI</h3>
+<h3>Contar, sumar y promediar con condición</h3>
 <table>
-<tr><th>Función</th><th>Se escribe</th><th>Qué hace</th></tr>
-<tr><td>CONTAR.SI</td><td><code>=CONTAR.SI(rango; criterio)</code></td><td>Cuenta las celdas que cumplen el criterio. Ej: <code>"&gt;=25"</code>, <code>"Femenino"</code></td></tr>
-<tr><td>SUMAR.SI</td><td><code>=SUMAR.SI(rango; criterio; rango_suma)</code></td><td>Suma de <code>rango_suma</code> solo en las filas donde <code>rango</code> cumple el criterio</td></tr>
+<tr><th>Función</th><th>Qué hace</th></tr>
+<tr><td><code>CONTAR.SI(rango;criterio)</code></td><td>Cuenta las celdas que cumplen el criterio</td></tr>
+<tr><td><code>SUMAR.SI(rango;criterio;rango_suma)</code></td><td>Suma otra columna en las filas que cumplen</td></tr>
+<tr><td><code>PROMEDIO.SI(rango;criterio;rango_promedio)</code></td><td>Promedia otra columna en las filas que cumplen</td></tr>
 </table>
-<p>Error frecuente en SUMAR.SI: invertir rango (donde está el criterio) y rango suma (lo que se suma). Resultado en cero o raro = revisar eso primero. Un criterio numérico con comparación va entre comillas (<code>"&gt;=25"</code>).</p>
+<table>
+<tr><th>Quiero...</th><th>Criterio</th><th>Ejemplo</th></tr>
+<tr><td>Un texto exacto</td><td><code>"Sí"</code> o una celda que lo contenga</td><td><code>=CONTAR.SI(E2:E121;"Sí")</code> da 73</td></tr>
+<tr><td>Los que no son ese texto</td><td><code>"&lt;&gt;Sí"</code></td><td><code>=CONTAR.SI(E2:E121;"&lt;&gt;Sí")</code></td></tr>
+<tr><td>Un número mayor a otro</td><td><code>"&gt;90"</code></td><td><code>=CONTAR.SI(H2:H121;"&gt;90")</code> da 13</td></tr>
+<tr><td>Mayor al número de una celda</td><td><code>"&gt;"&amp;B1</code></td><td>El <code>&amp;</code> une un texto con una celda: el límite se cambia sin tocar la fórmula</td></tr>
+</table>
+<p><b>Rango fijo con <code>$</code>:</b> en una tabla con una fórmula copiada hacia abajo, el rango de datos va absoluto (<code>DATOS!$C$2:$C$121</code>) y el criterio relativo (<code>A2</code>). Si no, el rango se corre fila a fila.</p>
+<h3>BUSCARV: traer datos de otra tabla</h3>
+<p><code>=BUSCARV(qué_busco; dónde_busco; columna_a_devolver; FALSO)</code>. En el caso, la carrera de cada persona se busca en el catálogo (<code>CATALOGO!$A$2:$B$12</code>) y se devuelve la columna 2, el departamento. La primera columna del rango es siempre la que se busca; <code>FALSO</code> pide coincidencia exacta.</p>
+<p><b>Los espacios rompen la búsqueda:</b> una carrera con un espacio al final no se encuentra y devuelve <code>#N/A</code>. Por eso se recortó en la Clase 08. Las mayúsculas, en cambio, no molestan. Para explorar: <code>BUSCARX</code> (<code>=BUSCARX(C2;CATALOGO!A2:A12;CATALOGO!B2:B12)</code>) hace lo mismo sin contar columnas.</p>
 <h3>Validación de datos y rangos con nombre</h3>
-<p>Datos → Validación de datos → Permitir: <b>Lista</b> (celda con lista desplegable). Origen: un rango, un nombre (<code>=mis_opciones</code>) o las opciones separadas por <code>;</code> (<code>Sí;No</code>). Solapas: Configuración, Mensaje de entrada, Mensaje de error (detener, advertir o informar). Para sacarla: Borrar todo.</p>
-<p><b>Nombrar un rango:</b> seleccionarlo, escribir el nombre sin espacios en el Cuadro de nombres y <code>Enter</code> (o Fórmulas → Asignar nombre). Si la lista está en otra hoja, el nombre es lo que permite usarla. Administrador de nombres: <code>Ctrl+F3</code>. Un nombre también sirve en fórmulas: <code>=SUMA(ventas)</code>.</p>
-<h3>Subtotales</h3>
-<p>Datos → Subtotal inserta una fila de cálculo cada vez que cambia el valor de una columna, y arma el esquema con botones <code>1</code>, <code>2</code>, <code>3</code>. <b>Primero ordenar</b> por la columna que define los grupos; si no, aparecen varios grupos con el mismo nombre. Pasos: Para cada cambio en, Usar función, Agregar subtotal a. Si el comando aparece deshabilitado, el rango tiene formato de tabla: Diseño de tabla → Convertir en rango. Quitar todos los saca.</p>
-<h3>BUSCARV</h3>
-<p><code>=BUSCARV(valor_buscado; matriz_buscar_en; indicador_columnas; ordenado)</code>. El valor buscado tiene que estar en la <b>primera columna</b> de la matriz; el indicador es la posición de la columna a traer (la primera es 1); <code>FALSO</code> (o <code>0</code>) busca el valor exacto y es lo que se usa casi siempre. Conviene fijar la matriz con <code>$</code>.</p>
-<p>Errores: <code>#N/A</code> si el valor no está en la primera columna; si se cuenta mal el indicador, trae el dato equivocado sin avisar (controlar contra la tabla de origen). <b>BUSCARX</b> hace lo mismo sin contar columnas, pero existe solo en Excel 2021 y Microsoft 365; los apuntes de la cátedra enseñan BUSCARV porque funciona en todas las versiones.</p>
-<h3>Fechas y HOY</h3>
-<p>Excel guarda cada fecha como número de serie (días desde el 1/1/1900), por eso restar dos fechas da la cantidad de días. Si el resultado aparece como fecha (<code>14/01/1900</code>), cambiar el formato de esa celda a <b>General</b>. <code>=HOY()</code> devuelve la fecha del día y se actualiza sola al abrir el archivo (los paréntesis son obligatorios); <code>=AHORA()</code> suma la hora. Fecha fija: <code>Ctrl+;</code> (Mac: <code>Control+;</code>).</p>
-<h3>Filtros</h3>
-<p>Muestran solo las filas que cumplen una condición y ocultan el resto sin borrar nada. Datos → Filtro, o <code>Ctrl+Shift+L</code> (Mac: <code>⌘+Shift+F</code>); la tabla necesita fila de encabezados.</p>
+<p>La validación evita el problema de raíz: restringe qué se puede cargar en una celda. Datos → Validación de datos → Agregar regla. Para una encuesta conviene <b>Rechazar los datos introducidos</b> (la advertencia solo marca la celda).</p>
 <table>
-<tr><th>Tipo de columna</th><th>Opciones</th></tr>
-<tr><td>Texto</td><td>Valores concretos o Filtros de texto: comienza con, termina con, contiene, no contiene</td></tr>
-<tr><td>Número</td><td>Valores o Filtros de número: mayor que, menor que, entre, los diez primeros, por encima del promedio</td></tr>
-<tr><td>Fecha</td><td>Agrupa por año y mes, o Filtros de fecha: antes de, después de, entre, este mes</td></tr>
+<tr><th>Criterio</th><th>Ejemplo</th></tr>
+<tr><td>Menú desplegable (opciones escritas)</td><td>Trabaja: <code>Sí</code>, <code>No</code></td></tr>
+<tr><td>Menú desplegable (de un intervalo)</td><td>Departamento, tomado de <code>LISTAS!A2:A5</code></td></tr>
+<tr><td>Número entre dos valores</td><td>Dominio_Excel: entre 1 y 5</td></tr>
 </table>
-<p>Filtros en varias columnas se combinan con <b>todos a la vez</b>. Dentro de una misma columna, Filtro personalizado une dos condiciones con Y u O. Filtro activo = números de fila en azul. Se saca con Borrar o volviendo a apretar Filtro.</p>
+<p><b>Intervalos con nombre</b> (Datos → Intervalos con nombre): <code>=PROMEDIO(Gasto)</code> en vez de <code>DATOS!$K$2:$K$121</code>. El nombre no puede tener espacios ni empezar con un número.</p>
+<h3>Fechas</h3>
+<p>Una fecha es un número: los días desde el 30 de diciembre de 1899. Por eso se pueden restar dos fechas. <code>HOY()</code> cambia todos los días: sirve para "cuántos días pasaron desde...", pero no para un informe que tiene que mostrar siempre las mismas cifras.</p>
+<table>
+<tr><th>Función</th><th>Devuelve</th></tr>
+<tr><td><code>HOY()</code>, <code>AHORA()</code></td><td>La fecha de hoy; la fecha y la hora</td></tr>
+<tr><td><code>DIAS(fin; inicio)</code></td><td>Los días entre dos fechas: <code>=DIAS(HOY();B2)</code></td></tr>
+<tr><td><code>MIN</code>, <code>MAX</code></td><td>La fecha más antigua y la más reciente</td></tr>
+</table>
+<p>Si el resultado de <code>DIAS</code> sale con formato de fecha, pasarlo a Formato → Número → Número.</p>
+<h3>Filtros y SUBTOTAL</h3>
+<p>Un filtro oculta las filas que no cumplen una condición, sin borrarlas: Datos → Crear un filtro. Se puede filtrar por valores o por condición, y combinar varias columnas. Con <b>Vistas de filtro</b> (Datos → Vistas de filtro → Crear nueva vista de filtro) el filtro es solo de quien lo crea y no cambia lo que ven los demás.</p>
+<p><code>SUMA</code> y <code>PROMEDIO</code> siguen sumando las filas ocultas. Para calcular solo lo visible se usa <code>SUBTOTAL(código; rango)</code>:</p>
+<table>
+<tr><th>Código</th><th>Operación sobre las filas visibles</th></tr>
+<tr><td><code>101</code></td><td>Promedio</td></tr>
+<tr><td><code>102</code></td><td>Cuenta números</td></tr>
+<tr><td><code>103</code></td><td>Cuenta celdas con datos</td></tr>
+<tr><td><code>109</code></td><td>Suma</td></tr>
+</table>
 <p class="glosario-title">Glosario</p>
 <table>
-<tr><td><b>Conector</b></td><td>Función Y u O que combina varias condiciones dentro de la prueba lógica de un SI.</td></tr>
-<tr><td><b>Función anidada</b></td><td>Función que se usa como argumento de otra, por ejemplo un SI dentro de otro SI.</td></tr>
-<tr><td><b>Prueba lógica</b></td><td>Condición que Excel evalúa y que da como resultado VERDADERO o FALSO, por ejemplo <code>B2&gt;=65</code>.</td></tr>
-<tr><td><b>SI</b></td><td>Función que devuelve un valor si una condición es verdadera y otro si es falsa: <code>=SI(prueba; si_verdadero; si_falso)</code>.</td></tr>
-<tr><td><b>Criterio</b></td><td>Condición que tiene que cumplir una celda para ser contada o sumada, por ejemplo <code>"Femenino"</code> o <code>"&gt;=25"</code>.</td></tr>
-<tr><td><b>CONTAR.SI</b></td><td>Función que cuenta las celdas de un rango que cumplen un criterio.</td></tr>
-<tr><td><b>SUMAR.SI</b></td><td>Función que suma los valores de un rango, solo en las filas donde otra columna cumple un criterio.</td></tr>
-<tr><td><b>Rango suma</b></td><td>En SUMAR.SI, la columna que contiene los valores que se suman, distinta de la columna donde está el criterio.</td></tr>
-<tr><td><b>Validación de datos</b></td><td>Regla que restringe lo que se puede escribir en una celda, por ejemplo con una lista de opciones.</td></tr>
-<tr><td><b>Lista desplegable</b></td><td>Celda que muestra una flecha y solo permite elegir entre opciones predefinidas.</td></tr>
-<tr><td><b>Rango con nombre</b></td><td>Rango al que se le asigna un nombre propio, sin espacios, para usarlo en validaciones y fórmulas.</td></tr>
-<tr><td><b>Filtro</b></td><td>Herramienta que muestra solo las filas que cumplen una condición y oculta temporalmente el resto, sin borrar datos.</td></tr>
-<tr><td><b>Subtotal</b></td><td>Herramienta que inserta filas con un cálculo cada vez que cambia el valor de una columna; requiere la tabla ordenada.</td></tr>
+<tr><td><b>Condición</b></td><td>Comparación que da verdadero o falso, como <code>F2&lt;5</code>.</td></tr>
+<tr><td><b>SI anidado</b></td><td>Un <code>SI</code> colocado dentro de otro para resolver más de dos resultados.</td></tr>
+<tr><td><b>Criterio</b></td><td>La condición que usan funciones como CONTAR.SI para decidir qué filas cuentan.</td></tr>
+<tr><td><b>Conector</b></td><td>El signo <code>&amp;</code>, que une un texto con el contenido de una celda.</td></tr>
 <tr><td><b>BUSCARV</b></td><td>Función que busca un valor en la primera columna de una tabla y devuelve el dato de otra columna de la misma fila.</td></tr>
-<tr><td><b>Matriz de búsqueda</b></td><td>La tabla completa donde BUSCARV busca, que conviene fijar con referencias absolutas.</td></tr>
-<tr><td><b>Número de serie</b></td><td>Número con el que Excel guarda internamente una fecha: los días transcurridos desde el 1 de enero de 1900.</td></tr>
-<tr><td><b>HOY</b></td><td>Función sin argumentos que devuelve la fecha actual y se actualiza cada vez que se abre el archivo.</td></tr>
+<tr><td><b>Coincidencia exacta</b></td><td>Opción <code>FALSO</code> de BUSCARV: solo acepta valores idénticos al buscado.</td></tr>
+<tr><td><b>Validación de datos</b></td><td>Regla que limita qué se puede escribir en una celda.</td></tr>
+<tr><td><b>Rango con nombre</b></td><td>Nombre propio que se le da a un rango para usarlo en fórmulas en vez de sus coordenadas.</td></tr>
+<tr><td><b>HOY</b></td><td>Función que devuelve la fecha actual y se actualiza sola.</td></tr>
+<tr><td><b>Filtro</b></td><td>Herramienta que oculta las filas que no cumplen una condición sin borrarlas.</td></tr>
+<tr><td><b>Vista de filtro</b></td><td>Filtro personal que no cambia lo que ven las demás personas que tienen el archivo abierto.</td></tr>
+<tr><td><b>SUBTOTAL</b></td><td>Función que calcula una operación solo sobre las filas visibles de un rango filtrado.</td></tr>
 </table>
 </div>
 <div class="clase">
-  <div class="clase-header"><span class="clase-num">11</span><span class="clase-title">Gráficos, impresión y trabajo colaborativo</span></div>
-  <p class="intro">Objetivo: elegir el gráfico correcto y armarlo bien, preparar una planilla para imprimir, controlar qué se pega y trabajar en equipo sobre un mismo libro en la nube. Cierra el módulo con dos proyectos integradores.</p>
-<h3>Qué gráfico elegir</h3>
-<p>El tipo depende de qué se quiere mostrar, no de cuál queda más lindo.</p>
+  <div class="clase-header"><span class="clase-num">11</span><span class="clase-title">Del dato al informe</span></div>
+  <p class="intro">Elegir el gráfico según la pregunta, armar un tablero con selector, imprimir, colaborar, pasar a Excel, auditar a la IA y entregar el informe final.</p>
+<h3>Qué gráfico para qué pregunta</h3>
+<p>Un gráfico es una respuesta visual a una pregunta. Antes de tocar el menú hay que saber qué se quiere mostrar.</p>
 <table>
-<tr><th>Querés mostrar...</th><th>Tipo</th><th>Ejemplo</th></tr>
-<tr><td>Comparar valores entre categorías</td><td>Columnas o barras</td><td>Ventas por sucursal</td></tr>
-<tr><td>Evolución en el tiempo</td><td>Líneas</td><td>Temperatura mes a mes</td></tr>
-<tr><td>Partes de un total</td><td>Circular (torta)</td><td>Reparto de un presupuesto</td></tr>
-<tr><td>Relación entre dos variables numéricas</td><td>Dispersión (XY)</td><td>Horas de estudio y nota</td></tr>
+<tr><th>Si la pregunta es...</th><th>Usá</th><th>Ejemplo del caso</th></tr>
+<tr><td>¿Cuál es más grande?</td><td>Columnas o barras</td><td>Respuestas por carrera</td></tr>
+<tr><td>¿Qué parte del total es cada uno?</td><td>Torta (pocas partes)</td><td>Trabaja Sí y No</td></tr>
+<tr><td>¿Cómo cambia en el tiempo?</td><td>Líneas</td><td>Respuestas por día de la encuesta</td></tr>
+<tr><td>¿Hay relación entre dos números?</td><td>Dispersión</td><td>Horas de celular y horas de estudio</td></tr>
 </table>
-<p><b>El circular tiene reglas:</b> una sola serie, hasta unas 7 categorías, valores positivos y partes de un mismo total. Si falla alguna, usar columnas. En líneas, el eje horizontal es una lista de categorías equiespaciadas; en dispersión, ambos ejes son numéricos y los puntos se ubican por su valor real.</p>
-<h3>Armar un gráfico</h3>
+<p><b>Reglas:</b> la torta solo con partes que suman un total y no más de cinco (con once carreras van barras). Nunca efecto 3D. No se grafica la tabla de 120 filas: se grafica un <b>resumen</b> armado con <code>CONTAR.SI</code> o <code>PROMEDIO.SI</code>.</p>
+<h3>Armar y personalizar un gráfico</h3>
+<p>Se selecciona la tabla resumen <b>con los encabezados</b> y se elige Insertar → Gráfico. A la derecha se abre el Editor de gráficos con dos pestañas: <b>Configuración</b> (tipo, intervalo, eje X, series, usar la fila 1 como encabezados) y <b>Personalizar</b> (títulos, colores, etiquetas de datos, leyenda).</p>
+<ul><li>Datos no contiguos: seleccionar con <code>Ctrl</code> apretado (Mac: <code>⌘</code>), o escribir en Intervalo de datos <code>A1:A12,C1:C12</code>.</li><li>El gráfico queda unido a su tabla: si cambia un número o la selección del tablero, se redibuja.</li><li>Título que diga algo: "Administración concentra casi una de cada cuatro respuestas" en vez de "Respuestas por Carrera". Ejes rotulados y sin leyenda si hay una sola serie.</li></ul>
+<h3>El tablero con selector</h3>
+<p>Un tablero es una hoja pensada para mirarse, no para leerse fila por fila: unos pocos números destacados, uno o dos gráficos y un título. Un <b>selector</b> (celda con menú desplegable de <code>LISTAS!A2:A5</code>) elige el departamento, y todas las fórmulas del tablero leen esa celda: cambian los números y los gráficos sin tocar ninguna fórmula.</p>
+<p>Para dos o más condiciones: <code>CONTAR.SI.CONJUNTO(rango1;crit1;rango2;crit2...)</code>, por ejemplo <code>=CONTAR.SI.CONJUNTO(Depto;B2;DATOS!E2:E121;"Sí")</code>. Su prima <code>PROMEDIO.SI.CONJUNTO(rango_promedio;rango1;crit1;...)</code> lleva <b>primero</b> el rango a promediar.</p>
 <table>
-<tr><th>Parte</th><th>Qué es</th></tr>
-<tr><td>Título</td><td>Específico: "Ventas por sucursal, primer trimestre 2026", no "Gráfico 1"</td></tr>
-<tr><td>Series de datos</td><td>Cada conjunto de valores dibujado</td></tr>
-<tr><td>Categorías</td><td>Rótulos de cada dato (meses, sucursales)</td></tr>
-<tr><td>Ejes</td><td>De categorías (horizontal) y de valores (vertical)</td></tr>
-<tr><td>Leyenda</td><td>Qué color corresponde a cada serie</td></tr>
-<tr><td>Etiquetas de datos</td><td>Valores escritos sobre cada barra o porción</td></tr>
+<tr><th>Indicador</th><th>DEyA</th><th>CS</th><th>CyT</th><th>EUdA</th></tr>
+<tr><td>Respuestas</td><td>54</td><td>30</td><td>25</td><td>11</td></tr>
+<tr><td>% que trabaja</td><td>66,7%</td><td>50,0%</td><td>60,0%</td><td>63,6%</td></tr>
+<tr><td>Gasto promedio</td><td>$ 130.462,96</td><td>$ 124.466,67</td><td>$ 120.880,00</td><td>$ 131.000,00</td></tr>
+<tr><td>Viaje promedio (min)</td><td>54,18</td><td>58,77</td><td>53,17</td><td>57,80</td></tr>
+<tr><td>Uso de IA (Nunca / A veces / Seguido / Todos los días)</td><td>5 / 18 / 13 / 18</td><td>4 / 12 / 6 / 8</td><td>0 / 12 / 8 / 5</td><td>0 / 4 / 3 / 4</td></tr>
 </table>
-<p>Pasos: seleccionar los datos <b>con encabezados</b> (<code>Ctrl</code> para rangos no contiguos), Insertar → tipo de gráfico (o Gráficos recomendados), ajustar con Diseño de gráfico y Formato (o los botones <code>+</code> y pincel). Mover gráfico → Hoja nueva para ponerlo en hoja propia.</p>
+<h3>Imprimir y exportar a PDF</h3>
 <table>
-<tr><th>Lo que pasa</th><th>Por qué</th><th>Cómo se arregla</th></tr>
-<tr><td>Incluye la fila de Totales como una columna más</td><td>Se seleccionó de más</td><td>Reducir el rango, sin totales</td></tr>
-<tr><td>Los años aparecen como una serie</td><td>Excel cree que una columna numérica es una serie</td><td>Dejar vacía la celda de encabezado de los años, o Seleccionar datos → Etiquetas del eje horizontal → Editar</td></tr>
-<tr><td>La leyenda dice Serie1, Serie2</td><td>No se seleccionaron los encabezados</td><td>Seleccionar datos → editar cada serie y darle nombre</td></tr>
-<tr><td>Gráfico ilegible</td><td>Demasiados datos o series</td><td>Graficar solo lo esencial o dividir en dos</td></tr>
+<tr><th>Opción</th><th>Qué hace</th></tr>
+<tr><td>Imprimir</td><td>Hoja actual, todo el archivo o <b>celdas seleccionadas</b> (esta última es el área de impresión)</td></tr>
+<tr><td>Orientación</td><td>Vertical u horizontal; los tableros anchos van en horizontal</td></tr>
+<tr><td>Escala</td><td>Ajustar al ancho: achica para que entre sin cortar columnas</td></tr>
+<tr><td>Márgenes</td><td>Normales, estrechos o personalizados</td></tr>
+<tr><td>Encabezados y pies</td><td>Número de página, título, nombre de la hoja, fecha</td></tr>
+<tr><td>Líneas de la cuadrícula</td><td>Un informe se ve más limpio sin ellas</td></tr>
 </table>
-<p><b>Cambiar fila/columna</b> (Diseño de gráfico) invierte qué es serie y qué es categoría cuando el gráfico quedó "al revés". <b>Filtros de gráfico</b> (embudo) oculta series y categorías sin tocar la tabla. Un gráfico de calidad se lee sin explicación: título claro, ejes rotulados si hay unidades, leyenda solo si hace falta, sin 3D ni fondos recargados.</p>
-<h3>Gráficos combinados y datos no contiguos</h3>
-<p>Dos series de naturaleza distinta (cantidad y precio promedio) en un mismo gráfico: crear columnas, clic derecho en la serie → Cambiar tipo de gráfico de series → Combinado, asignar Línea y tildar <b>Eje secundario</b>. Rotular ambos ejes (título con la unidad, idealmente mismo color que la serie), porque sin eso no se sabe qué escala corresponde a qué serie.</p>
-<p>Datos no contiguos: seleccionar el primer rango, mantener <code>Ctrl</code>, seleccionar el segundo, y recién después insertar el gráfico.</p>
-<h3>Pegado especial y trabajo con hojas</h3>
-<p>Copiar con <code>Ctrl+C</code>; Inicio → Pegar (flecha) → Pegado especial, o <code>Ctrl+Alt+V</code>.</p>
 <table>
-<tr><th>Opción</th><th>Qué pega</th><th>Cuándo conviene</th></tr>
-<tr><td>Valores</td><td>Solo el resultado</td><td>Mover o enviar datos sin que dependan del original</td></tr>
-<tr><td>Fórmulas</td><td>La fórmula sin formato</td><td>Reusar el cálculo con el formato de destino</td></tr>
-<tr><td>Formatos</td><td>Solo el aspecto</td><td>Copiar el estilo de una tabla a otra</td></tr>
-<tr><td>Transponer</td><td>Intercambia filas por columnas</td><td>Datos girados respecto de lo necesario</td></tr>
-<tr><td>Vincular</td><td>Referencia a la celda original</td><td>Que el destino se actualice con el origen</td></tr>
+<tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Imprimir (abre la vista previa)</td><td><code>Ctrl+P</code></td><td><code>⌘+P</code></td></tr>
+<tr><td>PDF</td><td>Archivo → Descargar → PDF</td><td>Igual</td></tr>
 </table>
-<p>Al pegar una fórmula en otra hoja las referencias se recalculan y pueden dar error o un valor distinto; por eso se pega como valores antes de borrar filas de las que dependía. Referencia entre hojas: <code>=Hoja2!B5</code>, con espacios <code>='Hoja ventas'!B5</code>.</p>
-<h3>Preparar la planilla para imprimir</h3>
-<p>Todo en Diseño de página.</p>
+<p>Para decidir dónde corta la página: Saltos de página personalizados (solo con Hoja actual elegida). Para repetir encabezados en cada página de una tabla larga: inmovilizar la fila 1 y tildar la opción de repetir las filas inmovilizadas.</p>
+<h3>Colaborar y pasar a Excel</h3>
 <table>
-<tr><th>Qué controlar</th><th>Herramienta</th><th>Detalle</th></tr>
-<tr><td>Dirección</td><td>Orientación</td><td>Vertical para listas largas, horizontal para tablas anchas</td></tr>
-<tr><td>Papel</td><td>Tamaño</td><td>A4 en la mayoría de los casos</td></tr>
-<tr><td>Márgenes</td><td>Márgenes</td><td>Normal, estrecho o personalizado; ahí se centra en la página horizontal y vertical</td></tr>
-<tr><td>Qué se imprime</td><td>Área de impresión</td><td>Seleccionar el rango → Establecer área de impresión</td></tr>
-<tr><td>Títulos en cada hoja</td><td>Imprimir títulos</td><td>Repetir filas en extremo superior: <code>$1:$1</code></td></tr>
-<tr><td>Dónde corta cada hoja</td><td>Saltos de página</td><td>Seleccionar la fila o columna y Insertar salto de página; se ve en la Vista previa de salto de página (pestaña Vista); Quitar salto de página lo saca</td></tr>
-<tr><td>Que entre en pocas hojas</td><td>Ajustar a</td><td>Ancho: 1 página, Alto en automático</td></tr>
-<tr><td>Encabezado y pie</td><td>Encabezado y pie</td><td>Imagen (logo), nombre del archivo, fecha o numeración <code>&amp;[Página]</code> de <code>&amp;[Páginas]</code></td></tr>
+<tr><th>Herramienta</th><th>Qué hace</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Compartir</td><td>Por mail o enlace; roles Lector, Comentador, Editor (siempre el mínimo necesario)</td><td>Botón Compartir</td><td>Igual</td></tr>
+<tr><td>Comentarios</td><td>Observación atada a una celda; <code>@</code> + nombre menciona y avisa por mail; se marca Resuelto</td><td><code>Ctrl+Alt+M</code></td><td><code>⌘+Opción+M</code></td></tr>
+<tr><td>Historial de versiones</td><td>Cada cambio y quién lo hizo; Poner nombre a la versión actual marca un hito</td><td>Archivo → Historial de versiones</td><td>Igual</td></tr>
+<tr><td>Proteger</td><td>Bloquea una hoja o rango (conviene proteger <code>CRUDO</code>)</td><td>Datos → Proteger hojas e intervalos</td><td>Igual</td></tr>
 </table>
-<p>Siempre mirar la vista preliminar (Archivo → Imprimir, <code>Ctrl+P</code>; Mac: <code>⌘+P</code>) y verificar que ningún gráfico quede cortado entre dos páginas. La Vista Diseño de página (pestaña Vista) muestra los límites de cada hoja mientras se trabaja.</p>
-<h3>Trabajo colaborativo con OneDrive</h3>
-<p>Un libro guardado en OneDrive se edita entre varias personas a la vez, con cursor de color por colaborador, sin versiones sueltas. Pasos: Archivo → Guardar como → OneDrive; botón Compartir; mails o vínculo; permiso <b>Puede editar</b> o <b>Puede ver</b>. Comentarios: clic derecho → Nuevo comentario, con <code>@</code> para mencionar. Historial de versiones: Archivo → Información. Antes de dar permiso de edición, pensar quién puede tocar qué (una fórmula borrada por error afecta a todos).</p>
-<h3>Ejercicios integradores</h3>
-<p>Dos proyectos que combinan todo el módulo (fórmulas, funciones, formato condicional, ordenamiento, gráficos y hojas): Cooperativa de farmacia y Estadísticas de alumnos. Cada resultado tiene que salir de una fórmula, no de un número escrito a mano.</p>
+<p>Archivo → Descargar → Microsoft Excel (.xlsx) conserva en general datos, formatos, fórmulas comunes (<code>SI</code>, <code>CONTAR.SI</code>, <code>BUSCARV</code>) y formato condicional. Puede cambiar el aspecto de los gráficos, y las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel. La prueba es abrirlo y comparar las cifras de control.</p>
+<h3>La IA como auditora de tu trabajo</h3>
+<p>Sheets trae Gemini incorporado (menú Gemini o panel lateral) y también se puede usar un chat aparte. Sirve para explicar una fórmula, proponer una fórmula o un gráfico y revisar el trabajo. La condición es una sola: <b>quien firma el informe es el alumno</b>, así que todo lo que diga la IA se verifica.</p>
+<table>
+<tr><th>Errores típicos de una IA con planillas</th></tr>
+<tr><td>Escribe las fórmulas con coma en vez de punto y coma y Sheets en español las rechaza</td></tr>
+<tr><td>Inventa columnas, hojas o rangos que no existen, o apunta a un rango incompleto</td></tr>
+<tr><td>Hace cuentas de cabeza y se equivoca (pedir la fórmula y calcularla, no pedir el resultado)</td></tr>
+<tr><td>Contesta con seguridad aunque se equivoque</td></tr>
+</table>
+<p><b>Datos personales:</b> la encuesta del caso es simulada, pero en un trabajo real los nombres, mails y datos de personas no se pegan en una IA pública sin autorización.</p>
+<table>
+<tr><th>Paso</th><th>Qué se hace</th></tr>
+<tr><td>1. Preguntar con contexto</td><td>Decirle en qué columnas están los datos y qué se quiere lograr; pedir la fórmula y la explicación</td></tr>
+<tr><td>2. Probar aparte</td><td>Pegar la fórmula en una celda libre, nunca encima del trabajo</td></tr>
+<tr><td>3. Comparar con un control</td><td>Contrastar con algo que se sabe correcto: un conteo previo, un filtro con <code>SUBTOTAL</code>, una cifra de control</td></tr>
+<tr><td>4. Anotar</td><td>En la hoja <code>AUDITORIA</code>: pregunta, qué devolvió, cómo se verificó, veredicto (correcta, corregida o descartada)</td></tr>
+</table>
+<h3>La entrega final: una pregunta por departamento</h3>
+<p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>AUDITORIA</code> con tres filas) y se suma una hoja <code>MI_PREGUNTA</code> cuya consigna depende del departamento de la carrera de cada alumno. La caja de herramientas es la misma; cambia la mirada. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación.</p>
+<table>
+<tr><th>Departamento</th><th>La pregunta</th><th>Qué se construye</th></tr>
+<tr><td>DEyA</td><td>¿Cuánto cuesta cursar y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y no (<code>PROMEDIO.SI</code>), proyección a 12 meses con <code>POTENCIA</code> y <code>PARAMETROS</code>, columnas hoy contra 12 meses, recomendación de ayuda económica</td></tr>
+<tr><td>CS</td><td>¿Quiénes llegan con más barreras?</td><td>Columna <code>Barreras</code> con <code>SI</code> y <code>Y</code> (trabaja y viaja más de 60 min), % por carrera con <code>CONTAR.SI.CONJUNTO</code>, barras ordenadas, filtro del grupo, conclusión de dos oraciones</td></tr>
+<tr><td>CyT</td><td>¿Más tiempo de celular, menos de estudio?</td><td>Columna Bajo (hasta 3 h), Medio (4 a 6), Alto (7 o más) con <code>SI</code> anidado, promedio de horas de estudio por grupo, dispersión, conclusión que no confunda correlación con causa</td></tr>
+<tr><td>EUdA</td><td>¿Cómo usa la IA el curso y cómo se cuenta eso?</td><td>Tabla de uso de IA por <code>Nivel_Excel</code> con <code>CONTAR.SI.CONJUNTO</code>, columnas agrupadas y una página de comunicación (título fuerte, tres datos grandes, imagen y gráfico) que se entienda en diez segundos</td></tr>
+</table>
 <p class="glosario-title">Glosario</p>
 <table>
-<tr><td><b>Filtros de gráfico</b></td><td>Botón del gráfico que permite mostrar u ocultar series y categorías sin borrarlas de la tabla.</td></tr>
-<tr><td><b>Salto de página</b></td><td>Marca que indica dónde termina una hoja impresa y empieza la siguiente.</td></tr>
-<tr><td><b>Serie de datos</b></td><td>Conjunto de valores que se dibuja en un gráfico, normalmente una columna o una fila de la tabla.</td></tr>
-<tr><td><b>Categoría</b></td><td>Rótulo que identifica cada dato de una serie, por ejemplo un mes o una sucursal.</td></tr>
-<tr><td><b>Gráfico circular</b></td><td>Gráfico que muestra cómo se reparte un total entre partes. Admite una sola serie.</td></tr>
-<tr><td><b>Gráfico de dispersión</b></td><td>Gráfico que ubica puntos según dos valores numéricos, para ver la relación entre variables.</td></tr>
-<tr><td><b>Eje secundario</b></td><td>Segunda escala vertical que permite graficar en un mismo gráfico series con unidades muy distintas.</td></tr>
-<tr><td><b>Gráfico combinado</b></td><td>Gráfico que mezcla dos tipos, por ejemplo columnas y líneas.</td></tr>
-<tr><td><b>Leyenda</b></td><td>Referencia que indica qué color o marca corresponde a cada serie.</td></tr>
-<tr><td><b>Pegado especial</b></td><td>Opción para pegar solo valores, fórmulas, formatos u otros aspectos del contenido copiado.</td></tr>
-<tr><td><b>Transponer</b></td><td>Intercambiar las filas por las columnas de un rango.</td></tr>
-<tr><td><b>Área de impresión</b></td><td>Rango de la hoja que se va a imprimir.</td></tr>
-<tr><td><b>OneDrive</b></td><td>Servicio de almacenamiento en la nube de Microsoft que permite compartir y editar archivos en simultáneo.</td></tr>
-<tr><td><b>Historial de versiones</b></td><td>Registro de las versiones guardadas de un libro, que permite recuperar una anterior.</td></tr>
+<tr><td><b>Gráfico</b></td><td>Representación visual de una tabla de datos, elegida según la pregunta que se quiere responder.</td></tr>
+<tr><td><b>Serie</b></td><td>Cada conjunto de valores que se dibuja en un gráfico, por ejemplo una columna de la tabla.</td></tr>
+<tr><td><b>Eje X</b></td><td>El eje horizontal de un gráfico, que suele llevar las categorías.</td></tr>
+<tr><td><b>Rango no contiguo</b></td><td>Selección de celdas que no están una al lado de la otra.</td></tr>
+<tr><td><b>Tablero</b></td><td>Hoja diseñada para mostrar de un vistazo indicadores y gráficos, sin recorrer filas de datos.</td></tr>
+<tr><td><b>Selector</b></td><td>Celda con menú desplegable de la que dependen las fórmulas de un tablero.</td></tr>
+<tr><td><b>CONTAR.SI.CONJUNTO</b></td><td>Función que cuenta las filas que cumplen dos o más condiciones a la vez.</td></tr>
+<tr><td><b>Área de impresión</b></td><td>La parte de la hoja que sale al imprimir, por ejemplo las celdas seleccionadas.</td></tr>
+<tr><td><b>Historial de versiones</b></td><td>Registro de los cambios del archivo y de quién los hizo, que permite volver atrás.</td></tr>
+<tr><td><b>Permiso de edición</b></td><td>Rol que define qué puede hacer cada persona con un archivo compartido.</td></tr>
+<tr><td><b>Interoperabilidad</b></td><td>Capacidad de un archivo de funcionar en programas distintos, por ejemplo pasar de Sheets a Excel.</td></tr>
+<tr><td><b>Auditoría</b></td><td>Revisar con un control independiente que un resultado, propio o de una IA, sea correcto.</td></tr>
 </table>
 </div>
 <div class="fuentes">
   <h2>Fuentes citadas en el material (referencia rápida)</h2>
   <ul>
     <li>Universidad Nacional de Quilmes. <i>Informática de Diplomatura: Microsoft Excel y Hoja de Cálculo de Google</i>. Guía de ejercitación de la cátedra (base de las Guías Visuales).</li>
-    <li>Ceballos, M. (2019, setiembre). <i>Módulo sobre herramientas de Excel</i>. Informática para Diplomatura y Enfermería 1.</li>
-    <li>Microsoft. <i>Soporte de Microsoft Excel</i>. <code>support.microsoft.com/es-es/excel</code></li>
-    <li>Detalle de cada clase: Guías Visuales <code>Clase 08</code> a <code>Clase 11</code> en <code>unq-moodle/clases/</code>.</li>
+    <li>Google. <i>Ayuda del Editor de Documentos de Google: Hojas de cálculo</i>. <code>support.google.com/docs</code></li>
+    <li>Google. <i>Lista de funciones de Hojas de cálculo de Google</i>. <code>support.google.com/docs</code></li>
+    <li>Detalle de cada clase: Guías Visuales <code>Clase 08</code> a <code>Clase 11</code> en <code>unq-moodle/clases/</code>. Datos del caso y cifras de control: <code>unq-moodle/archivos/README.md</code>.</li>
   </ul>
 </div>
 

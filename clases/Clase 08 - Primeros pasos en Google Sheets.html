@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
-<link rel="stylesheet" href="../../css/guia-estilo.css">
+<link rel="stylesheet" href="../css/guia-estilo.css">
 <style>
   /* Acento: Planilla de cálculo = verde */
   :root{
@@ -123,7 +123,7 @@
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
     <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
-      <img class="cover-teacher-photo" src="../../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
       <span class="cover-teacher-text">
         <span class="cover-teacher-name">Marcos Hernández</span>
         <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
@@ -162,7 +162,7 @@
 <div class="tools-container">
   <div class="app-row">
     <a class="app-row-link" href="https://sheets.google.com" target="_blank" rel="noopener">
-      <img class="row-icon" src="../../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
+      <img class="row-icon" src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets">
       <div class="row-text"><span class="row-name">Google Sheets</span><span class="row-domain">sheets.google.com</span></div>
     </a>
     <div class="tags"><span class="pill pill-free">Gratis</span></div>
@@ -190,7 +190,7 @@
     </tbody>
   </table>
 </div>
-<img class="screenshot" src="../../img/08-01-captura-sheets-interfaz.png" alt="Google Sheets con una hoja en blanco: nombre del archivo, menús, barra de herramientas, cuadro de nombre con A1, barra de fórmulas, cuadrícula y la pestaña Hoja 1">
+<img class="screenshot" src="../img/08-01-captura-sheets-interfaz.png" alt="Google Sheets con una hoja en blanco: nombre del archivo, menús, barra de herramientas, cuadro de nombre con A1, barra de fórmulas, cuadrícula y la pestaña Hoja 1">
 <p class="screenshot-caption">Un archivo nuevo en Google Sheets. Tu pantalla puede tener algún botón distinto según tu cuenta, pero la distribución es esta.</p>
 <h3>Archivo, hoja, celda y rango</h3>
 <div class="table-wrap">
@@ -265,9 +265,9 @@
 </tbody></table></div>
 <p class="xl-cap">Los datos que quedaron alineados a la izquierda (en rojo) son texto: <code>21 años</code> no es un número.</p>
 </div>
-<img class="screenshot" src="../../img/08-06-captura-sheets-importar-archivo.png" alt="Selector de archivos de Archivo, Importar con el CSV de la encuesta seleccionado">
+<img class="screenshot" src="../img/08-06-captura-sheets-importar-archivo.png" alt="Selector de archivos de Archivo, Importar con el CSV de la encuesta seleccionado">
 <p class="screenshot-caption">Archivo → Importar: elegí el archivo <code>Encuesta_ingresantes_2026.csv</code>. Si lo tenés en tu computadora, usá la pestaña <em>Subir</em> y arrastralo.</p>
-<img class="screenshot" src="../../img/08-07-captura-sheets-importar-opciones.png" alt="Cuadro Importar archivo con ubicación de importación y tipo de separador">
+<img class="screenshot" src="../img/08-07-captura-sheets-importar-opciones.png" alt="Cuadro Importar archivo con ubicación de importación y tipo de separador">
 <p class="screenshot-caption">El cuadro de importación: <em>Ubicación de importación</em> (<em>Insertar nuevas hojas</em>), <em>Tipo de separador</em> y <em>Convertir texto en números, fechas y fórmulas</em> tildado.</p>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 El separador</p>
@@ -280,7 +280,7 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Descargá <code>Practica_encuesta_mini.csv</code> <a class="dl-file" href="../../archivos/Practica_encuesta_mini.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a>: es una muestra de 11 respuestas.</li>
+  <li>Descargá <code>Practica_encuesta_mini.csv</code> <a class="dl-file" href="../archivos/Practica_encuesta_mini.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a>: es una muestra de 11 respuestas.</li>
   <li>Abrí <strong>Archivo → Importar → Subir</strong> y elegí el archivo. En <em>Ubicación de importación</em> elegí <strong>Insertar hoja(s) nueva(s)</strong>, en <em>Tipo de separador</em> <strong>Personalizado</strong> con <code>;</code>, y dejá tildada la conversión de texto en números y fechas. Renombrá la hoja nueva como <code>MINI</code>.</li>
   <li>Con <code>Ctrl+↓</code> (Mac: <code>⌘+↓</code>) viajá hasta la última fila. Tendría que ser la <strong>12</strong> (11 respuestas más el encabezado).</li>
   <li>Recorré las columnas mirando la alineación y anotá, <strong>sin corregir todavía</strong>, los cinco defectos que encuentres: un texto pegado a un número, otro texto pegado a un número, espacios de más, una celda vacía y una fila repetida.</li>
@@ -343,7 +343,7 @@
 <tr><td>Texto pegado a un número</td><td><code>21 años</code> en Edad, <code>114000 pesos</code> en Gasto</td><td><strong>Buscar y reemplazar</strong>: cambiás <code> años</code> y <code> pesos</code> por nada</td></tr>
 <tr><td>Espacios de más</td><td><code>␣␣Contador Público</code> o <code>Licenciatura en Biotecnología␣␣</code></td><td><strong>Recortar espacios en blanco</strong></td></tr>
 <tr><td>Filas repetidas</td><td>La misma respuesta cargada dos veces, con el mismo ID</td><td><strong>Quitar duplicados</strong></td></tr>
-<tr><td>Mayúsculas mezcladas</td><td><code>LICENCIATURA EN EDUCACIÓN</code> junto a <code>Licenciatura en Educación</code></td><td><strong>Nada</strong>: es una decisión, mirá abajo</td></tr>
+<tr><td>Mayúsculas mezcladas</td><td><code>LICENCIATURA EN ADMINISTRACIÓN</code> junto a <code>Licenciatura en Administración</code></td><td><strong>Nada</strong>: es una decisión, mirá abajo</td></tr>
 <tr><td>Celdas vacías</td><td>Viaje_min sin dato en 5 respuestas</td><td><strong>Nada</strong>: es una decisión, mirá abajo</td></tr>
     </tbody>
   </table>
@@ -354,14 +354,14 @@
   <p class="callout-label">⚠️ Elegí bien dónde reemplazar</p>
   <p>En <em>Buscar</em> hay una opción <strong>Todas las hojas</strong>. Si la dejás elegida, vas a modificar también <code>CRUDO</code> y perdés el original. Elegí siempre <strong>Esta hoja</strong>, y antes de apretar <em>Reemplazar todo</em> fijate que estés parado en <code>DATOS</code>.</p>
 </div>
-<img class="screenshot" src="../../img/08-08-captura-sheets-buscar-reemplazar.png" alt="Cuadro Buscar y reemplazar con la palabra años en Buscar y Esta hoja elegido">
+<img class="screenshot" src="../img/08-08-captura-sheets-buscar-reemplazar.png" alt="Cuadro Buscar y reemplazar con la palabra años en Buscar y Esta hoja elegido">
 <p class="screenshot-caption"><strong>Editar → Buscar y reemplazar</strong>: el texto a buscar, el campo <em>Reemplazar por</em> vacío, <em>Esta hoja</em> en la lista <em>Buscar</em> y el botón <em>Reemplazar todo</em>.</p>
 <h3>Recortar espacios y quitar duplicados</h3>
 <p>Las dos herramientas están en <strong>Datos → Limpieza de datos</strong>. <em>Recortar espacios en blanco</em> trabaja sobre las celdas que tengas seleccionadas: borra los espacios del principio y del final de cada una. <em>Quitar duplicados</em> analiza el rango seleccionado, y si marcás que tus datos tienen fila de encabezado, no la toca.</p>
-<img class="screenshot" src="../../img/08-09-captura-sheets-limpieza-datos.png" alt="Menú Datos, Limpieza de datos desplegado con Recortar espacios en blanco y Quitar duplicados">
+<img class="screenshot" src="../img/08-09-captura-sheets-limpieza-datos.png" alt="Menú Datos, Limpieza de datos desplegado con Recortar espacios en blanco y Quitar duplicados">
 <p class="screenshot-caption"><strong>Datos → Limpieza de datos</strong> con <em>Quitar duplicados</em> y <em>Recortar espacios en blanco</em>. La primera opción, <em>Sugerencias de borrado</em>, es un asistente que propone arreglos solo.</p>
 <h3>Las dos decisiones</h3>
-<p><strong>Mayúsculas:</strong> dejalas como están. Para una planilla, <code>LICENCIATURA EN EDUCACIÓN</code> y <code>Licenciatura en Educación</code> son el mismo texto cuando se comparan o se ordenan. En cambio, los espacios de más sí hacen que dos textos parezcan distintos, por eso hay que recortarlos.</p>
+<p><strong>Mayúsculas:</strong> dejalas como están. Para una planilla, <code>LICENCIATURA EN ADMINISTRACIÓN</code> y <code>Licenciatura en Administración</code> son el mismo texto cuando se comparan o se ordenan. En cambio, los espacios de más sí hacen que dos textos parezcan distintos, por eso hay que recortarlos.</p>
 <p><strong>Vacíos:</strong> dejalos vacíos. Escribir un <code>0</code> en Viaje_min sería inventar un dato: nadie tarda cero minutos en llegar. Una celda vacía dice la verdad (&quot;no sé&quot;) y los cálculos de promedio la ignoran.</p>
 <div class="activity">
   <div class="activity-head">
@@ -370,7 +370,7 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Parate en <code>MINI_DATOS</code>. Seleccioná la columna <code>D</code> (Edad) y usá <strong>Editar → Buscar y reemplazar</strong> (<code>Ctrl+H</code>): buscá <code>␣años</code> (un espacio y la palabra), reemplazá por nada, <em>Esta hoja</em>, <em>Reemplazar todo</em>. Tendría que informar 1 reemplazo.</li>
+  <li>Parate en <code>MINI_DATOS</code>. Seleccioná la columna <code>D</code> (Edad) y usá <strong>Editar → Buscar y reemplazar</strong> (<code>Ctrl+H</code>; Mac: <code>⌘+Mayús+H</code>): buscá <code>␣años</code> (un espacio y la palabra), reemplazá por nada, <em>Esta hoja</em>, <em>Reemplazar todo</em>. Tendría que informar 1 reemplazo.</li>
   <li>Repetí en la columna <code>K</code> con <code>␣pesos</code>. Tendría que informar 1 reemplazo. Revisá que ambos datos quedaron alineados a la derecha.</li>
   <li>Seleccioná la columna <code>C</code> y aplicá <strong>Datos → Limpieza de datos → Recortar espacios en blanco</strong>.</li>
   <li>Seleccioná todo el rango de datos, abrí <strong>Datos → Limpieza de datos → Quitar duplicados</strong> y tildá <em>Los datos tienen una fila de encabezado</em>. Tendría que informar que se quitó <strong>1 fila</strong>.</li>
@@ -394,7 +394,7 @@
 <tr><td><svg class="tool-icon"><use href="#ti-money"></use></svg></td><td>Formato de moneda</td><td>Barra de herramientas, o <em>Formato → Número → Moneda</em></td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-percent"></use></svg></td><td>Formato de porcentaje: multiplica por 100 lo que ya está escrito</td><td>Barra de herramientas</td></tr>
 <tr><td><code>123</code></td><td>Menú de más formatos: fecha, hora, número con decimales, texto plano</td><td>Barra de herramientas</td></tr>
-<tr><td><strong>B</strong> <em>I</em></td><td>Negrita, cursiva, subrayado, tachado</td><td>Barra de herramientas, <code>Ctrl+B</code> / <code>Ctrl+I</code> / <code>Ctrl+U</code></td></tr>
+<tr><td><strong>B</strong> <em>I</em></td><td>Negrita, cursiva, subrayado, tachado</td><td>Barra de herramientas, <code>Ctrl+B</code> / <code>Ctrl+I</code> / <code>Ctrl+U</code> (Mac: <code>⌘+B</code> / <code>⌘+I</code> / <code>⌘+U</code>)</td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-fill-color"></use></svg></td><td>Color de relleno y de texto</td><td>Barra de herramientas</td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-borders"></use></svg></td><td>Bordes: primero color y estilo, después ubicación</td><td>Barra de herramientas</td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg></td><td>Combinar celdas: solo el título de la portada, nunca en la tabla de datos (ni en los encabezados)</td><td>Barra de herramientas, o <em>Formato → Combinar celdas</em></td></tr>
@@ -416,7 +416,7 @@
   <li>En <code>MINI_DATOS</code>, seleccioná la fila 1 y aplicá negrita, un relleno verde claro y borde inferior.</li>
   <li>Inmovilizá la fila 1 con <strong>Ver → Inmovilizar → 1 fila</strong>.</li>
   <li>Dale a la columna <code>K</code> formato de <strong>moneda</strong> y comprobá en el menú <code>123</code> que la columna <code>B</code> tenga formato de <em>fecha</em>.</li>
-  <li>Ajustá el ancho de todas las columnas con <code>Ctrl+A</code> y doble clic en un borde entre letras.</li>
+  <li>Ajustá el ancho de todas las columnas con <code>Ctrl+A</code> (Mac: <code>⌘+A</code>) y doble clic en un borde entre letras.</li>
   <li>Repaso: seleccioná la columna <code>K</code> y volvé a mirar la suma de abajo. ¿Cambió con el formato? (No tiene que cambiar: el formato no toca el dato.)</li>
 </ol>
   </div>
@@ -446,9 +446,9 @@
 <p>Ordenar reacomoda las <strong>filas completas</strong> según los valores de una columna. Para ordenar por varios criterios, seleccioná todo el rango de datos y andá a <strong>Datos → Ordenar intervalo → Opciones avanzadas de ordenación de intervalos</strong>. Ahí tildás <em>Los datos tienen una fila de encabezado</em>, elegís la primera columna y su sentido (A→Z o Z→A) y agregás otra columna con <em>Añadir otra columna para ordenar</em>.</p>
 <div class="callout" data-type="warning">
   <p class="callout-label">⚠️ Ordenar siempre la tabla completa</p>
-  <p>Si ordenás una sola columna, esa columna se reacomoda y las demás se quedan en su lugar: cada respuesta termina con la edad y el gasto de otra persona. Por eso se selecciona <strong>todo el rango</strong> y no una columna suelta. Si te equivocás, deshacé enseguida con <code>Ctrl+Z</code>.</p>
+  <p>Si ordenás una sola columna, esa columna se reacomoda y las demás se quedan en su lugar: cada respuesta termina con la edad y el gasto de otra persona. Por eso se selecciona <strong>todo el rango</strong> y no una columna suelta. Si te equivocás, deshacé enseguida con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</p>
 </div>
-<img class="screenshot" src="../../img/08-10-captura-sheets-ordenar-intervalo.png" alt="Cuadro Ordenar intervalo con dos criterios, Carrera de A a Z y Gasto_mensual de Z a A">
+<img class="screenshot" src="../img/08-10-captura-sheets-ordenar-intervalo.png" alt="Cuadro Ordenar intervalo con dos criterios, Carrera de A a Z y Gasto_mensual de Z a A">
 <p class="screenshot-caption">El cuadro de ordenación avanzada con dos criterios: <em>Ordenar por</em> Carrera de A a Z y <em>luego por</em> Gasto_mensual de Z a A, con la fila de encabezado tildada.</p>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Para eso sirve la columna ID</p>
@@ -525,7 +525,7 @@
   <div class="prose">
 <p>Trabajá en el archivo <em>Retrato del curso</em>, que ya tiene las hojas de práctica. Estos son los pasos y los controles para saber si están bien.</p>
 <ol>
-  <li>Descargá <code>Encuesta_ingresantes_2026.csv</code> <a class="dl-file" href="../../archivos/Encuesta_ingresantes_2026.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> e importalo a una hoja nueva (separador <code>;</code>). Renombrala <code>CRUDO</code> y pintala de rojo. La última fila con datos tiene que ser la <strong>124</strong>.</li>
+  <li>Descargá <code>Encuesta_ingresantes_2026.csv</code> <a class="dl-file" href="../archivos/Encuesta_ingresantes_2026.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> e importalo a una hoja nueva (separador <code>;</code>). Renombrala <code>CRUDO</code> y pintala de rojo. La última fila con datos tiene que ser la <strong>124</strong>.</li>
   <li>Duplicá <code>CRUDO</code>, llamá <code>DATOS</code> a la copia y pintala de verde. Creá una hoja <code>LEEME</code>, pintala de gris y ponela al principio.</li>
   <li>Limpiá <code>DATOS</code>: reemplazá <code>␣años</code> en la columna <code>D</code> (4 reemplazos) y <code>␣pesos</code> en la <code>K</code> (4 reemplazos), recortá los espacios de la columna <code>C</code> y quitá los duplicados (<strong>3 filas</strong>). Controles: última fila con datos <strong>121</strong>, suma de Edad <strong>2.909</strong>, suma de Gasto_mensual <strong>15.242.000</strong>.</li>
   <li>Dale a <code>DATOS</code> el mismo formato que a la muestra: encabezado destacado, fila 1 inmovilizada, moneda, fecha y ancho de columnas.</li>
@@ -560,7 +560,7 @@
   </table>
 </div>
 <div class="callout" data-type="linkedin">
-  <p class="callout-label"><img src="../../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+  <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
   <p><strong>Google Sheets.</strong> Cómo la justificás: importo datos de fuentes externas (CSV, formularios), los limpio sin alterar el original (buscar y reemplazar, recorte de espacios, eliminación de duplicados), los estructuro como tabla con formato numérico correcto y los ordeno y comparto con permisos adecuados.</p>
 </div>
 <h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
@@ -621,11 +621,11 @@
 <h4>Planilla de cálculo</h4>
 <div class="kit-card">
   <div class="kit-tool" data-cost="free">
-    <a class="kit-tool-link" href="https://sheets.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Google - Sheets.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Sheets</span><span class="kit-tool-domain">sheets.google.com</span></span></a>
+    <a class="kit-tool-link" href="https://sheets.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Google - Sheets.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Sheets</span><span class="kit-tool-domain">sheets.google.com</span></span></a>
     <span class="kit-tool-tags"><span class="pill pill-free">Gratis</span></span>
   </div>
   <div class="kit-tool" data-cost="freemium" data-student="1">
-    <a class="kit-tool-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Microsoft - Excel.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Excel</span><span class="kit-tool-domain">office.com</span></span></a>
+    <a class="kit-tool-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Microsoft - Excel.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Excel</span><span class="kit-tool-domain">office.com</span></span></a>
     <span class="kit-tool-tags"><span class="pill pill-freemium">Freemium</span><a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a></span>
   </div>
 </div>
@@ -649,7 +649,6 @@
 <ul class="sources">
   <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Excel y Hoja de Cálculo de Google</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
   <li>Google. <em>Ayuda del Editor de Documentos de Google: Hojas de cálculo</em>. <a href="https://support.google.com/docs/topic/9054603" target="_blank" rel="noopener"><code>support.google.com/docs</code></a></li>
-  <li>Material de cátedra. <em>Guía de Excel: Primeros pasos y formato de celdas</em>, Clase 08, Informática 2026.</li>
 </ul>
   </div>
 </section>
@@ -663,10 +662,10 @@
 
 </div>
 
-<script defer src="../../js/guia-kit.js"></script>
-<script defer src="../../js/guia-nav.js"></script>
-<script defer src="../../js/guia-glosario.js"></script>
-<script defer src="../../js/guia-continuidad.js"></script>
-<script defer src="../../js/guia-print.js"></script>
+<script defer src="../js/guia-kit.js"></script>
+<script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-glosario.js"></script>
+<script defer src="../js/guia-continuidad.js"></script>
+<script defer src="../js/guia-print.js"></script>
 </body>
 </html>

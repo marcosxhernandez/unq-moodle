@@ -24,7 +24,7 @@
     "unidad": "Procesador de texto"
   },
   "05": {
-    "fecha": "2026-09-22",
+    "fecha": "2026-09-08",
     "tipo": "clase",
     "titulo": "Maquetación de alta precisión",
     "unidad": "Procesador de texto"
@@ -36,57 +36,39 @@
     "unidad": "Presentaciones"
   },
   "07": {
-    "fecha": "2026-09-29",
+    "fecha": "2026-10-06",
     "tipo": "evaluacion",
     "titulo": "1° Parcial",
     "unidad": "Evaluación"
   },
   "08": {
-    "fecha": "2026-10-06",
+    "fecha": "2026-10-13",
     "tipo": "clase",
-    "titulo": "Lógica de celdas y funciones esenciales",
+    "titulo": "Primeros pasos en Google Sheets",
     "unidad": "Planilla de cálculo"
   },
   "09": {
-    "fecha": "2026-10-13",
+    "fecha": "2026-10-20",
     "tipo": "clase",
-    "titulo": "Funciones lógicas y validación de datos",
+    "titulo": "Fórmulas y funciones para describir los datos",
     "unidad": "Planilla de cálculo"
   },
   "10": {
-    "fecha": "2026-10-20",
+    "fecha": "2026-10-27",
     "tipo": "clase",
-    "titulo": "Búsqueda entre hojas y visualización",
+    "titulo": "Decisiones y preguntas a los datos",
     "unidad": "Planilla de cálculo"
   },
   "11": {
-    "fecha": "2026-10-27",
+    "fecha": "2026-11-03",
     "tipo": "clase",
-    "titulo": "Análisis de datos con Tablas Dinámicas e IA",
+    "titulo": "Del dato al informe",
     "unidad": "Planilla de cálculo"
   },
   "12": {
-    "fecha": "2026-11-03",
+    "fecha": "2026-11-17",
     "tipo": "evaluacion",
     "titulo": "2° Parcial",
-    "unidad": "Evaluación"
-  },
-  "13": {
-    "fecha": "2026-11-10",
-    "tipo": "clase",
-    "titulo": "De la planilla a la captura de datos",
-    "unidad": "Datos estructurados y bases de datos"
-  },
-  "14": {
-    "fecha": "2026-11-17",
-    "tipo": "clase",
-    "titulo": "Preguntar a los datos: Consultas e IA",
-    "unidad": "Datos estructurados y bases de datos"
-  },
-  "16": {
-    "fecha": "2026-11-24",
-    "tipo": "evaluacion",
-    "titulo": "3.º Parcial Integrador",
     "unidad": "Evaluación"
   },
   "17": {

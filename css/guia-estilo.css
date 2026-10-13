@@ -3077,33 +3077,33 @@ a.pill-student:hover{ text-decoration:underline; }
 
   .gkit-drawer{
     position:fixed; z-index:70; top:0; bottom:0; right:84px; width:360px; max-width:calc(100vw - 84px);
-    display:flex; flex-direction:column; box-sizing:border-box; background:var(--paper);
+    display:flex; flex-direction:column; box-sizing:border-box; background:#f5f5f7;
     border-left:1px solid var(--line); box-shadow:-12px 0 32px -12px rgba(21,20,27,.18);
     transform:translateX(calc(100% + 100px)); visibility:hidden; transition:transform .22s ease, visibility 0s .22s;
     font-family:var(--sans);
   }
   .gkit-drawer.open{ transform:none; visibility:visible; transition:transform .22s ease; }
-  .gkit-head{ display:flex; align-items:center; gap:8px; padding:14px 16px; border-bottom:1px solid var(--line); }
-  .gkit-title{ flex:1; margin:0; font:540 1.15rem/1.2 var(--serif-display,serif); color:var(--ink); border:0; padding:0; }
+  .gkit-head{ display:flex; align-items:center; gap:8px; padding:18px 20px 8px; }
+  .gkit-title{ flex:1; margin:0; font:800 1.45rem/1.1 var(--sans); letter-spacing:-.02em; color:var(--ink); border:0; padding:0; }
   .gkit-close{ border:0; background:none; font-size:1.6rem; line-height:1; cursor:pointer; color:var(--muted,#6e6e73); padding:2px 8px; border-radius:6px; }
   .gkit-close:hover{ background:var(--acento-tint); }
   .gkit-pdf{ display:none; }
-  .gkit-body{ flex:1; overflow-y:auto; padding:14px 16px 28px; font-size:.88rem; line-height:1.5; }
+  .gkit-body{ flex:1; overflow-y:auto; padding:10px 20px 32px; font-size:.88rem; line-height:1.5; }
   .gkit-panel > :first-child{ margin-top:0; }
   .gkit-scrim{ display:none; }
-  .gkit-panel-herramientas{ background:#f5f5f7; margin:-14px -16px -28px; padding:14px 16px 28px; min-height:calc(100% + 42px); box-sizing:border-box; }
+  .gkit-panel-herramientas h4{ font:700 1.05rem/1.3 var(--sans); text-transform:none; letter-spacing:-.01em; color:var(--ink); margin:0 0 8px 4px; }
   .gkit-drawer .kit-tool{ padding:10px 12px; gap:12px; }
   .gkit-drawer .kit-tool-icon{ width:48px; height:48px; }
   .gkit-drawer .table-wrap{ overflow-x:visible; }
   .gkit-drawer h4{ margin:0; }
 
   /* Actividades */
-  .gkit-sum{ font-size:.82rem; color:var(--ink-soft,#55526a); margin-bottom:12px; }
+  .gkit-sum{ font-size:.82rem; color:var(--ink-soft,#55526a); margin-bottom:12px; background:#fff; border-radius:18px; padding:14px 16px; box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); }
   .gkit-sum b{ color:var(--ink); }
   .gkit-bar-track{ display:block; height:5px; margin-top:6px; border-radius:3px; background:var(--acento-tint); overflow:hidden; }
   .gkit-bar-track i{ display:block; height:100%; background:var(--acento); transition:width .25s ease; }
-  .gkit-unit{ border:1px solid var(--line); border-radius:var(--radius-sm,8px); margin-bottom:10px; padding:0 12px 6px; }
-  .gkit-unit > h4{ display:flex; align-items:center; gap:8px; padding:11px 0 8px; cursor:pointer; font:600 .86rem/1.3 var(--sans); color:var(--ink); }
+  .gkit-unit{ background:#fff; border:0; border-radius:18px; margin-bottom:14px; padding:0 16px 8px; box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); }
+  .gkit-unit > h4{ display:flex; align-items:center; gap:8px; padding:11px 0 8px; cursor:pointer; text-transform:none; letter-spacing:0; font:600 .9rem/1.3 var(--sans); color:var(--ink); }
   .gkit-unit > h4::before{ content:'▾'; color:var(--acento); font-size:.8rem; transition:transform .15s; }
   .gkit-unit.closed > h4::before{ transform:rotate(-90deg); }
   .gkit-unit.closed > :not(h4){ display:none; }
@@ -3121,7 +3121,7 @@ a.pill-student:hover{ text-decoration:underline; }
 
   /* Glosario */
   .gkit-gtools{ display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
-  .gkit-find{ width:100%; box-sizing:border-box; padding:9px 12px; border:1px solid var(--line-strong,#d3d0e0); border-radius:8px; font:inherit; }
+  .gkit-find{ width:100%; box-sizing:border-box; padding:10px 14px; border:0; background:#fff; box-shadow:0 1px 1px rgba(0,0,0,.03), 0 4px 14px -8px rgba(0,0,0,.18); border-radius:12px; font:inherit; }
   .gkit-find:focus-visible{ outline:2px solid var(--acento); outline-offset:1px; }
   .gkit-switch{ display:flex; align-items:center; gap:8px; font-size:.82rem; cursor:pointer; }
   .gkit-switch input{ width:16px; height:16px; accent-color:var(--acento); }
@@ -3129,7 +3129,9 @@ a.pill-student:hover{ text-decoration:underline; }
   .gkit-gl{ font-weight:600; font-size:.82rem; color:var(--acento-deep); text-decoration:none; }
   .gkit-gl:hover{ text-decoration:underline; }
   .gkit-drawer .gloss-item[hidden]{ display:none; }
-  .gkit-drawer .glossary{ display:block; column-count:1; }
+  .gkit-drawer .glossary{ display:block; column-count:1; background:#fff; border-radius:18px; padding:4px 16px; box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12); }
+  .gkit-drawer .gloss-item{ padding:12px 0; border-bottom:1px solid var(--line); }
+  .gkit-drawer .gloss-item:last-child{ border-bottom:0; }
 
   body.gkit-on{ padding-right:84px; }
 }
@@ -3180,12 +3182,22 @@ a.pill-student:hover{ text-decoration:underline; }
   .gkit-pdf-top{ display:block; height:36px; padding:0 14px; border:1px solid var(--line-strong,#d3d0e0); background:#fff; border-radius:8px; cursor:pointer; font:600 13px var(--sans); color:var(--ink-soft,#33314a); }
   .gkit-pdf-top:hover{ border-color:var(--acento-soft); }
   body.gkit-on .pdf-fab{ display:none; }
+  /* Panel derecho acoplado (oct. 2026): se abre pegado al borde derecho, empuja el contenido y no flota */
   .gkit-drawer{
-    top:64px; bottom:auto; right:24px; width:400px; max-width:calc(100vw - 48px); max-height:calc(100vh - 88px);
-    border:1px solid var(--line-strong,#d3d0e0); border-radius:12px; box-shadow:0 12px 40px rgba(21,20,27,.16);
-    transform:translateY(-8px); opacity:0; transition:transform .18s ease, opacity .18s ease, visibility 0s .18s;
+    top:58px; bottom:0; left:auto; right:0; width:360px; max-width:none; max-height:none;
+    border:0; border-left:1px solid var(--line); border-radius:0; box-shadow:none;
+    transform:translateX(100%); opacity:1; transition:transform .3s cubic-bezier(.2,.8,.2,1), visibility 0s .3s;
   }
-  .gkit-drawer.open{ transform:none; opacity:1; transition:transform .18s ease, opacity .18s ease; }
+  .gkit-drawer.open{ transform:none; opacity:1; transition:transform .3s cubic-bezier(.2,.8,.2,1); }
+  body.gkit-on{ transition:padding-right .3s cubic-bezier(.2,.8,.2,1); }
+  body.gkit-on.gkit-open{ padding-right:360px; }
+}
+@media screen and (min-width:1100px) and (max-width:1359px){
+  /* pantalla angosta: el panel se superpone en vez de empujar */
+  body.gkit-on.gkit-open{ padding-right:0; }
+  .gkit-drawer.open{ box-shadow:-12px 0 32px -12px rgba(21,20,27,.18); }
+}
+@media screen and (min-width:1100px){
   .gnav{ top:58px; }
   .gtoggle{ top:74px; }
   body.gkit-on section.block, body.gkit-on section.block h3, body.gkit-on section.block h4{ scroll-margin-top:84px; }
@@ -3201,3 +3213,126 @@ a.pill-student:hover{ text-decoration:underline; }
   .gkit-prog{ display:block; position:absolute; left:0; right:0; bottom:-1px; height:2px; }
   .gkit-prog i{ display:block; height:2px; width:0; background:var(--acento); }
 }
+
+
+/* ==========================================================================
+   Kit · pestaña Actividades v2 (oct. 2026): tarjetas de unidad con insignia,
+   casillas redondas y filas planas. Estética herramientas.html.
+   ========================================================================== */
+.gkit-drawer .gkit-sum{ display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:14px; row-gap:12px; padding:16px 18px; margin-bottom:16px; color:var(--ink-soft,#6e6e73); }
+.gkit-drawer .gkit-big{ font:800 2rem/1 var(--sans); letter-spacing:-.03em; color:var(--acento-deep); }
+.gkit-drawer .gkit-big small{ font:600 1rem var(--sans); color:var(--muted,#a1a1a6); letter-spacing:0; }
+.gkit-drawer .gkit-sumtxt{ display:flex; flex-direction:column; gap:2px; font-size:.8rem; line-height:1.35; }
+.gkit-drawer .gkit-sumtxt b{ font:700 .92rem var(--sans); color:var(--ink); }
+.gkit-drawer .gkit-sum .gkit-bar-track{ grid-column:1 / -1; margin:0; height:6px; background:#ececf0; }
+.gkit-drawer .gkit-sum.all .gkit-big{ color:#0f7a5c; }
+.gkit-drawer .gkit-sum.all .gkit-bar-track i{ background:#0f7a5c; }
+
+.gkit-drawer .gkit-unit{ padding:0 0 4px; overflow:hidden; }
+.gkit-drawer .gkit-unit > h4{ padding:16px 18px 6px; gap:12px; font:700 .98rem/1.3 var(--sans); letter-spacing:-.01em; text-transform:none; }
+.gkit-drawer .gkit-unit > h4::before{ display:none; }
+.gkit-drawer .gkit-num{ flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--acento-tint); color:var(--acento-deep); font:800 .82rem var(--sans); }
+.gkit-drawer .gkit-ut{ flex:1; min-width:0; }
+.gkit-drawer .gkit-unit.done .gkit-num{ background:#0f7a5c; color:#fff; font-size:0; }
+.gkit-drawer .gkit-unit.done .gkit-num::after{ content:'✓'; font:800 .9rem var(--sans); }
+.gkit-drawer .gkit-count{ margin-left:0; background:#f2f2f4; color:var(--ink-soft,#6e6e73); }
+.gkit-drawer .gkit-unit.closed > h4{ padding-bottom:14px; }
+.gkit-drawer .gkit-goal{ margin:0; padding:0 18px 8px 60px; font-size:.8rem; line-height:1.4; color:var(--ink-soft,#6e6e73); }
+.gkit-drawer .gkit-go{ font-size:.78rem; }
+
+.gkit-drawer .gkit-unit .table-wrap{ margin:0; border:0; background:none; box-shadow:none; overflow:visible; }
+.gkit-drawer table.check-table{ display:block; width:100%; margin:0; border:0; background:none; font-size:.86rem; }
+.gkit-drawer table.check-table tbody{ display:block; }
+.gkit-drawer table.check-table tr{ display:flex; align-items:flex-start; gap:12px; padding:11px 18px; border-top:1px solid var(--line); background:none !important; transition:background .15s; }
+.gkit-drawer table.check-table tr:hover{ background:#fafafc !important; }
+.gkit-drawer table.check-table td{ display:block; padding:0; border:0; background:none !important; }
+.gkit-drawer table.check-table td.check-cell{ flex:none; width:auto; padding-top:1px; }
+.gkit-drawer table.check-table td:not(.check-cell){ flex:1; min-width:0; line-height:1.45; }
+.gkit-drawer table.check-table td label{ cursor:pointer; color:var(--ink); }
+.gkit-drawer .checkbox{ width:22px; height:22px; border:2px solid #c7c7cc; border-radius:50%; transition:background .15s, border-color .15s; }
+.gkit-drawer .checkbox:hover{ border-color:var(--acento); }
+.gkit-drawer .checkbox:checked{ background:var(--acento); border-color:var(--acento); }
+.gkit-drawer .checkbox:checked::after{ left:6px; top:2px; width:5px; height:10px; }
+.gkit-drawer table.check-table tr:has(.checkbox:checked) td:not(.check-cell){ opacity:1; text-decoration:none; }
+.gkit-drawer table.check-table tr:has(.checkbox:checked) label{ color:var(--muted,#a1a1a6); text-decoration:line-through; text-decoration-color:#c7c7cc; }
+.gkit-drawer table.check-table code{ font-size:.82em; }
+
+/* ==========================================================================
+   Kit · escala tipográfica unificada del panel (oct. 2026)
+   título 20 · encabezado de grupo/unidad 14 · cuerpo 13 · secundario 12 · micro 11
+   (Referencia rápida conserva su propia escala qr-*, ya entre 11 y 13px)
+   ========================================================================== */
+.gkit-drawer .gkit-body{ font-size:13px; line-height:1.5; padding:8px 16px 28px; }
+.gkit-drawer .gkit-head{ padding:16px 16px 6px; }
+.gkit-drawer .gkit-title{ font-size:20px; }
+.gkit-drawer .gkit-close{ font-size:22px; }
+.gkit-drawer .gkit-pdf{ font-size:12px; }
+.gkit-drawer .gkit-panel > p{ font-size:13px; }
+.gkit-drawer .gkit-gl, .gkit-drawer .gkit-go{ font-size:12px; }
+.gkit-drawer .gkit-legend, .gkit-drawer .gs-sample{ font-size:12px; }
+.gkit-drawer .gkit-switch, .gkit-drawer .gkit-find{ font-size:13px; }
+
+/* Actividades */
+.gkit-drawer .gkit-sum{ padding:14px 16px; margin-bottom:14px; }
+.gkit-drawer .gkit-big{ font-size:26px; }
+.gkit-drawer .gkit-big small{ font-size:14px; }
+.gkit-drawer .gkit-sumtxt{ font-size:12px; }
+.gkit-drawer .gkit-sumtxt b{ font-size:13px; }
+.gkit-drawer .gkit-unit{ margin-bottom:12px; }
+.gkit-drawer .gkit-unit > h4{ font-size:14px; padding:14px 16px 6px; gap:10px; }
+.gkit-drawer .gkit-num{ width:26px; height:26px; font-size:12px; }
+.gkit-drawer .gkit-count{ font-size:11px; padding:2px 8px; }
+.gkit-drawer .gkit-goal{ font-size:12px; padding:0 16px 8px 52px; }
+.gkit-drawer table.check-table{ font-size:13px; }
+.gkit-drawer table.check-table tr{ padding:9px 16px; gap:10px; }
+.gkit-drawer .checkbox{ width:20px; height:20px; }
+.gkit-drawer .checkbox:checked::after{ left:5px; top:1px; width:5px; height:10px; }
+.gkit-drawer table.check-table code{ font-size:11.5px; }
+
+/* Herramientas */
+.gkit-drawer .gkit-panel-herramientas h4{ font-size:14px; margin:0 0 8px 2px; }
+.gkit-drawer .kit-tool{ padding:9px 12px; gap:12px; }
+.gkit-drawer .kit-tool-link{ gap:12px; }
+.gkit-drawer .kit-tool-icon{ width:44px; height:44px; border-radius:11px; }
+.gkit-drawer .kit-tool-name{ font-size:13px; }
+.gkit-drawer .kit-tool-domain{ font-size:11px; }
+.gkit-drawer .pill{ font-size:11px; padding:5px 11px; }
+
+/* Glosario */
+.gkit-drawer .gloss-term{ font-size:13.5px; }
+.gkit-drawer .gloss-def{ font-size:12.5px; line-height:1.5; }
+
+/* ==========================================================================
+   Texto de la clase en pantalla con el Kit (oct. 2026): 16px / 1.65 en vez de 17.5px / 1.68.
+   Con el índice a la izquierda y el panel a la derecha, 17.5px se leía grande frente al resto
+   de la interfaz (13-14px). Todo lo demás escala por em (callouts, tablas, listas, código).
+   Solo pantalla: el papel tiene su propia escala (9.8pt, CLAUDE-clases.md 3.7).
+   ========================================================================== */
+@media screen{
+  body.gkit-on{ font-size:16px; line-height:1.65; --measure:41rem; }
+}
+
+/* Actividades: la evolución queda fija arriba del panel mientras se baja por la lista (compacta, oct. 2026) */
+.gkit-drawer .gkit-sum{
+  position:sticky; top:-8px; z-index:4; margin:-8px -16px 12px; padding:12px 16px 10px;
+  display:grid; grid-template-columns:auto 1fr; align-items:baseline; column-gap:8px; row-gap:7px;
+  background:#f5f5f7;
+  border-radius:0; box-shadow:0 1px 0 var(--line);
+}
+.gkit-drawer .gkit-big{ font-size:18px; line-height:1; }
+.gkit-drawer .gkit-big small{ font-size:12px; }
+.gkit-drawer .gkit-sumtxt{ display:block; font:600 12px/1.2 var(--sans); color:var(--ink-soft,#6e6e73); }
+.gkit-drawer .gkit-sum .gkit-bar-track{ height:4px; }
+
+/* Actividades sin unidades (clases 02-15): una sola tarjeta con las filas */
+.gkit-drawer .gkit-flat{ padding:2px 0 4px; }
+.gkit-drawer .gkit-flat table.check-table tr:first-child{ border-top:0; }
+.gkit-drawer .gkit-flat.done{ box-shadow:0 0 0 2px #0f7a5c33, 0 6px 20px -10px rgba(0,0,0,.12); }
+
+/* Callouts dentro del panel (p. ej. "Actualizá tu LinkedIn" en Actividades): compactos, a la escala del panel */
+.gkit-drawer .callout{ margin:0 0 14px; padding:14px 16px; border-radius:14px; font-size:12.5px; line-height:1.5; text-align:left; box-shadow:none; }
+.gkit-drawer .callout p{ font-size:12.5px; line-height:1.5; margin:0 0 6px; text-align:left; }
+.gkit-drawer .callout p:last-child{ margin-bottom:0; }
+.gkit-drawer .callout .callout-label{ font-size:11px; letter-spacing:.06em; margin-bottom:6px; }
+.gkit-drawer .callout img{ width:22px; height:22px; }
+.gkit-drawer .gkit-flat + .callout, .gkit-drawer .gkit-flat ~ .callout{ margin-top:14px; }

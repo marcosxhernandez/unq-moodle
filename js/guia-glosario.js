@@ -26,7 +26,7 @@
   'use strict';
   if(window.__guiaGlosario) return; window.__guiaGlosario=true;
 
-  var items=[].slice.call(document.querySelectorAll('.glossary .gloss-item'));
+  var items=[].slice.call(document.querySelectorAll('.glossary .gloss-item')).filter(function(it){ return !it.closest('.gkit-drawer'); });   /* sin las copias del panel del Kit: duplicaban "Ver también" (Hoja, Hoja) */
   var cs=document.currentScript, BASE=cs&&cs.src?cs.src.replace(/js\/guia-glosario\.js(\?.*)?$/,'img/apps/'):'';   /* íconos: img/apps/ */
   var secs=[].slice.call(document.querySelectorAll('section.block'));
   if(!items.length||!secs.length) return;

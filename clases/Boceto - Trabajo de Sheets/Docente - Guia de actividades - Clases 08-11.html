@@ -275,7 +275,7 @@
     </div>
     <div class="act-control"><b>Para corregir:</b> <code>CRUDO</code>: última fila <b>124</b>. <code>DATOS</code> limpia: reemplazos <b>4</b> (años) y <b>4</b> (pesos), <b>3</b> filas duplicadas quitadas, última fila <b>121</b>, suma de Edad <b>2.909</b>, suma de Gasto_mensual <b>15.242.000</b>. Al ordenar por Carrera A a Z y Gasto de mayor a menor: <b>Contador Público</b>, $ 220.000. Volver por <code>ID</code>. Hojas de práctica (<code>PRACTICA</code>, <code>MINI_CRUDO</code>, <code>MINI_DATOS</code>, <code>ESCALAS</code>) ocultas y <code>LEEME</code> primera.</div>
     <div class="act-ojo"><b>Ojo:</b> Los defectos del archivo grande son: 4 <code>años</code>, 4 <code>pesos</code>, espacios de más en 6 carreras, mayúsculas mezcladas en 4 filas (se dejan), 5 vacíos en Viaje_min (se dejan) y 3 filas repetidas al final (filas 122 a 124).</div>
-    <div class="act-ojo"><b>Ojo:</b> Esta actividad <b>oculta</b> <code>PRACTICA</code>. En la Clase 09 la primera actividad pide crear una hoja <code>PRACTICA</code>: Sheets no permite dos hojas con el mismo nombre, así que ese paso choca con la hoja oculta (ver las notas finales).</div>
+    <div class="act-ojo"><b>Ojo:</b> Esta actividad <b>oculta</b> <code>PRACTICA</code>. La Clase 09 trabaja en una hoja nueva, <code>PRACTICA09</code>, justamente para no chocar con esta (Sheets no permite dos hojas con el mismo nombre).</div>
     <div class="act-ojo"><b>Ojo:</b> El enlace de la copia tiene que estar compartido con permiso de Comentador, no de Lector: con Lector el docente no puede dejar comentarios.</div>
     <div class="act-campus">📤 Entregable de la clase (campus): link a la copia Clase 08 - Apellido - AAAA-MM-DD, compartida con marcos.hernandez@unq.edu.ar con permiso de Comentador. Ese enlace es el presente y la entrega.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Archivo <code>Encuesta_ingresantes_2026.csv</code>. En <code>unq-moodle/archivos/</code> (README con defectos y cifras de control).</p>
@@ -296,15 +296,15 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>).</li>
+<li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
 <li>En <code>L1</code> escribí <code>Cel_semana</code> y en <code>L2</code> la fórmula <code>=G2*7</code>. Copiala hasta la fila 9 con doble clic en el controlador. Controles: 14, 28, 42, 49, 63, 7, 7 y 28.</li>
 <li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta el final y con formato de moneda.</li>
 <li>Repaso de la clase anterior: dale a los encabezados de las dos columnas nuevas el mismo estilo que al resto y ajustá el ancho.</li>
-<li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code>.</li>
+<li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> <code>Cel_semana</code> (L): <b>14, 28, 42, 49, 63, 7, 7 y 28</b>. Se recalcula al cambiar <code>G2</code> y vuelve con <code>Ctrl+Z</code>.</div>
-    <div class="act-ojo"><b>Ojo:</b> La consigna pide <b>crear</b> una hoja <code>PRACTICA</code>. Si el alumno ocultó la de la Clase 08 (como pedía el Pedido de esa clase), Sheets rechaza el nombre. Solución en el aula: mostrarla desde Ver → Hojas ocultas y borrarle el contenido, o ponerle otro nombre a la nueva.</div>
+    <div class="act-control"><b>Para corregir:</b> <code>Cel_semana</code> (L): <b>14, 28, 42, 49, 63, 7, 7 y 28</b>. Se recalcula al cambiar <code>G2</code> y vuelve con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</div>
+    <div class="act-ojo"><b>Ojo:</b> La hoja se llama <code>PRACTICA09</code> y no <code>PRACTICA</code> porque esta última quedó oculta en la Clase 08 y Sheets rechaza dos hojas con el mismo nombre.</div>
     <div class="act-ojo"><b>Ojo:</b> Pegado especial → Solo valores: <code>Ctrl+Mayús+V</code> (Mac: <code>⌘+Mayús+V</code>).</div>
     <p class="act-meta"><b>Insumos del docente:</b> La hoja <code>DATOS</code> de la Clase 08 (el archivo de trabajo, no la copia entregada).</p>
   </div>
@@ -317,7 +317,7 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
+<li>En <code>PRACTICA09</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
 <li>En la columna B escribí una función para cada uno, siempre sobre las filas 2 a 9: <code>PROMEDIO</code> de <code>D</code>, <code>MAX</code> y <code>MIN</code> de <code>K</code>, <code>CONTAR</code> de <code>H</code>, <code>CONTARA</code> de <code>C</code> y <code>CONTAR</code> de <code>C</code>.</li>
 <li>Controles: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
 <li>Con 8 filas podés comprobar a mano: sumá el gasto con la autosuma <code>Σ</code> (tendría que dar $ 848.000) y dividí por 8: el promedio es $ 106.000. Dale el formato que corresponde: moneda para los gastos y dos decimales para el promedio.</li>
@@ -337,13 +337,13 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA!K2/0</code> y anotá qué error aparece.</li>
-<li>En <code>A2</code> escribí <code>=PRACTICA!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA!D2:D9)</code>. Anotá los errores.</li>
+<li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá qué error aparece.</li>
+<li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá los errores.</li>
 <li>Corregí <code>A3</code> para que funcione y confirmá que da 26,75.</li>
-<li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA</code> y volvé a desactivarlo.</li>
+<li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA09</code> y volvé a desactivarlo.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> <code>=PRACTICA!K2/0</code> da <code>#DIV/0!</code>; <code>=PRACTICA!C2+1</code> da <code>#VALUE!</code> (C2 es texto); <code>=PROMEDI(...)</code> da <code>#NAME?</code>. Corregida con <code>PROMEDIO</code>: <b>26,75</b>.</div>
+    <div class="act-control"><b>Para corregir:</b> <code>=PRACTICA09!K2/0</code> da <code>#DIV/0!</code>; <code>=PRACTICA09!C2+1</code> da <code>#VALUE!</code> (C2 es texto); <code>=PROMEDI(...)</code> da <code>#NAME?</code>. Corregida con <code>PROMEDIO</code>: <b>26,75</b>.</div>
     <div class="act-ojo"><b>Ojo:</b> Ver → Mostrar → Fórmulas: <code>Ctrl+`</code> (Mac: <code>⌘+`</code>). Hay que volver a desactivarlo.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
   </div>
@@ -356,7 +356,7 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
+<li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
 <li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada. Tiene que dar 3,00% en todas.</li>
 <li>En <code>P1</code> escribí <code>Proyeccion_6m</code> y en <code>P2</code> <code>=K2*POTENCIA(1+3%;6)</code>, copiada hasta la 9. <code>P2</code> tiene que dar $ 78.807,45.</li>
 <li>Creá una hoja <code>PARAMETROS</code> con los encabezados <code>Parámetro</code> y <code>Valor</code> en <code>A1:B1</code>. En <code>A2</code> escribí <code>Inflación anual</code> y en <code>B2</code> <code>40%</code>. En <code>A3</code> escribí <code>Inflación mensual equivalente</code> y en <code>B3</code> <code>=POTENCIA(1+B2;1/12)-1</code>, con porcentaje y dos decimales. Tiene que dar <strong>2,84%</strong>.</li>
@@ -376,7 +376,7 @@
     <div class="act-steps">
 <ol>
 <li>En <code>PARAMETROS</code>, en <code>A4</code> escribí <code>Meses a proyectar</code> y en <code>B4</code> <code>6</code>.</li>
-<li>En <code>PRACTICA</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
+<li>En <code>PRACTICA09</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
 <li>Corregí <code>Q2</code> con referencias absolutas (<code>$B$3</code> y <code>$B$4</code>, con <code>F4</code>) y copiala de nuevo. <code>Q2</code> tiene que dar $ 78.092,25.</li>
 <li>Calculá el gasto promedio en <code>K11</code> con <code>=PROMEDIO(K2:K9)</code>. Armá la tabla de escenarios: en <code>A20</code> <code>Meses</code>, en <code>B20</code> y <code>C20</code> los porcentajes <code>3%</code> y <code>5%</code>, y en <code>A21:A23</code> la serie de 1 a 3 con el controlador.</li>
 <li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11*POTENCIA(1+B$20;$A21)</code>, y copiala a toda la tabla. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.829,06 y <code>C23</code> $ 122.708,25.</li>
@@ -396,10 +396,10 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
+<li>En <code>PRACTICA09</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
 <li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro?</li>
 <li>Seleccioná <code>A2:K9</code> y creá una regla con <strong>La fórmula personalizada es</strong> <code>=$E2="Sí"</code>, con relleno amarillo suave. Tienen que pintarse <strong>5 filas enteras</strong>.</li>
-<li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code>.</li>
+<li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> Viaje mayor a 90: <b>2</b> celdas marcadas (106 y 93). Gasto más oscuro de la escala: <b>$ 180.000</b> (respuesta 6). Regla de fila entera <code>=$E2="Sí"</code>: <b>5</b> filas pintadas (respuestas 2, 4, 5, 6 y 8).</div>
@@ -414,9 +414,9 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code>.</li>
+<li>En <code>PRACTICA09</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code> (Mac: <code>⌘+C</code>).</li>
 <li>Creá una hoja <code>FOTO</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
-<li>Cambiá el gasto de <code>K2</code> en <code>PRACTICA</code> a <code>100000</code>. Mirá que los indicadores cambiaron y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code>.</li>
+<li>Cambiá el gasto más alto, <code>K7</code> (<code>180000</code>), a <code>200000</code> en <code>PRACTICA09</code>. Mirá que el <em>Gasto máximo</em> cambió y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> <code>FOTO</code> queda con números, no con fórmulas (la barra de fórmulas lo confirma).</div>
@@ -440,7 +440,7 @@
 <li>Creá <code>ESCENARIOS</code> como la tabla de práctica: meses de 1 a 6 en <code>A2:A7</code>, inflaciones mensuales de 2%, 3% y 5% en <code>B1:D1</code>, y una sola fórmula con referencias mixtas que use el gasto promedio de <code>RESUMEN</code> (<code>$B$8</code>). Control: 3% a los 6 meses, <strong>$ 151.664,54</strong>.</li>
 <li>En <code>DATOS</code>, aplicá formato condicional: viajes de más de 90 minutos en rojo (<strong>13</strong> celdas), escala de colores en el gasto, horas de estudio menores a 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2="Sí"</code>).</li>
 <li>Sacá una <code>FOTO</code> de los indicadores de <code>RESUMEN</code> (Pegado especial, solo valores).</li>
-<li>Ocultá las hojas de práctica (<code>PRACTICA</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>marcos.hernandez@unq.edu.ar</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+<li>Ocultá las hojas de práctica (<code>PRACTICA09</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>marcos.hernandez@unq.edu.ar</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> <code>RESUMEN</code>: Respuestas <b>120</b>; Con dato de viaje <b>115</b>; Edad promedio <b>24,24</b>; mínima <b>17</b>; máxima <b>42</b>; Gasto promedio <b>$ 127.016,67</b>; máximo <b>$ 220.000</b>; mínimo <b>$ 30.000</b>; Viaje promedio <b>55,48</b>. <code>RESUMEN!B12</code> (Gasto proyectado promedio) <b>$ 150.288,15</b>. <code>ESCENARIOS</code>: 3% a 6 meses (columna C, fila 7) <b>$ 151.664,54</b>. Formato condicional: viajes de más de 90 min <b>13</b> celdas; horas de estudio menores a 4 <b>16</b> celdas; filas de quienes trabajan: <b>73</b>.</div>
@@ -583,7 +583,7 @@
     <div class="act-steps">
 <p>Trabajá en el archivo <em>Retrato del curso</em>, en las hojas con los datos reales. Estos son los pasos, con los controles.</p>
 <ol>
-<li>En <code>DATOS</code>, agregá <code>Nivel_Excel</code> en <code>O</code>, <code>Riesgo_carga</code> en <code>P</code> e <code>IA_frecuente</code> en <code>Q</code>, hasta la fila 121. Controles: <em>Atención</em> en <strong>27</strong> filas y <em>Frecuente</em> en <strong>65</strong>. Y <em>Inicial</em> en 65 filas.</li>
+<li>En <code>DATOS</code>, agregá <code>Nivel_Excel</code> en <code>O</code>, <code>Riesgo_carga</code> en <code>P</code> e <code>IA_frecuente</code> en <code>Q</code>, hasta la fila 121. Controles: <em>Atención</em> en <strong>27</strong> filas y <em>Frecuente</em> en <strong>65</strong> e <em>Inicial</em> en <strong>65</strong>.</li>
 <li>En <code>R</code>, agregá <code>Departamento</code> con <code>BUSCARV</code> sobre <code>CATALOGO</code> (la hoja que ya importaste). No tiene que haber ningún <code>#N/A</code>.</li>
 <li>En <code>RESUMEN</code>, agregá <code>Personas que trabajan</code> (73), <code>% que trabaja</code> (60,83%) y <code>Viajes de más de 90 min</code> (13), con <code>CONTAR.SI</code>.</li>
 <li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARV</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
@@ -608,7 +608,7 @@
 <tr><td>Licenciatura en Artes Electrónicas</td><td>7</td><td>$ 131.000,00</td></tr>
 <tr><td>Licenciatura en Música y Tecnología</td><td>4</td><td>$ 131.000,00</td></tr>
 </table><p class="xl-cap">Suma de respuestas 120; suma de porcentajes 100%.</p></div>
-    <div class="act-ojo"><b>Ojo:</b> La consigna da <b>27</b> (Atención) y dice "Frecuente en 65. Y Inicial en 65 filas": las dos cifras son 65 y las dos están bien. No es un error de tipeo.</div>
+    <div class="act-ojo"><b>Ojo:</b> La consigna da <b>27</b> (Atención), <b>65</b> (Frecuente) y <b>65</b> (Inicial): las dos cifras de 65 son una coincidencia y están bien. No es un error de tipeo.</div>
     <div class="act-ojo"><b>Ojo:</b> Administración da 27 aunque una de esas respuestas esté escrita en mayúsculas (<code>LICENCIATURA EN ADMINISTRACIÓN</code>): <code>CONTAR.SI</code> y <code>BUSCARV</code> no distinguen mayúsculas. Es la razón de fondo por la que en la Clase 08 las mayúsculas se dejan como están.</div>
     <div class="act-ojo"><b>Ojo:</b> Si el alumno escribe las 11 carreras a mano en <code>CARRERAS</code>, un espacio de más rompe <code>BUSCARV</code> y <code>CONTAR.SI</code>. Es más seguro copiarlas desde <code>CATALOGO</code>.</div>
     <div class="act-ojo"><b>Ojo:</b> Antes de la copia final los filtros tienen que quedar apagados (lo pide la consigna).</div>
@@ -763,8 +763,8 @@
     <li>Los archivos de datos están en <code>unq-moodle/archivos/</code>: <code>Practica_encuesta_mini.csv</code> (Clase 08), <code>Encuesta_ingresantes_2026.csv</code> (Clases 08 a 11) y <code>Catalogo_carreras_2026.csv</code> (Clases 10 y 11). Todas las cifras del recuadro azul fueron recalculadas contra esos CSV y coinciden con las de las Guías Visuales, salvo lo marcado en rojo.</li>
     <li><b>Entregable:</b> cada clase pide un solo link, el de la copia <code>Clase NN - Apellido - AAAA-MM-DD</code> compartida con <code>marcos.hernandez@unq.edu.ar</code> como Comentador, que funciona como presente y entrega. En la Clase 11 se adjunta además el PDF de <code>TABLERO</code> y <code>MI_PREGUNTA</code>. En <code>moodle/entregas.csv</code> las tareas de las Clases 10 y 11 en el aula 39501 siguen con <code>TODO</code> (faltan los ids).</li>
     <li>Actividades que dependen de otra: toda la Clase 09 parte de <code>DATOS</code> limpia (Clase 08); <code>PARAMETROS</code> (Clase 09) se reutiliza en la entrega de DEyA de la Clase 11; <code>CATALOGO</code>, <code>LISTAS</code> y los rangos con nombre <code>Depto</code> y <code>Gasto</code> (Clase 10) se usan en el tablero de la Clase 11. Un alumno ausente arrastra el faltante.</li>
-    <li><b>Consignas para revisar antes de dictar:</b> (1) Clase 09, Micro ejercicio 1 pide crear una hoja <code>PRACTICA</code> pero el Pedido de la Clase 08 la oculta, y Sheets no admite dos hojas con el mismo nombre; (2) Clase 09, Micro ejercicio 7 pide cambiar <code>K2</code> y mirar que los indicadores cambian, pero ninguno depende de esa celda (usar <code>K7</code> o <code>K8</code>); (3) Clase 11, la entrega final no aclara si MI_PREGUNTA se resuelve con las 120 respuestas o solo con las del departamento, y las cifras son distintas (ver la actividad 6); (4) el README de los archivos, en "Clave de la entrega final", todavía describe para CyT el promedio de horas de estudio por Dominio_Excel, que ya no es lo que pide la Guía Visual.</li>
-    <li>Los micro ejercicios trabajan sobre las primeras 8 respuestas y el Pedido de la clase repite lo mismo con las 120. La hoja de práctica cambia de nombre en cada clase (<code>PRACTICA</code>, <code>PRACTICA10</code>, <code>PRACTICA11</code>) y las anteriores se ocultan al entregar.</li>
+    <li><b>Consignas para revisar antes de dictar:</b> (1) Clase 11, la entrega final no aclara si MI_PREGUNTA se resuelve con las 120 respuestas o solo con las del departamento, y las cifras son distintas (ver la actividad 6); (2) el README de los archivos, en "Clave de la entrega final", todavía describe para CyT el promedio de horas de estudio por Dominio_Excel, que ya no es lo que pide la Guía Visual.</li>
+    <li>Los micro ejercicios trabajan sobre las primeras 8 respuestas y el Pedido de la clase repite lo mismo con las 120. La hoja de práctica cambia de nombre en cada clase (<code>PRACTICA</code>, <code>PRACTICA09</code>, <code>PRACTICA10</code>, <code>PRACTICA11</code>) y las anteriores se ocultan al entregar.</li>
     <li>Gemini puede aparecer distinto según la cuenta y el plan de cada alumno (la propia Guía Visual lo aclara). Si alguien no lo tiene, alcanza con un chat de IA aparte; el protocolo de la actividad (preguntar, probar aparte, comparar, anotar) es el mismo.</li>
     <li>El texto de cada actividad es una transcripción literal de la Guía Visual del alumno (<code>Clase NN - &lt;Título&gt;.html</code>, en esta misma carpeta), salvo los botones de descarga de los CSV, que no se repiten acá. Si se edita una consigna ahí, replicar el cambio acá para que ambas versiones no queden desincronizadas.</li>
     <li>Los íconos de apps representan la app protagonista de cada actividad (Google Sheets, y Drive, Excel o Gemini cuando corresponde). Viven en <code>unq-moodle/img/apps/</code>, los mismos archivos que usa el resto del proyecto.</li>

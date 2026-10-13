@@ -181,12 +181,12 @@
 <h3>Copiar una fórmula a toda la columna</h3>
 <p>No hace falta escribir la fórmula 120 veces. Escribila en la primera fila y arrastrá el <strong>controlador de relleno</strong> hacia abajo, o hacé <strong>doble clic</strong> sobre él para que se extienda hasta donde llegan los datos de la columna vecina. Sheets ajusta solo las referencias: en la fila 3 la fórmula pasa a ser <code>=G3*7</code>, en la 4 <code>=G4*7</code>, y así.</p>
 <h3>Copiar, cortar y pegado especial</h3>
-<p><code>Ctrl+C</code> copia, <code>Ctrl+X</code> corta y <code>Ctrl+V</code> pega todo: el valor, la fórmula y el formato. Cuando solo querés una parte, usás <strong>Editar → Pegado especial</strong>.</p>
+<p><code>Ctrl+C</code> (Mac: <code>⌘+C</code>) copia, <code>Ctrl+X</code> (Mac: <code>⌘+X</code>) corta y <code>Ctrl+V</code> (Mac: <code>⌘+V</code>) pega todo: el valor, la fórmula y el formato. Cuando solo querés una parte, usás <strong>Editar → Pegado especial</strong>.</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Pegado especial</th><th>Qué pega</th><th>Cuándo se usa</th></tr></thead>
     <tbody>
-<tr><td><strong>Solo valores</strong> (<code>Ctrl+Mayús+V</code>)</td><td>El resultado, sin la fórmula</td><td>Para &quot;congelar&quot; un resultado que no querés que cambie más</td></tr>
+<tr><td><strong>Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>)</td><td>El resultado, sin la fórmula</td><td>Para &quot;congelar&quot; un resultado que no querés que cambie más</td></tr>
 <tr><td><strong>Solo formato</strong></td><td>El aspecto, sin el contenido</td><td>Para repetir un estilo en otro rango</td></tr>
 <tr><td><strong>Solo fórmula</strong></td><td>La fórmula, sin el formato</td><td>Para copiar el cálculo y conservar el aspecto de destino</td></tr>
 <tr><td><strong>Transpuesto</strong></td><td>Las filas pasan a ser columnas y viceversa</td><td>Para girar una tabla</td></tr>
@@ -200,11 +200,11 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>).</li>
+  <li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
   <li>En <code>L1</code> escribí <code>Cel_semana</code> y en <code>L2</code> la fórmula <code>=G2*7</code>. Copiala hasta la fila 9 con doble clic en el controlador. Controles: 14, 28, 42, 49, 63, 7, 7 y 28.</li>
   <li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta el final y con formato de moneda.</li>
   <li>Repaso de la clase anterior: dale a los encabezados de las dos columnas nuevas el mismo estilo que al resto y ajustá el ancho.</li>
-  <li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code>.</li>
+  <li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
   </div>
 </div>
@@ -242,10 +242,12 @@
 <tr><th class="xl-rn">3</th><td>Respuestas</td><td class="n">120</td></tr>
 <tr><th class="xl-rn">4</th><td>Con dato de viaje</td><td class="n">115</td></tr>
 <tr><th class="xl-rn">5</th><td>Edad promedio</td><td class="n">24,24</td></tr>
-<tr><th class="xl-rn">6</th><td>Gasto promedio</td><td class="n">$ 127.016,67</td></tr>
-<tr><th class="xl-rn">7</th><td>Gasto máximo</td><td class="n">$ 220.000,00</td></tr>
+<tr><th class="xl-rn">6</th><td>Edad mínima</td><td class="n">17</td></tr>
+<tr><th class="xl-rn">7</th><td>Edad máxima</td><td class="n">42</td></tr>
+<tr><th class="xl-rn">8</th><td>Gasto promedio</td><td class="n">$ 127.016,67</td></tr>
+<tr><th class="xl-rn">9</th><td>Gasto máximo</td><td class="n">$ 220.000,00</td></tr>
 </tbody></table></div>
-<p class="xl-cap">Así debería quedar la hoja <code>RESUMEN</code> al terminar la actividad. Estas cifras son los valores de control para saber si tus fórmulas están bien.</p>
+<p class="xl-cap">Ejemplo de una hoja de indicadores, <code>RESUMEN</code>: cada valor sale de una función sobre <code>DATOS</code>. Estas cifras sirven de control para saber si tus fórmulas están bien.</p>
 </div>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Vacío no es cero</p>
@@ -258,7 +260,7 @@
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
+  <li>En <code>PRACTICA09</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
   <li>En la columna B escribí una función para cada uno, siempre sobre las filas 2 a 9: <code>PROMEDIO</code> de <code>D</code>, <code>MAX</code> y <code>MIN</code> de <code>K</code>, <code>CONTAR</code> de <code>H</code>, <code>CONTARA</code> de <code>C</code> y <code>CONTAR</code> de <code>C</code>.</li>
   <li>Controles: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
   <li>Con 8 filas podés comprobar a mano: sumá el gasto con la autosuma <code>Σ</code> (tendría que dar $ 848.000) y dividí por 8: el promedio es $ 106.000. Dale el formato que corresponde: moneda para los gastos y dos decimales para el promedio.</li>
@@ -296,10 +298,10 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA!K2/0</code> y anotá qué error aparece.</li>
-  <li>En <code>A2</code> escribí <code>=PRACTICA!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA!D2:D9)</code>. Anotá los errores.</li>
+  <li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá qué error aparece.</li>
+  <li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá los errores.</li>
   <li>Corregí <code>A3</code> para que funcione y confirmá que da 26,75.</li>
-  <li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA</code> y volvé a desactivarlo.</li>
+  <li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA09</code> y volvé a desactivarlo.</li>
 </ol>
   </div>
 </div>
@@ -349,7 +351,7 @@
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
+  <li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
   <li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada. Tiene que dar 3,00% en todas.</li>
   <li>En <code>P1</code> escribí <code>Proyeccion_6m</code> y en <code>P2</code> <code>=K2*POTENCIA(1+3%;6)</code>, copiada hasta la 9. <code>P2</code> tiene que dar $ 78.807,45.</li>
   <li>Creá una hoja <code>PARAMETROS</code> con los encabezados <code>Parámetro</code> y <code>Valor</code> en <code>A1:B1</code>. En <code>A2</code> escribí <code>Inflación anual</code> y en <code>B2</code> <code>40%</code>. En <code>A3</code> escribí <code>Inflación mensual equivalente</code> y en <code>B3</code> <code>=POTENCIA(1+B2;1/12)-1</code>, con porcentaje y dos decimales. Tiene que dar <strong>2,84%</strong>.</li>
@@ -394,7 +396,7 @@
   <div class="prose">
 <ol>
   <li>En <code>PARAMETROS</code>, en <code>A4</code> escribí <code>Meses a proyectar</code> y en <code>B4</code> <code>6</code>.</li>
-  <li>En <code>PRACTICA</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
+  <li>En <code>PRACTICA09</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
   <li>Corregí <code>Q2</code> con referencias absolutas (<code>$B$3</code> y <code>$B$4</code>, con <code>F4</code>) y copiala de nuevo. <code>Q2</code> tiene que dar $ 78.092,25.</li>
   <li>Calculá el gasto promedio en <code>K11</code> con <code>=PROMEDIO(K2:K9)</code>. Armá la tabla de escenarios: en <code>A20</code> <code>Meses</code>, en <code>B20</code> y <code>C20</code> los porcentajes <code>3%</code> y <code>5%</code>, y en <code>A21:A23</code> la serie de 1 a 3 con el controlador.</li>
   <li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11*POTENCIA(1+B$20;$A21)</code>, y copiala a toda la tabla. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.829,06 y <code>C23</code> $ 122.708,25.</li>
@@ -426,10 +428,10 @@
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
+  <li>En <code>PRACTICA09</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
   <li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro?</li>
   <li>Seleccioná <code>A2:K9</code> y creá una regla con <strong>La fórmula personalizada es</strong> <code>=$E2=&quot;Sí&quot;</code>, con relleno amarillo suave. Tienen que pintarse <strong>5 filas enteras</strong>.</li>
-  <li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code>.</li>
+  <li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
   </div>
 </div>
@@ -449,9 +451,9 @@
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code>.</li>
+  <li>En <code>PRACTICA09</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code> (Mac: <code>⌘+C</code>).</li>
   <li>Creá una hoja <code>FOTO</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
-  <li>Cambiá el gasto de <code>K2</code> en <code>PRACTICA</code> a <code>100000</code>. Mirá que los indicadores cambiaron y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code>.</li>
+  <li>Cambiá el gasto más alto, <code>K7</code> (<code>180000</code>), a <code>200000</code> en <code>PRACTICA09</code>. Mirá que el <em>Gasto máximo</em> cambió y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
   </div>
 </div>
@@ -483,7 +485,7 @@
   <li>Creá <code>ESCENARIOS</code> como la tabla de práctica: meses de 1 a 6 en <code>A2:A7</code>, inflaciones mensuales de 2%, 3% y 5% en <code>B1:D1</code>, y una sola fórmula con referencias mixtas que use el gasto promedio de <code>RESUMEN</code> (<code>$B$8</code>). Control: 3% a los 6 meses, <strong>$ 151.664,54</strong>.</li>
   <li>En <code>DATOS</code>, aplicá formato condicional: viajes de más de 90 minutos en rojo (<strong>13</strong> celdas), escala de colores en el gasto, horas de estudio menores a 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2=&quot;Sí&quot;</code>).</li>
   <li>Sacá una <code>FOTO</code> de los indicadores de <code>RESUMEN</code> (Pegado especial, solo valores).</li>
-  <li>Ocultá las hojas de práctica (<code>PRACTICA</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>marcos.hernandez@unq.edu.ar</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+  <li>Ocultá las hojas de práctica (<code>PRACTICA09</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>marcos.hernandez@unq.edu.ar</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
 </ol>
   </div>
 </div>
@@ -566,7 +568,7 @@
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>F4</code> rota entre los cuatro tipos</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Formato condicional: <strong>Formato → Formato condicional</strong></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fila entera: fórmula personalizada con columna fija, por ejemplo <code>=$E2=&quot;Sí&quot;</code></span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Solo valores: <code>Ctrl+Mayús+V</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Solo valores: <code>Ctrl+Mayús+V</code> (Mac: <code>⌘+Mayús+V</code>)</span></div>
 </div>
 </div>
 </div>

@@ -397,7 +397,7 @@
 <tr><td><strong>B</strong> <em>I</em></td><td>Negrita, cursiva, subrayado, tachado</td><td>Barra de herramientas, <code>Ctrl+B</code> / <code>Ctrl+I</code> / <code>Ctrl+U</code></td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-fill-color"></use></svg></td><td>Color de relleno y de texto</td><td>Barra de herramientas</td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-borders"></use></svg></td><td>Bordes: primero color y estilo, después ubicación</td><td>Barra de herramientas</td></tr>
-<tr><td><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg></td><td>Combinar celdas: solo para títulos, nunca dentro de los datos</td><td>Barra de herramientas, o <em>Formato → Combinar celdas</em></td></tr>
+<tr><td><svg class="tool-icon"><use href="#ti-merge-cells"></use></svg></td><td>Combinar celdas: solo el título de la portada, nunca en la tabla de datos (ni en los encabezados)</td><td>Barra de herramientas, o <em>Formato → Combinar celdas</em></td></tr>
 <tr><td><svg class="tool-icon"><use href="#ti-wrap-cell"></use></svg></td><td>Ajustar texto: el texto largo baja a otra línea en vez de desbordar</td><td><em>Formato → Ajuste de texto</em></td></tr>
     </tbody>
   </table>
@@ -601,7 +601,7 @@
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Moneda, porcentaje y más formatos: botones de la barra de herramientas</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Inmovilizar: <strong>Ver → Inmovilizar → 1 fila</strong></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ancho de columna: doble clic en el borde derecho de la letra</span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinar solo en títulos, nunca dentro de los datos</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Combinar solo el título de la portada, nunca en la tabla de datos (ni en los encabezados)</span></div>
 </div>
 <div class="qr-tip">El formato <code>%</code> multiplica por 100 lo que ya está escrito.</div>
 </div>
@@ -616,6 +616,21 @@
 </div>
 </div>
 </div>
+<h3 id="herramientas">Herramientas</h3>
+<p>Los sitios y aplicaciones que usamos en esta clase, a mano. Los costos pueden cambiar; 🎓 indica beneficio para estudiantes.</p>
+
+<h4>Planilla de cálculo</h4>
+<div class="kit-card">
+  <div class="kit-tool" data-cost="free">
+    <a class="kit-tool-link" href="https://sheets.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Google - Sheets.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Sheets</span><span class="kit-tool-domain">sheets.google.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-free">Gratis</span></span>
+  </div>
+  <div class="kit-tool" data-cost="freemium" data-student="1">
+    <a class="kit-tool-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Microsoft - Excel.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Excel</span><span class="kit-tool-domain">office.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-freemium">Freemium</span><a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a></span>
+  </div>
+</div>
+
 <h3 id="glosario">Glosario</h3>
 <div class="glossary">
 <div class="gloss-item"><span class="gloss-term">Archivo</span><p class="gloss-def">Documento completo de Google Sheets, guardado en Drive, con una o muchas hojas. En Excel se llama libro.</p></div>
@@ -649,6 +664,7 @@
 
 </div>
 
+<script defer src="../../js/guia-kit.js"></script>
 <script defer src="../../js/guia-nav.js"></script>
 <script defer src="../../js/guia-glosario.js"></script>
 <script defer src="../../js/guia-continuidad.js"></script>

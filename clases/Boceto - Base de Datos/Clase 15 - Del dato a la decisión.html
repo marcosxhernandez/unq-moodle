@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clase 13 - Cómo piensan las bases de datos</title>
+<title>Clase 15 - Del dato a la decisión</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
-<link rel="stylesheet" href="../css/guia-estilo.css">
+<link rel="stylesheet" href="../../css/guia-estilo.css">
 <style>
   /* Acento de clase, Datos = purpura */
   :root{
@@ -18,7 +18,7 @@
   }
   @page{
     @top-right{
-      content:"Clase 13 · Datos";
+      content:"Clase 15 · Datos";
       color:#432677;
     }
   }
@@ -63,19 +63,18 @@
 <symbol id="ti-export" viewBox="0 0 24 24"><path d="M12 3.5 V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.3 L12 14.3 L16 10.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 17.5 V19.3 A1.4 1.4 0 0 0 5.9 20.7 H18.1 A1.4 1.4 0 0 0 19.5 19.3 V17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="ti-table" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="3.5" y1="9.7" x2="20.5" y2="9.7" stroke="currentColor" stroke-width="1.4"/><line x1="3.5" y1="14.9" x2="20.5" y2="14.9" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="4.5" x2="12" y2="19.5" stroke="currentColor" stroke-width="1.4"/></symbol>
 <symbol id="ti-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="10.9" y1="12.6" x2="20" y2="3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><line x1="15.3" y1="8.2" x2="18" y2="10.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><line x1="17.3" y1="6.2" x2="19.3" y2="8.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
-<symbol id="ti-link-2" viewBox="0 0 24 24"><rect x="3" y="9" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="9" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="10" y1="12.5" x2="14" y2="12.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
 </defs></svg>
 
-<section class="cover-page" data-num="13">
+<section class="cover-page" data-num="15">
   <div class="cover-inner">
-    <span class="cover-kicker">Clase 13 · Datos</span>
-    <h1 class="cover-title">Cómo Piensan las Bases de Datos</h1>
-    <p class="cover-subtitle">Campo, registro y tabla · Tipos de datos · Armá tu formulario · Clave primaria y foránea</p>
+    <span class="cover-kicker">Clase 15 · Datos</span>
+    <h1 class="cover-title">Del Dato a la Decisión</h1>
+    <p class="cover-subtitle">Leer un tablero con ojo crítico · Contar una historia con datos · Verificar antes de decidir · Taller integrador</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
     <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
-      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <img class="cover-teacher-photo" src="../../img/marcos-hernandez.png" alt="Marcos Hernández">
       <span class="cover-teacher-text">
         <span class="cover-teacher-name">Marcos Hernández</span>
         <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
@@ -87,208 +86,131 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Arranca la unidad de Datos, y hoy armás algo real desde el primer minuto: un Google Forms que se convierte en tu primera tabla. A partir de esa tabla entendés qué es un dato vs. información, qué son campo, registro y tabla, verificás tipos de datos, identificás la clave primaria que ya tenés (la marca temporal), y armás una segunda tabla chica conectada por una clave foránea real, el par de tablas con el que vas a trabajar el resto de la unidad.</p>
+  <p class="toc-intro">Cierra la unidad de Datos, y esta clase no suma una herramienta más: suma el paso que le da sentido a todo lo anterior. No construís un tablero nuevo, lo leés con ojo crítico. No escribís cualquier párrafo, contás la historia que esos datos sostienen. Y antes de decidir algo con ellos, los pasás por el mismo chequeo de tres pasos que ya usaste en la Clase 14. Cierra con un taller integrador que funciona como ensayo de la evaluación de la unidad.</p>
   <span class="toc-label">Contenido</span>
   <ol>
-    <li><a href="#dato"><span class="toc-num">01</span><span class="toc-text">Dato vs. información</span></a></li>
-    <li><a href="#estructura"><span class="toc-num">02</span><span class="toc-text">Campo, registro, tabla y tipos de datos</span></a></li>
-    <li><a href="#forms"><span class="toc-num">03</span><span class="toc-text">Armá tu primera tabla: Google Forms</span></a></li>
-    <li><a href="#clave"><span class="toc-num">04</span><span class="toc-text">La clave primaria</span></a></li>
-    <li><a href="#relacion"><span class="toc-num">05</span><span class="toc-text">Clave foránea: armá tu segunda tabla</span></a></li>
-    <li><a href="#resumen"><span class="toc-num">06</span><span class="toc-text">Resumen de la clase</span></a></li>
+    <li><a href="#leer-tablero"><span class="toc-num">01</span><span class="toc-text">Leer un tablero con ojo crítico</span></a></li>
+    <li><a href="#storytelling"><span class="toc-num">02</span><span class="toc-text">Contar una historia con datos</span></a></li>
+    <li><a href="#verificacion"><span class="toc-num">03</span><span class="toc-text">Verificar antes de decidir</span></a></li>
+    <li><a href="#taller"><span class="toc-num">04</span><span class="toc-text">Taller integrador: de dato a decisión</span></a></li>
+    <li><a href="#resumen"><span class="toc-num">05</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 01 – DATO VS INFORMACIÓN -->
-<section class="block" id="dato">
+<!-- 01 – LEER TABLERO -->
+<section class="block" id="leer-tablero">
   <div class="block-head">
     <span class="block-num">01</span>
-    <h2 class="block-title">Dato vs. información</h2>
+    <h2 class="block-title">Leer un tablero con ojo crítico</h2>
   </div>
   <div class="prose">
     <div class="callout" data-type="question">
-      <p>`8`. Solo eso: el número 8. ¿Qué significa? Ahora agregale contexto: "la nota de Bruno en el segundo parcial fue 8". ¿Cambió el número, o cambió lo que podés hacer con él?</p>
+      <p>Un gráfico de barras muestra que las ventas "casi se duplicaron", pero el eje vertical arranca en 80, no en 0. ¿Sigue siendo la misma diferencia visual si el eje arrancara en cero?</p>
     </div>
 
-    <p>Un <strong>dato</strong> es un valor suelto, sin contexto: un número, una palabra, una fecha. Por sí solo no te permite decidir nada. La <strong>información</strong> es ese mismo dato interpretado dentro de un contexto que le da sentido: quién, cuándo, en relación con qué.</p>
+    <p>En la Clase 11 armaste un tablero propio: tabla dinámica, gráfico y segmentación. Hoy cambiás de rol: en vez de construirlo, te toca leer el de otra persona, sin poder preguntarle cómo lo armó. Ese es exactamente el trabajo real: la mayoría de las veces no armás el tablero que decide algo, lo leés.</p>
 
-    <p>Una base de datos no junta información directamente: junta <strong>datos</strong>, organizados de una forma tan consistente que después se puede reconstruir la información a partir de ellos, cruzando lo que haga falta. Ese "organizados de forma consistente" es exactamente lo que esta clase te enseña a construir, y lo vas a construir vos mismo, con datos reales, antes de que termine la clase.</p>
+    <h3>Cuatro preguntas antes de creerle a un tablero</h3>
+    <div class="table-wrap">
+      <table class="tbl-wide">
+        <thead><tr><th>Pregunta</th><th>Qué revela</th></tr></thead>
+        <tbody>
+          <tr><td><strong>¿Dónde arranca el eje?</strong></td><td>Un eje recortado (que no empieza en cero) exagera visualmente diferencias chicas</td></tr>
+          <tr><td><strong>¿Sobre cuántos casos?</strong></td><td>"75%" de 8 respuestas no pesa igual que "75%" de 800</td></tr>
+          <tr><td><strong>¿Qué pregunta NO responde?</strong></td><td>Un tablero muestra lo que su autor decidió mostrar, lo que no incluyó también es información</td></tr>
+          <tr><td><strong>¿Correlación o causa?</strong></td><td>Que dos números suban juntos no prueba que uno cause el otro</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>Cuando diseñes cualquier tabla de acá en adelante, preguntate: "si alguien mira esta fila sin ningún contexto más, ¿puede reconstruir la información completa?" Si la respuesta es no, probablemente falta un campo.</p>
+    <div class="callout" data-type="warning">
+      <p class="callout-label">⚠️ Atención</p>
+      <p>Nada de esto significa que un tablero "miente" siempre, significa que leerlo bien es un trabajo activo, no pasivo. La misma tabla de datos admite un gráfico honesto y uno engañoso.</p>
     </div>
   </div>
 </section>
 
-<!-- 02 – ESTRUCTURA -->
-<section class="block" id="estructura">
+<!-- 02 – STORYTELLING -->
+<section class="block" id="storytelling">
   <div class="block-head">
     <span class="block-num">02</span>
-    <h2 class="block-title">Campo, registro, tabla y tipos de datos</h2>
+    <h2 class="block-title">Contar una historia con datos</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Tu agenda de contactos del celular: ¿tiene una fila por contacto, y una columna por dato (nombre, teléfono, email)? Sin saberlo, ya usás una base de datos todos los días.</p>
-    </div>
-
-    <p>Una <strong>base de datos</strong> es un conjunto organizado de información, estructurado de forma que se pueda cargar, buscar y relacionar de manera consistente. Los tres conceptos básicos son siempre los mismos, cambie el programa que uses:</p>
+    <p>Un analista de datos no es quien construye la tabla, es quien la lee y responde una pregunta real sobre ella. En la Clase 06 usaste el arco Gancho–Desarrollo–Cierre para armar una presentación; contar una historia con datos sigue la misma lógica, aplicada a un hallazgo:</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th><svg class="tool-icon"><use href="#ti-table"></use></svg>Concepto</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
+        <thead><tr><th>Parte</th><th>Qué responde</th></tr></thead>
         <tbody>
-          <tr><td><strong>Campo</strong></td><td>Cada tipo de dato que se registra (una columna)</td><td>Nombre, Comisión, Materia cursada</td></tr>
-          <tr><td><strong>Registro</strong></td><td>Un conjunto completo de datos de un mismo elemento (una fila)</td><td>Una respuesta enviada por un compañero</td></tr>
-          <tr><td><strong>Tabla</strong></td><td>El conjunto completo de registros con los mismos campos</td><td>Todas las respuestas recibidas hasta ahora</td></tr>
+          <tr><td><strong>Gancho</strong></td><td>¿Qué pregunta le importa a quien va a leer esto?</td></tr>
+          <tr><td><strong>Desarrollo</strong></td><td>¿Qué patrón ves en los datos que responde esa pregunta?</td></tr>
+          <tr><td><strong>Cierre</strong></td><td>¿Qué debería hacer distinto quien lo lee, a partir de esto?</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Idea clave</p>
-      <p>Una planilla de Sheets bien armada (una fila por registro, una columna por campo, sin celdas combinadas ni filas vacías) ya cumple los requisitos mínimos para funcionar como una base de datos simple. La diferencia con un sistema de bases de datos más estricto es que ese sistema impone reglas duras sobre qué se puede cargar en cada campo, Sheets confía en que vos las respetes. Vas a imponer esas reglas vos mismo dentro de un momento, con un formulario real.</p>
-    </div>
+    <h3>Pedirle a la IA que interprete, no que calcule</h3>
+    <p>Una IA puede generar el párrafo de una historia de datos, pero necesita contexto: qué pregunta estás respondiendo, a quién le escribís, qué datos son los más importantes. Sin ese contexto, puede inventar correlaciones que no existen.</p>
 
-    <h3>Tipos de datos</h3>
-    <p>Cada campo de una tabla tiene un <strong>tipo de dato</strong>: la clase de valor que ese campo puede contener. No es un detalle menor, el tipo de dato define qué operaciones podés hacer después (sumar, ordenar cronológicamente, filtrar por rango).</p>
-
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Tipo de dato</th><th>Ejemplo</th><th>Qué falla si se mezcla</th></tr></thead>
-        <tbody>
-          <tr><td>Texto</td><td>Nombre, Comisión</td><td>No se puede sumar ni ordenar numéricamente</td></tr>
-          <tr><td>Numérico</td><td>Horas de estudio semanales</td><td>Un número cargado como texto (`"20"`) no suma ni promedia</td></tr>
-          <tr><td>Fecha/hora</td><td>Marca temporal de la respuesta</td><td>Formatos distintos rompen el orden cronológico</td></tr>
-          <tr><td>Lógico (booleano)</td><td>¿Rindió el parcial? (Sí/No)</td><td>Mezclar "Sí"/"Activo"/"1" impide contar de forma consistente</td></tr>
-          <tr><td>Categórico</td><td>Materia cursada, Modalidad preferida</td><td>Sin lista cerrada, aparecen variantes que `CONTAR.SI` no agrupa</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="code-block">"Tengo una tabla de respuestas de un formulario de satisfacción. 120 personas respondieron, y el 75% expresó que prefiere trabajar en equipo. El 20% prefiere trabajar solo. El 5% se abstuvo. Escribí un párrafo corto para la dirección, con gancho, desarrollo y cierre, sobre qué implica esto para el próximo semestre."</div>
 
     <div class="callout" data-type="warning">
       <p class="callout-label">⚠️ Atención</p>
-      <p>Sheets muchas veces "adivina" el tipo de dato según cómo lo escribís, y no siempre acierta. Un número alineado a la izquierda en la celda es una señal de que Sheets lo está tratando como texto, no como número, y eso rompe `SUMA`, `PROMEDIO` y cualquier función matemática. Podés ver y corregir el formato desde Formato → Número.</p>
-    </div>
-
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Por qué importa en 2026</p>
-      <p>Cuando le pedís a una IA que responda una pregunta sobre tus propios datos ("¿cuántos clientes activos tuve el mes pasado?"), la IA traduce esa pregunta en una consulta real contra tu tabla. Si el campo "Activo" no está definido igual en todos lados, ¿inició sesión?, ¿pagó algo?, ¿usó el servicio esta semana?: la IA no pregunta: elige una interpretación sola y responde con total seguridad, aunque esté mal. Un estudio de 2026 sobre este tipo de herramientas encontró que rinden 85-92% en pruebas de laboratorio con esquemas prolijos, y caen a 6-21% contra datos reales, mal definidos: casi siempre por ambigüedad en los nombres y las definiciones de campo, no por falta de capacidad del modelo. Nombrar y definir bien cada campo, como los que vas a crear ahora, es lo que evita ese error antes de que aparezca.</p>
+      <p>Una IA puede escribir algo que se ve profesional pero está mal. "Casi todos prefieren trabajar en equipo" es distinto a "el 75% prefiere": uno omite el 25%, el otro no.</p>
     </div>
   </div>
 </section>
 
-<!-- 03 – FORMS -->
-<section class="block" id="forms">
+<!-- 03 – VERIFICACIÓN -->
+<section class="block" id="verificacion">
   <div class="block-head">
     <span class="block-num">03</span>
-    <h2 class="block-title">Armá tu primera tabla: Google Forms</h2>
+    <h2 class="block-title">Verificar antes de decidir</h2>
   </div>
   <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Vas a armar una encuesta corta para juntar datos reales de tus compañeros, por ejemplo, sobre hábitos de estudio en las materias que cursan. ¿Qué mínimo de campos necesitás para que cada respuesta sea un registro completo y útil?</p>
-    </div>
-
-    <p><strong>Google Forms</strong> es la interfaz de carga de registros: cada persona que responde el formulario genera automáticamente una fila nueva en una hoja de Sheets vinculada, sin tocar la planilla directamente ni pisar los datos de otra persona. Vas a usarlo para crear, ahora mismo, tu primera tabla real.</p>
-
-    <h3>Armalo así (podés adaptar el tema, mantené la estructura)</h3>
-    <ol>
-      <li>Creá un formulario en Google Forms con estos campos: <strong>Nombre</strong> (respuesta corta), <strong>Comisión</strong> (respuesta corta), <strong>Materia cursada</strong> (Lista desplegable), <strong>Horas de estudio semanales</strong> (respuesta corta, numérica), <strong>Modalidad preferida</strong> (Opción múltiple: Presencial / Virtual / Híbrida).</li>
-      <li>En la pestaña <strong>Respuestas</strong>, hacé clic en el ícono de Sheets para crear una hoja de cálculo de destino. Esa hoja es tu <strong>Tabla de Respuestas</strong>.</li>
-      <li>Respondé tu propio formulario para generar el primer registro, y compartilo con dos o tres compañeros para sumar algunos más.</li>
-    </ol>
-
-    <p>Cada respuesta enviada aparece como una fila nueva en esa hoja, sola, con una columna extra de <strong>marca temporal</strong> (fecha y hora exacta de envío) que Forms agrega automáticamente.</p>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>El orden de las preguntas en el formulario define el orden de las columnas en la hoja. Si cambiás el formulario después de tener respuestas cargadas, revisá que las columnas sigan alineadas.</p>
-    </div>
-
-    <h3>Validación en el origen</h3>
-    <p>Google Forms tiene su propio sistema de validación de respuestas, distinto del de Sheets pero con la misma idea: restringir lo que se puede cargar, para no tener que corregirlo después.</p>
+    <p>El mismo chequeo de tres pasos que usaste en la Clase 14 para verificar una fórmula generada por IA sirve, sin cambiar nada, para verificar una conclusión escrita:</p>
 
     <div class="table-wrap">
       <table class="tbl-wide">
-        <thead><tr><th>Tipo de pregunta</th><th>Validación disponible</th></tr></thead>
+        <thead><tr><th>Paso</th><th>Qué verificás</th><th>Pregunta</th></tr></thead>
         <tbody>
-          <tr><td>Respuesta corta (numérica)</td><td>Rango numérico, número entero, número mayor/menor que un valor</td></tr>
-          <tr><td>Respuesta corta (texto)</td><td>Expresión regular (patrón de texto), longitud máxima</td></tr>
-          <tr><td>Opción múltiple / Lista desplegable</td><td>La propia lista actúa como restricción</td></tr>
-          <tr><td>Casilla obligatoria</td><td>Marca la pregunta como requerida</td></tr>
+          <tr><td><strong>1. Hechos</strong></td><td>¿Los números que cita son los mismos de tu tabla?</td><td>"¿El 75% es realmente lo que aparece en mis datos?"</td></tr>
+          <tr><td><strong>2. Lógica</strong></td><td>¿La conclusión se sigue de esos números?</td><td>"¿Es verdad que eso implica lo que la IA escribió?"</td></tr>
+          <tr><td><strong>3. Contexto</strong></td><td>¿La conclusión tiene sentido para quien la va a leer?</td><td>"¿Esto responde la pregunta que me hicieron?"</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="callout" data-type="idea">
-      <p class="callout-label">💡 Consejo</p>
-      <p>Aplicá al menos una validación de rango a "Horas de estudio semanales" (por ejemplo, entre 0 y 40) y dejá "Materia cursada" y "Modalidad preferida" como Lista desplegable u Opción múltiple, nunca como respuesta libre. Es la validación desde el origen, y evita que después tengas que limpiar la tabla a mano.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 04 – CLAVE -->
-<section class="block" id="clave">
-  <div class="block-head">
-    <span class="block-num">04</span>
-    <h2 class="block-title">La clave primaria</h2>
-  </div>
-  <div class="prose">
-    <div class="callout" data-type="question">
-      <p>En tu Tabla de Respuestas, dos personas podrían llamarse igual. ¿Qué campo usarías para no confundirlas nunca, ni siquiera si comparten nombre y comisión?</p>
-    </div>
-
-    <p>La <strong>clave primaria</strong> es el campo (o la combinación de campos) que identifica de forma <strong>única</strong> a cada registro de una tabla. Ningún otro registro puede tener el mismo valor de clave primaria, y ese valor no puede quedar vacío.</p>
-
-    <h3><svg class="tool-icon"><use href="#ti-key"></use></svg>Qué hace buena a una clave primaria</h3>
-
-    <div class="table-wrap">
-      <table class="tbl-wide">
-        <thead><tr><th>Requisito</th><th>Por qué importa</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Única</strong></td><td>Si dos registros comparten clave, ya no podés distinguirlos con certeza</td></tr>
-          <tr><td><strong>No vacía</strong></td><td>Un registro sin clave no se puede referenciar desde ningún otro lado</td></tr>
-          <tr><td><strong>Estable</strong></td><td>No debería cambiar con el tiempo, un nombre puede cambiar, un DNI o un legajo no</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>La <strong>marca temporal</strong> que Forms agregó sola a tu Tabla de Respuestas cumple los tres requisitos sin que hagas nada: es única (dos respuestas nunca llegan en el mismo milisegundo), no está vacía, y es estable. Por eso es la clave primaria natural de esa tabla, verificalo con <code>=CONTAR.SI(rango; valor)</code> sobre esa columna: ningún resultado debería dar más de 1.</p>
-
-    <div class="callout" data-type="warning">
-      <p class="callout-label">⚠️ Atención</p>
-      <p>El nombre y apellido casi nunca es buena clave primaria, no es único (hay personas con el mismo nombre) y en teoría podría cambiar. Si una tabla tuya no tiene un campo que sirva como clave natural, agregá uno artificial (un número de orden, un código correlativo) antes de seguir.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 05 – RELACIÓN -->
-<section class="block" id="relacion">
-  <div class="block-head">
-    <span class="block-num">05</span>
-    <h2 class="block-title">Clave foránea: armá tu segunda tabla</h2>
-  </div>
-  <div class="prose">
-    <div class="callout" data-type="question">
-      <p>Si cada fila de tu Tabla de Respuestas tuviera que repetir a mano el nombre del docente y la carga horaria de cada materia, y esos datos cambiaran a mitad de cuatrimestre, ¿los corregirías en una fila o en muchas?</p>
-    </div>
-
-    <p>Cuando una tabla intenta guardar dos cosas distintas al mismo tiempo, en este caso, datos de la <strong>respuesta</strong> y datos de la <strong>materia</strong>: cualquier cambio en el segundo obliga a corregir muchas filas repetidas, y es fácil que alguna quede desactualizada. La solución es separar en dos tablas, conectadas por una clave. Armala ahora:</p>
-
-    <h3><svg class="tool-icon"><use href="#ti-link-2"></use></svg>Armá la Tabla Materias</h3>
-    <ol>
-      <li>En una hoja nueva, armá a mano una tabla chica llamada <strong>Materias</strong>, con 4 a 6 filas: <strong>Código</strong> (ej. <code>INF101</code>), <strong>Materia</strong>, <strong>Docente</strong>, <strong>Carga horaria semanal</strong>.</li>
-      <li>Elegí <strong>Código</strong> como clave primaria de esta tabla: única, no vacía y estable.</li>
-      <li>Volvé a tu formulario y editá el campo "Materia cursada" para que su Lista desplegable use esos mismos códigos, así el valor que cada persona elige en Respuestas es siempre uno que existe de verdad en Materias.</li>
-    </ol>
-
-    <p>Esa columna "Materia cursada" en tu Tabla de Respuestas es ahora una <strong>clave foránea</strong>: una copia del valor de la clave primaria de Materias. Con eso armaste una <strong>relación uno a muchos (1:N)</strong>: una materia puede tener muchas respuestas asociadas, pero cada respuesta pertenece a una sola materia.</p>
 
     <div class="callout" data-type="idea">
       <p class="callout-label">💡 Idea clave</p>
-      <p>Esa clave foránea es la que te va a permitir traer, automáticamente, el nombre del docente y la carga horaria a cada fila de Respuestas, sin escribirlos a mano ni una sola vez. Guardá bien estas dos tablas: son la base de todo lo que sigue en la unidad.</p>
+      <p>Si falla alguno de estos tres pasos, editá la conclusión vos mismo o pedile a la IA una nueva versión. Tu nombre va a estar abajo, vos sos responsable de lo que dice, aunque una IA la haya escrito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 – TALLER -->
+<section class="block" id="taller">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Taller integrador: de dato a decisión</h2>
+  </div>
+  <div class="prose">
+    <p>Este taller junta las tres secciones anteriores en un solo ejercicio, usando cualquier tabla que ya tengas armada en el curso (tu tabla de Forms de la Clase 14, o el dataset con el que trabajaste en la Clase 11).</p>
+
+    <h3>Estructura del taller</h3>
+    <ol>
+      <li><strong>Armá un tablero simple</strong> (Clase 11): un título claro, 3–5 números clave, y 2–3 visualizaciones que muestren un patrón.</li>
+      <li><strong>Contá su historia</strong> en un párrafo con gancho, desarrollo y cierre, a mano o con ayuda de una IA.</li>
+      <li><strong>Verificala</strong> con el chequeo de tres pasos (hechos, lógica, contexto).</li>
+      <li><strong>Intercambiá tu tablero</strong> con un compañero, sin tu historia escrita, y leélo con ojo crítico (sección 01) antes de leer la conclusión que él escribió.</li>
+    </ol>
+
+    <div class="callout" data-type="idea">
+      <p class="callout-label">💡 Idea clave</p>
+      <p>Este taller funciona como ensayo de lo que vas a tener que resolver en la evaluación integradora de la unidad: no una tabla más para construir, sino una decisión para defender.</p>
     </div>
   </div>
 </section>
@@ -296,22 +218,22 @@
 <!-- RESUMEN -->
 <section class="block" id="resumen">
   <div class="block-head">
-    <span class="block-num">06</span>
+    <span class="block-num">05</span>
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-    <p>Ya tenés dos tablas reales conectadas por una clave: una que crece sola con cada respuesta (Respuestas), y otra chica y estable que la completa (Materias). Ninguna herramienta te va a avisar si el campo que armaste es el correcto: eso lo decidiste vos, antes de cargar el primer dato. Lo que sigue es aprovechar esa conexión: traer datos de una tabla a la otra, y preguntarle a esa unión lo que necesites saber.</p>
+    <p>Datos bien modelados (Clase 13), bien cargados y consultados (Clase 14), solo sirven si alguien puede leerlos con espíritu crítico, convertirlos en una historia clara y verificarla antes de firmarla. Ese es el trabajo completo de un analista de datos, y es la misma disciplina que necesitás cada vez que alguien te muestra un número y te pide que le creas.</p>
 
     <h3 id="actividades">Actividades</h3>
     <div class="table-wrap">
       <table class="check-table">
         <tbody>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-1" aria-label="Marcar como hecho"></td><td><label for="chk-13-1">Armé un Google Forms con al menos 4 campos, vinculado a una hoja de Sheets (mi Tabla de Respuestas)</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-2" aria-label="Marcar como hecho"></td><td><label for="chk-13-2">Apliqué validación a al menos dos campos, según su tipo de dato (lista desplegable para categóricos, rango numérico para el resto)</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-3" aria-label="Marcar como hecho"></td><td><label for="chk-13-3">Identifiqué la marca temporal como clave primaria de mi Tabla de Respuestas y verifiqué que no tiene duplicados con `CONTAR.SI`</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-4" aria-label="Marcar como hecho"></td><td><label for="chk-13-4">Armé mi Tabla Materias (u otro tema de mi elección) con su propia clave primaria</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-5" aria-label="Marcar como hecho"></td><td><label for="chk-13-5">Definí una clave foránea real: el campo "Materia cursada" de mi Tabla de Respuestas copia la clave primaria de mi Tabla Materias</label></td></tr>
-          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-13-6" aria-label="Marcar como hecho"></td><td><label for="chk-13-6">Puedo explicar, con mis propias tablas como ejemplo, qué es una relación uno a muchos (1:N)</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-1" aria-label="Marcar como hecho"></td><td><label for="chk-15-1">Identifiqué, en un tablero ajeno, dónde arranca el eje, sobre cuántos casos habla, y qué pregunta no responde</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-2" aria-label="Marcar como hecho"></td><td><label for="chk-15-2">Armé un tablero simple con título, 3-5 números clave y 2-3 visualizaciones</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-3" aria-label="Marcar como hecho"></td><td><label for="chk-15-3">Escribí (o le pedí a una IA) la historia de mi tablero con gancho, desarrollo y cierre</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-4" aria-label="Marcar como hecho"></td><td><label for="chk-15-4">Verifiqué esa historia con el chequeo de tres pasos: hechos, lógica, contexto</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-5" aria-label="Marcar como hecho"></td><td><label for="chk-15-5">Leí con ojo crítico el tablero de un compañero, antes de conocer su conclusión</label></td></tr>
+          <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-15-6" aria-label="Marcar como hecho"></td><td><label for="chk-15-6">Completé el taller integrador de la unidad de Datos</label></td></tr>
         </tbody>
       </table>
     </div>
@@ -330,6 +252,14 @@
           <div class="qr-tip-amber">Un número alineado a la izquierda en Sheets es texto, no número, rompe `SUMA` y `PROMEDIO`.</div>
         </div>
         <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-key"></use></svg></div><span class="qr-cell-title">Clave primaria y foránea</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clave primaria: única, no vacía, estable</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Verificar duplicados: <code>=CONTAR.SI(rango; valor)</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clave foránea = copia de la clave primaria de otra tabla, para relacionarlas (1:N)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
           <div class="qr-cell-head"><span class="qr-cell-title">Google Forms</span></div>
           <div class="qr-items">
             <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Respuestas → ícono de Sheets, para vincular una hoja de destino</span></div>
@@ -338,11 +268,41 @@
           </div>
         </div>
         <div class="qr-cell">
-          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-key"></use></svg></div><span class="qr-cell-title">Clave primaria y foránea</span></div>
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-search"></use></svg></div><span class="qr-cell-title">QUERY</span></div>
           <div class="qr-items">
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clave primaria: única, no vacía, estable</span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Verificar duplicados: <code>=CONTAR.SI(rango; valor)</code></span></div>
-            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clave foránea = copia de la clave primaria de otra tabla, para relacionarlas (1:N)</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=QUERY(rango; "select A, B where C &gt; X order by A")</code></span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Filtro (solo) · Vista de filtro (hoja compartida)</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-shield-check"></use></svg></div><span class="qr-cell-title">Chequeo de 3 pasos</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">H</span><span class="qr-fdesc"><strong>Hechos</strong>: ¿coinciden con tu tabla?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">L</span><span class="qr-fdesc"><strong>Lógica</strong>: ¿se sigue de esos datos?</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc"><strong>Contexto</strong>: ¿responde la pregunta?</span></div>
+          </div>
+          <div class="qr-tip">Mismo chequeo, sirve tanto para una fórmula QUERY como para una conclusión escrita.</div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">CSV e higiene de datos</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Exportar: Archivo &gt; Descargar &gt; CSV · Importar: Archivo &gt; Importar &gt; Subir</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Duplicados: <code>=CONTAR.SI(...)</code> &gt; 1 · Vacíos: <code>=CONTARA(...)</code> vs. total de filas</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><span class="qr-cell-title">Leer un tablero</span></div>
+          <div class="qr-items">
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">¿Dónde arranca el eje? · ¿Sobre cuántos casos?</span></div>
+            <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">¿Qué pregunta no responde? · Correlación ≠ causa</span></div>
+          </div>
+        </div>
+        <div class="qr-cell">
+          <div class="qr-cell-head"><div class="qr-cell-icon"><svg><use href="#ti-arc"></use></svg></div><span class="qr-cell-title">Contar una historia con datos</span></div>
+          <div class="qr-formula">
+            <div class="qr-frow"><span class="qr-fletter">G</span><span class="qr-fdesc">Gancho: qué pregunta le importa a quien lee</span></div>
+            <div class="qr-frow"><span class="qr-fletter">D</span><span class="qr-fdesc">Desarrollo: qué patrón responde esa pregunta</span></div>
+            <div class="qr-frow"><span class="qr-fletter">C</span><span class="qr-fdesc">Cierre: qué debería hacer distinto quien lee</span></div>
           </div>
         </div>
       </div>
@@ -706,37 +666,29 @@
     <h4>Planilla de cálculo y formularios</h4>
     <div class="kit-card">
       <div class="kit-tool" data-cost="free">
-        <a class="kit-tool-link" href="https://sheets.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Google - Sheets.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Sheets</span><span class="kit-tool-domain">sheets.google.com</span></span></a>
+        <a class="kit-tool-link" href="https://sheets.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Google - Sheets.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Sheets</span><span class="kit-tool-domain">sheets.google.com</span></span></a>
         <span class="kit-tool-tags"><span class="pill pill-free">Gratis</span></span>
       </div>
       <div class="kit-tool" data-cost="free">
-        <a class="kit-tool-link" href="https://forms.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Google - Forms.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Forms</span><span class="kit-tool-domain">forms.google.com</span></span></a>
+        <a class="kit-tool-link" href="https://forms.google.com" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../../img/apps/Google - Forms.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Google Forms</span><span class="kit-tool-domain">forms.google.com</span></span></a>
         <span class="kit-tool-tags"><span class="pill pill-free">Gratis</span></span>
       </div>
     </div>
 
     <h3 id="glosario">Glosario</h3>
     <div class="glossary">
-      <div class="gloss-item"><span class="gloss-term">Dato</span><p class="gloss-def">Valor suelto, sin contexto.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Información</span><p class="gloss-def">El dato interpretado dentro de un contexto que le da sentido.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Base de datos</span><p class="gloss-def">Conjunto organizado de información, estructurado en campos y registros.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Campo</span><p class="gloss-def">Cada tipo de dato que se registra, equivalente a una columna.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Registro</span><p class="gloss-def">Conjunto completo de datos de un mismo elemento, equivalente a una fila.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Tipo de dato</span><p class="gloss-def">La clase de valor que un campo puede contener (texto, numérico, fecha, lógico o categórico).</p></div>
-      <div class="gloss-item" data-icon="Google - Forms.png"><span class="gloss-term">Formulario (Google Forms)</span><p class="gloss-def">Interfaz de carga que genera automáticamente una fila nueva en una hoja de Sheets por cada respuesta enviada.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Marca temporal</span><p class="gloss-def">Columna que Forms agrega sola con la fecha y hora exacta de cada respuesta, buen candidato a clave primaria.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Validación de respuesta</span><p class="gloss-def">Restricción configurada en una pregunta de Forms (rango numérico, patrón de texto, lista cerrada) para impedir que se cargue un dato inválido.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Clave primaria</span><p class="gloss-def">Campo que identifica de forma única, no vacía y estable a cada registro de una tabla.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Clave foránea</span><p class="gloss-def">Copia de la clave primaria de otra tabla, usada para relacionar un registro con un registro de esa otra tabla.</p></div>
-      <div class="gloss-item"><span class="gloss-term">Relación uno a muchos (1:N)</span><p class="gloss-def">Vínculo entre dos tablas donde un registro de la primera puede corresponder a muchos registros de la segunda, pero cada registro de la segunda corresponde a uno solo de la primera.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Tablero</span><p class="gloss-def">Hoja de consulta que reúne tabla, gráfico y números clave, pensada para que alguien la lea de un vistazo sin editar el archivo.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Eje recortado</span><p class="gloss-def">Eje de un gráfico que no arranca en cero, lo que exagera visualmente una diferencia entre valores.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Correlación</span><p class="gloss-def">Relación estadística entre dos variables que suben o bajan juntas, sin que eso pruebe que una causa la otra.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Storytelling con datos</span><p class="gloss-def">Comunicar un hallazgo numérico como una historia con gancho, desarrollo y cierre, en vez de solo mostrar la tabla.</p></div>
+      <div class="gloss-item"><span class="gloss-term">Chequeo de tres pasos</span><p class="gloss-def">Verificación de hechos, lógica y contexto antes de confiar en una fórmula o una conclusión generada por IA.</p></div>
     </div>
 
     <h3 id="fuentes">Fuentes</h3>
     <ul class="sources">
-      <li>Codd, E. F. (1970). <em>A Relational Model of Data for Large Shared Data Banks</em>. Communications of the ACM, 13(6), 377-387.</li>
-      <li>Google. <em>Cómo establecer reglas para tu formulario</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/3378864</code></li>
-      <li>Google. <em>Cambiar el formato de números, fechas y monedas en una hoja de cálculo</em>. Ayuda de Editores de Documentos de Google. <code>support.google.com/docs/answer/56470</code></li>
-      <li>Mysore, V. (2026). <em>The Text-to-SQL Performance Cliff (2026): Why "Natural Language to SQL" Breaks</em>. Medium. <code>medium.com/@visrow/the-text-to-sql-performance-cliff-2026-why-natural-language-to-sql-breaks-a7281a23dbea</code></li>
+      <li>Huff, D. (1954). <em>How to Lie with Statistics</em>. W. W. Norton &amp; Company.</li>
+      <li>Tufte, E. R. (2001). <em>The Visual Display of Quantitative Information</em> (2.ª ed.). Graphics Press.</li>
+      <li>Knaflic, C. N. (2015). <em>Storytelling with Data: A Data Visualization Guide for Business Professionals</em>. Wiley.</li>
     </ul>
   </div>
 </section>
@@ -749,10 +701,10 @@
   <p>Marcos Hernández</p>
   <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
 </footer>
-<script defer src="../js/guia-kit.js"></script>
-<script defer src="../js/guia-nav.js"></script>
-<script defer src="../js/guia-glosario.js"></script>
-<script defer src="../js/guia-continuidad.js"></script>
-<script defer src="../js/guia-print.js"></script>
+<script defer src="../../js/guia-kit.js"></script>
+<script defer src="../../js/guia-nav.js"></script>
+<script defer src="../../js/guia-glosario.js"></script>
+<script defer src="../../js/guia-continuidad.js"></script>
+<script defer src="../../js/guia-print.js"></script>
 </body>
 </html>

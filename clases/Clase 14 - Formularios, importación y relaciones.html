@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 14 - Formularios, importación y relaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento: Bases de datos = violeta */
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+
+  /* Mini tabla de datos ilustrativa (reemplaza capturas): namespace db-*, no choca con guia-estilo.css */
+  .db{ margin:1rem 0 1.2rem; break-inside:avoid-page; }
+  .db-box{ display:inline-block; max-width:100%; border:1px solid #cfcdd6; border-radius:6px; background:#fff; overflow:hidden; }
+  .db-tab{ padding:4px 12px; background:var(--acento-tint); color:var(--acento-deep); font-family:var(--sans); font-size:.78rem; font-weight:700; border-bottom:1px solid #cfcdd6; }
+  table.db-grid{ border-collapse:collapse; margin:0; width:auto; font-family:var(--sans); font-size:.8rem; background:#fff; border:0; }
+  table.db-grid th{ background:#f1f1f4; color:#3b3a45; font-weight:600; border:1px solid #d9d8de; padding:3px 10px; text-align:left; font-size:.74rem; text-transform:none; letter-spacing:0; white-space:nowrap; }
+  table.db-grid td{ border:1px solid #e3e2e8; padding:3px 10px; white-space:nowrap; color:#1f1e26; background:#fff; text-align:left; }
+  table.db-grid td.n{ text-align:right; }
+  table.db-grid td.k{ background:#fff3c4; font-weight:700; }
+  table.db-grid td.hl{ background:#fff3c4; }
+  table.db-grid td.m{ font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.76rem; }
+  .db-cap{ margin:.35rem 0 0; font-size:.82rem; color:var(--muted); line-height:1.45; }
+  .sql-grid{ border-collapse:collapse; margin:.4rem 0 .2rem; }
+  @media print{
+    .db{ margin:8pt 0 9pt; }
+    table.db-grid{ font-size:7.6pt; }
+    table.db-grid th{ font-size:7pt; padding:1pt 6pt; }
+    table.db-grid td{ padding:2pt 6pt; }
+    .db-tab{ font-size:7.4pt; }
+    .db-cap{ font-size:7.8pt; }
+    .qr-row{ break-inside:auto !important; }
+    .qr-cell{ break-inside:avoid; }
+  }
+
+  /* Botón de descarga directa (solo pantalla): namespace dl-file, no choca con guia-estilo.css */
+  .dl-file{ display:inline-flex; align-items:center; gap:5px; margin:0 2px; padding:1px 9px 1px 7px; vertical-align:baseline;
+    font-family:var(--sans); font-size:.78rem; font-weight:600; line-height:1.5; color:var(--acento-deep); text-decoration:none;
+    background:var(--acento-tint); border:1px solid var(--acento); border-radius:var(--radius-sm); }
+  .dl-file svg{ width:14px; height:14px; flex:none; }
+  .dl-file:hover{ background:var(--acento-soft); }
+  .dl-file:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  @media print{ .dl-file{ display:none !important; } }
+
+  @page{
+    @top-right{
+      content:"Clase 14 · Formularios, importación y relaciones";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="14">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 14 · Bases de datos</span>
+    <h1 class="cover-title">Formularios, importación y relaciones</h1>
+    <p class="cover-subtitle">Cargar datos con comodidad, traer los de Excel y conectar las tablas</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">En la clase 13 diseñaste las tablas. Hoy las hacés trabajar: armás formularios para cargar datos sin errores, importás desde Excel las ventas del emprendimiento y conectás las tres tablas con relaciones, para que un dato viva en un solo lugar.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+<li><a href="#formularios"><span class="toc-num">01</span><span class="toc-text">Formularios: cargar con comodidad</span></a></li>
+<li><a href="#combo"><span class="toc-num">02</span><span class="toc-text">Una lista desplegable para el rubro</span></a></li>
+<li><a href="#cargar"><span class="toc-num">03</span><span class="toc-text">Cargar los clientes con el formulario</span></a></li>
+<li><a href="#importar"><span class="toc-num">04</span><span class="toc-text">Importar ventas desde Excel</span></a></li>
+<li><a href="#relaciones"><span class="toc-num">05</span><span class="toc-text">Relacionar las tablas</span></a></li>
+<li><a href="#integrador"><span class="toc-num">06</span><span class="toc-text">El pedido de la clase</span></a></li>
+<li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="block" id="formularios">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Formularios: cargar con comodidad</h2>
+  </div>
+  <div class="prose">
+<p>Cargar datos en la hoja de datos se parece a escribir en una planilla: es cómodo para pocos datos, pero es fácil pisar un campo o saltearlo. Un <strong>formulario</strong> muestra un registro por vez, con cada campo rotulado, y es lo que usaría una persona que no conoce la base.</p>
+<h3>El asistente para formularios</h3>
+<ol>
+  <li>Abrí <code>Textiles_Apellido.accdb</code> y habilitá el contenido si aparece la advertencia.</li>
+  <li>En el panel de navegación hacé clic en la tabla <code>Productos</code> (sin abrirla).</li>
+  <li>Pestaña <strong>Crear</strong> → <strong>Asistente para formularios</strong>.</li>
+  <li>Pasá todos los campos a la derecha con el botón <strong>&gt;&gt;</strong> → <strong>Siguiente</strong>.</li>
+  <li>Elegí la distribución <strong>En columnas</strong> → <strong>Siguiente</strong>.</li>
+  <li>Poné de título <code>Productos</code> y dejá marcado <em>Abrir el formulario para ver o introducir información</em> → <strong>Finalizar</strong>.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Asistente para formularios en el paso de selección de campos, con la tabla Productos elegida y los cinco campos pasados a la lista de la derecha.</span>
+</div>
+<p>Abajo del formulario están los botones para moverte entre registros: primero, anterior, siguiente, último y <strong>Nuevo registro</strong> (el que tiene un asterisco).</p>
+<h3>Retocar el diseño</h3>
+<p>Pasá a la <strong>Vista Diseño</strong> del formulario (botón <strong>Ver</strong>). Ahí cada campo es un <strong>control</strong> que se selecciona, se mueve y se formatea.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Querés</th><th>Cómo</th></tr></thead>
+    <tbody>
+<tr><td>Cambiar el título</td><td>Clic dentro de la etiqueta del encabezado y escribir</td></tr>
+<tr><td>Cambiar un color</td><td>Seleccionar el control → pestaña <strong>Formato</strong> → <strong>Relleno de forma</strong> o <strong>Color de fuente</strong></td></tr>
+<tr><td>Agregar un logo</td><td>Pestaña <strong>Diseño</strong> → <strong>Logotipo</strong> (o <strong>Insertar imagen</strong>) y elegir el archivo</td></tr>
+<tr><td>Mover o agrandar un control</td><td>Arrastrarlo o tirar de los bordes. En una distribución en columnas se mueven juntos</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Cuando termines, volvé a <strong>Vista Formulario</strong> para ver cómo quedó y guardalo con <code>Ctrl+G</code>.</p>
+
+  </div>
+</section>
+<section class="block" id="combo">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Una lista desplegable para el rubro</h2>
+  </div>
+  <div class="prose">
+<p>En la clase anterior el rubro era texto libre: alguien puede escribir <em>cocina</em>, <em>Cocina</em> o <em>cosina</em>. Un <strong>cuadro combinado</strong> es una lista desplegable: la persona elige entre valores permitidos y no puede equivocarse.</p>
+<h3>Convertir el campo Rubro en una lista</h3>
+<ol>
+  <li>En la <strong>Vista Diseño</strong> del formulario <code>Productos</code>, hacé clic derecho sobre el cuadro de texto de <code>Rubro</code> → <strong>Cambiar a</strong> → <strong>Cuadro combinado</strong>.</li>
+  <li>Con el control seleccionado, abrí la <strong>Hoja de propiedades</strong> (<code>F4</code>) y pasá a la pestaña <strong>Datos</strong>.</li>
+  <li>En <em>Tipo de origen de la fila</em> elegí <strong>Lista de valores</strong>.</li>
+  <li>En <em>Origen de la fila</em> escribí los tres rubros separados por punto y coma: <code>cuidado personal;cocina;baño</code>.</li>
+  <li>Volvé a Vista Formulario y probá: tiene que desplegar los tres rubros.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Hoja de propiedades del cuadro combinado Rubro, pestaña Datos, con Tipo de origen de la fila en Lista de valores y Origen de la fila con cuidado personal;cocina;baño.</span>
+</div>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Lista de valores y propiedad Limitar a la lista</p>
+  <p>Si ponés <em>Limitar a la lista</em> en <strong>Sí</strong>, Access rechaza cualquier valor que no esté en las opciones. Es la forma más simple de evitar variantes del mismo dato.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 01 · 12 min</span>
+    <h3>Tu formulario de Productos</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá el formulario <code>Productos</code> con el asistente, en columnas.</li>
+  <li>Cambiale el título a <em>Catálogo de productos</em> y un color de relleno al encabezado.</li>
+  <li>Convertí <code>Rubro</code> en cuadro combinado con la lista <code>cuidado personal;cocina;baño</code> y <em>Limitar a la lista</em> en <strong>Sí</strong>.</li>
+  <li>Recorré los registros con el botón <em>Siguiente</em> hasta el <strong>13</strong>. Controles: el registro 5 es <em>DELANTAL</em> de rubro <em>cocina</em> y el 11 es <em>TOALLA</em> de rubro <em>baño</em>.</li>
+  <li>Probá escribir <em>cosina</em> en el combo de un registro: ¿qué hace Access? Salí con <code>Esc</code>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="cargar">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Cargar los clientes con el formulario</h2>
+  </div>
+  <div class="prose">
+<p>Armá ahora el formulario de <code>Clientes</code> con el mismo asistente (en columnas, título <code>Clientes</code>). Ubicate en <strong>Nuevo registro</strong> y cargá los 8 clientes. <code>IdCliente</code> no se escribe: Access lo completa.</p>
+<div class="db"><div class="db-box">
+<div class="db-tab">Clientes</div>
+<table class="db-grid"><thead><tr><th>IdCliente</th><th>Apellido</th><th>Nombre</th><th>Calle</th><th>Nro</th><th>Localidad</th><th>Mail</th><th>Celular</th><th>Cumpleaños</th></tr></thead><tbody>
+<tr><td class="k">1</td><td>Gómez</td><td>Lucía</td><td>Rivadavia</td><td class="n">420</td><td>Bernal</td><td>lucia.gomez@ejemplo.com</td><td>11 5555-0101</td><td>14/03/1991</td></tr>
+<tr><td class="k">2</td><td>Pereyra</td><td>Martín</td><td>Sarmiento</td><td class="n">1180</td><td>Quilmes Centro</td><td>martin.pereyra@ejemplo.com</td><td>11 5555-0102</td><td>02/09/1988</td></tr>
+<tr><td class="k">3</td><td>Sosa</td><td>Camila</td><td>Mitre</td><td class="n">75</td><td>Bernal</td><td>camila.sosa@ejemplo.com</td><td>11 5555-0103</td><td>21/06/1995</td></tr>
+<tr><td class="k">4</td><td>Ibarra</td><td>Julián</td><td>Yrigoyen</td><td class="n">2300</td><td>Avellaneda</td><td>julian.ibarra@ejemplo.com</td><td>11 5555-0104</td><td>30/11/1984</td></tr>
+<tr><td class="k">5</td><td>Ledesma</td><td>Marta</td><td>Belgrano</td><td class="n">640</td><td>Quilmes Oeste</td><td>marta.ledesma@ejemplo.com</td><td>11 5555-0105</td><td>08/01/1970</td></tr>
+<tr><td class="k">6</td><td>Acosta</td><td>Diego</td><td>San Martín</td><td class="n">3150</td><td>Wilde</td><td>diego.acosta@ejemplo.com</td><td>11 5555-0106</td><td>17/07/2000</td></tr>
+<tr><td class="k">7</td><td>Romero</td><td>Valeria</td><td>Alsina</td><td class="n">910</td><td>Berazategui</td><td>valeria.romero@ejemplo.com</td><td>11 5555-0107</td><td>25/12/1993</td></tr>
+<tr><td class="k">8</td><td>Fernández</td><td>Nicolás</td><td>Moreno</td><td class="n">505</td><td>Quilmes Este</td><td>nicolas.fernandez@ejemplo.com</td><td>11 5555-0108</td><td>05/05/1998</td></tr>
+</tbody></table></div>
+<p class="db-cap">Los 8 clientes del emprendimiento (datos de ejemplo). Los mails son inventados.</p>
+</div>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Un registro vacío no se guarda</p>
+  <p>Como <code>Apellido</code> y <code>Nombre</code> son requeridos, Access no te deja avanzar si los dejás vacíos. Es la regla que pusiste en la clase 13 trabajando para vos.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 02 · 12 min</span>
+    <h3>Cargá los 8 clientes</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá el formulario <code>Clientes</code>.</li>
+  <li>Cargá los 8 clientes de la tabla de arriba, usando el formulario.</li>
+  <li>Abrí la tabla <code>Clientes</code> en Hoja de datos. Controles: <strong>8</strong> registros y la clienta <em>Lucía Gómez</em> tiene <code>Cumpleaños</code> <strong>14/03/1991</strong>.</li>
+  <li>Filtrá <code>Localidad</code> igual a <em>Bernal</em>. Control: <strong>2</strong> clientes (Gómez y Sosa).</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="importar">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Importar ventas desde Excel</h2>
+  </div>
+  <div class="prose">
+<p>Los clientes y los productos ya están. Falta lo más importante: <strong>las ventas</strong>. Alguien las llevó en una planilla de Excel durante tres meses. En vez de volver a escribirlas, las <strong>importamos</strong>.</p>
+<h3>Mirar el archivo antes de importar</h3>
+<p>Descargá <code>Textiles_Ventas.xlsx</code> <a class="dl-file" href="../archivos/Textiles_Ventas.xlsx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> y abrilo en Excel. Tiene una hoja <em>Ventas</em> con encabezados en la fila 1 y 36 filas de datos.</p>
+<div class="db"><div class="db-box">
+<div class="db-tab">Textiles_Ventas.xlsx (primeras filas)</div>
+<table class="db-grid"><thead><tr><th>IdVenta</th><th>IdCliente</th><th>IdProducto</th><th>Fecha</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td class="k n">1</td><td class="n">1</td><td class="n">3</td><td>02/03/2026</td><td class="n">6</td></tr>
+<tr><td class="k n">2</td><td class="n">5</td><td class="n">6</td><td>05/03/2026</td><td class="n">4</td></tr>
+<tr><td class="k n">3</td><td class="n">2</td><td class="n">5</td><td>11/03/2026</td><td class="n">1</td></tr>
+</tbody></table></div>
+<p class="db-cap">Cada venta dice qué cliente compró, qué producto y cuántas unidades. No repite nombres ni precios: solo los números de Id.</p>
+</div>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Por qué Ventas solo tiene Ids</p>
+  <p>El nombre del cliente ya está en <code>Clientes</code> y el precio en <code>Productos</code>. En la venta guardamos solo el número que los identifica. Si el precio cambia, se cambia en un lugar.</p>
+</div>
+<p>Cerrá el Excel antes de importar: Access no puede leer un archivo abierto.</p>
+<h3>Importar paso a paso</h3>
+<ol>
+  <li>En Access: pestaña <strong>Datos externos</strong> → <strong>Nuevo origen de datos</strong> → <strong>Desde archivo</strong> → <strong>Excel</strong>.</li>
+  <li><strong>Examinar</strong> y elegí <code>Textiles_Ventas.xlsx</code>. Dejá marcada la opción <em>Importar el origen de datos en una nueva tabla de la base de datos actual</em> → <strong>Aceptar</strong>.</li>
+  <li>Elegí la hoja <em>Ventas</em> → <strong>Siguiente</strong>. Marcá <em>La primera fila contiene encabezados de columna</em> → <strong>Siguiente</strong>.</li>
+  <li>En <strong>Opciones de campo</strong>, revisá uno por uno: <code>IdVenta</code>, <code>IdCliente</code>, <code>IdProducto</code> y <code>Cantidad</code> como <strong>Entero largo</strong>; <code>Fecha</code> como <strong>Fecha y hora</strong>. → <strong>Siguiente</strong>.</li>
+  <li>Elegí <em>Elegir mi propia clave principal</em> y seleccioná <code>IdVenta</code> → <strong>Siguiente</strong>.</li>
+  <li>Nombre de la tabla: <code>Ventas</code> → <strong>Finalizar</strong>. No hace falta guardar los pasos de importación.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Asistente de importación de Excel en el paso Opciones de campo, con el campo IdCliente seleccionado y el Tipo de datos en Entero largo.</span>
+</div>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Revisá los tipos antes de aceptar</p>
+  <p>Access adivina el tipo mirando las primeras filas, y a veces se equivoca (por ejemplo, toma una fecha como texto). Los campos <code>IdCliente</code> e <code>IdProducto</code> tienen que ser <strong>Entero largo</strong>, el mismo tipo numérico que usan las Autonumeraciones, o la relación no se podrá crear.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 03 · 10 min</span>
+    <h3>Importá las ventas</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Si todavía no lo descargaste, bajá <code>Textiles_Ventas.xlsx</code> <a class="dl-file" href="../archivos/Textiles_Ventas.xlsx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> y cerralo.</li>
+  <li>Importalo a una tabla nueva llamada <code>Ventas</code>, con clave principal en <code>IdVenta</code>.</li>
+  <li>Abrí <code>Ventas</code> en Vista Diseño y verificá los tipos de dato de los cinco campos.</li>
+  <li>Controles: <strong>36</strong> registros; la primera venta es del <strong>02/03/2026</strong> y la última del <strong>28/05/2026</strong>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="relaciones">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Relacionar las tablas</h2>
+  </div>
+  <div class="prose">
+<p>Las tres tablas existen, pero Access todavía no sabe que están conectadas. Una <strong>relación</strong> une un campo de una tabla con un campo de otra. En el caso: un cliente tiene <strong>muchas</strong> ventas, pero cada venta es de <strong>un</strong> cliente. Y lo mismo con los productos. Se llama relación <strong>uno a varios</strong>. El campo de <code>Ventas</code> que guarda el número de otra tabla (<code>IdCliente</code>, <code>IdProducto</code>) se llama <strong>clave externa</strong>.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Relación</th><th>Lado "uno"</th><th>Lado "varios"</th></tr></thead>
+    <tbody>
+<tr><td>Clientes con Ventas</td><td><code>Clientes.IdCliente</code></td><td><code>Ventas.IdCliente</code></td></tr>
+<tr><td>Productos con Ventas</td><td><code>Productos.IdProducto</code></td><td><code>Ventas.IdProducto</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Crear las relaciones</h3>
+<ol>
+  <li>Cerrá todas las tablas y formularios abiertos.</li>
+  <li>Pestaña <strong>Herramientas de base de datos</strong> → <strong>Relaciones</strong>.</li>
+  <li>Si la ventana está vacía, abrí <strong>Mostrar tabla</strong> y agregá <code>Clientes</code>, <code>Productos</code> y <code>Ventas</code>. Acomodalas para ver todos los campos.</li>
+  <li>Arrastrá <code>IdCliente</code> de <code>Clientes</code> y soltalo sobre <code>IdCliente</code> de <code>Ventas</code>.</li>
+  <li>En la ventana <strong>Modificar relaciones</strong>, marcá <strong>Exigir integridad referencial</strong> → <strong>Crear</strong>.</li>
+  <li>Repetí con <code>IdProducto</code> de <code>Productos</code> hacia <code>IdProducto</code> de <code>Ventas</code>.</li>
+  <li>Guardá con <code>Ctrl+G</code>.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Ventana Relaciones con las tablas Clientes, Productos y Ventas y dos líneas que las unen, con el símbolo 1 del lado de Clientes y Productos y el símbolo infinito del lado de Ventas.</span>
+</div>
+<h3>Qué cuida la integridad referencial</h3>
+<p>Al marcar <strong>Exigir integridad referencial</strong> le pedís a Access que no deje dato huérfano: no podés registrar una venta de un cliente que no existe, ni borrar un cliente que ya tiene ventas.</p>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 04 · 10 min</span>
+    <h3>Probá que la integridad funciona</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá las dos relaciones con integridad referencial. Controles: la ventana muestra <strong>2</strong> líneas, con el <strong>1</strong> del lado de Clientes y Productos y el <strong>∞</strong> del lado de Ventas.</li>
+  <li>Abrí <code>Ventas</code> y agregá un registro con <code>IdCliente</code> igual a <strong>99</strong>. ¿Qué mensaje muestra Access? Cancelalo con <code>Esc</code>.</li>
+  <li>Intentá borrar de <code>Clientes</code> a <em>Marta Ledesma</em> (que tiene ventas). ¿Qué pasa?</li>
+  <li>Escribí en una línea qué datos protege la integridad referencial.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="integrador">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">El pedido de la clase</h2>
+  </div>
+  <div class="prose">
+<div class="callout" data-type="action">
+  <p class="callout-label">📌 El pedido del emprendimiento</p>
+  <p>La familia quiere dejar de usar los cuadernos y las planillas sueltas. Necesitan cargar clientes y productos desde pantallas cómodas y tener las ventas de los últimos tres meses ya adentro de la base, conectadas con quién compró y qué.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Pedido de la clase</span>
+    <h3>La base de datos del emprendimiento, con datos y relaciones</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Continuá con tu <code>Textiles_Apellido.accdb</code> de la clase 13.</li>
+  <li>Dejá hechos los formularios <code>Productos</code> (con el combo de <code>Rubro</code> limitado a la lista) y <code>Clientes</code>, con título y color propios.</li>
+  <li>Cargá los 8 clientes.</li>
+  <li>Importá las 36 ventas en la tabla <code>Ventas</code>, con los tipos de dato correctos.</li>
+  <li>Creá las dos relaciones con integridad referencial.</li>
+  <li>Controles: <code>Productos</code> 13 registros, <code>Clientes</code> 8, <code>Ventas</code> 36, y 2 relaciones.</li>
+  <li>Hacé la copia <code>Clase 14 - Apellido - AAAA-MM-DD</code> en Drive, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Lector</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+<p>Dejaste de escribir en la tabla a mano: ahora cargás con formularios, traés datos de Excel sin volver a escribirlos y conectás las tablas con relaciones que cuidan la coherencia de los datos. La clase 15 te enseña a preguntarle a esta base y a mostrar las respuestas en informes.</p>
+<h3 id="actividades">Actividades</h3>
+<div class="table-wrap">
+  <table class="check-table">
+    <tbody>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-1" aria-label="Marcar como hecho"></td><td><label for="chk-s14-1">Creé un formulario con el asistente y le cambié el título y el color.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-2" aria-label="Marcar como hecho"></td><td><label for="chk-s14-2">Convertí <code>Rubro</code> en un cuadro combinado con una lista de valores y probé que rechaza lo que no está en la lista.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-3" aria-label="Marcar como hecho"></td><td><label for="chk-s14-3">Cargué los 8 clientes con un formulario y mis cifras coinciden con las de control.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-4" aria-label="Marcar como hecho"></td><td><label for="chk-s14-4">Importé <code>Textiles_Ventas.xlsx</code> a una tabla nueva y revisé los tipos de dato.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-5" aria-label="Marcar como hecho"></td><td><label for="chk-s14-5">Creé las dos relaciones uno a varios con integridad referencial.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-6" aria-label="Marcar como hecho"></td><td><label for="chk-s14-6">Comprobé que Access rechaza una venta de un cliente que no existe.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s14-7" aria-label="Marcar como hecho"></td><td><label for="chk-s14-7">Entregué el enlace a mi base con tres tablas, datos y relaciones.</label></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="linkedin">
+  <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+  <p><strong>Microsoft Access.</strong> Cómo la justificás: construyo formularios de carga con listas controladas, importo datos desde Excel verificando los tipos y defino relaciones con integridad referencial entre tablas.</p>
+</div>
+<h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
+<div class="qr-row qr-t-purpura">
+<div class="qr-row-label">Access</div>
+<div class="qr-row-cols">
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Formularios</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Crear → Asistente para formularios</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Distribución: en columnas</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Vista Diseño</strong> para título, color, imagen</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Nuevo registro</strong>: el botón del asterisco</span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Cuadro combinado</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Clic derecho en el control → <strong>Cambiar a → Cuadro combinado</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>F4</code>: Hoja de propiedades → Datos</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Tipo de origen: <strong>Lista de valores</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Origen: <code>valor1;valor2;valor3</code></span></div>
+</div>
+<div class="qr-tip">Limitar a la lista: Sí.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Importar desde Excel</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Datos externos → Nuevo origen de datos → Desde archivo → Excel</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Cerrar el Excel antes</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">La primera fila contiene encabezados</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Ids como <strong>Entero largo</strong>, fechas como <strong>Fecha y hora</strong></span></div>
+</div>
+<div class="qr-tip">Revisar los tipos antes de aceptar.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Relaciones</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Herramientas de base de datos → Relaciones</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Arrastrar del campo clave al campo de la otra tabla</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Exigir integridad referencial</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Uno a varios: 1 del lado de la clave, ∞ del otro</span></div>
+</div>
+<div class="qr-tip">Mismo tipo de dato en los dos campos.</div>
+</div>
+</div>
+</div>
+<h3 id="herramientas">Herramientas</h3>
+<p>Los sitios y aplicaciones que usamos en esta clase, a mano. Los costos pueden cambiar; 🎓 indica beneficio para estudiantes.</p>
+<h4>Bases de datos</h4>
+<div class="kit-card">
+  <div class="kit-tool" data-cost="paid">
+    <a class="kit-tool-link" href="https://www.microsoft.com/es-ar/microsoft-365/access" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Microsoft - Access.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Microsoft Access</span><span class="kit-tool-domain">microsoft.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-paid">Pago</span></span>
+  </div>
+</div>
+
+<h4>Planilla de cálculo</h4>
+<div class="kit-card">
+  <div class="kit-tool" data-cost="freemium" data-student="1">
+    <a class="kit-tool-link" href="https://www.office.com/launch/excel" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Microsoft - Excel.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Excel</span><span class="kit-tool-domain">office.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-freemium">Freemium</span><a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a></span>
+  </div>
+</div>
+<h4>Archivos de la clase</h4>
+<div class="kit-card">
+  <div class="kit-tool kit-file">
+    <a class="kit-tool-link" href="../archivos/Textiles_Ventas.xlsx" download><img class="kit-tool-icon" src="../img/apps/filetype-xlsx.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Textiles_Ventas.xlsx</span><span class="kit-tool-domain">36 ventas del emprendimiento · micro ejercicio 03</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-free">Descargar</span></span>
+  </div>
+</div>
+
+<h3 id="glosario">Glosario</h3>
+<div class="glossary">
+<div class="gloss-item"><span class="gloss-term">Formulario</span><p class="gloss-def">Pantalla de Access para ver y cargar los datos de un registro por vez.</p></div>
+<div class="gloss-item"><span class="gloss-term">Control</span><p class="gloss-def">Cada elemento de un formulario: etiqueta, cuadro de texto, cuadro combinado, botón.</p></div>
+<div class="gloss-item"><span class="gloss-term">Cuadro combinado</span><p class="gloss-def">Lista desplegable para elegir un valor entre opciones permitidas.</p></div>
+<div class="gloss-item"><span class="gloss-term">Lista de valores</span><p class="gloss-def">Origen de un cuadro combinado cuyas opciones se escriben separadas por punto y coma.</p></div>
+<div class="gloss-item"><span class="gloss-term">Importar</span><p class="gloss-def">Traer a una base de Access datos que están en otro archivo, como una planilla de Excel.</p></div>
+<div class="gloss-item"><span class="gloss-term">Entero largo</span><p class="gloss-def">Tipo de número entero que usan las claves; debe coincidir en los dos campos relacionados.</p></div>
+<div class="gloss-item"><span class="gloss-term">Relación</span><p class="gloss-def">Vínculo entre un campo de una tabla y un campo de otra.</p></div>
+<div class="gloss-item"><span class="gloss-term">Uno a varios</span><p class="gloss-def">Relación en la que un registro de una tabla se asocia con muchos de otra.</p></div>
+<div class="gloss-item"><span class="gloss-term">Integridad referencial</span><p class="gloss-def">Regla que impide registros huérfanos, como una venta de un cliente que no existe.</p></div>
+<div class="gloss-item"><span class="gloss-term">Clave externa</span><p class="gloss-def">Campo que guarda la clave principal de otra tabla, como IdCliente en Ventas.</p></div>
+</div>
+<h3 id="fuentes">Fuentes</h3>
+<ul class="sources">
+  <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Access</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
+  <li>Microsoft. <em>Soporte de Access</em>. <a href="https://support.microsoft.com/es-es/access" target="_blank" rel="noopener"><code>support.microsoft.com/access</code></a></li>
+</ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+<script defer src="../js/guia-kit.js"></script>
+<script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-glosario.js"></script>
+<script defer src="../js/guia-continuidad.js"></script>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

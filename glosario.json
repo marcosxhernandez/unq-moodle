@@ -48,7 +48,7 @@
   },
   {
    "id": "datos",
-   "nombre": "Gestión de datos e IA",
+   "nombre": "Base de datos",
    "clases": [
     "13",
     "14",
@@ -153,8 +153,8 @@
   {
    "num": "13",
    "unidad": "datos",
-   "titulo": "Cómo piensan las bases de datos",
-   "archivo": "Clase 13 - Cómo piensan las bases de datos.html",
+   "titulo": "Primeros pasos en Access",
+   "archivo": "Clase 13 - Primeros pasos en Access.html",
    "acento": "#673ab7",
    "deep": "#432677",
    "tint": "#eae3f5"
@@ -162,8 +162,8 @@
   {
    "num": "14",
    "unidad": "datos",
-   "titulo": "Del formulario a la base de datos",
-   "archivo": "Clase 14 - Del formulario a la base de datos.html",
+   "titulo": "Formularios, importación y relaciones",
+   "archivo": "Clase 14 - Formularios, importación y relaciones.html",
    "acento": "#673ab7",
    "deep": "#432677",
    "tint": "#eae3f5"
@@ -171,8 +171,8 @@
   {
    "num": "15",
    "unidad": "datos",
-   "titulo": "Del dato a la decisión",
-   "archivo": "Clase 15 - Del dato a la decisión.html",
+   "titulo": "Consultas e informes",
+   "archivo": "Clase 15 - Consultas e informes.html",
    "acento": "#673ab7",
    "deep": "#432677",
    "tint": "#eae3f5"
@@ -229,6 +229,20 @@
      "label": "Agente de IA",
      "clases": [
       "01"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Agrupamiento",
+   "variants": [
+    {
+     "def": "Reunir los registros del informe según un campo, por ejemplo el rubro.",
+     "label": "Agrupamiento",
+     "clases": [
+      "15"
      ],
      "icon": ""
     }
@@ -370,20 +384,6 @@
    "divergente": false
   },
   {
-   "term": "Auditoría de datos",
-   "variants": [
-    {
-     "def": "Revisión sistemática de una tabla para detectar duplicados, campos vacíos e inconsistencias de formato antes de confiar en ella.",
-     "label": "Auditoría de datos",
-     "clases": [
-      "14"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Autoguardado",
    "variants": [
     {
@@ -391,6 +391,20 @@
      "label": "Autoguardado",
      "clases": [
       "02"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Autonumeración",
+   "variants": [
+    {
+     "def": "Tipo de dato que Access completa solo con un número que no se repite.",
+     "label": "Autonumeración",
+     "clases": [
+      "13"
      ],
      "icon": ""
     }
@@ -415,7 +429,7 @@
    "term": "Base de datos",
    "variants": [
     {
-     "def": "Conjunto organizado de información, estructurado en campos y registros.",
+     "def": "Conjunto organizado de datos que se guardan, relacionan y consultan.",
      "label": "Base de datos",
      "clases": [
       "13"
@@ -443,10 +457,24 @@
    "term": "Campo",
    "variants": [
     {
-     "def": "Cada tipo de dato que se registra, equivalente a una columna.",
+     "def": "Una columna de una tabla: un dato de cada registro.",
      "label": "Campo",
      "clases": [
       "13"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Campo calculado",
+   "variants": [
+    {
+     "def": "Columna de una consulta que se obtiene con una fórmula a partir de otros campos.",
+     "label": "Campo calculado",
+     "clases": [
+      "15"
      ],
      "icon": ""
     }
@@ -496,20 +524,6 @@
    "divergente": false
   },
   {
-   "term": "Chequeo de tres pasos",
-   "variants": [
-    {
-     "def": "Verificación de hechos, lógica y contexto antes de confiar en una fórmula o una conclusión generada por IA.",
-     "label": "Chequeo de tres pasos",
-     "clases": [
-      "15"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Cita en el texto",
    "variants": [
     {
@@ -538,13 +552,13 @@
    "divergente": false
   },
   {
-   "term": "Clave foránea",
+   "term": "Clave externa",
    "variants": [
     {
-     "def": "Copia de la clave primaria de otra tabla, usada para relacionar un registro con un registro de esa otra tabla.",
-     "label": "Clave foránea",
+     "def": "Campo que guarda la clave principal de otra tabla, como IdCliente en Ventas.",
+     "label": "Clave externa",
      "clases": [
-      "13"
+      "14"
      ],
      "icon": ""
     }
@@ -552,11 +566,11 @@
    "divergente": false
   },
   {
-   "term": "Clave primaria",
+   "term": "Clave principal",
    "variants": [
     {
-     "def": "Campo que identifica de forma única, no vacía y estable a cada registro de una tabla.",
-     "label": "Clave primaria",
+     "def": "Campo que identifica de forma única a cada registro y no se repite.",
+     "label": "Clave principal",
      "clases": [
       "13"
      ],
@@ -622,6 +636,20 @@
    "divergente": false
   },
   {
+   "term": "Comodín",
+   "variants": [
+    {
+     "def": "Símbolo que reemplaza texto, como el asterisco en <em>Como \"T*\"</em>.",
+     "label": "Comodín",
+     "clases": [
+      "15"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Condición",
    "variants": [
     {
@@ -643,6 +671,20 @@
      "label": "Conector",
      "clases": [
       "10"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Consulta",
+   "variants": [
+    {
+     "def": "Pregunta guardada con un nombre que muestra los datos que cumplen ciertas condiciones.",
+     "label": "Consulta",
+     "clases": [
+      "15"
      ],
      "icon": ""
     }
@@ -678,13 +720,13 @@
    "divergente": false
   },
   {
-   "term": "Controlador de relleno",
+   "term": "Control",
    "variants": [
     {
-     "def": "Cuadrado en la esquina de la celda activa que, al arrastrarlo, copia contenido o completa series.",
-     "label": "Controlador de relleno",
+     "def": "Cada elemento de un formulario: etiqueta, cuadro de texto, cuadro combinado, botón.",
+     "label": "Control",
      "clases": [
-      "08"
+      "14"
      ],
      "icon": ""
     }
@@ -692,13 +734,13 @@
    "divergente": false
   },
   {
-   "term": "Correlación",
+   "term": "Controlador de relleno",
    "variants": [
     {
-     "def": "Relación estadística entre dos variables que suben o bajan juntas, sin que eso pruebe que una causa la otra.",
-     "label": "Correlación",
+     "def": "Cuadrado en la esquina de la celda activa que, al arrastrarlo, copia contenido o completa series.",
+     "label": "Controlador de relleno",
      "clases": [
-      "15"
+      "08"
      ],
      "icon": ""
     }
@@ -743,9 +785,17 @@
       "10"
      ],
      "icon": ""
+    },
+    {
+     "def": "Condición que debe cumplir un registro para aparecer en una consulta.",
+     "label": "Criterio",
+     "clases": [
+      "15"
+     ],
+     "icon": ""
     }
    ],
-   "divergente": false
+   "divergente": true
   },
   {
    "term": "CSV",
@@ -757,17 +807,37 @@
       "08"
      ],
      "icon": ""
-    },
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Cuadrícula de diseño",
+   "variants": [
     {
-     "def": "Formato de texto plano para intercambiar tablas entre programas, donde cada línea es un registro y los valores van separados por comas.",
-     "label": "CSV",
+     "def": "Parte de la vista Diseño de una consulta donde se eligen campos, orden y criterios.",
+     "label": "Cuadrícula de diseño",
+     "clases": [
+      "15"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Cuadro combinado",
+   "variants": [
+    {
+     "def": "Lista desplegable para elegir un valor entre opciones permitidas.",
+     "label": "Cuadro combinado",
      "clases": [
       "14"
      ],
      "icon": ""
     }
    ],
-   "divergente": true
+   "divergente": false
   },
   {
    "term": "Dark web",
@@ -787,7 +857,7 @@
    "term": "Dato",
    "variants": [
     {
-     "def": "Valor suelto, sin contexto.",
+     "def": "Valor suelto, sin contexto. Con contexto se vuelve información.",
      "label": "Dato",
      "clases": [
       "13"
@@ -868,20 +938,6 @@
    "divergente": false
   },
   {
-   "term": "Eje recortado",
-   "variants": [
-    {
-     "def": "Eje de un gráfico que no arranca en cero, lo que exagera visualmente una diferencia entre valores.",
-     "label": "Eje recortado",
-     "clases": [
-      "15"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Eje X",
    "variants": [
     {
@@ -903,6 +959,20 @@
      "label": "Encabezado de grupo",
      "clases": [
       "04"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Entero largo",
+   "variants": [
+    {
+     "def": "Tipo de número entero que usan las claves; debe coincidir en los dos campos relacionados.",
+     "label": "Entero largo",
+     "clases": [
+      "14"
      ],
      "icon": ""
     }
@@ -991,10 +1061,10 @@
      "icon": ""
     },
     {
-     "def": "Herramienta que oculta temporalmente las filas que no cumplen una condición, sin alterar la tabla original.",
+     "def": "Muestra solo los registros que cumplen una condición, sin borrar el resto.",
      "label": "Filtro",
      "clases": [
-      "14"
+      "13"
      ],
      "icon": ""
     }
@@ -1061,13 +1131,12 @@
    "term": "Formulario",
    "variants": [
     {
-     "def": "Interfaz de carga que genera automáticamente una fila nueva en una hoja de Sheets por cada respuesta enviada.",
-     "label": "Formulario (Google Forms)",
+     "def": "Pantalla de Access para ver y cargar los datos de un registro por vez.",
+     "label": "Formulario",
      "clases": [
-      "13",
       "14"
      ],
-     "icon": "Google - Forms.png"
+     "icon": ""
     }
    ],
    "divergente": false
@@ -1193,6 +1262,20 @@
    "divergente": false
   },
   {
+   "term": "Hoja de datos",
+   "variants": [
+    {
+     "def": "Vista de una tabla donde se cargan y se miran los registros.",
+     "label": "Hoja de datos",
+     "clases": [
+      "13"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "HOY",
    "variants": [
     {
@@ -1235,6 +1318,20 @@
    "divergente": false
   },
   {
+   "term": "Importar",
+   "variants": [
+    {
+     "def": "Traer a una base de Access datos que están en otro archivo, como una planilla de Excel.",
+     "label": "Importar",
+     "clases": [
+      "14"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "Índice automático",
    "variants": [
     {
@@ -1249,13 +1346,27 @@
    "divergente": false
   },
   {
-   "term": "Información",
+   "term": "Informe",
    "variants": [
     {
-     "def": "El dato interpretado dentro de un contexto que le da sentido.",
-     "label": "Información",
+     "def": "Objeto de Access que presenta los datos agrupados y listos para imprimir.",
+     "label": "Informe",
      "clases": [
-      "13"
+      "15"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Integridad referencial",
+   "variants": [
+    {
+     "def": "Regla que impide registros huérfanos, como una venta de un cliente que no existe.",
+     "label": "Integridad referencial",
+     "clases": [
+      "14"
      ],
      "icon": ""
     }
@@ -1333,6 +1444,20 @@
    "divergente": false
   },
   {
+   "term": "Lista de valores",
+   "variants": [
+    {
+     "def": "Origen de un cuadro combinado cuyas opciones se escriben separadas por punto y coma.",
+     "label": "Lista de valores",
+     "clases": [
+      "14"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "LLM",
    "variants": [
     {
@@ -1353,21 +1478,6 @@
     }
    ],
    "divergente": true
-  },
-  {
-   "term": "Marca temporal",
-   "variants": [
-    {
-     "def": "Columna que Forms agrega sola con la fecha y hora exacta de cada respuesta, buen candidato a clave primaria.",
-     "label": "Marca temporal",
-     "clases": [
-      "13",
-      "14"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
   },
   {
    "term": "Marcador",
@@ -1433,6 +1543,20 @@
      "label": "Nube",
      "clases": [
       "01"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Operador",
+   "variants": [
+    {
+     "def": "Símbolo o palabra que compara, como mayor que, Entre, Como o Y.",
+     "label": "Operador",
+     "clases": [
+      "15"
      ],
      "icon": ""
     }
@@ -1616,20 +1740,6 @@
    "divergente": false
   },
   {
-   "term": "QUERY",
-   "variants": [
-    {
-     "def": "Función de Sheets que selecciona, filtra y ordena datos de una tabla con un lenguaje similar a SQL, sin modificar la tabla de origen.",
-     "label": "QUERY",
-     "clases": [
-      "14"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "RAG",
    "variants": [
     {
@@ -1745,7 +1855,7 @@
    "term": "Registro",
    "variants": [
     {
-     "def": "Conjunto completo de datos de un mismo elemento, equivalente a una fila.",
+     "def": "Una fila de una tabla: una cosa completa.",
      "label": "Registro",
      "clases": [
       "13"
@@ -1770,13 +1880,41 @@
    "divergente": false
   },
   {
-   "term": "Relación uno a muchos",
+   "term": "Relación",
    "variants": [
     {
-     "def": "Vínculo entre dos tablas donde un registro de la primera puede corresponder a muchos registros de la segunda, pero cada registro de la segunda corresponde a uno solo de la primera.",
-     "label": "Relación uno a muchos (1:N)",
+     "def": "Vínculo entre un campo de una tabla y un campo de otra.",
+     "label": "Relación",
+     "clases": [
+      "14"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Requerido",
+   "variants": [
+    {
+     "def": "Propiedad de un campo que obliga a completarlo antes de guardar el registro.",
+     "label": "Requerido",
      "clases": [
       "13"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Resumen",
+   "variants": [
+    {
+     "def": "Total, promedio o cuenta que el informe calcula por grupo y en general.",
+     "label": "Resumen",
+     "clases": [
+      "15"
      ],
      "icon": ""
     }
@@ -1924,20 +2062,6 @@
    "divergente": false
   },
   {
-   "term": "Storytelling con datos",
-   "variants": [
-    {
-     "def": "Comunicar un hallazgo numérico como una historia con gancho, desarrollo y cierre, en vez de solo mostrar la tabla.",
-     "label": "Storytelling con datos",
-     "clases": [
-      "15"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "SUBTOTAL",
    "variants": [
     {
@@ -1945,6 +2069,20 @@
      "label": "SUBTOTAL",
      "clases": [
       "10"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Tabla",
+   "variants": [
+    {
+     "def": "Lista de cosas del mismo tipo, formada por filas y columnas.",
+     "label": "Tabla",
+     "clases": [
+      "13"
      ],
      "icon": ""
     }
@@ -1975,23 +2113,15 @@
       "11"
      ],
      "icon": ""
-    },
-    {
-     "def": "Hoja de consulta que reúne tabla, gráfico y números clave, pensada para que alguien la lea de un vistazo sin editar el archivo.",
-     "label": "Tablero",
-     "clases": [
-      "15"
-     ],
-     "icon": ""
     }
    ],
-   "divergente": true
+   "divergente": false
   },
   {
    "term": "Tipo de dato",
    "variants": [
     {
-     "def": "La clase de valor que un campo puede contener (texto, numérico, fecha, lógico o categórico).",
+     "def": "Lo que un campo puede guardar: texto, número, fecha, moneda, sí o no.",
      "label": "Tipo de dato",
      "clases": [
       "13"
@@ -2016,13 +2146,13 @@
    "divergente": false
   },
   {
-   "term": "Validación de datos",
+   "term": "Uno a varios",
    "variants": [
     {
-     "def": "Regla que limita qué se puede escribir en una celda.",
-     "label": "Validación de datos",
+     "def": "Relación en la que un registro de una tabla se asocia con muchos de otra.",
+     "label": "Uno a varios",
      "clases": [
-      "10"
+      "14"
      ],
      "icon": ""
     }
@@ -2030,14 +2160,13 @@
    "divergente": false
   },
   {
-   "term": "Validación de respuesta",
+   "term": "Validación de datos",
    "variants": [
     {
-     "def": "Restricción configurada en una pregunta de Forms (rango numérico, patrón de texto, lista cerrada) para impedir que se cargue un dato inválido.",
-     "label": "Validación de respuesta",
+     "def": "Regla que limita qué se puede escribir en una celda.",
+     "label": "Validación de datos",
      "clases": [
-      "13",
-      "14"
+      "10"
      ],
      "icon": ""
     }
@@ -2082,17 +2211,37 @@
       "10"
      ],
      "icon": ""
-    },
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Vista Diseño",
+   "variants": [
     {
-     "def": "Filtro personal que no afecta lo que ven otras personas que tienen la misma hoja abierta.",
-     "label": "Vista de filtro",
+     "def": "Vista de una tabla donde se definen sus campos y propiedades.",
+     "label": "Vista Diseño",
      "clases": [
-      "14"
+      "13"
      ],
      "icon": ""
     }
    ],
-   "divergente": true
+   "divergente": false
+  },
+  {
+   "term": "Vista preliminar",
+   "variants": [
+    {
+     "def": "Muestra cómo saldrá impreso un informe.",
+     "label": "Vista preliminar",
+     "clases": [
+      "15"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
   }
  ]
 }

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 13 - Primeros pasos en Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento: Bases de datos = violeta */
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+
+  /* Mini tabla de datos ilustrativa (reemplaza capturas): namespace db-*, no choca con guia-estilo.css */
+  .db{ margin:1rem 0 1.2rem; break-inside:avoid-page; }
+  .db-box{ display:inline-block; max-width:100%; border:1px solid #cfcdd6; border-radius:6px; background:#fff; overflow:hidden; }
+  .db-tab{ padding:4px 12px; background:var(--acento-tint); color:var(--acento-deep); font-family:var(--sans); font-size:.78rem; font-weight:700; border-bottom:1px solid #cfcdd6; }
+  table.db-grid{ border-collapse:collapse; margin:0; width:auto; font-family:var(--sans); font-size:.8rem; background:#fff; border:0; }
+  table.db-grid th{ background:#f1f1f4; color:#3b3a45; font-weight:600; border:1px solid #d9d8de; padding:3px 10px; text-align:left; font-size:.74rem; text-transform:none; letter-spacing:0; white-space:nowrap; }
+  table.db-grid td{ border:1px solid #e3e2e8; padding:3px 10px; white-space:nowrap; color:#1f1e26; background:#fff; text-align:left; }
+  table.db-grid td.n{ text-align:right; }
+  table.db-grid td.k{ background:#fff3c4; font-weight:700; }
+  table.db-grid td.hl{ background:#fff3c4; }
+  table.db-grid td.m{ font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.76rem; }
+  .db-cap{ margin:.35rem 0 0; font-size:.82rem; color:var(--muted); line-height:1.45; }
+  .sql-grid{ border-collapse:collapse; margin:.4rem 0 .2rem; }
+  @media print{
+    .db{ margin:8pt 0 9pt; }
+    table.db-grid{ font-size:7.6pt; }
+    table.db-grid th{ font-size:7pt; padding:1pt 6pt; }
+    table.db-grid td{ padding:2pt 6pt; }
+    .db-tab{ font-size:7.4pt; }
+    .db-cap{ font-size:7.8pt; }
+    .qr-row{ break-inside:auto !important; }
+    .qr-cell{ break-inside:avoid; }
+  }
+
+  /* Botón de descarga directa (solo pantalla): namespace dl-file, no choca con guia-estilo.css */
+  .dl-file{ display:inline-flex; align-items:center; gap:5px; margin:0 2px; padding:1px 9px 1px 7px; vertical-align:baseline;
+    font-family:var(--sans); font-size:.78rem; font-weight:600; line-height:1.5; color:var(--acento-deep); text-decoration:none;
+    background:var(--acento-tint); border:1px solid var(--acento); border-radius:var(--radius-sm); }
+  .dl-file svg{ width:14px; height:14px; flex:none; }
+  .dl-file:hover{ background:var(--acento-soft); }
+  .dl-file:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  @media print{ .dl-file{ display:none !important; } }
+
+  @page{
+    @top-right{
+      content:"Clase 13 · Primeros pasos en Access";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="13">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 13 · Bases de datos</span>
+    <h1 class="cover-title">Primeros pasos en Access</h1>
+    <p class="cover-subtitle">Qué es una base de datos, cómo se ve Access y cómo se diseña una tabla</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Hasta acá trabajaste con planillas. Hoy damos el salto a una base de datos: entendés por qué una planilla se queda corta, recorrés Access con una base ya armada, aprendés a buscar, ordenar y filtrar, y diseñás desde cero las dos primeras tablas de un caso real: el emprendimiento de textiles para el hogar que seguimos las próximas tres clases.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+<li><a href="#planilla"><span class="toc-num">01</span><span class="toc-text">De la planilla a la base de datos</span></a></li>
+<li><a href="#access"><span class="toc-num">02</span><span class="toc-text">Conocé Access</span></a></li>
+<li><a href="#buscar"><span class="toc-num">03</span><span class="toc-text">Buscar, ordenar y filtrar</span></a></li>
+<li><a href="#disenio"><span class="toc-num">04</span><span class="toc-text">Diseñar antes de crear</span></a></li>
+<li><a href="#productos"><span class="toc-num">05</span><span class="toc-text">Crear la base y la tabla Productos</span></a></li>
+<li><a href="#clientes"><span class="toc-num">06</span><span class="toc-text">La tabla Clientes</span></a></li>
+<li><a href="#integrador"><span class="toc-num">07</span><span class="toc-text">El pedido de la clase</span></a></li>
+<li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="block" id="planilla">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">De la planilla a la base de datos</h2>
+  </div>
+  <div class="prose">
+<p>Una <strong>planilla</strong> sirve para calcular. Una <strong>base de datos</strong> sirve para guardar, ordenar y consultar información que se repite y que se relaciona. Si vendés toallas, cada venta nombra a un cliente y a un producto: en una planilla copiás el nombre y la dirección del cliente en cada fila y, el día que cambia de domicilio, tenés que corregirlo en veinte lugares. En una base lo escribís una sola vez.</p>
+<h3>Dato e información</h3>
+<p>Un <strong>dato</strong> es un valor suelto: <em>3500</em>, <em>Bernal</em>, <em>14/03/1991</em>. Por sí solo no dice nada. La <strong>información</strong> aparece cuando el dato tiene contexto: <em>el barbijo adulto cuesta $ 3.500</em>. Una base de datos guarda datos con su contexto, para que después podamos pedirle información.</p>
+<h3>Campo, registro y tabla</h3>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Palabra</th><th>Qué es</th><th>En el caso de textiles</th></tr></thead>
+    <tbody>
+<tr><td><strong>Tabla</strong></td><td>Una lista de cosas del mismo tipo</td><td><code>Productos</code>, <code>Clientes</code></td></tr>
+<tr><td><strong>Registro</strong></td><td>Una fila: una cosa completa</td><td>Un producto, un cliente</td></tr>
+<tr><td><strong>Campo</strong></td><td>Una columna: un dato de esa cosa</td><td><code>NombreProducto</code>, <code>Precio</code></td></tr>
+<tr><td><strong>Clave principal</strong></td><td>El campo que identifica a cada registro y no se repite</td><td><code>IdProducto</code>, <code>IdCliente</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 La regla de oro</p>
+  <p>Un dato, un lugar. Si te encontrás escribiendo lo mismo en muchas filas, ese dato necesita su propia tabla. Eso lo resolvemos en la clase 14 con las relaciones.</p>
+</div>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th></th><th>Planilla (Excel, Sheets)</th><th>Base de datos (Access)</th></tr></thead>
+    <tbody>
+<tr><td>Para qué sirve</td><td>Calcular, graficar, simular</td><td>Guardar y consultar datos que se relacionan</td></tr>
+<tr><td>Cómo se repiten los datos</td><td>Se copian fila por fila</td><td>Cada dato vive en un solo lugar</td></tr>
+<tr><td>Cómo se ingresan</td><td>Directo en la celda, sin control</td><td>Con tipos de dato y reglas que evitan errores</td></tr>
+<tr><td>Cómo se piden resultados</td><td>Fórmulas y filtros</td><td>Consultas e informes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </div>
+</section>
+<section class="block" id="access">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Conocé Access</h2>
+  </div>
+  <div class="prose">
+<p>Access es el programa de bases de datos de Microsoft. En esta materia lo usamos en la <strong>PC del laboratorio de la UNQ</strong>: es un programa de escritorio que existe solo para Windows, así que no se abre en una Mac. Para practicar en tu casa necesitás una PC con Windows y Access instalado (viene con Microsoft 365 o se compra por separado).</p>
+<div class="tools-container">
+  <div class="app-row">
+    <a class="app-row-link" href="https://www.microsoft.com/es-ar/microsoft-365/access" target="_blank" rel="noopener">
+      <img class="row-icon" src="../img/apps/Microsoft%20-%20Access.png" alt="Microsoft Access">
+      <div class="row-text">
+        <span class="row-name">Microsoft Access</span>
+        <span class="row-domain">microsoft.com</span>
+      </div>
+    </a>
+    <div class="tags"><span class="pill pill-paid">Pago</span></div>
+  </div>
+</div>
+<h3>Abrir la base de ejemplo</h3>
+<p>Para recorrer Access sin armar nada todavía, abrí <code>Clinica_Veterinaria.mdb</code> <a class="dl-file" href="../archivos/Clinica_Veterinaria.mdb" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a>''. Es la base de una veterinaria de Bernal. Al abrirla puede aparecer una barra amarilla de <strong>Advertencia de seguridad</strong>: hacé clic en <strong>Habilitar contenido</strong>, porque la base es de confianza.</p>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Access recién abierto con Clinica_Veterinaria.mdb: panel de navegación a la izquierda con las tablas Comidas, Internaciones, Mascotas, Tipos Tratamiento, Tratamientosx Mascota y Veterinarias, y la barra amarilla de Advertencia de seguridad con el botón Habilitar contenido resaltado.</span>
+</div>
+<h3>Los cuatro objetos de una base</h3>
+<p>Todo lo que hay en una base de Access es un <strong>objeto</strong>, y todos se listan en el <strong>panel de navegación</strong> de la izquierda.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Objeto</th><th>Para qué sirve</th><th>Ejemplo en Clínica Veterinaria</th></tr></thead>
+    <tbody>
+<tr><td><strong>Tabla</strong></td><td>Guarda los datos</td><td><code>Mascotas</code>, <code>Veterinarias</code></td></tr>
+<tr><td><strong>Consulta</strong></td><td>Hace una pregunta a los datos y muestra el resultado</td><td><code>Mascotas hembras</code></td></tr>
+<tr><td><strong>Formulario</strong></td><td>Pantalla cómoda para cargar o mirar datos de a un registro</td><td><code>Ingreso Tipos Tratamiento</code></td></tr>
+<tr><td><strong>Informe</strong></td><td>Presenta los datos listos para imprimir</td><td><code>Tipos Tratamiento</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Dos vistas de una tabla</h3>
+<p>Cada tabla se puede mirar de dos maneras. Se cambia con el botón <strong>Ver</strong> de la cinta (pestaña <strong>Inicio</strong>).</p>
+<ul>
+  <li><strong>Vista Hoja de datos:</strong> los registros, como en una planilla. Acá cargás y mirás datos.</li>
+  <li><strong>Vista Diseño:</strong> los campos y sus propiedades. Acá se decide cómo es la tabla.</li>
+</ul>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Access guarda solo</p>
+  <p>En Access no existe el botón de guardar cada cambio de datos: cuando pasás a otro registro, el registro se guarda. Lo que sí hay que guardar a mano es el <em>diseño</em> de una tabla (<code>Ctrl+G</code>).</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 01 · 10 min</span>
+    <h3>Explorá la Clínica Veterinaria</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Abrí <code>Clinica_Veterinaria.mdb</code> y habilitá el contenido.</li>
+  <li>Hacé doble clic en la tabla <code>Mascotas</code>. Anotá cuántos registros tiene: abajo a la izquierda, en la barra de navegación, dice <em>Registro 1 de N</em>. Tienen que ser <strong>66</strong>.</li>
+  <li>Pasá a vista <strong>Diseño</strong>. ¿Qué tipo de dato tiene <code>Nombre</code>? ¿Y <code>Sexo</code>? Volvé a la hoja de datos.</li>
+  <li>Abrí la consulta <code>Mascotas hembras</code>, el formulario <code>Ingreso Tipos Tratamiento</code> y el informe <code>Tipos Tratamiento</code>. Para cada uno, escribí en una línea qué objeto es y qué te muestra.</li>
+  <li>Controles: <code>Veterinarias</code> tiene <strong>5</strong> registros y <code>Tipos Tratamiento</code> tiene <strong>6</strong>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="buscar">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Buscar, ordenar y filtrar</h2>
+  </div>
+  <div class="prose">
+<p>Con 66 mascotas ya no alcanza con mirar. Access trae tres herramientas para encontrar lo que buscás, y las tres están en la pestaña <strong>Inicio</strong>. Ninguna cambia los datos: solo cambia lo que ves.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Herramienta</th><th>Cómo se usa</th><th>Para qué</th></tr></thead>
+    <tbody>
+<tr><td><strong>Buscar</strong></td><td><code>Ctrl+B</code> o el botón con los binoculares. Escribís el texto y elegís dónde buscar.</td><td>Ubicar un registro puntual</td></tr>
+<tr><td><strong>Ordenar</strong></td><td>Clic en una celda de la columna y botón <strong>Ascendente</strong> o <strong>Descendente</strong>.</td><td>Ver de la A a la Z, o del menor al mayor</td></tr>
+<tr><td><strong>Filtrar</strong></td><td>Botón <strong>Filtro</strong> en el encabezado de la columna, o <strong>Selección</strong> sobre un valor.</td><td>Mostrar solo los registros que cumplen una condición</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>El filtro se apaga con <strong>Alternar filtro</strong>. Mientras está activo, la barra de navegación muestra <em>Filtrado</em> y la cuenta de registros baja.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Ordenar también sirve para auditar</p>
+  <p>Al ordenar <code>Especie</code> de la A a la Z vas a ver que hay una <em>Tortuga</em> y una <em>Totuga</em>: el mismo animal escrito de dos maneras. Un filtro por <em>Tortuga</em> se perdería ese registro. Así se detectan los errores de carga, y por eso más adelante vamos a controlar lo que se escribe.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 02 · 10 min</span>
+    <h3>Buscá, ordená y filtrá mascotas</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>En <code>Mascotas</code>, usá <strong>Buscar</strong> para ubicar a <em>Sofi</em>. ¿De qué especie es?</li>
+  <li>Ordená por <code>Especie</code> de la A a la Z. ¿Qué dos escrituras raras de <em>Tortuga</em> encontraste?</li>
+  <li>Con un <strong>Filtro</strong> sobre <code>Especie</code>, dejá solo los <em>Canino</em>. Control: <strong>34</strong> registros.</li>
+  <li>Sumá al filtro <code>Sexo</code> igual a <em>H</em>. Control: <strong>17</strong>. Quitá el filtro y confirmá que vuelven los 66.</li>
+  <li>Pensá: ¿qué diferencia hay entre filtrar acá y abrir la consulta <code>Mascotas hembras</code>? (Pista: la consulta queda guardada con un nombre.)</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="disenio">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Diseñar antes de crear</h2>
+  </div>
+  <div class="prose">
+<p>Una base mal diseñada es difícil de arreglar cuando ya tiene datos. Antes de abrir Access, tomate cinco minutos en papel con tres preguntas:</p>
+<ol>
+  <li><strong>¿Qué cosas tengo que guardar?</strong> Cada cosa será una tabla: productos y clientes.</li>
+  <li><strong>¿Qué datos tiene cada una?</strong> Cada dato será un campo. Un dato por campo: no guardes <em>Calle y número</em> juntos, separalos.</li>
+  <li><strong>¿Cómo identifico a cada una?</strong> Con un campo que no se repite: la clave principal.</li>
+</ol>
+<h3>Tipos de dato</h3>
+<p>Cada campo tiene un <strong>tipo de dato</strong> que le dice a Access qué puede guardar. Elegirlo bien evita errores y permite hacer cuentas.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Tipo de dato</th><th>Guarda</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+<tr><td><strong>Autonumeración</strong></td><td>Un número que Access asigna solo y no se repite</td><td><code>IdProducto</code></td></tr>
+<tr><td><strong>Texto corto</strong></td><td>Hasta 255 caracteres</td><td>Nombre, calle, mail</td></tr>
+<tr><td><strong>Texto largo</strong></td><td>Párrafos</td><td>Observaciones</td></tr>
+<tr><td><strong>Número</strong></td><td>Números con los que se calcula</td><td>Cantidad, número de calle</td></tr>
+<tr><td><strong>Fecha/Hora</strong></td><td>Fechas y horas</td><td>Cumpleaños</td></tr>
+<tr><td><strong>Moneda</strong></td><td>Importes en pesos</td><td>Precio</td></tr>
+<tr><td><strong>Sí/No</strong></td><td>Verdadero o falso</td><td>Cliente frecuente</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ El celular es texto</p>
+  <p>Un número de teléfono no se suma ni se promedia, y puede empezar con cero. Va como <strong>Texto corto</strong>, no como Número.</p>
+</div>
+<h3>El diseño de las dos tablas del caso</h3>
+<p>El emprendimiento familiar vende textiles para el hogar. Empezamos con dos tablas.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Tabla</th><th>Campo</th><th>Tipo de dato</th><th>Propiedades</th></tr></thead>
+    <tbody>
+<tr><td><strong>Productos</strong></td><td><code>IdProducto</code></td><td>Autonumeración</td><td>Clave principal</td></tr>
+<tr><td></td><td><code>NombreProducto</code></td><td>Texto corto</td><td>Formato <code>&gt;</code> (mayúsculas), Requerido: Sí</td></tr>
+<tr><td></td><td><code>Descripcion</code></td><td>Texto corto</td><td></td></tr>
+<tr><td></td><td><code>Rubro</code></td><td>Texto corto</td><td>Requerido: Sí</td></tr>
+<tr><td></td><td><code>Precio</code></td><td>Moneda</td><td>Requerido: Sí</td></tr>
+<tr><td><strong>Clientes</strong></td><td><code>IdCliente</code></td><td>Autonumeración</td><td>Clave principal</td></tr>
+<tr><td></td><td><code>Apellido</code>, <code>Nombre</code></td><td>Texto corto</td><td>Requerido: Sí</td></tr>
+<tr><td></td><td><code>Calle</code></td><td>Texto corto</td><td></td></tr>
+<tr><td></td><td><code>Nro</code></td><td>Número</td><td></td></tr>
+<tr><td></td><td><code>Localidad</code></td><td>Texto corto</td><td></td></tr>
+<tr><td></td><td><code>Mail</code></td><td>Texto corto</td><td></td></tr>
+<tr><td></td><td><code>Celular</code></td><td>Texto corto</td><td></td></tr>
+<tr><td></td><td><code>Cumpleaños</code></td><td>Fecha/Hora</td><td>Formato Fecha corta</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </div>
+</section>
+<section class="block" id="productos">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Crear la base y la tabla Productos</h2>
+  </div>
+  <div class="prose">
+<h3>Crear la base</h3>
+<p>Abrí Access y elegí <strong>Base de datos en blanco</strong>. A la derecha, en <em>Nombre de archivo</em>, escribí <code>Textiles_Apellido</code> (con tu apellido), elegí la carpeta con el ícono de la carpeta amarilla y hacé clic en <strong>Crear</strong>. Access crea el archivo <code>.accdb</code> y abre una tabla vacía llamada <em>Tabla1</em>.</p>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Pantalla de inicio de Access con Base de datos en blanco seleccionada, el nombre Textiles_Apellido escrito en el panel de la derecha y el botón Crear resaltado.</span>
+</div>
+<h3>Crear la tabla en vista Diseño</h3>
+<ol>
+  <li>Cerrá <em>Tabla1</em> sin guardar. En la pestaña <strong>Crear</strong>, hacé clic en <strong>Diseño de tabla</strong>.</li>
+  <li>En la columna <em>Nombre del campo</em> escribí el nombre, en <em>Tipo de datos</em> elegí el tipo de la lista. La columna <em>Descripción</em> es opcional.</li>
+  <li>Abajo, en <strong>Propiedades del campo</strong>, ajustás cada campo.</li>
+  <li>Para la clave principal, hacé clic en el campo <code>IdProducto</code> y en el botón <strong>Clave principal</strong> de la cinta (la llave). Aparece una llave en el selector de la fila.</li>
+  <li>Guardá con <code>Ctrl+G</code> y poné el nombre <code>Productos</code>.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Tabla Productos en vista Diseño con los cinco campos, el tipo de datos de cada uno, la llave de clave principal en IdProducto y el panel Propiedades del campo de NombreProducto mostrando Formato > y Requerido Sí.</span>
+</div>
+<h3>Dos propiedades que cuidan los datos</h3>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Propiedad</th><th>Qué hace</th><th>En <code>NombreProducto</code></th></tr></thead>
+    <tbody>
+<tr><td><strong>Formato</strong></td><td>Cambia cómo se muestra el dato. El símbolo <code>&gt;</code> lo muestra en mayúsculas.</td><td>Escribís <em>toallón</em> y se ve <em>TOALLÓN</em></td></tr>
+<tr><td><strong>Requerido</strong></td><td>Obliga a completar el campo. Con <em>Sí</em>, Access no deja guardar el registro si queda vacío.</td><td>No puede haber un producto sin nombre</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Cargar los productos</h3>
+<p>Pasá a la vista <strong>Hoja de datos</strong> (botón <strong>Ver</strong>) y cargá los 13 productos. <code>IdProducto</code> no se escribe: Access lo completa. Al precio podés escribirlo sin el signo, por ejemplo <code>3500</code>, y la columna Moneda lo muestra como <em>$ 3.500,00</em>.</p>
+<div class="db"><div class="db-box">
+<div class="db-tab">Productos</div>
+<table class="db-grid"><thead><tr><th>IdProducto</th><th>NombreProducto</th><th>Descripcion</th><th>Rubro</th><th>Precio</th></tr></thead><tbody>
+<tr><td class="k">1</td><td>BARBIJO</td><td>Tela doble lavable, adulto</td><td>cuidado personal</td><td class="n">$ 3.500,00</td></tr>
+<tr><td class="k">2</td><td>BARBIJO</td><td>Tela doble lavable, infantil</td><td>cuidado personal</td><td class="n">$ 3.500,00</td></tr>
+<tr><td class="k">3</td><td>BARBIJO</td><td>Con filtro, adulto</td><td>cuidado personal</td><td class="n">$ 3.800,00</td></tr>
+<tr><td class="k">4</td><td>BARBIJO</td><td>Con filtro, infantil</td><td>cuidado personal</td><td class="n">$ 3.800,00</td></tr>
+<tr><td class="k">5</td><td>DELANTAL</td><td>De cocina, algodón, con bolsillo</td><td>cocina</td><td class="n">$ 12.000,00</td></tr>
+<tr><td class="k">6</td><td>DELANTAL</td><td>De cocina, lienzo estampado</td><td>cocina</td><td class="n">$ 12.500,00</td></tr>
+<tr><td class="k">7</td><td>REPASADOR</td><td>Algodón, 50 x 70 cm</td><td>cocina</td><td class="n">$ 4.500,00</td></tr>
+<tr><td class="k">8</td><td>REPASADOR</td><td>Gabardina estampada</td><td>cocina</td><td class="n">$ 4.800,00</td></tr>
+<tr><td class="k">9</td><td>INDIVIDUAL</td><td>Set de 4, lienzo</td><td>cocina</td><td class="n">$ 6.500,00</td></tr>
+<tr><td class="k">10</td><td>INDIVIDUAL</td><td>Set de 4, estampado</td><td>cocina</td><td class="n">$ 6.900,00</td></tr>
+<tr><td class="k">11</td><td>TOALLA</td><td>Algodón, 70 x 140 cm</td><td>baño</td><td class="n">$ 15.000,00</td></tr>
+<tr><td class="k">12</td><td>TOALLÓN</td><td>Algodón, 90 x 160 cm</td><td>baño</td><td class="n">$ 21.000,00</td></tr>
+<tr><td class="k">13</td><td>TOALLÓN</td><td>Algodón, 100 x 180 cm</td><td>baño</td><td class="n">$ 23.500,00</td></tr>
+</tbody></table></div>
+<p class="db-cap">Los 13 productos tal como tienen que verse. Los nombres aparecen en mayúsculas aunque los hayas escrito en minúsculas.</p>
+</div>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Escribí los rubros siempre igual</p>
+  <p>El rubro es texto libre: <em>cocina</em> y <em>Cocina </em> con un espacio de más son valores distintos para un filtro. Fijate cómo lo escribís. En la clase 14 lo reemplazamos por una lista desplegable para que no haya dos versiones.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 03 · 15 min</span>
+    <h3>Tu primera tabla</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá la base <code>Textiles_Apellido.accdb</code> y la tabla <code>Productos</code> con los cinco campos de la tabla de diseño.</li>
+  <li>Poné la clave principal en <code>IdProducto</code> y las propiedades <em>Formato</em> y <em>Requerido</em> de <code>NombreProducto</code>.</li>
+  <li>Cargá los 13 productos.</li>
+  <li>Probá el <em>Requerido</em>: intentá guardar un registro sin nombre. ¿Qué mensaje muestra Access? Cancelá la carga con <code>Esc</code>.</li>
+  <li>Controles: <strong>13</strong> registros y el último <code>IdProducto</code> es <strong>13</strong>. Ordená por <code>Precio</code> descendente: el primero es <em>TOALLÓN</em> a <strong>$ 23.500,00</strong>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="clientes">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">La tabla Clientes</h2>
+  </div>
+  <div class="prose">
+<p>La tabla <code>Clientes</code> se crea igual, con una diferencia: ahora tenés un campo de tipo <strong>Fecha/Hora</strong>. En sus propiedades, <em>Formato</em> puede ser <em>Fecha corta</em>, que en nuestra región se ve como <code>14/03/1991</code>.</p>
+<div class="db"><div class="db-box">
+<div class="db-tab">Clientes (estructura)</div>
+<table class="db-grid"><thead><tr><th>IdCliente</th><th>Apellido</th><th>Nombre</th><th>Calle</th><th>Nro</th><th>Localidad</th><th>Mail</th><th>Celular</th><th>Cumpleaños</th></tr></thead><tbody>
+<tr><td class="k">(Autonumeración)</td><td>Texto corto</td><td>Texto corto</td><td>Texto corto</td><td>Número</td><td>Texto corto</td><td>Texto corto</td><td>Texto corto</td><td>Fecha/Hora</td></tr>
+</tbody></table></div>
+<p class="db-cap">La fila muestra el tipo de dato de cada campo.</p>
+</div>
+<div class="callout" data-type="action">
+  <p class="callout-label">📌 Cuándo cargamos los clientes</p>
+  <p>Hoy diseñás la tabla <code>Clientes</code> y la dejás vacía. En la clase 14 vas a cargar los 8 clientes usando un formulario, que es la forma cómoda de ingresar datos.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 04 · 10 min</span>
+    <h3>La tabla Clientes</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá la tabla <code>Clientes</code> con los nueve campos, la clave principal en <code>IdCliente</code> y <em>Requerido</em> en <code>Apellido</code> y <code>Nombre</code>.</li>
+  <li>Cargá un cliente de prueba para ver cómo se ve la fecha. Después borralo: seleccioná la fila (clic en el selector gris de la izquierda) y presioná <code>Supr</code>.</li>
+  <li>Cerrá la tabla y fijate que en el panel de navegación aparezcan <code>Productos</code> y <code>Clientes</code>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="integrador">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">El pedido de la clase</h2>
+  </div>
+  <div class="prose">
+<div class="callout" data-type="action">
+  <p class="callout-label">📌 El pedido del emprendimiento</p>
+  <p>Una familia de Bernal vende barbijos, delantales, repasadores, individuales y toallas, y lleva todo en cuadernos. Quiere pasar a una base de datos. Tu primer trabajo es dejar lista la estructura y el catálogo.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Pedido de la clase</span>
+    <h3>La base del emprendimiento: estructura y catálogo</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Verificá que <code>Textiles_Apellido.accdb</code> tiene las tablas <code>Productos</code> (con los 13 registros) y <code>Clientes</code> (vacía, bien diseñada).</li>
+  <li>Controles: <code>Productos</code> tiene clave principal en <code>IdProducto</code>, <code>NombreProducto</code> con formato <code>&gt;</code> y requerido, y <code>Precio</code> es de tipo Moneda. <code>Clientes</code> tiene <code>Cumpleaños</code> de tipo Fecha/Hora y <code>Celular</code> de tipo Texto corto.</li>
+  <li>Cerrá Access. En Drive, subí el archivo y hacé una copia con el nombre <code>Clase 13 - Apellido - AAAA-MM-DD</code>.</li>
+  <li>Compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Lector</strong>, subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">08</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+<p>Pasaste de la planilla a la base de datos: entendés qué es un dato, un campo, un registro y una tabla, recorriste Access con una base real, buscaste, ordenaste y filtraste, y diseñaste tus dos primeras tablas con sus tipos de dato y propiedades. La clase 14 le suma formularios, datos importados y relaciones.</p>
+<h3 id="actividades">Actividades</h3>
+<div class="table-wrap">
+  <table class="check-table">
+    <tbody>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-1" aria-label="Marcar como hecho"></td><td><label for="chk-s13-1">Distingo dato de información y nombro campo, registro, tabla y clave principal.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-2" aria-label="Marcar como hecho"></td><td><label for="chk-s13-2">Abrí <code>Clinica_Veterinaria.mdb</code>, habilité el contenido y reconocí tablas, consultas, formularios e informes.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-3" aria-label="Marcar como hecho"></td><td><label for="chk-s13-3">Busqué, ordené y filtré registros, y las cifras coinciden con las de control.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-4" aria-label="Marcar como hecho"></td><td><label for="chk-s13-4">Creé la base <code>Textiles_Apellido.accdb</code> y la tabla <code>Productos</code> con clave principal, formato y requerido.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-5" aria-label="Marcar como hecho"></td><td><label for="chk-s13-5">Cargué los 13 productos y comprobé que Access rechaza un registro sin nombre.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-6" aria-label="Marcar como hecho"></td><td><label for="chk-s13-6">Diseñé la tabla <code>Clientes</code> con los tipos de dato correctos.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s13-7" aria-label="Marcar como hecho"></td><td><label for="chk-s13-7">Entregué el enlace a mi base con las dos tablas.</label></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="linkedin">
+  <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+  <p><strong>Microsoft Access.</strong> Cómo la justificás: diseño tablas de una base de datos relacional con tipos de dato, claves principales y propiedades de validación, y exploro, busco, ordeno y filtro registros.</p>
+</div>
+<h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
+<div class="qr-row qr-t-purpura">
+<div class="qr-row-label">Access</div>
+<div class="qr-row-cols">
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Objetos</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Tabla:</strong> guarda los datos</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Consulta:</strong> hace una pregunta</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Formulario:</strong> carga cómoda</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Informe:</strong> salida para imprimir</span></div>
+</div>
+<div class="qr-tip">Todo se ve en el panel de navegación.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Vistas</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Hoja de datos:</strong> cargar y mirar</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Diseño:</strong> campos y propiedades</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Botón <strong>Ver</strong> (Inicio)</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Guardar diseño: <code>Ctrl+G</code></span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Tipos de dato</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Autonumeración:</strong> el Id</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Texto corto:</strong> nombres, mail, celular</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Número:</strong> para calcular</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Fecha/Hora</strong>, <strong>Moneda</strong>, <strong>Sí/No</strong></span></div>
+</div>
+<div class="qr-tip">El celular es texto.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Propiedades</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Clave principal:</strong> botón de la llave</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Formato</strong> <code>&gt;</code>: mayúsculas</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Requerido:</strong> Sí obliga a completar</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Un dato por campo</strong></span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Encontrar datos</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Buscar:</strong> <code>Ctrl+B</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Ordenar:</strong> Ascendente o Descendente</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Filtro:</strong> por columna o por selección</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Alternar filtro</strong> para quitarlo</span></div>
+</div>
+<div class="qr-tip">Cambian lo que ves, no los datos.</div>
+</div>
+</div>
+</div>
+<h3 id="herramientas">Herramientas</h3>
+<p>Los sitios y aplicaciones que usamos en esta clase, a mano. Los costos pueden cambiar; 🎓 indica beneficio para estudiantes.</p>
+<h4>Bases de datos</h4>
+<div class="kit-card">
+  <div class="kit-tool" data-cost="paid">
+    <a class="kit-tool-link" href="https://www.microsoft.com/es-ar/microsoft-365/access" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Microsoft - Access.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Microsoft Access</span><span class="kit-tool-domain">microsoft.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-paid">Pago</span></span>
+  </div>
+</div>
+<h4>Archivos de la clase</h4>
+<div class="kit-card">
+  <div class="kit-tool kit-file">
+    <a class="kit-tool-link" href="../archivos/Clinica_Veterinaria.mdb" download><img class="kit-tool-icon" src="../img/apps/filetype-mdb.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Clinica_Veterinaria.mdb</span><span class="kit-tool-domain">Base de una veterinaria · micro ejercicios 01 y 02</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-free">Descargar</span></span>
+  </div>
+</div>
+
+<h3 id="glosario">Glosario</h3>
+<div class="glossary">
+<div class="gloss-item"><span class="gloss-term">Dato</span><p class="gloss-def">Valor suelto, sin contexto. Con contexto se vuelve información.</p></div>
+<div class="gloss-item"><span class="gloss-term">Base de datos</span><p class="gloss-def">Conjunto organizado de datos que se guardan, relacionan y consultan.</p></div>
+<div class="gloss-item"><span class="gloss-term">Tabla</span><p class="gloss-def">Lista de cosas del mismo tipo, formada por filas y columnas.</p></div>
+<div class="gloss-item"><span class="gloss-term">Registro</span><p class="gloss-def">Una fila de una tabla: una cosa completa.</p></div>
+<div class="gloss-item"><span class="gloss-term">Campo</span><p class="gloss-def">Una columna de una tabla: un dato de cada registro.</p></div>
+<div class="gloss-item"><span class="gloss-term">Clave principal</span><p class="gloss-def">Campo que identifica de forma única a cada registro y no se repite.</p></div>
+<div class="gloss-item"><span class="gloss-term">Tipo de dato</span><p class="gloss-def">Lo que un campo puede guardar: texto, número, fecha, moneda, sí o no.</p></div>
+<div class="gloss-item"><span class="gloss-term">Autonumeración</span><p class="gloss-def">Tipo de dato que Access completa solo con un número que no se repite.</p></div>
+<div class="gloss-item"><span class="gloss-term">Vista Diseño</span><p class="gloss-def">Vista de una tabla donde se definen sus campos y propiedades.</p></div>
+<div class="gloss-item"><span class="gloss-term">Hoja de datos</span><p class="gloss-def">Vista de una tabla donde se cargan y se miran los registros.</p></div>
+<div class="gloss-item"><span class="gloss-term">Requerido</span><p class="gloss-def">Propiedad de un campo que obliga a completarlo antes de guardar el registro.</p></div>
+<div class="gloss-item"><span class="gloss-term">Filtro</span><p class="gloss-def">Muestra solo los registros que cumplen una condición, sin borrar el resto.</p></div>
+</div>
+<h3 id="fuentes">Fuentes</h3>
+<ul class="sources">
+  <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Access</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
+  <li>Microsoft. <em>Soporte de Access</em>. <a href="https://support.microsoft.com/es-es/access" target="_blank" rel="noopener"><code>support.microsoft.com/access</code></a></li>
+</ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+<script defer src="../js/guia-kit.js"></script>
+<script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-glosario.js"></script>
+<script defer src="../js/guia-continuidad.js"></script>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

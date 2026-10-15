@@ -19,7 +19,7 @@ UNIDADES = [  # manual 2.5: unidades temáticas del programa (Evaluación no tie
     ('procesador', 'Procesador de texto', ['02', '03', '04', '05']),
     ('presentaciones', 'Presentaciones', ['06']),
     ('planilla', 'Planilla de cálculo', ['08', '09', '10', '11']),
-    ('datos', 'Gestión de datos e IA', ['13', '14', '15'])]
+    ('datos', 'Base de datos', ['13', '14', '15'])]
 UNIDAD_DE = {n: u[0] for u in UNIDADES for n in u[2]}
 
 def mix_white(h, pct): r, g, b = [int(h[i:i+2], 16) for i in (1, 3, 5)]; return '#%02x%02x%02x' % tuple(round(c*pct + 255*(1-pct)) for c in (r, g, b))

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 15 - Consultas e informes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,400;0,9..144,440;0,9..144,520;0,9..144,540;0,9..144,560;0,9..144,650;1,9..144,420;1,9..144,460;1,9..144,480;1,9..144,500;1,9..144,560&family=Inter:wght@400;500;600;700;800&family=Noto+Emoji&display=swap">
+<link rel="stylesheet" href="../css/guia-estilo.css">
+<style>
+  /* Acento: Bases de datos = violeta */
+  :root{
+    --acento:var(--purpura);
+    --acento-deep:var(--purpura-deep);
+    --acento-tint:var(--purpura-tint);
+    --acento-soft:var(--purpura-soft);
+  }
+
+  /* Mini tabla de datos ilustrativa (reemplaza capturas): namespace db-*, no choca con guia-estilo.css */
+  .db{ margin:1rem 0 1.2rem; break-inside:avoid-page; }
+  .db-box{ display:inline-block; max-width:100%; border:1px solid #cfcdd6; border-radius:6px; background:#fff; overflow:hidden; }
+  .db-tab{ padding:4px 12px; background:var(--acento-tint); color:var(--acento-deep); font-family:var(--sans); font-size:.78rem; font-weight:700; border-bottom:1px solid #cfcdd6; }
+  table.db-grid{ border-collapse:collapse; margin:0; width:auto; font-family:var(--sans); font-size:.8rem; background:#fff; border:0; }
+  table.db-grid th{ background:#f1f1f4; color:#3b3a45; font-weight:600; border:1px solid #d9d8de; padding:3px 10px; text-align:left; font-size:.74rem; text-transform:none; letter-spacing:0; white-space:nowrap; }
+  table.db-grid td{ border:1px solid #e3e2e8; padding:3px 10px; white-space:nowrap; color:#1f1e26; background:#fff; text-align:left; }
+  table.db-grid td.n{ text-align:right; }
+  table.db-grid td.k{ background:#fff3c4; font-weight:700; }
+  table.db-grid td.hl{ background:#fff3c4; }
+  table.db-grid td.m{ font-family:ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size:.76rem; }
+  .db-cap{ margin:.35rem 0 0; font-size:.82rem; color:var(--muted); line-height:1.45; }
+  .sql-grid{ border-collapse:collapse; margin:.4rem 0 .2rem; }
+  @media print{
+    .db{ margin:8pt 0 9pt; }
+    table.db-grid{ font-size:7.6pt; }
+    table.db-grid th{ font-size:7pt; padding:1pt 6pt; }
+    table.db-grid td{ padding:2pt 6pt; }
+    .db-tab{ font-size:7.4pt; }
+    .db-cap{ font-size:7.8pt; }
+    .qr-row{ break-inside:auto !important; }
+    .qr-cell{ break-inside:avoid; }
+  }
+
+  /* Botón de descarga directa (solo pantalla): namespace dl-file, no choca con guia-estilo.css */
+  .dl-file{ display:inline-flex; align-items:center; gap:5px; margin:0 2px; padding:1px 9px 1px 7px; vertical-align:baseline;
+    font-family:var(--sans); font-size:.78rem; font-weight:600; line-height:1.5; color:var(--acento-deep); text-decoration:none;
+    background:var(--acento-tint); border:1px solid var(--acento); border-radius:var(--radius-sm); }
+  .dl-file svg{ width:14px; height:14px; flex:none; }
+  .dl-file:hover{ background:var(--acento-soft); }
+  .dl-file:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  @media print{ .dl-file{ display:none !important; } }
+
+  @page{
+    @top-right{
+      content:"Clase 15 · Consultas e informes";
+      color:#432677;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover-page" data-num="15">
+  <div class="cover-inner">
+    <span class="cover-kicker">Clase 15 · Bases de datos</span>
+    <h1 class="cover-title">Consultas e informes</h1>
+    <p class="cover-subtitle">Preguntarle a la base de datos y presentar las respuestas</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-text">Universidad Nacional de Quilmes · Informática · 2026</span>
+    <a class="cover-teacher" href="mailto:marcos.hernandez@unq.edu.ar" title="Marcos Hernández: Docente de Informática, UNQ">
+      <img class="cover-teacher-photo" src="../img/marcos-hernandez.png" alt="Marcos Hernández">
+      <span class="cover-teacher-text">
+        <span class="cover-teacher-name">Marcos Hernández</span>
+        <span class="cover-teacher-mail">marcos.hernandez@unq.edu.ar</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<div class="page">
+
+<nav class="toc">
+  <p class="toc-intro">Hasta acá armaste la base: tablas, formularios, datos y relaciones. Hoy la usás para lo que existe una base de datos: hacerle preguntas. Aprendés a escribir criterios, a combinar varias tablas, a calcular campos y a mostrar el resultado en un informe agrupado, y lo practicás también con una base de una universidad.</p>
+  <span class="toc-label">Contenido</span>
+  <ol>
+<li><a href="#consulta"><span class="toc-num">01</span><span class="toc-text">Qué es una consulta</span></a></li>
+<li><a href="#criterios"><span class="toc-num">02</span><span class="toc-text">Criterios: filtrar con precisión</span></a></li>
+<li><a href="#varias"><span class="toc-num">03</span><span class="toc-text">Varias tablas y campos calculados</span></a></li>
+<li><a href="#informes"><span class="toc-num">04</span><span class="toc-text">Informes</span></a></li>
+<li><a href="#universidad"><span class="toc-num">05</span><span class="toc-text">Practicá con otra base</span></a></li>
+<li><a href="#integrador"><span class="toc-num">06</span><span class="toc-text">El pedido de la clase</span></a></li>
+<li><a href="#resumen"><span class="toc-num">07</span><span class="toc-text">Resumen de la clase</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="block" id="consulta">
+  <div class="block-head">
+    <span class="block-num">01</span>
+    <h2 class="block-title">Qué es una consulta</h2>
+  </div>
+  <div class="prose">
+<p>Una <strong>consulta</strong> es una pregunta que le hacés a la base de datos, guardada con un nombre. A diferencia de un filtro, que desaparece al cerrar la tabla, la consulta queda en el panel de navegación y la podés ejecutar cuando quieras. Siempre muestra datos actuales: si cargás una venta nueva, la próxima vez que la abras ya la incluye.</p>
+<h3>Crear una consulta de selección</h3>
+<ol>
+  <li>Pestaña <strong>Crear</strong> → <strong>Diseño de consulta</strong>.</li>
+  <li>En la ventana <strong>Mostrar tabla</strong>, elegí <code>Productos</code> → <strong>Agregar</strong> → <strong>Cerrar</strong>.</li>
+  <li>Hacé doble clic en los campos que querés ver: pasan a la cuadrícula de abajo.</li>
+  <li>Botón <strong>Ejecutar</strong> (el signo de exclamación) para ver el resultado. Para volver a editarla, <strong>Ver → Vista Diseño</strong>.</li>
+  <li>Guardá con <code>Ctrl+G</code> y ponele un nombre que diga qué pregunta responde.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Vista Diseño de una consulta sobre Productos: la tabla arriba con sus campos y, abajo, la cuadrícula con las filas Campo, Tabla, Orden, Mostrar, Criterios y O, con NombreProducto, Rubro y Precio cargados.</span>
+</div>
+<h3>La cuadrícula de diseño</h3>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Fila</th><th>Qué se escribe</th></tr></thead>
+    <tbody>
+<tr><td><strong>Campo</strong> y <strong>Tabla</strong></td><td>Qué dato se usa y de dónde viene</td></tr>
+<tr><td><strong>Orden</strong></td><td>Ascendente o Descendente</td></tr>
+<tr><td><strong>Mostrar</strong></td><td>La casilla tildada muestra la columna. Destildala si solo usás el campo para filtrar</td></tr>
+<tr><td><strong>Criterios</strong> y <strong>O</strong></td><td>Las condiciones. Se explican en la sección siguiente</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </div>
+</section>
+<section class="block" id="criterios">
+  <div class="block-head">
+    <span class="block-num">02</span>
+    <h2 class="block-title">Criterios: filtrar con precisión</h2>
+  </div>
+  <div class="prose">
+<p>Los <strong>criterios</strong> son las condiciones que debe cumplir un registro para aparecer. Se escriben en la fila <em>Criterios</em>, debajo del campo al que se aplican, con unos símbolos y palabras que se llaman <strong>operadores</strong>.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Querés</th><th>Escribís</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+<tr><td>Un valor exacto</td><td>El valor (el texto va entre comillas, Access las agrega)</td><td>Rubro: <code>"cocina"</code></td></tr>
+<tr><td>Mayor, menor, igual</td><td><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td><td>Precio: <code>&gt;10000</code></td></tr>
+<tr><td>Distinto de</td><td><code>&lt;&gt;</code> o <code>No</code></td><td>Rubro: <code>&lt;&gt; "baño"</code></td></tr>
+<tr><td>Un rango</td><td><code>Entre … Y …</code></td><td>Precio: <code>Entre 4000 Y 7000</code></td></tr>
+<tr><td>Que empiece, termine o contenga</td><td><code>Como</code> con el comodín <code>*</code></td><td>NombreProducto: <code>Como "T*"</code></td></tr>
+<tr><td>Uno de varios valores</td><td><code>En(…)</code></td><td>Rubro: <code>En("cocina";"baño")</code></td></tr>
+<tr><td>Una fecha</td><td>Entre numerales <code>#…#</code></td><td>Fecha: <code>&gt;#31/03/2026#</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Y y O: dónde escribís la condición importa</h3>
+<ul>
+  <li><strong>Y</strong> (se cumplen las dos): las condiciones van en <strong>la misma fila</strong> de Criterios, en campos distintos. <em>Rubro cocina Y Precio mayor a 5000.</em></li>
+  <li><strong>O</strong> (alcanza con una): las condiciones van en <strong>filas distintas</strong> (Criterios y O) o juntas con <code>O</code> dentro del mismo campo. <em>Rubro cocina O baño.</em></li>
+</ul>
+<div class="callout" data-type="warning">
+  <p class="callout-label">⚠️ Las fechas dependen de Windows</p>
+  <p>Access lee las fechas según la configuración regional de la PC, que en Argentina es día/mes/año. Si una consulta con fechas devuelve algo raro, probala con un día mayor a 12 (por ejemplo 30/04): ahí no hay confusión posible entre día y mes.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 01 · 15 min</span>
+    <h3>Siete preguntas sobre los productos</h3>
+  </div>
+  <div class="prose">
+<p>Armá una consulta nueva sobre <code>Productos</code> para cada pregunta, con <code>NombreProducto</code>, <code>Rubro</code> y <code>Precio</code>. Guardalas con un nombre claro.</p>
+<ol>
+  <li>Productos de cocina. Control: <strong>6</strong>.</li>
+  <li>Productos de más de $ 10.000. Control: <strong>5</strong>.</li>
+  <li>Productos con precio entre $ 4.000 y $ 7.000. Control: <strong>4</strong>.</li>
+  <li>Productos cuyo nombre empieza con T. Control: <strong>3</strong>.</li>
+  <li>Productos de cocina que cuestan más de $ 5.000. Control: <strong>4</strong>.</li>
+  <li>Productos de cocina o de baño. Control: <strong>9</strong>.</li>
+  <li>Productos que no son de cuidado personal, ordenados del más caro al más barato. Control: <strong>9</strong>, y el primero es <em>TOALLÓN</em> a $ 23.500,00.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="varias">
+  <div class="block-head">
+    <span class="block-num">03</span>
+    <h2 class="block-title">Varias tablas y campos calculados</h2>
+  </div>
+  <div class="prose">
+<p>La ventaja de tener tablas relacionadas es poder juntarlas. La tabla <code>Ventas</code> solo tiene números de Id; para saber <em>quién</em> compró <em>qué</em>, la consulta trae el apellido desde <code>Clientes</code> y el nombre y el precio desde <code>Productos</code>.</p>
+<h3>Sumar varias tablas</h3>
+<p>En la ventana <strong>Mostrar tabla</strong>, agregá <code>Ventas</code>, <code>Clientes</code> y <code>Productos</code>. Como ya creaste las relaciones en la clase 14, Access las dibuja como líneas entre las tablas y sabe cómo unirlas. Elegí los campos de cualquiera de las tres: <code>Apellido</code>, <code>NombreProducto</code>, <code>Rubro</code>, <code>Fecha</code>, <code>Cantidad</code>.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Si una tabla queda suelta</p>
+  <p>Si una tabla no tiene línea que la una con las otras, el resultado multiplica cada registro por todos los de la otra tabla. Es la señal de que falta una relación: creala en <strong>Herramientas de base de datos → Relaciones</strong>.</p>
+</div>
+<h3>Un campo calculado</h3>
+<p>El importe de una venta no está guardado en ningún lado: es <strong>precio por cantidad</strong>. Se calcula en la consulta. En una columna vacía de la fila <em>Campo</em> escribí:</p>
+<p><code>Importe: [Precio]*[Cantidad]</code></p>
+<p>El nombre antes de los dos puntos es el título de la columna; entre corchetes van los campos. Para que se vea como pesos, abrí su Hoja de propiedades (<code>F4</code>) y en <em>Formato</em> elegí <strong>Moneda</strong>.</p>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Vista Diseño de la consulta Detalle de ventas con las tres tablas unidas por líneas y, en la cuadrícula, la columna calculada Importe: [Precio]*[Cantidad].</span>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 02 · 15 min</span>
+    <h3>Quién compró qué, y cuánto</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Creá una consulta con <code>Ventas</code>, <code>Clientes</code> y <code>Productos</code> y los campos <code>Rubro</code>, <code>NombreProducto</code>, <code>Apellido</code>, <code>Fecha</code>, <code>Cantidad</code> y el calculado <code>Importe</code>. Guardala como <code>Detalle de ventas</code>. Control: <strong>36</strong> registros.</li>
+  <li>Sobre esa consulta (guardala con otro nombre con <strong>Archivo → Guardar objeto como</strong>) filtrá las ventas con <code>Fecha</code> <code>Entre #13/04/2026# Y #30/04/2026#</code>. Control: <strong>7</strong>.</li>
+  <li>Otra copia: ventas de clientes de la localidad <em>Bernal</em> (agregá <code>Localidad</code> al diseño, destildá <em>Mostrar</em>). Control: <strong>4</strong>.</li>
+  <li>Otra copia: ventas con un importe de $ 50.000 o más. Control: <strong>13</strong>.</li>
+  <li>Ordená <code>Detalle de ventas</code> por <code>Importe</code> descendente. Control: la venta de mayor importe es de <strong>$ 126.000,00</strong>.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="informes">
+  <div class="block-head">
+    <span class="block-num">04</span>
+    <h2 class="block-title">Informes</h2>
+  </div>
+  <div class="prose">
+<p>Una consulta muestra los datos en una grilla; un <strong>informe</strong> los presenta listos para leer o imprimir, agrupados, con subtotales y un total final. Los informes se arman casi siempre sobre una consulta.</p>
+<h3>El asistente para informes</h3>
+<ol>
+  <li>En el panel de navegación hacé clic en la consulta <code>Detalle de ventas</code>.</li>
+  <li>Pestaña <strong>Crear</strong> → <strong>Asistente para informes</strong>.</li>
+  <li>Pasá todos los campos a la derecha → <strong>Siguiente</strong>.</li>
+  <li>Niveles de agrupamiento: elegí <code>Rubro</code> y pasalo a la derecha con <strong>&gt;</strong> → <strong>Siguiente</strong>.</li>
+  <li>Orden: elegí <code>Fecha</code> (ascendente). Hacé clic en <strong>Opciones de resumen</strong>, tildá <strong>Suma</strong> en <code>Cantidad</code> y en <code>Importe</code> → <strong>Aceptar</strong> → <strong>Siguiente</strong>.</li>
+  <li>Distribución <strong>Escalonado</strong> y orientación <strong>Vertical</strong> → <strong>Siguiente</strong>.</li>
+  <li>Título: <code>Ventas por rubro</code> → <strong>Finalizar</strong>.</li>
+</ol>
+<div class="screenshot-todo">
+  <span class="screenshot-todo-label">📷 Captura pendiente</span>
+  <span class="screenshot-todo-desc">Paso de agrupamiento del Asistente para informes, con Rubro elegido como nivel de agrupamiento y la vista previa del esquema a la derecha.</span>
+</div>
+<p>Para retocar el informe usá la <strong>Vista Presentación</strong> (ves los datos mientras movés cosas) o la <strong>Vista Diseño</strong>. Con <strong>Vista preliminar</strong> ves cómo sale impreso.</p>
+<div class="callout" data-type="idea">
+  <p class="callout-label">💡 Los totales son tu control</p>
+  <p>Después de armar un informe, mirá si el total coincide con lo que esperás. Si la suma general no da, el error está en la consulta de origen, no en el informe.</p>
+</div>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Rubro</th><th>Cantidad</th><th>Importe</th></tr></thead>
+    <tbody>
+<tr><td>cuidado personal</td><td>39</td><td>$ 143.100,00</td></tr>
+<tr><td>cocina</td><td>60</td><td>$ 453.700,00</td></tr>
+<tr><td>baño</td><td>56</td><td>$ 1.145.500,00</td></tr>
+<tr><td><strong>Total general</strong></td><td><strong>155</strong></td><td><strong>$ 1.742.300,00</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Esa tabla son los valores de control del informe <code>Ventas por rubro</code>.</p>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 03 · 12 min</span>
+    <h3>Tu primer informe</h3>
+  </div>
+  <div class="prose">
+<ol>
+  <li>Armá el informe <code>Ventas por rubro</code> con el asistente, a partir de <code>Detalle de ventas</code>.</li>
+  <li>Verificá que los subtotales por rubro y el total general coinciden con la tabla de control.</li>
+  <li>En Vista Presentación cambiá el color del título y el ancho de una columna.</li>
+  <li>Abrí la Vista preliminar. ¿Cabe todo en una página de ancho? Si no, cambiá la orientación a horizontal.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="universidad">
+  <div class="block-head">
+    <span class="block-num">05</span>
+    <h2 class="block-title">Practicá con otra base</h2>
+  </div>
+  <div class="prose">
+<p>Todo lo anterior se repite con cualquier base. Para practicar, abrí <code>Universidad2022.mdb</code> <a class="dl-file" href="../archivos/Universidad2022.mdb" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a>: son 150 alumnos de una carrera de enfermería, con las materias del plan y las inscripciones.</p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Tabla</th><th>Campos importantes</th><th>Registros</th></tr></thead>
+    <tbody>
+<tr><td><code>Alumnos</code></td><td><code>Legajo</code>, <code>Apellido</code>, <code>Nombres</code>, <code>Sexo</code>, <code>Tipo doc</code>, <code>Fecha de Nacimiento</code>, <code>Localidad</code></td><td>150</td></tr>
+<tr><td><code>Materias</code></td><td><code>CodMateria</code>, <code>nombre_materia</code>, <code>creditos</code></td><td>36</td></tr>
+<tr><td><code>Alumnoxmateria</code></td><td><code>Legajo</code>, <code>Cod_Materia</code>: qué alumno está inscripto en qué materia</td><td>28</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Antes de empezar, revisá en <strong>Herramientas de base de datos → Relaciones</strong> qué tablas están unidas. Si falta alguna unión, en la ventana de la consulta arrastrá un campo sobre el campo equivalente de la otra tabla (<code>Legajo</code> con <code>Legajo</code>, <code>CodMateria</code> con <code>Cod_Materia</code>) y Access las une.</p>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Micro ejercicio 04 · 25 min</span>
+    <h3>Diez consultas sobre una universidad</h3>
+  </div>
+  <div class="prose">
+<p>Armá una consulta por cada pregunta y verificá con la cifra de control.</p>
+<ol>
+  <li>Alumnos de sexo <em>Femenino</em>. <strong>105</strong>.</li>
+  <li>Alumnos cuyo tipo de documento es <em>LE</em> o <em>LC</em>. <strong>12</strong>.</li>
+  <li>Alumnos que no viven en <em>CAPITAL FEDERAL</em>. <strong>102</strong>.</li>
+  <li>Mujeres que viven en <em>CAPITAL FEDERAL</em>. <strong>36</strong>.</li>
+  <li>Alumnos nacidos entre 1960 y 1969 (<code>Entre #01/01/1960# Y #31/12/1969#</code>). <strong>52</strong>.</li>
+  <li>Varones nacidos después del 31/12/1969. <strong>4</strong>.</li>
+  <li>Alumnos cuyo apellido empieza con A. <strong>10</strong>.</li>
+  <li>Materias de más de 10 créditos. <strong>10</strong>. Materias cuyo nombre contiene <em>Taller</em> (<code>Como "*Taller*"</code>). <strong>3</strong>.</li>
+  <li>Con las tres tablas: apellido, nombres, nombre de la materia y créditos de cada inscripción. <strong>28</strong> registros.</li>
+  <li>Al ejercicio 9 agregale el criterio créditos mayores a 10. <strong>11</strong> registros.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="integrador">
+  <div class="block-head">
+    <span class="block-num">06</span>
+    <h2 class="block-title">El pedido de la clase</h2>
+  </div>
+  <div class="prose">
+<div class="callout" data-type="action">
+  <p class="callout-label">📌 El pedido del emprendimiento</p>
+  <p>Ahora que las ventas están en la base, la familia quiere respuestas: qué se vende más, cuánto entró por cada rubro y a quiénes hay que visitar. Y quieren un informe que puedan imprimir.</p>
+</div>
+<div class="activity">
+  <div class="activity-head">
+    <span class="activity-eyebrow">Pedido de la clase</span>
+    <h3>La base completa: consultas e informe</h3>
+  </div>
+  <div class="prose">
+<p>Trabajá en tu <code>Textiles_Apellido.accdb</code> y dejá guardados estos objetos, con estos nombres:</p>
+<ol>
+  <li><code>Productos de cocina</code> (6 registros) y <code>Cocina de más de 5000</code> (4).</li>
+  <li><code>Productos que empiezan con T</code> (3).</li>
+  <li><code>Detalle de ventas</code> (36 registros, con el campo <code>Importe</code>).</li>
+  <li><code>Ventas de la segunda quincena de abril</code> (7) y <code>Ventas a clientes de Bernal</code> (4).</li>
+  <li><code>Ventas grandes</code>: importe de $ 50.000 o más (13).</li>
+  <li>El informe <code>Ventas por rubro</code>, con el total general <strong>$ 1.742.300,00</strong> y <strong>155</strong> unidades.</li>
+  <li>Pensá y anotá en un comentario del correo de entrega una pregunta más que le harías a esta base para ayudar a la familia.</li>
+  <li>Hacé la copia <code>Clase 15 - Apellido - AAAA-MM-DD</code> en Drive, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Lector</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
+</ol>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="block" id="resumen">
+  <div class="block-head">
+    <span class="block-num">07</span>
+    <h2 class="block-title">Resumen de la clase</h2>
+  </div>
+  <div class="prose">
+<p>Cerraste el ciclo completo de una base de datos: la diseñaste, la cargaste, la relacionaste y ahora le hacés preguntas con criterios precisos, combinás varias tablas, calculás campos y presentás el resultado en un informe agrupado. Lo practicaste con el emprendimiento de textiles y con una base de universidad.</p>
+<h3 id="actividades">Actividades</h3>
+<div class="table-wrap">
+  <table class="check-table">
+    <tbody>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-1" aria-label="Marcar como hecho"></td><td><label for="chk-s15-1">Creé consultas de selección sobre una tabla con criterios de texto, número y rango.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-2" aria-label="Marcar como hecho"></td><td><label for="chk-s15-2">Combiné condiciones con Y y con O, escribiéndolas en la fila correcta.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-3" aria-label="Marcar como hecho"></td><td><label for="chk-s15-3">Usé <code>Entre</code>, <code>Como</code> y <code>&lt;&gt;</code> y las cifras coinciden con las de control.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-4" aria-label="Marcar como hecho"></td><td><label for="chk-s15-4">Armé una consulta con tres tablas y un campo calculado <code>Importe</code>.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-5" aria-label="Marcar como hecho"></td><td><label for="chk-s15-5">Armé el informe <code>Ventas por rubro</code> agrupado, con subtotales, y el total general da $ 1.742.300,00.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-6" aria-label="Marcar como hecho"></td><td><label for="chk-s15-6">Practiqué con <code>Universidad2022.mdb</code> y mis cifras coinciden.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s15-7" aria-label="Marcar como hecho"></td><td><label for="chk-s15-7">Entregué mi base completa, con consultas e informe.</label></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout" data-type="linkedin">
+  <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
+  <p><strong>Microsoft Access.</strong> Cómo la justificás: resuelvo preguntas con consultas de selección sobre varias tablas, aplico criterios y campos calculados y presento los resultados en informes agrupados con totales.</p>
+</div>
+<h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
+<div class="qr-row qr-t-purpura">
+<div class="qr-row-label">Access</div>
+<div class="qr-row-cols">
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Crear una consulta</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Crear → Diseño de consulta</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Agregar tablas y doble clic en los campos</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Ejecutar</strong> (!) para ver el resultado</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Guardar con un nombre que diga la pregunta</span></div>
+</div>
+<div class="qr-tip">Una consulta siempre muestra datos actuales.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Criterios</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Texto: <code>"cocina"</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Número: <code>&gt;10000</code>, <code>&lt;&gt; 5</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Entre 4000 Y 7000</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>Como "T*"</code>, <code>En("a";"b")</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Fecha: <code>&gt;#31/03/2026#</code></span></div>
+</div>
+<div class="qr-tip">Fechas: día/mes/año según Windows.</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Y y O</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Y:</strong> misma fila de Criterios</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>O:</strong> filas distintas (Criterios y O)</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Mostrar</strong> destildado: filtra sin mostrar</span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Varias tablas</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Agregar todas las tablas necesarias</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Líneas de relación unen las tablas</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Sin línea: el resultado se multiplica</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Campo calculado: <code>Importe: [Precio]*[Cantidad]</code></span></div>
+</div>
+</div>
+<div class="qr-cell">
+<div class="qr-cell-head"><span class="qr-cell-title">Informes</span></div>
+<div class="qr-items">
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><strong>Crear → Asistente para informes</strong></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Sobre una consulta</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Agrupar y ordenar; <strong>Opciones de resumen</strong> para sumar</span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Vista Presentación para retocar, Vista preliminar para imprimir</span></div>
+</div>
+<div class="qr-tip">Controlá el total general.</div>
+</div>
+</div>
+</div>
+<h3 id="herramientas">Herramientas</h3>
+<p>Los sitios y aplicaciones que usamos en esta clase, a mano. Los costos pueden cambiar; 🎓 indica beneficio para estudiantes.</p>
+<h4>Bases de datos</h4>
+<div class="kit-card">
+  <div class="kit-tool" data-cost="paid">
+    <a class="kit-tool-link" href="https://www.microsoft.com/es-ar/microsoft-365/access" target="_blank" rel="noopener"><img class="kit-tool-icon" src="../img/apps/Microsoft - Access.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Microsoft Access</span><span class="kit-tool-domain">microsoft.com</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-paid">Pago</span></span>
+  </div>
+</div>
+<h4>Archivos de la clase</h4>
+<div class="kit-card">
+  <div class="kit-tool kit-file">
+    <a class="kit-tool-link" href="../archivos/Universidad2022.mdb" download><img class="kit-tool-icon" src="../img/apps/filetype-mdb.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Universidad2022.mdb</span><span class="kit-tool-domain">150 alumnos, 36 materias · micro ejercicio 04</span></span></a>
+    <span class="kit-tool-tags"><span class="pill pill-free">Descargar</span></span>
+  </div>
+</div>
+
+<h3 id="glosario">Glosario</h3>
+<div class="glossary">
+<div class="gloss-item"><span class="gloss-term">Consulta</span><p class="gloss-def">Pregunta guardada con un nombre que muestra los datos que cumplen ciertas condiciones.</p></div>
+<div class="gloss-item"><span class="gloss-term">Criterio</span><p class="gloss-def">Condición que debe cumplir un registro para aparecer en una consulta.</p></div>
+<div class="gloss-item"><span class="gloss-term">Cuadrícula de diseño</span><p class="gloss-def">Parte de la vista Diseño de una consulta donde se eligen campos, orden y criterios.</p></div>
+<div class="gloss-item"><span class="gloss-term">Operador</span><p class="gloss-def">Símbolo o palabra que compara, como mayor que, Entre, Como o Y.</p></div>
+<div class="gloss-item"><span class="gloss-term">Comodín</span><p class="gloss-def">Símbolo que reemplaza texto, como el asterisco en <em>Como "T*"</em>.</p></div>
+<div class="gloss-item"><span class="gloss-term">Campo calculado</span><p class="gloss-def">Columna de una consulta que se obtiene con una fórmula a partir de otros campos.</p></div>
+<div class="gloss-item"><span class="gloss-term">Informe</span><p class="gloss-def">Objeto de Access que presenta los datos agrupados y listos para imprimir.</p></div>
+<div class="gloss-item"><span class="gloss-term">Agrupamiento</span><p class="gloss-def">Reunir los registros del informe según un campo, por ejemplo el rubro.</p></div>
+<div class="gloss-item"><span class="gloss-term">Resumen</span><p class="gloss-def">Total, promedio o cuenta que el informe calcula por grupo y en general.</p></div>
+<div class="gloss-item"><span class="gloss-term">Vista preliminar</span><p class="gloss-def">Muestra cómo saldrá impreso un informe.</p></div>
+</div>
+<h3 id="fuentes">Fuentes</h3>
+<ul class="sources">
+  <li>Universidad Nacional de Quilmes. <em>Informática de Diplomatura: Microsoft Access</em>. Guía de ejercitación de la cátedra (base de esta guía).</li>
+  <li>Microsoft. <em>Soporte de Access</em>. <a href="https://support.microsoft.com/es-es/access" target="_blank" rel="noopener"><code>support.microsoft.com/access</code></a></li>
+</ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <p>Marcos Hernández</p>
+  <p class="colophon-license">Texto, estructura pedagógica y actividades © 2026 Marcos Hernández (Universidad Nacional de Quilmes), licenciado bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>: compartí, copiá y adaptá citando la autoría, sin fines comerciales y bajo la misma licencia.</p>
+</footer>
+
+</div>
+
+<script defer src="../js/guia-kit.js"></script>
+<script defer src="../js/guia-nav.js"></script>
+<script defer src="../js/guia-glosario.js"></script>
+<script defer src="../js/guia-continuidad.js"></script>
+<script defer src="../js/guia-print.js"></script>
+</body>
+</html>

@@ -57,9 +57,9 @@ CANONICO = {
     "10": "decisiones y preguntas a los datos",
     "11": "del dato al informe",
     "12": "2° parcial",
-    "13": "cómo piensan las bases de datos",
-    "14": "del formulario a la base de datos",
-    "15": "del dato a la decisión",
+    "13": "primeros pasos en access",
+    "14": "formularios, importación y relaciones",
+    "15": "consultas e informes",
     "16": "3° parcial",
     "17": "recuperatorio",
 }

@@ -127,3 +127,20 @@ Ninguno de los dos números que circulan en el centro es el correcto: el sistema
 ### Reproducibilidad
 
 El dataset se genera con `scripts/gen_dataset_usina.py`, con semilla fija (`random.seed(20260608)`): correrlo de nuevo produce el mismo archivo byte a byte. Si hace falta cambiar algo, se edita el script y se regenera — no se edita el CSV a mano, o las cifras de control de arriba dejan de valer.
+
+
+---
+
+## Textiles_Ventas.xlsx y bases de Access (Clases 13-15)
+
+Caso: emprendimiento familiar de textiles para el hogar (adaptación del ejercicio Barbijos). Datos ficticios; los mails de los clientes son inventados.
+
+- `Textiles_Ventas.xlsx`: hoja `Ventas`, columnas `IdVenta`, `IdCliente`, `IdProducto`, `Fecha` (celdas de fecha reales), `Cantidad`. 36 filas, del 02/03/2026 al 28/05/2026. Se importa a Access en la clase 14. Generado con `scripts/gen_dataset_textiles.py` (semilla `2026`): correrlo de nuevo produce el mismo contenido.
+- `Clinica_Veterinaria.mdb` y `Universidad2022.mdb`: bases de la cátedra, tal como están en `Unidad 6: Base de Datos/` (versiones limpias, sin consultas resueltas). No se generan con script.
+- Productos (13) y Clientes (8) se cargan a mano en las clases 13 y 14; las tablas están en las guías.
+
+**Cifras de control Textiles (Productos 13, Clientes 8, Ventas 36):** cocina 6 productos; precio mayor a 10.000: 5; entre 4.000 y 7.000: 4; nombre empieza con T: 3; cocina y más de 5.000: 4; cocina o baño: 9; no cuidado personal: 9. Ventas: Entre 13/04/2026 y 30/04/2026: 7 (todo abril: 11); clientes de Bernal: 4; importe de 50.000 o más: 13; cantidad 5 o más: 19; mayor importe 126.000 (venta 6). Informe por rubro (unidades; importe): cuidado personal 39; 143.100. Cocina 60; 453.700. Baño 56; 1.145.500. Total 155 unidades; 1.742.300. El cliente 3 (Sosa) no tiene compras.
+
+**Cifras de control Clínica Veterinaria:** Mascotas 66 (Canino 34, Felino 26; sexo H 32, M 34; caninas hembra 17), Veterinarias 5, Tipos Tratamiento 6. Dato sucio a propósito: Especie tiene `Totuga` y `Tortuga`.
+
+**Cifras de control Universidad2022:** Alumnos 150, Materias 36, Alumnoxmateria 28. Femenino 105; LE o LC 12; fuera de CAPITAL FEDERAL 102; mujeres de CAPITAL FEDERAL 36; nacidos 1960-1969: 52; varones nacidos desde 1970: 4; apellido con A: 10; materias de más de 10 créditos: 10; materias con Taller: 3; inscripciones con tres tablas: 28; con créditos mayores a 10: 11.

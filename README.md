@@ -23,9 +23,9 @@ Este repo se sube a GitHub y se sirve con **GitHub Pages**: las Guías Visuales 
 | 10 | Decisiones y preguntas a los datos | ✅ | ✅ | A confirmar |
 | 11 | Del dato al informe | ✅ | ✅ | A confirmar |
 | 12 | 2° Parcial | — | ✅ | A confirmar (sin Guía Visual — `clases/Clase 12 - Examen...` es carpeta vacía) |
-| 13 | Cómo piensan las bases de datos | ✅ | ✅ | A confirmar |
-| 14 | Del formulario a la base de datos | ✅ | ✅ | A confirmar |
-| 15 | Del dato a la decisión | ✅ | ✅ | A confirmar |
+| 13 | Primeros pasos en Access | ✅ | ✅ | A confirmar |
+| 14 | Formularios, importación y relaciones | ✅ | ✅ | A confirmar |
+| 15 | Consultas e informes | ✅ | ✅ | A confirmar |
 | 16 | 3° Parcial | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 | 17 | Recuperatorio | — | ✅ | A confirmar (sin Guía Visual — carpeta de examen en `clases/` está vacía) |
 

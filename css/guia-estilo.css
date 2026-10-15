@@ -1703,7 +1703,6 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
 .pill-freemium, .pill.pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
 .pill-paid, .pill.pill-paid{ background:var(--ink); color:#fff; }
 .pill-student{ background:#fbf1dd; color:#8a5a00; }
-a.pill-student:hover{ text-decoration:underline; }
 /* Segundo pill (descuento estudiantil) al lado del principal, apilado
    a la derecha — ej. "Freemium" + "🎓 50% off" en la misma fila. */
 .tags{ flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }

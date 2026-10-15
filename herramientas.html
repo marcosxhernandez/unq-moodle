@@ -82,7 +82,6 @@
     padding:6px 13px; border-radius:999px; white-space:nowrap;
     text-decoration:none; display:inline-block;
   }
-  a.pill-student:hover{ text-decoration:underline; }
   .pill-free{ background:rgba(0,113,227,.1); color:var(--blue); }
   .pill-freemium{ background:#f2f2f4; color:var(--ink-soft); }
   .pill-paid{ background:var(--ink); color:#fff; }
@@ -110,7 +109,7 @@
     box-shadow:0 1px 1px rgba(0,0,0,.03), 0 6px 20px -10px rgba(0,0,0,.12);
   }
   .benefit-row{
-    display:flex; align-items:center; gap:16px;
+    display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit;
     padding:16px 20px; border-bottom:1px solid var(--line);
   }
   .benefit-row:last-child{ border-bottom:none; }
@@ -189,7 +188,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://onedrive.live.com" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
           </div>
         </div>
@@ -256,7 +255,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://gemini.google.com" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://gemini.google/ar/students/?hl=es-419" target="_blank" rel="noopener">🎓 1 año gratis</a>
           </div>
         </div>
@@ -323,7 +322,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://perplexity.ai" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://shop.sheerid.com/offers/50-off-perplexity-pro-for-students-and-educators/" target="_blank" rel="noopener">🎓 50% off</a>
           </div>
         </div>
@@ -358,7 +357,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://word.cloud.microsoft" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
           </div>
         </div>
@@ -401,7 +400,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://www.office.com/launch/powerpoint" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
           </div>
         </div>
@@ -430,7 +429,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-paid">Pago</span>
+            <a class="pill pill-paid" href="https://www.beautiful.ai" target="_blank" rel="noopener">Pago</a>
             <a class="pill pill-student" href="https://www.beautiful.ai/education" target="_blank" rel="noopener">🎓 1 año gratis</a>
           </div>
         </div>
@@ -457,7 +456,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-freemium">Freemium</span>
+            <a class="pill pill-freemium" href="https://www.office.com/launch/excel" target="_blank" rel="noopener">Freemium</a>
             <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">🎓 50% off</a>
           </div>
         </div>
@@ -476,7 +475,7 @@
             </div>
           </a>
           <div class="tags">
-            <span class="pill pill-paid">Pago</span>
+            <a class="pill pill-paid" href="https://www.microsoft.com/es-ar/microsoft-365/access" target="_blank" rel="noopener">Pago</a>
           </div>
         </div>
         <a class="app-row" href="https://forms.google.com" target="_blank" rel="noopener">
@@ -510,38 +509,38 @@
     <h2 class="benefits-title">Beneficios para estudiantes</h2>
     <p class="benefits-intro">Estas herramientas dan algo extra si acreditás tu condición de estudiante con el correo <strong>@uvq.edu.ar</strong>:</p>
     <div class="benefits-card">
-      <div class="benefit-row">
+      <a class="benefit-row" href="https://gemini.google/ar/students/?hl=es-419" target="_blank" rel="noopener">
         <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Google%20-%20Gemini.png" alt="Gemini">
         <div class="benefit-text">
           <span class="benefit-name">Gemini</span>
           <span class="benefit-desc">1 año gratis de Google AI Plus acreditando la condición de estudiante.</span>
         </div>
-        <a class="pill pill-student" href="https://gemini.google/ar/students/?hl=es-419" target="_blank" rel="noopener">Activar</a>
-      </div>
-      <div class="benefit-row">
+        <span class="pill pill-student">Activar</span>
+      </a>
+      <a class="benefit-row" href="https://www.beautiful.ai/education" target="_blank" rel="noopener">
         <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Beautiful.ai%20-%20Beautiful.ai.png" alt="Beautiful.ai">
         <div class="benefit-text">
           <span class="benefit-name">Beautiful.ai</span>
           <span class="benefit-desc">1 año gratis del plan Pro, registrándose con el correo universitario en beautiful.ai/education.</span>
         </div>
-        <a class="pill pill-student" href="https://www.beautiful.ai/education" target="_blank" rel="noopener">Activar</a>
-      </div>
-      <div class="benefit-row">
+        <span class="pill pill-student">Activar</span>
+      </a>
+      <a class="benefit-row" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">
         <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Microsoft%20-%20OneDrive.png" alt="Microsoft 365">
         <div class="benefit-text">
           <span class="benefit-name">Microsoft (OneDrive, Word, Excel, PowerPoint)</span>
           <span class="benefit-desc">100 GB de almacenamiento en la nube ingresando con la cuenta @uvq.edu.ar, y 50% de descuento en la suscripción de Microsoft 365 para estudiantes universitarios.</span>
         </div>
-        <a class="pill pill-student" href="https://www.microsoft.com/es-ar/microsoft-365/college-student-pricing" target="_blank" rel="noopener">Activar</a>
-      </div>
-      <div class="benefit-row">
+        <span class="pill pill-student">Activar</span>
+      </a>
+      <a class="benefit-row" href="https://shop.sheerid.com/offers/50-off-perplexity-pro-for-students-and-educators/" target="_blank" rel="noopener">
         <img class="benefit-icon" src="https://marcosxhernandez.github.io/unq-moodle/img/apps/Perplexity%20-%20Perplexity.png" alt="Perplexity">
         <div class="benefit-text">
           <span class="benefit-name">Perplexity</span>
           <span class="benefit-desc">50% de descuento en Perplexity Pro validando el correo institucional a través de SheerID.</span>
         </div>
-        <a class="pill pill-student" href="https://shop.sheerid.com/offers/50-off-perplexity-pro-for-students-and-educators/" target="_blank" rel="noopener">Activar</a>
-      </div>
+        <span class="pill pill-student">Activar</span>
+      </a>
                 </div>
     <p class="benefits-note">El resto de las herramientas de esta guía son gratuitas para cualquier usuario, o freemium sin ventajas adicionales por tener el correo @uvq.edu.ar.</p>
   </section>

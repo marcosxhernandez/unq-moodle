@@ -1716,6 +1716,10 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   max-width:560px;
   margin:.6em auto 0;
 }
+/* Captura vertical (panel lateral de Sheets, p. ej. Formato condicional,
+   Validación de datos): a ancho completo sale gigante. Se acota al ancho
+   nativo aproximado del panel. Oct. 2026. */
+.screenshot-panel{ max-width:300px; }
 
 /* ---------- Ícono de herramienta de barra (negrita, alinear, cortar...) ----------
    SVG inline vía <svg class="tool-icon"><use href="#ti-NOMBRE"></use></svg> — los
@@ -2446,6 +2450,7 @@ footer.colophon .colophon-license a:hover{ color:var(--acento-deep); }
   /* Las imágenes son lo que más hoja consume. Se achican al ancho
      mínimo en el que la interfaz sigue siendo legible en papel. */
   .screenshot{ max-width:118mm; margin:.4em auto 0; }
+  .screenshot.screenshot-panel{ max-width:62mm; }
   .screenshot-todo{ max-width:118mm; min-height:auto; margin:.4em auto .9em; padding:8pt 10pt; }
   .screenshot-caption{ max-width:118mm; margin:5pt auto .9em; font-size:8.2pt; }
   .diagram{ max-width:62mm; margin:.7em auto 0; }

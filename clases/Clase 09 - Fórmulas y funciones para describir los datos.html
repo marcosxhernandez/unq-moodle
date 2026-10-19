@@ -105,7 +105,7 @@
 <symbol id="ti-handle" viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="currentColor"/></symbol>
 </defs></svg>
 
-<section class="cover-page" data-num="01">
+<section class="cover-page" data-num="09">
   <div class="cover-inner">
     <span class="cover-kicker">Clase 09 · Planilla de cálculo</span>
     <h1 class="cover-title">Fórmulas y funciones para describir los datos</h1>
@@ -413,7 +413,7 @@
   <div class="prose">
 <p>El <strong>formato condicional</strong> hace que una celda cambie de aspecto cuando se cumple una condición. Es la manera de que los datos que importan salten a la vista sin tener que recorrer 120 filas.</p>
 <p>Se abre desde <strong>Formato → Formato condicional</strong>. Seleccionás el rango, elegís la condición y el estilo. Hay dos pestañas: <strong>Un color</strong>, que pinta las celdas que cumplen una regla, y <strong>Escala de colores</strong>, que degrada el color según el valor, del mínimo al máximo.</p>
-<img class="screenshot" src="../img/08-03-captura-formato-condicional.png" alt="Panel de Reglas de formato condicional en Google Sheets con las pestañas Un color y Escala de colores, el campo Aplicar al intervalo, la condición Es igual a y el estilo de formato personalizado">
+<img class="screenshot screenshot-panel" src="../img/08-03-captura-formato-condicional.png" alt="Panel de Reglas de formato condicional en Google Sheets con las pestañas Un color y Escala de colores, el campo Aplicar al intervalo, la condición Es igual a y el estilo de formato personalizado">
 <p class="screenshot-caption">El panel de reglas. En este ejemplo se aplica a la columna A y pinta de rojo las celdas iguales a 0. En tu archivo vas a cambiar el intervalo y la condición.</p>
 <h3>Pintar toda la fila con una fórmula</h3>
 <p>Para pintar una fila entera según el valor de <em>una</em> columna, se elige <strong>La fórmula personalizada es</strong> y se escribe una condición con referencia mixta. Para marcar todas las filas donde Trabaja dice <code>Sí</code>: rango <code>A2:K121</code> y fórmula <code>=$E2=&quot;Sí&quot;</code>. El <code>$</code> fija la columna E; el <code>2</code> queda libre para que la regla se evalúe fila por fila.</p>

@@ -110,7 +110,7 @@
 
 <h1>Guía de actividades, versión docente</h1>
 <p class="subtitle">Clases 08 a 11 · Planilla de cálculo (Google Sheets) · Informática, UNQ 2026</p>
-<p class="note">Cada actividad incluye la consigna completa, paso a paso, tal como la recibe el alumno en la Guía Visual, así, cuando alguien dice "me trabé en el punto 3 del Micro ejercicio 4", queda claro a qué instrucción exacta se refiere. Al lado del tiempo, el ícono de la app que se usa. Debajo de cada una: qué tiene que tener listo el docente antes de la clase (insumos), las cifras para corregir (recuadro azul, verificadas contra los archivos de datos), los puntos delicados (recuadro rojo) y qué se sube al campus (si corresponde). Los tiempos de los micro ejercicios vienen de la Guía Visual; los del "Pedido de la clase" (marcados con <b>~</b>) son estimados, porque la fuente no los trae.</p>
+<p class="note">Cada actividad incluye la consigna completa, paso a paso, tal como la recibe el alumno en la Guía Visual, así, cuando alguien dice "me trabé en el punto 3 de la Actividad 4", queda claro a qué instrucción exacta se refiere. Al lado del tiempo, el ícono de la app que se usa. Debajo de cada una: qué tiene que tener listo el docente antes de la clase (insumos), las cifras para corregir (recuadro azul, verificadas contra los archivos de datos), los puntos delicados (recuadro rojo) y qué se sube al campus (si corresponde). Los tiempos de las actividades son estimados de planificación (la Guía Visual ya no los muestra); los del "Pedido de la clase" (marcados con <b>~</b>) son estimados, porque la fuente no los trae.</p>
 <div class="clase">
   <div class="clase-header">
     <span class="clase-num">08</span>
@@ -296,10 +296,10 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
+<li>Abrí tu archivo de trabajo, el que se llama <code>Retrato del curso - TuApellido</code> (no la copia <code>Clase 08 - Apellido - AAAA-MM-DD</code> que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá, andá a <code>PRACTICA09</code>, parate en <code>A1</code> y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
 <li>En <code>L1</code> escribí <code>Cel_semana</code> y en <code>L2</code> la fórmula <code>=G2*7</code>. Copiala hasta la fila 9 con doble clic en el controlador. Controles: 14, 28, 42, 49, 63, 7, 7 y 28.</li>
-<li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta el final y con formato de moneda.</li>
-<li>Repaso de la clase anterior: dale a los encabezados de las dos columnas nuevas el mismo estilo que al resto y ajustá el ancho.</li>
+<li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta la fila 9 y con formato de moneda.</li>
+<li>Repaso de la clase anterior: dale a los encabezados <code>L1</code> y <code>M1</code> el mismo estilo que al resto de los encabezados y ajustá el ancho de las dos columnas.</li>
 <li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
     </div>
@@ -318,10 +318,10 @@
     <div class="act-steps">
 <ol>
 <li>En <code>PRACTICA09</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
-<li>En la columna B escribí una función para cada uno, siempre sobre las filas 2 a 9: <code>PROMEDIO</code> de <code>D</code>, <code>MAX</code> y <code>MIN</code> de <code>K</code>, <code>CONTAR</code> de <code>H</code>, <code>CONTARA</code> de <code>C</code> y <code>CONTAR</code> de <code>C</code>.</li>
-<li>Controles: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
-<li>Con 8 filas podés comprobar a mano: sumá el gasto con la autosuma <code>Σ</code> (tendría que dar $ 848.000) y dividí por 8: el promedio es $ 106.000. Dale el formato que corresponde: moneda para los gastos y dos decimales para el promedio.</li>
-<li>Repetí el promedio de edad apuntando a otra hoja: <code>=PROMEDIO(DATOS!D2:D9)</code>. Tiene que dar lo mismo.</li>
+<li>En la columna B escribí una función para cada nombre, siempre sobre las filas 2 a 9: en <code>B12</code>, <code>PROMEDIO</code> de <code>D</code>; en <code>B13</code>, <code>MAX</code> de <code>K</code>; en <code>B14</code>, <code>MIN</code> de <code>K</code>; en <code>B15</code>, <code>CONTAR</code> de <code>H</code>; en <code>B16</code>, <code>CONTARA</code> de <code>C</code>; y en <code>B17</code>, <code>CONTAR</code> de <code>C</code>.</li>
+<li>Controles, en ese orden: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
+<li>Con 8 filas podés comprobar a mano. Parate en <code>K10</code>, la celda vacía debajo de la columna <code>K</code>, y usá el botón <strong>Autosuma</strong> con <code>SUMA</code>: tiene que dar $ 848.000. En <code>K11</code> escribí <code>=K10/8</code>: el promedio, $ 106.000. Dale formato de moneda a <code>K10</code>, <code>K11</code>, <code>B13</code> y <code>B14</code>, y dos decimales a <code>B12</code>.</li>
+<li>En <code>C12</code> repetí el promedio de edad, pero apuntando a la otra hoja: <code>=PROMEDIO(DATOS!D2:D9)</code>. Tiene que dar lo mismo que <code>B12</code>.</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> Edad promedio <b>26,75</b>; Gasto máximo <b>$ 180.000</b>; mínimo <b>$ 53.000</b>; Con dato de viaje <b>8</b>; Carreras cargadas <b>8</b>; <code>CONTAR</code> sobre carreras <b>0</b> (la columna tiene solo texto, y <code>CONTAR</code> cuenta números). Con <code>Σ</code>: suma de gastos <b>$ 848.000</b>, promedio <b>$ 106.000</b>.</div>
@@ -337,8 +337,8 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá qué error aparece.</li>
-<li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá los errores.</li>
+<li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá en <code>B1</code> qué error aparece.</li>
+<li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá en <code>B2</code> y <code>B3</code> qué errores aparecen.</li>
 <li>Corregí <code>A3</code> para que funcione y confirmá que da 26,75.</li>
 <li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA09</code> y volvé a desactivarlo.</li>
 </ol>
@@ -350,20 +350,19 @@
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">4</span>
-      <span class="act-name">Porcentajes y potencias</span>
+      <span class="act-name">Porcentajes y parámetros</span>
       <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
       <span class="act-tiempo">10 min</span>
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
-<li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada. Tiene que dar 3,00% en todas.</li>
-<li>En <code>P1</code> escribí <code>Proyeccion_6m</code> y en <code>P2</code> <code>=K2*POTENCIA(1+3%;6)</code>, copiada hasta la 9. <code>P2</code> tiene que dar $ 78.807,45.</li>
-<li>Creá una hoja <code>PARAMETROS</code> con los encabezados <code>Parámetro</code> y <code>Valor</code> en <code>A1:B1</code>. En <code>A2</code> escribí <code>Inflación anual</code> y en <code>B2</code> <code>40%</code>. En <code>A3</code> escribí <code>Inflación mensual equivalente</code> y en <code>B3</code> <code>=POTENCIA(1+B2;1/12)-1</code>, con porcentaje y dos decimales. Tiene que dar <strong>2,84%</strong>.</li>
+  <li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2+K2*3%</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
+  <li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada hasta la fila 9. Tiene que dar 3,00% en todas.</li>
+  <li>Creá una hoja <code>PARAMETROS</code>. En <code>A1</code> y <code>B1</code> escribí los encabezados <code>Parámetro</code> y <code>Valor</code>. En <code>A2</code> escribí <code>Aumento mensual</code> y en <code>B2</code> <code>3%</code>. En <code>A3</code> escribí <code>Meses a proyectar</code> y en <code>B3</code> <code>6</code>. En <code>A4</code> escribí <code>Aumento total</code> y en <code>B4</code> <code>=B2*B3</code>, con formato de porcentaje. <code>B4</code> tiene que dar <strong>18,00%</strong>. Esa celda la usás en la actividad siguiente.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> <code>Con_aumento</code> N2 <b>$ 67.980</b>; <code>Variacion</code> <b>3,00%</b> en todas las filas; <code>Proyeccion_6m</code> P2 <b>$ 78.807,45</b>; <code>PARAMETROS!B3</code> <b>2,84%</b>.</div>
-    <div class="act-ojo"><b>Ojo:</b> Escribir <code>40%</code> en <code>B2</code> ya guarda 0,4. Si escriben <code>40</code> y después dan formato porcentaje, ven 4000%. Es el ejemplo de la advertencia de la sección.</div>
+    <div class="act-control"><b>Para corregir:</b> <code>Con_aumento</code> N2 <b>$ 67.980</b>; <code>Variacion</code> <b>3,00%</b> en todas las filas; <code>PARAMETROS!B4</code> (aumento total) <b>18,00%</b>.</div>
+    <div class="act-ojo"><b>Ojo:</b> Escribir <code>3%</code> en <code>B2</code> ya guarda 0,03. Si escriben <code>3</code> y después dan formato porcentaje, ven 300%. Es el ejemplo de la advertencia de la sección.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
   </div>
   <div class="act-card">
@@ -375,15 +374,15 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PARAMETROS</code>, en <code>A4</code> escribí <code>Meses a proyectar</code> y en <code>B4</code> <code>6</code>.</li>
-<li>En <code>PRACTICA09</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
-<li>Corregí <code>Q2</code> con referencias absolutas (<code>$B$3</code> y <code>$B$4</code>, con <code>F4</code>) y copiala de nuevo. <code>Q2</code> tiene que dar $ 78.092,25.</li>
-<li>Calculá el gasto promedio en <code>K11</code> con <code>=PROMEDIO(K2:K9)</code>. Armá la tabla de escenarios: en <code>A20</code> <code>Meses</code>, en <code>B20</code> y <code>C20</code> los porcentajes <code>3%</code> y <code>5%</code>, y en <code>A21:A23</code> la serie de 1 a 3 con el controlador.</li>
-<li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11*POTENCIA(1+B$20;$A21)</code>, y copiala a toda la tabla. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.829,06 y <code>C23</code> $ 122.708,25.</li>
+  <li>En <code>PRACTICA09</code>, en <code>P1</code> escribí <code>Proyeccion</code> y en <code>P2</code> <code>=K2+K2*PARAMETROS!B4</code>. Copiala hasta la fila 9. Mirá <code>P3</code>: la fórmula apunta a <code>B5</code>, una celda vacía. La referencia <strong>se corrió</strong> y el resultado está mal: da el mismo gasto, sin aumento.</li>
+  <li>Corregí <code>P2</code> con una referencia absoluta (<code>$B$4</code>, con <code>F4</code>) y copiala de nuevo hasta la fila 9. <code>P2</code> tiene que dar $ 77.880.</li>
+  <li>En <code>K11</code> reemplazá la división por <code>=PROMEDIO(K2:K9)</code>: tiene que seguir dando $ 106.000.</li>
+  <li>Armá la tabla de escenarios en <code>PRACTICA09</code>: en <code>A20</code> escribí <code>Meses</code>, en <code>B20</code> y <code>C20</code> los aumentos mensuales <code>3%</code> y <code>5%</code>, y en <code>A21</code> y <code>A22</code> un <code>1</code> y un <code>2</code>. Seleccionalos y arrastrá el controlador hasta <code>A23</code> para completar la serie 1, 2, 3.</li>
+  <li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11+$K$11*B$20*$A21</code>, el gasto promedio más el aumento mensual de la columna por los meses de la fila. Copiala a todo el rango <code>B21:C23</code>. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.540 y <code>C23</code> $ 121.900.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> Con referencias relativas, <code>Q3</code> apunta a <code>B4</code> y <code>B5</code> y el resultado sale mal <b>sin mostrar ningún error</b>. Ya con <code>$B$3</code> y <code>$B$4</code>, <code>Q2</code> da <b>$ 78.092,25</b>. <code>K11</code> = $ 106.000. Escenarios (3% y 5%): <code>B21</code> <b>$ 109.180</b>, <code>B23</code> <b>$ 115.829,06</b>, <code>C23</code> <b>$ 122.708,25</b>.</div>
-    <div class="act-ojo"><b>Ojo:</b> El peligro de las referencias relativas es que el error no avisa: el resultado parece razonable pero es falso. Vale la pena detenerse en <code>Q3</code>.</div>
+    <div class="act-control"><b>Para corregir:</b> Con referencia relativa, <code>P3</code> apunta a <code>B5</code> (vacía) y el resultado sale mal <b>sin mostrar ningún error</b>: da el mismo gasto, sin aumento. Ya con <code>$B$4</code>, <code>P2</code> da <b>$ 77.880</b>. <code>K11</code> = $ 106.000. Escenarios (3% y 5%): <code>B21</code> <b>$ 109.180</b>, <code>B23</code> <b>$ 115.540</b>, <code>C23</code> <b>$ 121.900</b>.</div>
+    <div class="act-ojo"><b>Ojo:</b> El peligro de las referencias relativas es que el error no avisa: el resultado parece razonable pero es falso. Vale la pena detenerse en <code>P3</code>.</div>
     <div class="act-ojo"><b>Ojo:</b> <code>F4</code> rota entre los cuatro tipos de referencia; en Mac, si no responde, <code>⌘+T</code>.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
   </div>
@@ -397,7 +396,7 @@
     <div class="act-steps">
 <ol>
 <li>En <code>PRACTICA09</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
-<li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro?</li>
+<li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro? Tiene que ser $ 180.000.</li>
 <li>Seleccioná <code>A2:K9</code> y creá una regla con <strong>La fórmula personalizada es</strong> <code>=$E2="Sí"</code>, con relleno amarillo suave. Tienen que pintarse <strong>5 filas enteras</strong>.</li>
 <li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
@@ -415,7 +414,7 @@
     <div class="act-steps">
 <ol>
 <li>En <code>PRACTICA09</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code> (Mac: <code>⌘+C</code>).</li>
-<li>Creá una hoja <code>FOTO</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
+<li>Creá una hoja <code>FOTO</code>, parate en <code>A1</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
 <li>Cambiá el gasto más alto, <code>K7</code> (<code>180000</code>), a <code>200000</code> en <code>PRACTICA09</code>. Mirá que el <em>Gasto máximo</em> cambió y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
     </div>
@@ -434,16 +433,16 @@
 <p>Trabajá en el archivo <em>Retrato del curso</em>, en las hojas con los datos reales. Estos son los pasos, con los controles.</p>
 <ol>
 <li>En <code>DATOS</code>, agregá <code>Cel_semana</code> en <code>L</code> con <code>=G2*7</code> y <code>Gasto_diario</code> en <code>M</code> con <code>=K2/30</code> (en moneda), ambas copiadas hasta la fila 121.</li>
-<li>Creá la hoja <code>RESUMEN</code> (azul) con el título <em>Indicadores generales</em> y, desde la fila 3, estos indicadores con fórmulas sobre <code>DATOS</code>: <code>Respuestas</code>, <code>Con dato de viaje</code>, <code>Edad promedio</code>, <code>Edad mínima</code>, <code>Edad máxima</code>, <code>Gasto promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code> y <code>Viaje promedio (min)</code>. Controles: 120, 115, 24,24, 17, 42, $ 127.016,67, $ 220.000, $ 30.000 y 55,48.</li>
-<li>Reusá la hoja <code>PARAMETROS</code> que armaste en la práctica (40% anual, 2,84% mensual, 6 meses). En <code>DATOS</code>, agregá <code>Gasto_proyectado</code> en <code>N</code>: <code>=K2*POTENCIA(1+PARAMETROS!$B$3;PARAMETROS!$B$4)</code>, copiada hasta la 121. Probá cambiar la inflación a 60% y volvela a 40%.</li>
-<li>En <code>RESUMEN</code>, fila 12, <code>Gasto proyectado promedio</code> con <code>PROMEDIO</code> de la columna <code>N</code>: tiene que dar <strong>$ 150.288,15</strong>.</li>
-<li>Creá <code>ESCENARIOS</code> como la tabla de práctica: meses de 1 a 6 en <code>A2:A7</code>, inflaciones mensuales de 2%, 3% y 5% en <code>B1:D1</code>, y una sola fórmula con referencias mixtas que use el gasto promedio de <code>RESUMEN</code> (<code>$B$8</code>). Control: 3% a los 6 meses, <strong>$ 151.664,54</strong>.</li>
-<li>En <code>DATOS</code>, aplicá formato condicional: viajes de más de 90 minutos en rojo (<strong>13</strong> celdas), escala de colores en el gasto, horas de estudio menores a 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2="Sí"</code>).</li>
-<li>Sacá una <code>FOTO</code> de los indicadores de <code>RESUMEN</code> (Pegado especial, solo valores).</li>
+<li>Creá la hoja <code>RESUMEN</code> (azul) y escribí en <code>A1</code> el título <em>Indicadores generales</em>. Desde la fila 3, un indicador por fila, con el nombre en la columna A y la fórmula sobre <code>DATOS</code> en la columna B: <code>Respuestas</code>, <code>Con dato de viaje</code>, <code>Edad promedio</code>, <code>Edad mínima</code>, <code>Edad máxima</code>, <code>Gasto promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code> y <code>Viaje promedio (min)</code>. Controles, en ese orden: 120, 115, 24,24, 17, 42, $ 127.016,67, $ 220.000, $ 30.000 y 55,48.</li>
+<li>Reusá la hoja <code>PARAMETROS</code> que armaste en la práctica (3% mensual, 6 meses, 18% en total). En <code>DATOS</code>, agregá <code>Gasto_proyectado</code> en <code>N</code>: <code>=K2+K2*PARAMETROS!$B$4</code>, copiada hasta la fila 121. Probá cambiar el aumento mensual a 5% y volvelo a 3%.</li>
+<li>En <code>RESUMEN</code>, en <code>A12</code> escribí <code>Gasto proyectado promedio</code> y en <code>B12</code> el <code>PROMEDIO</code> de la columna <code>N</code> de <code>DATOS</code>: tiene que dar <strong>$ 149.879,67</strong>.</li>
+<li>Creá la hoja <code>ESCENARIOS</code> con la misma lógica de la tabla de práctica: los meses de 1 a 6 en <code>A2:A7</code> y los aumentos mensuales de 2%, 3% y 5% en <code>B1:D1</code>. En <code>B2</code> escribí una única fórmula con referencias mixtas, <code>=RESUMEN!$B$8+RESUMEN!$B$8*B$1*$A2</code>, y copiala a todo el rango <code>B2:D7</code>. Control: <code>C7</code> (3% a los 6 meses) tiene que dar <strong>$ 149.879,67</strong>, igual que el gasto proyectado promedio de <code>RESUMEN</code>.</li>
+<li>En <code>DATOS</code>, aplicá formato condicional: <code>Viaje_min</code> mayor que 90 en rojo (<strong>13</strong> celdas), escala de colores en <code>Gasto_mensual</code>, <code>Horas_estudio</code> menor que 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2="Sí"</code>). En la lista de reglas, la de la fila entera tiene que quedar última (arrastrala si hace falta), así no tapa el rojo ni el naranja.</li>
+<li>Sacá una foto de los indicadores: copiá <code>RESUMEN</code> y pegalo con <strong>Pegado especial → Solo valores</strong> en la hoja <code>FOTO</code>, después de borrar lo que dejó la práctica.</li>
 <li>Ocultá las hojas de práctica (<code>PRACTICA09</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> <code>RESUMEN</code>: Respuestas <b>120</b>; Con dato de viaje <b>115</b>; Edad promedio <b>24,24</b>; mínima <b>17</b>; máxima <b>42</b>; Gasto promedio <b>$ 127.016,67</b>; máximo <b>$ 220.000</b>; mínimo <b>$ 30.000</b>; Viaje promedio <b>55,48</b>. <code>RESUMEN!B12</code> (Gasto proyectado promedio) <b>$ 150.288,15</b>. <code>ESCENARIOS</code>: 3% a 6 meses (columna C, fila 7) <b>$ 151.664,54</b>. Formato condicional: viajes de más de 90 min <b>13</b> celdas; horas de estudio menores a 4 <b>16</b> celdas; filas de quienes trabajan: <b>73</b>.</div>
+    <div class="act-control"><b>Para corregir:</b> <code>RESUMEN</code>: Respuestas <b>120</b>; Con dato de viaje <b>115</b>; Edad promedio <b>24,24</b>; mínima <b>17</b>; máxima <b>42</b>; Gasto promedio <b>$ 127.016,67</b>; máximo <b>$ 220.000</b>; mínimo <b>$ 30.000</b>; Viaje promedio <b>55,48</b>. <code>RESUMEN!B12</code> (Gasto proyectado promedio) <b>$ 149.879,67</b>. <code>ESCENARIOS</code>: 3% a 6 meses (columna C, fila 7) <b>$ 149.879,67</b>. Formato condicional: viajes de más de 90 min <b>13</b> celdas; horas de estudio menores a 4 <b>16</b> celdas; filas de quienes trabajan: <b>73</b>.</div>
     <div class="act-ojo"><b>Ojo:</b> La fórmula de <code>ESCENARIOS</code> apunta a <code>RESUMEN!$B$8</code>, que es el Gasto promedio solo si los indicadores se escriben en el orden de la consigna desde la fila 3.</div>
     <div class="act-ojo"><b>Ojo:</b> Las reglas de formato condicional se evalúan de arriba hacia abajo. Si la regla amarilla de fila entera queda primera, puede tapar el rojo y el naranja en las filas de quienes trabajan: conviene dejarla última.</div>
     <div class="act-ojo"><b>Ojo:</b> Esta actividad oculta <code>PRACTICA</code> y <code>PRUEBAS</code>. La hoja <code>FOTO</code> es entregable (no se oculta).</div>
@@ -759,12 +758,12 @@
 <div class="notas-finales">
   <h2>Notas para el docente</h2>
   <ul>
-    <li>Los tiempos de los micro ejercicios salen de la Guía Visual; los del Pedido de la clase son estimados. Suman 97 min (Clase 08), 99 min (Clase 09), 99 min (Clase 10) y 110 min (Clase 11). Con la carga horaria real, decidir cuáles se resuelven en clase y cuáles quedan para casa.</li>
+    <li>Los tiempos de las actividades son estimados de planificación (la Guía Visual ya no los muestra), igual que los del Pedido de la clase. Suman 97 min (Clase 08), 99 min (Clase 09), 99 min (Clase 10) y 110 min (Clase 11). Con la carga horaria real, decidir cuáles se resuelven en clase y cuáles quedan para casa.</li>
     <li>Los archivos de datos están en <code>unq-moodle/archivos/</code>: <code>Practica_encuesta_mini.csv</code> (Clase 08), <code>Encuesta_ingresantes_2026.csv</code> (Clases 08 a 11) y <code>Catalogo_carreras_2026.csv</code> (Clases 10 y 11). Todas las cifras del recuadro azul fueron recalculadas contra esos CSV y coinciden con las de las Guías Visuales, salvo lo marcado en rojo.</li>
     <li><b>Entregable:</b> cada clase pide un solo link, el de la copia <code>Clase NN - Apellido - AAAA-MM-DD</code> compartida con <code>unqarchivos@gmail.com</code> como Comentador, que funciona como presente y entrega. En la Clase 11 se adjunta además el PDF de <code>TABLERO</code> y <code>MI_PREGUNTA</code>. En <code>moodle/entregas.csv</code> las tareas de las Clases 10 y 11 en el aula 39501 siguen con <code>TODO</code> (faltan los ids).</li>
     <li>Actividades que dependen de otra: toda la Clase 09 parte de <code>DATOS</code> limpia (Clase 08); <code>PARAMETROS</code> (Clase 09) se reutiliza en la entrega de DEyA de la Clase 11; <code>CATALOGO</code>, <code>LISTAS</code> y los rangos con nombre <code>Depto</code> y <code>Gasto</code> (Clase 10) se usan en el tablero de la Clase 11. Un alumno ausente arrastra el faltante.</li>
     <li><b>Consigna para revisar antes de dictar (Clase 11):</b> la entrega final no aclara si MI_PREGUNTA se resuelve con las 120 respuestas o solo con las del departamento, y las cifras son distintas (ver la actividad 6). El README de los archivos trae la clave de la entrega final con las dos variantes para CyT.</li>
-    <li>Los micro ejercicios trabajan sobre las primeras 8 respuestas y el Pedido de la clase repite lo mismo con las 120. La hoja de práctica cambia de nombre en cada clase (<code>PRACTICA</code>, <code>PRACTICA09</code>, <code>PRACTICA10</code>, <code>PRACTICA11</code>) y las anteriores se ocultan al entregar.</li>
+    <li>Las actividades de práctica trabajan sobre las primeras 8 respuestas y el Pedido de la clase repite lo mismo con las 120. La hoja de práctica cambia de nombre en cada clase (<code>PRACTICA</code>, <code>PRACTICA09</code>, <code>PRACTICA10</code>, <code>PRACTICA11</code>) y las anteriores se ocultan al entregar.</li>
     <li>Gemini puede aparecer distinto según la cuenta y el plan de cada alumno (la propia Guía Visual lo aclara). Si alguien no lo tiene, alcanza con un chat de IA aparte; el protocolo de la actividad (preguntar, probar aparte, comparar, anotar) es el mismo.</li>
     <li>El texto de cada actividad es una transcripción literal de la Guía Visual del alumno (<code>Clase NN - &lt;Título&gt;.html</code>, en esta misma carpeta), salvo los botones de descarga de los CSV, que no se repiten acá. Si se edita una consigna ahí, replicar el cambio acá para que ambas versiones no queden desincronizadas.</li>
     <li>Los íconos de apps representan la app protagonista de cada actividad (Google Sheets, y Drive, Excel o Gemini cuando corresponde). Viven en <code>unq-moodle/img/apps/</code>, los mismos archivos que usa el resto del proyecto.</li>

@@ -126,7 +126,7 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Esta clase cierra el caso. Convertís los números en gráficos que responden preguntas, armás un tablero con un selector que cambia todo lo que muestra, lo imprimís en una página, trabajás en el mismo archivo con otra persona, lo llevás a Excel y usás la IA como auditora de tu propio trabajo. Cada herramienta nueva trae un micro ejercicio sobre 8 filas.</p>
+  <p class="toc-intro">Esta clase cierra el caso. Convertís los números en gráficos que responden preguntas, armás un tablero con un selector que cambia todo lo que muestra, lo imprimís en una página, trabajás en el mismo archivo con otra persona, lo llevás a Excel y usás la IA como auditora de tu propio trabajo. Cada herramienta nueva trae una actividad sobre 8 filas.</p>
   <span class="toc-label">Contenido</span>
   <ol>
 <li><a href="#que"><span class="toc-num">01</span><span class="toc-text">Qué gráfico para qué pregunta</span></a></li>
@@ -193,7 +193,7 @@
 <p>El título por defecto (<em>Respuestas por Carrera</em>) describe el gráfico. Uno mejor dice <strong>lo que muestra</strong>: <em>Administración concentra casi una de cada cuatro respuestas</em>. Un título con la conclusión le ahorra trabajo a quien lo lee. Poné también etiquetas en los ejes y sacá la leyenda si hay una sola serie.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 01 · 12 min</span>
+    <span class="activity-eyebrow">Actividad 01</span>
     <h3>Tres gráficos sobre 8 filas</h3>
   </div>
   <div class="prose">
@@ -246,7 +246,7 @@
 <p>Esos son los valores de control: con el selector en cada departamento, tu tablero tiene que mostrar esas cifras.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 02 · 12 min</span>
+    <span class="activity-eyebrow">Actividad 02</span>
     <h3>Un tablero con selector en miniatura</h3>
   </div>
   <div class="prose">
@@ -286,7 +286,7 @@
 <p>Para decidir dónde corta la página, en esa misma pantalla, en <strong>Saltos de página personalizados</strong>, podés fijar el corte (solo con <em>Hoja actual</em> elegida); para repetir los encabezados en cada página de una tabla larga, inmovilizá la fila 1 y tildá la opción de repetir las filas inmovilizadas. Para obtener un PDF, en vez de la impresora elegí <strong>Archivo → Descargar → PDF</strong>, que abre las mismas opciones.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 03 · 6 min</span>
+    <span class="activity-eyebrow">Actividad 03</span>
     <h3>Imprimir una página</h3>
   </div>
   <div class="prose">
@@ -328,7 +328,7 @@
 <p>Muchas organizaciones usan Excel y no Sheets, así que conviene saber pasar de uno a otro. <strong>Archivo → Descargar → Microsoft Excel (.xlsx)</strong> baja el archivo; al abrirlo en Excel, los datos, los formatos, las fórmulas comunes (SI, CONTAR.SI, BUSCARV) y el formato condicional se conservan en general. Lo que puede cambiar es el aspecto de los gráficos, y las funciones propias de Google (como <code>QUERY</code> o <code>IMPORTRANGE</code>) no existen en Excel. La prueba es abrirlo y comparar tus cifras de control.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 04 · 12 min</span>
+    <span class="activity-eyebrow">Actividad 04</span>
     <h3>Comentar, versionar y llevar a Excel</h3>
   </div>
   <div class="prose">
@@ -387,7 +387,7 @@
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 05 · 8 min</span>
+    <span class="activity-eyebrow">Actividad 05</span>
     <h3>Auditar a la IA en miniatura</h3>
   </div>
   <div class="prose">
@@ -425,7 +425,7 @@
   <table class="tbl-wide">
     <thead><tr><th>Departamento</th><th>La pregunta</th><th>Qué construís en MI_PREGUNTA</th></tr></thead>
     <tbody>
-<tr><td><strong>DEyA</strong><br>Economía y Administración</td><td>¿Cuánto cuesta cursar, y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y de quienes no (<code>PROMEDIO.SI</code>). Proyección de ambos a 12 meses con <code>POTENCIA</code> y la hoja <code>PARAMETROS</code>. Gráfico de columnas de hoy contra dentro de 12 meses. Una recomendación de cuánto debería ser una ayuda económica, justificada con las cifras.</td></tr>
+<tr><td><strong>DEyA</strong><br>Economía y Administración</td><td>¿Cuánto cuesta cursar, y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y de quienes no (<code>PROMEDIO.SI</code>). Proyección de ambos a 12 meses con la hoja <code>PARAMETROS</code> (cambiando los meses a 12). Gráfico de columnas de hoy contra dentro de 12 meses. Una recomendación de cuánto debería ser una ayuda económica, justificada con las cifras.</td></tr>
 <tr><td><strong>CS</strong><br>Ciencias Sociales</td><td>¿Quiénes llegan con más barreras?</td><td>Una columna <code>Barreras</code> con <code>SI</code> y <code>Y</code>: trabaja y viaja más de 60 minutos. Porcentaje de personas con barreras en cada carrera (<code>CONTAR.SI.CONJUNTO</code> sobre el total de la carrera). Gráfico de barras ordenado y un filtro que muestre solo ese grupo. Una conclusión de dos oraciones.</td></tr>
 <tr><td><strong>CyT</strong><br>Ciencia y Tecnología</td><td>¿Más tiempo de celular, menos tiempo de estudio?</td><td>Una columna que agrupe el uso de celular en <em>Bajo</em> (hasta 3 horas), <em>Medio</em> (4 a 6) y <em>Alto</em> (7 o más) con <code>SI</code> anidado. Promedio de horas de estudio por grupo. Gráfico de dispersión de las dos columnas. Una conclusión que no confunda correlación con causa.</td></tr>
 <tr><td><strong>EUdA</strong><br>Escuela Universitaria de Artes</td><td>¿Cómo usa la IA el curso y cómo se cuenta eso?</td><td>Tabla de uso de IA por nivel de Excel (<code>Nivel_Excel</code>) con <code>CONTAR.SI.CONJUNTO</code>. Gráfico de columnas agrupadas. Una página de comunicación en <code>MI_PREGUNTA</code>: título fuerte, tres datos destacados en tamaño grande, una imagen y el gráfico, pensada para que se entienda en diez segundos.</td></tr>

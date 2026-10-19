@@ -89,7 +89,7 @@
 <table>
 <tr><th>Clase</th><th>Qué se hace en vivo, proyectado</th><th>Resultado visible al final</th></tr>
 <tr><td>08</td><td>Importar la muestra <code>Practica_encuesta_mini.csv</code> (separador <code>;</code>), mostrar los cinco defectos por la alineación, duplicar la hoja (<code>MINI_CRUDO</code>, <code>MINI_DATOS</code>) y limpiar con Buscar y reemplazar, Recortar espacios y Quitar duplicados, mostrando el aviso de cada herramienta. Dar formato, completar series con el controlador de relleno, ordenar por dos criterios y volver por <code>ID</code>.</td><td>Muestra limpia y presentable, con las sumas de control (260 y 1.050.000).</td></tr>
-<tr><td>09</td><td>Sobre las primeras 8 filas: <code>Cel_semana</code> con <code>=G2*7</code> copiada, indicadores con <code>PROMEDIO</code>, <code>MAX</code>, <code>MIN</code>, <code>CONTAR</code> y <code>CONTARA</code> (por qué <code>CONTAR</code> sobre las carreras da 0), provocar <code>#DIV/0!</code>, <code>#VALUE!</code> y <code>#NAME?</code>, hoja <code>PARAMETROS</code> con 40% anual y 2,84% mensual, tabla de escenarios con una sola fórmula mixta y formato condicional de fila entera.</td><td>Indicadores, proyección y escenarios, con cada cifra comprobable a mano.</td></tr>
+<tr><td>09</td><td>Sobre las primeras 8 filas: <code>Cel_semana</code> con <code>=G2*7</code> copiada, indicadores con <code>PROMEDIO</code>, <code>MAX</code>, <code>MIN</code>, <code>CONTAR</code> y <code>CONTARA</code> (por qué <code>CONTAR</code> sobre las carreras da 0), provocar <code>#DIV/0!</code>, <code>#VALUE!</code> y <code>#NAME?</code>, hoja <code>PARAMETROS</code> con aumento mensual y meses a proyectar, tabla de escenarios con una sola fórmula mixta y formato condicional de fila entera.</td><td>Indicadores, proyección y escenarios, con cada cifra comprobable a mano.</td></tr>
 <tr><td>10</td><td><code>SI</code> anidado con <code>Y</code> y <code>O</code>, <code>CONTAR.SI</code> con un umbral atado a una celda (<code>"&gt;"&amp;B14</code>), <code>BUSCARV</code> al catálogo (y el espacio al final que produce <code>#N/A</code>), validación y selector de departamento, <code>HOY()</code> y filtros con <code>SUBTOTAL</code>.</td><td>Tabla clasificada, con departamento y un selector que cambia los conteos.</td></tr>
 <tr><td>11</td><td>Gráfico de columnas del uso de IA, <code>TABLERO_P</code> con selector (DEyA, CyT, EUdA y CS para mostrar el <code>#DIV/0!</code>), imprimir en una página, un comentario con <code>@</code> y una consulta a la IA verificada contra una cifra de control.</td><td>Tablero de una página, impreso y comentado.</td></tr>
 </table>
@@ -200,17 +200,16 @@
 </div>
 <div class="clase">
   <div class="clase-header"><span class="clase-num">09</span><span class="clase-title">Fórmulas y funciones para describir los datos</span></div>
-  <p class="intro">Operadores, funciones básicas, errores, porcentajes y potencias, referencias fijas y formato condicional sobre las 120 respuestas.</p>
+  <p class="intro">Operadores, funciones básicas, errores, porcentajes y parámetros, referencias fijas y formato condicional sobre las 120 respuestas.</p>
 <h3>Qué es una fórmula</h3>
 <p>Una fórmula empieza con <code>=</code> y le dice a la celda qué operación hacer: la celda muestra el resultado y la barra de fórmulas guarda la instrucción. Lo valioso es que apunta a <b>celdas, no a números</b>: si cambia el dato, el resultado se actualiza solo.</p>
 <table>
 <tr><th>Operador</th><th>Operación</th><th>Ejemplo</th></tr>
 <tr><td><code>+</code> <code>-</code></td><td>Suma, resta</td><td><code>=B2+B3</code></td></tr>
 <tr><td><code>*</code> <code>/</code></td><td>Multiplicación, división</td><td><code>=G2*7</code>, <code>=K2/30</code></td></tr>
-<tr><td><code>^</code></td><td>Potencia</td><td><code>=B2^2</code></td></tr>
 <tr><td><code>( )</code></td><td>Lo de adentro se calcula primero</td><td><code>=(B2+B3)/2</code></td></tr>
 </table>
-<p>Orden de las operaciones: paréntesis, potencias, multiplicación y división, suma y resta. <code>=2+3*4</code> da 14 y <code>=(2+3)*4</code> da 20. Ante la duda, paréntesis.</p>
+<p>Orden de las operaciones: paréntesis, multiplicación y división, suma y resta. <code>=2+3*4</code> da 14 y <code>=(2+3)*4</code> da 20. Ante la duda, paréntesis.</p>
 <p><b>Copiar una fórmula:</b> se escribe en la primera fila y se arrastra el controlador de relleno, o doble clic para llegar hasta donde llegan los datos vecinos. Sheets ajusta las referencias (<code>=G2*7</code> pasa a <code>=G3*7</code>).</p>
 <table>
 <tr><th>Pegado especial</th><th>Qué pega</th><th>Cuándo</th><th>Windows</th><th>Mac</th></tr>
@@ -240,18 +239,17 @@
 <tr><td><code>#N/A</code></td><td>Un dato buscado no está disponible</td><td>Al buscar algo que no está en una tabla (se ve en la Clase 10)</td></tr>
 </table>
 <p>Ver las fórmulas en vez de los resultados: Ver → Mostrar → Fórmulas (<code>Ctrl+`</code>; en Mac <code>Control+`</code>). Con doble clic en una celda con fórmula, Sheets colorea las celdas de las que depende.</p>
-<h3>Porcentajes, potencias y parámetros</h3>
+<h3>Porcentajes y parámetros</h3>
 <table>
 <tr><th>Quiero saber...</th><th>Fórmula</th><th>Ejemplo</th></tr>
 <tr><td>Qué porcentaje es una parte del total</td><td><code>=parte/total</code></td><td><code>=(B3-B4)/B3</code> da 4,17%</td></tr>
 <tr><td>El X% de un valor</td><td><code>=valor*porcentaje</code></td><td><code>=K2*10%</code></td></tr>
-<tr><td>Cuánto queda tras aumentar un X%</td><td><code>=valor*(1+porcentaje)</code></td><td><code>=K2*(1+3%)</code></td></tr>
+<tr><td>Cuánto queda tras aumentar un X%</td><td><code>=valor+valor*porcentaje</code></td><td><code>=K2+K2*3%</code></td></tr>
 <tr><td>De cuánto fue la variación</td><td><code>=(nuevo-viejo)/viejo</code></td><td>De 100.000 a 115.000 da 15%</td></tr>
-<tr><td>Crecimiento compuesto</td><td><code>=valor*POTENCIA(1+%;períodos)</code></td><td><code>=K2*POTENCIA(1+3%;6)</code></td></tr>
-<tr><td>Tasa anual a mensual equivalente</td><td><code>=POTENCIA(1+anual;1/12)-1</code></td><td>40% anual da 2,84% mensual, no 40/12 = 3,33%</td></tr>
+<tr><td>Proyección simple</td><td><code>=valor+valor*%mensual*meses</code></td><td><code>=K2+K2*PARAMETROS!$B$4</code>: 3% mensual por 6 meses es 18%</td></tr>
 </table>
 <p><b>El formato <code>%</code> multiplica por 100 lo que ya está escrito:</b> si ya está <code>0,03</code> se ve 3%, pero si se escribe <code>3</code> y después se aplica el formato, se ve 300%. Primero el dato, después el formato.</p>
-<p><b>Hoja <code>PARAMETROS</code>:</b> los números que van a cambiar (inflación, meses) viven en celdas de una hoja aparte y las fórmulas apuntan ahí. Para probar otro escenario se cambia una sola celda. Convención de la guía: celdas amarillas son datos que se cambian a mano, la verde es una fórmula.</p>
+<p><b>Hoja <code>PARAMETROS</code>:</b> los números que van a cambiar (aumento mensual, meses) viven en celdas de una hoja aparte y las fórmulas apuntan ahí. Para probar otro escenario se cambia una sola celda. Convención de la guía: celdas amarillas son datos que se cambian a mano, la verde es una fórmula.</p>
 <h3>Referencias relativas, absolutas y mixtas</h3>
 <table>
 <tr><th>Tipo</th><th>Se escribe</th><th>Al copiar la fórmula</th></tr>
@@ -263,7 +261,7 @@
 <tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
 <tr><td>Rotar entre <code>B3</code>, <code>$B$3</code>, <code>B$3</code> y <code>$B3</code></td><td><code>F4</code> (con la referencia seleccionada en la fórmula)</td><td><code>F4</code>; si no responde, <code>⌘+T</code></td></tr>
 </table>
-<p>Es el error más común con planillas: copiar una fórmula que apunta a un parámetro sin fijarlo. La <b>tabla de escenarios</b> (<code>=$K$11*POTENCIA(1+B$20;$A21)</code>) muestra las tres a la vez: una sola fórmula, copiada a toda la tabla.</p>
+<p>Es el error más común con planillas: copiar una fórmula que apunta a un parámetro sin fijarlo. La <b>tabla de escenarios</b> (<code>=$K$11+$K$11*B$20*$A21</code>) muestra las tres a la vez: una sola fórmula, copiada a toda la tabla.</p>
 <h3>Formato condicional</h3>
 <p>Cambia el aspecto de una celda cuando se cumple una condición, para que lo importante salte a la vista. Se abre desde Formato → Formato condicional, con dos pestañas: <b>Un color</b> (pinta lo que cumple una regla) y <b>Escala de colores</b> (degrada del mínimo al máximo).</p>
 <p>Para pintar <b>toda la fila</b> según una columna: "La fórmula personalizada es" con referencia mixta, rango <code>A2:K121</code> y fórmula <code>=$E2="Sí"</code>. El <code>$</code> fija la columna <code>E</code> y el <code>2</code> queda libre para evaluarse fila por fila. Es la misma lógica de referencia mixta de la tabla de escenarios.</p>
@@ -438,7 +436,7 @@
 <p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>AUDITORIA</code> con tres filas) y se suma una hoja <code>MI_PREGUNTA</code> cuya consigna depende del departamento de la carrera de cada alumno. La caja de herramientas es la misma; cambia la mirada. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación.</p>
 <table>
 <tr><th>Departamento</th><th>La pregunta</th><th>Qué se construye</th></tr>
-<tr><td>DEyA</td><td>¿Cuánto cuesta cursar y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y no (<code>PROMEDIO.SI</code>), proyección a 12 meses con <code>POTENCIA</code> y <code>PARAMETROS</code>, columnas hoy contra 12 meses, recomendación de ayuda económica</td></tr>
+<tr><td>DEyA</td><td>¿Cuánto cuesta cursar y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y no (<code>PROMEDIO.SI</code>), proyección a 12 meses con <code>PARAMETROS</code>, columnas hoy contra 12 meses, recomendación de ayuda económica</td></tr>
 <tr><td>CS</td><td>¿Quiénes llegan con más barreras?</td><td>Columna <code>Barreras</code> con <code>SI</code> y <code>Y</code> (trabaja y viaja más de 60 min), % por carrera con <code>CONTAR.SI.CONJUNTO</code>, barras ordenadas, filtro del grupo, conclusión de dos oraciones</td></tr>
 <tr><td>CyT</td><td>¿Más tiempo de celular, menos de estudio?</td><td>Columna Bajo (hasta 3 h), Medio (4 a 6), Alto (7 o más) con <code>SI</code> anidado, promedio de horas de estudio por grupo, dispersión, conclusión que no confunda correlación con causa</td></tr>
 <tr><td>EUdA</td><td>¿Cómo usa la IA el curso y cómo se cuenta eso?</td><td>Tabla de uso de IA por <code>Nivel_Excel</code> con <code>CONTAR.SI.CONJUNTO</code>, columnas agrupadas y una página de comunicación (título fuerte, tres datos grandes, imagen y gráfico) que se entienda en diez segundos</td></tr>

@@ -49,7 +49,7 @@ Generador: `scripts/gen_dataset_encuesta.py` (semilla 20260609). No editar los C
 - Respuestas 120. Con dato de viaje 115. Edad promedio 24,24 (17 a 42). Gasto promedio $ 127.016,67 (mínimo $ 30.000, máximo $ 220.000), total $ 15.242.000. Viaje promedio 55,48 (53,17 si los vacíos se cargaran como 0).
 - Horas de celular promedio 5,10. Horas de estudio promedio 6,98. Trabajan 73 (60,83%). Viajes de más de 90 min: 13. Horas de estudio menores a 4: 16.
 - Nivel_Excel (1-2 Inicial, 3-4 Intermedio, 5 Avanzado): 65 / 49 / 6. Riesgo_carga (trabaja y estudia menos de 5 h): 27. IA frecuente (Seguido o Todos los días): 65.
-- Gasto proyectado promedio a 6 meses con 40% anual (2,84% mensual): $ 150.288,15. Escenarios (gasto promedio por POTENCIA): 3% a 6 meses $ 151.664,54.
+- Gasto proyectado promedio a 6 meses con 3% mensual (18% en total): $ 149.879,67. Escenarios (gasto promedio + gasto promedio × aumento mensual × meses): 3% a 6 meses $ 149.879,67, igual que el anterior.
 - Fechas: primera respuesta 03/08/2026, última 23/08/2026 (20 días).
 - Uso de IA (Nunca / A veces / Seguido / Todos los días): 9 / 46 / 30 / 35.
 - Trabaja y viaja más de 60 min: 29. Viajan más de 60 min: 48.
@@ -58,7 +58,7 @@ Generador: `scripts/gen_dataset_encuesta.py` (semilla 20260609). No editar los C
 
 ### Clave de la entrega final (uso docente, Clase 11)
 
-- DEyA: gasto promedio con trabajo $ 144.694 y sin trabajo $ 102.000 (en DEyA); proyección a 12 meses con la inflación de PARAMETROS.
+- DEyA: gasto promedio con trabajo $ 144.694 y sin trabajo $ 102.000 (en DEyA); proyección a 12 meses con el aumento mensual de PARAMETROS.
 - CS: trabaja y viaja más de 60 min: 13 (DEyA), 7 (CS), 7 (CyT), 2 (EUdA), 29 en total.
 - CyT: correlación entre Horas_celular y Horas_estudio -0,165 (casi nula). Promedio de horas de estudio por grupo de uso de celular (Bajo hasta 3 h, Medio 4 a 6, Alto 7 o más), con las 120 respuestas: Bajo 8,00 (21 personas), Medio 6,97 (76), Alto 6,09 (23); solo con CyT: Bajo 6,25 (4), Medio 6,82 (17), Alto 6,25 (4).
 - EUdA: uso de IA por nivel de Excel con `CONTAR.SI.CONJUNTO`; la consigna es de comunicación, no tiene cifra única.

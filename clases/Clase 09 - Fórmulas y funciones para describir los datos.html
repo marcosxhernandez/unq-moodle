@@ -126,13 +126,13 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Esta clase le da vida a la planilla: aprendés a escribir fórmulas que calculan, a usar las funciones que resumen una columna entera, a leer los errores, a calcular porcentajes y proyecciones, a fijar referencias para que no se corran al copiar y a resaltar con colores lo que importa. Seguís trabajando sobre el mismo archivo, <strong>Retrato del curso</strong>. Cada herramienta nueva trae un micro ejercicio sobre 8 filas que podés comprobar a mano.</p>
+  <p class="toc-intro">Esta clase le da vida a la planilla: aprendés a escribir fórmulas que calculan, a usar las funciones que resumen una columna entera, a leer los errores, a calcular porcentajes y proyecciones, a fijar referencias para que no se corran al copiar y a resaltar con colores lo que importa. Seguís trabajando sobre el mismo archivo, <strong>Retrato del curso</strong>. Cada herramienta nueva trae una actividad sobre 8 filas que podés comprobar a mano.</p>
   <span class="toc-label">Contenido</span>
   <ol>
 <li><a href="#formula"><span class="toc-num">01</span><span class="toc-text">Qué es una fórmula</span></a></li>
 <li><a href="#funciones"><span class="toc-num">02</span><span class="toc-text">Funciones: de las fórmulas a las funciones</span></a></li>
 <li><a href="#errores"><span class="toc-num">03</span><span class="toc-text">Errores: leer lo que la planilla te dice</span></a></li>
-<li><a href="#porcentajes"><span class="toc-num">04</span><span class="toc-text">Porcentajes, potencias y parámetros</span></a></li>
+<li><a href="#porcentajes"><span class="toc-num">04</span><span class="toc-text">Porcentajes y parámetros</span></a></li>
 <li><a href="#referencias"><span class="toc-num">05</span><span class="toc-text">Referencias relativas, absolutas y mixtas</span></a></li>
 <li><a href="#condicional"><span class="toc-num">06</span><span class="toc-text">Formato condicional</span></a></li>
 <li><a href="#foto"><span class="toc-num">07</span><span class="toc-text">Pegar solo valores y cerrar la clase</span></a></li>
@@ -158,21 +158,20 @@
 <tr><td><code>-</code></td><td>Resta</td><td><code>=B2-B3</code></td></tr>
 <tr><td><code>*</code></td><td>Multiplicación</td><td><code>=G2*7</code></td></tr>
 <tr><td><code>/</code></td><td>División</td><td><code>=K2/30</code></td></tr>
-<tr><td><code>^</code></td><td>Potencia</td><td><code>=B2^2</code></td></tr>
 <tr><td><code>( )</code></td><td>Paréntesis: lo que está adentro se calcula primero</td><td><code>=(B2+B3)/2</code></td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout" data-type="warning">
   <p class="callout-label">⚠️ El orden importa</p>
-  <p>Primero se resuelven los paréntesis, después las potencias, después multiplicaciones y divisiones, y al final sumas y restas. Por eso <code>=2+3*4</code> da 14 y <code>=(2+3)*4</code> da 20. Ante la duda, usá paréntesis.</p>
+  <p>Primero se resuelven los paréntesis, después multiplicaciones y divisiones, y al final sumas y restas. Por eso <code>=2+3*4</code> da 14 y <code>=(2+3)*4</code> da 20. Ante la duda, usá paréntesis.</p>
 </div>
 <p>Lo valioso de una fórmula es que <strong>apunta a celdas, no a números</strong>. Si escribís <code>=G2*7</code> y después cambiás el valor de <code>G2</code>, el resultado se actualiza solo.</p>
 <div class="xl"><div class="xl-box">
 <div class="xl-fbar"><span class="xl-name">L2</span><span class="xl-fx">fx</span><span class="xl-fval">=G2*7</span></div>
 <table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>G</th><th>H</th><th>K</th><th>L</th></tr></thead><tbody>
 <tr><th class="xl-rn">1</th><td>Horas_celular</td><td>Viaje_min</td><td>Gasto_mensual</td><td>Cel_semana</td></tr>
-<tr><th class="xl-rn">2</th><td class="n sel">2</td><td class="n">87</td><td class="n">66000</td><td class="n good">14</td></tr>
+<tr><th class="xl-rn">2</th><td class="n">2</td><td class="n">87</td><td class="n">66000</td><td class="n good sel">14</td></tr>
 <tr><th class="xl-rn">3</th><td class="n">4</td><td class="n">57</td><td class="n">157000</td><td class="n good">28</td></tr>
 <tr><th class="xl-rn">4</th><td class="n">6</td><td class="n">10</td><td class="n">67000</td><td class="n good">42</td></tr>
 </tbody></table></div>
@@ -195,15 +194,15 @@
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 01 · 10 min</span>
+    <span class="activity-eyebrow">Actividad 01</span>
     <h3>Tu primera fórmula</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>Abrí tu archivo <em>Retrato del curso</em> (el de trabajo, no la copia que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
+  <li>Abrí tu archivo de trabajo, el que se llama <code>Retrato del curso - TuApellido</code> (no la copia <code>Clase 08 - Apellido - AAAA-MM-DD</code> que entregaste). Creá una hoja <code>PRACTICA09</code> y copiá en ella las primeras 8 respuestas: seleccioná <code>DATOS!A1:K9</code>, copiá, andá a <code>PRACTICA09</code>, parate en <code>A1</code> y pegá con <strong>Pegado especial → Solo valores</strong> (<code>Ctrl+Mayús+V</code>; Mac: <code>⌘+Mayús+V</code>).</li>
   <li>En <code>L1</code> escribí <code>Cel_semana</code> y en <code>L2</code> la fórmula <code>=G2*7</code>. Copiala hasta la fila 9 con doble clic en el controlador. Controles: 14, 28, 42, 49, 63, 7, 7 y 28.</li>
-  <li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta el final y con formato de moneda.</li>
-  <li>Repaso de la clase anterior: dale a los encabezados de las dos columnas nuevas el mismo estilo que al resto y ajustá el ancho.</li>
+  <li>En <code>M1</code> escribí <code>Gasto_diario</code> y en <code>M2</code> la fórmula <code>=K2/30</code>, copiada hasta la fila 9 y con formato de moneda.</li>
+  <li>Repaso de la clase anterior: dale a los encabezados <code>L1</code> y <code>M1</code> el mismo estilo que al resto de los encabezados y ajustá el ancho de las dos columnas.</li>
   <li>Cambiá a mano el valor de <code>G2</code> y mirá cómo se recalcula <code>L2</code>. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
   </div>
@@ -230,7 +229,7 @@
   </table>
 </div>
 <h3>El botón de autosuma</h3>
-<p>El botón <strong>Σ</strong> <svg class="tool-icon"><use href="#ti-sigma"></use></svg> de la barra de herramientas abre un menú con las funciones más usadas (SUMA, PROMEDIO, CONTAR, MAX, MIN). Si te parás en una celda vacía debajo de una columna de números, Sheets adivina el rango. Revisá siempre que haya adivinado bien antes de confirmar.</p>
+<p>El botón de <strong><svg class="tool-icon"><use href="#ti-sigma"></use></svg>Autosuma</strong> de la barra de herramientas abre un menú con las funciones más usadas (SUMA, PROMEDIO, CONTAR, MAX, MIN). Si te parás en una celda vacía debajo de una columna de números, Sheets adivina el rango. Revisá siempre que haya adivinado bien antes de confirmar.</p>
 <h3>Referirse a otra hoja</h3>
 <p>Para usar datos de otra hoja se escribe el nombre de la hoja, un signo de admiración y la celda o el rango: <code>=PROMEDIO(DATOS!D2:D121)</code>. Si estás escribiendo la fórmula y hacés clic en la otra hoja, Sheets arma la referencia solo.</p>
 <h3>CONTAR y CONTARA no son lo mismo</h3>
@@ -255,16 +254,16 @@
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 02 · 10 min</span>
+    <span class="activity-eyebrow">Actividad 02</span>
     <h3>Funciones sobre 8 filas</h3>
   </div>
   <div class="prose">
 <ol>
   <li>En <code>PRACTICA09</code>, desde <code>A12</code>, escribí estos nombres: <code>Edad promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code>, <code>Con dato de viaje</code>, <code>Carreras cargadas</code> y <code>Prueba CONTAR en carrera</code>.</li>
-  <li>En la columna B escribí una función para cada uno, siempre sobre las filas 2 a 9: <code>PROMEDIO</code> de <code>D</code>, <code>MAX</code> y <code>MIN</code> de <code>K</code>, <code>CONTAR</code> de <code>H</code>, <code>CONTARA</code> de <code>C</code> y <code>CONTAR</code> de <code>C</code>.</li>
-  <li>Controles: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
-  <li>Con 8 filas podés comprobar a mano: sumá el gasto con la autosuma <code>Σ</code> (tendría que dar $ 848.000) y dividí por 8: el promedio es $ 106.000. Dale el formato que corresponde: moneda para los gastos y dos decimales para el promedio.</li>
-  <li>Repetí el promedio de edad apuntando a otra hoja: <code>=PROMEDIO(DATOS!D2:D9)</code>. Tiene que dar lo mismo.</li>
+  <li>En la columna B escribí una función para cada nombre, siempre sobre las filas 2 a 9: en <code>B12</code>, <code>PROMEDIO</code> de <code>D</code>; en <code>B13</code>, <code>MAX</code> de <code>K</code>; en <code>B14</code>, <code>MIN</code> de <code>K</code>; en <code>B15</code>, <code>CONTAR</code> de <code>H</code>; en <code>B16</code>, <code>CONTARA</code> de <code>C</code>; y en <code>B17</code>, <code>CONTAR</code> de <code>C</code>.</li>
+  <li>Controles, en ese orden: 26,75, $ 180.000, $ 53.000, 8, 8 y <strong>0</strong>. Explicá por qué <code>CONTAR</code> sobre las carreras da 0.</li>
+  <li>Con 8 filas podés comprobar a mano. Parate en <code>K10</code>, la celda vacía debajo de la columna <code>K</code>, y usá el botón <strong>Autosuma</strong> con <code>SUMA</code>: tiene que dar $ 848.000. En <code>K11</code> escribí <code>=K10/8</code>: el promedio, $ 106.000. Dale formato de moneda a <code>K10</code>, <code>K11</code>, <code>B13</code> y <code>B14</code>, y dos decimales a <code>B12</code>.</li>
+  <li>En <code>C12</code> repetí el promedio de edad, pero apuntando a la otra hoja: <code>=PROMEDIO(DATOS!D2:D9)</code>. Tiene que dar lo mismo que <code>B12</code>.</li>
 </ol>
   </div>
 </div>
@@ -293,13 +292,13 @@
 <p>Con <strong>Ver → Mostrar → Fórmulas</strong> (o <code>Ctrl+`</code>; Mac: <code>Control+`</code>) la hoja muestra el texto de cada fórmula en vez de su resultado. Sirve para revisar de un vistazo una columna entera. Al hacer doble clic en una celda con fórmula, Sheets además marca con colores las celdas de las que depende.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 03 · 6 min</span>
+    <span class="activity-eyebrow">Actividad 03</span>
     <h3>Provocar errores para aprender a leerlos</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá qué error aparece.</li>
-  <li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá los errores.</li>
+  <li>Creá una hoja <code>PRUEBAS</code>. En <code>A1</code> escribí <code>=PRACTICA09!K2/0</code> y anotá en <code>B1</code> qué error aparece.</li>
+  <li>En <code>A2</code> escribí <code>=PRACTICA09!C2+1</code> y en <code>A3</code> <code>=PROMEDI(PRACTICA09!D2:D9)</code>. Anotá en <code>B2</code> y <code>B3</code> qué errores aparecen.</li>
   <li>Corregí <code>A3</code> para que funcione y confirmá que da 26,75.</li>
   <li>Activá <strong>Ver → Mostrar → Fórmulas</strong>, mirá <code>PRACTICA09</code> y volvé a desactivarlo.</li>
 </ol>
@@ -310,7 +309,7 @@
 <section class="block" id="porcentajes">
   <div class="block-head">
     <span class="block-num">04</span>
-    <h2 class="block-title">Porcentajes, potencias y parámetros</h2>
+    <h2 class="block-title">Porcentajes y parámetros</h2>
   </div>
   <div class="prose">
 <p>Un <strong>porcentaje</strong> es una proporción: qué parte es de qué total. En una planilla se calcula dividiendo y después se le da formato de porcentaje. Para eso hay que tener claro cuál es la parte y cuál es el total.</p>
@@ -320,7 +319,7 @@
     <tbody>
 <tr><td>Qué porcentaje es una parte del total</td><td><code>=parte/total</code></td><td>Respuestas sin dato de viaje: <code>=(B3-B4)/B3</code> da 4,17%</td></tr>
 <tr><td>Cuánto es el X% de un valor</td><td><code>=valor*porcentaje</code></td><td>El 10% del gasto: <code>=K2*10%</code></td></tr>
-<tr><td>Cuánto queda tras aumentar un X%</td><td><code>=valor*(1+porcentaje)</code></td><td>Gasto con un aumento del 3%: <code>=K2*(1+3%)</code></td></tr>
+<tr><td>Cuánto queda tras aumentar un X%</td><td><code>=valor+valor*porcentaje</code></td><td>Gasto con un aumento del 3%: <code>=K2+K2*3%</code></td></tr>
 <tr><td>De cuánto fue la variación</td><td><code>=(nuevo-viejo)/viejo</code></td><td>De $ 100.000 a $ 115.000: <code>=(115000-100000)/100000</code> da 15%</td></tr>
     </tbody>
   </table>
@@ -329,32 +328,28 @@
   <p class="callout-label">⚠️ El formato % multiplica por 100</p>
   <p>Si ya escribiste <code>0,03</code> y le das formato de porcentaje, se ve <code>3%</code>, y está bien. Pero si escribís <code>3</code> y después aplicás el formato, se ve <code>300%</code>. Primero el dato, después el formato, y revisá siempre qué número quedó.</p>
 </div>
-<h3>Proyectar con potencias</h3>
-<p>Cuando algo crece un porcentaje fijo cada período, no se suma: se <strong>multiplica</strong> cada vez. Si el gasto sube un 3% por mes, a los 6 meses vale <code>gasto*1,03^6</code>. Eso se escribe con la función <code>POTENCIA</code>: <code>=K2*POTENCIA(1+3%;6)</code>. Su pariente es <code>RAIZ</code>: <code>=RAIZ(16)</code> da 4, y es lo mismo que <code>=POTENCIA(16;1/2)</code>.</p>
-<p>Esa misma idea permite pasar una tasa anual a una mensual equivalente: <code>=POTENCIA(1+anual;1/12)-1</code>. Una inflación del 40% anual equivale a un 2,84% mensual, no a 40/12 = 3,33%.</p>
 <h3>Una hoja de parámetros</h3>
-<p>Los números que van a cambiar (la inflación, los meses) no se escriben dentro de las fórmulas: se guardan en celdas de una hoja aparte y las fórmulas apuntan ahí. Así, para probar otro escenario cambiás <strong>una sola celda</strong> y se recalcula todo.</p>
+<p>Los números que van a cambiar (el aumento mensual, los meses) no se escriben dentro de las fórmulas: se guardan en celdas de una hoja aparte y las fórmulas apuntan ahí. Así, para probar otro escenario cambiás <strong>una sola celda</strong> y se recalcula todo.</p>
 <div class="xl"><div class="xl-box">
-<div class="xl-fbar"><span class="xl-name">B3</span><span class="xl-fx">fx</span><span class="xl-fval">=POTENCIA(1+B2;1/12)-1</span></div>
+<div class="xl-fbar"><span class="xl-name">B4</span><span class="xl-fx">fx</span><span class="xl-fval">=B2*B3</span></div>
 <table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>A</th><th>B</th></tr></thead><tbody>
 <tr><th class="xl-rn">1</th><td>Parámetro</td><td>Valor</td></tr>
-<tr><th class="xl-rn">2</th><td>Inflación anual</td><td class="n hl">40%</td></tr>
-<tr><th class="xl-rn">3</th><td>Inflación mensual equivalente</td><td class="n good">2,84%</td></tr>
-<tr><th class="xl-rn">4</th><td>Meses a proyectar</td><td class="n hl">6</td></tr>
+<tr><th class="xl-rn">2</th><td>Aumento mensual</td><td class="n hl">3%</td></tr>
+<tr><th class="xl-rn">3</th><td>Meses a proyectar</td><td class="n hl">6</td></tr>
+<tr><th class="xl-rn">4</th><td>Aumento total</td><td class="n good">18,00%</td></tr>
 </tbody></table></div>
-<p class="xl-cap">La hoja <code>PARAMETROS</code>. Las celdas amarillas son datos que se cambian a mano; la verde es una fórmula.</p>
+<p class="xl-cap">La hoja <code>PARAMETROS</code>. Las celdas amarillas son datos que se cambian a mano; la verde es una fórmula. El aumento total lo vas a usar en la actividad 5.</p>
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 04 · 10 min</span>
-    <h3>Porcentajes y potencias</h3>
+    <span class="activity-eyebrow">Actividad 04</span>
+    <h3>Porcentajes y parámetros</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2*(1+3%)</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
-  <li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada. Tiene que dar 3,00% en todas.</li>
-  <li>En <code>P1</code> escribí <code>Proyeccion_6m</code> y en <code>P2</code> <code>=K2*POTENCIA(1+3%;6)</code>, copiada hasta la 9. <code>P2</code> tiene que dar $ 78.807,45.</li>
-  <li>Creá una hoja <code>PARAMETROS</code> con los encabezados <code>Parámetro</code> y <code>Valor</code> en <code>A1:B1</code>. En <code>A2</code> escribí <code>Inflación anual</code> y en <code>B2</code> <code>40%</code>. En <code>A3</code> escribí <code>Inflación mensual equivalente</code> y en <code>B3</code> <code>=POTENCIA(1+B2;1/12)-1</code>, con porcentaje y dos decimales. Tiene que dar <strong>2,84%</strong>.</li>
+  <li>En <code>PRACTICA09</code>, en <code>N1</code> escribí <code>Con_aumento</code> y en <code>N2</code> <code>=K2+K2*3%</code>, copiada hasta la fila 9. <code>N2</code> tiene que dar $ 67.980.</li>
+  <li>En <code>O1</code> escribí <code>Variacion</code> y en <code>O2</code> <code>=(N2-K2)/K2</code>, con formato de porcentaje y copiada hasta la fila 9. Tiene que dar 3,00% en todas.</li>
+  <li>Creá una hoja <code>PARAMETROS</code>. En <code>A1</code> y <code>B1</code> escribí los encabezados <code>Parámetro</code> y <code>Valor</code>. En <code>A2</code> escribí <code>Aumento mensual</code> y en <code>B2</code> <code>3%</code>. En <code>A3</code> escribí <code>Meses a proyectar</code> y en <code>B3</code> <code>6</code>. En <code>A4</code> escribí <code>Aumento total</code> y en <code>B4</code> <code>=B2*B3</code>, con formato de porcentaje. <code>B4</code> tiene que dar <strong>18,00%</strong>. Esa celda la usás en la actividad siguiente.</li>
 </ol>
   </div>
 </div>
@@ -379,27 +374,27 @@
 </div>
 <p>El signo <code>$</code> se puede escribir a mano, pero es más rápido seleccionar la referencia dentro de la fórmula y apretar <code>F4</code>, que va rotando entre <code>B3</code>, <code>$B$3</code>, <code>B$3</code> y <code>$B3</code>. En Mac, si <code>F4</code> no responde, usá <code>⌘+T</code>.</p>
 <div class="xl"><div class="xl-box">
-<div class="xl-fbar"><span class="xl-name">B4</span><span class="xl-fx">fx</span><span class="xl-fval">=RESUMEN!$B$8*POTENCIA(1+B$1;$A4)</span></div>
+<div class="xl-fbar"><span class="xl-name">B4</span><span class="xl-fx">fx</span><span class="xl-fval">=RESUMEN!$B$8+RESUMEN!$B$8*B$1*$A4</span></div>
 <table class="xl-grid"><thead><tr><th class="xl-rn"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
 <tr><th class="xl-rn">1</th><td>Meses</td><td>2%</td><td>3%</td><td>5%</td></tr>
 <tr><th class="xl-rn">2</th><td class="n">1</td><td class="n">$ 129.557</td><td class="n">$ 130.827</td><td class="n">$ 133.368</td></tr>
-<tr><th class="xl-rn">3</th><td class="n">2</td><td class="n">$ 132.148</td><td class="n">$ 134.752</td><td class="n">$ 140.036</td></tr>
-<tr><th class="xl-rn">4</th><td class="n">3</td><td class="n sel">$ 134.791</td><td class="n">$ 138.794</td><td class="n">$ 147.038</td></tr>
+<tr><th class="xl-rn">3</th><td class="n">2</td><td class="n">$ 132.097</td><td class="n">$ 134.638</td><td class="n">$ 139.718</td></tr>
+<tr><th class="xl-rn">4</th><td class="n">3</td><td class="n sel">$ 134.638</td><td class="n">$ 138.448</td><td class="n">$ 146.069</td></tr>
 </tbody></table></div>
 <p class="xl-cap">Una sola fórmula escrita en la celda de arriba a la izquierda y copiada a toda la tabla: <code>$A</code> fija la columna de los meses, <code>B$1</code> fija la fila de los porcentajes.</p>
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 05 · 10 min</span>
+    <span class="activity-eyebrow">Actividad 05</span>
     <h3>Referencias que se corren y referencias que se fijan</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PARAMETROS</code>, en <code>A4</code> escribí <code>Meses a proyectar</code> y en <code>B4</code> <code>6</code>.</li>
-  <li>En <code>PRACTICA09</code>, en <code>Q1</code> escribí <code>Proy_param</code> y en <code>Q2</code> <code>=K2*POTENCIA(1+PARAMETROS!B3;PARAMETROS!B4)</code>. Copiala hasta la fila 9. Mirá <code>Q3</code>: la fórmula apunta a <code>B4</code> y <code>B5</code>. Las referencias <strong>se corrieron</strong> y el resultado está mal.</li>
-  <li>Corregí <code>Q2</code> con referencias absolutas (<code>$B$3</code> y <code>$B$4</code>, con <code>F4</code>) y copiala de nuevo. <code>Q2</code> tiene que dar $ 78.092,25.</li>
-  <li>Calculá el gasto promedio en <code>K11</code> con <code>=PROMEDIO(K2:K9)</code>. Armá la tabla de escenarios: en <code>A20</code> <code>Meses</code>, en <code>B20</code> y <code>C20</code> los porcentajes <code>3%</code> y <code>5%</code>, y en <code>A21:A23</code> la serie de 1 a 3 con el controlador.</li>
-  <li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11*POTENCIA(1+B$20;$A21)</code>, y copiala a toda la tabla. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.829,06 y <code>C23</code> $ 122.708,25.</li>
+  <li>En <code>PRACTICA09</code>, en <code>P1</code> escribí <code>Proyeccion</code> y en <code>P2</code> <code>=K2+K2*PARAMETROS!B4</code>. Copiala hasta la fila 9. Mirá <code>P3</code>: la fórmula apunta a <code>B5</code>, una celda vacía. La referencia <strong>se corrió</strong> y el resultado está mal: da el mismo gasto, sin aumento.</li>
+  <li>Corregí <code>P2</code> con una referencia absoluta (<code>$B$4</code>, con <code>F4</code>) y copiala de nuevo hasta la fila 9. <code>P2</code> tiene que dar $ 77.880.</li>
+  <li>En <code>K11</code> reemplazá la división por <code>=PROMEDIO(K2:K9)</code>: tiene que seguir dando $ 106.000.</li>
+  <li>Armá la tabla de escenarios en <code>PRACTICA09</code>: en <code>A20</code> escribí <code>Meses</code>, en <code>B20</code> y <code>C20</code> los aumentos mensuales <code>3%</code> y <code>5%</code>, y en <code>A21</code> y <code>A22</code> un <code>1</code> y un <code>2</code>. Seleccionalos y arrastrá el controlador hasta <code>A23</code> para completar la serie 1, 2, 3.</li>
+  <li>En <code>B21</code> escribí una única fórmula con referencias mixtas: <code>=$K$11+$K$11*B$20*$A21</code>, el gasto promedio más el aumento mensual de la columna por los meses de la fila. Copiala a todo el rango <code>B21:C23</code>. Controles: <code>B21</code> $ 109.180, <code>B23</code> $ 115.540 y <code>C23</code> $ 121.900.</li>
 </ol>
   </div>
 </div>
@@ -423,13 +418,13 @@
 </div>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 06 · 8 min</span>
+    <span class="activity-eyebrow">Actividad 06</span>
     <h3>Resaltar lo que importa</h3>
   </div>
   <div class="prose">
 <ol>
   <li>En <code>PRACTICA09</code>, seleccioná la columna <code>H</code> (Viaje_min), abrí <strong>Formato → Formato condicional</strong>, elegí <em>Es mayor que</em> <code>90</code> y un relleno rojo claro. Tienen que quedar <strong>2 celdas</strong> marcadas (106 y 93).</li>
-  <li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro?</li>
+  <li>Seleccioná <code>K2:K9</code> y aplicá una <strong>Escala de colores</strong> de blanco a verde. ¿Cuál es el gasto más oscuro? Tiene que ser $ 180.000.</li>
   <li>Seleccioná <code>A2:K9</code> y creá una regla con <strong>La fórmula personalizada es</strong> <code>=$E2=&quot;Sí&quot;</code>, con relleno amarillo suave. Tienen que pintarse <strong>5 filas enteras</strong>.</li>
   <li>Probá cambiar <code>E2</code> de <code>Sí</code> a <code>No</code> y mirá cómo se despinta la fila. Volvé con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
@@ -446,13 +441,13 @@
 <p>Tu archivo cambia cada vez que cambiás un parámetro. A veces conviene guardar una <strong>foto</strong> del resultado en un momento dado, que no cambie más. Para eso sirve pegar <strong>solo valores</strong>.</p>
 <div class="activity">
   <div class="activity-head">
-    <span class="activity-eyebrow">Micro ejercicio 07 · 5 min</span>
+    <span class="activity-eyebrow">Actividad 07</span>
     <h3>Sacar una foto</h3>
   </div>
   <div class="prose">
 <ol>
   <li>En <code>PRACTICA09</code>, seleccioná <code>A12:B17</code> y copialo con <code>Ctrl+C</code> (Mac: <code>⌘+C</code>).</li>
-  <li>Creá una hoja <code>FOTO</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
+  <li>Creá una hoja <code>FOTO</code>, parate en <code>A1</code> y pegá con <strong>Pegado especial → Solo valores</strong>. Comprobá que la barra de fórmulas muestra un número y no una fórmula.</li>
   <li>Cambiá el gasto más alto, <code>K7</code> (<code>180000</code>), a <code>200000</code> en <code>PRACTICA09</code>. Mirá que el <em>Gasto máximo</em> cambió y la <code>FOTO</code> no. Volvé al valor original con <code>Ctrl+Z</code> (Mac: <code>⌘+Z</code>).</li>
 </ol>
   </div>
@@ -479,12 +474,12 @@
 <p>Trabajá en el archivo <em>Retrato del curso</em>, en las hojas con los datos reales. Estos son los pasos, con los controles.</p>
 <ol>
   <li>En <code>DATOS</code>, agregá <code>Cel_semana</code> en <code>L</code> con <code>=G2*7</code> y <code>Gasto_diario</code> en <code>M</code> con <code>=K2/30</code> (en moneda), ambas copiadas hasta la fila 121.</li>
-  <li>Creá la hoja <code>RESUMEN</code> (azul) con el título <em>Indicadores generales</em> y, desde la fila 3, estos indicadores con fórmulas sobre <code>DATOS</code>: <code>Respuestas</code>, <code>Con dato de viaje</code>, <code>Edad promedio</code>, <code>Edad mínima</code>, <code>Edad máxima</code>, <code>Gasto promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code> y <code>Viaje promedio (min)</code>. Controles: 120, 115, 24,24, 17, 42, $ 127.016,67, $ 220.000, $ 30.000 y 55,48.</li>
-  <li>Reusá la hoja <code>PARAMETROS</code> que armaste en la práctica (40% anual, 2,84% mensual, 6 meses). En <code>DATOS</code>, agregá <code>Gasto_proyectado</code> en <code>N</code>: <code>=K2*POTENCIA(1+PARAMETROS!$B$3;PARAMETROS!$B$4)</code>, copiada hasta la 121. Probá cambiar la inflación a 60% y volvela a 40%.</li>
-  <li>En <code>RESUMEN</code>, fila 12, <code>Gasto proyectado promedio</code> con <code>PROMEDIO</code> de la columna <code>N</code>: tiene que dar <strong>$ 150.288,15</strong>.</li>
-  <li>Creá <code>ESCENARIOS</code> como la tabla de práctica: meses de 1 a 6 en <code>A2:A7</code>, inflaciones mensuales de 2%, 3% y 5% en <code>B1:D1</code>, y una sola fórmula con referencias mixtas que use el gasto promedio de <code>RESUMEN</code> (<code>$B$8</code>). Control: 3% a los 6 meses, <strong>$ 151.664,54</strong>.</li>
-  <li>En <code>DATOS</code>, aplicá formato condicional: viajes de más de 90 minutos en rojo (<strong>13</strong> celdas), escala de colores en el gasto, horas de estudio menores a 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2=&quot;Sí&quot;</code>).</li>
-  <li>Sacá una <code>FOTO</code> de los indicadores de <code>RESUMEN</code> (Pegado especial, solo valores).</li>
+  <li>Creá la hoja <code>RESUMEN</code> (azul) y escribí en <code>A1</code> el título <em>Indicadores generales</em>. Desde la fila 3, un indicador por fila, con el nombre en la columna A y la fórmula sobre <code>DATOS</code> en la columna B: <code>Respuestas</code>, <code>Con dato de viaje</code>, <code>Edad promedio</code>, <code>Edad mínima</code>, <code>Edad máxima</code>, <code>Gasto promedio</code>, <code>Gasto máximo</code>, <code>Gasto mínimo</code> y <code>Viaje promedio (min)</code>. Controles, en ese orden: 120, 115, 24,24, 17, 42, $ 127.016,67, $ 220.000, $ 30.000 y 55,48.</li>
+  <li>Reusá la hoja <code>PARAMETROS</code> que armaste en la práctica (3% mensual, 6 meses, 18% en total). En <code>DATOS</code>, agregá <code>Gasto_proyectado</code> en <code>N</code>: <code>=K2+K2*PARAMETROS!$B$4</code>, copiada hasta la fila 121. Probá cambiar el aumento mensual a 5% y volvelo a 3%.</li>
+  <li>En <code>RESUMEN</code>, en <code>A12</code> escribí <code>Gasto proyectado promedio</code> y en <code>B12</code> el <code>PROMEDIO</code> de la columna <code>N</code> de <code>DATOS</code>: tiene que dar <strong>$ 149.879,67</strong>.</li>
+  <li>Creá la hoja <code>ESCENARIOS</code> con la misma lógica de la tabla de práctica: los meses de 1 a 6 en <code>A2:A7</code> y los aumentos mensuales de 2%, 3% y 5% en <code>B1:D1</code>. En <code>B2</code> escribí una única fórmula con referencias mixtas, <code>=RESUMEN!$B$8+RESUMEN!$B$8*B$1*$A2</code>, y copiala a todo el rango <code>B2:D7</code>. Control: <code>C7</code> (3% a los 6 meses) tiene que dar <strong>$ 149.879,67</strong>, igual que el gasto proyectado promedio de <code>RESUMEN</code>.</li>
+  <li>En <code>DATOS</code>, aplicá formato condicional: <code>Viaje_min</code> mayor que 90 en rojo (<strong>13</strong> celdas), escala de colores en <code>Gasto_mensual</code>, <code>Horas_estudio</code> menor que 4 en naranja (<strong>16</strong> celdas) y filas enteras de quienes trabajan en amarillo suave (<code>=$E2=&quot;Sí&quot;</code>). En la lista de reglas, la de la fila entera tiene que quedar última (arrastrala si hace falta), así no tapa el rojo ni el naranja.</li>
+  <li>Sacá una foto de los indicadores: copiá <code>RESUMEN</code> y pegalo con <strong>Pegado especial → Solo valores</strong> en la hoja <code>FOTO</code>, después de borrar lo que dejó la práctica.</li>
   <li>Ocultá las hojas de práctica (<code>PRACTICA09</code> y <code>PRUEBAS</code>). Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 09 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong> y subí el enlace al aula virtual. Ese enlace es tu presente y tu entrega.</li>
 </ol>
   </div>
@@ -505,7 +500,7 @@
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-1" aria-label="Marcar como hecho"></td><td><label for="chk-s9-1">Escribí fórmulas con operadores, las copié a una columna y usé Pegado especial → Solo valores.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-2" aria-label="Marcar como hecho"></td><td><label for="chk-s9-2">Usé SUMA, PROMEDIO, MAX, MIN, CONTAR y CONTARA sobre 8 filas y comprobé las cifras a mano.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-3" aria-label="Marcar como hecho"></td><td><label for="chk-s9-3">Provoqué los errores <code>#DIV/0!</code>, <code>#VALUE!</code> y <code>#NAME?</code> y corregí uno.</label></td></tr>
-<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-4" aria-label="Marcar como hecho"></td><td><label for="chk-s9-4">Calculé porcentajes, un aumento y una proyección con POTENCIA, y armé la hoja <code>PARAMETROS</code>.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-4" aria-label="Marcar como hecho"></td><td><label for="chk-s9-4">Calculé porcentajes, un aumento y una proyección simple, y armé la hoja <code>PARAMETROS</code>.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-5" aria-label="Marcar como hecho"></td><td><label for="chk-s9-5">Fijé referencias con <code>$</code> y armé una tabla de escenarios con una sola fórmula (referencias mixtas).</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-6" aria-label="Marcar como hecho"></td><td><label for="chk-s9-6">Apliqué formato condicional, incluida una regla con fórmula personalizada, y saqué una foto con solo valores.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s9-7" aria-label="Marcar como hecho"></td><td><label for="chk-s9-7">Entregué el pedido: indicadores, proyección y escenarios sobre los datos reales, con los controles correctos.</label></td></tr>
@@ -514,7 +509,7 @@
 </div>
 <div class="callout" data-type="linkedin">
   <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-  <p><strong>Google Sheets.</strong> Cómo la justificás: construyo modelos con fórmulas y funciones (SUMA, PROMEDIO, CONTAR, POTENCIA), uso referencias absolutas y mixtas para separar parámetros de datos, calculo porcentajes y proyecciones, y resalto resultados con formato condicional.</p>
+  <p><strong>Google Sheets.</strong> Cómo la justificás: construyo modelos con fórmulas y funciones (SUMA, PROMEDIO, CONTAR, MAX, MIN), uso referencias absolutas y mixtas para separar parámetros de datos, calculo porcentajes y proyecciones, y resalto resultados con formato condicional.</p>
 </div>
 <h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
 <div class="qr-row qr-t-verde">
@@ -524,7 +519,7 @@
 <div class="qr-cell-head"><span class="qr-cell-title">Fórmulas</span></div>
 <div class="qr-items">
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Toda fórmula empieza con <code>=</code></span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Operadores: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Operadores: <code>+</code> <code>-</code> <code>*</code> <code>/</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Los paréntesis se calculan primero</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Argumentos separados por <code>;</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Copiar a toda la columna: doble clic en el controlador de relleno</span></div>
@@ -551,12 +546,12 @@
 </div>
 </div>
 <div class="qr-cell">
-<div class="qr-cell-head"><span class="qr-cell-title">Porcentajes y potencias</span></div>
+<div class="qr-cell-head"><span class="qr-cell-title">Porcentajes y parámetros</span></div>
 <div class="qr-items">
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Parte sobre total: <code>=parte/total</code></span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Aumento: <code>=valor*(1+%)</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Aumento: <code>=valor+valor*%</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Variación: <code>=(nuevo-viejo)/viejo</code></span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Crecimiento compuesto: <code>=valor*POTENCIA(1+%;períodos)</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Proyección simple: <code>=valor+valor*%mensual*meses</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Los parámetros viven en celdas, no dentro de la fórmula</span></div>
 </div>
 <div class="qr-tip">El formato % multiplica por 100 lo que ya está escrito.</div>

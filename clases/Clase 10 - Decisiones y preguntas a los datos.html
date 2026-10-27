@@ -60,6 +60,15 @@
       color:#145c28;
     }
   }
+
+  /* Botón de descarga directa (solo pantalla): namespace dl-file, no choca con guia-estilo.css */
+  .dl-file{ display:inline-flex; align-items:center; gap:5px; margin:0 2px; padding:1px 9px 1px 7px; vertical-align:baseline;
+    font-family:var(--sans); font-size:.78rem; font-weight:600; line-height:1.5; color:var(--acento-deep); text-decoration:none;
+    background:var(--acento-tint); border:1px solid var(--acento); border-radius:var(--radius-sm); }
+  .dl-file svg{ width:14px; height:14px; flex:none; }
+  .dl-file:hover{ background:var(--acento-soft); }
+  .dl-file:focus-visible{ outline:2px solid var(--acento); outline-offset:2px; }
+  @media print{ .dl-file{ display:none !important; } }
 </style>
 </head>
 <body>
@@ -126,15 +135,15 @@
 <div class="page">
 
 <nav class="toc">
-  <p class="toc-intro">Esta clase le enseña a la planilla a decidir y a responder preguntas. Clasificás cada respuesta con SI, Y y O, contás y promediás por categoría, traés datos de otra tabla con BUSCARV, cuidás lo que se carga con validación de datos, trabajás con fechas y mirás solo un pedazo de la tabla con filtros. Seguís sobre el mismo archivo, <strong>Retrato del curso</strong>. Cada herramienta nueva trae una actividad sobre 8 filas.</p>
+  <p class="toc-intro">Esta clase le enseña a la planilla a decidir y a responder preguntas. Clasificás cada respuesta con SI, Y y O, contás y promediás por categoría, traés datos de otra tabla con BUSCARV y BUSCARX, cuidás lo que se carga con validación de datos, trabajás con fechas y mirás solo un pedazo de la tabla con filtros. Seguís sobre el mismo archivo, <strong>Retrato del curso</strong>. Cada herramienta nueva trae una actividad sobre 8 filas.</p>
   <span class="toc-label">Contenido</span>
   <ol>
 <li><a href="#si"><span class="toc-num">01</span><span class="toc-text">SI, Y, O: que la planilla decida</span></a></li>
 <li><a href="#contar"><span class="toc-num">02</span><span class="toc-text">Contar, sumar y promediar con condición</span></a></li>
-<li><a href="#buscarv"><span class="toc-num">03</span><span class="toc-text">BUSCARV: traer datos de otra tabla</span></a></li>
+<li><a href="#buscarv"><span class="toc-num">03</span><span class="toc-text">BUSCARV y BUSCARX: traer datos de otra tabla</span></a></li>
 <li><a href="#validacion"><span class="toc-num">04</span><span class="toc-text">Validación de datos y rangos con nombre</span></a></li>
 <li><a href="#fechas"><span class="toc-num">05</span><span class="toc-text">Fechas</span></a></li>
-<li><a href="#filtros"><span class="toc-num">06</span><span class="toc-text">Filtros y SUBTOTAL</span></a></li>
+<li><a href="#filtros"><span class="toc-num">06</span><span class="toc-text">Filtros</span></a></li>
 <li><a href="#pedido"><span class="toc-num">07</span><span class="toc-text">El pedido de la clase</span></a></li>
 <li><a href="#resumen"><span class="toc-num">08</span><span class="toc-text">Resumen de la clase</span></a></li>
   </ol>
@@ -206,10 +215,10 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA10</code> y copiá en ella las primeras 8 respuestas: <code>DATOS!A1:K9</code>, con <strong>Pegado especial → Solo valores</strong>.</li>
-  <li>En <code>L1</code> escribí <code>Nivel_Excel</code> y en <code>L2</code> la fórmula anidada de arriba, copiada hasta la fila 9. Resultado esperado: <em>Inicial</em> en las filas 2, 3, 4, 6, 7 y 9, e <em>Intermedio</em> en las filas 5 y 8.</li>
-  <li>En <code>M1</code> escribí <code>Riesgo_carga</code> con <code>=SI(Y(E2=&quot;Sí&quot;;F2&lt;5);&quot;Atención&quot;;&quot;Ok&quot;)</code>. Tienen que aparecer <strong>2</strong> filas con <em>Atención</em> (las respuestas 4 y 5).</li>
-  <li>En <code>N1</code> escribí <code>IA_frecuente</code> con un <code>SI</code> y un <code>O</code>: <code>Frecuente</code> si el uso es <em>Seguido</em> o <em>Todos los días</em>. Tienen que ser <strong>5</strong> filas frecuentes.</li>
+  <li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA10</code> y copiá en ella las primeras 8 respuestas con las columnas que ya agregaste: <code>DATOS!A1:N9</code>, con <strong>Pegado especial → Solo valores</strong>. Las columnas nuevas de esta práctica arrancan en la <code>O</code>, igual que en <code>DATOS</code>.</li>
+  <li>En <code>O1</code> escribí <code>Nivel_Excel</code> y en <code>O2</code> la fórmula anidada de arriba, copiada hasta la fila 9. Resultado esperado: <em>Inicial</em> en las filas 2, 3, 4, 6, 7 y 9, e <em>Intermedio</em> en las filas 5 y 8.</li>
+  <li>En <code>P1</code> escribí <code>Riesgo_carga</code> con <code>=SI(Y(E2=&quot;Sí&quot;;F2&lt;5);&quot;Atención&quot;;&quot;Ok&quot;)</code>. Tienen que aparecer <strong>2</strong> filas con <em>Atención</em> (las respuestas 4 y 5).</li>
+  <li>En <code>Q1</code> escribí <code>IA_frecuente</code> con un <code>SI</code> y un <code>O</code>: <code>Frecuente</code> si el uso es <em>Seguido</em> o <em>Todos los días</em>. Tienen que ser <strong>5</strong> filas frecuentes.</li>
   <li>Repaso de la clase anterior: aplicá formato condicional para pintar de naranja las celdas que dicen <em>Atención</em>.</li>
 </ol>
   </div>
@@ -280,7 +289,7 @@
 <section class="block" id="buscarv">
   <div class="block-head">
     <span class="block-num">03</span>
-    <h2 class="block-title">BUSCARV: traer datos de otra tabla</h2>
+    <h2 class="block-title">BUSCARV y BUSCARX: traer datos de otra tabla</h2>
   </div>
   <div class="prose">
 <p>En <code>DATOS</code> cada persona tiene su carrera, pero no su departamento. Esa información vive en otra tabla: el <strong>catálogo de carreras</strong>, que dice a qué departamento pertenece cada una. Cuando un dato está en una tabla y necesitás traerlo a otra, se usa <code>BUSCARV</code>.</p>
@@ -311,24 +320,33 @@
 </tbody></table></div>
 <p class="xl-cap">La hoja <code>CATALOGO</code>: 11 carreras y su departamento (DEyA, CS, CyT, EUdA).</p>
 </div>
-<div class="callout" data-type="explore">
-  <p class="callout-label">🔭 Para explorar: BUSCARX</p>
-  <p>Sheets tiene una función más nueva, <code>BUSCARX</code>, que hace lo mismo sin contar columnas: <code>=BUSCARX(C2;CATALOGO!A2:A12;CATALOGO!B2:B12)</code>. Busca en una columna y devuelve de otra, aunque esté a la izquierda. Probala en una celda libre y compará el resultado con <code>BUSCARV</code>.</p>
-</div>
 <img class="screenshot" src="../img/10-03-captura-sheets-buscarv-ayuda.png" alt="Celda R2 con la fórmula BUSCARV y la ayuda de Sheets mostrando sus argumentos">
 <p class="screenshot-caption">Mientras escribís la fórmula, Sheets muestra una ayuda con los argumentos. Los llama <code>valor_búsqueda</code>, <code>intervalo</code>, <code>índice</code> y <code>está_ordenado</code>: son los mismos cuatro de la fórmula, con otro nombre. La etiqueta de arriba adelanta el resultado (<em>DEyA</em>).</p>
+<h3>BUSCARX: la versión que no cuenta columnas</h3>
+<p><code>=BUSCARX(qué_busco; dónde_busco; qué_devuelvo)</code></p>
+<div class="table-wrap">
+  <table class="tbl-wide">
+    <thead><tr><th>Argumento</th><th>En el caso del curso</th></tr></thead>
+    <tbody>
+<tr><td><strong>Qué busco</strong></td><td>La carrera de la persona: <code>C2</code></td></tr>
+<tr><td><strong>Dónde busco</strong></td><td>Solo la columna donde está la clave: <code>CATALOGO!$A$2:$A$12</code></td></tr>
+<tr><td><strong>Qué devuelvo</strong></td><td>La columna del dato que querés traer: <code>CATALOGO!$B$2:$B$12</code>, el departamento</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Da el mismo resultado que <code>BUSCARV</code>, con tres ventajas. No hay un número de columna que contar, así que la fórmula no se desarma si alguien inserta una columna en el catálogo. Puede devolver una columna que está a la izquierda de la que buscás. Y la coincidencia exacta ya viene por defecto, sin <code>FALSO</code>. Tiene además un cuarto argumento opcional: el texto que muestra cuando no encuentra nada, en lugar de <code>#N/A</code>. Los espacios de más siguen rompiendo la búsqueda, igual que en <code>BUSCARV</code>.</p>
 <div class="activity">
   <div class="activity-head">
     <span class="activity-eyebrow">Actividad 03</span>
-    <h3>Traer datos con BUSCARV</h3>
+    <h3>Traer datos con BUSCARV y BUSCARX</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>Descargá <code>Catalogo_carreras_2026.csv</code> e importalo a una hoja nueva (separador <code>;</code>), a la que llamás <code>CATALOGO</code>. Tiene que tener 12 filas con el encabezado.</li>
-  <li>En <code>PRACTICA10</code>, en <code>O1</code> escribí <code>Departamento</code> y en <code>O2</code> <code>=BUSCARV(C2;CATALOGO!$A$2:$B$12;2;FALSO)</code>, copiada hasta la fila 9. Resultado esperado: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
-  <li>Comprobalo con <code>=CONTAR.SI(O2:O9;&quot;DEyA&quot;)</code>: tiene que dar 5.</li>
-  <li>Provocá el problema: agregá un espacio al final de la carrera de <code>C2</code>. ¿Qué pasa en <code>O2</code>? Sacá el espacio y comprobá que se arregla.</li>
-  <li>Para explorar: en una celda libre probá <code>=BUSCARX(C2;CATALOGO!A2:A12;CATALOGO!B2:B12)</code> y compará con <code>BUSCARV</code>.</li>
+  <li>Descargá <code>Catalogo_carreras_2026.csv</code> <a class="dl-file" href="../archivos/Catalogo_carreras_2026.csv" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg><span>Descargar</span></a> e importalo a una hoja nueva (separador <code>;</code>), a la que llamás <code>CATALOGO</code>. Tiene que tener 12 filas con el encabezado.</li>
+  <li>En <code>PRACTICA10</code>, en <code>R1</code> escribí <code>Departamento</code> y en <code>R2</code> <code>=BUSCARV(C2;CATALOGO!$A$2:$B$12;2;FALSO)</code>, copiada hasta la fila 9. Resultado esperado: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
+  <li>Comprobalo con <code>=CONTAR.SI(R2:R9;&quot;DEyA&quot;)</code>: tiene que dar 5.</li>
+  <li>En <code>T1</code> escribí <code>Departamento_X</code> y en <code>T2</code> <code>=BUSCARX(C2;CATALOGO!$A$2:$A$12;CATALOGO!$B$2:$B$12)</code>, copiada hasta la fila 9. Tiene que dar lo mismo que la columna <code>R</code>: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
+  <li>Provocá el problema: agregá un espacio al final de la carrera de <code>C2</code>. ¿Qué pasa en <code>R2</code> y en <code>T2</code>? Sacá el espacio y comprobá que se arreglan las dos.</li>
 </ol>
   </div>
 </div>
@@ -366,8 +384,8 @@
 <ol>
   <li>Creá una hoja <code>LISTAS</code> con <code>Departamento</code> en <code>A1</code> y <code>DEyA</code>, <code>CS</code>, <code>CyT</code> y <code>EUdA</code> en <code>A2:A5</code>.</li>
   <li>En <code>PRACTICA10</code>, aplicá una validación a <code>E2:E9</code> con menú desplegable de <code>Sí</code> y <code>No</code>, rechazando entradas inválidas. Probá escribir <code>Tal vez</code> en <code>E10</code> y mirá qué pasa. Deshacé la prueba.</li>
-  <li>En <code>Q1</code> creá un menú desplegable <em>de un intervalo</em> con <code>LISTAS!A2:A5</code> y elegí <code>DEyA</code>. En <code>R1</code> escribí <code>=CONTAR.SI(O2:O9;Q1)</code>: tiene que dar 5. Elegí <code>CyT</code> (2) y <code>EUdA</code> (1).</li>
-  <li>Ponele el nombre <code>GastoP</code> al rango <code>K2:K9</code> (<strong>Datos → Intervalos con nombre</strong>). En <code>R2</code> escribí <code>=PROMEDIO.SI(O2:O9;Q1;GastoP)</code>. Controles: DEyA $ 114.200, CyT $ 60.000 y EUdA $ 157.000.</li>
+  <li>Desde <code>A20</code> escribí <code>Departamento</code>, <code>Respuestas</code> y <code>Gasto promedio</code>, una por fila. En <code>B20</code> creá un menú desplegable <em>de un intervalo</em> con <code>LISTAS!A2:A5</code> y elegí <code>DEyA</code>. En <code>B21</code> escribí <code>=CONTAR.SI(R2:R9;B20)</code>: tiene que dar 5. Elegí <code>CyT</code> (2) y <code>EUdA</code> (1).</li>
+  <li>Ponele el nombre <code>GastoP</code> al rango <code>K2:K9</code> (<strong>Datos → Intervalos con nombre</strong>). En <code>B22</code> escribí <code>=PROMEDIO.SI(R2:R9;B20;GastoP)</code>. Controles: DEyA $ 114.200, CyT $ 60.000 y EUdA $ 157.000.</li>
 </ol>
   </div>
 </div>
@@ -403,8 +421,8 @@
   <div class="prose">
 <ol>
   <li>En <code>PRACTICA10</code>, en <code>S1</code> escribí <code>Dias_desde</code> y en <code>S2</code> <code>=DIAS(HOY();B2)</code>, copiada hasta la fila 9. Si sale con formato de fecha, pasala a <strong>Formato → Número → Número</strong>.</li>
-  <li>En <code>T1</code> escribí <code>=MIN(B2:B9)</code> y en <code>T2</code> <code>=MAX(B2:B9)</code>, con formato de fecha. Controles: 11/08/2026 y 23/08/2026.</li>
-  <li>En <code>T3</code> restá las dos fechas. Tiene que dar <strong>12</strong>.</li>
+  <li>Desde <code>A25</code> escribí <code>Primera respuesta</code>, <code>Última respuesta</code> y <code>Días entre ambas</code>, una por fila. En <code>B25</code> escribí <code>=MIN(B2:B9)</code> y en <code>B26</code> <code>=MAX(B2:B9)</code>, con formato de fecha. Controles: 11/08/2026 y 23/08/2026.</li>
+  <li>En <code>B27</code> restá las dos fechas. Tiene que dar <strong>12</strong>.</li>
 </ol>
   </div>
 </div>
@@ -413,39 +431,26 @@
 <section class="block" id="filtros">
   <div class="block-head">
     <span class="block-num">06</span>
-    <h2 class="block-title">Filtros y SUBTOTAL</h2>
+    <h2 class="block-title">Filtros</h2>
   </div>
   <div class="prose">
 <p>Un <strong>filtro</strong> oculta las filas que no cumplen una condición, sin borrarlas. Es la herramienta para mirar un pedazo de la tabla: una carrera, una franja de edad, los que trabajan.</p>
 <p>Se activa con <strong>Datos → Crear un filtro</strong>, o con el ícono <svg class="tool-icon"><use href="#ti-filter"></use></svg> de la barra de herramientas. Aparece un botón en cada encabezado; con él podés filtrar <em>por valores</em> (tildando los que querés ver) o <em>por condición</em> (por ejemplo, mayor que 60). Se pueden combinar filtros de varias columnas.</p>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Vistas de filtro</p>
-  <p>Un filtro común afecta a todas las personas que tienen el archivo abierto. Si trabajás en equipo, usá <strong>Datos → Vistas de filtro → Crear nueva vista de filtro</strong>: el filtro es solo tuyo y no cambia lo que ven los demás.</p>
+  <p>Un filtro común afecta a todas las personas que tienen el archivo abierto. Si trabajás en equipo, usá <strong>Datos → Crear vista de filtro</strong> (en versiones anteriores de Sheets: Datos → Vistas de filtro → Crear nueva vista de filtro): el filtro es solo tuyo y no cambia lo que ven los demás.</p>
 </div>
-<h3>Calcular solo lo que se ve: SUBTOTAL</h3>
-<p><code>SUMA</code> y <code>PROMEDIO</code> siguen sumando las filas ocultas por un filtro. Para calcular solo lo visible se usa <code>SUBTOTAL(código; rango)</code>, donde el código elige la operación:</p>
-<div class="table-wrap">
-  <table class="tbl-wide">
-    <thead><tr><th>Código</th><th>Operación sobre las filas visibles</th><th>Ejemplo</th></tr></thead>
-    <tbody>
-<tr><td><code>101</code></td><td>Promedio</td><td><code>=SUBTOTAL(101;DATOS!K2:K121)</code></td></tr>
-<tr><td><code>102</code></td><td>Cuenta números</td><td><code>=SUBTOTAL(102;DATOS!K2:K121)</code></td></tr>
-<tr><td><code>103</code></td><td>Cuenta celdas con datos</td><td><code>=SUBTOTAL(103;DATOS!A2:A121)</code></td></tr>
-<tr><td><code>109</code></td><td>Suma</td><td><code>=SUBTOTAL(109;DATOS!K2:K121)</code></td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Ojo: un filtro solo oculta filas. Funciones como <code>SUMA</code> o <code>PROMEDIO</code> siguen contando las filas ocultas, así que para calcular conviene usar las funciones con condición de la sección 02.</p>
 <div class="activity">
   <div class="activity-head">
     <span class="activity-eyebrow">Actividad 06</span>
-    <h3>Filtros y SUBTOTAL</h3>
+    <h3>Filtros sobre 8 filas</h3>
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA10</code>, en <code>U1</code> escribí <code>=SUBTOTAL(103;A2:A9)</code> y en <code>U2</code> <code>=SUBTOTAL(101;K2:K9)</code>. Sin filtros: 8 y $ 106.000.</li>
-  <li>Activá el filtro sobre la tabla (<strong>Datos → Crear un filtro</strong>) y filtrá <code>Trabaja</code> por <em>Sí</em>. Tendrían que quedar <strong>5</strong> filas, con un promedio de <strong>$ 132.400</strong>.</li>
-  <li>Sumá un segundo filtro: <code>Viaje_min</code> con la condición <em>Mayor que</em> <code>60</code>. Tendrían que quedar <strong>3</strong> filas y un promedio de $ 130.333,33.</li>
-  <li>Comparalo con <code>=PROMEDIO(K2:K9)</code>: sigue dando $ 106.000. ¿Por qué? Quitá todos los filtros.</li>
+  <li>Activá el filtro sobre la tabla (<strong>Datos → Crear un filtro</strong>) y filtrá <code>Trabaja</code> por <em>Sí</em>. Tendrían que quedar <strong>5</strong> filas.</li>
+  <li>Sumá un segundo filtro: <code>Viaje_min</code> con la condición <em>Mayor que</em> <code>60</code>. Tendrían que quedar <strong>3</strong> filas.</li>
+  <li>Mirá los números de fila de la izquierda: saltean las filas ocultas, que no se borraron. Quitá todos los filtros y comprobá que vuelven las 8.</li>
 </ol>
   </div>
 </div>
@@ -473,11 +478,11 @@
   <li>En <code>DATOS</code>, agregá <code>Nivel_Excel</code> en <code>O</code>, <code>Riesgo_carga</code> en <code>P</code> e <code>IA_frecuente</code> en <code>Q</code>, hasta la fila 121. Controles: <em>Atención</em> en <strong>27</strong> filas y <em>Frecuente</em> en <strong>65</strong> e <em>Inicial</em> en <strong>65</strong>.</li>
   <li>En <code>R</code>, agregá <code>Departamento</code> con <code>BUSCARV</code> sobre <code>CATALOGO</code> (la hoja que ya importaste). No tiene que haber ningún <code>#N/A</code>.</li>
   <li>En <code>RESUMEN</code>, agregá <code>Personas que trabajan</code> (73), <code>% que trabaja</code> (60,83%) y <code>Viajes de más de 90 min</code> (13), con <code>CONTAR.SI</code>.</li>
-  <li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARV</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
+  <li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARX</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
   <li>Aplicá en <code>DATOS</code> una validación a <code>E2:E121</code> (Sí o No) y otra a <code>J2:J121</code> (entero entre 1 y 5). Poné nombre a <code>DATOS!R2:R121</code> (<code>Depto</code>) y a <code>DATOS!K2:K121</code> (<code>Gasto</code>).</li>
   <li>En <code>CARRERAS</code>, creá un selector de departamento en <code>H2</code> (de <code>LISTAS!A2:A5</code>) con <code>=CONTAR.SI(Depto;H2)</code> y <code>=PROMEDIO.SI(Depto;H2;Gasto)</code> debajo. Controles: DEyA 54 con $ 130.462,96; CS 30 con $ 124.466,67; CyT 25 con $ 120.880,00; EUdA 11 con $ 131.000,00.</li>
   <li>En <code>DATOS</code>, agregá <code>Dias_desde</code> en <code>S</code> con <code>DIAS(HOY();B2)</code>. En <code>RESUMEN</code>, <code>Primera respuesta</code> (03/08/2026), <code>Última respuesta</code> (23/08/2026) y los días entre ambas (20).</li>
-  <li>En <code>RESUMEN</code>, agregá <code>Filas visibles</code>, <code>Gasto promedio visible</code> y <code>Gasto total visible</code> con <code>SUBTOTAL</code>. Filtrá <em>Contador Público</em>: 14 filas y $ 143.357,14. Después filtrá Trabaja = Sí y Viaje_min mayor que 60: <strong>29</strong> filas. En <code>LEEME</code>, escribí una conclusión de una oración sobre ese grupo y dejá los filtros apagados.</li>
+  <li>Filtrá <code>DATOS</code> por <em>Contador Público</em>: tienen que quedar 14 filas, las mismas que muestra <code>CARRERAS</code>. Después filtrá Trabaja = Sí y Viaje_min mayor que 60: <strong>29</strong> filas. En <code>LEEME</code>, escribí una conclusión de una oración sobre ese grupo y dejá los filtros apagados.</li>
   <li>Ocultá las hojas de práctica. Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 10 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong> y subí el enlace. Ese enlace es tu presente y tu entrega.</li>
 </ol>
   </div>
@@ -490,24 +495,24 @@
     <h2 class="block-title">Resumen de la clase</h2>
   </div>
   <div class="prose">
-<p>La planilla dejó de repetir cálculos para tomar decisiones. Clasificaste las respuestas con SI y sus combinaciones, armaste la tabla de carreras con CONTAR.SI y PROMEDIO.SI, sumaste el departamento con BUSCARV, protegiste la carga con validación, calculaste días con fechas y aprendiste a mirar un subconjunto de la tabla sin perder la cuenta con SUBTOTAL.</p>
+<p>La planilla dejó de repetir cálculos para tomar decisiones. Clasificaste las respuestas con SI y sus combinaciones, armaste la tabla de carreras con CONTAR.SI y PROMEDIO.SI, sumaste el departamento con BUSCARV y BUSCARX, protegiste la carga con validación, calculaste días con fechas y aprendiste a mirar un subconjunto de la tabla con filtros.</p>
 <h3 id="actividades">Actividades</h3>
 <div class="table-wrap">
   <table class="check-table">
     <tbody>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-1" aria-label="Marcar como hecho"></td><td><label for="chk-s10-1">Clasifiqué 8 respuestas con SI anidado, Y y O, y mis conteos coinciden con los de control.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-2" aria-label="Marcar como hecho"></td><td><label for="chk-s10-2">Usé CONTAR.SI, SUMAR.SI y PROMEDIO.SI, incluido un criterio atado a una celda con <code>&amp;</code>.</label></td></tr>
-<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-3" aria-label="Marcar como hecho"></td><td><label for="chk-s10-3">Importé el catálogo y traje el departamento con BUSCARV; probé qué pasa con un espacio de más.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-3" aria-label="Marcar como hecho"></td><td><label for="chk-s10-3">Importé el catálogo y traje el departamento con BUSCARV y con BUSCARX; probé qué pasa con un espacio de más.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-4" aria-label="Marcar como hecho"></td><td><label for="chk-s10-4">Apliqué validación de datos, armé un selector y usé un rango con nombre.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-5" aria-label="Marcar como hecho"></td><td><label for="chk-s10-5">Calculé días con <code>HOY()</code> y obtuve la fecha más antigua y la más reciente.</label></td></tr>
-<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-6" aria-label="Marcar como hecho"></td><td><label for="chk-s10-6">Filtré la tabla y comprobé con SUBTOTAL que los indicadores cuentan solo lo visible.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-6" aria-label="Marcar como hecho"></td><td><label for="chk-s10-6">Filtré la tabla por una y por dos condiciones y comprobé que las filas ocultas no se borran.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s10-7" aria-label="Marcar como hecho"></td><td><label for="chk-s10-7">Entregué el pedido: clasificación, tabla de carreras, selector y filtros sobre los datos reales.</label></td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout" data-type="linkedin">
   <p class="callout-label"><img src="../img/apps/Microsoft%20-%20LinkedIn.png" alt="">Actualizá tu LinkedIn</p>
-  <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo clasificaciones con lógica condicional (SI, Y, O), resumo datos por categoría con CONTAR.SI, SUMAR.SI y PROMEDIO.SI, cruzo tablas con BUSCARV, aseguro la calidad de la carga con validación de datos y analizo subconjuntos con filtros y SUBTOTAL.</p>
+  <p><strong>Google Sheets.</strong> Cómo la justificás: automatizo clasificaciones con lógica condicional (SI, Y, O), resumo datos por categoría con CONTAR.SI, SUMAR.SI y PROMEDIO.SI, cruzo tablas con BUSCARV y BUSCARX, aseguro la calidad de la carga con validación de datos y analizo subconjuntos con filtros.</p>
 </div>
 <h3 id="referencia-rapida" style="break-before:page">Referencia rápida</h3>
 <div class="qr-row qr-t-verde">
@@ -540,7 +545,7 @@
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">La clave está en la primera columna del rango</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Rango fijo con <code>$</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>#N/A</code>: no encontró (casi siempre, un espacio de más)</span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternativa: <code>BUSCARX</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Alternativa sin contar columnas: <code>=BUSCARX(qué; dónde; qué_devuelvo)</code></span></div>
 </div>
 </div>
 <div class="qr-cell">
@@ -559,7 +564,6 @@
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>HOY()</code> cambia todos los días</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=DIAS(HOY();B2)</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Filtro: <strong>Datos → Crear un filtro</strong>. Vista de filtro para trabajo en equipo</span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>SUBTOTAL(101;…)</code> promedio, <code>103</code> cuenta, <code>109</code> suma, solo lo visible</span></div>
 </div>
 </div>
 </div>
@@ -575,6 +579,14 @@
   </div>
 </div>
 
+<h4>Archivos de la clase</h4>
+<div class="kit-card">
+  <div class="kit-tool kit-file">
+    <a class="kit-tool-link" href="../archivos/Catalogo_carreras_2026.csv" download><img class="kit-tool-icon" src="../img/apps/filetype-csv.png" alt=""><span class="kit-tool-text"><span class="kit-tool-name">Catalogo_carreras_2026.csv</span><span class="kit-tool-domain">11 carreras y su departamento · actividad 03</span></span></a>
+    <span class="kit-tool-tags"><a class="pill pill-free" href="../archivos/Catalogo_carreras_2026.csv" download target="_blank" rel="noopener">Descargar</a></span>
+  </div>
+</div>
+
 <h3 id="glosario">Glosario</h3>
 <div class="glossary">
 <div class="gloss-item"><span class="gloss-term">Condición</span><p class="gloss-def">Comparación que da verdadero o falso, como <code>F2&lt;5</code>.</p></div>
@@ -582,13 +594,13 @@
 <div class="gloss-item"><span class="gloss-term">Criterio</span><p class="gloss-def">La condición que usan funciones como CONTAR.SI para decidir qué filas cuentan.</p></div>
 <div class="gloss-item"><span class="gloss-term">Conector</span><p class="gloss-def">El signo <code>&amp;</code>, que une un texto con el contenido de una celda.</p></div>
 <div class="gloss-item"><span class="gloss-term">BUSCARV</span><p class="gloss-def">Función que busca un valor en la primera columna de una tabla y devuelve el dato de otra columna de la misma fila.</p></div>
+<div class="gloss-item"><span class="gloss-term">BUSCARX</span><p class="gloss-def">Función que busca un valor en una columna y devuelve el dato de la misma fila en otra columna, sin tener que contar columnas.</p></div>
 <div class="gloss-item"><span class="gloss-term">Coincidencia exacta</span><p class="gloss-def">Opción <code>FALSO</code> de BUSCARV: solo acepta valores idénticos al buscado.</p></div>
 <div class="gloss-item"><span class="gloss-term">Validación de datos</span><p class="gloss-def">Regla que limita qué se puede escribir en una celda.</p></div>
 <div class="gloss-item"><span class="gloss-term">Rango con nombre</span><p class="gloss-def">Nombre propio que se le da a un rango para usarlo en fórmulas en vez de sus coordenadas.</p></div>
 <div class="gloss-item"><span class="gloss-term">HOY</span><p class="gloss-def">Función que devuelve la fecha actual y se actualiza sola.</p></div>
 <div class="gloss-item"><span class="gloss-term">Filtro</span><p class="gloss-def">Herramienta que oculta las filas que no cumplen una condición sin borrarlas.</p></div>
 <div class="gloss-item"><span class="gloss-term">Vista de filtro</span><p class="gloss-def">Filtro personal que no cambia lo que ven las demás personas que tienen el archivo abierto.</p></div>
-<div class="gloss-item"><span class="gloss-term">SUBTOTAL</span><p class="gloss-def">Función que calcula una operación solo sobre las filas visibles de un rango filtrado.</p></div>
 </div>
 <h3 id="fuentes">Fuentes</h3>
 <ul class="sources">

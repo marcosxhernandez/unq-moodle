@@ -370,20 +370,6 @@
    "divergente": false
   },
   {
-   "term": "Auditoría",
-   "variants": [
-    {
-     "def": "Revisar con un control independiente que un resultado, propio o de una IA, sea correcto.",
-     "label": "Auditoría",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Autoguardado",
    "variants": [
     {
@@ -445,6 +431,20 @@
     {
      "def": "Función que busca un valor en la primera columna de una tabla y devuelve el dato de otra columna de la misma fila.",
      "label": "BUSCARV",
+     "clases": [
+      "10"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "BUSCARX",
+   "variants": [
+    {
+     "def": "Función que busca un valor en una columna y devuelve el dato de la misma fila en otra columna, sin tener que contar columnas.",
+     "label": "BUSCARX",
      "clases": [
       "10"
      ],
@@ -517,6 +517,20 @@
      "label": "Celda",
      "clases": [
       "08"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Cifra de control",
+   "variants": [
+    {
+     "def": "Número que ya sabés que es correcto y sirve para comprobar un resultado propio o de una IA.",
+     "label": "Cifra de control",
+     "clases": [
+      "11"
      ],
      "icon": ""
     }
@@ -727,6 +741,20 @@
      "label": "Control",
      "clases": [
       "14"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Control de filtros",
+   "variants": [
+    {
+     "def": "Botón visible sobre la hoja que filtra con un clic una tabla dinámica; en otros programas se llama segmentación de datos o slicer.",
+     "label": "Control de filtros",
+     "clases": [
+      "11"
      ],
      "icon": ""
     }
@@ -1235,17 +1263,9 @@
       "02"
      ],
      "icon": ""
-    },
-    {
-     "def": "Registro de los cambios del archivo y de quién los hizo, que permite volver atrás.",
-     "label": "Historial de versiones",
-     "clases": [
-      "11"
-     ],
-     "icon": ""
     }
    ],
-   "divergente": true
+   "divergente": false
   },
   {
    "term": "Hoja",
@@ -1740,6 +1760,20 @@
    "divergente": false
   },
   {
+   "term": "QUERY",
+   "variants": [
+    {
+     "def": "Función de Google Sheets que le hace una pregunta a un rango con una frase corta: qué columnas mostrar, bajo qué condición y cómo agrupar.",
+     "label": "QUERY",
+     "clases": [
+      "11"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
    "term": "RAG",
    "variants": [
     {
@@ -2062,20 +2096,6 @@
    "divergente": false
   },
   {
-   "term": "SUBTOTAL",
-   "variants": [
-    {
-     "def": "Función que calcula una operación solo sobre las filas visibles de un rango filtrado.",
-     "label": "SUBTOTAL",
-     "clases": [
-      "10"
-     ],
-     "icon": ""
-    }
-   ],
-   "divergente": false
-  },
-  {
    "term": "Tabla",
    "variants": [
     {
@@ -2097,6 +2117,20 @@
      "label": "Tabla anidada",
      "clases": [
       "04"
+     ],
+     "icon": ""
+    }
+   ],
+   "divergente": false
+  },
+  {
+   "term": "Tabla dinámica",
+   "variants": [
+    {
+     "def": "Tabla que resume los datos agrupándolos por las columnas que elijas, sin escribir fórmulas.",
+     "label": "Tabla dinámica",
+     "clases": [
+      "11"
      ],
      "icon": ""
     }

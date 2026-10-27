@@ -465,10 +465,10 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA10</code> y copiá en ella las primeras 8 respuestas: <code>DATOS!A1:K9</code>, con <strong>Pegado especial → Solo valores</strong>.</li>
-<li>En <code>L1</code> escribí <code>Nivel_Excel</code> y en <code>L2</code> la fórmula anidada de arriba, copiada hasta la fila 9. Resultado esperado: <em>Inicial</em> en las filas 2, 3, 4, 6, 7 y 9, e <em>Intermedio</em> en las filas 5 y 8.</li>
-<li>En <code>M1</code> escribí <code>Riesgo_carga</code> con <code>=SI(Y(E2="Sí";F2&lt;5);"Atención";"Ok")</code>. Tienen que aparecer <strong>2</strong> filas con <em>Atención</em> (las respuestas 4 y 5).</li>
-<li>En <code>N1</code> escribí <code>IA_frecuente</code> con un <code>SI</code> y un <code>O</code>: <code>Frecuente</code> si el uso es <em>Seguido</em> o <em>Todos los días</em>. Tienen que ser <strong>5</strong> filas frecuentes.</li>
+<li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA10</code> y copiá en ella las primeras 8 respuestas con las columnas que ya agregaste: <code>DATOS!A1:N9</code>, con <strong>Pegado especial → Solo valores</strong>. Las columnas nuevas de esta práctica arrancan en la <code>O</code>, igual que en <code>DATOS</code>.</li>
+<li>En <code>O1</code> escribí <code>Nivel_Excel</code> y en <code>O2</code> la fórmula anidada de arriba, copiada hasta la fila 9. Resultado esperado: <em>Inicial</em> en las filas 2, 3, 4, 6, 7 y 9, e <em>Intermedio</em> en las filas 5 y 8.</li>
+<li>En <code>P1</code> escribí <code>Riesgo_carga</code> con <code>=SI(Y(E2="Sí";F2&lt;5);"Atención";"Ok")</code>. Tienen que aparecer <strong>2</strong> filas con <em>Atención</em> (las respuestas 4 y 5).</li>
+<li>En <code>Q1</code> escribí <code>IA_frecuente</code> con un <code>SI</code> y un <code>O</code>: <code>Frecuente</code> si el uso es <em>Seguido</em> o <em>Todos los días</em>. Tienen que ser <strong>5</strong> filas frecuentes.</li>
 <li>Repaso de la clase anterior: aplicá formato condicional para pintar de naranja las celdas que dicen <em>Atención</em>.</li>
 </ol>
     </div>
@@ -499,22 +499,21 @@
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">3</span>
-      <span class="act-name">Traer datos con BUSCARV</span>
+      <span class="act-name">Traer datos con BUSCARV y BUSCARX</span>
       <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
       <span class="act-tiempo">10 min</span>
     </div>
     <div class="act-steps">
 <ol>
 <li>Descargá <code>Catalogo_carreras_2026.csv</code> e importalo a una hoja nueva (separador <code>;</code>), a la que llamás <code>CATALOGO</code>. Tiene que tener 12 filas con el encabezado.</li>
-<li>En <code>PRACTICA10</code>, en <code>O1</code> escribí <code>Departamento</code> y en <code>O2</code> <code>=BUSCARV(C2;CATALOGO!$A$2:$B$12;2;FALSO)</code>, copiada hasta la fila 9. Resultado esperado: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
-<li>Comprobalo con <code>=CONTAR.SI(O2:O9;"DEyA")</code>: tiene que dar 5.</li>
-<li>Provocá el problema: agregá un espacio al final de la carrera de <code>C2</code>. ¿Qué pasa en <code>O2</code>? Sacá el espacio y comprobá que se arregla.</li>
-<li>Para explorar: en una celda libre probá <code>=BUSCARX(C2;CATALOGO!A2:A12;CATALOGO!B2:B12)</code> y compará con <code>BUSCARV</code>.</li>
+<li>En <code>PRACTICA10</code>, en <code>R1</code> escribí <code>Departamento</code> y en <code>R2</code> <code>=BUSCARV(C2;CATALOGO!$A$2:$B$12;2;FALSO)</code>, copiada hasta la fila 9. Resultado esperado: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
+<li>Comprobalo con <code>=CONTAR.SI(R2:R9;"DEyA")</code>: tiene que dar 5.</li>
+<li>En <code>T1</code> escribí <code>Departamento_X</code> y en <code>T2</code> <code>=BUSCARX(C2;CATALOGO!$A$2:$A$12;CATALOGO!$B$2:$B$12)</code>, copiada hasta la fila 9. Tiene que dar lo mismo que la columna <code>R</code>: DEyA en 5 filas, CyT en 2 y EUdA en 1.</li>
+<li>Provocá el problema: agregá un espacio al final de la carrera de <code>C2</code>. ¿Qué pasa en <code>R2</code> y en <code>T2</code>? Sacá el espacio y comprobá que se arreglan las dos.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> <code>CATALOGO</code> con <b>12</b> filas (11 carreras más el encabezado). Departamento: DEyA en <b>5</b> filas, CyT en <b>2</b>, EUdA en <b>1</b>. Con un espacio al final de la carrera en <code>C2</code>, <code>O2</code> da <code>#N/A</code>; al sacarlo, vuelve a funcionar.</div>
+    <div class="act-control"><b>Para corregir:</b> <code>CATALOGO</code> con <b>12</b> filas (11 carreras más el encabezado). Departamento: DEyA en <b>5</b> filas, CyT en <b>2</b>, EUdA en <b>1</b>. <code>T</code> (<code>BUSCARX</code>) repite la columna <code>R</code>. Con un espacio al final de la carrera en <code>C2</code>, <code>R2</code> y <code>T2</code> dan <code>#N/A</code>; al sacarlo, vuelven a funcionar.</div>
     <div class="act-ojo"><b>Ojo:</b> <code>BUSCARV</code> es el origen del <code>#N/A</code> más habitual de las clases siguientes: una carrera con un espacio de más no se encuentra. Las mayúsculas no molestan.</div>
-    <div class="act-ojo"><b>Ojo:</b> <code>BUSCARX</code> es opcional (para explorar).</div>
     <p class="act-meta"><b>Insumos del docente:</b> Archivo <code>Catalogo_carreras_2026.csv</code>. En <code>unq-moodle/archivos/</code> (README con defectos y cifras de control).</p>
   </div>
   <div class="act-card">
@@ -528,8 +527,8 @@
 <ol>
 <li>Creá una hoja <code>LISTAS</code> con <code>Departamento</code> en <code>A1</code> y <code>DEyA</code>, <code>CS</code>, <code>CyT</code> y <code>EUdA</code> en <code>A2:A5</code>.</li>
 <li>En <code>PRACTICA10</code>, aplicá una validación a <code>E2:E9</code> con menú desplegable de <code>Sí</code> y <code>No</code>, rechazando entradas inválidas. Probá escribir <code>Tal vez</code> en <code>E10</code> y mirá qué pasa. Deshacé la prueba.</li>
-<li>En <code>Q1</code> creá un menú desplegable <em>de un intervalo</em> con <code>LISTAS!A2:A5</code> y elegí <code>DEyA</code>. En <code>R1</code> escribí <code>=CONTAR.SI(O2:O9;Q1)</code>: tiene que dar 5. Elegí <code>CyT</code> (2) y <code>EUdA</code> (1).</li>
-<li>Ponele el nombre <code>GastoP</code> al rango <code>K2:K9</code> (<strong>Datos → Intervalos con nombre</strong>). En <code>R2</code> escribí <code>=PROMEDIO.SI(O2:O9;Q1;GastoP)</code>. Controles: DEyA $ 114.200, CyT $ 60.000 y EUdA $ 157.000.</li>
+<li>Desde <code>A20</code> escribí <code>Departamento</code>, <code>Respuestas</code> y <code>Gasto promedio</code>, una por fila. En <code>B20</code> creá un menú desplegable <em>de un intervalo</em> con <code>LISTAS!A2:A5</code> y elegí <code>DEyA</code>. En <code>B21</code> escribí <code>=CONTAR.SI(R2:R9;B20)</code>: tiene que dar 5. Elegí <code>CyT</code> (2) y <code>EUdA</code> (1).</li>
+<li>Ponele el nombre <code>GastoP</code> al rango <code>K2:K9</code> (<strong>Datos → Intervalos con nombre</strong>). En <code>B22</code> escribí <code>=PROMEDIO.SI(R2:R9;B20;GastoP)</code>. Controles: DEyA $ 114.200, CyT $ 60.000 y EUdA $ 157.000.</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> Validación: <code>Tal vez</code> queda rechazado. Selector: DEyA <b>5</b> y $ 114.200; CyT <b>2</b> y $ 60.000; EUdA <b>1</b> y $ 157.000. Rango con nombre <code>GastoP</code>.</div>
@@ -546,8 +545,8 @@
     <div class="act-steps">
 <ol>
 <li>En <code>PRACTICA10</code>, en <code>S1</code> escribí <code>Dias_desde</code> y en <code>S2</code> <code>=DIAS(HOY();B2)</code>, copiada hasta la fila 9. Si sale con formato de fecha, pasala a <strong>Formato → Número → Número</strong>.</li>
-<li>En <code>T1</code> escribí <code>=MIN(B2:B9)</code> y en <code>T2</code> <code>=MAX(B2:B9)</code>, con formato de fecha. Controles: 11/08/2026 y 23/08/2026.</li>
-<li>En <code>T3</code> restá las dos fechas. Tiene que dar <strong>12</strong>.</li>
+<li>Desde <code>A25</code> escribí <code>Primera respuesta</code>, <code>Última respuesta</code> y <code>Días entre ambas</code>, una por fila. En <code>B25</code> escribí <code>=MIN(B2:B9)</code> y en <code>B26</code> <code>=MAX(B2:B9)</code>, con formato de fecha. Controles: 11/08/2026 y 23/08/2026.</li>
+<li>En <code>B27</code> restá las dos fechas. Tiene que dar <strong>12</strong>.</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> Mínimo <code>11/08/2026</code>; máximo <code>23/08/2026</code>; diferencia <b>12</b> días. <code>Dias_desde</code> cambia todos los días: no tiene cifra de control fija.</div>
@@ -557,19 +556,18 @@
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">6</span>
-      <span class="act-name">Filtros y SUBTOTAL</span>
+      <span class="act-name">Filtros sobre 8 filas</span>
       <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
       <span class="act-tiempo">8 min</span>
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA10</code>, en <code>U1</code> escribí <code>=SUBTOTAL(103;A2:A9)</code> y en <code>U2</code> <code>=SUBTOTAL(101;K2:K9)</code>. Sin filtros: 8 y $ 106.000.</li>
-<li>Activá el filtro sobre la tabla (<strong>Datos → Crear un filtro</strong>) y filtrá <code>Trabaja</code> por <em>Sí</em>. Tendrían que quedar <strong>5</strong> filas, con un promedio de <strong>$ 132.400</strong>.</li>
-<li>Sumá un segundo filtro: <code>Viaje_min</code> con la condición <em>Mayor que</em> <code>60</code>. Tendrían que quedar <strong>3</strong> filas y un promedio de $ 130.333,33.</li>
-<li>Comparalo con <code>=PROMEDIO(K2:K9)</code>: sigue dando $ 106.000. ¿Por qué? Quitá todos los filtros.</li>
+<li>Activá el filtro sobre la tabla (<strong>Datos → Crear un filtro</strong>) y filtrá <code>Trabaja</code> por <em>Sí</em>. Tendrían que quedar <strong>5</strong> filas.</li>
+<li>Sumá un segundo filtro: <code>Viaje_min</code> con la condición <em>Mayor que</em> <code>60</code>. Tendrían que quedar <strong>3</strong> filas.</li>
+<li>Mirá los números de fila de la izquierda: saltean las filas ocultas, que no se borraron. Quitá todos los filtros y comprobá que vuelven las 8.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> Sin filtros: <b>8</b> filas y <b>$ 106.000</b>. Filtro Trabaja = Sí: <b>5</b> filas, promedio <b>$ 132.400</b>. Más Viaje_min mayor que 60: <b>3</b> filas, <b>$ 130.333,33</b>. <code>PROMEDIO</code> común sigue en <b>$ 106.000</b> porque promedia también las filas ocultas.</div>
+    <div class="act-control"><b>Para corregir:</b> Sin filtros: <b>8</b> filas. Filtro Trabaja = Sí: <b>5</b> filas. Más Viaje_min mayor que 60: <b>3</b> filas. Al quitar los filtros vuelven las 8.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
   </div>
   <div class="act-card">
@@ -585,11 +583,11 @@
 <li>En <code>DATOS</code>, agregá <code>Nivel_Excel</code> en <code>O</code>, <code>Riesgo_carga</code> en <code>P</code> e <code>IA_frecuente</code> en <code>Q</code>, hasta la fila 121. Controles: <em>Atención</em> en <strong>27</strong> filas y <em>Frecuente</em> en <strong>65</strong> e <em>Inicial</em> en <strong>65</strong>.</li>
 <li>En <code>R</code>, agregá <code>Departamento</code> con <code>BUSCARV</code> sobre <code>CATALOGO</code> (la hoja que ya importaste). No tiene que haber ningún <code>#N/A</code>.</li>
 <li>En <code>RESUMEN</code>, agregá <code>Personas que trabajan</code> (73), <code>% que trabaja</code> (60,83%) y <code>Viajes de más de 90 min</code> (13), con <code>CONTAR.SI</code>.</li>
-<li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARV</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
+<li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARX</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
 <li>Aplicá en <code>DATOS</code> una validación a <code>E2:E121</code> (Sí o No) y otra a <code>J2:J121</code> (entero entre 1 y 5). Poné nombre a <code>DATOS!R2:R121</code> (<code>Depto</code>) y a <code>DATOS!K2:K121</code> (<code>Gasto</code>).</li>
 <li>En <code>CARRERAS</code>, creá un selector de departamento en <code>H2</code> (de <code>LISTAS!A2:A5</code>) con <code>=CONTAR.SI(Depto;H2)</code> y <code>=PROMEDIO.SI(Depto;H2;Gasto)</code> debajo. Controles: DEyA 54 con $ 130.462,96; CS 30 con $ 124.466,67; CyT 25 con $ 120.880,00; EUdA 11 con $ 131.000,00.</li>
 <li>En <code>DATOS</code>, agregá <code>Dias_desde</code> en <code>S</code> con <code>DIAS(HOY();B2)</code>. En <code>RESUMEN</code>, <code>Primera respuesta</code> (03/08/2026), <code>Última respuesta</code> (23/08/2026) y los días entre ambas (20).</li>
-<li>En <code>RESUMEN</code>, agregá <code>Filas visibles</code>, <code>Gasto promedio visible</code> y <code>Gasto total visible</code> con <code>SUBTOTAL</code>. Filtrá <em>Contador Público</em>: 14 filas y $ 143.357,14. Después filtrá Trabaja = Sí y Viaje_min mayor que 60: <strong>29</strong> filas. En <code>LEEME</code>, escribí una conclusión de una oración sobre ese grupo y dejá los filtros apagados.</li>
+<li>Filtrá <code>DATOS</code> por <em>Contador Público</em>: tienen que quedar 14 filas, las mismas que muestra <code>CARRERAS</code>. Después filtrá Trabaja = Sí y Viaje_min mayor que 60: <strong>29</strong> filas. En <code>LEEME</code>, escribí una conclusión de una oración sobre ese grupo y dejá los filtros apagados.</li>
 <li>Ocultá las hojas de práctica. Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 10 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong> y subí el enlace. Ese enlace es tu presente y tu entrega.</li>
 </ol>
     </div>
@@ -609,7 +607,7 @@
 </table><p class="xl-cap">Suma de respuestas 120; suma de porcentajes 100%.</p></div>
     <div class="act-ojo"><b>Ojo:</b> La consigna da <b>27</b> (Atención), <b>65</b> (Frecuente) y <b>65</b> (Inicial): las dos cifras de 65 son una coincidencia y están bien. No es un error de tipeo.</div>
     <div class="act-ojo"><b>Ojo:</b> Administración da 27 aunque una de esas respuestas esté escrita en mayúsculas (<code>LICENCIATURA EN ADMINISTRACIÓN</code>): <code>CONTAR.SI</code> y <code>BUSCARV</code> no distinguen mayúsculas. Es la razón de fondo por la que en la Clase 08 las mayúsculas se dejan como están.</div>
-    <div class="act-ojo"><b>Ojo:</b> Si el alumno escribe las 11 carreras a mano en <code>CARRERAS</code>, un espacio de más rompe <code>BUSCARV</code> y <code>CONTAR.SI</code>. Es más seguro copiarlas desde <code>CATALOGO</code>.</div>
+    <div class="act-ojo"><b>Ojo:</b> Si el alumno escribe las 11 carreras a mano en <code>CARRERAS</code>, un espacio de más rompe <code>BUSCARX</code> y <code>CONTAR.SI</code>. Es más seguro copiarlas desde <code>CATALOGO</code>.</div>
     <div class="act-ojo"><b>Ojo:</b> Antes de la copia final los filtros tienen que quedar apagados (lo pide la consigna).</div>
     <div class="act-campus">📤 Entregable de la clase (campus): link a la copia Clase 10 - Apellido - AAAA-MM-DD, compartida con unqarchivos@gmail.com con permiso de Comentador. Ese enlace es el presente y la entrega.</div>
     <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
@@ -630,7 +628,7 @@
     </div>
     <div class="act-steps">
 <ol>
-<li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA11</code> y copiá en ella las primeras 8 respuestas (<code>DATOS!A1:K9</code>) con <strong>Pegado especial → Solo valores</strong>.</li>
+<li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA11</code> y copiá en ella las primeras 8 respuestas con todas las columnas calculadas (<code>DATOS!A1:S9</code>) con <strong>Pegado especial → Solo valores</strong>. Ya trae el departamento en la columna <code>R</code>.</li>
 <li>En <code>A12:B12</code> escribí <code>Uso de IA</code> y <code>Respuestas</code>; en <code>A13:A16</code> los cuatro niveles (<code>Nunca</code>, <code>A veces</code>, <code>Seguido</code>, <code>Todos los días</code>) y en <code>B13</code> <code>=CONTAR.SI($I$2:$I$9;A13)</code>, copiada. Controles: 0, 3, 3 y 2. Seleccioná <code>A12:B16</code> e insertá un <strong>gráfico de columnas</strong> con un título que diga algo y etiquetas de datos.</li>
 <li>Seleccioná con <code>Ctrl</code> (Mac: <code>⌘</code>) las columnas <code>C1:C9</code> (carrera) y <code>K1:K9</code> (gasto) e insertá un <strong>gráfico de barras</strong>. Tiene que mostrar 8 barras.</li>
 <li>Armá una tabla de dos filas con <code>Trabaja</code> (5) y <code>No trabaja</code> (3) usando <code>CONTAR.SI</code> e insertá una <strong>torta</strong>. Decidí si con dos partes es el gráfico más claro.</li>
@@ -644,17 +642,39 @@
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">2</span>
+      <span class="act-name">Tabla dinámica y control de filtros</span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
+      <span class="act-tiempo">15 min</span>
+    </div>
+    <div class="act-steps">
+<ol>
+  <li>En <code>DATOS</code>, hacé clic en una celda de la tabla y elegí <strong>Insertar → Tabla dinámica</strong>. En <em>Intervalo de datos</em> poné <code>DATOS!A1:S121</code>, elegí <em>Nueva hoja</em> y <em>Crear</em>. Renombrá la hoja <code>DINAMICA</code>.</li>
+  <li>En el editor, en <strong>Filas</strong> tocá <em>Añadir</em> y elegí <code>Departamento</code>. En <strong>Valores</strong> añadí <code>ID</code> y en <em>Sumar por</em> elegí <code>COUNTA</code>. Controles: DEyA 54, CS 30, CyT 25, EUdA 11 y <em>Total general</em> 120, las mismas cifras de tu selector.</li>
+  <li>En <strong>Valores</strong> añadí <code>Gasto_mensual</code> con <em>Sumar por</em> <code>AVERAGE</code> y dale formato de moneda. Controles: $ 130.462,96 (DEyA), $ 124.466,67 (CS), $ 120.880,00 (CyT), $ 131.000,00 (EUdA) y $ 127.016,67 en el total.</li>
+  <li>Con la hoja <code>DINAMICA</code> abierta, elegí <strong>Datos → Añadir un control de filtros</strong>. Revisá que el <em>Intervalo de datos</em> sea el de la tabla, en <em>Columna</em> elegí <code>Trabaja</code> y dejá tildado <em>Aplicar a tablas dinámicas</em>.</li>
+  <li>Tocá el botón del control y dejá solo <code>Sí</code>. Controles: 36, 15, 15 y 7 respuestas, 73 en total, y un gasto promedio total de $ 141.630,14. Cambiá a solo <code>No</code>: 18, 15, 10 y 4 respuestas, 47 en total, y $ 104.319,15.</li>
+  <li>Si el control no mueve la tabla, revisá que el intervalo de los dos sea el mismo y que esté tildado <em>Aplicar a tablas dinámicas</em>. Dejá el control en <em>Todos</em> al terminar.</li>
+</ol>
+    </div>
+    <div class="act-control"><b>Para corregir:</b> Tabla dinámica: DEyA <b>54</b> / $ 130.462,96, CS <b>30</b> / $ 124.466,67, CyT <b>25</b> / $ 120.880,00, EUdA <b>11</b> / $ 131.000,00; total <b>120</b> / $ 127.016,67. Control en <b>Sí</b>: 36, 15, 15 y 7 (73), gasto promedio total $ 141.630,14 (por departamento $ 144.694,44 / $ 141.466,67 / $ 134.466,67 / $ 141.571,43). Control en <b>No</b>: 18, 15, 10 y 4 (47), $ 104.319,15 (por departamento $ 102.000,00 / $ 107.466,67 / $ 100.500,00 / $ 112.500,00).</div>
+    <div class="act-ojo"><b>Ojo:</b> Los nombres de la interfaz son <em>Añadir</em> (en cada zona del editor), <em>Sumar por</em> (con las funciones en inglés) y <em>Añadir un control de filtros</em> (no existe &laquo;segmentador&raquo; en Sheets). Verificar en el aula que el control mueve la tabla con la versión de Sheets de los alumnos.</div>
+    <div class="act-ojo"><b>Ojo:</b> La tabla dinámica debe coincidir con la tabla de control del tablero. Si no coincide, suele haber espacios o mayúsculas distintas en <code>Departamento</code>.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> La hoja <code>DATOS</code> limpia (Clase 08) con la columna <code>Departamento</code> (Clase 10).</p>
+  </div>
+  <div class="act-card">
+    <div class="act-card-head">
+      <span class="act-num">3</span>
       <span class="act-name">Un tablero con selector en miniatura</span>
       <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
       <span class="act-tiempo">12 min</span>
     </div>
     <div class="act-steps">
 <ol>
-<li>En <code>PRACTICA11</code>, en <code>O1</code> escribí <code>Departamento</code> y en <code>O2</code> <code>=BUSCARV(C2;CATALOGO!$A$2:$B$12;2;FALSO)</code>, copiada hasta la fila 9.</li>
-<li>Creá la hoja <code>TABLERO_P</code>. En <code>A2</code> escribí <code>Departamento</code> y en <code>B2</code> un menú desplegable de <code>LISTAS!A2:A5</code>. En <code>A3:A5</code> escribí <code>Respuestas</code>, <code>% que trabaja</code> y <code>Gasto promedio</code>, y en la columna B las fórmulas, todas leyendo <code>B2</code>: <code>=CONTAR.SI(PRACTICA11!$O$2:$O$9;B2)</code>, <code>=CONTAR.SI.CONJUNTO(PRACTICA11!$O$2:$O$9;B2;PRACTICA11!$E$2:$E$9;"Sí")/B3</code> y <code>=PROMEDIO.SI(PRACTICA11!$O$2:$O$9;B2;PRACTICA11!$K$2:$K$9)</code>.</li>
+<li>Mirá la columna <code>R</code> de <code>PRACTICA11</code>: es el <code>Departamento</code> que trajiste con <code>BUSCARV</code> en la clase anterior (DEyA en 5 filas, CyT en 2 y EUdA en 1).</li>
+<li>Creá la hoja <code>TABLERO_P</code>. En <code>A2</code> escribí <code>Departamento</code> y en <code>B2</code> un menú desplegable de <code>LISTAS!A2:A5</code> con un color distinto para cada departamento. En <code>A3:A5</code> escribí <code>Respuestas</code>, <code>% que trabaja</code> y <code>Gasto promedio</code>, y en la columna B las fórmulas, todas leyendo <code>B2</code>: <code>=CONTAR.SI(PRACTICA11!$R$2:$R$9;B2)</code>, <code>=CONTAR.SI.CONJUNTO(PRACTICA11!$R$2:$R$9;B2;PRACTICA11!$E$2:$E$9;"Sí")/B3</code> y <code>=PROMEDIO.SI(PRACTICA11!$R$2:$R$9;B2;PRACTICA11!$K$2:$K$9)</code>.</li>
 <li>Controles: <strong>DEyA</strong> 5, 80% y $ 114.200. <strong>CyT</strong> 2, 0% y $ 60.000. <strong>EUdA</strong> 1, 100% y $ 157.000.</li>
 <li>Elegí <code>CS</code>. Aparece un error: ¿cuál es y por qué? (Repaso de errores: en esas 8 filas no hay nadie de CS.)</li>
-<li>En <code>A8:A11</code> escribí los niveles de IA y en <code>B8</code> <code>=CONTAR.SI.CONJUNTO(PRACTICA11!$O$2:$O$9;$B$2;PRACTICA11!$I$2:$I$9;A8)</code>, copiada. Con <code>DEyA</code> tiene que dar 0, 1, 3 y 1. Insertá un gráfico de columnas de esa tabla y cambiá el selector: el gráfico se redibuja.</li>
+<li>En <code>A8:A11</code> escribí los niveles de IA y en <code>B8</code> <code>=CONTAR.SI.CONJUNTO(PRACTICA11!$R$2:$R$9;$B$2;PRACTICA11!$I$2:$I$9;A8)</code>, copiada. Con <code>DEyA</code> tiene que dar 0, 1, 3 y 1. Insertá un gráfico de columnas de esa tabla y cambiá el selector: el gráfico se redibuja.</li>
 </ol>
     </div>
     <div class="act-control"><b>Para corregir:</b> Con el selector en DEyA: Respuestas <b>5</b>, % que trabaja <b>80%</b>, Gasto promedio <b>$ 114.200</b>. CyT: <b>2</b>, <b>0%</b>, <b>$ 60.000</b>. EUdA: <b>1</b>, <b>100%</b>, <b>$ 157.000</b>. Uso de IA en DEyA: <b>0, 1, 3 y 1</b>. Con CS aparece <code>#DIV/0!</code> (en las 8 filas no hay nadie de CS: la cuenta de respuestas da 0 y el % que trabaja divide por ese 0; <code>PROMEDIO.SI</code> sin coincidencias también da <code>#DIV/0!</code>).</div>
@@ -663,79 +683,61 @@
   </div>
   <div class="act-card">
     <div class="act-card-head">
-      <span class="act-num">3</span>
-      <span class="act-name">Imprimir una página</span>
-      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"></span>
-      <span class="act-tiempo">6 min</span>
-    </div>
-    <div class="act-steps">
-<ol>
-<li>En <code>TABLERO_P</code>, seleccioná el rango con los indicadores, la tabla y el gráfico.</li>
-<li>Abrí <strong>Archivo → Imprimir</strong> y elegí <em>Celdas seleccionadas</em>, orientación horizontal, escala <em>Ajustar al ancho</em> y sin líneas de cuadrícula.</li>
-<li>Tiene que entrar en <strong>una sola página</strong>, sin gráficos cortados. Si no entra, achicá el gráfico.</li>
-<li>Descargalo en PDF con <strong>Archivo → Descargar → PDF</strong> y abrilo.</li>
-</ol>
-    </div>
-    <div class="act-control"><b>Para corregir:</b> Imprimir con <b>Celdas seleccionadas</b>, horizontal, <b>Ajustar al ancho</b> y sin líneas de cuadrícula: tiene que entrar en <b>una página</b>, sin gráfico cortado.</div>
-    <div class="act-ojo"><b>Ojo:</b> El PDF lo genera cada alumno (Archivo → Descargar → PDF). Imprimir es <code>Ctrl+P</code> (Mac: <code>⌘+P</code>).</div>
-    <p class="act-meta"><b>Insumos del docente:</b> Ninguno adicional.</p>
-  </div>
-  <div class="act-card">
-    <div class="act-card-head">
       <span class="act-num">4</span>
-      <span class="act-name">Comentar, versionar y llevar a Excel</span>
-      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel" title="Microsoft Excel"></span>
-      <span class="act-tiempo">12 min</span>
+      <span class="act-name">Pedirle a la IA y comprobar</span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"><img src="../img/apps/Microsoft%20-%20Copilot.png" alt="Copilot" title="Copilot"></span>
+      <span class="act-tiempo">15 min</span>
     </div>
     <div class="act-steps">
 <ol>
-<li>Compartí tu archivo con una persona de tu comisión con rol de <strong>Comentador</strong>. Esa persona tiene que dejarte dos comentarios sobre <code>TABLERO_P</code>: uno que mencione tu nombre con <code>@</code> con una duda, y otro con una sugerencia de diseño. Hacelo también con su archivo.</li>
-<li>Respondé cada comentario y marcalo como resuelto.</li>
-<li>Abrí el historial de versiones, poné nombre a la versión actual (<code>Antes de seguir</code>) y protegé la hoja <code>CRUDO</code> con <strong>Datos → Proteger hojas e intervalos</strong>.</li>
-<li>Bajá el archivo a <code>.xlsx</code>, abrilo en Excel y comprobá que <code>TABLERO_P</code> muestra los mismos controles de <code>DEyA</code> (5, 80%, $ 114.200). Anotá en <code>LEEME</code> qué cambió, si algo cambió.</li>
+  <li>Abrí un chat de IA. Pegale los encabezados de <code>PRACTICA11</code> (<code>A1:S1</code>) y pedile, en una frase, una fórmula con <code>SI</code> y <code>Y</code> que escriba <code>Barrera</code> cuando la persona trabaja y viaja más de 60 minutos, y <code>Sin barrera</code> si no. Aclarale que usás Sheets en español, con punto y coma.</li>
+  <li>En <code>PRACTICA11</code>, escribí <code>Barrera</code> en <code>T1</code>, pegá la fórmula en <code>T2</code> y copiala hasta la fila 9. Control: 3 filas con <code>Barrera</code> (las filas 5, 7 y 9). Si la IA usó comas o una columna que no existe, corregila: es el error más común.</li>
+  <li>Pedile ahora una fórmula con <code>QUERY</code> sobre <code>DATOS!A1:S121</code> que muestre, por departamento (columna <code>R</code>), cuántas personas trabajan (columna <code>E</code>) y viajan más de 60 minutos (columna <code>H</code>). Probala en una hoja nueva. Control: DEyA 13, CS 7, CyT 7 y EUdA 2, que suman 29, las mismas filas que te dio el filtro de la clase anterior.</li>
+  <li>Pedile que te explique cada parte de la fórmula. Cambiá <code>and</code> por <code>or</code> y mirá cuánto suman ahora: tiene que dar 92. En <code>LEEME</code> escribí, con tus palabras, qué cambió y por qué.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> Dos comentarios por archivo en <code>TABLERO_P</code> (uno con <code>@</code> y una duda, otro con una sugerencia), respondidos y marcados como resueltos. Versión nombrada <code>Antes de seguir</code>. <code>CRUDO</code> protegida. En Excel, <code>TABLERO_P</code> muestra DEyA <b>5</b>, <b>80%</b>, <b>$ 114.200</b>.</div>
-    <div class="act-ojo"><b>Ojo:</b> La actividad depende de que cada alumno tenga una pareja con cuenta de Google. Con número impar de alumnos, armar una terna.</div>
-    <div class="act-ojo"><b>Ojo:</b> Comentar: <code>Ctrl+Alt+M</code> (Mac: <code>⌘+Opción+M</code>). La mención con <code>@</code> avisa por mail.</div>
-    <div class="act-ojo"><b>Ojo:</b> En Excel pueden cambiar los gráficos. Las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel; las de la clase sí se conservan.</div>
-    <p class="act-meta"><b>Insumos del docente:</b> Alumnos en parejas, cada uno con su archivo compartido con el otro. Excel instalado (opcional, para abrir el <code>.xlsx</code>).</p>
+    <div class="act-control"><b>Para corregir:</b> <code>Barrera</code> en <b>3</b> filas (5, 7 y 9, que son los IDs 4, 6 y 8). <code>QUERY</code> con <code>and</code>: DEyA <b>13</b>, CS <b>7</b>, CyT <b>7</b>, EUdA <b>2</b> (29). Con <code>or</code>: DEyA 43, CS 22, CyT 18, EUdA 9 (<b>92</b>). Una fórmula de referencia: <code>=QUERY(DATOS!A1:S121; "select R, count(A) where E = 'Sí' and H &gt; 60 group by R label count(A) ''"; 1)</code>. La nota en <code>LEEME</code> debe decir que <code>and</code> exige las dos condiciones y <code>or</code> alcanza con una.</div>
+    <div class="act-ojo"><b>Ojo:</b> Errores típicos que hay que esperar: coma en lugar de punto y coma, columnas o rangos inventados, resultados &laquo;de cabeza&raquo; sin fórmula. El orden del resultado de <code>QUERY</code> es alfabético (CS, CyT, DEyA, EUdA).</div>
+    <div class="act-ojo"><b>Ojo:</b> Los datos del caso son simulados, pero en un trabajo real no se pegan datos personales en una IA pública. Vale la pena decirlo en voz alta.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Acceso a un chat de IA gratuito (Gemini, ChatGPT o Copilot). Si la cuenta tiene Gemini dentro de Sheets, también sirve, pero no es necesario.</p>
   </div>
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">5</span>
-      <span class="act-name">Auditar a la IA en miniatura</span>
-      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"></span>
-      <span class="act-tiempo">8 min</span>
+      <span class="act-name">Llevar el tablero a PDF y a Excel</span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Microsoft%20-%20Excel.png" alt="Microsoft Excel" title="Microsoft Excel"></span>
+      <span class="act-tiempo">10 min</span>
     </div>
     <div class="act-steps">
 <ol>
-<li>Creá una hoja <code>AUDITORIA</code> con las columnas <code>Pregunta</code>, <code>Respuesta de la IA (resumen)</code>, <code>Cómo lo verifiqué</code> y <code>Veredicto</code>.</li>
-<li>Pedile a la IA que <strong>explique</strong> la fórmula de <code>% que trabaja</code> de <code>TABLERO_P</code>. Compará con lo que vos entendés y anotala.</li>
-<li>Pedile una fórmula que cuente cuántas personas de <strong>DEyA</strong> trabajan en la muestra, diciéndole en qué columnas están los datos. Probala en una celda libre. El resultado correcto es <strong>4</strong>. Anotá si coincidió y qué tuviste que corregir.</li>
+  <li>En <code>TABLERO_P</code>, seleccioná el rango con los indicadores, la tabla y el gráfico.</li>
+  <li>Abrí <strong>Archivo → Imprimir</strong> y elegí <em>Celdas seleccionadas</em>, orientación horizontal, escala <em>Ajustar al ancho</em> y sin líneas de cuadrícula. Tiene que entrar en <strong>una sola página</strong>, sin gráficos cortados. Si no entra, achicá el gráfico.</li>
+  <li>Descargalo en PDF con <strong>Archivo → Descargar → PDF</strong> y abrilo.</li>
+  <li>Bajá el archivo a <code>.xlsx</code>, abrilo en Excel y comprobá que <code>TABLERO_P</code> muestra los mismos controles de <code>DEyA</code> (5, 80%, $ 114.200). Anotá en <code>LEEME</code> qué cambió, si algo cambió.</li>
 </ol>
     </div>
-    <div class="act-control"><b>Para corregir:</b> Cuántas personas de DEyA trabajan en la muestra: <b>4</b> (respuestas 4, 5, 6 y 8). <code>AUDITORIA</code> con cuatro columnas y dos filas: la explicación del <code>% que trabaja</code> y la fórmula de conteo.</div>
-    <div class="act-ojo"><b>Ojo:</b> Errores típicos que hay que esperar: coma en lugar de punto y coma, columnas o rangos inventados, resultados "de cabeza" sin fórmula.</div>
-    <div class="act-ojo"><b>Ojo:</b> Los datos del caso son simulados, pero en un trabajo real no se pegan datos personales en una IA pública. Vale la pena decirlo en voz alta.</div>
-    <p class="act-meta"><b>Insumos del docente:</b> Acceso a una IA: el menú Gemini de Sheets (depende de la cuenta y del plan) o un chat aparte.</p>
+    <div class="act-control"><b>Para corregir:</b> PDF de <code>TABLERO_P</code> en <b>una página</b>, horizontal, sin cuadrícula y sin gráfico cortado. En Excel, <code>TABLERO_P</code> muestra DEyA <b>5</b>, <b>80%</b>, <b>$ 114.200</b>.</div>
+    <div class="act-ojo"><b>Ojo:</b> El PDF lo genera cada alumno (Archivo → Descargar → PDF). Imprimir es <code>Ctrl+P</code> (Mac: <code>⌘+P</code>).</div>
+    <div class="act-ojo"><b>Ojo:</b> En Excel pueden cambiar los gráficos y la tabla dinámica. Las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel; las de la clase sí se conservan.</div>
+    <p class="act-meta"><b>Insumos del docente:</b> Excel instalado (opcional, para abrir el <code>.xlsx</code>).</p>
   </div>
   <div class="act-card">
     <div class="act-card-head">
       <span class="act-num">6</span>
       <span class="act-name">Pedido de la clase: La entrega final: Retrato del curso</span>
-      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"></span>
+      <span class="act-icons"><img src="../img/apps/Google%20-%20Sheets.png" alt="Google Sheets" title="Google Sheets"><img src="../img/apps/Google%20-%20Gemini.png" alt="Gemini" title="Gemini"><img src="../img/apps/OpenAI%20-%20ChatGPT.png" alt="ChatGPT" title="ChatGPT"><img src="../img/apps/Microsoft%20-%20Copilot.png" alt="Copilot" title="Copilot"></span>
       <span class="act-tiempo">~60 min</span>
     </div>
     <div class="act-steps">
 <p>Trabajá sobre los datos reales de <code>DATOS</code>. Todo lo que practicaste con 8 filas se hace ahora con las 120 respuestas, y se suma una pregunta propia.</p>
 <ol>
 <li>Armá la hoja <code>TABLERO</code> con el selector de departamento (<code>LISTAS!A2:A5</code>) y las fórmulas con <code>Depto</code> y <code>Gasto</code> (los nombres de la clase anterior). Controles con el selector en cada departamento: la tabla de control de la sección del tablero.</li>
-<li>Insertá tres gráficos: uso de IA según el selector (columnas, con título que diga algo), respuestas por carrera (barras ordenadas, con datos no contiguos) y personas que trabajan y no trabajan.</li>
+<li>Armá la hoja <code>DINAMICA</code> con la tabla dinámica de departamentos (respuestas y gasto promedio) y un control de filtros por <code>Trabaja</code>. Controles con <code>Sí</code>: 36, 15, 15 y 7 respuestas.</li>
+<li>Insertá tres gráficos en <code>TABLERO</code>: uso de IA según el selector (columnas, con título que diga algo), respuestas por carrera (barras ordenadas, con datos no contiguos) y personas que trabajan y no trabajan.</li>
 <li>Imprimí <code>TABLERO</code> en una sola página y bajá el PDF.</li>
-<li>Armá <code>MI_PREGUNTA</code> con la consigna de tu departamento, un gráfico y una conclusión de dos o tres oraciones.</li>
-<li>Completá <code>AUDITORIA</code> con tres consultas a una IA (la de la práctica y dos más sobre tu pregunta), con su verificación y veredicto.</li>
-<li>Revisá la lista de arriba, tildando cada punto: sin errores en las fórmulas, <code>CRUDO</code> protegida, <code>LEEME</code> completa. Ocultá las hojas de práctica.</li>
+<li>Armá <code>MI_PREGUNTA</code> con la consigna de tu departamento, un gráfico y una conclusión de dos o tres oraciones. Imprimila en otra página y bajá el PDF.</li>
+<li>En <code>LEEME</code>, anotá una línea con lo que le pediste a una IA (por ejemplo, la fórmula de <code>MI_PREGUNTA</code>) y con qué cifra de control lo comprobaste.</li>
+<li>Revisá la lista de arriba, tildando cada punto: sin errores en las fórmulas y <code>LEEME</code> completa. Ocultá las hojas de práctica.</li>
 <li>Hacé la copia <code>Clase 11 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong>, subí el enlace al aula virtual y adjuntá el PDF de <code>TABLERO</code> y <code>MI_PREGUNTA</code> en la misma entrega. Ese enlace es tu presente y tu entrega.</li>
 </ol>
     </div>
@@ -750,21 +752,21 @@
     <div class="act-ojo"><b>Ojo:</b> El README de los archivos (<code>Clave de la entrega final</code>) dice para CyT "promedio de horas de estudio por Dominio_Excel", pero la consigna agrupa por uso de celular (Bajo, Medio, Alto). La correlación -0,165 del README es la de las 120 respuestas. Para la corrección valen las cifras de esta tabla.</div>
     <div class="act-ojo"><b>Ojo:</b> Solo existen los rangos con nombre <code>Depto</code> y <code>Gasto</code> (Clase 10). Para el viaje promedio del tablero hay que apuntar a <code>DATOS!H2:H121</code> directamente.</div>
     <div class="act-ojo"><b>Ojo:</b> Para el gráfico de barras "ordenadas" de CS hay que ordenar la tabla resumen, no la hoja <code>DATOS</code>.</div>
-    <div class="act-ojo"><b>Ojo:</b> Esta actividad pide además un PDF que genera cada alumno; el campus recibe el enlace, con el PDF adjunto en la misma entrega.</div>
+    <div class="act-ojo"><b>Ojo:</b> Las columnas de CS (<code>SI</code> con <code>Y</code>) y de CyT (<code>SI</code> anidado) son buenos pedidos para la IA, que se comprueban con las cifras de esta tabla. Esta actividad pide además un PDF que genera cada alumno; el campus recibe el enlace, con el PDF adjunto en la misma entrega.</div>
     <div class="act-campus">📤 Entregable de la clase (campus): link a la copia Clase 11 - Apellido - AAAA-MM-DD, compartida con unqarchivos@gmail.com con permiso de Comentador. Ese enlace es el presente y la entrega. Se adjunta el PDF de TABLERO y MI_PREGUNTA.</div>
-    <p class="act-meta"><b>Insumos del docente:</b> Todo lo construido en las clases anteriores: <code>DATOS</code>, <code>CATALOGO</code>, <code>LISTAS</code>, <code>PARAMETROS</code> y los rangos con nombre <code>Depto</code> y <code>Gasto</code>.</p>
+    <p class="act-meta"><b>Insumos del docente:</b> Todo lo construido en las clases anteriores y en esta: <code>DATOS</code>, <code>CATALOGO</code>, <code>LISTAS</code>, <code>PARAMETROS</code> y los rangos con nombre <code>Depto</code> y <code>Gasto</code>.</p>
   </div>
 </div>
 <div class="notas-finales">
   <h2>Notas para el docente</h2>
   <ul>
-    <li>Los tiempos de las actividades son estimados de planificación (la Guía Visual ya no los muestra), igual que los del Pedido de la clase. Suman 97 min (Clase 08), 99 min (Clase 09), 99 min (Clase 10) y 110 min (Clase 11). Con la carga horaria real, decidir cuáles se resuelven en clase y cuáles quedan para casa.</li>
+    <li>Los tiempos de las actividades son estimados de planificación (la Guía Visual ya no los muestra), igual que los del Pedido de la clase. Suman 97 min (Clase 08), 99 min (Clase 09), 99 min (Clase 10) y 124 min (Clase 11). Con la carga horaria real, decidir cuáles se resuelven en clase y cuáles quedan para casa.</li>
     <li>Los archivos de datos están en <code>unq-moodle/archivos/</code>: <code>Practica_encuesta_mini.csv</code> (Clase 08), <code>Encuesta_ingresantes_2026.csv</code> (Clases 08 a 11) y <code>Catalogo_carreras_2026.csv</code> (Clases 10 y 11). Todas las cifras del recuadro azul fueron recalculadas contra esos CSV y coinciden con las de las Guías Visuales, salvo lo marcado en rojo.</li>
     <li><b>Entregable:</b> cada clase pide un solo link, el de la copia <code>Clase NN - Apellido - AAAA-MM-DD</code> compartida con <code>unqarchivos@gmail.com</code> como Comentador, que funciona como presente y entrega. En la Clase 11 se adjunta además el PDF de <code>TABLERO</code> y <code>MI_PREGUNTA</code>. En <code>moodle/entregas.csv</code> las tareas de las Clases 10 y 11 en el aula 39501 siguen con <code>TODO</code> (faltan los ids).</li>
     <li>Actividades que dependen de otra: toda la Clase 09 parte de <code>DATOS</code> limpia (Clase 08); <code>PARAMETROS</code> (Clase 09) se reutiliza en la entrega de DEyA de la Clase 11; <code>CATALOGO</code>, <code>LISTAS</code> y los rangos con nombre <code>Depto</code> y <code>Gasto</code> (Clase 10) se usan en el tablero de la Clase 11. Un alumno ausente arrastra el faltante.</li>
     <li><b>Consigna para revisar antes de dictar (Clase 11):</b> la entrega final no aclara si MI_PREGUNTA se resuelve con las 120 respuestas o solo con las del departamento, y las cifras son distintas (ver la actividad 6). El README de los archivos trae la clave de la entrega final con las dos variantes para CyT.</li>
     <li>Las actividades de práctica trabajan sobre las primeras 8 respuestas y el Pedido de la clase repite lo mismo con las 120. La hoja de práctica cambia de nombre en cada clase (<code>PRACTICA</code>, <code>PRACTICA09</code>, <code>PRACTICA10</code>, <code>PRACTICA11</code>) y las anteriores se ocultan al entregar.</li>
-    <li>Gemini puede aparecer distinto según la cuenta y el plan de cada alumno (la propia Guía Visual lo aclara). Si alguien no lo tiene, alcanza con un chat de IA aparte; el protocolo de la actividad (preguntar, probar aparte, comparar, anotar) es el mismo.</li>
+    <li>La actividad de IA se hace con un chat gratuito (Gemini, ChatGPT o Copilot); Gemini dentro de Sheets depende de la cuenta y del plan y no es necesario. El protocolo (dar contexto, probar aparte, comparar con una cifra de control) es el mismo. La Clase 11 ya no incluye la hoja <code>AUDITORIA</code> ni la actividad de colaboración (comentarios, historial y protección de hojas).</li>
     <li>El texto de cada actividad es una transcripción literal de la Guía Visual del alumno (<code>Clase NN - &lt;Título&gt;.html</code>, en esta misma carpeta), salvo los botones de descarga de los CSV, que no se repiten acá. Si se edita una consigna ahí, replicar el cambio acá para que ambas versiones no queden desincronizadas.</li>
     <li>Los íconos de apps representan la app protagonista de cada actividad (Google Sheets, y Drive, Excel o Gemini cuando corresponde). Viven en <code>unq-moodle/img/apps/</code>, los mismos archivos que usa el resto del proyecto.</li>
     <li>Alcance: estas guías corresponden a las Clases 08-11 de Google Sheets, las que se dictan este cuatrimestre. Las guías docentes de la versión de Excel se conservan en <code>unq-moodle/clases/Archivo - Trabajo de Excel/</code>.</li>

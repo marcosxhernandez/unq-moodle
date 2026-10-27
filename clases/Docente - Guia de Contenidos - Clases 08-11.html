@@ -90,7 +90,7 @@
 <tr><th>Clase</th><th>Qué se hace en vivo, proyectado</th><th>Resultado visible al final</th></tr>
 <tr><td>08</td><td>Importar la muestra <code>Practica_encuesta_mini.csv</code> (separador <code>;</code>), mostrar los cinco defectos por la alineación, duplicar la hoja (<code>MINI_CRUDO</code>, <code>MINI_DATOS</code>) y limpiar con Buscar y reemplazar, Recortar espacios y Quitar duplicados, mostrando el aviso de cada herramienta. Dar formato, completar series con el controlador de relleno, ordenar por dos criterios y volver por <code>ID</code>.</td><td>Muestra limpia y presentable, con las sumas de control (260 y 1.050.000).</td></tr>
 <tr><td>09</td><td>Sobre las primeras 8 filas: <code>Cel_semana</code> con <code>=G2*7</code> copiada, indicadores con <code>PROMEDIO</code>, <code>MAX</code>, <code>MIN</code>, <code>CONTAR</code> y <code>CONTARA</code> (por qué <code>CONTAR</code> sobre las carreras da 0), provocar <code>#DIV/0!</code>, <code>#VALUE!</code> y <code>#NAME?</code>, hoja <code>PARAMETROS</code> con aumento mensual y meses a proyectar, tabla de escenarios con una sola fórmula mixta y formato condicional de fila entera.</td><td>Indicadores, proyección y escenarios, con cada cifra comprobable a mano.</td></tr>
-<tr><td>10</td><td><code>SI</code> anidado con <code>Y</code> y <code>O</code>, <code>CONTAR.SI</code> con un umbral atado a una celda (<code>"&gt;"&amp;B14</code>), <code>BUSCARV</code> al catálogo (y el espacio al final que produce <code>#N/A</code>), validación y selector de departamento, <code>HOY()</code> y filtros con <code>SUBTOTAL</code>.</td><td>Tabla clasificada, con departamento y un selector que cambia los conteos.</td></tr>
+<tr><td>10</td><td><code>SI</code> anidado con <code>Y</code> y <code>O</code>, <code>CONTAR.SI</code> con un umbral atado a una celda (<code>"&gt;"&amp;B14</code>), <code>BUSCARV</code> y <code>BUSCARX</code> al catálogo (y el espacio al final que produce <code>#N/A</code>), validación y selector de departamento, <code>HOY()</code> y filtros.</td><td>Tabla clasificada, con departamento y un selector que cambia los conteos.</td></tr>
 <tr><td>11</td><td>Gráfico de columnas del uso de IA, <code>TABLERO_P</code> con selector (DEyA, CyT, EUdA y CS para mostrar el <code>#DIV/0!</code>), imprimir en una página, un comentario con <code>@</code> y una consulta a la IA verificada contra una cifra de control.</td><td>Tablero de una página, impreso y comentado.</td></tr>
 </table>
 <p class="tema">Primeras 8 respuestas (Clases 09 a 11): Edad promedio 26,75; Gasto suma $ 848.000, promedio $ 106.000, máximo $ 180.000, mínimo $ 53.000; Viaje promedio 62,5; trabajan 5; Riesgo_carga con Atención 2; IA frecuente 5; Nivel_Excel 6 Inicial y 2 Intermedio; fechas del 11/08/2026 al 23/08/2026 (12 días). Por departamento: DEyA 5 (gasto promedio $ 114.200, 80% trabaja), CyT 2 ($ 60.000, 0%), EUdA 1 ($ 157.000, 100%), CS 0.</p>
@@ -285,7 +285,7 @@
 </div>
 <div class="clase">
   <div class="clase-header"><span class="clase-num">10</span><span class="clase-title">Decisiones y preguntas a los datos</span></div>
-  <p class="intro">Clasificar con SI, contar y promediar por condición, cruzar tablas con BUSCARV, proteger la carga, trabajar con fechas y consultar subconjuntos con filtros.</p>
+  <p class="intro">Clasificar con SI, contar y promediar por condición, cruzar tablas con BUSCARV y BUSCARX, proteger la carga, trabajar con fechas y consultar subconjuntos con filtros.</p>
 <h3>SI, Y, O: que la planilla decida</h3>
 <p><code>=SI(condición; valor_si_verdadero; valor_si_falso)</code>. La condición es una comparación que da verdadero o falso; el texto devuelto va <b>entre comillas</b> (sin comillas, Sheets busca una función con ese nombre y devuelve <code>#NAME?</code>).</p>
 <table>
@@ -316,9 +316,10 @@
 <tr><td>Mayor al número de una celda</td><td><code>"&gt;"&amp;B1</code></td><td>El <code>&amp;</code> une un texto con una celda: el límite se cambia sin tocar la fórmula</td></tr>
 </table>
 <p><b>Rango fijo con <code>$</code>:</b> en una tabla con una fórmula copiada hacia abajo, el rango de datos va absoluto (<code>DATOS!$C$2:$C$121</code>) y el criterio relativo (<code>A2</code>). Si no, el rango se corre fila a fila.</p>
-<h3>BUSCARV: traer datos de otra tabla</h3>
+<h3>BUSCARV y BUSCARX: traer datos de otra tabla</h3>
 <p><code>=BUSCARV(qué_busco; dónde_busco; columna_a_devolver; FALSO)</code>. En el caso, la carrera de cada persona se busca en el catálogo (<code>CATALOGO!$A$2:$B$12</code>) y se devuelve la columna 2, el departamento. La primera columna del rango es siempre la que se busca; <code>FALSO</code> pide coincidencia exacta.</p>
-<p><b>Los espacios rompen la búsqueda:</b> una carrera con un espacio al final no se encuentra y devuelve <code>#N/A</code>. Por eso se recortó en la Clase 08. Las mayúsculas, en cambio, no molestan. Para explorar: <code>BUSCARX</code> (<code>=BUSCARX(C2;CATALOGO!A2:A12;CATALOGO!B2:B12)</code>) hace lo mismo sin contar columnas.</p>
+<p><b>Los espacios rompen la búsqueda:</b> una carrera con un espacio al final no se encuentra y devuelve <code>#N/A</code>. Por eso se recortó en la Clase 08. Las mayúsculas, en cambio, no molestan.</p>
+<p><code>=BUSCARX(qué_busco; dónde_busco; qué_devuelvo)</code>. Hace lo mismo sin contar columnas: <code>=BUSCARX(C2;CATALOGO!$A$2:$A$12;CATALOGO!$B$2:$B$12)</code>. No se desarma si se inserta una columna en el catálogo, puede devolver una columna a la izquierda de la clave y la coincidencia exacta viene por defecto. Un cuarto argumento opcional define el texto a mostrar si no encuentra nada. Los espacios de más lo rompen igual que a <code>BUSCARV</code>.</p>
 <h3>Validación de datos y rangos con nombre</h3>
 <p>La validación evita el problema de raíz: restringe qué se puede cargar en una celda. Datos → Validación de datos → Agregar regla. Para una encuesta conviene <b>Rechazar los datos introducidos</b> (la advertencia solo marca la celda).</p>
 <table>
@@ -337,16 +338,9 @@
 <tr><td><code>MIN</code>, <code>MAX</code></td><td>La fecha más antigua y la más reciente</td></tr>
 </table>
 <p>Si el resultado de <code>DIAS</code> sale con formato de fecha, pasarlo a Formato → Número → Número.</p>
-<h3>Filtros y SUBTOTAL</h3>
-<p>Un filtro oculta las filas que no cumplen una condición, sin borrarlas: Datos → Crear un filtro. Se puede filtrar por valores o por condición, y combinar varias columnas. Con <b>Vistas de filtro</b> (Datos → Vistas de filtro → Crear nueva vista de filtro) el filtro es solo de quien lo crea y no cambia lo que ven los demás.</p>
-<p><code>SUMA</code> y <code>PROMEDIO</code> siguen sumando las filas ocultas. Para calcular solo lo visible se usa <code>SUBTOTAL(código; rango)</code>:</p>
-<table>
-<tr><th>Código</th><th>Operación sobre las filas visibles</th></tr>
-<tr><td><code>101</code></td><td>Promedio</td></tr>
-<tr><td><code>102</code></td><td>Cuenta números</td></tr>
-<tr><td><code>103</code></td><td>Cuenta celdas con datos</td></tr>
-<tr><td><code>109</code></td><td>Suma</td></tr>
-</table>
+<h3>Filtros</h3>
+<p>Un filtro oculta las filas que no cumplen una condición, sin borrarlas: Datos → Crear un filtro. Se puede filtrar por valores o por condición, y combinar varias columnas. Con <b>Vistas de filtro</b> (Datos → Crear vista de filtro; en versiones anteriores, Datos → Vistas de filtro → Crear nueva vista de filtro) el filtro es solo de quien lo crea y no cambia lo que ven los demás.</p>
+<p><code>SUMA</code> y <code>PROMEDIO</code> siguen sumando las filas ocultas: para calcular conviene usar las funciones con condición.</p>
 <p class="glosario-title">Glosario</p>
 <table>
 <tr><td><b>Condición</b></td><td>Comparación que da verdadero o falso, como <code>F2&lt;5</code>.</td></tr>
@@ -360,12 +354,11 @@
 <tr><td><b>HOY</b></td><td>Función que devuelve la fecha actual y se actualiza sola.</td></tr>
 <tr><td><b>Filtro</b></td><td>Herramienta que oculta las filas que no cumplen una condición sin borrarlas.</td></tr>
 <tr><td><b>Vista de filtro</b></td><td>Filtro personal que no cambia lo que ven las demás personas que tienen el archivo abierto.</td></tr>
-<tr><td><b>SUBTOTAL</b></td><td>Función que calcula una operación solo sobre las filas visibles de un rango filtrado.</td></tr>
 </table>
 </div>
 <div class="clase">
   <div class="clase-header"><span class="clase-num">11</span><span class="clase-title">Del dato al informe</span></div>
-  <p class="intro">Elegir el gráfico según la pregunta, armar un tablero con selector, imprimir, colaborar, pasar a Excel, auditar a la IA y entregar el informe final.</p>
+  <p class="intro">Elegir el gráfico según la pregunta, resumir con una tabla dinámica y un control de filtros, armar un tablero con selector, pedirle a la IA fórmulas con varias condiciones y QUERY, sacar el PDF, pasar a Excel y entregar el informe final.</p>
 <h3>Qué gráfico para qué pregunta</h3>
 <p>Un gráfico es una respuesta visual a una pregunta. Antes de tocar el menú hay que saber qué se quiere mostrar.</p>
 <table>
@@ -379,8 +372,27 @@
 <h3>Armar y personalizar un gráfico</h3>
 <p>Se selecciona la tabla resumen <b>con los encabezados</b> y se elige Insertar → Gráfico. A la derecha se abre el Editor de gráficos con dos pestañas: <b>Configuración</b> (tipo, intervalo, eje X, series, usar la fila 1 como encabezados) y <b>Personalizar</b> (títulos, colores, etiquetas de datos, leyenda).</p>
 <ul><li>Datos no contiguos: seleccionar con <code>Ctrl</code> apretado (Mac: <code>⌘</code>), o escribir en Intervalo de datos <code>A1:A12,C1:C12</code>.</li><li>El gráfico queda unido a su tabla: si cambia un número o la selección del tablero, se redibuja.</li><li>Título que diga algo: "Administración concentra casi una de cada cuatro respuestas" en vez de "Respuestas por Carrera". Ejes rotulados y sin leyenda si hay una sola serie.</li></ul>
+<h3>Tabla dinámica y control de filtros</h3>
+<p>Una tabla dinámica agrupa las filas de <code>DATOS</code> por la columna que se elija y calcula una cifra por grupo, sin escribir una fórmula por celda. Se crea con Insertar → Tabla dinámica (Intervalo de datos <code>DATOS!A1:S121</code>, Nueva hoja) y se arma en el Editor de tablas dinámicas, donde cada zona tiene un botón <b>Añadir</b>.</p>
+<table>
+<tr><th>Zona</th><th>Qué va ahí</th><th>Ejemplo del caso</th></tr>
+<tr><td>Filas</td><td>La columna por la que se agrupa</td><td><code>Departamento</code></td></tr>
+<tr><td>Columnas</td><td>Una segunda columna que abre los grupos hacia la derecha (opcional)</td><td><code>Trabaja</code></td></tr>
+<tr><td>Valores</td><td>La cifra que se calcula y cómo</td><td><code>Gasto_mensual</code>, promedio</td></tr>
+<tr><td>Filtros</td><td>Un campo que deja afuera filas antes de calcular (opcional)</td><td><code>Uso_IA</code></td></tr>
+</table>
+<p>Cada campo de Valores tiene un desplegable <b>Sumar por</b> con las funciones en inglés: <code>COUNTA</code> (cuenta; se usa sobre <code>ID</code>), <code>AVERAGE</code>, <code>SUM</code>, <code>MAX</code> y <code>MIN</code>. El <b>control de filtros</b> (la segmentación de datos de otros programas) es un botón visible sobre la hoja que filtra la tabla con un clic: Datos → Añadir un control de filtros, con el mismo intervalo de datos que la tabla, una Columna (por ejemplo <code>Trabaja</code>) y la casilla <i>Aplicar a tablas dinámicas</i> tildada. Diferencia con el selector: el selector es una celda que leen las fórmulas del tablero; el control de filtros filtra una tabla dinámica sin fórmulas.</p>
+<table>
+<tr><th>Control</th><th>DEyA</th><th>CS</th><th>CyT</th><th>EUdA</th><th>Total</th></tr>
+<tr><td>Todos: respuestas</td><td>54</td><td>30</td><td>25</td><td>11</td><td>120</td></tr>
+<tr><td>Todos: gasto promedio</td><td>$ 130.462,96</td><td>$ 124.466,67</td><td>$ 120.880,00</td><td>$ 131.000,00</td><td>$ 127.016,67</td></tr>
+<tr><td>Trabaja = Sí: respuestas</td><td>36</td><td>15</td><td>15</td><td>7</td><td>73</td></tr>
+<tr><td>Trabaja = Sí: gasto promedio</td><td>$ 144.694,44</td><td>$ 141.466,67</td><td>$ 134.466,67</td><td>$ 141.571,43</td><td>$ 141.630,14</td></tr>
+<tr><td>Trabaja = No: respuestas</td><td>18</td><td>15</td><td>10</td><td>4</td><td>47</td></tr>
+<tr><td>Trabaja = No: gasto promedio</td><td>$ 102.000,00</td><td>$ 107.466,67</td><td>$ 100.500,00</td><td>$ 112.500,00</td><td>$ 104.319,15</td></tr>
+</table>
 <h3>El tablero con selector</h3>
-<p>Un tablero es una hoja pensada para mirarse, no para leerse fila por fila: unos pocos números destacados, uno o dos gráficos y un título. Un <b>selector</b> (celda con menú desplegable de <code>LISTAS!A2:A5</code>) elige el departamento, y todas las fórmulas del tablero leen esa celda: cambian los números y los gráficos sin tocar ninguna fórmula.</p>
+<p>Un tablero es una hoja pensada para mirarse, no para leerse fila por fila: unos pocos números destacados, uno o dos gráficos y un título. Un <b>selector</b> (celda con menú desplegable de <code>LISTAS!A2:A5</code>) elige el departamento (cada opción puede llevar su propio color en la validación), y todas las fórmulas del tablero leen esa celda: cambian los números y los gráficos sin tocar ninguna fórmula. Un buen panel lleva indicadores grandes arriba, un gráfico por pregunta con título que diga algo, y nada que distraiga; se arma en dos hojas, una de cálculo y otra de panel que apunta a la primera.</p>
 <p>Para dos o más condiciones: <code>CONTAR.SI.CONJUNTO(rango1;crit1;rango2;crit2...)</code>, por ejemplo <code>=CONTAR.SI.CONJUNTO(Depto;B2;DATOS!E2:E121;"Sí")</code>. Su prima <code>PROMEDIO.SI.CONJUNTO(rango_promedio;rango1;crit1;...)</code> lleva <b>primero</b> el rango a promediar.</p>
 <table>
 <tr><th>Indicador</th><th>DEyA</th><th>CS</th><th>CyT</th><th>EUdA</th></tr>
@@ -406,17 +418,10 @@
 <tr><td>PDF</td><td>Archivo → Descargar → PDF</td><td>Igual</td></tr>
 </table>
 <p>Para decidir dónde corta la página: Saltos de página personalizados (solo con Hoja actual elegida). Para repetir encabezados en cada página de una tabla larga: inmovilizar la fila 1 y tildar la opción de repetir las filas inmovilizadas.</p>
-<h3>Colaborar y pasar a Excel</h3>
-<table>
-<tr><th>Herramienta</th><th>Qué hace</th><th>Windows</th><th>Mac</th></tr>
-<tr><td>Compartir</td><td>Por mail o enlace; roles Lector, Comentador, Editor (siempre el mínimo necesario)</td><td>Botón Compartir</td><td>Igual</td></tr>
-<tr><td>Comentarios</td><td>Observación atada a una celda; <code>@</code> + nombre menciona y avisa por mail; se marca Resuelto</td><td><code>Ctrl+Alt+M</code></td><td><code>⌘+Opción+M</code></td></tr>
-<tr><td>Historial de versiones</td><td>Cada cambio y quién lo hizo; Poner nombre a la versión actual marca un hito</td><td>Archivo → Historial de versiones</td><td>Igual</td></tr>
-<tr><td>Proteger</td><td>Bloquea una hoja o rango (conviene proteger <code>CRUDO</code>)</td><td>Datos → Proteger hojas e intervalos</td><td>Igual</td></tr>
-</table>
-<p>Archivo → Descargar → Microsoft Excel (.xlsx) conserva en general datos, formatos, fórmulas comunes (<code>SI</code>, <code>CONTAR.SI</code>, <code>BUSCARV</code>) y formato condicional. Puede cambiar el aspecto de los gráficos, y las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel. La prueba es abrirlo y comparar las cifras de control.</p>
-<h3>La IA como auditora de tu trabajo</h3>
-<p>Sheets trae Gemini incorporado (menú Gemini o panel lateral) y también se puede usar un chat aparte. Sirve para explicar una fórmula, proponer una fórmula o un gráfico y revisar el trabajo. La condición es una sola: <b>quien firma el informe es el alumno</b>, así que todo lo que diga la IA se verifica.</p>
+<h3>Compartir y pasar a Excel</h3>
+<p>Compartir: por mail o enlace, con roles Lector, Comentador y Editor (siempre el mínimo necesario). Datos → Proteger hojas e intervalos bloquea una hoja. Archivo → Descargar → Microsoft Excel (.xlsx) conserva en general datos, formatos, fórmulas comunes (<code>SI</code>, <code>CONTAR.SI</code>, <code>BUSCARV</code>, <code>BUSCARX</code>) y formato condicional. Puede cambiar el aspecto de los gráficos y de las tablas dinámicas, y las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel. La prueba es abrirlo y comparar las cifras de control.</p>
+<h3>La IA en las fórmulas complejas</h3>
+<p>Alcanza con un chat gratuito (Gemini, ChatGPT o Copilot); Gemini dentro de Sheets es un extra que depende de la cuenta y el plan. Se usa donde más cuesta escribir a mano: fórmulas con varias condiciones (<code>SI</code> con <code>Y</code> u <code>O</code>, <code>SI</code> anidado) y consultas <code>QUERY</code>. La condición es una sola: <b>quien firma el informe es el alumno</b>, así que todo lo que diga la IA se compara con una cifra de control.</p>
 <table>
 <tr><th>Errores típicos de una IA con planillas</th></tr>
 <tr><td>Escribe las fórmulas con coma en vez de punto y coma y Sheets en español las rechaza</td></tr>
@@ -427,13 +432,26 @@
 <p><b>Datos personales:</b> la encuesta del caso es simulada, pero en un trabajo real los nombres, mails y datos de personas no se pegan en una IA pública sin autorización.</p>
 <table>
 <tr><th>Paso</th><th>Qué se hace</th></tr>
-<tr><td>1. Preguntar con contexto</td><td>Decirle en qué columnas están los datos y qué se quiere lograr; pedir la fórmula y la explicación</td></tr>
+<tr><td>1. Dar contexto</td><td>Decirle en qué columnas están los datos, que se usa Sheets en español con punto y coma y qué se quiere lograr; pedir la fórmula y la explicación</td></tr>
 <tr><td>2. Probar aparte</td><td>Pegar la fórmula en una celda libre, nunca encima del trabajo</td></tr>
-<tr><td>3. Comparar con un control</td><td>Contrastar con algo que se sabe correcto: un conteo previo, un filtro con <code>SUBTOTAL</code>, una cifra de control</td></tr>
-<tr><td>4. Anotar</td><td>En la hoja <code>AUDITORIA</code>: pregunta, qué devolvió, cómo se verificó, veredicto (correcta, corregida o descartada)</td></tr>
+<tr><td>3. Comparar con una cifra de control</td><td>Contrastar con algo que se sabe correcto: un conteo previo, un filtro, una tabla de control</td></tr>
+</table>
+<p><code>QUERY</code> hace una pregunta a un rango: <code>=QUERY(DATOS!A1:S121; "select R, count(A) where E = 'Sí' and H &gt; 60 group by R label count(A) ''"; 1)</code>. Las columnas se nombran por su letra; en <code>where</code>, <code>and</code> hace de Y y <code>or</code> de O. Controles: con <code>and</code>, DEyA 13, CS 7, CyT 7 y EUdA 2 (29, las mismas filas que el filtro de la Clase 10); con <code>or</code>, 43, 22, 18 y 9 (92).</p>
+<h3>Imprimir y exportar a PDF</h3>
+<table>
+<tr><th>Opción</th><th>Qué hace</th></tr>
+<tr><td>Imprimir</td><td>Hoja actual, todo el archivo o <b>celdas seleccionadas</b> (esta última es el área de impresión)</td></tr>
+<tr><td>Orientación</td><td>Vertical u horizontal; los tableros anchos van en horizontal</td></tr>
+<tr><td>Escala</td><td>Ajustar al ancho: achica para que entre sin cortar columnas</td></tr>
+<tr><td>Líneas de la cuadrícula</td><td>Un informe se ve más limpio sin ellas</td></tr>
+</table>
+<table>
+<tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
+<tr><td>Imprimir (abre la vista previa)</td><td><code>Ctrl+P</code></td><td><code>⌘+P</code></td></tr>
+<tr><td>PDF</td><td>Archivo → Descargar → PDF</td><td>Igual</td></tr>
 </table>
 <h3>La entrega final: una pregunta por departamento</h3>
-<p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>AUDITORIA</code> con tres filas) y se suma una hoja <code>MI_PREGUNTA</code> cuya consigna depende del departamento de la carrera de cada alumno. La caja de herramientas es la misma; cambia la mirada. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación.</p>
+<p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>DINAMICA</code> con tabla dinámica y control de filtros) y se suma una hoja <code>MI_PREGUNTA</code> cuya consigna depende del departamento de la carrera de cada alumno. La caja de herramientas es la misma; cambia la mirada. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación.</p>
 <table>
 <tr><th>Departamento</th><th>La pregunta</th><th>Qué se construye</th></tr>
 <tr><td>DEyA</td><td>¿Cuánto cuesta cursar y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y no (<code>PROMEDIO.SI</code>), proyección a 12 meses con <code>PARAMETROS</code>, columnas hoy contra 12 meses, recomendación de ayuda económica</td></tr>
@@ -451,10 +469,12 @@
 <tr><td><b>Selector</b></td><td>Celda con menú desplegable de la que dependen las fórmulas de un tablero.</td></tr>
 <tr><td><b>CONTAR.SI.CONJUNTO</b></td><td>Función que cuenta las filas que cumplen dos o más condiciones a la vez.</td></tr>
 <tr><td><b>Área de impresión</b></td><td>La parte de la hoja que sale al imprimir, por ejemplo las celdas seleccionadas.</td></tr>
-<tr><td><b>Historial de versiones</b></td><td>Registro de los cambios del archivo y de quién los hizo, que permite volver atrás.</td></tr>
 <tr><td><b>Permiso de edición</b></td><td>Rol que define qué puede hacer cada persona con un archivo compartido.</td></tr>
 <tr><td><b>Interoperabilidad</b></td><td>Capacidad de un archivo de funcionar en programas distintos, por ejemplo pasar de Sheets a Excel.</td></tr>
-<tr><td><b>Auditoría</b></td><td>Revisar con un control independiente que un resultado, propio o de una IA, sea correcto.</td></tr>
+<tr><td><b>Tabla dinámica</b></td><td>Tabla que resume los datos agrupándolos por las columnas que se elijan, sin escribir fórmulas.</td></tr>
+<tr><td><b>Control de filtros</b></td><td>Botón visible sobre la hoja que filtra con un clic una tabla dinámica; en otros programas se llama segmentación de datos o slicer.</td></tr>
+<tr><td><b>QUERY</b></td><td>Función de Google Sheets que le hace una pregunta a un rango: qué columnas mostrar, bajo qué condición y cómo agrupar.</td></tr>
+<tr><td><b>Cifra de control</b></td><td>Número que ya se sabe correcto y sirve para comprobar un resultado propio o de una IA.</td></tr>
 </table>
 </div>
 <div class="fuentes">

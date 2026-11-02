@@ -404,7 +404,7 @@
     <tbody>
 <tr><td><code>HOY()</code></td><td>La fecha de hoy. Se actualiza sola cada vez que abrís el archivo</td><td><code>=HOY()</code></td></tr>
 <tr><td><code>AHORA()</code></td><td>La fecha y la hora actuales</td><td><code>=AHORA()</code></td></tr>
-<tr><td><code>DIAS(fin; inicio)</code></td><td>Los días entre dos fechas</td><td><code>=DIAS(HOY();B2)</code></td></tr>
+<tr><td>Resta de fechas</td><td>Los días entre dos fechas: se restan como cualquier número</td><td><code>=HOY()-B2</code></td></tr>
 <tr><td><code>MIN</code> y <code>MAX</code></td><td>La fecha más antigua y la más reciente de un rango</td><td><code>=MIN(DATOS!B2:B121)</code></td></tr>
     </tbody>
   </table>
@@ -420,9 +420,9 @@
   </div>
   <div class="prose">
 <ol>
-  <li>En <code>PRACTICA10</code>, en <code>S1</code> escribí <code>Dias_desde</code> y en <code>S2</code> <code>=DIAS(HOY();B2)</code>, copiada hasta la fila 9. Si sale con formato de fecha, pasala a <strong>Formato → Número → Número</strong>.</li>
+  <li>En <code>PRACTICA10</code>, en <code>S1</code> escribí <code>Dias_desde</code> y en <code>S2</code> <code>=HOY()-B2</code>, copiada hasta la fila 9. Si sale con formato de fecha, pasala a <strong>Formato → Número → Número</strong>.</li>
   <li>Desde <code>A25</code> escribí <code>Primera respuesta</code>, <code>Última respuesta</code> y <code>Días entre ambas</code>, una por fila. En <code>B25</code> escribí <code>=MIN(B2:B9)</code> y en <code>B26</code> <code>=MAX(B2:B9)</code>, con formato de fecha. Controles: 11/08/2026 y 23/08/2026.</li>
-  <li>En <code>B27</code> restá las dos fechas. Tiene que dar <strong>12</strong>.</li>
+  <li>En <code>B27</code> restá las dos fechas (<code>=B26-B25</code>) y dale formato de número. Tiene que dar <strong>12</strong>.</li>
 </ol>
   </div>
 </div>
@@ -481,7 +481,7 @@
   <li>Creá la hoja <code>CARRERAS</code> con las 11 carreras, su departamento (<code>BUSCARX</code>), las respuestas (<code>CONTAR.SI</code>, rango absoluto), el % del total y el gasto promedio (<code>PROMEDIO.SI</code>). Controles: Administración 27, Contador Público 14 con $ 143.357,14, Educación 4. La suma de respuestas da <strong>120</strong> y la de porcentajes <strong>100%</strong>.</li>
   <li>Aplicá en <code>DATOS</code> una validación a <code>E2:E121</code> (Sí o No) y otra a <code>J2:J121</code> (entero entre 1 y 5). Poné nombre a <code>DATOS!R2:R121</code> (<code>Depto</code>) y a <code>DATOS!K2:K121</code> (<code>Gasto</code>).</li>
   <li>En <code>CARRERAS</code>, creá un selector de departamento en <code>H2</code> (de <code>LISTAS!A2:A5</code>) con <code>=CONTAR.SI(Depto;H2)</code> y <code>=PROMEDIO.SI(Depto;H2;Gasto)</code> debajo. Controles: DEyA 54 con $ 130.462,96; CS 30 con $ 124.466,67; CyT 25 con $ 120.880,00; EUdA 11 con $ 131.000,00.</li>
-  <li>En <code>DATOS</code>, agregá <code>Dias_desde</code> en <code>S</code> con <code>DIAS(HOY();B2)</code>. En <code>RESUMEN</code>, <code>Primera respuesta</code> (03/08/2026), <code>Última respuesta</code> (23/08/2026) y los días entre ambas (20).</li>
+  <li>En <code>DATOS</code>, agregá <code>Dias_desde</code> en <code>S</code> con <code>=HOY()-B2</code> y formato de número. En <code>RESUMEN</code>, <code>Primera respuesta</code> (03/08/2026), <code>Última respuesta</code> (23/08/2026) y los días entre ambas (20).</li>
   <li>Filtrá <code>DATOS</code> por <em>Contador Público</em>: tienen que quedar 14 filas, las mismas que muestra <code>CARRERAS</code>. Después filtrá Trabaja = Sí y Viaje_min mayor que 60: <strong>29</strong> filas. En <code>LEEME</code>, escribí una conclusión de una oración sobre ese grupo y dejá los filtros apagados.</li>
   <li>Ocultá las hojas de práctica. Hacé <strong>Archivo → Hacer una copia</strong> con el nombre <code>Clase 10 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong> y subí el enlace. Ese enlace es tu presente y tu entrega.</li>
 </ol>
@@ -562,7 +562,7 @@
 <div class="qr-items">
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Una fecha es un número: se pueden restar</span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>HOY()</code> cambia todos los días</span></div>
-<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=DIAS(HOY();B2)</code></span></div>
+<div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text"><code>=HOY()-B2</code></span></div>
 <div class="qr-item"><span class="qr-dot"></span><span class="qr-item-text">Filtro: <strong>Datos → Crear un filtro</strong>. Vista de filtro para trabajo en equipo</span></div>
 </div>
 </div>

@@ -103,6 +103,7 @@
 <symbol id="ti-footer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.6"/></g><line x1="4" y1="15.5" x2="20" y2="15.5" stroke="currentColor" stroke-width="1.9"/></symbol>
 <symbol id="ti-page-number" viewBox="0 0 24 24"><text x="12" y="17.4" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="15"  fill="currentColor">#</text></symbol>
 <symbol id="ti-handle" viewBox="0 0 24 24"><rect x="3" y="3" width="13" height="13" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="currentColor"/></symbol>
+<symbol id="ti-robot" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="10" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="14" r="1.3" fill="currentColor"/><circle cx="15" cy="14" r="1.3" fill="currentColor"/><line x1="12" y1="9" x2="12" y2="5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="4" r="1.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
 </defs></svg>
 
 <section class="cover-page" data-num="11">
@@ -201,7 +202,7 @@
   <li>Abrí tu archivo <em>Retrato del curso</em>. Creá una hoja <code>PRACTICA11</code> y copiá en ella las primeras 8 respuestas con todas las columnas calculadas (<code>DATOS!A1:S9</code>) con <strong>Pegado especial → Solo valores</strong>. Ya trae el departamento en la columna <code>R</code>.</li>
   <li>En <code>A12:B12</code> escribí <code>Uso de IA</code> y <code>Respuestas</code>; en <code>A13:A16</code> los cuatro niveles (<code>Nunca</code>, <code>A veces</code>, <code>Seguido</code>, <code>Todos los días</code>) y en <code>B13</code> <code>=CONTAR.SI($I$2:$I$9;A13)</code>, copiada. Controles: 0, 3, 3 y 2. Seleccioná <code>A12:B16</code> e insertá un <strong>gráfico de columnas</strong> con un título que diga algo y etiquetas de datos.</li>
   <li>Seleccioná con <code>Ctrl</code> (Mac: <code>⌘</code>) las columnas <code>C1:C9</code> (carrera) y <code>K1:K9</code> (gasto) e insertá un <strong>gráfico de barras</strong>. Tiene que mostrar 8 barras.</li>
-  <li>Armá una tabla de dos filas con <code>Trabaja</code> (5) y <code>No trabaja</code> (3) usando <code>CONTAR.SI</code> e insertá una <strong>torta</strong>. Decidí si con dos partes es el gráfico más claro.</li>
+  <li>Armá una tabla de dos filas con <code>Trabaja</code> (5) y <code>No trabaja</code> (3) usando <code>CONTAR.SI</code> e insertá una <strong>torta</strong>. Después anotá en <code>LEEME</code> si la torta se entiende mejor que los dos números escritos o si elegirías otro gráfico, y por qué.</li>
 </ol>
   </div>
 </div>
@@ -228,10 +229,8 @@
 </div>
 <h3>Cómo se crea</h3>
 <p>Hacé clic dentro de la tabla de datos y elegí <strong>Insertar → Tabla dinámica</strong>. En el cuadro <em>Crear tabla dinámica</em> revisá el <em>Intervalo de datos</em>, elegí <em>Nueva hoja</em> y tocá <em>Crear</em>. Se abre el <strong>Editor de tablas dinámicas</strong>: cada zona tiene un botón <em>Añadir</em> y, al tocarlo, muestra los campos, que son los encabezados de tu tabla.</p>
-<div class="screenshot-todo">
-  <span class="screenshot-todo-label">📷 Captura pendiente</span>
-  <span class="screenshot-todo-desc">El Editor de tablas dinámicas con Filas = Departamento y dos Valores (ID con COUNTA y Gasto_mensual con AVERAGE), y a la izquierda la tabla resultante con la fila Total general.</span>
-</div>
+<img class="screenshot" src="../img/11-07-captura-editor-tabla-dinamica.png" alt="Editor de tablas dinámicas con Departamento en Filas y, en Valores, ID con COUNTA y Gasto_mensual con AVERAGE; a la izquierda, la tabla resultante con la fila Suma total">
+<p class="screenshot-caption">El <em>Editor de tablas dinámicas</em> con <em>Filas</em> = Departamento y dos <em>Valores</em> (ID con COUNTA y Gasto_mensual con AVERAGE). A la izquierda, la tabla resultante, con la fila <em>Suma total</em>.</p>
 <h3>Sumar por: las funciones están en inglés</h3>
 <p>Cada campo de <em>Valores</em> tiene un desplegable <em>Sumar por</em> con las funciones escritas en inglés. Las que vas a usar:</p>
 <div class="table-wrap">
@@ -251,10 +250,8 @@
 </div>
 <h3>El control de filtros</h3>
 <p>Para filtrar la tabla sin abrir el editor existe el <strong>control de filtros</strong> (en otros programas se llama <em>segmentación de datos</em> o <em>slicer</em>): un botón visible sobre la hoja, con el nombre de una columna, que filtra con un clic. Se crea con <strong>Datos → Añadir un control de filtros</strong>. En el panel, en la pestaña <em>Datos</em>, Sheets propone el intervalo de la tabla dinámica; elegís la <em>Columna</em> (por ejemplo, <code>Trabaja</code>) y dejás tildado <em>Aplicar a tablas dinámicas</em>. En la hoja aparece un botón con el nombre de la columna y la selección actual (<em>Todos</em>): al tocarlo, elegís qué valores se muestran.</p>
-<div class="screenshot-todo">
-  <span class="screenshot-todo-label">📷 Captura pendiente</span>
-  <span class="screenshot-todo-desc">El panel Control de filtros abierto (pestaña Datos, Intervalo de datos, Columna = Trabaja, casilla Aplicar a tablas dinámicas tildada) y, sobre la hoja, el botón Trabaja con la selección Todos.</span>
-</div>
+<img class="screenshot" src="../img/11-08-captura-control-de-filtros.png" alt="Panel Control de filtros con la pestaña Datos, el intervalo de datos DATOS!A1:S121, la columna Trabaja y la casilla Aplicar a tablas dinámicas tildada; sobre la hoja, el botón Trabaja con la selección Todos">
+<p class="screenshot-caption">El panel <em>Control de filtros</em> (pestaña <em>Datos</em>): intervalo de datos, <em>Columna</em> = Trabaja y <em>Aplicar a tablas dinámicas</em> tildado. Sobre la hoja, el botón <em>Trabaja</em> con la selección <em>Todos</em>.</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th></th><th>Selector (celda con menú desplegable)</th><th>Control de filtros</th></tr></thead>
@@ -273,12 +270,14 @@
   <div class="prose">
 <ol>
   <li>En <code>DATOS</code>, hacé clic en una celda de la tabla y elegí <strong>Insertar → Tabla dinámica</strong>. En <em>Intervalo de datos</em> poné <code>DATOS!A1:S121</code>, elegí <em>Nueva hoja</em> y <em>Crear</em>. Renombrá la hoja <code>DINAMICA</code>.</li>
-  <li>En el editor, en <strong>Filas</strong> tocá <em>Añadir</em> y elegí <code>Departamento</code>. En <strong>Valores</strong> añadí <code>ID</code> y en <em>Sumar por</em> elegí <code>COUNTA</code>. Controles: DEyA 54, CS 30, CyT 25, EUdA 11 y <em>Total general</em> 120, las mismas cifras de tu selector.</li>
+  <li>En el editor, en <strong>Filas</strong> tocá <em>Añadir</em> y elegí <code>Departamento</code>. En <strong>Valores</strong> añadí <code>ID</code> y en <em>Sumar por</em> elegí <code>COUNTA</code>. La tabla ordena los departamentos de la A a la Z. Controles: CS 30, CyT 25, DEyA 54, EUdA 11 y, abajo, <em>Suma total</em> 120. Son las mismas cifras de tu selector.</li>
   <li>En <strong>Valores</strong> añadí <code>Gasto_mensual</code> con <em>Sumar por</em> <code>AVERAGE</code> y dale formato de moneda. Controles: $ 130.462,96 (DEyA), $ 124.466,67 (CS), $ 120.880,00 (CyT), $ 131.000,00 (EUdA) y $ 127.016,67 en el total.</li>
-  <li>Con la hoja <code>DINAMICA</code> abierta, elegí <strong>Datos → Añadir un control de filtros</strong>. Revisá que el <em>Intervalo de datos</em> sea el de la tabla, en <em>Columna</em> elegí <code>Trabaja</code> y dejá tildado <em>Aplicar a tablas dinámicas</em>.</li>
-  <li>Tocá el botón del control y dejá solo <code>Sí</code>. Controles: 36, 15, 15 y 7 respuestas, 73 en total, y un gasto promedio total de $ 141.630,14. Cambiá a solo <code>No</code>: 18, 15, 10 y 4 respuestas, 47 en total, y $ 104.319,15.</li>
+  <li>Con la hoja <code>DINAMICA</code> abierta, elegí <strong>Datos → Añadir un control de filtros</strong>. Revisá que el <em>Intervalo de datos</em> sea <code>DATOS!A1:S121</code>, el mismo de la tabla dinámica; en <em>Columna</em> elegí <code>Trabaja</code> y dejá tildado <em>Aplicar a tablas dinámicas</em>.</li>
+  <li>Tocá el botón del control y dejá solo <code>Sí</code>. El botón pasa a decir <em>1 de 2</em>. Controles: CS 15, CyT 15, DEyA 36 y EUdA 7 respuestas, 73 en total, y un gasto promedio total de $ 141.630,14. Cambiá a solo <code>No</code>: CS 15, CyT 10, DEyA 18 y EUdA 4 respuestas, 47 en total, y $ 104.319,15.</li>
   <li>Si el control no mueve la tabla, revisá que el intervalo de los dos sea el mismo y que esté tildado <em>Aplicar a tablas dinámicas</em>. Dejá el control en <em>Todos</em> al terminar.</li>
 </ol>
+<img class="screenshot" src="../img/11-10-captura-control-filtros-solo-si.png" alt="Tabla dinámica por departamento con el control de filtros Trabaja en 1 de 2: CS 15, CyT 15, DEyA 36 y EUdA 7 respuestas, 73 en total">
+<p class="screenshot-caption">La tabla dinámica con el control de filtros en <code>Sí</code>: el botón pasa a decir <em>1 de 2</em> y la tabla muestra 15, 15, 36 y 7 respuestas, 73 en total.</p>
   </div>
 </div>
   </div>
@@ -320,6 +319,8 @@
   </table>
 </div>
 <p>Esos son los valores de control: con el selector en cada departamento, tu tablero tiene que mostrar esas cifras.</p>
+<img class="screenshot" src="../img/11-09-captura-tablero-con-selector.png" alt="Tablero de Google Sheets con el selector de departamento en CyT, cuatro indicadores, tablas de uso de IA y situación laboral, la comparación de los cuatro departamentos y dos gráficos">
+<p class="screenshot-caption">Un tablero armado con lo de esta sección, con el selector en <code>CyT</code>: indicadores arriba, las tablas que alimentan los gráficos, la comparación de los cuatro departamentos y los gráficos, que se redibujan al cambiar el selector.</p>
 <h3>Un panel que se lee en diez segundos</h3>
 <p>Un buen panel tiene tres cosas: <strong>indicadores grandes arriba</strong>, los números que alguien quiere ver primero; <strong>un gráfico por pregunta</strong>, cada uno con un título que diga algo; y <strong>nada que distraiga</strong>: sin líneas de cuadrícula y con pocos colores, cada uno con sentido. Este panel lo armó una IA sobre la misma encuesta, sin retoques.</p>
 <img class="screenshot" src="../img/11-06-captura-panel-modelo-gemini.png" alt="Panel de control de la encuesta con cinco indicadores (120 estudiantes, 24,2 años de edad promedio, 7,0 horas de estudio, $127.017 de gasto promedio y 60,8% que trabaja) y dos gráficos: evolución diaria de inscripciones e ingresantes por carrera">
@@ -348,7 +349,8 @@
     <h2 class="block-title">La IA en las fórmulas complejas</h2>
   </div>
   <div class="prose">
-<p>Una IA es muy buena para las tareas de planilla que a mano son tediosas, y muy segura de sí misma cuando se equivoca. Alcanza con el plan gratuito de un chat en el navegador (Gemini, ChatGPT y Copilot son freemium: tienen plan gratuito con límites). En esta clase le sacás provecho en dos lugares: las fórmulas con <strong>varias condiciones</strong> (un <code>SI</code> con <code>Y</code> o con <code>O</code>) y las consultas con <code>QUERY</code>. La condición es una sola: <strong>quien firma el informe sos vos</strong>. Por eso cada pedido a la IA termina comparando el resultado con una cifra de control que ya tenés.</p>
+<p>Una IA puede escribir en segundos fórmulas que a mano son tediosas, pero también se equivoca con total seguridad. Por eso en esta clase la usás con una sola regla: <strong>quien firma el informe sos vos</strong>. Cada fórmula que te dé la comprobás contra una <strong>cifra de control</strong>, un número que ya sabés que es correcto: un conteo que hiciste, un filtro, una tabla de control.</p>
+<p>La usás para dos cosas: fórmulas con <strong>varias condiciones</strong> (un <code>SI</code> con <code>Y</code> o con <code>O</code>) y consultas con <code>QUERY</code>. Alcanza con el plan gratuito de cualquiera de estos chats (son freemium: tienen plan gratuito, con límites):</p>
 <div class="tools-container">
   <div class="app-row">
     <a class="app-row-link" href="https://gemini.google.com" target="_blank" rel="noopener">
@@ -377,21 +379,30 @@
   <p>Si tu cuenta de Google tiene un plan de pago (o un período de prueba), Gemini aparece dentro de Sheets, en el menú <em>Gemini</em> y en un panel lateral. Desde ahí se le puede pedir que genere una fórmula, una tabla dinámica o un gráfico a partir de tus datos. Es un extra que puede cambiar o dejar de ser gratis: todo lo de esta clase se hace igual con el plan gratuito de un chat, y la comprobación con cifras de control vale para cualquiera de los dos.</p>
 </div>
 <h3>Cómo se lo pedís</h3>
+<p>La IA no ve tu archivo: solo sabe lo que le pasás. Un buen pedido tiene cuatro partes: <strong>dónde trabajás</strong> (Sheets en español, con punto y coma), <strong>un pedazo de tu tabla</strong> (copiás las primeras filas desde Sheets y las pegás en el chat, así la IA ve los encabezados reales), <strong>qué querés lograr</strong> (con los valores exactos) y que <strong>te explique la fórmula</strong>. Este es el pedido para la Actividad 04. Lo que está entre corchetes lo cambiás por lo tuyo:</p>
+<div class="prompt-block">
+  <div class="prompt-block-bar"><svg class="tool-icon"><use href="#ti-robot"></use></svg><span>Pedido de ejemplo</span></div>
+  <div class="prompt-block-body">Uso Google Sheets en español: las funciones van en español y los argumentos se separan con punto y coma, no con coma. Abajo pego las primeras filas de mi tabla, copiadas de la hoja <span class="prompt-var">[PRACTICA11]</span>: la primera fila son los encabezados y la primera columna es la A, en el mismo orden en que aparecen.
+<span class="prompt-var">[pegá acá las filas copiadas]</span>
+Escribime la fórmula para la celda <span class="prompt-var">[T2]</span>, que se pueda copiar hacia abajo. Tiene que usar SI y Y, y escribir "Barrera" cuando la persona trabaja (columna Trabaja igual a "Sí") y viaja más de 60 minutos (columna Viaje_min mayor que 60), y "Sin barrera" en los demás casos.
+Después explicame la fórmula parte por parte.</div>
+</div>
+<p>Con la respuesta hacés tres cosas, siempre en este orden:</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Paso</th><th>Qué hacés</th></tr></thead>
     <tbody>
-<tr><td><strong>1. Dale contexto</strong></td><td>Decile en qué columnas están los datos (letra y encabezado), que usás Sheets en español con punto y coma, y qué querés lograr. Pedile la fórmula <em>y</em> la explicación.</td></tr>
-<tr><td><strong>2. Probala aparte</strong></td><td>Pegá la fórmula en una celda libre, nunca encima de tu trabajo.</td></tr>
-<tr><td><strong>3. Compará con una cifra de control</strong></td><td>Contrastá el resultado con algo que sepas que está bien: un conteo que ya hiciste, un filtro, una tabla de control. Si no coincide, o la IA se equivocó o tu pedido no era claro: volvé a preguntar diciéndole qué resultado esperabas.</td></tr>
+<tr><td><strong>1. Probala aparte</strong></td><td>Pegá la fórmula en una celda libre, nunca encima de tu trabajo.</td></tr>
+<tr><td><strong>2. Compará con una cifra de control</strong></td><td>Contrastá el resultado con un número que sepas que está bien. Si coincide, la fórmula sirve.</td></tr>
+<tr><td><strong>3. Si no coincide, volvé al chat</strong></td><td>O la IA se equivocó o tu pedido no era claro. Contale qué resultado obtuviste y cuál esperabas, y pedile que la corrija.</td></tr>
     </tbody>
   </table>
 </div>
 <h3>Los errores típicos de una IA con planillas</h3>
 <ul>
-  <li>Escribe las fórmulas con <strong>coma</strong> en vez de punto y coma, y Sheets en español las rechaza.</li>
-  <li>Inventa <strong>columnas, hojas o rangos</strong> que no existen en tu archivo, o apunta a un rango incompleto.</li>
-  <li>Hace <strong>cuentas de cabeza</strong> y se equivoca: pedirle &quot;¿cuánto da el promedio?&quot; no es lo mismo que pedirle la fórmula y calcularla vos.</li>
+  <li>Escribe las fórmulas con <strong>coma</strong> en vez de punto y coma, y Sheets en español las rechaza. Se arregla pidiéndole que la reescriba con punto y coma.</li>
+  <li>Inventa <strong>columnas, hojas o rangos</strong> que no existen en tu archivo, o apunta a un rango incompleto. Por eso le pegás un pedazo de tu tabla, con los encabezados.</li>
+  <li>Hace <strong>cuentas de cabeza</strong> y se equivoca: pedirle "¿cuánto da el promedio?" no es lo mismo que pedirle la fórmula y calcularla vos.</li>
   <li>Contesta con seguridad aunque se equivoque, sin avisar que no está segura.</li>
 </ul>
 <div class="callout" data-type="warning">
@@ -399,8 +410,9 @@
   <p>La encuesta de este caso es simulada, pero en un trabajo real las respuestas tienen nombres, mails y datos de personas. Esos datos no se pegan en una IA pública sin autorización: se protegen igual que cualquier dato personal.</p>
 </div>
 <h3>QUERY: una pregunta a la tabla</h3>
-<p><code>QUERY</code> es una función de Google Sheets que le hace una pregunta a un rango con una frase corta. Es difícil de escribir de memoria, y por eso es un buen trabajo para una IA, siempre que vos entiendas qué devuelve:</p>
+<p><code>QUERY</code> le hace una pregunta a un rango con una frase corta. Se escribe en tres partes: el <strong>rango</strong>, la <strong>frase</strong> entre comillas y la cantidad de filas de encabezado. Es difícil de escribir de memoria, y por eso es un buen trabajo para una IA, siempre que vos entiendas qué devuelve. Esta cuenta, por departamento, cuántas personas trabajan y viajan más de 60 minutos:</p>
 <p><code>=QUERY(DATOS!A1:S121; &quot;select R, count(A) where E = 'Sí' and H &gt; 60 group by R label count(A) ''&quot;; 1)</code></p>
+<p>El resultado es una tabla chica, con un departamento por fila, que Sheets escribe sola en las celdas de abajo y de la derecha de donde pegaste la fórmula. Esas celdas tienen que estar vacías. Las partes de la frase:</p>
 <div class="table-wrap">
   <table class="tbl-wide">
     <thead><tr><th>Parte</th><th>Qué hace</th></tr></thead>
@@ -420,10 +432,18 @@
   </div>
   <div class="prose">
 <ol>
-  <li>Abrí un chat de IA. Pegale los encabezados de <code>PRACTICA11</code> (<code>A1:S1</code>) y pedile, en una frase, una fórmula con <code>SI</code> y <code>Y</code> que escriba <code>Barrera</code> cuando la persona trabaja y viaja más de 60 minutos, y <code>Sin barrera</code> si no. Aclarale que usás Sheets en español, con punto y coma.</li>
-  <li>En <code>PRACTICA11</code>, escribí <code>Barrera</code> en <code>T1</code>, pegá la fórmula en <code>T2</code> y copiala hasta la fila 9. Control: 3 filas con <code>Barrera</code> (las filas 5, 7 y 9). Si la IA usó comas o una columna que no existe, corregila: es el error más común.</li>
-  <li>Pedile ahora una fórmula con <code>QUERY</code> sobre <code>DATOS!A1:S121</code> que muestre, por departamento (columna <code>R</code>), cuántas personas trabajan (columna <code>E</code>) y viajan más de 60 minutos (columna <code>H</code>). Probala en una hoja nueva. Control: DEyA 13, CS 7, CyT 7 y EUdA 2, que suman 29, las mismas filas que te dio el filtro de la clase anterior.</li>
-  <li>Pedile que te explique cada parte de la fórmula. Cambiá <code>and</code> por <code>or</code> y mirá cuánto suman ahora: tiene que dar 92. En <code>LEEME</code> escribí, con tus palabras, qué cambió y por qué.</li>
+  <li>Abrí un chat de IA (Gemini, ChatGPT o Copilot) y pegale el pedido de ejemplo de arriba. En <code>PRACTICA11</code> seleccioná <code>A1:S4</code>, copiá (<code>Ctrl+C</code>; Mac: <code>⌘+C</code>) y pegalo en el lugar que dice <em>pegá acá las filas copiadas</em>. Cambiá también lo otro que está entre corchetes: la hoja es <code>PRACTICA11</code> y la celda es <code>T2</code>.</li>
+  <li>En <code>PRACTICA11</code>, escribí <code>Barrera</code> en <code>T1</code>, pegá la fórmula que te dio en <code>T2</code> y copiala hasta la fila 9. Control: 3 filas dicen <code>Barrera</code> (las filas 5, 7 y 9) y las otras cinco dicen <code>Sin barrera</code>. Si da error o el control no coincide, volvé al chat y contale qué obtuviste y qué esperabas. Los dos problemas más comunes: comas en lugar de punto y coma, y letras de columna que no son las tuyas.</li>
+  <li>Ahora pedile una consulta. En <code>DATOS</code> copiá <code>A1:S4</code> y pegá este pedido en el mismo chat, con las filas copiadas en el lugar indicado:
+    <div class="prompt-block">
+      <div class="prompt-block-bar"><svg class="tool-icon"><use href="#ti-robot"></use></svg><span>Pedido de ejemplo</span></div>
+      <div class="prompt-block-body">Ahora escribime una fórmula QUERY para Google Sheets en español, con los argumentos separados por punto y coma. El rango es DATOS!A1:S121, con los encabezados en la fila 1. Abajo pego las primeras filas de esa hoja (la primera columna es la A).
+<span class="prompt-var">[pegá acá las filas copiadas]</span>
+Tiene que mostrar, por departamento (columna Departamento), cuántas personas trabajan (columna Trabaja igual a "Sí") y viajan más de 60 minutos (columna Viaje_min mayor que 60). Después explicame cada parte de la frase.</div>
+    </div>
+  </li>
+  <li>Creá una hoja nueva llamada <code>CONSULTA</code> y pegá la fórmula en <code>A1</code>. Control: debajo de un encabezado aparecen cuatro filas, en orden alfabético: CS 7, CyT 7, DEyA 13 y EUdA 2. Suman 29, las mismas filas que te dio el filtro de la clase anterior. Si aparece <code>#REF!</code>, hay algo escrito en las celdas donde la consulta quiere poner su resultado: borralo.</li>
+  <li>Cambiá <code>and</code> por <code>or</code> en la fórmula y mirá cuánto suman ahora: tiene que dar 92 (CS 22, CyT 18, DEyA 43 y EUdA 9). En <code>LEEME</code> escribí, con tus palabras y en dos oraciones, qué cambió y por qué da más.</li>
 </ol>
   </div>
 </div>
@@ -489,35 +509,36 @@
   <div class="prose">
 <div class="callout" data-type="action">
   <p class="callout-label">📌 El pedido de Secretaría Académica</p>
-  <p>Necesitamos un informe de una página que muestre el retrato del curso y responda una pregunta propia de cada departamento, con la planilla de respaldo.</p>
+  <p>Necesitamos un informe de una página que muestre el retrato del curso y responda una pregunta: ¿en qué carreras se concentran las personas que llegan con más barreras para cursar? Con la planilla de respaldo.</p>
 </div>
-<p>Hasta ahora todos construyeron lo mismo. En la <strong>entrega final</strong> del caso, el archivo es el mismo para todas las personas, pero cada una responde una pregunta distinta, según el departamento de su carrera. La caja de herramientas es la misma: lo que cambia es la <strong>mirada</strong>.</p>
+<p>En la <strong>entrega final</strong> del caso todas las personas arman el mismo archivo y responden la misma pregunta. Para eso usás lo de esta clase: la fórmula con <code>SI</code> y <code>Y</code> de la Actividad 04, <code>CONTAR.SI.CONJUNTO</code>, un gráfico y una conclusión escrita. Una <strong>barrera</strong>, en este caso, es una persona que trabaja y además viaja más de 60 minutos.</p>
 <h3>Lo que tiene que tener todo archivo</h3>
 <ul>
   <li><code>LEEME</code> con título, autoría y qué contiene cada hoja.</li>
   <li><code>CRUDO</code> intacta, <code>DATOS</code> limpia (120 respuestas), sin errores en las fórmulas.</li>
   <li><code>TABLERO</code> con el selector funcionando y los cuatro departamentos con las cifras de control.</li>
   <li><code>DINAMICA</code> con una tabla dinámica por departamento y un control de filtros que la mueve.</li>
-  <li>Una hoja nueva <code>MI_PREGUNTA</code> con la consigna de tu departamento (abajo).</li>
+  <li>Una hoja nueva <code>MI_PREGUNTA</code>, armada con la consigna de abajo.</li>
   <li>En <code>LEEME</code>, una línea con lo que le pediste a una IA y con qué cifra de control lo comprobaste.</li>
   <li>El tablero y <code>MI_PREGUNTA</code> impresos en PDF, una página cada uno.</li>
 </ul>
-<h3>Tu pregunta según tu departamento</h3>
+<h3>La consigna de MI_PREGUNTA: ¿dónde se concentran las barreras?</h3>
 <div class="table-wrap">
   <table class="tbl-wide">
-    <thead><tr><th>Departamento</th><th>La pregunta</th><th>Qué construís en MI_PREGUNTA</th></tr></thead>
+    <thead><tr><th>Qué construís</th><th>Cómo y qué control tiene que dar</th></tr></thead>
     <tbody>
-<tr><td><strong>DEyA</strong><br>Economía y Administración</td><td>¿Cuánto cuesta cursar, y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y de quienes no (<code>PROMEDIO.SI</code>). Proyección de ambos a 12 meses con la hoja <code>PARAMETROS</code> (cambiando los meses a 12). Gráfico de columnas de hoy contra dentro de 12 meses. Una recomendación de cuánto debería ser una ayuda económica, justificada con las cifras.</td></tr>
-<tr><td><strong>CS</strong><br>Ciencias Sociales</td><td>¿Quiénes llegan con más barreras?</td><td>Una columna <code>Barreras</code> en <code>T</code> de <code>DATOS</code> con <code>SI</code> y <code>Y</code>: trabaja y viaja más de 60 minutos. Porcentaje de personas con barreras en cada carrera (<code>CONTAR.SI.CONJUNTO</code> sobre el total de la carrera). Gráfico de barras ordenado y un filtro que muestre solo ese grupo. Una conclusión de dos oraciones.</td></tr>
-<tr><td><strong>CyT</strong><br>Ciencia y Tecnología</td><td>¿Más tiempo de celular, menos tiempo de estudio?</td><td>Una columna <code>Grupo_celular</code> en <code>T</code> de <code>DATOS</code> que agrupe el uso de celular en <em>Bajo</em> (hasta 3 horas), <em>Medio</em> (4 a 6) y <em>Alto</em> (7 o más) con <code>SI</code> anidado. Promedio de horas de estudio por grupo. Gráfico de dispersión de las dos columnas. Una conclusión que no confunda correlación con causa.</td></tr>
-<tr><td><strong>EUdA</strong><br>Escuela Universitaria de Artes</td><td>¿Cómo usa la IA el curso y cómo se cuenta eso?</td><td>Tabla de uso de IA por nivel de Excel (<code>Nivel_Excel</code>) con <code>CONTAR.SI.CONJUNTO</code>. Gráfico de columnas agrupadas. Una página de comunicación en <code>MI_PREGUNTA</code>: título fuerte, tres datos destacados en tamaño grande, una imagen y el gráfico, pensada para que se entienda en diez segundos.</td></tr>
+<tr><td><strong>Una columna <code>Barrera</code> en <code>DATOS</code></strong></td><td>En <code>T1</code> escribí <code>Barrera</code> y en <code>T2</code> la fórmula de la Actividad 04 (con <code>H2</code> y <code>E2</code> de <code>DATOS</code>), copiada hasta la fila 121. Control: 29 filas dicen <code>Barrera</code>.</td></tr>
+<tr><td><strong>Una tabla por carrera</strong></td><td>En <code>MI_PREGUNTA</code>, desde <code>A3</code>: <code>Carrera</code>, <code>Respuestas</code>, <code>Con barrera</code> y <code>% con barrera</code>. Copiá las 11 carreras y sus respuestas desde <code>CARRERAS</code> con <strong>Pegado especial → Solo valores</strong>. <code>Con barrera</code> es un <code>CONTAR.SI.CONJUNTO</code> sobre <code>DATOS</code> (carrera y <code>Barrera</code>) y <code>% con barrera</code> es <code>Con barrera</code> dividido <code>Respuestas</code>. Control: la columna <code>Con barrera</code> suma 29.</td></tr>
+<tr><td><strong>La tabla ordenada</strong></td><td>Seleccioná la tabla con sus encabezados y usá <strong>Datos → Ordenar intervalo → Opciones avanzadas de ordenación de intervalos</strong>: tildá que los datos tienen fila de encabezado y ordená por <code>% con barrera</code> de Z a A.</td></tr>
+<tr><td><strong>Un gráfico de barras</strong></td><td>Con las carreras y su <code>% con barrera</code> (columnas <code>A</code> y <code>D</code>, seleccionadas con <code>Ctrl</code>; Mac: <code>⌘</code>). Con un título que diga algo.</td></tr>
+<tr><td><strong>Una conclusión escrita</strong></td><td>Debajo del gráfico, en dos o tres oraciones.</td></tr>
     </tbody>
   </table>
 </div>
-<p>Las columnas de CS y CyT son fórmulas con <code>SI</code> (con <code>Y</code> o anidado): el tipo de pedido que conviene hacerle a una IA y comprobar con una cifra de control, como en la Actividad 04.</p>
+<p>Controles para revisar la tabla: Administración 6 de 27 (22,2%), Contador Público 4 de 14 (28,6%), Educación 2 de 4 (50,0%) y Biotecnología 3 de 5 (60,0%).</p>
 <div class="callout" data-type="idea">
   <p class="callout-label">💡 Una conclusión por escrito</p>
-  <p>Los números solos no son un informe. En <code>MI_PREGUNTA</code>, debajo del gráfico, escribí en dos o tres oraciones qué muestran los datos y qué te llevó a esa conclusión. Dejá claro qué es un dato de la encuesta y qué es una interpretación tuya.</p>
+  <p>Los números solos no son un informe. Escribí qué muestran los datos y qué te llevó a esa conclusión, y dejá claro qué es un dato de la encuesta y qué es una interpretación tuya. Una pista: mirá cuántas respuestas tiene cada carrera. Un porcentaje alto con pocas respuestas se lee con cuidado.</p>
 </div>
 <div class="activity">
   <div class="activity-head">
@@ -525,16 +546,16 @@
     <h3>La entrega final: Retrato del curso</h3>
   </div>
   <div class="prose">
-<p>Trabajá sobre los datos reales de <code>DATOS</code>. Todo lo que practicaste con 8 filas se hace ahora con las 120 respuestas, y se suma una pregunta propia.</p>
+<p>Trabajá sobre los datos reales de <code>DATOS</code>. Todo lo que practicaste con 8 filas se hace ahora con las 120 respuestas, y se suma la pregunta de las barreras.</p>
 <ol>
-  <li>Armá la hoja <code>TABLERO</code> con el selector de departamento (<code>LISTAS!A2:A5</code>) y las fórmulas con <code>Depto</code> y <code>Gasto</code> (los nombres de la clase anterior). Controles con el selector en cada departamento: la tabla de control de la sección del tablero.</li>
-  <li>Armá la hoja <code>DINAMICA</code> con la tabla dinámica de departamentos (respuestas y gasto promedio) y un control de filtros por <code>Trabaja</code>. Controles con <code>Sí</code>: 36, 15, 15 y 7 respuestas.</li>
+  <li>Armá la hoja <code>TABLERO</code> con el selector de departamento (<code>LISTAS!A2:A5</code>) y cuatro indicadores que lean el selector: <code>Respuestas</code> (<code>CONTAR.SI</code> con <code>Depto</code>), <code>% que trabaja</code> (<code>CONTAR.SI.CONJUNTO</code> con <code>Depto</code> y <code>DATOS!E2:E121</code>, dividido por las respuestas), <code>Gasto promedio</code> (<code>PROMEDIO.SI</code> con <code>Depto</code> y <code>Gasto</code>) y <code>Viaje promedio (min)</code> (<code>PROMEDIO.SI</code> con <code>Depto</code> y <code>DATOS!H2:H121</code>, que no tiene nombre). Debajo, una tabla con los cuatro niveles de uso de IA y un <code>CONTAR.SI.CONJUNTO</code> sobre <code>Depto</code> y <code>DATOS!I2:I121</code>. Controles con el selector en cada departamento: la tabla de control de la sección del tablero.</li>
+  <li>Armá la hoja <code>DINAMICA</code> con la tabla dinámica de departamentos (respuestas y gasto promedio) y un control de filtros por <code>Trabaja</code>. Controles con <code>Sí</code>: CS 15, CyT 15, DEyA 36 y EUdA 7 respuestas.</li>
   <li>Insertá tres gráficos en <code>TABLERO</code>: uso de IA según el selector (columnas, con título que diga algo), respuestas por carrera (barras ordenadas, con datos no contiguos) y personas que trabajan y no trabajan.</li>
   <li>Imprimí <code>TABLERO</code> en una sola página y bajá el PDF.</li>
-  <li>Armá <code>MI_PREGUNTA</code> con la consigna de tu departamento, un gráfico y una conclusión de dos o tres oraciones. Imprimila en otra página y bajá el PDF.</li>
-  <li>En <code>LEEME</code>, anotá una línea con lo que le pediste a una IA (por ejemplo, la fórmula de <code>MI_PREGUNTA</code>) y con qué cifra de control lo comprobaste.</li>
-  <li>Revisá la lista de arriba, tildando cada punto: sin errores en las fórmulas y <code>LEEME</code> completa. Ocultá las hojas de práctica.</li>
-  <li>Hacé la copia <code>Clase 11 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong>, subí el enlace al aula virtual y adjuntá el PDF de <code>TABLERO</code> y <code>MI_PREGUNTA</code> en la misma entrega. Ese enlace es tu presente y tu entrega.</li>
+  <li>Armá <code>MI_PREGUNTA</code> con la consigna de arriba. Imprimila en otra página y bajá el PDF.</li>
+  <li>En <code>LEEME</code>, anotá una línea con lo que le pediste a una IA (por ejemplo, la fórmula de <code>Barrera</code>) y con qué cifra de control lo comprobaste (por ejemplo, las 29 filas).</li>
+  <li>Revisá la lista de arriba, tildando cada punto: sin errores en las fórmulas y <code>LEEME</code> completa. Ocultá las hojas de práctica (<code>PRACTICA11</code> y <code>TABLERO_P</code>): clic derecho en la pestaña y <em>Ocultar hoja</em>.</li>
+  <li>Hacé la copia <code>Clase 11 - Apellido - AAAA-MM-DD</code>, compartila con <code>unqarchivos@gmail.com</code> con permiso de <strong>Comentador</strong>, subí el enlace al aula virtual y adjuntá los dos PDF, el de <code>TABLERO</code> y el de <code>MI_PREGUNTA</code>, en la misma entrega. Ese enlace es tu presente y tu entrega.</li>
 </ol>
   </div>
 </div>
@@ -557,7 +578,7 @@
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s11-4" aria-label="Marcar como hecho"></td><td><label for="chk-s11-4">Le pedí a una IA una fórmula con <code>SI</code> y <code>Y</code> y una consulta <code>QUERY</code>, y comprobé los dos resultados con una cifra de control.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s11-5" aria-label="Marcar como hecho"></td><td><label for="chk-s11-5">Imprimí el tablero en una sola página, bajé el PDF y comprobé el archivo en Excel.</label></td></tr>
 <tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s11-6" aria-label="Marcar como hecho"></td><td><label for="chk-s11-6">Armé el tablero real con selector y los cuatro departamentos dan las cifras de control.</label></td></tr>
-<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s11-7" aria-label="Marcar como hecho"></td><td><label for="chk-s11-7">Entregué el pedido final: tablero, <code>DINAMICA</code>, <code>MI_PREGUNTA</code> y el PDF.</label></td></tr>
+<tr><td class="check-cell"><input type="checkbox" class="checkbox" id="chk-s11-7" aria-label="Marcar como hecho"></td><td><label for="chk-s11-7">Entregué el pedido final: tablero, <code>DINAMICA</code>, <code>MI_PREGUNTA</code> y los dos PDF.</label></td></tr>
     </tbody>
   </table>
 </div>

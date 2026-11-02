@@ -334,7 +334,7 @@
 <table>
 <tr><th>Función</th><th>Devuelve</th></tr>
 <tr><td><code>HOY()</code>, <code>AHORA()</code></td><td>La fecha de hoy; la fecha y la hora</td></tr>
-<tr><td><code>DIAS(fin; inicio)</code></td><td>Los días entre dos fechas: <code>=DIAS(HOY();B2)</code></td></tr>
+<tr><td>Resta de fechas</td><td>Los días entre dos fechas: <code>=HOY()-B2</code>, con formato de número</td></tr>
 <tr><td><code>MIN</code>, <code>MAX</code></td><td>La fecha más antigua y la más reciente</td></tr>
 </table>
 <p>Si el resultado de <code>DIAS</code> sale con formato de fecha, pasarlo a Formato → Número → Número.</p>
@@ -381,7 +381,7 @@
 <tr><td>Valores</td><td>La cifra que se calcula y cómo</td><td><code>Gasto_mensual</code>, promedio</td></tr>
 <tr><td>Filtros</td><td>Un campo que deja afuera filas antes de calcular (opcional)</td><td><code>Uso_IA</code></td></tr>
 </table>
-<p>Cada campo de Valores tiene un desplegable <b>Sumar por</b> con las funciones en inglés: <code>COUNTA</code> (cuenta; se usa sobre <code>ID</code>), <code>AVERAGE</code>, <code>SUM</code>, <code>MAX</code> y <code>MIN</code>. El <b>control de filtros</b> (la segmentación de datos de otros programas) es un botón visible sobre la hoja que filtra la tabla con un clic: Datos → Añadir un control de filtros, con el mismo intervalo de datos que la tabla, una Columna (por ejemplo <code>Trabaja</code>) y la casilla <i>Aplicar a tablas dinámicas</i> tildada. Diferencia con el selector: el selector es una celda que leen las fórmulas del tablero; el control de filtros filtra una tabla dinámica sin fórmulas.</p>
+<p>Cada campo de Valores tiene un desplegable <b>Sumar por</b> con las funciones en inglés: <code>COUNTA</code> (cuenta; se usa sobre <code>ID</code>), <code>AVERAGE</code>, <code>SUM</code>, <code>MAX</code> y <code>MIN</code>. El <b>control de filtros</b> (la segmentación de datos de otros programas) es un botón visible sobre la hoja que filtra la tabla con un clic: Datos → Añadir un control de filtros, con el mismo intervalo de datos que la tabla, una Columna (por ejemplo <code>Trabaja</code>) y la casilla <i>Aplicar a tablas dinámicas</i> tildada. Diferencia con el selector: el selector es una celda que leen las fórmulas del tablero; el control de filtros filtra una tabla dinámica sin fórmulas. Ojo con lo que ve el alumno: la tabla dinámica ordena los departamentos alfabéticamente (CS, CyT, DEyA, EUdA), no como el selector, y rotula el total como <i>Suma total</i>. Con el filtro en una sola opción, el botón dice <i>1 de 2</i>.</p>
 <table>
 <tr><th>Control</th><th>DEyA</th><th>CS</th><th>CyT</th><th>EUdA</th><th>Total</th></tr>
 <tr><td>Todos: respuestas</td><td>54</td><td>30</td><td>25</td><td>11</td><td>120</td></tr>
@@ -402,6 +402,23 @@
 <tr><td>Viaje promedio (min)</td><td>54,18</td><td>58,77</td><td>53,17</td><td>57,80</td></tr>
 <tr><td>Uso de IA (Nunca / A veces / Seguido / Todos los días)</td><td>5 / 18 / 13 / 18</td><td>4 / 12 / 6 / 8</td><td>0 / 12 / 8 / 5</td><td>0 / 4 / 3 / 4</td></tr>
 </table>
+<h3>La IA en las fórmulas complejas</h3>
+<p>Alcanza con el plan gratuito de un chat (Gemini, ChatGPT o Copilot, todos freemium); Gemini dentro de Sheets es un extra que depende de la cuenta y el plan. Se usa donde más cuesta escribir a mano: fórmulas con varias condiciones (<code>SI</code> con <code>Y</code> u <code>O</code>, <code>SI</code> anidado) y consultas <code>QUERY</code>. La condición es una sola: <b>quien firma el informe es el alumno</b>, así que todo lo que diga la IA se compara con una cifra de control (un número que ya se sabe correcto). La guía trae un pedido modelo para copiar: dónde se trabaja, un pedazo de la tabla copiado desde Sheets y pegado en el chat (con los encabezados), qué se quiere lograr con los valores exactos y que la IA explique la fórmula.</p>
+<table>
+<tr><th>Errores típicos de una IA con planillas</th></tr>
+<tr><td>Escribe las fórmulas con coma en vez de punto y coma y Sheets en español las rechaza</td></tr>
+<tr><td>Inventa columnas, hojas o rangos que no existen, o apunta a un rango incompleto</td></tr>
+<tr><td>Hace cuentas de cabeza y se equivoca (pedir la fórmula y calcularla, no pedir el resultado)</td></tr>
+<tr><td>Contesta con seguridad aunque se equivoque</td></tr>
+</table>
+<p><b>Datos personales:</b> la encuesta del caso es simulada, pero en un trabajo real los nombres, mails y datos de personas no se pegan en una IA pública sin autorización.</p>
+<table>
+<tr><th>Paso</th><th>Qué se hace</th></tr>
+<tr><td>1. Dar contexto</td><td>Pegarle las primeras filas de la tabla copiadas desde Sheets (la IA no ve el archivo y así ve los encabezados), decirle que la primera columna es la A, que se usa Sheets en español con punto y coma y qué se quiere lograr con los valores exactos; pedir la fórmula y la explicación</td></tr>
+<tr><td>2. Probar aparte</td><td>Pegar la fórmula en una celda libre, nunca encima del trabajo</td></tr>
+<tr><td>3. Comparar con una cifra de control</td><td>Contrastar con algo que se sabe correcto: un conteo previo, un filtro, una tabla de control</td></tr>
+</table>
+<p><code>QUERY</code> hace una pregunta a un rango: <code>=QUERY(DATOS!A1:S121; "select R, count(A) where E = 'Sí' and H &gt; 60 group by R label count(A) ''"; 1)</code>. Las columnas se nombran por su letra; en <code>where</code>, <code>and</code> hace de Y y <code>or</code> de O. Controles, en orden alfabético porque <code>group by</code> ordena: con <code>and</code>, CS 7, CyT 7, DEyA 13 y EUdA 2 (29, las mismas filas que el filtro de la Clase 10); con <code>or</code>, CS 22, CyT 18, DEyA 43 y EUdA 9 (92). La fórmula se pega en <code>A1</code> de una hoja nueva (<code>CONSULTA</code>) con las celdas de abajo y de la derecha vacías; si no, da <code>#REF!</code>.</p>
 <h3>Imprimir y exportar a PDF</h3>
 <table>
 <tr><th>Opción</th><th>Qué hace</th></tr>
@@ -420,45 +437,17 @@
 <p>Para decidir dónde corta la página: Saltos de página personalizados (solo con Hoja actual elegida). Para repetir encabezados en cada página de una tabla larga: inmovilizar la fila 1 y tildar la opción de repetir las filas inmovilizadas.</p>
 <h3>Compartir y pasar a Excel</h3>
 <p>Compartir: por mail o enlace, con roles Lector, Comentador y Editor (siempre el mínimo necesario). Datos → Proteger hojas e intervalos bloquea una hoja. Archivo → Descargar → Microsoft Excel (.xlsx) conserva en general datos, formatos, fórmulas comunes (<code>SI</code>, <code>CONTAR.SI</code>, <code>BUSCARV</code>, <code>BUSCARX</code>) y formato condicional. Puede cambiar el aspecto de los gráficos y de las tablas dinámicas, y las funciones propias de Google (<code>QUERY</code>, <code>IMPORTRANGE</code>) no existen en Excel. La prueba es abrirlo y comparar las cifras de control.</p>
-<h3>La IA en las fórmulas complejas</h3>
-<p>Alcanza con el plan gratuito de un chat (Gemini, ChatGPT o Copilot, todos freemium); Gemini dentro de Sheets es un extra que depende de la cuenta y el plan. Se usa donde más cuesta escribir a mano: fórmulas con varias condiciones (<code>SI</code> con <code>Y</code> u <code>O</code>, <code>SI</code> anidado) y consultas <code>QUERY</code>. La condición es una sola: <b>quien firma el informe es el alumno</b>, así que todo lo que diga la IA se compara con una cifra de control.</p>
+<h3>La entrega final: una consigna común</h3>
+<p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>DINAMICA</code> con tabla dinámica y control de filtros) y una hoja <code>MI_PREGUNTA</code> con la misma consigna para todo el curso: ¿en qué carreras se concentran las personas que llegan con más barreras? Una barrera es una persona que trabaja y viaja más de 60 minutos. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación. Se entregan dos PDF, el de <code>TABLERO</code> y el de <code>MI_PREGUNTA</code>.</p>
 <table>
-<tr><th>Errores típicos de una IA con planillas</th></tr>
-<tr><td>Escribe las fórmulas con coma en vez de punto y coma y Sheets en español las rechaza</td></tr>
-<tr><td>Inventa columnas, hojas o rangos que no existen, o apunta a un rango incompleto</td></tr>
-<tr><td>Hace cuentas de cabeza y se equivoca (pedir la fórmula y calcularla, no pedir el resultado)</td></tr>
-<tr><td>Contesta con seguridad aunque se equivoque</td></tr>
+<tr><th>Qué se construye</th><th>Cómo y control</th></tr>
+<tr><td>Columna <code>Barrera</code> en <code>DATOS</code></td><td><code>T1</code> con el encabezado y <code>T2</code> con la fórmula de la Actividad 04 (<code>SI</code> y <code>Y</code> sobre <code>E2</code> y <code>H2</code>), copiada hasta la fila 121. Control: 29 filas con <code>Barrera</code></td></tr>
+<tr><td>Tabla por carrera</td><td>Carrera, Respuestas, Con barrera (<code>CONTAR.SI.CONJUNTO</code> sobre <code>DATOS</code>) y % con barrera; carreras y respuestas copiadas desde <code>CARRERAS</code> con Solo valores. Control: Con barrera suma 29</td></tr>
+<tr><td>Tabla ordenada</td><td>Datos → Ordenar intervalo → Opciones avanzadas de ordenación de intervalos, por % con barrera de Z a A (con fila de encabezado)</td></tr>
+<tr><td>Gráfico de barras</td><td>Carreras y % con barrera (columnas <code>A</code> y <code>D</code> con <code>Ctrl</code>), con un título que diga algo</td></tr>
+<tr><td>Conclusión</td><td>Dos o tres oraciones, distinguiendo dato e interpretación</td></tr>
 </table>
-<p><b>Datos personales:</b> la encuesta del caso es simulada, pero en un trabajo real los nombres, mails y datos de personas no se pegan en una IA pública sin autorización.</p>
-<table>
-<tr><th>Paso</th><th>Qué se hace</th></tr>
-<tr><td>1. Dar contexto</td><td>Decirle en qué columnas están los datos, que se usa Sheets en español con punto y coma y qué se quiere lograr; pedir la fórmula y la explicación</td></tr>
-<tr><td>2. Probar aparte</td><td>Pegar la fórmula en una celda libre, nunca encima del trabajo</td></tr>
-<tr><td>3. Comparar con una cifra de control</td><td>Contrastar con algo que se sabe correcto: un conteo previo, un filtro, una tabla de control</td></tr>
-</table>
-<p><code>QUERY</code> hace una pregunta a un rango: <code>=QUERY(DATOS!A1:S121; "select R, count(A) where E = 'Sí' and H &gt; 60 group by R label count(A) ''"; 1)</code>. Las columnas se nombran por su letra; en <code>where</code>, <code>and</code> hace de Y y <code>or</code> de O. Controles: con <code>and</code>, DEyA 13, CS 7, CyT 7 y EUdA 2 (29, las mismas filas que el filtro de la Clase 10); con <code>or</code>, 43, 22, 18 y 9 (92).</p>
-<h3>Imprimir y exportar a PDF</h3>
-<table>
-<tr><th>Opción</th><th>Qué hace</th></tr>
-<tr><td>Imprimir</td><td>Hoja actual, todo el archivo o <b>celdas seleccionadas</b> (esta última es el área de impresión)</td></tr>
-<tr><td>Orientación</td><td>Vertical u horizontal; los tableros anchos van en horizontal</td></tr>
-<tr><td>Escala</td><td>Ajustar al ancho: achica para que entre sin cortar columnas</td></tr>
-<tr><td>Líneas de la cuadrícula</td><td>Un informe se ve más limpio sin ellas</td></tr>
-</table>
-<table>
-<tr><th>Acción</th><th>Windows</th><th>Mac</th></tr>
-<tr><td>Imprimir (abre la vista previa)</td><td><code>Ctrl+P</code></td><td><code>⌘+P</code></td></tr>
-<tr><td>PDF</td><td>Archivo → Descargar → PDF</td><td>Igual</td></tr>
-</table>
-<h3>La entrega final: una pregunta por departamento</h3>
-<p>Todos construyen el mismo archivo (<code>LEEME</code>, <code>CRUDO</code> intacta, <code>DATOS</code> limpia, <code>TABLERO</code> con selector, <code>DINAMICA</code> con tabla dinámica y control de filtros) y se suma una hoja <code>MI_PREGUNTA</code> cuya consigna depende del departamento de la carrera de cada alumno. La caja de herramientas es la misma; cambia la mirada. Debajo del gráfico va una conclusión de dos o tres oraciones que distinga el dato de la interpretación.</p>
-<table>
-<tr><th>Departamento</th><th>La pregunta</th><th>Qué se construye</th></tr>
-<tr><td>DEyA</td><td>¿Cuánto cuesta cursar y cómo cambia con la inflación?</td><td>Gasto promedio de quienes trabajan y no (<code>PROMEDIO.SI</code>), proyección a 12 meses con <code>PARAMETROS</code>, columnas hoy contra 12 meses, recomendación de ayuda económica</td></tr>
-<tr><td>CS</td><td>¿Quiénes llegan con más barreras?</td><td>Columna <code>Barreras</code> con <code>SI</code> y <code>Y</code> (trabaja y viaja más de 60 min), % por carrera con <code>CONTAR.SI.CONJUNTO</code>, barras ordenadas, filtro del grupo, conclusión de dos oraciones</td></tr>
-<tr><td>CyT</td><td>¿Más tiempo de celular, menos de estudio?</td><td>Columna Bajo (hasta 3 h), Medio (4 a 6), Alto (7 o más) con <code>SI</code> anidado, promedio de horas de estudio por grupo, dispersión, conclusión que no confunda correlación con causa</td></tr>
-<tr><td>EUdA</td><td>¿Cómo usa la IA el curso y cómo se cuenta eso?</td><td>Tabla de uso de IA por <code>Nivel_Excel</code> con <code>CONTAR.SI.CONJUNTO</code>, columnas agrupadas y una página de comunicación (título fuerte, tres datos grandes, imagen y gráfico) que se entienda en diez segundos</td></tr>
-</table>
+<p>Controles de la tabla: Administración 6 de 27 (22,2%), Contador Público 4 de 14 (28,6%), Educación 2 de 4 (50,0%) y Biotecnología 3 de 5 (60,0%). Los porcentajes más altos corresponden a carreras con pocas respuestas: es la pista para la conclusión. Archivo modelo con todo resuelto: <i>Clase 11 - Modelo docente - Retrato del curso</i> (Google Sheets, en el Drive del docente).</p>
 <p class="glosario-title">Glosario</p>
 <table>
 <tr><td><b>Gráfico</b></td><td>Representación visual de una tabla de datos, elegida según la pregunta que se quiere responder.</td></tr>

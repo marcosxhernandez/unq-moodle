@@ -58,10 +58,9 @@ Generador: `scripts/gen_dataset_encuesta.py` (semilla 20260609). No editar los C
 
 ### Clave de la entrega final (uso docente, Clase 11)
 
-- DEyA: gasto promedio con trabajo $ 144.694 y sin trabajo $ 102.000 (en DEyA); proyección a 12 meses con el aumento mensual de PARAMETROS.
-- CS: trabaja y viaja más de 60 min: 13 (DEyA), 7 (CS), 7 (CyT), 2 (EUdA), 29 en total.
-- CyT: correlación entre Horas_celular y Horas_estudio -0,165 (casi nula). Promedio de horas de estudio por grupo de uso de celular (Bajo hasta 3 h, Medio 4 a 6, Alto 7 o más), con las 120 respuestas: Bajo 8,00 (21 personas), Medio 6,97 (76), Alto 6,09 (23); solo con CyT: Bajo 6,25 (4), Medio 6,82 (17), Alto 6,25 (4).
-- EUdA: uso de IA por nivel de Excel con `CONTAR.SI.CONJUNTO`; la consigna es de comunicación, no tiene cifra única.
+La entrega final es una sola consigna para todo el curso (nov. 2026): ¿en qué carreras se concentran las personas que llegan con más barreras? Barrera = trabaja y viaja más de 60 minutos (columna `Barrera` en `T` de `DATOS`). Con las 120 respuestas: 29 de 120 (24,2%). Por carrera (con barrera de respuestas): Biotecnología 3 de 5 (60,0%), Educación 2 de 4 (50,0%), Ing. en Alimentos 3 de 9 (33,3%), Contador Público 4 de 14 (28,6%), Trabajo Social 3 de 11 (27,3%), Música y Tecnología 1 de 4 (25,0%), Comercio Internacional 3 de 13 (23,1%), Administración 6 de 27 (22,2%), Artes Electrónicas 1 de 7 (14,3%), Comunicación Social 2 de 15 (13,3%) y Programación 1 de 11 (9,1%). Por departamento (consulta `QUERY`, orden alfabético): CS 7, CyT 7, DEyA 13 y EUdA 2. Con `or` en lugar de `and`: CS 22, CyT 18, DEyA 43 y EUdA 9 (92).
+
+Las consignas por departamento (DEyA, CS, CyT y EUdA) se dejaron de usar en nov. 2026 para simplificar. Cifras de referencia por si se retoman: DEyA, gasto promedio de quienes trabajan $ 144.694 y de quienes no $ 102.000; CyT, correlación entre horas de celular y de estudio -0,165 y promedio de horas de estudio por grupo de celular (Bajo / Medio / Alto) 8,00 / 6,97 / 6,09 con las 120 respuestas. La proyección a 12 meses con el aumento mensual simple de 3% multiplica por 1,36, no por 1,40.
 
 ### Reproducibilidad
 

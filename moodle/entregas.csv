@@ -8,12 +8,9 @@ clase,orden,titulo,39500_id,39501_id
 06,1,Presentación Integradora,1988725,1988721
 08,1,Planilla Clase 08,1988727,1991566
 09,1,Planilla Clase 09,1990126,1991567
-10,1,Planilla Clase 10,1990127,TODO
-11,1,Planilla Clase 11,1990128,TODO
-07,1,Entrega del examen (documento + presentación),TODO,1988722
-12,1,Entrega del examen (planilla),TODO,TODO
-13,1,Base de Access Clase 13,TODO,TODO
-14,1,Base de Access Clase 14,TODO,TODO
-15,1,Base de Access Clase 15 (entrega final),TODO,TODO
-16,1,Entrega del proyecto integrador,TODO,TODO
-17,1,Entrega del recuperatorio,TODO,TODO
+10,1,Planilla Clase 10,1990127,2012338
+11,1,Planilla Clase 11,1990128,2012339
+07,1,Entrega del examen (documento + presentación),1988726,1988722
+12,1,Entrega del examen (planilla),1990129,2012340
+17,1,Entrega del recuperatorio (Trabajo de Investigación),2019494,2012341
+17,2,Entrega del recuperatorio (planilla),1990133,2019496

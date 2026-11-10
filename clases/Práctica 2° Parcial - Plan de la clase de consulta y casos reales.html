@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consulta 2° Parcial · Plan y casos reales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,520;9..144,560&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#17161d; --soft:#45434f; --muted:#6b6975; --line:#d8d5dd; --hair:#ebe9ee;
+  --g:#1e8e3e; --g-deep:#145c28; --g-tint:#e9f7ee; --g-soft:#cee6d5;
+  --wine:#8a1130; --wine-tint:#fbf1f3;
+  --amber:#a1691c; --amber-tint:#fdf5e4;
+  --blue:#2952b3; --blue-tint:#eef3fc;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:#fff}
+body{max-width:880px;margin:0 auto;padding:36px 28px 80px;font-family:var(--sans);font-size:16px;line-height:1.62;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,p,ul,ol{margin:0;padding:0}
+ul,ol{padding-left:1.25em}
+li{margin:.25em 0}
+b,strong{font-weight:600}
+code{font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.88em;background:var(--g-tint);color:var(--g-deep);padding:.05em .38em;border-radius:3px;white-space:nowrap}
+pre{margin:10px 0 4px;padding:12px 14px;background:#f7f6f9;border:1px solid var(--hair);border-radius:4px;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;overflow:auto;white-space:pre}
+a{color:var(--g-deep)}
+.kicker{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.kicker span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g-deep)}
+.kicker i{flex:1;height:0;border-top:1px solid var(--line)}
+h1{font-family:var(--serif);font-weight:520;font-size:clamp(28px,4.4vw,38px);line-height:1.12;letter-spacing:-.01em}
+.tema{display:inline-block;margin-top:10px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--g-deep);background:var(--g-tint);padding:3px 16px;border-radius:20px}
+.datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:22px 0 8px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.datos>div{padding:10px 14px 11px 0}
+.datos>div+div{padding-left:14px;border-left:1px solid var(--line)}
+.datos b.l{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g-deep);margin-bottom:2px}
+.datos span{font-size:15px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.alumno{flex:none;width:300px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.alumno div{border-bottom:1.5px solid var(--ink);height:34px;padding-top:2px}
+.alumno div.full{grid-column:1/-1}
+.alumno span{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.lead{font-size:17.5px;line-height:1.6;color:var(--soft);margin:18px 0 6px}
+h2.sec{display:flex;align-items:baseline;gap:12px;font-family:var(--serif);font-weight:560;font-size:25px;line-height:1.2;padding-bottom:5px;border-bottom:2px solid var(--g);margin:46px 0 14px}
+h2.sec .t{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--g-deep);background:var(--g-tint);padding:2px 10px;border-radius:12px;margin-left:auto;white-space:nowrap}
+h3{font-family:var(--serif);font-weight:540;font-size:19px;margin:22px 0 6px}
+p+p{margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 4px}
+.chip{font-size:13px;font-weight:600;padding:3px 11px;border-radius:14px;background:var(--g-tint);color:var(--g-deep);border:1px solid var(--g-soft)}
+.chip.o{background:#fff;color:var(--muted);border-color:var(--line);font-weight:500}
+.box{border-left:5px solid var(--g);background:var(--g-tint);padding:12px 16px;border-radius:0 4px 4px 0;margin:16px 0}
+.box.warn{border-color:var(--amber);background:var(--amber-tint)}
+.box.pend{border-color:var(--wine);background:var(--wine-tint)}
+.box.info{border-color:var(--blue);background:var(--blue-tint)}
+.box .lbl{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;color:var(--g-deep)}
+.box.warn .lbl{color:var(--amber)} .box.pend .lbl{color:var(--wine)} .box.info .lbl{color:var(--blue)}
+.box p+p,.box ul{margin-top:6px}
+.bloque{border:1px solid var(--line);border-radius:6px;margin:18px 0;overflow:hidden;break-inside:avoid-page}
+.bloque>header{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#faf9fb;border-bottom:1px solid var(--line)}
+.bloque .n{font-weight:700;font-size:14px;color:#fff;background:var(--g);border-radius:4px;padding:1px 9px;min-width:30px;text-align:center}
+.bloque h3{margin:0;font-size:19px;flex:1}
+.bloque .min{font-size:12.5px;font-weight:700;color:var(--g-deep);background:var(--g-tint);padding:2px 11px;border-radius:12px;white-space:nowrap}
+.bloque .cuerpo{padding:6px 16px 14px}
+.bloque .intro{color:var(--soft);margin:8px 0 4px;font-size:15.5px}
+.item{display:grid;grid-template-columns:22px 1fr;column-gap:10px;padding:9px 0;border-bottom:1px solid var(--hair)}
+.item:last-child{border-bottom:none}
+.item input{margin:5px 0 0;width:16px;height:16px;accent-color:var(--g)}
+.item .t{font-weight:600}
+.item .d{color:var(--ink)}
+.ctl{display:block;margin-top:5px;font-size:14px;color:var(--g-deep);background:var(--g-tint);border-radius:3px;padding:4px 10px}
+.ctl b{font-weight:700;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;margin-right:6px}
+.ctl.pend{color:var(--wine);background:var(--wine-tint)}
+table.tabla{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;line-height:1.45}
+table.tabla th,table.tabla td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+table.tabla th{background:var(--g-tint);color:var(--g-deep);font-weight:600}
+table.tabla td.r,table.tabla th.r{text-align:right;font-variant-numeric:tabular-nums}
+table.tabla td.c,table.tabla th.c{text-align:center}
+table.tabla tr:nth-child(even) td{background:#fcfcfd}
+.scroll{overflow-x:auto}
+.fm{font-size:14px;color:var(--soft)}
+.src{font-size:14px;color:var(--soft)}
+.src li{margin:.35em 0}
+footer.f{margin-top:60px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 0;font-size:14px}
+.nav a{padding:3px 12px;border:1px solid var(--g-soft);border-radius:14px;text-decoration:none;color:var(--g-deep);background:#fff}
+.nav a.on{background:var(--g);color:#fff;border-color:var(--g)}
+@media print{
+  body{max-width:none;padding:0;font-size:10.5pt}
+  .nav{display:none}
+  .item input{display:none}
+  .item{grid-template-columns:1fr}
+  h2.sec{margin-top:24px}
+}
+@page{size:A4;margin:16mm 14mm 18mm}
+</style>
+</head>
+<body>
+<div class="nav"><a class="on" href="Práctica%202°%20Parcial%20-%20Plan%20de%20la%20clase%20de%20consulta%20y%20casos%20reales.html">Plan de la clase y casos reales</a><a class="" href="Práctica%202°%20Parcial%20-%20Ejercicio%201%20-%20★★★★☆%20-%20La%20canasta%20del%20INDEC.html">Propuesta 1 · Canasta del INDEC</a><a class="" href="Práctica%202°%20Parcial%20-%20Ejercicio%202%20-%20★★★★★%20-%20El%20negocio%20del%20cine.html">Ejercicio 2 · El negocio del cine</a></div>
+<div class="kicker"><span>Consulta previa al 2° Parcial · Plan general</span><i></i></div>
+<h1>Clase de consulta: plan de 3 horas y casos reales</h1>
+<span class="tema">Dos ejercicios de punta a punta, intro y cierre</span>
+<div class="datos"><div><b class="l">Duración</b><span>180 minutos</span></div><div><b class="l">Ejercicios</b><span>2 de 65 minutos</span></div><div><b class="l">Intro / cierre</b><span>15 / 25 minutos</span></div><div><b class="l">Margen</b><span>10 minutos</span></div></div>
+<p class="lead">Dos ejercicios completos con datos reales, uno con control propio (canasta del INDEC, verificable) y otro con una base abierta más grande (454 películas con presupuesto y recaudación). Entre ambos cubren casi todo lo dictado en las Clases 08 a 11.</p>
+<div class="box warn"><span class="lbl">Fecha</span><p>El Cronograma marca la consulta el 10/11 y el 2° Parcial el 17/11. Si "la próxima semana" es otra fecha, el plan no cambia, solo hay que confirmar el día.</p></div>
+<h2 class="sec">Plan minuto a minuto<span class="t">180 minutos</span></h2>
+<div class="scroll"><table class="tabla"><thead><tr><th class="">Minuto</th><th class="">Qué</th><th class="">Detalle</th></tr></thead><tbody><tr><td class="">0-15</td><td class="">Intro</td><td class="">Qué se evalúa en el parcial, cómo se reparten los puntos y la lógica de recorrer un ejercicio completo.</td></tr><tr><td class="">15-80</td><td class="">Ejercicio 1: canasta INDEC</td><td class="">8 bloques. Datos para pegar, control con los porcentajes del INDEC.</td></tr><tr><td class="">80-90</td><td class="">Pausa</td><td class="">10 minutos de margen.</td></tr><tr><td class="">90-155</td><td class="">Ejercicio 2: el negocio del cine</td><td class="">7 bloques. Archivo Peliculas_2007_2009.csv (454 películas reales).</td></tr><tr><td class="">155-180</td><td class="">Cierre y deep research</td><td class="">Casos reales, bases abiertas y cómo elegir una pregunta.</td></tr></tbody></table></div>
+<h2 class="sec">Qué habilidad aparece en qué ejercicio<span class="t">matriz</span></h2>
+<div class="scroll"><table class="tabla"><thead><tr><th class="">Habilidad</th><th class="c">Ej. 1</th><th class="c">Ej. 2</th></tr></thead><tbody><tr><td class="">Importar, limpiar y separar el original</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">Referencias relativas, absolutas y PARAMETROS</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">Porcentajes y variaciones</td><td class="c">Sí</td><td class="c">-</td></tr><tr><td class="">SI anidado y formato condicional</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">CONTAR.SI / CONTAR.SI.CONJUNTO</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">BUSCARX con SIERROR</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">Validación de datos (selector)</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">Tabla dinámica y control de filtros</td><td class="c">-</td><td class="c">Sí</td></tr><tr><td class="">QUERY pedida a la IA</td><td class="c">-</td><td class="c">Sí</td></tr><tr><td class="">Gráfico con un título que diga algo</td><td class="c">Sí</td><td class="c">Sí</td></tr><tr><td class="">Proyección simple</td><td class="c">Sí</td><td class="c">-</td></tr><tr><td class="">Copia compartida y PDF</td><td class="c">Sí</td><td class="c">Sí</td></tr></tbody></table></div>
+<h2 class="sec">Casos reales y bases abiertas<span class="t">para el cierre</span></h2>
+<p>Estos son puntos de partida. Los enlaces son a portales; antes de usarlos en clase conviene abrirlos y verificar qué conjunto de datos sigue vigente.</p>
+<div class="scroll"><table class="tabla"><thead><tr><th class="">Fuente</th><th class="">Qué ofrece</th><th class="">Para qué sirve</th></tr></thead><tbody><tr><td class=""><a href="https://datos.gob.ar">Datos Argentina</a></td><td class="">Catálogo nacional con CSV por organismo (INDEC, INCAA, ministerios)</td><td class="">Series largas, tablas para tabla dinámica</td></tr><tr><td class=""><a href="https://www.indec.gob.ar">INDEC</a></td><td class="">Canastas, IPC, EPH, informes en PDF y planillas</td><td class="">Casos con cifras oficiales de control</td></tr><tr><td class=""><a href="https://data.buenosaires.gob.ar">BA Data</a></td><td class="">Datos de la Ciudad: transporte, salud, cultura, ambiente</td><td class="">Tablas con fechas y barrios</td></tr><tr><td class=""><a href="https://www.argentina.gob.ar/salud/boletin-epidemiologico">Boletín Epidemiológico Nacional</a></td><td class="">Informes de salud pública</td><td class="">Casos de series por semana (ver si el formato permite pegar tablas)</td></tr></tbody></table></div>
+<div class="box pend"><span class="lbl">Sin verificar</span><p>Dengue, SUBE, ENARGAS, datos de cultura de la Ciudad y el CSV de estrenos del INCAA quedan como ideas a explorar. Datos Argentina y el portal de cultura bloquean la lectura automática, así que no pude bajarlos ni verificarlos. El Ejercicio 2 usa en cambio un conjunto abierto de películas de Hollywood (vega-datasets).</p></div>
+<h2 class="sec">Preguntas para el cierre<span class="t">deep research</span></h2>
+<ul><li>¿Qué pregunta le haría mi carrera a esta base?</li><li>¿Qué columna me falta y cómo la calcularía?</li><li>¿Qué gráfico contesta la pregunta en 10 segundos?</li><li>¿Cómo compruebo que no me equivoqué?</li></ul>
+<h2 class="sec">Fuentes<span class="t">para citar</span></h2>
+<ul class="src"><li>INDEC (ver Propuesta 1).</li><li>Datos Argentina: <a href="https://datos.gob.ar">datos.gob.ar</a>.</li></ul>
+<footer class="f">Informática · UNQ · 2026 · Consulta previa al 2° Parcial (planilla de cálculo). Material de uso docente, propuesta para revisar.</footer>
+</body>
+</html>

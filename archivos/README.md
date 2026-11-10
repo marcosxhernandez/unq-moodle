@@ -143,3 +143,12 @@ Caso: emprendimiento familiar de textiles para el hogar (adaptación del ejercic
 **Cifras de control Clínica Veterinaria:** Mascotas 66 (Canino 34, Felino 26; sexo H 32, M 34; caninas hembra 17), Veterinarias 5, Tipos Tratamiento 6. Dato sucio a propósito: Especie tiene `Totuga` y `Tortuga`.
 
 **Cifras de control Universidad2022:** Alumnos 150, Materias 36, Alumnoxmateria 28. Femenino 105; LE o LC 12; fuera de CAPITAL FEDERAL 102; mujeres de CAPITAL FEDERAL 36; nacidos 1960-1969: 52; varones nacidos desde 1970: 4; apellido con A: 10; materias de más de 10 créditos: 10; materias con Taller: 3; inscripciones con tres tablas: 28; con créditos mayores a 10: 11.
+
+
+## Peliculas_2007_2009.csv (consulta del 2° Parcial, nov. 2026)
+
+454 estrenos de 2007 a 2009 con presupuesto y recaudación en dólares. Origen: `movies.json` de vega-datasets (https://github.com/vega/vega-datasets). Generado con `scripts/gen_dataset_cine.py` (solo recorta años y traduce encabezados y géneros). Defectos reales, no inventados: 1 sin presupuesto, 41 sin puntaje IMDB y un título con caracteres rotos (AstÈrix). Los 13 sin género y 18 sin distribuidora vienen ya completados con "Sin dato" (decisión de nov. 2026: la limpieza se limita a lo visto en la Clase 08, sin expresiones regulares). Cifras de control: Éxito 206, Regular 95, Pérdida 152, Sin dato 1 (éxito = recaudación mundial >= 2 veces el presupuesto); 2008: 160 películas y US$ 16.477.109.555; Comedia 2008, retorno medio 2,48; suma total US$ 53.189.078.594; Warner Bros. US$ 9.472.290.738 (49 películas); top 3 de 2008: The Dark Knight, Indiana Jones and the Kingdom of the Crystal Skull, Hancock. Licencia del origen sin confirmar.
+
+## Canasta_INDEC_sep2025_sep2026.csv (consulta del 2° Parcial, nov. 2026)
+
+13 meses de la CBA y la CBT por adulto equivalente, Gran Buenos Aires, tal como los publica el INDEC (informe de septiembre de 2026): meses como texto ("2025 Septiembre") y números entre comillas con punto de miles y coma decimal. Cargado a mano desde el PDF, sin script. Cifras de control: CBT sep-2026 528.318,67; variación mensual de septiembre 1,7%; acumulada 2026 24,7%; interanual 38,7%; Hogar 2 (3,09 adultos equivalentes) 1.632.504,69. Cuidado: si Sheets importa con otra configuración regional, los números pueden quedar como texto (es parte de la práctica).
